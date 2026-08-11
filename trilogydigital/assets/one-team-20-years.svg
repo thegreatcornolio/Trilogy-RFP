@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-label="One Team, 20 Years — Management Journey and UK Client Experience">
+  <defs>
+    <style>
+      .bg { fill: #13202e; }
+      .panel { fill: #1a2838; }
+      .green { fill: #61d779; }
+      .lime { fill: #d5ec67; }
+      .white { fill: #ffffff; }
+      .muted { fill: rgba(255,255,255,0.72); }
+      .faint { fill: rgba(255,255,255,0.45); }
+      .title { font-family: Poppins, Inter, Arial, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 1.5px; }
+      .sub { font-family: Inter, Arial, sans-serif; font-size: 13px; }
+      .role { font-family: Inter, Arial, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.8px; }
+      .name { font-family: Inter, Arial, sans-serif; font-size: 13px; }
+      .axis { font-family: Inter, Arial, sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 1.5px; }
+      .co { font-family: Poppins, Inter, Arial, sans-serif; font-weight: 700; font-size: 15px; }
+      .dates { font-family: Inter, Arial, sans-serif; font-size: 11px; }
+      .clients { font-family: Inter, Arial, sans-serif; font-size: 11px; }
+      .note { font-family: Inter, Arial, sans-serif; font-size: 10px; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1400" height="720" rx="18"/>
+
+  <!-- Header panel -->
+  <rect class="panel" x="28" y="24" width="1344" height="118" rx="14"/>
+  <text x="52" y="62" class="title green">ONE TEAM, 20 YEARS</text>
+  <text x="52" y="88" class="sub white">Same founders / EXCO team have worked together across all these companies.</text>
+
+  <!-- EXCO right -->
+  <text x="780" y="58" class="role green">CEO</text>
+  <text x="780" y="76" class="name white">Kobus van der Westhuizen</text>
+  <text x="780" y="104" class="role green">CTO</text>
+  <text x="780" y="122" class="name white">Craig Shalekoff</text>
+
+  <text x="1080" y="58" class="role green">COO</text>
+  <text x="1080" y="76" class="name white">Tanya Phillips</text>
+  <text x="1080" y="104" class="role green">HEAD OF TRANSITIONS</text>
+  <text x="1080" y="122" class="name white">Vancyon Van Zyl</text>
+
+  <!-- Axis labels -->
+  <text transform="translate(46 250) rotate(-90)" class="axis green">COMPANIES</text>
+  <text transform="translate(46 560) rotate(-90)" class="axis green">UK CLIENTS</text>
+
+  <!-- Timeline rail -->
+  <line x1="90" y1="390" x2="1350" y2="390" stroke="#61d779" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Columns: x centers -->
+  <!-- 7 nodes evenly spaced from 140 to 1300 -->
+<line x1="235.0" y1="210" x2="235.0" y2="370" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/><line x1="425.0" y1="210" x2="425.0" y2="370" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/><line x1="615.0" y1="210" x2="615.0" y2="370" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/><line x1="805.0" y1="210" x2="805.0" y2="370" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/><line x1="995.0" y1="210" x2="995.0" y2="370" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/><line x1="1185.0" y1="210" x2="1185.0" y2="370" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 4"/><rect x="74.0" y="188" width="132" height="32" rx="6" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><text x="140" y="204" text-anchor="middle" class="note faint">Aegis acquires CCN</text><text x="140" y="260" text-anchor="middle" class="co" fill="#ffffff">CCN</text><text x="140" y="280" text-anchor="middle" class="dates faint">2005 – 2008</text><line x1="140" y1="295" x2="140" y2="378" stroke="rgba(255,255,255,0.18)" stroke-width="1"/><circle cx="140" cy="390" r="10" fill="#61d779"/><circle cx="140" cy="390" r="4.5" fill="#13202e"/><text x="140" y="430" text-anchor="middle" class="clients muted">Virgin Mobile, Virgin Media,</text><text x="140" y="446" text-anchor="middle" class="clients muted">Centrica, British Gas, Dynarod</text><text x="330" y="260" text-anchor="middle" class="co" fill="#ffffff">Aegis</text><text x="330" y="280" text-anchor="middle" class="dates faint">2008 – 2013</text><line x1="330" y1="295" x2="330" y2="378" stroke="rgba(255,255,255,0.18)" stroke-width="1"/><circle cx="330" cy="390" r="10" fill="#61d779"/><circle cx="330" cy="390" r="4.5" fill="#13202e"/><text x="330" y="430" text-anchor="middle" class="clients muted">Aegis / Startek (GCC),</text><text x="330" y="446" text-anchor="middle" class="clients muted">SA Tourism (Europe), Lexis Nexis</text><text x="520" y="260" text-anchor="middle" class="co" fill="#ffffff">Genii Ai</text><text x="520" y="280" text-anchor="middle" class="dates faint">2013 – 2021</text><line x1="520" y1="295" x2="520" y2="378" stroke="rgba(255,255,255,0.18)" stroke-width="1"/><circle cx="520" cy="390" r="10" fill="#61d779"/><circle cx="520" cy="390" r="4.5" fill="#13202e"/><text x="520" y="430" text-anchor="middle" class="clients faint">—</text><rect x="644.0" y="188" width="132" height="46" rx="6" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><text x="710" y="204" text-anchor="middle" class="note faint">Ascensos acquires</text><text x="710" y="218" text-anchor="middle" class="note faint">Digital Tribe</text><text x="710" y="260" text-anchor="middle" class="co" fill="#ffffff">Digital Tribe</text><text x="710" y="280" text-anchor="middle" class="dates faint">2021 – 2023</text><line x1="710" y1="295" x2="710" y2="378" stroke="rgba(255,255,255,0.18)" stroke-width="1"/><circle cx="710" cy="390" r="10" fill="#61d779"/><circle cx="710" cy="390" r="4.5" fill="#13202e"/><text x="710" y="430" text-anchor="middle" class="clients muted">Ascensos (GCC)</text><text x="900" y="260" text-anchor="middle" class="co" fill="#ffffff">Ascensos</text><text x="900" y="280" text-anchor="middle" class="dates faint">2023 – 2025</text><line x1="900" y1="295" x2="900" y2="378" stroke="rgba(255,255,255,0.18)" stroke-width="1"/><circle cx="900" cy="390" r="10" fill="#61d779"/><circle cx="900" cy="390" r="4.5" fill="#13202e"/><text x="900" y="430" text-anchor="middle" class="clients muted">John Lewis, WeWork, Iceland,</text><text x="900" y="446" text-anchor="middle" class="clients muted">JD Sports, Aldi, Virgin ED</text><text x="1090" y="260" text-anchor="middle" class="co" fill="#ffffff">Trilogy BPO</text><text x="1090" y="280" text-anchor="middle" class="dates faint">2025 – Now</text><line x1="1090" y1="295" x2="1090" y2="378" stroke="rgba(255,255,255,0.18)" stroke-width="1"/><circle cx="1090" cy="390" r="10" fill="#61d779"/><circle cx="1090" cy="390" r="4.5" fill="#13202e"/><text x="1090" y="430" text-anchor="middle" class="clients muted">Ventrica (GCC), Burger King</text><rect x="1214.0" y="188" width="132" height="32" rx="6" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><text x="1280" y="204" text-anchor="middle" class="note faint">Trilogy DSG JV</text><text x="1280" y="260" text-anchor="middle" class="co" fill="#d5ec67">Trilogy Digital</text><text x="1280" y="280" text-anchor="middle" class="dates faint">April 2026</text><line x1="1280" y1="295" x2="1280" y2="378" stroke="rgba(255,255,255,0.18)" stroke-width="1"/><circle cx="1280" cy="390" r="10" fill="#61d779"/><circle cx="1280" cy="390" r="4.5" fill="#13202e"/><text x="1280" y="430" text-anchor="middle" class="clients muted">NAD Clinic, Multichoice, MTN,</text><text x="1280" y="446" text-anchor="middle" class="clients muted">Telkom, Afrihost, Vodacom,</text><text x="1280" y="462" text-anchor="middle" class="clients muted">KFC, PEP Stores</text></svg>

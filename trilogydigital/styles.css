@@ -1937,3 +1937,18 @@ tr:nth-child(even) td {
     break-after: page;
   }
 }
+
+
+/* ONE TEAM image graphic */
+.one-team-figure {
+  margin: 0;
+}
+.one-team-figure__media {
+  aspect-ratio: 1400 / 720;
+  background: #13202e;
+}
+.one-team-figure__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
