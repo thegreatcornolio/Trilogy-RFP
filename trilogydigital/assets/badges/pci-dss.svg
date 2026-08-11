@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="120" viewBox="0 0 280 120">
+  <rect width="280" height="120" rx="8" fill="#fff"/>
+  <path d="M40 40 h50 l14 20 v36 h-64 z" fill="#0B5C63"/>
+  <text x="65" y="78" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="22" fill="#fff">PCI</text>
+  <circle cx="108" cy="52" r="14" fill="#2ECC71"/>
+  <path d="M101 52 l5 5 10-12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+  <text x="128" y="72" font-family="Arial, sans-serif" font-size="18" font-weight="800" fill="#0B5C63">DSS COMPLIANT</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="120" viewBox="0 0 280 120">
+  <rect width="280" height="120" rx="8" fill="#f7f7f7"/>
+  <text x="18" y="42" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#444">PROUD MEMBER</text>
+  <text x="18" y="58" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#444">2026 | 2027</text>
+  <rect x="130" y="24" width="132" height="72" rx="6" fill="#E87722"/>
+  <text x="196" y="58" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#fff">BPESA</text>
+  <text x="196" y="76" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7" fill="#fff">Business Process Enabling South Africa</text>
+</svg>
