@@ -14,6 +14,7 @@
   "theme": {
     "primary": "#61d779",
     "accent": "#d5ec67",
+    "secondary": "#2f9e4a",
     "navy": "#13202e"
   },
   "logoDataUrl": "",
