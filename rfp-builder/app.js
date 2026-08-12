@@ -1,7 +1,7 @@
 (() => {
   const CONFIG = {
     storagePrefix: "trilogy-rfp-draft:",
-    indexKey: "trilogy-rfp-index",
+    indexKey: "trilogy-rfp-index-v2",
     // Point these at Power Automate HTTP trigger URLs when ready
     webhooks: {
       saveDraft: "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/12897ac2d1e94a149bd39340b39ac8c9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VqvO6vdmGXNlJj9PJIiu0J46H762ddWTxLEcL6Soa90",
@@ -490,9 +490,7 @@ ${sections}
   document.getElementById("btnSaveDraft").addEventListener("click", async () => {
     const payload = draftPayload();
     if (!payload.meta.clientName) return toast("Enter a customer name first");
-    autosaveLocal();
     payload.event = "saveDraft";
-    // Index only on intentional save
     autosaveLocal({ updateIndex: true });
     const res = await postWebhook(CONFIG.webhooks.saveDraft, payload);
     if (res.skipped) {
@@ -513,7 +511,7 @@ ${sections}
     payload.status = "committed";
     payload.event = "finalCommit";
     payload.builtHtml = buildFinalHtml(payload);
-    autosaveLocal();
+    autosaveLocal({ updateIndex: true });
     download(`${payload.slug}-index.html`, payload.builtHtml, "text/html");
     download(`${payload.slug}-draft.json`, JSON.stringify({ ...payload, builtHtml: undefined }, null, 2));
     const res = await postWebhook(CONFIG.webhooks.finalCommit, payload);
