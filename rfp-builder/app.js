@@ -14,7 +14,7 @@
     catalog: [],
     sectionOrder: [],
     placeholders: {},
-    theme: { primary: "#61d779", accent: "#d5ec67", navy: "#13202e" },
+    theme: { primary: "#61d779", accent: "#d5ec67", secondary: "#2f9e4a", navy: "#13202e" },
     logoDataUrl: "",
     status: "draft",
     acceptance: {
@@ -83,14 +83,17 @@
   function applyTheme() {
     document.documentElement.style.setProperty("--client-primary", state.theme.primary);
     document.documentElement.style.setProperty("--client-accent", state.theme.accent);
+    document.documentElement.style.setProperty("--client-secondary", state.theme.secondary || state.theme.primary);
     els.themeSwatches.innerHTML = "";
-    [state.theme.primary, state.theme.accent, state.theme.navy].forEach((c) => {
-      const s = document.createElement("span");
-      s.className = "swatch";
-      s.style.background = c;
-      s.title = c;
-      els.themeSwatches.appendChild(s);
-    });
+    [state.theme.primary, state.theme.accent, state.theme.secondary, state.theme.navy]
+      .filter(Boolean)
+      .forEach((c) => {
+        const s = document.createElement("span");
+        s.className = "swatch";
+        s.style.background = c;
+        s.title = c;
+        els.themeSwatches.appendChild(s);
+      });
   }
 
   function readMeta() {
@@ -363,22 +366,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${escapeHtml(payload.meta.clientName)} — Trilogy Digital Proposal</title>
 <style>
-:root{--brand-navy:#13202e;--brand-green:${payload.theme.primary};--brand-lime:${payload.theme.accent};--font-sans:Inter,system-ui,sans-serif;--font-heading:Poppins,system-ui,sans-serif}
+:root{--brand-navy:${payload.theme.navy || "#13202e"};--brand-green:${payload.theme.primary};--brand-lime:${payload.theme.accent};--brand-secondary:${payload.theme.secondary || payload.theme.primary};--font-sans:Inter,system-ui,sans-serif;--font-heading:Poppins,system-ui,sans-serif}
 body{margin:0;font-family:var(--font-sans);background:#f2f5f7;color:#13202e}
-.cover{background:var(--brand-navy);color:#fff;padding:3rem 2rem}
-.badge{display:inline-flex;border:1px solid color-mix(in srgb,var(--brand-green) 50%,transparent);background:color-mix(in srgb,var(--brand-green) 12%,transparent);color:var(--brand-lime);border-radius:999px;padding:.25rem .7rem;font-size:.7rem}
+.cover{background:var(--brand-navy);color:#fff;padding:3rem 2rem;background-image:radial-gradient(ellipse 70% 50% at 100% 0%,color-mix(in srgb,var(--brand-green) 28%,transparent),transparent 55%)}
+.badge{display:inline-flex;border:1px solid color-mix(in srgb,var(--brand-green) 50%,transparent);background:color-mix(in srgb,var(--brand-green) 12%,transparent);color:var(--brand-lime);border-radius:999px;padding:.25rem .7rem;font-size:.7rem;box-shadow:inset 3px 0 0 var(--brand-secondary)}
 h1{font-family:var(--font-heading);font-size:2rem;max-width:16ch}
 .tagline{color:var(--brand-green);font-weight:600}
 .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.12)}
-.meta span{display:block;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-green)}
+.meta span{display:block;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-secondary)}
 .proposal-page{max-width:860px;margin:1.5rem auto;background:#fff;border:1px solid #dadfe3;border-radius:.75rem;padding:1.5rem}
 .section-num{color:var(--brand-green);font-weight:700;margin-right:.5rem}
 .placeholder-block{border:1px dashed #c5ccd3;border-radius:.75rem;background:#f7f9fb;padding:1rem;margin-top:.75rem}
 .logo-row{display:flex;gap:1rem;align-items:center;margin-bottom:1.25rem}
 .logo-row img{max-height:48px}
+.preview-banner{max-width:860px;margin:1rem auto 0;padding:.65rem 1rem;border-radius:.55rem;background:#fff3cd;border:1px solid #ffe08a;color:#6b5300;font-size:.85rem}
 </style>
 </head>
 <body>
+${payload.isPreview ? `<div class="preview-banner">Draft preview — not the final committed proposal yet.</div>` : ""}
 <section class="cover">
   <div class="logo-row">
     ${payload.logoDataUrl ? `<img src="${payload.logoDataUrl}" alt="${escapeHtml(payload.meta.clientName)} logo">` : ""}
@@ -440,9 +445,11 @@ ${sections}
             .join("");
         const primary = sorted[0] ? toHex(sorted[0][0]) : "#61d779";
         const accent = sorted[1] ? toHex(sorted[1][0]) : "#d5ec67";
-        resolve({ primary, accent, navy: "#13202e" });
+        const secondary = sorted[2] ? toHex(sorted[2][0]) : primary;
+        resolve({ primary, accent, secondary, navy: "#13202e" });
       };
-      img.onerror = () => resolve({ primary: "#61d779", accent: "#d5ec67", navy: "#13202e" });
+      img.onerror = () =>
+        resolve({ primary: "#61d779", accent: "#d5ec67", secondary: "#2f9e4a", navy: "#13202e" });
       img.src = dataUrl;
     });
   }
@@ -478,6 +485,19 @@ ${sections}
   document.getElementById("btnClearLocalDrafts").addEventListener("click", () => {
     if (!confirm("Clear all local drafts from this browser? SQL records are not deleted.")) return;
     clearLocalDrafts();
+  });
+
+  document.getElementById("btnPreviewDraft").addEventListener("click", () => {
+    const payload = draftPayload();
+    if (!payload.meta.clientName) return toast("Enter a customer name first");
+    if (!payload.sectionOrder.length) return toast("Add at least one section");
+    payload.isPreview = true;
+    const html = buildFinalHtml(payload);
+    const blob = new Blob([html], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    window.open(url, "_blank", "noopener");
+    setTimeout(() => URL.revokeObjectURL(url), 60_000);
+    toast("Opened draft preview in a new tab");
   });
 
   document.getElementById("btnExportDraft").addEventListener("click", () => {

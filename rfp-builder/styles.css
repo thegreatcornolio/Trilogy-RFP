@@ -9,6 +9,7 @@
   --card: #fff;
   --client-primary: #61d779;
   --client-accent: #d5ec67;
+  --client-secondary: #2f9e4a;
   --font: "Inter", ui-sans-serif, system-ui, sans-serif;
   --display: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
@@ -375,6 +376,7 @@ code {
   padding: 0.25rem 0.7rem;
   font-size: 0.7rem;
   font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--client-secondary);
 }
 
 .cover-preview h1 {
@@ -409,7 +411,7 @@ code {
   font-size: 0.65rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--client-primary);
+  color: var(--client-secondary);
   margin-bottom: 0.25rem;
 }
 
