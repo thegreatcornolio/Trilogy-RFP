@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "sourceTemplate": "trilogydigital",
+  "sections": [
+    {
+      "id": "section-01",
+      "num": "01",
+      "title": "Executive Summary",
+      "editable": true,
+      "placeholderKey": "executive-summary",
+      "placeholderLabel": "Executive Summary",
+      "summary": "Editable narrative for this opportunity."
+    },
+    {
+      "id": "section-02",
+      "num": "02",
+      "title": "Company Overview",
+      "editable": true,
+      "placeholderKey": "specific-client-experience",
+      "placeholderLabel": "Specific Client Experience",
+      "summary": "Includes company overview plus the Specific Client Experience placeholder."
+    },
+    {
+      "id": "section-03",
+      "num": "03",
+      "title": "Operational Leadership & Delivery",
+      "editable": false,
+      "summary": "Leadership model, Cape Town rationale, team, brands."
+    },
+    {
+      "id": "section-04",
+      "num": "04",
+      "title": "Our Value Proposition & Differentiators",
+      "editable": false,
+      "summary": "Differentiators, escalation, performance management."
+    },
+    {
+      "id": "section-05",
+      "num": "05",
+      "title": "Service Offering",
+      "editable": false,
+      "summary": "BPO, GCC and AI service lines."
+    },
+    {
+      "id": "section-06",
+      "num": "06",
+      "title": "Global Capability Centres",
+      "editable": false,
+      "summary": "DBIT / own-your-operation model."
+    },
+    {
+      "id": "section-07",
+      "num": "07",
+      "title": "Trilogy Test Kitchen",
+      "editable": false,
+      "summary": "Sandbox innovation framework."
+    },
+    {
+      "id": "section-08",
+      "num": "08",
+      "title": "Technology, AI & Automation Capability",
+      "editable": false,
+      "summary": "Platform stack and AI suite."
+    },
+    {
+      "id": "section-09",
+      "num": "09",
+      "title": "Our People & Workforce",
+      "editable": false,
+      "summary": "Lifecycle, culture, CRAFT."
+    },
+    {
+      "id": "section-10",
+      "num": "10",
+      "title": "Management Information Systems (MIS)",
+      "editable": false,
+      "summary": "Reporting and MI."
+    },
+    {
+      "id": "section-11",
+      "num": "11",
+      "title": "Forecasting & Demand Management",
+      "editable": false,
+      "summary": "Capacity and demand planning."
+    },
+    {
+      "id": "section-12",
+      "num": "12",
+      "title": "Quality & Analytics",
+      "editable": false,
+      "summary": "QA and Genii analytics."
+    },
+    {
+      "id": "section-13",
+      "num": "13",
+      "title": "Compliance, Ethics & Risk",
+      "editable": false,
+      "summary": "Compliance posture."
+    },
+    {
+      "id": "section-14",
+      "num": "14",
+      "title": "Safety & Security",
+      "editable": false,
+      "summary": "Physical and information security."
+    },
+    {
+      "id": "section-15",
+      "num": "15",
+      "title": "Business Continuity & Disaster Recovery",
+      "editable": false,
+      "summary": "BCP / DR."
+    },
+    {
+      "id": "section-16",
+      "num": "16",
+      "title": "Transition & Implementation Methodology",
+      "editable": false,
+      "summary": "Transition plan."
+    },
+    {
+      "id": "section-17",
+      "num": "17",
+      "title": "Commercial Models & Pricing",
+      "editable": true,
+      "placeholderKey": "commercial-notes",
+      "placeholderLabel": "Commercial Notes",
+      "summary": "Pricing models with editable commercial notes."
+    },
+    {
+      "id": "section-18",
+      "num": "18",
+      "title": "Case Studies & References",
+      "editable": true,
+      "placeholderKey": "case-studies",
+      "placeholderLabel": "Case Studies & References",
+      "summary": "Customer-specific references placeholder."
+    },
+    {
+      "id": "section-19",
+      "num": "19",
+      "title": "Next Steps",
+      "editable": true,
+      "placeholderKey": "next-steps",
+      "placeholderLabel": "Next Steps",
+      "summary": "Closing asks and next steps."
+    }
+  ]
+}

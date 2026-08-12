@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RFP Builder — Trilogy Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <strong>RFP Builder</strong>
+      <span>Draft → Commit → Accept</span>
+    </div>
+    <div class="topbar__actions">
+      <label class="load-existing">
+        Open existing
+        <select id="existingSelect">
+          <option value="">Select customer draft…</option>
+        </select>
+      </label>
+      <button type="button" class="btn btn--ghost" id="btnExportDraft">Export draft JSON</button>
+      <button type="button" class="btn btn--ghost" id="btnSaveDraft">Save draft</button>
+      <button type="button" class="btn btn--primary" id="btnFinalCommit">Final commit</button>
+    </div>
+  </header>
+
+  <main class="builder">
+    <aside class="panel panel--left">
+      <section class="block">
+        <h2>1. Cover details</h2>
+        <div class="form-grid">
+          <label>Prepared for<input id="clientName" type="text" placeholder="Client Name"></label>
+          <label>Reference<input id="reference" type="text" placeholder="RFP Reference No."></label>
+          <label>Date<input id="date" type="text" placeholder="Submission Date"></label>
+          <label>Valid until<input id="validUntil" type="text" placeholder="Valid for 90 days"></label>
+          <label>Prepared by<input id="preparedBy" type="text" placeholder="Your Name"></label>
+          <label>Title<input id="title" type="text" placeholder="Your Title"></label>
+          <label class="full">Contact<input id="contact" type="email" placeholder="name@trilogydigital.com"></label>
+          <label class="full">Customer logo
+            <input id="logoInput" type="file" accept="image/*">
+          </label>
+        </div>
+        <div class="logo-preview" id="logoPreview">
+          <span>Logo preview + auto theme</span>
+        </div>
+        <div class="theme-swatches" id="themeSwatches" aria-label="Theme colours from logo"></div>
+      </section>
+
+      <section class="block">
+        <h2>2. Section library</h2>
+        <p class="hint">Drag into the proposal order on the right. Editable sections open a content box below.</p>
+        <ul class="library" id="library"></ul>
+      </section>
+
+      <section class="block">
+        <h2>4. Acceptance (DocuSign)</h2>
+        <p class="hint">Scaffold only — wire to Power Automate + DocuSign. Signed PDF lands in SharePoint.</p>
+        <div class="form-grid">
+          <label>Signer name<input id="signerName" type="text" placeholder="Client signatory"></label>
+          <label>Designation<input id="designation" type="text" placeholder="Role / title"></label>
+          <label class="full">Signer email<input id="signerEmail" type="email" placeholder="name@client.com"></label>
+        </div>
+        <button type="button" class="btn btn--accent" id="btnSendAcceptance">Send for DocuSign acceptance</button>
+        <p class="status" id="acceptanceStatus">Status: not sent</p>
+      </section>
+    </aside>
+
+    <section class="panel panel--right">
+      <div class="block">
+        <div class="block__head">
+          <h2>3. Proposal order</h2>
+          <span class="pill" id="draftStatus">Draft</span>
+        </div>
+        <p class="hint">Drag to reorder. Remove with ×. Customer folder: <code id="slugPreview">proposals/…</code></p>
+        <ul class="order" id="orderList"></ul>
+      </div>
+
+      <div class="block">
+        <h2>Editable placeholders</h2>
+        <p class="hint">Typed content is stored in the draft and injected on final commit — e.g. Specific Client Experience.</p>
+        <div id="placeholders" class="placeholders"></div>
+      </div>
+
+      <div class="block preview-block">
+        <h2>Live cover preview</h2>
+        <div class="cover-preview" id="coverPreview">
+          <div class="cover-preview__logos">
+            <img src="../trilogydigital/assets/trilogy-logo.png" alt="Trilogy" class="cover-preview__trilogy">
+            <img id="coverClientLogo" alt="" hidden>
+          </div>
+          <div class="badge">RFP / RFI Response</div>
+          <h1>Customer Experience &amp; BPO Services Proposal</h1>
+          <p class="tagline">Human Led · Ai-enabled</p>
+          <div class="meta">
+            <div><span>Prepared for</span><strong id="pvClient">[Client Name]</strong></div>
+            <div><span>Reference</span><strong id="pvRef">[RFP Reference No.]</strong></div>
+            <div><span>Date</span><strong id="pvDate">[Submission Date]</strong></div>
+            <div><span>Valid until</span><strong id="pvValid">[Valid for 90 days]</strong></div>
+          </div>
+          <div class="meta meta--3">
+            <div><span>Prepared by</span><strong id="pvBy">[Your Name]</strong></div>
+            <div><span>Title</span><strong id="pvTitle">[Your Title]</strong></div>
+            <div><span>Contact</span><strong id="pvContact">[name@trilogydigital.com]</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+</body>
+</html>

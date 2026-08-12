@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "status": "draft",
+  "slug": "",
+  "meta": {
+    "clientName": "",
+    "reference": "",
+    "date": "",
+    "validUntil": "",
+    "preparedBy": "",
+    "title": "",
+    "contact": ""
+  },
+  "theme": {
+    "primary": "#61d779",
+    "accent": "#d5ec67",
+    "navy": "#13202e"
+  },
+  "logoDataUrl": "",
+  "sectionOrder": [],
+  "placeholders": {},
+  "acceptance": {
+    "status": "not_sent",
+    "signerName": "",
+    "signerEmail": "",
+    "designation": "",
+    "envelopeId": "",
+    "sharePointPath": ""
+  },
+  "updatedAt": null,
+  "committedAt": null
+}
