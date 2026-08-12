@@ -472,6 +472,49 @@ blockquote {
   color: rgba(232, 238, 244, 0.45);
 }
 
+.sign-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.sign-block {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  padding: 1.25rem 1.35rem 1.5rem;
+}
+
+.sign-block__party {
+  margin: 0 0 1.15rem;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--lime);
+}
+
+.sign-line {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  min-height: 2.75rem;
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 0.35rem;
+}
+
+.sign-line--wide {
+  min-height: 3.75rem;
+}
+
+.sign-line span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(232, 238, 244, 0.45);
+}
+
 .footer {
   margin-top: 1rem;
   padding: 1.5rem 0 0.5rem;
@@ -499,7 +542,8 @@ blockquote {
   .steps,
   .two-col,
   .pricing,
-  .advantage {
+  .advantage,
+  .sign-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -514,7 +558,8 @@ blockquote {
   .steps,
   .two-col,
   .pricing,
-  .advantage {
+  .advantage,
+  .sign-grid {
     grid-template-columns: 1fr;
   }
 
