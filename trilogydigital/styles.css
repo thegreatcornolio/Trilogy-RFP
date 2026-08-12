@@ -110,24 +110,25 @@ a {
   display: flex;
   align-items: center;
   background: #fff;
-  border-radius: 0.25rem;
-  padding: 0 0.25rem;
-  height: 1rem;
+  border-radius: 0.3rem;
+  padding: 0.15rem 0.4rem;
+  height: 1.15rem;
 }
 
 .logo-pill img {
-  height: 0.625rem;
+  height: 0.78rem;
   width: auto;
+  display: block;
 }
 
 .logo-pill--lg {
-  height: 2rem;
-  padding: 0 0.625rem;
-  border-radius: 0.375rem;
+  height: 2.15rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 0.45rem;
 }
 
 .logo-pill--lg img {
-  height: 1.25rem;
+  height: 1.45rem;
 }
 
 .header-actions {
