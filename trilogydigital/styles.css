@@ -1363,7 +1363,9 @@ tr:nth-child(even) td {
 }
 
 .covers-box__head {
-  display: inline-block;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
   background: var(--brand-navy);
   color: #fff;
   font-family: var(--font-heading);
