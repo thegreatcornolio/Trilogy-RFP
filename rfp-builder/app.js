@@ -2,9 +2,10 @@
   const CONFIG = {
     storagePrefix: "trilogy-rfp-draft:",
     indexKey: "trilogy-rfp-index-v2",
-    // Point these at Power Automate HTTP trigger URLs when ready
+    templateBase: new URL("../trilogydigital/", window.location.href).href,
     webhooks: {
-      saveDraft: "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/12897ac2d1e94a149bd39340b39ac8c9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VqvO6vdmGXNlJj9PJIiu0J46H762ddWTxLEcL6Soa90",
+      saveDraft:
+        "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/12897ac2d1e94a149bd39340b39ac8c9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VqvO6vdmGXNlJj9PJIiu0J46H762ddWTxLEcL6Soa90",
       finalCommit: "",
       sendForAcceptance: "",
     },
@@ -14,7 +15,14 @@
     catalog: [],
     sectionOrder: [],
     placeholders: {},
-    theme: { primary: "#61d779", accent: "#d5ec67", secondary: "#2f9e4a", navy: "#13202e" },
+    theme: {
+      primary: "#61d779",
+      accent: "#d5ec67",
+      secondary: "#2f9e4a",
+      navy: "#13202e",
+    },
+    palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b"],
+    selectedPaletteIndex: 0,
     logoDataUrl: "",
     status: "draft",
     acceptance: {
@@ -34,12 +42,14 @@
     logoInput: document.getElementById("logoInput"),
     logoPreview: document.getElementById("logoPreview"),
     themeSwatches: document.getElementById("themeSwatches"),
+    themeRoles: document.getElementById("themeRoles"),
     coverClientLogo: document.getElementById("coverClientLogo"),
     slugPreview: document.getElementById("slugPreview"),
     draftStatus: document.getElementById("draftStatus"),
     existingSelect: document.getElementById("existingSelect"),
     toast: document.getElementById("toast"),
     acceptanceStatus: document.getElementById("acceptanceStatus"),
+    pvEntity: document.getElementById("pvEntity"),
     fields: {
       clientName: document.getElementById("clientName"),
       reference: document.getElementById("reference"),
@@ -64,11 +74,13 @@
   };
 
   function slugify(name) {
-    return String(name || "")
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "") || "customer";
+    return (
+      String(name || "")
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "") || "customer"
+    );
   }
 
   function toast(msg) {
@@ -77,27 +89,108 @@
     clearTimeout(toast._t);
     toast._t = setTimeout(() => {
       els.toast.hidden = true;
-    }, 2600);
+    }, 2800);
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function getEntityName() {
+    const checked = document.querySelector('input[name="entityName"]:checked');
+    return checked ? checked.value : "Trilogy Digital";
+  }
+
+  function setEntityName(value) {
+    const input = document.querySelector(
+      `input[name="entityName"][value="${CSS.escape(value)}"]`
+    );
+    if (input) input.checked = true;
   }
 
   function applyTheme() {
     document.documentElement.style.setProperty("--client-primary", state.theme.primary);
     document.documentElement.style.setProperty("--client-accent", state.theme.accent);
-    document.documentElement.style.setProperty("--client-secondary", state.theme.secondary || state.theme.primary);
+    document.documentElement.style.setProperty(
+      "--client-secondary",
+      state.theme.secondary || state.theme.primary
+    );
+    renderPalette();
+  }
+
+  function renderPalette() {
     els.themeSwatches.innerHTML = "";
-    [state.theme.primary, state.theme.accent, state.theme.secondary, state.theme.navy]
-      .filter(Boolean)
-      .forEach((c) => {
-        const s = document.createElement("span");
-        s.className = "swatch";
-        s.style.background = c;
-        s.title = c;
-        els.themeSwatches.appendChild(s);
+    state.palette.forEach((c, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "swatch" + (i === state.selectedPaletteIndex ? " is-selected" : "");
+      btn.style.background = c;
+      btn.title = `${c} — click to select, then assign below`;
+      btn.addEventListener("click", () => {
+        state.selectedPaletteIndex = i;
+        renderPalette();
       });
+      els.themeSwatches.appendChild(btn);
+    });
+
+    const roles = [
+      ["primary", "Primary"],
+      ["accent", "Accent"],
+      ["secondary", "Secondary"],
+    ];
+    els.themeRoles.innerHTML = "";
+    roles.forEach(([key, label]) => {
+      const row = document.createElement("div");
+      row.className = "theme-role";
+      const options = state.palette
+        .map(
+          (c) =>
+            `<option value="${c}" ${state.theme[key] === c ? "selected" : ""}>${c}</option>`
+        )
+        .join("");
+      row.innerHTML = `<span>${label}</span>
+        <select data-role="${key}">${options}</select>
+        <i class="role-swatch" style="background:${state.theme[key]}"></i>`;
+      row.querySelector("select").addEventListener("change", (e) => {
+        state.theme[key] = e.target.value;
+        state.status = "draft";
+        applyTheme();
+        autosaveLocal();
+      });
+      els.themeRoles.appendChild(row);
+    });
+
+    const assign = document.createElement("div");
+    assign.className = "theme-role";
+    assign.innerHTML = `<span>Assign selected</span>
+      <div style="display:flex;gap:.35rem;flex-wrap:wrap">
+        <button type="button" class="btn btn--ghost" data-assign="primary" style="height:2rem;color:var(--ink);border-color:var(--line);background:#fff">Primary</button>
+        <button type="button" class="btn btn--ghost" data-assign="accent" style="height:2rem;color:var(--ink);border-color:var(--line);background:#fff">Accent</button>
+        <button type="button" class="btn btn--ghost" data-assign="secondary" style="height:2rem;color:var(--ink);border-color:var(--line);background:#fff">Secondary</button>
+      </div>
+      <span></span>`;
+    assign.querySelectorAll("[data-assign]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const role = btn.getAttribute("data-assign");
+        const color = state.palette[state.selectedPaletteIndex];
+        if (!color) return;
+        state.theme[role] = color;
+        state.status = "draft";
+        applyTheme();
+        autosaveLocal();
+        toast(`${role} set to ${color}`);
+      });
+    });
+    els.themeRoles.appendChild(assign);
   }
 
   function readMeta() {
     return {
+      entityName: getEntityName(),
       clientName: els.fields.clientName.value.trim(),
       reference: els.fields.reference.value.trim(),
       date: els.fields.date.value.trim(),
@@ -113,6 +206,7 @@
     const fill = (el, val, fallback) => {
       el.textContent = val || fallback;
     };
+    els.pvEntity.textContent = m.entityName;
     fill(els.preview.client, m.clientName, "[Client Name]");
     fill(els.preview.ref, m.reference, "[RFP Reference No.]");
     fill(els.preview.date, m.date, "[Submission Date]");
@@ -133,10 +227,13 @@
     els.library.innerHTML = "";
     state.catalog.forEach((sec) => {
       const li = document.createElement("li");
-      li.className = "library-item" + (state.sectionOrder.includes(sec.id) ? " is-used" : "");
+      li.className =
+        "library-item" + (state.sectionOrder.includes(sec.id) ? " is-used" : "");
       li.dataset.id = sec.id;
       li.innerHTML = `<div class="sec-num">${sec.num}</div>
-        <div class="sec-body"><strong>${sec.title}</strong><span>${sec.summary}${sec.editable ? " · editable" : ""}</span></div>`;
+        <div class="sec-body"><strong>${sec.title}</strong><span>${sec.summary}${
+        sec.editable ? " · editable" : ""
+      }</span></div>`;
       li.addEventListener("dblclick", () => addSection(sec.id));
       els.library.appendChild(li);
     });
@@ -169,7 +266,7 @@
 
     if (!editable.length) {
       els.placeholders.innerHTML =
-        '<p class="hint">Add an editable section (e.g. Company Overview / Specific Client Experience) to type content here.</p>';
+        '<p class="hint">Add an editable section to type customer-specific content.</p>';
       return;
     }
 
@@ -181,7 +278,9 @@
       const value = state.placeholders[key] || "";
       card.innerHTML = `<h3>${sec.placeholderLabel || sec.title}</h3>
         <p class="empty-hint">${value ? "" : "Content placeholder"}</p>
-        <textarea data-key="${key}" placeholder="Type ${sec.placeholderLabel || sec.title} content for this customer…">${value.replace(/</g, "&lt;")}</textarea>`;
+        <textarea data-key="${key}" placeholder="Type ${
+        sec.placeholderLabel || sec.title
+      } content…">${escapeHtml(value)}</textarea>`;
       const ta = card.querySelector("textarea");
       const hint = card.querySelector(".empty-hint");
       if (value) hint.style.display = "none";
@@ -232,6 +331,7 @@
       slug: slugify(meta.clientName),
       meta,
       theme: { ...state.theme },
+      palette: [...state.palette],
       logoDataUrl: state.logoDataUrl,
       sectionOrder: [...state.sectionOrder],
       placeholders: { ...state.placeholders },
@@ -257,11 +357,8 @@
     const meta = readMeta();
     if (!meta.clientName) return;
     const payload = draftPayload();
-    // Always keep a working copy under the current slug, but only list
-    // drafts in "Open existing" when explicitly saved/committed.
     localStorage.setItem(CONFIG.storagePrefix + payload.slug, JSON.stringify(payload));
     localStorage.setItem(CONFIG.storagePrefix + "working", JSON.stringify(payload));
-
     if (updateIndex) {
       const idx = getIndex().filter((x) => x.slug !== payload.slug);
       idx.unshift({
@@ -303,11 +400,19 @@
     if (!raw) return toast("Draft not found locally");
     const d = JSON.parse(raw);
     Object.entries(d.meta || {}).forEach(([k, v]) => {
-      if (els.fields[k]) els.fields[k].value = v || "";
+      if (k === "entityName") setEntityName(v || "Trilogy Digital");
+      else if (els.fields[k]) els.fields[k].value = v || "";
     });
     state.sectionOrder = d.sectionOrder || [];
     state.placeholders = d.placeholders || {};
-    state.theme = d.theme || state.theme;
+    state.theme = {
+      primary: "#61d779",
+      accent: "#d5ec67",
+      secondary: "#2f9e4a",
+      navy: "#13202e",
+      ...(d.theme || {}),
+    };
+    state.palette = d.palette && d.palette.length ? d.palette : [state.theme.primary, state.theme.accent, state.theme.secondary];
     state.logoDataUrl = d.logoDataUrl || "";
     state.status = d.status || "draft";
     state.acceptance = d.acceptance || state.acceptance;
@@ -343,88 +448,166 @@
     URL.revokeObjectURL(a.href);
   }
 
-  function buildFinalHtml(payload) {
-    const sections = payload.sectionOrder
-      .map((id, i) => {
-        const sec = sectionById(id);
-        if (!sec) return "";
-        const ph =
-          sec.editable && sec.placeholderKey
-            ? `<div class="placeholder-block"><h3>${sec.placeholderLabel || sec.title}</h3><div class="prose"><p>${escapeHtml(payload.placeholders[sec.placeholderKey] || "CONTENT PLACEHOLDER").replace(/\n/g, "<br>")}</p></div></div>`
-            : `<div class="prose"><p><em>Content pulled from master template section ${sec.num} on final GitHub build.</em></p></div>`;
-        return `<section class="proposal-page" id="${sec.id}">
-          <div class="section-head"><span class="section-num">${String(i + 1).padStart(2, "0")}</span><h2>${sec.title}</h2></div>
-          <div class="section-body">${ph}</div>
-        </section>`;
-      })
-      .join("\n");
-
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${escapeHtml(payload.meta.clientName)} — Trilogy Digital Proposal</title>
-<style>
-:root{--brand-navy:${payload.theme.navy || "#13202e"};--brand-green:${payload.theme.primary};--brand-lime:${payload.theme.accent};--brand-secondary:${payload.theme.secondary || payload.theme.primary};--font-sans:Inter,system-ui,sans-serif;--font-heading:Poppins,system-ui,sans-serif}
-body{margin:0;font-family:var(--font-sans);background:#f2f5f7;color:#13202e}
-.cover{background:var(--brand-navy);color:#fff;padding:3rem 2rem;background-image:radial-gradient(ellipse 70% 50% at 100% 0%,color-mix(in srgb,var(--brand-green) 28%,transparent),transparent 55%)}
-.badge{display:inline-flex;border:1px solid color-mix(in srgb,var(--brand-green) 50%,transparent);background:color-mix(in srgb,var(--brand-green) 12%,transparent);color:var(--brand-lime);border-radius:999px;padding:.25rem .7rem;font-size:.7rem;box-shadow:inset 3px 0 0 var(--brand-secondary)}
-h1{font-family:var(--font-heading);font-size:2rem;max-width:16ch}
-.tagline{color:var(--brand-green);font-weight:600}
-.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.12)}
-.meta span{display:block;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-secondary)}
-.proposal-page{max-width:860px;margin:1.5rem auto;background:#fff;border:1px solid #dadfe3;border-radius:.75rem;padding:1.5rem}
-.section-num{color:var(--brand-green);font-weight:700;margin-right:.5rem}
-.placeholder-block{border:1px dashed #c5ccd3;border-radius:.75rem;background:#f7f9fb;padding:1rem;margin-top:.75rem}
-.logo-row{display:flex;gap:1rem;align-items:center;margin-bottom:1.25rem}
-.logo-row img{max-height:48px}
-.preview-banner{max-width:860px;margin:1rem auto 0;padding:.65rem 1rem;border-radius:.55rem;background:#fff3cd;border:1px solid #ffe08a;color:#6b5300;font-size:.85rem}
-</style>
-</head>
-<body>
-${payload.isPreview ? `<div class="preview-banner">Draft preview — not the final committed proposal yet.</div>` : ""}
-<section class="cover">
-  <div class="logo-row">
-    ${payload.logoDataUrl ? `<img src="${payload.logoDataUrl}" alt="${escapeHtml(payload.meta.clientName)} logo">` : ""}
-  </div>
-  <div class="badge">RFP / RFI Response</div>
-  <h1>Customer Experience &amp; BPO Services Proposal</h1>
-  <p class="tagline">Human Led · Ai-enabled</p>
-  <div class="meta">
-    <div><span>Prepared for</span><strong>${escapeHtml(payload.meta.clientName || "[Client Name]")}</strong></div>
-    <div><span>Reference</span><strong>${escapeHtml(payload.meta.reference || "[Reference]")}</strong></div>
-    <div><span>Date</span><strong>${escapeHtml(payload.meta.date || "[Date]")}</strong></div>
-    <div><span>Valid until</span><strong>${escapeHtml(payload.meta.validUntil || "[Valid until]")}</strong></div>
-  </div>
-</section>
-${sections}
-<footer style="max-width:860px;margin:1rem auto 2rem;color:#606a74;font-size:.85rem">Trilogy Digital — draft built from RFP Builder. Final GitHub commit merges full master section HTML.</footer>
-</body>
-</html>`;
+  function placeholderHtml(text) {
+    const body = escapeHtml(text || "").replace(/\n/g, "<br>");
+    if (!text || !text.trim()) {
+      return `<div class="placeholder-block"><p class="placeholder-label">Content placeholder</p></div>`;
+    }
+    return `<div class="placeholder-block is-filled"><div class="prose"><p>${body}</p></div></div>`;
   }
 
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+  /** Build full proposal from master trilogydigital template */
+  async function assembleFullProposal(payload, { isPreview = false } = {}) {
+    const base = CONFIG.templateBase;
+    const res = await fetch(`${base}index.html`, { cache: "no-store" });
+    if (!res.ok) throw new Error("Could not load master proposal template");
+    let html = await res.text();
+
+    html = html.replace(/href="styles\.css[^"]*"/, `href="${base}styles.css"`);
+    html = html.replace(/src="script\.js[^"]*"/, `src="${base}script.js"`);
+    html = html.replace(/(src|href)="assets\//g, `$1="${base}assets/`);
+
+    const entity = payload.meta.entityName || "Trilogy Digital";
+    const clientLogo = payload.logoDataUrl
+      ? `<img class="cover__client-logo" src="${payload.logoDataUrl}" alt="${escapeHtml(
+          payload.meta.clientName || "Client"
+        )} logo">`
+      : "";
+
+    const brand = `
+        <div class="cover__brand">
+          ${clientLogo}
+          <span class="cover__brand-name">${escapeHtml(entity)}</span>
+          <span class="cover__brand-line">A Trilogy Group Company</span>
+          <img class="cover__logo" src="${base}assets/trilogy-logo.png" alt="Trilogy">
+        </div>`;
+    html = html.replace(/<div class="cover__brand">[\s\S]*?<\/div>\s*<div class="cover__body">/, `${brand}\n        <div class="cover__body">`);
+
+    const replacements = [
+      ["[Client Name]", payload.meta.clientName],
+      ["[RFP Reference No.]", payload.meta.reference],
+      ["[Submission Date]", payload.meta.date],
+      ["[Valid for 90 days]", payload.meta.validUntil],
+      ["[Your Name]", payload.meta.preparedBy],
+      ["[Your Title]", payload.meta.title],
+      ["[name@trilogydigital.com]", payload.meta.contact],
+    ];
+    replacements.forEach(([from, to]) => {
+      if (to) html = html.split(from).join(escapeHtml(to));
+    });
+
+    // Keep only selected sections (+ cover)
+    const wanted = new Set(payload.sectionOrder || []);
+    html = html.replace(
+      /<section class="proposal-page" id="(section-\d+)">[\s\S]*?<\/section>/g,
+      (block, id) => (wanted.has(id) ? block : "")
+    );
+
+    // Inject editable placeholder content
+    const ph = payload.placeholders || {};
+    if (ph["executive-summary"] !== undefined) {
+      html = html.replace(
+        /(<section class="proposal-page" id="section-01">[\s\S]*?<div class="section-body">)[\s\S]*?(<\/div>\s*<\/section>)/,
+        `$1\n          ${placeholderHtml(ph["executive-summary"])}\n        $2`
+      );
+    }
+    if (ph["specific-client-experience"] !== undefined) {
+      html = html.replace(
+        /(<h3 id="specific-client-experience">Specific Client Experience<\/h3>\s*)<div class="placeholder-block"[\s\S]*?<\/div>/,
+        `$1${placeholderHtml(ph["specific-client-experience"])}`
+      );
+    }
+    if (ph["commercial-notes"] !== undefined) {
+      html = html.replace(
+        /(<section class="proposal-page" id="section-17">[\s\S]*?<div class="section-body">)/,
+        `$1\n          <h3>Commercial Notes</h3>\n          ${placeholderHtml(ph["commercial-notes"])}\n`
+      );
+    }
+    if (ph["case-studies"] !== undefined) {
+      html = html.replace(
+        /(<section class="proposal-page" id="section-18">[\s\S]*?<div class="section-body">)/,
+        `$1\n          ${placeholderHtml(ph["case-studies"])}\n`
+      );
+    }
+    if (ph["next-steps"] !== undefined) {
+      html = html.replace(
+        /(<section class="proposal-page" id="section-19">[\s\S]*?<div class="section-body">)/,
+        `$1\n          ${placeholderHtml(ph["next-steps"])}\n`
+      );
+    }
+
+    const themeCss = `
+  <style id="rfp-client-theme">
+    :root {
+      --brand-green: ${payload.theme.primary} !important;
+      --brand-lime: ${payload.theme.accent} !important;
+    }
+    .cover__client-logo {
+      display: block;
+      max-height: 3rem;
+      width: auto;
+      max-width: 12rem;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 0.4rem;
+      padding: 0.35rem 0.55rem;
+      margin: 0 auto 0.35rem;
+    }
+    .cover__brand { align-items: center !important; text-align: center !important; }
+    .cover__logo { margin-left: auto; margin-right: auto; }
+    .meta-label, .cover__tagline { color: ${payload.theme.secondary || payload.theme.primary} !important; }
+    .badge {
+      border-color: color-mix(in srgb, ${payload.theme.primary} 55%, transparent) !important;
+      color: ${payload.theme.accent} !important;
+      box-shadow: inset 3px 0 0 ${payload.theme.secondary || payload.theme.primary};
+    }
+    .section-num, .covers-table td:first-child { color: ${payload.theme.primary} !important; }
+    .placeholder-block.is-filled {
+      border-style: solid;
+      background: #fff;
+    }
+    ${
+      isPreview
+        ? `.rfp-preview-banner{position:sticky;top:0;z-index:99;background:#fff3cd;border-bottom:1px solid #ffe08a;color:#6b5300;padding:.65rem 1rem;text-align:center;font:600 .85rem Inter,system-ui,sans-serif}`
+        : ""
+    }
+  </style>`;
+    html = html.replace("</head>", `${themeCss}\n</head>`);
+    if (isPreview) {
+      html = html.replace(
+        "<body>",
+        `<body>\n  <div class="rfp-preview-banner">Draft preview — full template with your selected sections, theme and cover details. Not final-committed yet.</div>`
+      );
+    }
+
+    html = html.replace(
+      /<title>[\s\S]*?<\/title>/,
+      `<title>${escapeHtml(payload.meta.clientName || "Client")} — ${escapeHtml(entity)} Proposal</title>`
+    );
+
+    // Consent line entity
+    html = html.replace(
+      /Trilogy Digital \(Pty\) Ltd/g,
+      entity === "Trilogy" ? "Trilogy (Pty) Ltd" : "Trilogy Digital (Pty) Ltd"
+    );
+
+    return html;
   }
 
-  /** Sample dominant non-dark/non-light colours from logo for theming */
-  function extractThemeFromImage(dataUrl) {
+  /** Extract colourful palette; skip near-black / near-white */
+  function extractPaletteFromImage(dataUrl) {
     return new Promise((resolve) => {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement("canvas");
         const ctx = canvas.getContext("2d", { willReadFrequently: true });
-        const w = (canvas.width = 64);
-        const h = (canvas.height = 64);
+        const w = (canvas.width = 96);
+        const h = (canvas.height = 96);
         ctx.drawImage(img, 0, 0, w, h);
         const data = ctx.getImageData(0, 0, w, h).data;
         const buckets = new Map();
-        for (let i = 0; i < data.length; i += 4) {
+
+        for (let i = 0; i < data.length; i += 16) {
           const a = data[i + 3];
           if (a < 200) continue;
           const r = data[i];
@@ -432,31 +615,105 @@ ${sections}
           const b = data[i + 2];
           const max = Math.max(r, g, b);
           const min = Math.min(r, g, b);
-          if (max < 40 || min > 230) continue; // skip near-black / near-white
-          const key = `${Math.round(r / 24) * 24},${Math.round(g / 24) * 24},${Math.round(b / 24) * 24}`;
-          buckets.set(key, (buckets.get(key) || 0) + 1);
+          const sat = max === 0 ? 0 : (max - min) / max;
+          const light = (max + min) / 2 / 255;
+          // Prefer chromatic colours (keeps yellow); drop B/W greys
+          if (sat < 0.18) continue;
+          if (light < 0.12 || light > 0.92) continue;
+          const key = `${Math.round(r / 16) * 16},${Math.round(g / 16) * 16},${Math.round(b / 16) * 16}`;
+          buckets.set(key, (buckets.get(key) || 0) + 1 + sat * 2);
         }
-        const sorted = [...buckets.entries()].sort((a, b) => b[1] - a[1]);
+
         const toHex = (rgb) =>
           "#" +
           rgb
             .split(",")
             .map((n) => Number(n).toString(16).padStart(2, "0"))
             .join("");
-        const primary = sorted[0] ? toHex(sorted[0][0]) : "#61d779";
-        const accent = sorted[1] ? toHex(sorted[1][0]) : "#d5ec67";
-        const secondary = sorted[2] ? toHex(sorted[2][0]) : primary;
-        resolve({ primary, accent, secondary, navy: "#13202e" });
+
+        const sorted = [...buckets.entries()]
+          .sort((a, b) => b[1] - a[1])
+          .map(([k]) => toHex(k));
+
+        // Deduplicate near-duplicates
+        const palette = [];
+        for (const c of sorted) {
+          if (palette.length >= 8) break;
+          const tooClose = palette.some((p) => colorDistance(p, c) < 40);
+          if (!tooClose) palette.push(c);
+        }
+
+        if (!palette.length) {
+          resolve({
+            palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b"],
+            theme: {
+              primary: "#61d779",
+              accent: "#d5ec67",
+              secondary: "#2f9e4a",
+              navy: "#13202e",
+            },
+          });
+          return;
+        }
+
+        resolve({
+          palette,
+          theme: {
+            primary: palette[0],
+            accent: palette[1] || palette[0],
+            secondary: palette[2] || palette[0],
+            navy: "#13202e",
+          },
+        });
       };
       img.onerror = () =>
-        resolve({ primary: "#61d779", accent: "#d5ec67", secondary: "#2f9e4a", navy: "#13202e" });
+        resolve({
+          palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b"],
+          theme: {
+            primary: "#61d779",
+            accent: "#d5ec67",
+            secondary: "#2f9e4a",
+            navy: "#13202e",
+          },
+        });
       img.src = dataUrl;
     });
+  }
+
+  function colorDistance(a, b) {
+    const pa = a.match(/\w\w/g).map((x) => parseInt(x, 16));
+    const pb = b.match(/\w\w/g).map((x) => parseInt(x, 16));
+    return Math.hypot(pa[0] - pb[0], pa[1] - pb[1], pa[2] - pb[2]);
+  }
+
+  async function openPreview() {
+    const payload = draftPayload();
+    if (!payload.meta.clientName) return toast("Enter a customer name first");
+    if (!payload.sectionOrder.length) return toast("Add at least one section");
+    try {
+      toast("Building full draft preview…");
+      const html = await assembleFullProposal(payload, { isPreview: true });
+      const blob = new Blob([html], { type: "text/html" });
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank", "noopener");
+      setTimeout(() => URL.revokeObjectURL(url), 120_000);
+      toast("Opened full draft preview");
+    } catch (err) {
+      console.error(err);
+      toast("Preview failed — check console");
+    }
   }
 
   // Events
   Object.values(els.fields).forEach((input) => {
     input.addEventListener("input", () => {
+      state.status = "draft";
+      updatePreview();
+      autosaveLocal();
+    });
+  });
+  document.querySelectorAll('input[name="entityName"]').forEach((r) => {
+    r.addEventListener("change", () => {
       state.status = "draft";
       updatePreview();
       autosaveLocal();
@@ -472,12 +729,15 @@ ${sections}
       els.logoPreview.innerHTML = `<img src="${state.logoDataUrl}" alt="Customer logo">`;
       els.coverClientLogo.src = state.logoDataUrl;
       els.coverClientLogo.hidden = false;
-      state.theme = await extractThemeFromImage(state.logoDataUrl);
+      const extracted = await extractPaletteFromImage(state.logoDataUrl);
+      state.palette = extracted.palette;
+      state.theme = extracted.theme;
+      state.selectedPaletteIndex = 0;
       state.status = "draft";
       applyTheme();
       renderOrder();
       autosaveLocal();
-      toast("Logo applied — theme colours updated");
+      toast(`Logo applied — ${state.palette.length} colours detected (pick roles below)`);
     };
     reader.readAsDataURL(file);
   });
@@ -487,18 +747,7 @@ ${sections}
     clearLocalDrafts();
   });
 
-  document.getElementById("btnPreviewDraft").addEventListener("click", () => {
-    const payload = draftPayload();
-    if (!payload.meta.clientName) return toast("Enter a customer name first");
-    if (!payload.sectionOrder.length) return toast("Add at least one section");
-    payload.isPreview = true;
-    const html = buildFinalHtml(payload);
-    const blob = new Blob([html], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    window.open(url, "_blank", "noopener");
-    setTimeout(() => URL.revokeObjectURL(url), 60_000);
-    toast("Opened draft preview in a new tab");
-  });
+  document.getElementById("btnPreviewDraft").addEventListener("click", () => openPreview());
 
   document.getElementById("btnExportDraft").addEventListener("click", () => {
     const payload = draftPayload();
@@ -517,7 +766,7 @@ ${sections}
       download(`${payload.slug}-draft.json`, JSON.stringify(payload, null, 2));
       toast("Draft saved locally + JSON exported (webhook not configured)");
     } else if (res.ok) {
-      toast("Draft sent to Power Automate / GitHub save flow");
+      toast("Draft sent to Power Automate / SQL");
     } else {
       toast(`Draft webhook failed (${res.status}) — kept local copy`);
     }
@@ -527,22 +776,30 @@ ${sections}
     const payload = draftPayload();
     if (!payload.meta.clientName) return toast("Enter a customer name first");
     if (!payload.sectionOrder.length) return toast("Add at least one section");
-    state.status = "committed";
-    payload.status = "committed";
-    payload.event = "finalCommit";
-    payload.builtHtml = buildFinalHtml(payload);
-    autosaveLocal({ updateIndex: true });
-    download(`${payload.slug}-index.html`, payload.builtHtml, "text/html");
-    download(`${payload.slug}-draft.json`, JSON.stringify({ ...payload, builtHtml: undefined }, null, 2));
-    const res = await postWebhook(CONFIG.webhooks.finalCommit, payload);
-    if (res.skipped) {
-      toast("Final HTML exported — drop into proposals/" + payload.slug + "/ (webhook not configured)");
-    } else if (res.ok) {
-      toast("Final commit sent to build flow");
-    } else {
-      toast(`Commit webhook failed (${res.status}) — files downloaded`);
+    try {
+      state.status = "committed";
+      payload.status = "committed";
+      payload.event = "finalCommit";
+      payload.builtHtml = await assembleFullProposal(payload, { isPreview: false });
+      autosaveLocal({ updateIndex: true });
+      download(`${payload.slug}-index.html`, payload.builtHtml, "text/html");
+      download(
+        `${payload.slug}-draft.json`,
+        JSON.stringify({ ...payload, builtHtml: undefined }, null, 2)
+      );
+      const res = await postWebhook(CONFIG.webhooks.finalCommit, payload);
+      if (res.skipped) {
+        toast("Final HTML exported — full template (webhook not configured yet)");
+      } else if (res.ok) {
+        toast("Final commit sent to build flow");
+      } else {
+        toast(`Commit webhook failed (${res.status}) — files downloaded`);
+      }
+      updatePreview();
+    } catch (err) {
+      console.error(err);
+      toast("Final commit build failed");
     }
-    updatePreview();
   });
 
   document.getElementById("btnSendAcceptance").addEventListener("click", async () => {
@@ -557,8 +814,11 @@ ${sections}
     autosaveLocal();
     const res = await postWebhook(CONFIG.webhooks.sendForAcceptance, payload);
     if (res.skipped) {
-      toast("Acceptance payload ready — configure DocuSign Power Automate webhook");
-      download(`${payload.slug}-acceptance-request.json`, JSON.stringify(payload.acceptance, null, 2));
+      toast("Acceptance payload ready — configure DocuSign webhook next");
+      download(
+        `${payload.slug}-acceptance-request.json`,
+        JSON.stringify(payload.acceptance, null, 2)
+      );
     } else if (res.ok) {
       toast("DocuSign acceptance flow triggered");
     } else {
@@ -570,12 +830,10 @@ ${sections}
     if (els.existingSelect.value) loadDraft(els.existingSelect.value);
   });
 
-  // Init
   fetch("sections.json")
     .then((r) => r.json())
     .then((data) => {
       state.catalog = data.sections || [];
-      // Sensible default starter set
       state.sectionOrder = ["section-01", "section-02", "section-03", "section-04"];
       renderAll();
       refreshExistingSelect();
@@ -586,8 +844,7 @@ ${sections}
           const id = evt.item.dataset.id;
           evt.item.remove();
           if (id && !state.sectionOrder.includes(id)) {
-            const to = evt.newIndex;
-            state.sectionOrder.splice(to, 0, id);
+            state.sectionOrder.splice(evt.newIndex, 0, id);
             state.status = "draft";
             renderAll();
             autosaveLocal();
@@ -596,7 +853,9 @@ ${sections}
           }
         },
         onEnd: () => {
-          state.sectionOrder = [...els.orderList.querySelectorAll(".order-item")].map((li) => li.dataset.id);
+          state.sectionOrder = [...els.orderList.querySelectorAll(".order-item")].map(
+            (li) => li.dataset.id
+          );
           state.status = "draft";
           renderLibrary();
           renderPlaceholders();

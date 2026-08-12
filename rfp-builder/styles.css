@@ -224,11 +224,157 @@ code {
   margin-top: 0.65rem;
 }
 
+.entity-pick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.85rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: #f7f9fb;
+}
+
+.entity-pick__label {
+  width: 100%;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.entity-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.theme-panel {
+  margin-top: 0.85rem;
+}
+
+.theme-roles {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.theme-role {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.theme-role span {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.theme-role select {
+  height: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  padding: 0 0.45rem;
+  font: inherit;
+}
+
+.theme-role .role-swatch {
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+}
+
 .swatch {
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.swatch.is-selected {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--navy);
+}
+
+.cover-preview {
+  position: relative;
+  border-radius: 0.85rem;
+  padding: 1.5rem;
+  background: var(--navy);
+  color: #fff;
+  overflow: hidden;
+  background-image:
+    radial-gradient(ellipse 70% 50% at 100% 0%, color-mix(in srgb, var(--client-primary) 28%, transparent), transparent 55%);
+}
+
+.cover-preview__bars {
+  position: absolute;
+  top: 0;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.35rem;
+  height: 3.25rem;
+}
+
+.cover-preview__bars span {
+  width: 0.55rem;
+  border-radius: 0 0 0.35rem 0.35rem;
+  background: var(--client-primary);
+}
+.cover-preview__bars span:nth-child(2) { background: var(--client-accent); height: 2.4rem; align-self: start; }
+.cover-preview__bars span:nth-child(3) { background: var(--client-secondary); height: 1.7rem; align-self: start; }
+
+.cover-preview__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.cover-preview__client {
+  max-height: 2.75rem;
+  max-width: 10rem;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 0.35rem;
+  padding: 0.3rem 0.45rem;
+}
+
+.cover-preview__entity {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.cover-preview__line {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.cover-preview__trilogy {
+  width: min(12rem, 70%);
+  border-radius: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.cover-preview__body {
+  max-width: 36rem;
 }
 
 .library,
@@ -334,37 +480,6 @@ code {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin: 0 0 0.55rem;
-}
-
-.cover-preview {
-  border-radius: 0.85rem;
-  padding: 1.5rem;
-  background: var(--navy);
-  color: #fff;
-  background-image:
-    radial-gradient(ellipse 70% 50% at 100% 0%, color-mix(in srgb, var(--client-primary) 28%, transparent), transparent 55%);
-}
-
-.cover-preview__logos {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.cover-preview__trilogy {
-  width: min(12rem, 55%);
-  border-radius: 0.35rem;
-}
-
-#coverClientLogo {
-  max-height: 2.75rem;
-  max-width: 8rem;
-  object-fit: contain;
-  background: #fff;
-  border-radius: 0.35rem;
-  padding: 0.25rem 0.4rem;
 }
 
 .badge {

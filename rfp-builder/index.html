@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=preview-4color" defer></script>
+  <script src="app.js?v=full-preview-theme" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -36,6 +36,11 @@
     <aside class="panel panel--left">
       <section class="block">
         <h2>1. Cover details</h2>
+        <div class="entity-pick" role="radiogroup" aria-label="Issuing entity">
+          <span class="entity-pick__label">This proposal is from</span>
+          <label class="entity-option"><input type="radio" name="entityName" value="Trilogy Digital" checked> Trilogy Digital</label>
+          <label class="entity-option"><input type="radio" name="entityName" value="Trilogy"> Trilogy</label>
+        </div>
         <div class="form-grid">
           <label>Prepared for<input id="clientName" type="text" placeholder="Client Name"></label>
           <label>Reference<input id="reference" type="text" placeholder="RFP Reference No."></label>
@@ -49,9 +54,13 @@
           </label>
         </div>
         <div class="logo-preview" id="logoPreview">
-          <span>Logo preview + auto theme</span>
+          <span>Logo preview + colour palette</span>
         </div>
-        <div class="theme-swatches" id="themeSwatches" aria-label="Theme colours from logo"></div>
+        <div class="theme-panel">
+          <p class="hint">Colours detected from the logo (black/white ignored). Click a swatch, then assign it as Primary / Accent / Secondary for the RFP styling.</p>
+          <div class="theme-swatches" id="themeSwatches" aria-label="Logo colour palette"></div>
+          <div class="theme-roles" id="themeRoles"></div>
+        </div>
       </section>
 
       <section class="block">
@@ -85,20 +94,25 @@
 
       <div class="block">
         <h2>Editable placeholders</h2>
-        <p class="hint">Typed content is stored in the draft and injected on final commit — e.g. Specific Client Experience.</p>
+        <p class="hint">Typed content is injected into the full template on Preview / Final commit.</p>
         <div id="placeholders" class="placeholders"></div>
       </div>
 
       <div class="block preview-block">
         <h2>Live cover preview</h2>
         <div class="cover-preview" id="coverPreview">
-          <div class="cover-preview__logos">
+          <div class="cover-preview__bars" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="cover-preview__brand">
+            <img id="coverClientLogo" class="cover-preview__client" alt="" hidden>
+            <span class="cover-preview__entity" id="pvEntity">Trilogy Digital</span>
+            <span class="cover-preview__line">A Trilogy Group Company</span>
             <img src="../trilogydigital/assets/trilogy-logo.png" alt="Trilogy" class="cover-preview__trilogy">
-            <img id="coverClientLogo" alt="" hidden>
           </div>
-          <div class="badge">RFP / RFI Response</div>
-          <h1>Customer Experience &amp; BPO Services Proposal</h1>
-          <p class="tagline">Human Led · Ai-enabled</p>
+          <div class="cover-preview__body">
+            <div class="badge">RFP / RFI Response</div>
+            <h1>Customer Experience &amp; BPO Services Proposal</h1>
+            <p class="tagline">Human Led · Ai-enabled</p>
+          </div>
           <div class="meta">
             <div><span>Prepared for</span><strong id="pvClient">[Client Name]</strong></div>
             <div><span>Reference</span><strong id="pvRef">[RFP Reference No.]</strong></div>
