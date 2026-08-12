@@ -249,15 +249,38 @@
     };
   }
 
-  function autosaveLocal() {
+  function autosaveLocal(opts = {}) {
+    const { updateIndex = false } = opts;
     const meta = readMeta();
     if (!meta.clientName) return;
     const payload = draftPayload();
+    // Always keep a working copy under the current slug, but only list
+    // drafts in "Open existing" when explicitly saved/committed.
     localStorage.setItem(CONFIG.storagePrefix + payload.slug, JSON.stringify(payload));
-    const idx = getIndex().filter((x) => x.slug !== payload.slug);
-    idx.unshift({ slug: payload.slug, clientName: meta.clientName, updatedAt: payload.updatedAt, status: payload.status });
-    setIndex(idx);
+    localStorage.setItem(CONFIG.storagePrefix + "working", JSON.stringify(payload));
+
+    if (updateIndex) {
+      const idx = getIndex().filter((x) => x.slug !== payload.slug);
+      idx.unshift({
+        slug: payload.slug,
+        clientName: meta.clientName,
+        updatedAt: payload.updatedAt,
+        status: payload.status,
+      });
+      setIndex(idx);
+      refreshExistingSelect();
+    }
+  }
+
+  function clearLocalDrafts() {
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && (k === CONFIG.indexKey || k.startsWith(CONFIG.storagePrefix))) keys.push(k);
+    }
+    keys.forEach((k) => localStorage.removeItem(k));
     refreshExistingSelect();
+    toast("Local drafts cleared");
   }
 
   function refreshExistingSelect() {
@@ -452,6 +475,11 @@ ${sections}
     reader.readAsDataURL(file);
   });
 
+  document.getElementById("btnClearLocalDrafts").addEventListener("click", () => {
+    if (!confirm("Clear all local drafts from this browser? SQL records are not deleted.")) return;
+    clearLocalDrafts();
+  });
+
   document.getElementById("btnExportDraft").addEventListener("click", () => {
     const payload = draftPayload();
     if (!payload.meta.clientName) return toast("Enter a customer name first");
@@ -464,6 +492,8 @@ ${sections}
     if (!payload.meta.clientName) return toast("Enter a customer name first");
     autosaveLocal();
     payload.event = "saveDraft";
+    // Index only on intentional save
+    autosaveLocal({ updateIndex: true });
     const res = await postWebhook(CONFIG.webhooks.saveDraft, payload);
     if (res.skipped) {
       download(`${payload.slug}-draft.json`, JSON.stringify(payload, null, 2));
