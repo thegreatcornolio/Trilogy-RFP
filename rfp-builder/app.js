@@ -123,19 +123,8 @@
   }
 
   function renderPalette() {
-    els.themeSwatches.innerHTML = "";
-    state.palette.forEach((c, i) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "swatch" + (i === state.selectedPaletteIndex ? " is-selected" : "");
-      btn.style.background = c;
-      btn.title = `${c} — click to select, then assign below`;
-      btn.addEventListener("click", () => {
-        state.selectedPaletteIndex = i;
-        renderPalette();
-      });
-      els.themeSwatches.appendChild(btn);
-    });
+    // Keep palette container empty — roles show colours directly
+    if (els.themeSwatches) els.themeSwatches.innerHTML = "";
 
     const roles = [
       ["primary", "Primary"],
@@ -146,46 +135,30 @@
     roles.forEach(([key, label]) => {
       const row = document.createElement("div");
       row.className = "theme-role";
-      const options = state.palette
-        .map(
-          (c) =>
-            `<option value="${c}" ${state.theme[key] === c ? "selected" : ""}>${c}</option>`
-        )
-        .join("");
-      row.innerHTML = `<span>${label}</span>
-        <select data-role="${key}">${options}</select>
-        <i class="role-swatch" style="background:${state.theme[key]}"></i>`;
-      row.querySelector("select").addEventListener("change", (e) => {
-        state.theme[key] = e.target.value;
-        state.status = "draft";
-        applyTheme();
-        autosaveLocal();
+      const swatches = document.createElement("div");
+      swatches.className = "theme-role__swatches";
+      state.palette.forEach((c) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className =
+          "swatch" + (state.theme[key] === c ? " is-selected" : "");
+        btn.style.background = c;
+        btn.setAttribute("aria-label", `${label} ${c}`);
+        btn.title = label;
+        btn.addEventListener("click", () => {
+          state.theme[key] = c;
+          state.status = "draft";
+          applyTheme();
+          autosaveLocal();
+        });
+        swatches.appendChild(btn);
       });
+      const name = document.createElement("span");
+      name.textContent = label;
+      row.appendChild(name);
+      row.appendChild(swatches);
       els.themeRoles.appendChild(row);
     });
-
-    const assign = document.createElement("div");
-    assign.className = "theme-role";
-    assign.innerHTML = `<span>Assign selected</span>
-      <div style="display:flex;gap:.35rem;flex-wrap:wrap">
-        <button type="button" class="btn btn--ghost" data-assign="primary" style="height:2rem;color:var(--ink);border-color:var(--line);background:#fff">Primary</button>
-        <button type="button" class="btn btn--ghost" data-assign="accent" style="height:2rem;color:var(--ink);border-color:var(--line);background:#fff">Accent</button>
-        <button type="button" class="btn btn--ghost" data-assign="secondary" style="height:2rem;color:var(--ink);border-color:var(--line);background:#fff">Secondary</button>
-      </div>
-      <span></span>`;
-    assign.querySelectorAll("[data-assign]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const role = btn.getAttribute("data-assign");
-        const color = state.palette[state.selectedPaletteIndex];
-        if (!color) return;
-        state.theme[role] = color;
-        state.status = "draft";
-        applyTheme();
-        autosaveLocal();
-        toast(`${role} set to ${color}`);
-      });
-    });
-    els.themeRoles.appendChild(assign);
   }
 
   function readMeta() {
