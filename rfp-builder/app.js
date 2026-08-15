@@ -106,10 +106,18 @@
   }
 
   function setEntityName(value) {
+    const allowed = new Set(["Trilogy Digital", "Trilogy BPO", "Trilogy GCC"]);
+    const normalized =
+      value === "Trilogy" || !allowed.has(value) ? "Trilogy Digital" : value;
     const input = document.querySelector(
-      `input[name="entityName"][value="${CSS.escape(value)}"]`
+      `input[name="entityName"][value="${CSS.escape(normalized)}"]`
     );
     if (input) input.checked = true;
+  }
+
+  function legalEntityName(entity) {
+    // BPO and GCC are brands under Trilogy Digital (Pty) Ltd
+    return "Trilogy Digital (Pty) Ltd";
   }
 
   function applyTheme() {
