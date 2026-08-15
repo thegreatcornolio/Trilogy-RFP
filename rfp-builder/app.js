@@ -421,8 +421,16 @@
     const d = JSON.parse(raw);
     Object.entries(d.meta || {}).forEach(([k, v]) => {
       if (k === "entityName") setEntityName(v || "Trilogy Digital");
-      else if (els.fields[k]) els.fields[k].value = v || "";
+      else if (k === "reference") return; // removed field
+      else if (k === "proposalTitle" && els.fields.proposalTitle) {
+        els.fields.proposalTitle.value = v || "";
+      } else if (els.fields[k]) {
+        els.fields[k].value = v || "";
+      }
     });
+    if (!els.fields.validUntil.value.trim()) {
+      els.fields.validUntil.value = "Valid for 90 days";
+    }
     state.sectionOrder = d.sectionOrder || [];
     state.placeholders = d.placeholders || {};
     state.theme = {
@@ -505,9 +513,8 @@
 
     const replacements = [
       ["[Client Name]", payload.meta.clientName],
-      ["[RFP Reference No.]", payload.meta.reference],
-      ["[Submission Date]", payload.meta.date],
-      ["[Valid for 90 days]", payload.meta.validUntil],
+      ["[Submission Date]", payload.meta.dateDisplay || payload.meta.date],
+      ["[Valid for 90 days]", payload.meta.validUntil || "Valid for 90 days"],
       ["[Your Name]", payload.meta.preparedBy],
       ["[Your Title]", payload.meta.title],
       ["[name@trilogydigital.com]", payload.meta.contact],
@@ -515,6 +522,26 @@
     replacements.forEach(([from, to]) => {
       if (to) html = html.split(from).join(escapeHtml(to));
     });
+
+    // Proposal title replaces cover H1
+    const proposalTitle =
+      payload.meta.proposalTitle || "Customer Experience & BPO Services Proposal";
+    html = html.replace(
+      /(<div class="cover__body">[\s\S]*?<h1>)([\s\S]*?)(<\/h1>)/,
+      `$1${escapeHtml(proposalTitle)}$3`
+    );
+
+    // Drop Reference from cover meta grid (3 fields remain)
+    html = html.replace(
+      /<div class="meta-grid meta-grid--4">\s*<div><div class="meta-label">Prepared for<\/div><div class="meta-value">[\s\S]*?<\/div><\/div>\s*<div><div class="meta-label">Reference<\/div><div class="meta-value">[\s\S]*?<\/div><\/div>\s*<div><div class="meta-label">Date<\/div><div class="meta-value">([\s\S]*?)<\/div><\/div>\s*<div><div class="meta-label">Valid until<\/div><div class="meta-value">([\s\S]*?)<\/div><\/div>\s*<\/div>/,
+      `<div class="meta-grid meta-grid--3">
+          <div><div class="meta-label">Prepared for</div><div class="meta-value">${escapeHtml(
+            payload.meta.clientName || "[Client Name]"
+          )}</div></div>
+          <div><div class="meta-label">Date</div><div class="meta-value">$1</div></div>
+          <div><div class="meta-label">Valid until</div><div class="meta-value">$2</div></div>
+        </div>`
+    );
 
     // Keep only selected sections (+ cover)
     const wanted = new Set(payload.sectionOrder || []);
