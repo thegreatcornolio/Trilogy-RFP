@@ -169,22 +169,25 @@
   }
 
   async function loadEntityContent() {
-    if (state.entityContent?.companyOverview?.["Trilogy BPO"]) {
-      return state.entityContent;
-    }
+    if (state._entityLoaded) return state.entityContent;
+    state._entityLoaded = true;
     try {
       const res = await fetch(`${CONFIG.entityContentUrl}?v=entity-overview-2`, {
         cache: "no-store",
       });
       if (res.ok) {
-        state.entityContent = await res.json();
-      } else {
-        state.entityContent = ENTITY_CONTENT_FALLBACK;
+        const data = await res.json();
+        if (data?.companyOverview?.["Trilogy BPO"]) {
+          state.entityContent = data;
+        }
       }
     } catch (err) {
       console.warn("entity-content.json fetch failed; using embedded copy", err);
+    }
+    if (!state.entityContent?.companyOverview) {
       state.entityContent = ENTITY_CONTENT_FALLBACK;
     }
+    renderEntityOverviewPreview();
     return state.entityContent;
   }
 
