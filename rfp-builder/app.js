@@ -619,8 +619,8 @@
     if (!res.ok) throw new Error("Could not load master proposal template");
     let html = await res.text();
 
-    html = html.replace(/href="styles\.css[^"]*"/, `href="${base}styles.css"`);
-    html = html.replace(/src="script\.js[^"]*"/, `src="${base}script.js"`);
+    html = html.replace(/href="(styles\.css[^"]*)"/, `href="${base}$1"`);
+    html = html.replace(/src="(script\.js[^"]*)"/, `src="${base}$1"`);
     html = html.replace(/(src|href)="assets\//g, `$1="${base}assets/`);
 
     const entity = payload.meta.entityName || "Trilogy Digital";
