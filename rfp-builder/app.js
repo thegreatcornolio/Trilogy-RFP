@@ -704,6 +704,10 @@
         /<figure class="jv-diagram"[\s\S]*?<\/figure>/,
         ""
       );
+      html = html.replace(
+        /<div class="team-roster__group entity-digital-only"[\s\S]*?<\/div>\s*<\/div>/,
+        ""
+      );
     }
 
     // Keep only selected sections (+ cover)
