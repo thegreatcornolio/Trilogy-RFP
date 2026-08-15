@@ -52,7 +52,7 @@
     pvEntity: document.getElementById("pvEntity"),
     fields: {
       clientName: document.getElementById("clientName"),
-      reference: document.getElementById("reference"),
+      proposalTitle: document.getElementById("proposalTitle"),
       date: document.getElementById("date"),
       validUntil: document.getElementById("validUntil"),
       preparedBy: document.getElementById("preparedBy"),
@@ -64,7 +64,7 @@
     },
     preview: {
       client: document.getElementById("pvClient"),
-      ref: document.getElementById("pvRef"),
+      proposalTitle: document.getElementById("pvProposalTitle"),
       date: document.getElementById("pvDate"),
       valid: document.getElementById("pvValid"),
       by: document.getElementById("pvBy"),
@@ -169,13 +169,47 @@
     });
   }
 
+  function formatDisplayDate(isoDate) {
+    if (!isoDate) return "";
+    const parts = String(isoDate).split("-").map(Number);
+    if (parts.length !== 3 || parts.some((n) => !n)) return isoDate;
+    const [y, m, d] = parts;
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const ord =
+      d % 10 === 1 && d !== 11
+        ? "st"
+        : d % 10 === 2 && d !== 12
+          ? "nd"
+          : d % 10 === 3 && d !== 13
+            ? "rd"
+            : "th";
+    return `${d}${ord} ${months[m - 1]} ${y}`;
+  }
+
   function readMeta() {
+    const dateRaw = els.fields.date.value.trim();
     return {
       entityName: getEntityName(),
       clientName: els.fields.clientName.value.trim(),
-      reference: els.fields.reference.value.trim(),
-      date: els.fields.date.value.trim(),
-      validUntil: els.fields.validUntil.value.trim(),
+      proposalTitle:
+        els.fields.proposalTitle.value.trim() ||
+        "Customer Experience & BPO Services Proposal",
+      date: dateRaw,
+      dateDisplay: formatDisplayDate(dateRaw),
+      validUntil: els.fields.validUntil.value.trim() || "Valid for 90 days",
       preparedBy: els.fields.preparedBy.value.trim(),
       title: els.fields.title.value.trim(),
       contact: els.fields.contact.value.trim(),
@@ -185,13 +219,18 @@
   function updatePreview() {
     const m = readMeta();
     const fill = (el, val, fallback) => {
+      if (!el) return;
       el.textContent = val || fallback;
     };
     els.pvEntity.textContent = m.entityName;
+    fill(
+      els.preview.proposalTitle,
+      m.proposalTitle,
+      "Customer Experience & BPO Services Proposal"
+    );
     fill(els.preview.client, m.clientName, "[Client Name]");
-    fill(els.preview.ref, m.reference, "[RFP Reference No.]");
-    fill(els.preview.date, m.date, "[Submission Date]");
-    fill(els.preview.valid, m.validUntil, "[Valid for 90 days]");
+    fill(els.preview.date, m.dateDisplay || m.date, "[Submission Date]");
+    fill(els.preview.valid, m.validUntil, "Valid for 90 days");
     fill(els.preview.by, m.preparedBy, "[Your Name]");
     fill(els.preview.title, m.title, "[Your Title]");
     fill(els.preview.contact, m.contact, "[name@trilogydigital.com]");

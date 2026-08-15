@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=entity-bpo-gcc" defer></script>
+  <script src="app.js?v=cover-fields" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -44,11 +44,11 @@
         </div>
         <div class="form-grid">
           <label>Prepared for<input id="clientName" type="text" placeholder="Client Name"></label>
-          <label>Reference<input id="reference" type="text" placeholder="RFP Reference No."></label>
-          <label>Date<input id="date" type="text" placeholder="Submission Date"></label>
-          <label>Valid until<input id="validUntil" type="text" placeholder="Valid for 90 days"></label>
+          <label>Title<input id="proposalTitle" type="text" placeholder="Customer Experience &amp; BPO Services Proposal"></label>
+          <label>Date<input id="date" type="date"></label>
+          <label>Valid until<input id="validUntil" type="text" value="Valid for 90 days" placeholder="Valid for 90 days"></label>
           <label>Prepared by<input id="preparedBy" type="text" placeholder="Your Name"></label>
-          <label>Title<input id="title" type="text" placeholder="Your Title"></label>
+          <label>Your title<input id="title" type="text" placeholder="Your Title"></label>
           <label class="full">Contact<input id="contact" type="email" placeholder="name@trilogydigital.com"></label>
           <label class="full">Customer logo
             <input id="logoInput" type="file" accept="image/*">
@@ -111,14 +111,13 @@
           </div>
           <div class="cover-preview__body">
             <div class="badge">RFP / RFI Response</div>
-            <h1>Customer Experience &amp; BPO Services Proposal</h1>
+            <h1 id="pvProposalTitle">Customer Experience &amp; BPO Services Proposal</h1>
             <p class="tagline">Human Led · Ai-enabled</p>
           </div>
-          <div class="meta">
+          <div class="meta meta--3">
             <div><span>Prepared for</span><strong id="pvClient">[Client Name]</strong></div>
-            <div><span>Reference</span><strong id="pvRef">[RFP Reference No.]</strong></div>
             <div><span>Date</span><strong id="pvDate">[Submission Date]</strong></div>
-            <div><span>Valid until</span><strong id="pvValid">[Valid for 90 days]</strong></div>
+            <div><span>Valid until</span><strong id="pvValid">Valid for 90 days</strong></div>
           </div>
           <div class="meta meta--3">
             <div><span>Prepared by</span><strong id="pvBy">[Your Name]</strong></div>
