@@ -698,14 +698,14 @@
         close
     );
 
-    // JV diagram is Digital-specific
+    // JV diagram + JV partners are Digital-specific
     if (entity !== "Trilogy Digital") {
       html = html.replace(
         /<figure class="jv-diagram"[\s\S]*?<\/figure>/,
         ""
       );
       html = html.replace(
-        /<div class="team-roster__group entity-digital-only"[\s\S]*?<\/div>\s*<\/div>/,
+        /<!-- ENTITY_DIGITAL_ONLY_START -->[\s\S]*?<!-- ENTITY_DIGITAL_ONLY_END -->/,
         ""
       );
     }
