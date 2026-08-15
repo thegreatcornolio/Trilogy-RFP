@@ -439,6 +439,29 @@ h3[id],
   scroll-margin-top: 1.25rem;
 }
 
+#co-overview .co-tagline {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  line-height: 1.35;
+  margin: 0 0 0.65rem;
+  color: var(--brand-navy);
+}
+
+#co-overview .co-lead {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+#co-overview .co-bullets {
+  margin: 0 0 1.1rem;
+  padding-left: 1.25rem;
+}
+
+#co-overview .co-bullets li {
+  margin: 0.35rem 0;
+}
+
 h4 {
   margin: 0;
   font-family: var(--font-heading);

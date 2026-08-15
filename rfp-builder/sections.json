@@ -18,7 +18,7 @@
       "editable": true,
       "placeholderKey": "specific-client-experience",
       "placeholderLabel": "Specific Client Experience",
-      "summary": "Includes company overview plus the Specific Client Experience placeholder."
+      "summary": "Company overview switches automatically by entity (Digital / BPO / GCC), plus the Specific Client Experience placeholder."
     },
     {
       "id": "section-03",

@@ -1,0 +1,36 @@
+{
+  "companyOverview": {
+    "Trilogy Digital": {
+      "tagline": null,
+      "paragraphs": [
+        "Trilogy Digital (Pty) Ltd is a purpose-built customer experience (CX) joint venture between Trilogy BPO and CXG, operating as a single integrated entity and now a Trilogy Group company. The partnership marries CXG's 27-year operational tenure and scale within the South African market to Trilogy's deep expertise in managing UK campaigns and delivering advanced digital and AI capabilities.",
+        "The combined leadership team brings over 25 years of industry expertise, having previously established and successfully exited two major BPOs. Over their careers they have managed more than 36 contact centre operations, scaled over 10,000 seats globally, and delivered CX programmes for brands including John Lewis & Partners, British Gas, Vodafone UK, Aldi UK, and Virgin.",
+        "Today, Trilogy Digital deploys over 1,000 CX specialists across five operational sites in South Africa, anchored by its flagship campus at Mutual Park in Cape Town. Despite this scale, Trilogy Digital remains an owner-led, high-touch business — focused on being responsive."
+      ],
+      "bullets": []
+    },
+    "Trilogy BPO": {
+      "tagline": "Human empathy meets AI efficiency.",
+      "lead": "Making customer engagement offshoring easy.",
+      "paragraphs": [
+        "Trilogy BPO is an offshore Business Process Outsourcing company in South Africa, helping UK and USA companies augment their customer experience while cutting the cost of customer service and sales.",
+        "Trilogy is led by seasoned BPO operators with 25+ years of combined leadership. Between them they have built and managed 30+ contact centres globally, launched 1,000-seat operations, and stood up fully operational sites in under six weeks. They know what it takes to get customer experience right, first time.",
+        "The combined leadership team brings over 25 years of industry expertise, having previously established and successfully exited two major BPOs. Over their careers they have managed more than 36 contact centre operations, scaled over 10,000 seats globally, and delivered CX programmes for brands including John Lewis & Partners, British Gas, Vodafone UK, Aldi UK, and Virgin."
+      ],
+      "bullets": []
+    },
+    "Trilogy GCC": {
+      "tagline": "From outsourcing to ownership.",
+      "lead": "Trilogy GCC allows you to move beyond outsourcing. Design, Build, Innovate, Transfer — your risk-mitigated roadmap to a fully-owned Center of Excellence in South Africa.",
+      "paragraphs": [
+        "Establish a Global Capability Center in South Africa that functions as a seamless extension of your headquarters — transitioning from third-party dependency to a fully-owned global asset."
+      ],
+      "bullets": [
+        "Build your own capability center in South Africa.",
+        "DBIT assists international BPO or enterprise companies to establish global capability centers in South Africa.",
+        "Global capability centers or captives provide between 20%–30% cost savings versus offshore outsourcing.",
+        "Trilogy also offers a unique digital and autonomous platform to reduce headcount."
+      ]
+    }
+  }
+}

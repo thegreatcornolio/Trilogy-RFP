@@ -3,6 +3,7 @@
     storagePrefix: "trilogy-rfp-draft:",
     indexKey: "trilogy-rfp-index-v2",
     templateBase: new URL("../trilogydigital/", window.location.href).href,
+    entityContentUrl: new URL("entity-content.json", window.location.href).href,
     webhooks: {
       saveDraft:
         "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/12897ac2d1e94a149bd39340b39ac8c9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VqvO6vdmGXNlJj9PJIiu0J46H762ddWTxLEcL6Soa90",
@@ -15,6 +16,7 @@
     catalog: [],
     sectionOrder: [],
     placeholders: {},
+    entityContent: null,
     theme: {
       primary: "#61d779",
       accent: "#d5ec67",
@@ -118,6 +120,56 @@
   function legalEntityName(entity) {
     // BPO and GCC are brands under Trilogy Digital (Pty) Ltd
     return "Trilogy Digital (Pty) Ltd";
+  }
+
+  async function loadEntityContent() {
+    if (state.entityContent) return state.entityContent;
+    const res = await fetch(`${CONFIG.entityContentUrl}?v=entity-overview-1`, {
+      cache: "no-store",
+    });
+    if (!res.ok) throw new Error("Could not load entity-content.json");
+    state.entityContent = await res.json();
+    return state.entityContent;
+  }
+
+  function companyOverviewHtml(entity) {
+    const pack =
+      state.entityContent?.companyOverview?.[entity] ||
+      state.entityContent?.companyOverview?.["Trilogy Digital"];
+    if (!pack) return "";
+
+    const parts = [];
+    if (pack.tagline) {
+      parts.push(
+        `<p class="co-tagline"><strong>${escapeHtml(pack.tagline)}</strong></p>`
+      );
+    }
+    if (pack.lead) {
+      parts.push(`<p class="co-lead">${escapeHtml(pack.lead)}</p>`);
+    }
+    (pack.paragraphs || []).forEach((p, i) => {
+      // For GCC, bullets sit between lead and closing paragraph
+      if (
+        entity === "Trilogy GCC" &&
+        i === (pack.paragraphs || []).length - 1 &&
+        (pack.bullets || []).length
+      ) {
+        parts.push(
+          `<ul class="co-bullets">${(pack.bullets || [])
+            .map((b) => `<li>${escapeHtml(b)}</li>`)
+            .join("")}</ul>`
+        );
+      }
+      parts.push(`<p>${escapeHtml(p)}</p>`);
+    });
+    if (entity !== "Trilogy GCC" && (pack.bullets || []).length) {
+      parts.push(
+        `<ul class="co-bullets">${(pack.bullets || [])
+          .map((b) => `<li>${escapeHtml(b)}</li>`)
+          .join("")}</ul>`
+      );
+    }
+    return parts.join("\n            ");
   }
 
   function applyTheme() {
@@ -235,6 +287,10 @@
     fill(els.preview.title, m.title, "[Your Title]");
     fill(els.preview.contact, m.contact, "[name@trilogydigital.com]");
     els.slugPreview.textContent = `proposals/${slugify(m.clientName)}/`;
+    const hint = document.getElementById("entityOverviewHint");
+    if (hint) {
+      hint.textContent = `Company Overview uses the ${m.entityName} narrative.`;
+    }
     els.draftStatus.textContent = state.status === "committed" ? "Committed" : "Draft";
     els.draftStatus.classList.toggle("is-committed", state.status === "committed");
   }
@@ -486,6 +542,7 @@
 
   /** Build full proposal from master trilogydigital template */
   async function assembleFullProposal(payload, { isPreview = false } = {}) {
+    await loadEntityContent();
     const base = CONFIG.templateBase;
     const res = await fetch(`${base}index.html`, { cache: "no-store" });
     if (!res.ok) throw new Error("Could not load master proposal template");
@@ -542,6 +599,22 @@
           <div><div class="meta-label">Valid until</div><div class="meta-value">$2</div></div>
         </div>`
     );
+
+    // Entity-specific Company Overview
+    const overviewInner = companyOverviewHtml(entity);
+    if (overviewInner) {
+      html = html.replace(
+        /(<div class="prose" id="co-overview">)[\s\S]*?(<\/div>)/,
+        `$1\n            ${overviewInner}\n          $2`
+      );
+    }
+    // JV diagram is Digital-specific
+    if (entity !== "Trilogy Digital") {
+      html = html.replace(
+        /<figure class="jv-diagram"[\s\S]*?<\/figure>/,
+        ""
+      );
+    }
 
     // Keep only selected sections (+ cover)
     const wanted = new Set(payload.sectionOrder || []);
@@ -609,6 +682,25 @@
       box-shadow: inset 3px 0 0 ${payload.theme.secondary || payload.theme.primary};
     }
     .section-num, .covers-table td:first-child { color: ${payload.theme.primary} !important; }
+    #co-overview .co-tagline {
+      font-family: var(--font-heading, Georgia, serif);
+      font-size: 1.35rem;
+      line-height: 1.35;
+      margin: 0 0 0.65rem;
+      color: var(--brand-navy, #13202e);
+    }
+    #co-overview .co-lead {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+    }
+    #co-overview .co-bullets {
+      margin: 0 0 1.1rem;
+      padding-left: 1.25rem;
+    }
+    #co-overview .co-bullets li {
+      margin: 0.35rem 0;
+    }
     .placeholder-block.is-filled {
       border-style: solid;
       background: #fff;
@@ -879,9 +971,14 @@
 
   fetch("sections.json")
     .then((r) => r.json())
-    .then((data) => {
+    .then(async (data) => {
       state.catalog = data.sections || [];
       state.sectionOrder = ["section-01", "section-02", "section-03", "section-04"];
+      try {
+        await loadEntityContent();
+      } catch (err) {
+        console.warn(err);
+      }
       renderAll();
       refreshExistingSelect();
       new Sortable(els.orderList, {
