@@ -566,10 +566,10 @@
       `<title>${escapeHtml(payload.meta.clientName || "Client")} — ${escapeHtml(entity)} Proposal</title>`
     );
 
-    // Consent line entity
+    // Consent line uses legal company; cover brand uses selected entity (Digital / BPO / GCC)
     html = html.replace(
       /Trilogy Digital \(Pty\) Ltd/g,
-      entity === "Trilogy" ? "Trilogy (Pty) Ltd" : "Trilogy Digital (Pty) Ltd"
+      legalEntityName(entity)
     );
 
     return html;
