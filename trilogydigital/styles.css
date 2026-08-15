@@ -537,6 +537,44 @@ h4 {
   color: var(--muted-foreground);
 }
 
+/* Company Overview callout banner */
+.stats--banner {
+  gap: 0;
+  padding: 1.35rem 1rem;
+  border-radius: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  background:
+    linear-gradient(90deg, rgba(19, 32, 46, 0.92), rgba(19, 32, 46, 0.82)),
+    var(--brand-navy);
+  overflow: hidden;
+}
+
+.stats--banner .stat {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.65rem 0.85rem;
+  text-align: center;
+}
+
+.stats--banner .stat__value {
+  color: #fff;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.stats--banner .stat__label {
+  margin-top: 0.4rem;
+  color: rgba(239, 242, 246, 0.72);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
 .pillars {
   display: grid;
   gap: 0.75rem;
