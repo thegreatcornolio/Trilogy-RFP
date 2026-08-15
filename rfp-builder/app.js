@@ -2,8 +2,8 @@
   const CONFIG = {
     storagePrefix: "trilogy-rfp-draft:",
     indexKey: "trilogy-rfp-index-v2",
-    templateBase: new URL("../trilogydigital/", window.location.href).href,
-    entityContentUrl: new URL("entity-content.json", window.location.href).href,
+    templateBase: "",
+    entityContentUrl: "",
     webhooks: {
       saveDraft:
         "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/12897ac2d1e94a149bd39340b39ac8c9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VqvO6vdmGXNlJj9PJIiu0J46H762ddWTxLEcL6Soa90",
@@ -12,11 +12,57 @@
     },
   };
 
+  // Resolve asset bases from the builder folder even when the URL has no trailing slash
+  (function initPaths() {
+    const href = window.location.href.split(/[?#]/)[0];
+    const builderDir = href.replace(/\/index\.html$/i, "").replace(/\/?$/, "/");
+    CONFIG.templateBase = new URL("../trilogydigital/", builderDir).href;
+    CONFIG.entityContentUrl = new URL("entity-content.json", builderDir).href;
+  })();
+
+  // Embedded fallback so Company Overview never depends on a JSON fetch succeeding
+  const ENTITY_CONTENT_FALLBACK = {
+    companyOverview: {
+      "Trilogy Digital": {
+        tagline: null,
+        paragraphs: [
+          "Trilogy Digital (Pty) Ltd is a purpose-built customer experience (CX) joint venture between Trilogy BPO and CXG, operating as a single integrated entity and now a Trilogy Group company. The partnership marries CXG's 27-year operational tenure and scale within the South African market to Trilogy's deep expertise in managing UK campaigns and delivering advanced digital and AI capabilities.",
+          "The combined leadership team brings over 25 years of industry expertise, having previously established and successfully exited two major BPOs. Over their careers they have managed more than 36 contact centre operations, scaled over 10,000 seats globally, and delivered CX programmes for brands including John Lewis & Partners, British Gas, Vodafone UK, Aldi UK, and Virgin.",
+          "Today, Trilogy Digital deploys over 1,000 CX specialists across five operational sites in South Africa, anchored by its flagship campus at Mutual Park in Cape Town. Despite this scale, Trilogy Digital remains an owner-led, high-touch business — focused on being responsive.",
+        ],
+        bullets: [],
+      },
+      "Trilogy BPO": {
+        tagline: "Human empathy meets AI efficiency.",
+        lead: "Making customer engagement offshoring easy.",
+        paragraphs: [
+          "Trilogy BPO is an offshore Business Process Outsourcing company in South Africa, helping UK and USA companies augment their customer experience while cutting the cost of customer service and sales.",
+          "Trilogy is led by seasoned BPO operators with 25+ years of combined leadership. Between them they have built and managed 30+ contact centres globally, launched 1,000-seat operations, and stood up fully operational sites in under six weeks. They know what it takes to get customer experience right, first time.",
+          "The combined leadership team brings over 25 years of industry expertise, having previously established and successfully exited two major BPOs. Over their careers they have managed more than 36 contact centre operations, scaled over 10,000 seats globally, and delivered CX programmes for brands including John Lewis & Partners, British Gas, Vodafone UK, Aldi UK, and Virgin.",
+        ],
+        bullets: [],
+      },
+      "Trilogy GCC": {
+        tagline: "From outsourcing to ownership.",
+        lead: "Trilogy GCC allows you to move beyond outsourcing. Design, Build, Innovate, Transfer — your risk-mitigated roadmap to a fully-owned Center of Excellence in South Africa.",
+        paragraphs: [
+          "Establish a Global Capability Center in South Africa that functions as a seamless extension of your headquarters — transitioning from third-party dependency to a fully-owned global asset.",
+        ],
+        bullets: [
+          "Build your own capability center in South Africa.",
+          "DBIT assists international BPO or enterprise companies to establish global capability centers in South Africa.",
+          "Global capability centers or captives provide between 20%–30% cost savings versus offshore outsourcing.",
+          "Trilogy also offers a unique digital and autonomous platform to reduce headcount.",
+        ],
+      },
+    },
+  };
+
   const state = {
     catalog: [],
     sectionOrder: [],
     placeholders: {},
-    entityContent: null,
+    entityContent: ENTITY_CONTENT_FALLBACK,
     theme: {
       primary: "#61d779",
       accent: "#d5ec67",
@@ -123,19 +169,32 @@
   }
 
   async function loadEntityContent() {
-    if (state.entityContent) return state.entityContent;
-    const res = await fetch(`${CONFIG.entityContentUrl}?v=entity-overview-1`, {
-      cache: "no-store",
-    });
-    if (!res.ok) throw new Error("Could not load entity-content.json");
-    state.entityContent = await res.json();
+    if (state.entityContent?.companyOverview?.["Trilogy BPO"]) {
+      return state.entityContent;
+    }
+    try {
+      const res = await fetch(`${CONFIG.entityContentUrl}?v=entity-overview-2`, {
+        cache: "no-store",
+      });
+      if (res.ok) {
+        state.entityContent = await res.json();
+      } else {
+        state.entityContent = ENTITY_CONTENT_FALLBACK;
+      }
+    } catch (err) {
+      console.warn("entity-content.json fetch failed; using embedded copy", err);
+      state.entityContent = ENTITY_CONTENT_FALLBACK;
+    }
     return state.entityContent;
   }
 
+  function getCompanyOverviewPack(entity) {
+    const map = state.entityContent?.companyOverview || ENTITY_CONTENT_FALLBACK.companyOverview;
+    return map[entity] || map["Trilogy Digital"];
+  }
+
   function companyOverviewHtml(entity) {
-    const pack =
-      state.entityContent?.companyOverview?.[entity] ||
-      state.entityContent?.companyOverview?.["Trilogy Digital"];
+    const pack = getCompanyOverviewPack(entity);
     if (!pack) return "";
 
     const parts = [];
@@ -170,6 +229,18 @@
       );
     }
     return parts.join("\n            ");
+  }
+
+  function renderEntityOverviewPreview() {
+    const body = document.getElementById("entityOverviewPreviewBody");
+    const hint = document.getElementById("entityOverviewHint");
+    const entity = getEntityName();
+    if (hint) {
+      hint.textContent = `Company Overview uses the ${entity} narrative.`;
+    }
+    if (!body) return;
+    const html = companyOverviewHtml(entity);
+    body.innerHTML = html || "<p>No overview copy loaded.</p>";
   }
 
   function applyTheme() {
@@ -287,10 +358,7 @@
     fill(els.preview.title, m.title, "[Your Title]");
     fill(els.preview.contact, m.contact, "[name@trilogydigital.com]");
     els.slugPreview.textContent = `proposals/${slugify(m.clientName)}/`;
-    const hint = document.getElementById("entityOverviewHint");
-    if (hint) {
-      hint.textContent = `Company Overview uses the ${m.entityName} narrative.`;
-    }
+    renderEntityOverviewPreview();
     els.draftStatus.textContent = state.status === "committed" ? "Committed" : "Draft";
     els.draftStatus.classList.toggle("is-committed", state.status === "committed");
   }
@@ -603,10 +671,17 @@
     // Entity-specific Company Overview
     const overviewInner = companyOverviewHtml(entity);
     if (overviewInner) {
+      let replaced = false;
       html = html.replace(
-        /(<div class="prose" id="co-overview">)[\s\S]*?(<\/div>)/,
-        `$1\n            ${overviewInner}\n          $2`
+        /<div class="prose" id="co-overview">[\s\S]*?<\/div>/,
+        () => {
+          replaced = true;
+          return `<div class="prose" id="co-overview">\n            ${overviewInner}\n          </div>`;
+        }
       );
+      if (!replaced) {
+        console.warn("Could not find #co-overview to inject entity overview");
+      }
     }
     // JV diagram is Digital-specific
     if (entity !== "Trilogy Digital") {
@@ -715,7 +790,9 @@
     if (isPreview) {
       html = html.replace(
         "<body>",
-        `<body>\n  <div class="rfp-preview-banner">Draft preview — full template with your selected sections, theme and cover details. Not final-committed yet.</div>`
+        `<body>\n  <div class="rfp-preview-banner">Draft preview — <strong>${escapeHtml(
+          entity
+        )}</strong> Company Overview · selected sections · theme · cover. Not final-committed yet.</div>`
       );
     }
 

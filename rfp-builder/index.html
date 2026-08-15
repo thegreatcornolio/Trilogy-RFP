@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=entity-overview-1">
+  <link rel="stylesheet" href="styles.css?v=entity-overview-2">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=entity-overview-1" defer></script>
+  <script src="app.js?v=entity-overview-2" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -43,6 +43,10 @@
           <label class="entity-option"><input type="radio" name="entityName" value="Trilogy GCC"> Trilogy GCC</label>
         </div>
         <p class="entity-overview-hint" id="entityOverviewHint">Company Overview uses the Trilogy Digital narrative.</p>
+        <div class="entity-overview-preview" id="entityOverviewPreview" aria-live="polite">
+          <div class="entity-overview-preview__label">Company Overview that will appear in Preview / Final</div>
+          <div class="entity-overview-preview__body" id="entityOverviewPreviewBody">Loading…</div>
+        </div>
         <div class="form-grid">
           <label>Prepared for<input id="clientName" type="text" placeholder="Client Name"></label>
           <label>Title<input id="proposalTitle" type="text" placeholder="Customer Experience &amp; BPO Services Proposal"></label>
