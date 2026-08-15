@@ -686,6 +686,18 @@
         console.warn("Could not find #co-overview to inject entity overview");
       }
     }
+
+    // South African Footprint — swap entity brand name
+    html = html.replace(
+      /(<div class="prose" id="sa-footprint-copy">)([\s\S]*?)(<\/div>)/,
+      (_, open, inner, close) =>
+        open +
+        inner
+          .replace(/Trilogy Digital's/g, `${escapeHtml(entity)}'s`)
+          .replace(/Trilogy Digital/g, escapeHtml(entity)) +
+        close
+    );
+
     // JV diagram is Digital-specific
     if (entity !== "Trilogy Digital") {
       html = html.replace(
