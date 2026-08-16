@@ -1069,12 +1069,19 @@
     .then((r) => r.json())
     .then(async (data) => {
       state.catalog = data.sections || [];
-      state.sectionOrder = ["section-01", "section-02", "section-03", "section-04"];
+      state.sectionOrder = [
+        "section-01",
+        "section-02",
+        "section-03",
+        "section-04",
+        "section-05",
+      ];
       try {
         await loadEntityContent();
       } catch (err) {
         console.warn(err);
       }
+      ensureFollowingSection("section-04", "section-05");
       renderAll();
       refreshExistingSelect();
       new Sortable(els.orderList, {
