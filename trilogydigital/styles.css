@@ -505,8 +505,11 @@ h4 {
 }
 
 .figure--video .figure__media {
+  position: relative;
   aspect-ratio: 16 / 9;
   background: var(--brand-navy);
+  overflow: hidden;
+  border-radius: 0.75rem;
 }
 
 .figure--video video {
@@ -514,6 +517,47 @@ h4 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.figure--tagline-overlay .figure__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(19, 32, 46, 0.78) 0%,
+    rgba(19, 32, 46, 0.45) 38%,
+    rgba(19, 32, 46, 0.08) 62%,
+    transparent 78%
+  );
+  pointer-events: none;
+}
+
+.video-tagline {
+  position: absolute;
+  z-index: 1;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: min(18rem, 46%);
+  pointer-events: none;
+}
+
+.video-tagline p {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 3.2vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 720px) {
+  .video-tagline {
+    left: 1.75rem;
+    max-width: min(20rem, 42%);
+  }
 }
 
 .sauce-table-wrap {
