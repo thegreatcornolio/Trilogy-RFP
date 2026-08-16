@@ -470,6 +470,13 @@
     localStorage.setItem(CONFIG.indexKey, JSON.stringify(list));
   }
 
+  function ensureFollowingSection(anchorId, followId) {
+    if (!state.sectionOrder.includes(anchorId)) return;
+    if (state.sectionOrder.includes(followId)) return;
+    const i = state.sectionOrder.indexOf(anchorId);
+    state.sectionOrder.splice(i + 1, 0, followId);
+  }
+
   function draftPayload() {
     const meta = readMeta();
     return {
@@ -580,6 +587,7 @@
       els.coverClientLogo.src = state.logoDataUrl;
       els.coverClientLogo.hidden = false;
     }
+    ensureFollowingSection("section-04", "section-05");
     renderAll();
     toast(`Loaded draft: ${d.meta.clientName}`);
   }
