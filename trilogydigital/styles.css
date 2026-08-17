@@ -1831,7 +1831,317 @@ tr:nth-child(even) td {
   color: var(--brand-navy);
 }
 
-/* —— GCC compounding savings chart (savings rising) —— */
+/* —— Test Kitchen cycle + phase cards —— */
+.tk-cycle-figure {
+  margin: 0.25rem 0 1rem;
+  padding: 1.25rem 1.1rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+}
+
+.tk-cycle {
+  --tk-design: #2f9e4a;
+  --tk-test: #c5d84a;
+  --tk-improve: #61d779;
+  --tk-deploy: #13202e;
+  position: relative;
+  width: min(100%, 28rem);
+  aspect-ratio: 1;
+  margin: 0.5rem auto 1rem;
+}
+
+.tk-cycle__hub {
+  position: absolute;
+  inset: 28% 28%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.85rem 0.75rem;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  box-shadow: 0 8px 24px rgba(19, 32, 46, 0.06);
+}
+
+.tk-cycle__hub-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.35rem;
+  background: var(--brand-navy);
+  color: var(--brand-green);
+}
+
+.tk-cycle__hub-title {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-navy);
+}
+
+.tk-cycle__hub p {
+  margin: 0;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  color: var(--muted-foreground);
+}
+
+.tk-cycle__arm {
+  position: absolute;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tk-cycle__arm-icon {
+  display: grid;
+  place-items: center;
+}
+
+.tk-cycle__arm--design {
+  top: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tk-design);
+  min-width: 42%;
+}
+
+.tk-cycle__arm--test {
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+  background: #a8b82e;
+  color: var(--brand-navy);
+  border-radius: 0.75rem;
+  min-height: 42%;
+  padding: 0.85rem 0.55rem;
+}
+
+.tk-cycle__arm--improve {
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tk-improve);
+  color: var(--brand-navy);
+  min-width: 42%;
+}
+
+.tk-cycle__arm--deploy {
+  top: 50%;
+  left: 2%;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+  background: var(--tk-deploy);
+  border-radius: 0.75rem;
+  min-height: 42%;
+  padding: 0.85rem 0.55rem;
+}
+
+.tk-cycle__note {
+  margin: 0.35rem 0 0.65rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(19, 32, 46, 0.78);
+}
+
+.tk-cycle__note strong {
+  color: var(--brand-navy);
+}
+
+.tk-cycle-figure figcaption {
+  margin: 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.tk-phases {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0.5rem 0 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .tk-phases {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tk-phase {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.tk-phase__head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.9rem;
+  color: #fff;
+}
+
+.tk-phase__head h4 {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.tk-phase__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.tk-phase--design .tk-phase__head {
+  background: #2f9e4a;
+}
+.tk-phase--test .tk-phase__head {
+  background: #a8b82e;
+  color: var(--brand-navy);
+}
+.tk-phase--improve .tk-phase__head {
+  background: #61d779;
+  color: var(--brand-navy);
+}
+.tk-phase--deploy .tk-phase__head {
+  background: var(--brand-navy);
+}
+
+.tk-phase--design {
+  --tk-bullet: #2f9e4a;
+}
+.tk-phase--test {
+  --tk-bullet: #a8b82e;
+}
+.tk-phase--improve {
+  --tk-bullet: #61d779;
+}
+.tk-phase--deploy {
+  --tk-bullet: var(--brand-navy);
+}
+
+.tk-phase ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.9rem 1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.tk-phase li {
+  position: relative;
+  padding-left: 0.95rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(19, 32, 46, 0.82);
+}
+
+.tk-phase li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--tk-bullet);
+}
+
+.tk-phase li strong {
+  color: var(--brand-navy);
+}
+
+.tk-outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0.35rem 0 1rem;
+}
+
+@media (min-width: 720px) {
+  .tk-outcomes {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tk-outcome {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: #fff;
+  padding: 1rem 0.9rem;
+}
+
+.tk-outcome__value {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--brand-navy);
+}
+
+.tk-outcome__label {
+  margin-top: 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+
+@media (max-width: 520px) {
+  .tk-cycle {
+    width: 100%;
+  }
+
+  .tk-cycle__arm {
+    font-size: 0.62rem;
+    padding: 0.45rem 0.65rem;
+  }
+
+  .tk-cycle__hub {
+    inset: 30% 26%;
+    padding: 0.65rem 0.5rem;
+  }
+
+  .tk-cycle__hub p {
+    font-size: 0.62rem;
+  }
+}
+
+.demo {
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: #fff;
+}
 .gcc-savings {
   margin: 0.25rem 0 0.5rem;
   padding: 1.35rem 1.25rem 1.4rem;
