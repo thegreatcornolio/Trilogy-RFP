@@ -129,4 +129,32 @@ document.addEventListener("DOMContentLoaded", () => {
       animateGccChart(chart);
     });
   }
+
+
+  // Glossary A–Z letter index
+  const glossary = document.querySelector("[data-glossary]");
+  if (glossary) {
+    const tabs = [...glossary.querySelectorAll(".glossary__letter")];
+    const panels = [...glossary.querySelectorAll(".glossary__panel")];
+    const activate = (letter) => {
+      tabs.forEach((tab) => {
+        const on = tab.dataset.letter === letter;
+        tab.classList.toggle("is-active", on);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      panels.forEach((panel) => {
+        const on = panel.dataset.panel === letter;
+        panel.classList.toggle("is-active", on);
+        if (on) panel.removeAttribute("hidden");
+        else panel.setAttribute("hidden", "");
+      });
+    };
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        if (tab.disabled) return;
+        activate(tab.dataset.letter);
+      });
+    });
+  }
+
 });

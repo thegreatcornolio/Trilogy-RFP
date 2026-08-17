@@ -4545,3 +4545,115 @@ tr:nth-child(even) td {
   color: var(--brand-green);
   font-weight: 700;
 }
+
+/* ===== Glossary A–Z index ===== */
+.glossary {
+  margin: 0.35rem 0 0.5rem;
+}
+
+.glossary__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: rgba(239, 242, 246, 0.45);
+}
+
+.glossary__letter {
+  min-width: 2.15rem;
+  height: 2.15rem;
+  padding: 0 0.45rem;
+  border: 1px solid rgba(19, 32, 46, 0.14);
+  border-radius: 0.45rem;
+  background: #fff;
+  color: var(--brand-navy);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.glossary__letter:hover:not(:disabled) {
+  border-color: var(--brand-green);
+  color: var(--brand-navy);
+}
+
+.glossary__letter.is-active,
+.glossary__letter[aria-selected="true"] {
+  background: var(--brand-navy);
+  border-color: var(--brand-navy);
+  color: #fff;
+}
+
+.glossary__letter:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.glossary__panel {
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.glossary__panel[hidden] {
+  display: none !important;
+}
+
+.glossary__panel-title {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  background: var(--brand-navy);
+  color: #fff;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.glossary__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.glossary__table th,
+.glossary__table td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid rgba(218, 223, 227, 0.85);
+  vertical-align: top;
+  text-align: left;
+}
+
+.glossary__table th {
+  background: rgba(239, 242, 246, 0.7);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--brand-navy);
+}
+
+.glossary__table td:first-child {
+  width: 28%;
+  font-weight: 700;
+  color: var(--brand-navy);
+  white-space: nowrap;
+}
+
+.glossary__table tr:last-child td {
+  border-bottom: none;
+}
+
+@media print {
+  .glossary__nav {
+    display: none !important;
+  }
+  .glossary__panel,
+  .glossary__panel[hidden] {
+    display: block !important;
+    break-inside: avoid;
+    margin-bottom: 0.85rem;
+  }
+}
