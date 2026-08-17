@@ -1740,6 +1740,11 @@ tr:nth-child(even) td {
   aspect-ratio: 16 / 10;
 }
 
+.figure--ops-delivery .figure__media {
+  aspect-ratio: 14 / 9;
+}
+
+
 .figure--qa .figure__media {
   aspect-ratio: 16 / 10;
 }
