@@ -2136,12 +2136,6 @@ tr:nth-child(even) td {
   }
 }
 
-.demo {
-  border-radius: 0.75rem;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  background: #fff;
-}
 .gcc-savings {
   margin: 0.25rem 0 0.5rem;
   padding: 1.35rem 1.25rem 1.4rem;
