@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=ops-people-merge-1">
+  <link rel="stylesheet" href="styles.css?v=gcc-savings-up-1">
   <style>
     .cover__brand { align-items: center !important; text-align: center !important; }
     .cover__logo { margin-left: auto; margin-right: auto; }
@@ -753,15 +753,110 @@
 </div><div class="dial">
   <div class="dial__ring" style="--pct:100%"><span class="dial__value">100%</span></div>
   <div><h4>More Control</h4><p>Maintain complete ownership and control over operations, technology decisions, data security and strategic direction — critical for long-term competitive advantage.</p></div>
-</div></div><h3>Incubator / DBIT Roadmap</h3><div class="prose"><p>Evolve your model as you grow — from an outsourced operation to your own contact centre, with management control and risk mitigation at every step.</p></div><div class="roadmap">
-  <p class="subhead">Compounding cost reduction — Lower cost, higher maturity</p>
-  <div class="roadmap__bars">
-    <div class="roadmap__row"><div class="roadmap__label">Starting Point<br><span class="muted">In-house / On-shore</span></div><div class="roadmap__bar roadmap__bar--1">100% of cost</div></div>
-    <div class="roadmap__row"><div class="roadmap__label">Step 1<br><span class="muted">Trilogy BPO</span></div><div class="roadmap__bar roadmap__bar--2">~65% · reduce cost</div></div>
-    <div class="roadmap__row"><div class="roadmap__label">Step 2<br><span class="muted">Trilogy DBIT</span></div><div class="roadmap__bar roadmap__bar--3">~47% · own your centre</div></div>
-    <div class="roadmap__row"><div class="roadmap__label">Step 3<br><span class="muted">Innovation</span></div><div class="roadmap__bar roadmap__bar--4">~39% · tech deflection</div></div>
+</div></div><h3 id="dbit-roadmap">Incubator / DBIT Roadmap</h3>
+<div class="prose">
+  <p>Evolve your model as you grow — from an outsourced operation to your own contact centre, with management control and risk mitigation at every step.</p>
+</div>
+
+<div class="gcc-savings" data-animate="gcc-savings" aria-label="Compounding savings chart">
+  <div class="gcc-savings__eyebrow">DBIT evolution</div>
+  <h4 class="gcc-savings__title">Compounding savings on the path to a GCC.</h4>
+  <p class="gcc-savings__lead">Compounding cost reduction — Lower cost, higher maturity</p>
+
+  <div class="gcc-savings__layout">
+    <div class="gcc-savings__summary">
+      <div class="gcc-savings__summary-label">Typical savings</div>
+      <div class="gcc-savings__summary-value" data-gcc-total>0<span>%</span></div>
+      <div class="gcc-savings__pill" data-gcc-pill>+0% cumulative</div>
+      <p class="gcc-savings__summary-note">Midpoint model of labour arbitrage, GCC ownership and AI deflection stacking on the same cost base — from no savings to ~61%.</p>
+    </div>
+
+    <div class="gcc-savings__chart-wrap">
+      <svg class="gcc-savings__svg" viewBox="0 0 318 228" width="100%" height="auto" role="img" aria-label="Animated chart of compounding savings across four DBIT stages">
+        <defs>
+          <linearGradient id="gccArea" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#0E7C46" stop-opacity="0"></stop>
+            <stop offset="100%" stop-color="#0E7C46" stop-opacity="0.18"></stop>
+          </linearGradient>
+          <linearGradient id="gccBar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a334d"></stop>
+            <stop offset="100%" stop-color="#0E1B2A"></stop>
+          </linearGradient>
+        </defs>
+        <g class="gcc-savings__grid" aria-hidden="true">
+          <g><line x1="20" x2="298" y1="212" y2="212"></line><text x="8" y="215">0</text></g>
+          <g><line x1="20" x2="298" y1="163" y2="163"></line><text x="8" y="166">25</text></g>
+          <g><line x1="20" x2="298" y1="114" y2="114"></line><text x="8" y="117">50</text></g>
+          <g><line x1="20" x2="298" y1="65" y2="65"></line><text x="8" y="68">75</text></g>
+          <g><line x1="20" x2="298" y1="16" y2="16"></line><text x="8" y="19">100</text></g>
+        </g>
+        <path class="gcc-savings__area" d="M 54 212 L 54 212.0 L 124 143.4 L 194 108.12 L 264 92.44 L 264 212 Z" fill="url(#gccArea)"></path>
+        <path class="gcc-savings__line" d="M 54 212.0 L 124 143.4 L 194 108.12 L 264 92.44" fill="none" pathLength="1"></path>
+
+        <!-- Starting Point: 0% savings -->
+        <g class="gcc-savings__col" data-step="0">
+          <rect class="gcc-savings__bar" x="28" y="212" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="212.0" data-h="0.0"></rect>
+          <circle class="gcc-savings__dot" cx="54" cy="212.0" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="54" y="200.0" text-anchor="middle">0%</text>
+        </g>
+
+        <!-- Step 1: ~35% savings -->
+        <g class="gcc-savings__col" data-step="1">
+          <rect class="gcc-savings__bar" x="98" y="212" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="143.4" data-h="68.6"></rect>
+          <circle class="gcc-savings__dot" cx="124" cy="143.4" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="124" y="131.4" text-anchor="middle">~35%</text>
+        </g>
+
+        <!-- Step 2: ~53% savings -->
+        <g class="gcc-savings__col" data-step="2">
+          <rect class="gcc-savings__bar" x="168" y="212" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="108.12" data-h="103.88"></rect>
+          <rect class="gcc-savings__bar-inc" x="168" y="212" width="52" height="0" rx="6" data-y="108.12" data-h="35.28"></rect>
+          <circle class="gcc-savings__dot" cx="194" cy="108.12" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="194" y="96.12" text-anchor="middle">~53%</text>
+        </g>
+
+        <!-- Step 3: ~61% savings -->
+        <g class="gcc-savings__col" data-step="3">
+          <rect class="gcc-savings__bar" x="238" y="212" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="92.44" data-h="119.56"></rect>
+          <rect class="gcc-savings__bar-inc" x="238" y="212" width="52" height="0" rx="6" data-y="92.44" data-h="15.68"></rect>
+          <circle class="gcc-savings__dot" cx="264" cy="92.44" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="264" y="80.44" text-anchor="middle">~61%</text>
+        </g>
+      </svg>
+
+      <div class="gcc-savings__steps">
+        <div class="gcc-savings__step" data-step="0">
+          <div class="gcc-savings__step-num">Starting Point</div>
+          <div class="gcc-savings__step-name">In-house / On-shore</div>
+          <div class="gcc-savings__step-desc">100% of cost — no savings yet</div>
+        </div>
+        <div class="gcc-savings__step" data-step="1">
+          <div class="gcc-savings__step-num">Step 1</div>
+          <div class="gcc-savings__step-name">Trilogy BPO</div>
+          <div class="gcc-savings__step-desc">~65% of cost · reduce cost</div>
+          <div class="gcc-savings__step-pill">≈35% savings</div>
+        </div>
+        <div class="gcc-savings__step" data-step="2">
+          <div class="gcc-savings__step-num">Step 2</div>
+          <div class="gcc-savings__step-name">Trilogy DBIT</div>
+          <div class="gcc-savings__step-desc">~47% of cost · own your centre</div>
+          <div class="gcc-savings__step-pill">Further ≈18%</div>
+        </div>
+        <div class="gcc-savings__step" data-step="3">
+          <div class="gcc-savings__step-num">Step 3</div>
+          <div class="gcc-savings__step-name">Innovation</div>
+          <div class="gcc-savings__step-desc">~39% of cost · tech deflection</div>
+          <div class="gcc-savings__step-pill">Further ≈8%</div>
+        </div>
+      </div>
+    </div>
   </div>
-</div><div class="prose"><p>Each stage on the DBIT roadmap drives cost down further — starting from a 100% in-house UK/US cost base, then reducing through offshore outsourcing, owning your own centre, and AI-driven tech deflection.</p></div><h3>Proven Results — Quantified Outcomes Over 36 Months</h3><div class="prose"><p>Our clients typically experience a compounding effect across three value drivers. These aren't projections — they are based on realised results across our existing client base operating in South Africa.</p></div><div class="stats stats--3"><div class="stat"><div class="stat__value">20–30%</div><div class="stat__label">Margin removal savings — immediate reduction versus offshore BPO by eliminating vendor markup.</div></div><div class="stat"><div class="stat__value">15–20%</div><div class="stat__label">Digital &amp; AI deflection — efficiency gains from automation, self-service and AI resolution.</div></div><div class="stat"><div class="stat__value">30–50%</div><div class="stat__label">Total cost reduction — combined impact over 36 months as automation matures and scales.</div></div></div><h3>Flexible Financial Structures</h3><ul class="list-check"><li>CAPEX model — build owned infrastructure for long-term strategic control.</li><li>OPEX model — minimise upfront investment with operational-expense treatment.</li><li>Government incentives — leverage available job-creation grants and incentives per FTE.</li></ul><h3>Risk Mitigation</h3><div class="prose"><p>South Africa offers political stability, a legal framework aligned with Western standards, same-day time-zone overlap with European markets, and a mature BPO talent ecosystem with strong English proficiency.</p></div>
+</div>
+
+<div class="prose">
+  <p>Each stage on the DBIT roadmap drives cost down further — starting from a 100% in-house UK/US cost base, then reducing through offshore outsourcing, owning your own centre, and AI-driven tech deflection.</p>
+</div>
+<h3>Proven Results — Quantified Outcomes Over 36 Months</h3><div class="prose"><p>Our clients typically experience a compounding effect across three value drivers. These aren't projections — they are based on realised results across our existing client base operating in South Africa.</p></div><div class="stats stats--3"><div class="stat"><div class="stat__value">20–30%</div><div class="stat__label">Margin removal savings — immediate reduction versus offshore BPO by eliminating vendor markup.</div></div><div class="stat"><div class="stat__value">15–20%</div><div class="stat__label">Digital &amp; AI deflection — efficiency gains from automation, self-service and AI resolution.</div></div><div class="stat"><div class="stat__value">30–50%</div><div class="stat__label">Total cost reduction — combined impact over 36 months as automation matures and scales.</div></div></div><h3>Flexible Financial Structures</h3><ul class="list-check"><li>CAPEX model — build owned infrastructure for long-term strategic control.</li><li>OPEX model — minimise upfront investment with operational-expense treatment.</li><li>Government incentives — leverage available job-creation grants and incentives per FTE.</li></ul><h3>Risk Mitigation</h3><div class="prose"><p>South Africa offers political stability, a legal framework aligned with Western standards, same-day time-zone overlap with European markets, and a mature BPO talent ecosystem with strong English proficiency.</p></div>
         </div>
       </section>
       <section class="proposal-page" id="section-07">
@@ -943,6 +1038,6 @@
       <div class="footer-note">Trilogy Digital — A Trilogy Group Company · Commercial-in-confidence proposal template</div>
     </div>
   </main>
-  <script src="script.js"></script>
+  <script src="script.js?v=gcc-savings-up-1"></script>
 </body>
 </html>
