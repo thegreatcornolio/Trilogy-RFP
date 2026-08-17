@@ -515,6 +515,22 @@ h4 {
   color: #fff;
 }
 
+.tagline-block--compact {
+  padding: 1.25rem 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .tagline-block--compact {
+    padding: 1.5rem 2rem;
+  }
+}
+
+.tagline-block--compact p {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
 .figure--video .figure__media {
   position: relative;
   aspect-ratio: 16 / 9;
