@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=train-cycle-1">
+  <link rel="stylesheet" href="styles.css?v=admin-drafts-1">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=trilogy-palette-1" defer></script>
+  <script src="app.js?v=admin-drafts-1" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -25,7 +25,6 @@
         </select>
       </label>
       <button type="button" class="btn btn--ghost" id="btnNewDocument" title="Start another document for this customer">New document</button>
-      <button type="button" class="btn btn--ghost" id="btnClearLocalDrafts" title="Remove junk local drafts from this browser">Clear local drafts</button>
       <button type="button" class="btn btn--ghost" id="btnPreviewDraft">Preview draft</button>
       <button type="button" class="btn btn--ghost" id="btnExportDraft">Export draft JSON</button>
       <button type="button" class="btn btn--ghost" id="btnSaveDraft">Save draft</button>
@@ -149,5 +148,46 @@
   </main>
 
   <div class="toast" id="toast" hidden></div>
+
+  <button type="button" class="admin-entry" id="btnAdmin" title="Admin — manage local drafts">Admin</button>
+
+  <div class="admin-modal" id="adminModal" hidden>
+    <div class="admin-modal__backdrop" data-admin-close></div>
+    <div class="admin-modal__panel" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+      <header class="admin-modal__head">
+        <div>
+          <h2 id="adminModalTitle">Draft admin</h2>
+          <p>Local drafts live only in this browser’s storage. Clearing them does not delete SQL, SharePoint, or committed proposal files.</p>
+        </div>
+        <button type="button" class="btn btn--ghost admin-modal__close" data-admin-close aria-label="Close">×</button>
+      </header>
+
+      <div class="admin-lock" id="adminLock">
+        <label class="admin-lock__field">
+          Admin PIN
+          <input id="adminPinInput" type="password" autocomplete="current-password" placeholder="Enter PIN">
+        </label>
+        <button type="button" class="btn btn--primary" id="btnAdminUnlock">Unlock</button>
+        <p class="admin-lock__hint" id="adminLockHint" hidden>Incorrect PIN</p>
+      </div>
+
+      <div class="admin-body" id="adminBody" hidden>
+        <div class="admin-toolbar">
+          <strong id="adminDraftCount">0 local drafts</strong>
+          <button type="button" class="btn btn--ghost" id="btnAdminRefresh">Refresh</button>
+          <button type="button" class="btn btn--ghost" id="btnAdminLock">Lock</button>
+        </div>
+        <div class="admin-draft-list" id="adminDraftList"></div>
+        <div class="admin-danger">
+          <h3>Clear all local drafts</h3>
+          <p>Removes every draft index entry and autosave from <em>this browser only</em>. Type <code>CLEAR</code> to enable.</p>
+          <div class="admin-danger__row">
+            <input id="adminClearConfirm" type="text" placeholder="Type CLEAR" autocomplete="off" spellcheck="false">
+            <button type="button" class="btn btn--danger" id="btnAdminClearAll" disabled>Clear all local drafts</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

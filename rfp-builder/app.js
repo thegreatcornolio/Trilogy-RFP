@@ -10,6 +10,9 @@
       finalCommit: "",
       sendForAcceptance: "",
     },
+    // Client-side gate only (static site) — change this PIN to restrict draft admin tools
+    adminPin: "trilogy-admin",
+    adminSessionKey: "trilogy-rfp-admin-unlocked",
   };
 
   // Resolve asset bases from the builder folder even when the URL has no trailing slash
@@ -692,6 +695,110 @@
     toast("Local drafts cleared");
   }
 
+  function deleteLocalDraft(slug) {
+    if (!slug) return;
+    localStorage.removeItem(CONFIG.storagePrefix + slug);
+    const next = getIndex().filter((item) => item.slug !== slug);
+    setIndex(next);
+    if (els.existingSelect.value === slug) els.existingSelect.value = "";
+    const workingRaw = localStorage.getItem(CONFIG.storagePrefix + "working");
+    if (workingRaw) {
+      try {
+        const working = JSON.parse(workingRaw);
+        if (working.slug === slug) localStorage.removeItem(CONFIG.storagePrefix + "working");
+      } catch {
+        /* ignore */
+      }
+    }
+    refreshExistingSelect();
+    toast(`Removed local draft: ${slug}`);
+  }
+
+  function isAdminUnlocked() {
+    try {
+      return sessionStorage.getItem(CONFIG.adminSessionKey) === "1";
+    } catch {
+      return false;
+    }
+  }
+
+  function setAdminUnlocked(on) {
+    try {
+      if (on) sessionStorage.setItem(CONFIG.adminSessionKey, "1");
+      else sessionStorage.removeItem(CONFIG.adminSessionKey);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function renderAdminDraftList() {
+    const listEl = document.getElementById("adminDraftList");
+    const countEl = document.getElementById("adminDraftCount");
+    if (!listEl || !countEl) return;
+    const index = getIndex();
+    countEl.textContent = `${index.length} local draft${index.length === 1 ? "" : "s"}`;
+    if (!index.length) {
+      listEl.innerHTML = '<p class="admin-empty">No local drafts in this browser.</p>';
+      return;
+    }
+    listEl.innerHTML = index
+      .map((item) => {
+        const doc = item.documentType || "Document";
+        const when = item.updatedAt ? new Date(item.updatedAt).toLocaleString() : "—";
+        return `<article class="admin-draft" data-slug="${item.slug}">
+          <div>
+            <strong>${escapeHtml(item.clientName || item.slug)}</strong>
+            <span>${escapeHtml(doc)} · ${escapeHtml(item.status || "draft")}</span>
+            <span class="admin-draft__meta">${escapeHtml(item.slug)} · updated ${escapeHtml(when)}</span>
+          </div>
+          <button type="button" class="btn btn--danger-ghost" data-delete-draft="${escapeHtml(item.slug)}">Delete</button>
+        </article>`;
+      })
+      .join("");
+  }
+
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function syncAdminModal() {
+    const lock = document.getElementById("adminLock");
+    const body = document.getElementById("adminBody");
+    const unlocked = isAdminUnlocked();
+    if (lock) lock.hidden = unlocked;
+    if (body) body.hidden = !unlocked;
+    if (unlocked) {
+      renderAdminDraftList();
+      const clearInput = document.getElementById("adminClearConfirm");
+      const clearBtn = document.getElementById("btnAdminClearAll");
+      if (clearInput) clearInput.value = "";
+      if (clearBtn) clearBtn.disabled = true;
+    }
+  }
+
+  function openAdminModal() {
+    const modal = document.getElementById("adminModal");
+    if (!modal) return;
+    modal.hidden = false;
+    syncAdminModal();
+    if (!isAdminUnlocked()) {
+      const pin = document.getElementById("adminPinInput");
+      if (pin) {
+        pin.value = "";
+        pin.focus();
+      }
+    }
+  }
+
+  function closeAdminModal() {
+    const modal = document.getElementById("adminModal");
+    if (modal) modal.hidden = true;
+  }
+
   function refreshExistingSelect() {
     const cur = els.existingSelect.value;
     els.existingSelect.innerHTML = '<option value="">Select customer document…</option>';
@@ -1279,9 +1386,65 @@
     clearLogo();
   });
 
-  document.getElementById("btnClearLocalDrafts").addEventListener("click", () => {
-    if (!confirm("Clear all local drafts from this browser? SQL records are not deleted.")) return;
+  document.getElementById("btnAdmin").addEventListener("click", () => openAdminModal());
+
+  document.getElementById("adminModal").addEventListener("click", (e) => {
+    if (e.target.closest("[data-admin-close]")) closeAdminModal();
+    const del = e.target.closest("[data-delete-draft]");
+    if (del) {
+      if (!isAdminUnlocked()) return;
+      const slug = del.getAttribute("data-delete-draft");
+      if (!slug) return;
+      if (!confirm(`Delete local draft “${slug}” from this browser only?\n\nSQL / committed files are not deleted.`)) return;
+      deleteLocalDraft(slug);
+      renderAdminDraftList();
+    }
+  });
+
+  document.getElementById("btnAdminUnlock").addEventListener("click", () => {
+    const pin = (document.getElementById("adminPinInput")?.value || "").trim();
+    const hint = document.getElementById("adminLockHint");
+    if (pin === CONFIG.adminPin) {
+      setAdminUnlocked(true);
+      if (hint) hint.hidden = true;
+      syncAdminModal();
+      toast("Admin unlocked for this browser session");
+    } else {
+      if (hint) hint.hidden = false;
+    }
+  });
+
+  document.getElementById("adminPinInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") document.getElementById("btnAdminUnlock").click();
+  });
+
+  document.getElementById("btnAdminLock").addEventListener("click", () => {
+    setAdminUnlocked(false);
+    syncAdminModal();
+    toast("Admin locked");
+  });
+
+  document.getElementById("btnAdminRefresh").addEventListener("click", () => {
+    if (!isAdminUnlocked()) return;
+    renderAdminDraftList();
+  });
+
+  document.getElementById("adminClearConfirm").addEventListener("input", (e) => {
+    const btn = document.getElementById("btnAdminClearAll");
+    if (btn) btn.disabled = e.target.value.trim().toUpperCase() !== "CLEAR";
+  });
+
+  document.getElementById("btnAdminClearAll").addEventListener("click", () => {
+    if (!isAdminUnlocked()) return;
+    const typed = (document.getElementById("adminClearConfirm")?.value || "").trim().toUpperCase();
+    if (typed !== "CLEAR") return toast("Type CLEAR to confirm");
+    if (!confirm("Clear ALL local drafts from this browser?\n\nThis cannot be undone here. SQL records and committed proposal files are not deleted.")) return;
     clearLocalDrafts();
+    renderAdminDraftList();
+    const clearInput = document.getElementById("adminClearConfirm");
+    const clearBtn = document.getElementById("btnAdminClearAll");
+    if (clearInput) clearInput.value = "";
+    if (clearBtn) clearBtn.disabled = true;
   });
 
   document.getElementById("btnNewDocument").addEventListener("click", () => {
