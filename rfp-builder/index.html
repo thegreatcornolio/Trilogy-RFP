@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=entity-overview-2">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=no-service-autoinsert-1" defer></script>
+  <script src="app.js?v=doc-type-1" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -24,6 +24,7 @@
           <option value="">Select customer draft…</option>
         </select>
       </label>
+      <button type="button" class="btn btn--ghost" id="btnNewDocument" title="Start another document for this customer">New document</button>
       <button type="button" class="btn btn--ghost" id="btnClearLocalDrafts" title="Remove junk local drafts from this browser">Clear local drafts</button>
       <button type="button" class="btn btn--ghost" id="btnPreviewDraft">Preview draft</button>
       <button type="button" class="btn btn--ghost" id="btnExportDraft">Export draft JSON</button>
@@ -49,7 +50,17 @@
         </div>
         <div class="form-grid">
           <label>Prepared for<input id="clientName" type="text" placeholder="Client Name"></label>
-          <label>Title<input id="proposalTitle" type="text" placeholder="Customer Experience &amp; BPO Services Proposal"></label>
+          <label>Document type
+            <input id="documentType" type="text" list="documentTypeSuggestions" value="RFP / RFI Response" placeholder="e.g. Company Overview">
+            <datalist id="documentTypeSuggestions">
+              <option value="RFP / RFI Response"></option>
+              <option value="Company Overview"></option>
+              <option value="Commercial Proposal"></option>
+              <option value="Capability Pack"></option>
+              <option value="Statement of Work"></option>
+            </datalist>
+          </label>
+          <label class="full">Document title<input id="proposalTitle" type="text" placeholder="Customer Experience &amp; BPO Services Proposal"></label>
           <label>Date<input id="date" type="date"></label>
           <label>Valid until<input id="validUntil" type="text" value="Valid for 90 days" placeholder="Valid for 90 days"></label>
           <label>Prepared by<input id="preparedBy" type="text" placeholder="Your Name"></label>
@@ -94,7 +105,7 @@
           <h2>3. Proposal order</h2>
           <span class="pill" id="draftStatus">Draft</span>
         </div>
-        <p class="hint">Drag to reorder. Remove with ×. Customer folder: <code id="slugPreview">proposals/…</code></p>
+        <p class="hint">Drag to reorder. Remove with ×. Saves under: <code id="slugPreview">proposals/…</code></p>
         <ul class="order" id="orderList"></ul>
       </div>
 
@@ -115,7 +126,7 @@
             <img src="../trilogydigital/assets/trilogy-logo.png" alt="Trilogy" class="cover-preview__trilogy">
           </div>
           <div class="cover-preview__body">
-            <div class="badge">RFP / RFI Response</div>
+            <div class="badge" id="pvDocumentType">RFP / RFI Response</div>
             <h1 id="pvProposalTitle">Customer Experience &amp; BPO Services Proposal</h1>
             <p class="tagline">Human Led · Ai-enabled</p>
           </div>

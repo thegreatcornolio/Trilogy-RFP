@@ -73,6 +73,7 @@
     selectedPaletteIndex: 0,
     logoDataUrl: "",
     status: "draft",
+    currentSlug: null,
     acceptance: {
       status: "not_sent",
       signerName: "",
@@ -100,6 +101,7 @@
     pvEntity: document.getElementById("pvEntity"),
     fields: {
       clientName: document.getElementById("clientName"),
+      documentType: document.getElementById("documentType"),
       proposalTitle: document.getElementById("proposalTitle"),
       date: document.getElementById("date"),
       validUntil: document.getElementById("validUntil"),
@@ -112,6 +114,7 @@
     },
     preview: {
       client: document.getElementById("pvClient"),
+      documentType: document.getElementById("pvDocumentType"),
       proposalTitle: document.getElementById("pvProposalTitle"),
       date: document.getElementById("pvDate"),
       valid: document.getElementById("pvValid"),
@@ -129,6 +132,31 @@
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "") || "customer"
     );
+  }
+
+  function clientSlug(meta) {
+    return slugify(meta?.clientName || "customer");
+  }
+
+  function docTypeSlug(meta) {
+    return slugify(meta?.documentType || "rfp-rfi-response") || "document";
+  }
+
+  function draftSlug(meta) {
+    return `${clientSlug(meta)}__${docTypeSlug(meta)}`;
+  }
+
+  function customerPaths(meta) {
+    const client = clientSlug(meta);
+    const doc = docTypeSlug(meta);
+    const base = `proposals/${client}/${doc}`;
+    return {
+      draft: `${base}/draft.json`,
+      logo: `proposals/${client}/logo.png`,
+      final: `${base}/index.html`,
+      acceptance: `${base}/acceptance.json`,
+      folder: `${base}/`,
+    };
   }
 
   function toast(msg) {
@@ -330,6 +358,8 @@
     return {
       entityName: getEntityName(),
       clientName: els.fields.clientName.value.trim(),
+      documentType:
+        els.fields.documentType.value.trim() || "RFP / RFI Response",
       proposalTitle:
         els.fields.proposalTitle.value.trim() ||
         "Customer Experience & BPO Services Proposal",
@@ -349,6 +379,7 @@
       el.textContent = val || fallback;
     };
     els.pvEntity.textContent = m.entityName;
+    fill(els.preview.documentType, m.documentType, "RFP / RFI Response");
     fill(
       els.preview.proposalTitle,
       m.proposalTitle,
@@ -360,7 +391,7 @@
     fill(els.preview.by, m.preparedBy, "[Your Name]");
     fill(els.preview.title, m.title, "[Your Title]");
     fill(els.preview.contact, m.contact, "[name@trilogydigital.com]");
-    els.slugPreview.textContent = `proposals/${slugify(m.clientName)}/`;
+    els.slugPreview.textContent = customerPaths(m).folder;
     renderEntityOverviewPreview();
     els.draftStatus.textContent = state.status === "committed" ? "Committed" : "Draft";
     els.draftStatus.classList.toggle("is-committed", state.status === "committed");
@@ -511,10 +542,13 @@
 
   function draftPayload() {
     const meta = readMeta();
+    const paths = customerPaths(meta);
     return {
-      version: 1,
+      version: 2,
       status: state.status,
-      slug: slugify(meta.clientName),
+      slug: draftSlug(meta),
+      clientSlug: clientSlug(meta),
+      docSlug: docTypeSlug(meta),
       meta,
       theme: { ...state.theme },
       palette: [...state.palette],
@@ -529,12 +563,7 @@
       },
       updatedAt: new Date().toISOString(),
       committedAt: state.status === "committed" ? new Date().toISOString() : null,
-      paths: {
-        draft: `proposals/${slugify(meta.clientName)}/draft.json`,
-        logo: `proposals/${slugify(meta.clientName)}/logo.png`,
-        final: `proposals/${slugify(meta.clientName)}/index.html`,
-        acceptance: `proposals/${slugify(meta.clientName)}/acceptance.json`,
-      },
+      paths,
     };
   }
 
@@ -545,16 +574,21 @@
     const payload = draftPayload();
     localStorage.setItem(CONFIG.storagePrefix + payload.slug, JSON.stringify(payload));
     localStorage.setItem(CONFIG.storagePrefix + "working", JSON.stringify(payload));
+    state.currentSlug = payload.slug;
     if (updateIndex) {
       const idx = getIndex().filter((x) => x.slug !== payload.slug);
       idx.unshift({
         slug: payload.slug,
+        clientSlug: payload.clientSlug,
+        docSlug: payload.docSlug,
         clientName: meta.clientName,
+        documentType: meta.documentType,
         updatedAt: payload.updatedAt,
         status: payload.status,
       });
       setIndex(idx);
       refreshExistingSelect();
+      els.existingSelect.value = payload.slug;
     }
   }
 
@@ -571,11 +605,12 @@
 
   function refreshExistingSelect() {
     const cur = els.existingSelect.value;
-    els.existingSelect.innerHTML = '<option value="">Select customer draft…</option>';
+    els.existingSelect.innerHTML = '<option value="">Select customer document…</option>';
     getIndex().forEach((item) => {
       const opt = document.createElement("option");
       opt.value = item.slug;
-      opt.textContent = `${item.clientName} (${item.status})`;
+      const docLabel = item.documentType || "Document";
+      opt.textContent = `${item.clientName} — ${docLabel} (${item.status})`;
       els.existingSelect.appendChild(opt);
     });
     if (cur) els.existingSelect.value = cur;
@@ -588,12 +623,17 @@
     Object.entries(d.meta || {}).forEach(([k, v]) => {
       if (k === "entityName") setEntityName(v || "Trilogy Digital");
       else if (k === "reference") return; // removed field
-      else if (k === "proposalTitle" && els.fields.proposalTitle) {
+      else if (k === "documentType" && els.fields.documentType) {
+        els.fields.documentType.value = v || "RFP / RFI Response";
+      } else if (k === "proposalTitle" && els.fields.proposalTitle) {
         els.fields.proposalTitle.value = v || "";
       } else if (els.fields[k]) {
         els.fields[k].value = v || "";
       }
     });
+    if (els.fields.documentType && !els.fields.documentType.value.trim()) {
+      els.fields.documentType.value = "RFP / RFI Response";
+    }
     if (!els.fields.validUntil.value.trim()) {
       els.fields.validUntil.value = "Valid for 90 days";
     }
@@ -609,6 +649,7 @@
     state.palette = d.palette && d.palette.length ? d.palette : [state.theme.primary, state.theme.accent, state.theme.secondary];
     state.logoDataUrl = d.logoDataUrl || "";
     state.status = d.status || "draft";
+    state.currentSlug = slug;
     state.acceptance = d.acceptance || state.acceptance;
     els.fields.signerName.value = state.acceptance.signerName || "";
     els.fields.designation.value = state.acceptance.designation || "";
@@ -620,7 +661,66 @@
       els.coverClientLogo.hidden = false;
     }
     renderAll();
-    toast(`Loaded draft: ${d.meta.clientName}`);
+    toast(`Loaded: ${d.meta.clientName} — ${d.meta.documentType || "Document"}`);
+  }
+
+  function startNewDocument() {
+    const keepClient = els.fields.clientName.value.trim();
+    const keepLogo = state.logoDataUrl;
+    const keepTheme = { ...state.theme };
+    const keepPalette = [...state.palette];
+    const keepEntity = getEntityName();
+    const keepPreparedBy = els.fields.preparedBy.value;
+    const keepTitle = els.fields.title.value;
+    const keepContact = els.fields.contact.value;
+
+    state.currentSlug = null;
+    state.status = "draft";
+    state.placeholders = {};
+    state.sectionOrder = [
+      "section-01",
+      "section-02",
+      "section-03",
+      "section-04",
+      "section-05",
+    ];
+    state.logoDataUrl = keepLogo;
+    state.theme = keepTheme;
+    state.palette = keepPalette;
+    state.acceptance = {
+      status: "not_sent",
+      signerName: "",
+      signerEmail: "",
+      designation: "",
+      envelopeId: "",
+      sharePointPath: "",
+    };
+
+    setEntityName(keepEntity);
+    els.fields.clientName.value = keepClient;
+    els.fields.documentType.value = "Company Overview";
+    els.fields.proposalTitle.value = "Company Overview";
+    els.fields.preparedBy.value = keepPreparedBy;
+    els.fields.title.value = keepTitle;
+    els.fields.contact.value = keepContact;
+    els.fields.signerName.value = "";
+    els.fields.designation.value = "";
+    els.fields.signerEmail.value = "";
+    els.acceptanceStatus.textContent = "Status: not_sent";
+    els.existingSelect.value = "";
+
+    if (state.logoDataUrl) {
+      els.logoPreview.innerHTML = `<img src="${state.logoDataUrl}" alt="Customer logo">`;
+      els.coverClientLogo.src = state.logoDataUrl;
+      els.coverClientLogo.hidden = false;
+    }
+
+    renderAll();
+    toast(
+      keepClient
+        ? `New document for ${keepClient} — set type/title, then Save draft`
+        : "New document — enter customer and document type, then Save draft"
+    );
   }
 
   async function postWebhook(url, payload) {
@@ -696,6 +796,13 @@
     html = html.replace(
       /(<div class="cover__body">[\s\S]*?<h1>)([\s\S]*?)(<\/h1>)/,
       `$1${escapeHtml(proposalTitle)}$3`
+    );
+
+    // Document type replaces cover badge (RFP / RFI Response, Company Overview, …)
+    const documentType = payload.meta.documentType || "RFP / RFI Response";
+    html = html.replace(
+      /(<div class="badge">)([\s\S]*?)(<\/div>)/,
+      `$1${escapeHtml(documentType)}$3`
     );
 
     // Drop Reference from cover meta grid (3 fields remain)
@@ -892,7 +999,9 @@
 
     html = html.replace(
       /<title>[\s\S]*?<\/title>/,
-      `<title>${escapeHtml(payload.meta.clientName || "Client")} — ${escapeHtml(entity)} Proposal</title>`
+      `<title>${escapeHtml(payload.meta.clientName || "Client")} — ${escapeHtml(
+        documentType
+      )} — ${escapeHtml(entity)}</title>`
     );
 
     // Consent line uses legal company; cover brand uses selected entity (Digital / BPO / GCC)
@@ -1057,6 +1166,10 @@
     clearLocalDrafts();
   });
 
+  document.getElementById("btnNewDocument").addEventListener("click", () => {
+    startNewDocument();
+  });
+
   document.getElementById("btnPreviewDraft").addEventListener("click", () => openPreview());
 
   document.getElementById("btnExportDraft").addEventListener("click", () => {
@@ -1069,14 +1182,15 @@
   document.getElementById("btnSaveDraft").addEventListener("click", async () => {
     const payload = draftPayload();
     if (!payload.meta.clientName) return toast("Enter a customer name first");
+    if (!payload.meta.documentType) return toast("Enter a document type first");
     payload.event = "saveDraft";
     autosaveLocal({ updateIndex: true });
     const res = await postWebhook(CONFIG.webhooks.saveDraft, payload);
     if (res.skipped) {
       download(`${payload.slug}-draft.json`, JSON.stringify(payload, null, 2));
-      toast("Draft saved locally + JSON exported (webhook not configured)");
+      toast(`Draft saved — ${payload.paths.folder}`);
     } else if (res.ok) {
-      toast("Draft sent to Power Automate / SQL");
+      toast(`Draft sent — ${payload.paths.folder}`);
     } else {
       toast(`Draft webhook failed (${res.status}) — kept local copy`);
     }
@@ -1099,7 +1213,7 @@
       );
       const res = await postWebhook(CONFIG.webhooks.finalCommit, payload);
       if (res.skipped) {
-        toast("Final HTML exported — full template (webhook not configured yet)");
+        toast(`Final HTML exported — ${payload.paths.folder}`);
       } else if (res.ok) {
         toast("Final commit sent to build flow");
       } else {
