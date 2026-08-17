@@ -69,7 +69,7 @@
       secondary: "#2f9e4a",
       navy: "#13202e",
     },
-    palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b"],
+    palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b", "#ffffff"],
     selectedPaletteIndex: 0,
     logoDataUrl: "",
     status: "draft",
@@ -282,11 +282,55 @@
       state.theme.secondary || state.theme.primary
     );
     renderPalette();
+    syncLogoUi();
+  }
+
+  function isNearWhite(hex) {
+    const h = String(hex || "").toLowerCase();
+    return h === "#fff" || h === "#ffffff";
+  }
+
+  /** Always offer white so Document Type / accents stay readable on dark logos */
+  function ensureWhiteInPalette(palette) {
+    const list = Array.isArray(palette) ? [...palette] : [];
+    if (!list.some(isNearWhite)) list.push("#ffffff");
+    return list;
+  }
+
+  function syncLogoUi() {
+    const btn = document.getElementById("btnRemoveLogo");
+    if (btn) btn.hidden = !state.logoDataUrl;
+  }
+
+  function clearLogo() {
+    state.logoDataUrl = "";
+    state.palette = ensureWhiteInPalette([
+      "#61d779",
+      "#d5ec67",
+      "#2f9e4a",
+      "#e2b93b",
+    ]);
+    state.theme = {
+      primary: "#61d779",
+      accent: "#d5ec67",
+      secondary: "#2f9e4a",
+      navy: "#13202e",
+    };
+    if (els.logoInput) els.logoInput.value = "";
+    els.logoPreview.innerHTML = "<span>Logo preview + colour palette</span>";
+    els.coverClientLogo.removeAttribute("src");
+    els.coverClientLogo.hidden = true;
+    state.status = "draft";
+    applyTheme();
+    updatePreview();
+    autosaveLocal();
+    toast("Customer logo removed");
   }
 
   function renderPalette() {
     // Keep palette container empty — roles show colours directly
     if (els.themeSwatches) els.themeSwatches.innerHTML = "";
+    state.palette = ensureWhiteInPalette(state.palette);
 
     const roles = [
       ["primary", "Primary"],
@@ -303,10 +347,12 @@
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className =
-          "swatch" + (state.theme[key] === c ? " is-selected" : "");
+          "swatch" +
+          (state.theme[key] === c ? " is-selected" : "") +
+          (isNearWhite(c) ? " swatch--light" : "");
         btn.style.background = c;
         btn.setAttribute("aria-label", `${label} ${c}`);
-        btn.title = label;
+        btn.title = isNearWhite(c) ? `${label} · White` : label;
         btn.addEventListener("click", () => {
           state.theme[key] = c;
           state.status = "draft";
@@ -659,7 +705,12 @@
       els.logoPreview.innerHTML = `<img src="${state.logoDataUrl}" alt="Customer logo">`;
       els.coverClientLogo.src = state.logoDataUrl;
       els.coverClientLogo.hidden = false;
+    } else {
+      els.logoPreview.innerHTML = "<span>Logo preview + colour palette</span>";
+      els.coverClientLogo.removeAttribute("src");
+      els.coverClientLogo.hidden = true;
     }
+    applyTheme();
     renderAll();
     toast(`Loaded: ${d.meta.clientName} — ${d.meta.documentType || "Document"}`);
   }
@@ -1064,7 +1115,12 @@
 
         if (!palette.length) {
           resolve({
-            palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b"],
+            palette: ensureWhiteInPalette([
+              "#61d779",
+              "#d5ec67",
+              "#2f9e4a",
+              "#e2b93b",
+            ]),
             theme: {
               primary: "#61d779",
               accent: "#d5ec67",
@@ -1076,7 +1132,7 @@
         }
 
         resolve({
-          palette,
+          palette: ensureWhiteInPalette(palette),
           theme: {
             primary: palette[0],
             accent: palette[1] || palette[0],
@@ -1087,7 +1143,12 @@
       };
       img.onerror = () =>
         resolve({
-          palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b"],
+          palette: ensureWhiteInPalette([
+            "#61d779",
+            "#d5ec67",
+            "#2f9e4a",
+            "#e2b93b",
+          ]),
           theme: {
             primary: "#61d779",
             accent: "#d5ec67",
@@ -1149,16 +1210,20 @@
       els.coverClientLogo.src = state.logoDataUrl;
       els.coverClientLogo.hidden = false;
       const extracted = await extractPaletteFromImage(state.logoDataUrl);
-      state.palette = extracted.palette;
+      state.palette = ensureWhiteInPalette(extracted.palette);
       state.theme = extracted.theme;
       state.selectedPaletteIndex = 0;
       state.status = "draft";
       applyTheme();
       renderOrder();
       autosaveLocal();
-      toast(`Logo applied — ${state.palette.length} colours detected (pick roles below)`);
+      toast(`Logo applied — ${state.palette.length} colours available (incl. white)`);
     };
     reader.readAsDataURL(file);
+  });
+
+  document.getElementById("btnRemoveLogo").addEventListener("click", () => {
+    clearLogo();
   });
 
   document.getElementById("btnClearLocalDrafts").addEventListener("click", () => {
