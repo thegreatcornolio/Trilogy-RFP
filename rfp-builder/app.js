@@ -1275,7 +1275,7 @@
 
         if (!palette.length) {
           resolve({
-            palette: ensureWhiteInPalette([
+            palette: ensureBrandPalette([
               "#61d779",
               "#d5ec67",
               "#2f9e4a",
@@ -1292,7 +1292,7 @@
         }
 
         resolve({
-          palette: ensureWhiteInPalette(palette),
+          palette: ensureBrandPalette(palette),
           theme: {
             primary: palette[0],
             accent: palette[1] || palette[0],
@@ -1303,7 +1303,7 @@
       };
       img.onerror = () =>
         resolve({
-          palette: ensureWhiteInPalette([
+          palette: ensureBrandPalette([
             "#61d779",
             "#d5ec67",
             "#2f9e4a",
@@ -1369,15 +1369,22 @@
       els.logoPreview.innerHTML = `<img src="${state.logoDataUrl}" alt="Customer logo">`;
       els.coverClientLogo.src = state.logoDataUrl;
       els.coverClientLogo.hidden = false;
-      const extracted = await extractPaletteFromImage(state.logoDataUrl);
-      state.palette = ensureWhiteInPalette(extracted.palette);
-      state.theme = extracted.theme;
-      state.selectedPaletteIndex = 0;
+      try {
+        const extracted = await extractPaletteFromImage(state.logoDataUrl);
+        state.palette = ensureBrandPalette(extracted.palette);
+        state.theme = extracted.theme;
+        state.selectedPaletteIndex = 0;
+        toast("Logo applied — pick Primary / Accent / Secondary from logo + Trilogy colours");
+      } catch (err) {
+        console.error(err);
+        state.palette = ensureBrandPalette(state.palette);
+        toast("Logo applied — colour extraction failed; Trilogy colours remain available");
+      }
       state.status = "draft";
       applyTheme();
       renderOrder();
+      updatePreview();
       autosaveLocal();
-      toast(`Logo applied — Trilogy colours stay available alongside logo colours`);
     };
     reader.readAsDataURL(file);
   });
