@@ -25,7 +25,7 @@
       "num": "03",
       "title": "Operational Leadership & Delivery",
       "editable": false,
-      "summary": "Leadership model, Cape Town rationale, team, brands."
+      "summary": "Leadership model plus people, workforce, culture and CRAFT."
     },
     {
       "id": "section-04",
@@ -61,13 +61,6 @@
       "title": "Technology, AI & Automation Capability",
       "editable": false,
       "summary": "Platform stack and AI suite."
-    },
-    {
-      "id": "section-09",
-      "num": "09",
-      "title": "Our People & Workforce",
-      "editable": false,
-      "summary": "Lifecycle, culture, CRAFT."
     },
     {
       "id": "section-10",

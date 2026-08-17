@@ -449,6 +449,14 @@
     return state.catalog.find((s) => s.id === id);
   }
 
+  /** Drop retired template sections (e.g. People merged into Operational Leadership) */
+  function pruneRetiredSections() {
+    const retired = new Set(["section-09"]);
+    const before = state.sectionOrder.length;
+    state.sectionOrder = state.sectionOrder.filter((id) => !retired.has(id));
+    return state.sectionOrder.length !== before;
+  }
+
   function renderLibrary() {
     els.library.innerHTML = "";
     state.catalog.forEach((sec) => {
@@ -698,6 +706,7 @@
       els.fields.validUntil.value = "Valid for 90 days";
     }
     state.sectionOrder = d.sectionOrder || [];
+    pruneRetiredSections();
     state.placeholders = d.placeholders || {};
     state.theme = {
       primary: "#61d779",

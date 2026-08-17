@@ -474,6 +474,13 @@ h4 {
   color: var(--brand-navy);
 }
 
+/* Top-level subsection titles folded into a parent section (e.g. People under Ops) */
+.section-body > h4[id] {
+  margin: 1.35rem 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
 /* —— Components —— */
 .callout {
   border-radius: 0.5rem;
