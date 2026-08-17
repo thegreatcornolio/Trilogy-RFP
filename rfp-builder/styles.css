@@ -218,10 +218,39 @@ code {
 
 .logo-preview span { color: var(--muted); font-size: 0.85rem; }
 
-.btn--compact {
-  margin-top: 0.55rem;
-  padding: 0.4rem 0.75rem;
+.logo-field__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.35rem;
+}
+
+.logo-field__controls input[type="file"] {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.btn--remove-logo {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.85rem;
   font-size: 0.8rem;
+  font-weight: 600;
+  color: #8a1f1f;
+  background: #fff5f5;
+  border: 1px solid #f0b4b4;
+  border-radius: 0.45rem;
+  cursor: pointer;
+}
+
+.btn--remove-logo:hover:not(:disabled) {
+  background: #ffe8e8;
+  border-color: #e08989;
+}
+
+.btn--remove-logo:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .swatch--light {

@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=logo-remove-white-1">
+  <link rel="stylesheet" href="styles.css?v=show-remove-logo-1">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=logo-remove-white-1" defer></script>
+  <script src="app.js?v=show-remove-logo-1" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -66,14 +66,16 @@
           <label>Prepared by<input id="preparedBy" type="text" placeholder="Your Name"></label>
           <label>Your title<input id="title" type="text" placeholder="Your Title"></label>
           <label class="full">Contact<input id="contact" type="email" placeholder="name@trilogydigital.com"></label>
-          <label class="full">Customer logo
-            <input id="logoInput" type="file" accept="image/*">
+          <label class="full logo-field">Customer logo
+            <span class="logo-field__controls">
+              <input id="logoInput" type="file" accept="image/*">
+              <button type="button" class="btn btn--remove-logo" id="btnRemoveLogo" disabled>Remove logo</button>
+            </span>
           </label>
         </div>
         <div class="logo-preview" id="logoPreview">
           <span>Logo preview + colour palette</span>
         </div>
-        <button type="button" class="btn btn--ghost btn--compact" id="btnRemoveLogo" hidden>Remove logo</button>
         <div class="theme-panel">
           <p class="hint">Colours detected from the logo. White is always available for darker logos (e.g. Document Type text). For each role, click the colour you want.</p>
           <div class="theme-swatches" id="themeSwatches" aria-label="Logo colour palette" hidden></div>

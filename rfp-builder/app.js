@@ -299,7 +299,9 @@
 
   function syncLogoUi() {
     const btn = document.getElementById("btnRemoveLogo");
-    if (btn) btn.hidden = !state.logoDataUrl;
+    if (!btn) return;
+    btn.disabled = !state.logoDataUrl;
+    btn.setAttribute("aria-disabled", state.logoDataUrl ? "false" : "true");
   }
 
   function clearLogo() {
