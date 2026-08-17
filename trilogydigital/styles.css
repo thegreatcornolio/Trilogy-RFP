@@ -4533,41 +4533,22 @@ tr:nth-child(even) td {
   }
 }
 
-/* ===== Continuous Improvement loop (Figure 2) ===== */
+/* ===== Continuous Improvement infinity loop (Figure 2) ===== */
 .ci-loop {
   position: relative;
-  min-height: 18.5rem;
+  min-height: 0;
   display: grid;
   place-items: center;
-  padding: 1.6rem 1rem 1.8rem;
+  padding: 1.1rem 0.75rem 1.25rem;
   background:
-    radial-gradient(circle at 50% 50%, rgba(97, 215, 121, 0.1), transparent 58%);
+    radial-gradient(circle at 50% 50%, rgba(97, 215, 121, 0.12), transparent 60%);
 }
 
 .ci-loop__svg {
-  width: min(34rem, 96%);
+  width: min(38rem, 100%);
   height: auto;
   display: block;
 }
-
-.ci-loop__label {
-  position: absolute;
-  z-index: 3;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--brand-navy);
-  border: 2px solid var(--brand-green);
-  border-radius: 999px;
-  padding: 0.28rem 0.75rem;
-}
-
-.ci-loop__label--design { top: 16%; left: 14%; }
-.ci-loop__label--operate { top: 16%; right: 14%; }
-.ci-loop__label--deploy { bottom: 16%; right: 14%; }
-.ci-loop__label--improve { bottom: 16%; left: 14%; }
 
 /* ===== Genii four dimensions (Figure 3) ===== */
 .genii-intel {
@@ -5242,6 +5223,214 @@ tr:nth-child(even) td {
 @media print {
   .mis-dash-figure,
   .mis-ai-figure {
+    break-inside: avoid;
+  }
+}
+
+
+/* ===== People differentiator collage ===== */
+.people-collage-figure {
+  margin: 0.5rem 0 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.people-collage-figure figcaption {
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+  background: rgba(239, 242, 246, 0.5);
+  border-top: 1px solid rgba(218, 223, 227, 0.6);
+  padding: 0.7rem 1rem;
+}
+
+.people-collage {
+  --pc-navy: var(--brand-navy);
+  --pc-green: var(--brand-green);
+  --pc-lime: var(--brand-lime);
+  position: relative;
+  min-height: 22rem;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(97, 215, 121, 0.18), transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(213, 236, 103, 0.22), transparent 40%),
+    linear-gradient(135deg, #f4f7f9 0%, #eef2f6 100%);
+  overflow: hidden;
+}
+
+.people-collage__hero {
+  position: absolute;
+  left: 4%;
+  top: 12%;
+  width: min(46%, 20rem);
+  aspect-ratio: 4 / 3;
+  border-radius: 1.1rem;
+  overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: 0 14px 30px rgba(19, 32, 46, 0.18);
+  transform: rotate(-3deg);
+  z-index: 2;
+}
+
+.people-collage__hero img,
+.people-collage__tile img,
+.people-collage__circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.people-collage__tile {
+  position: absolute;
+  border-radius: 0.9rem;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 10px 22px rgba(19, 32, 46, 0.14);
+  z-index: 2;
+}
+
+.people-collage__tile--wide {
+  right: 3%;
+  bottom: 10%;
+  width: min(34%, 15rem);
+  aspect-ratio: 16 / 10;
+  transform: rotate(4deg);
+}
+
+.people-collage__tile--wellbeing {
+  left: 34%;
+  bottom: 8%;
+  width: min(22%, 9.5rem);
+  aspect-ratio: 1;
+  border-radius: 1rem;
+  transform: rotate(-6deg);
+}
+
+.people-collage__circle {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 8px 18px rgba(19, 32, 46, 0.16);
+  background: #fff;
+  z-index: 3;
+}
+
+.people-collage__circle--a { width: 5.6rem; height: 5.6rem; right: 18%; top: 6%; border-color: var(--pc-green); }
+.people-collage__circle--b { width: 4.8rem; height: 4.8rem; right: 6%; top: 18%; border-color: var(--pc-lime); }
+.people-collage__circle--c { width: 5.2rem; height: 5.2rem; right: 28%; top: 22%; border-color: var(--pc-navy); }
+.people-collage__circle--d { width: 4.2rem; height: 4.2rem; right: 12%; top: 40%; border-color: var(--pc-green); }
+.people-collage__circle--e { width: 4.6rem; height: 4.6rem; left: 48%; top: 8%; border-color: var(--pc-lime); }
+.people-collage__circle--f { width: 3.8rem; height: 3.8rem; left: 58%; top: 28%; border-color: var(--pc-green); }
+.people-collage__circle--g { width: 4.4rem; height: 4.4rem; left: 2%; bottom: 18%; border-color: var(--pc-navy); }
+.people-collage__circle--h { width: 3.6rem; height: 3.6rem; left: 16%; bottom: 6%; border-color: var(--pc-lime); }
+.people-collage__circle--i { width: 4rem; height: 4rem; left: 52%; bottom: 28%; border-color: var(--pc-green); }
+.people-collage__circle--j { width: 3.4rem; height: 3.4rem; right: 36%; bottom: 18%; border-color: var(--pc-lime); }
+.people-collage__circle--k { width: 3.8rem; height: 3.8rem; right: 2%; bottom: 36%; border-color: var(--pc-navy); }
+.people-collage__circle--l { width: 3.5rem; height: 3.5rem; left: 42%; top: 36%; border-color: var(--pc-green); }
+.people-collage__circle--m { width: 3.2rem; height: 3.2rem; right: 44%; top: 4%; border-color: var(--pc-lime); }
+.people-collage__circle--n { width: 3.3rem; height: 3.3rem; left: 28%; top: 4%; border-color: var(--pc-navy); }
+.people-collage__circle--o { width: 3.1rem; height: 3.1rem; right: 22%; bottom: 4%; border-color: var(--pc-green); }
+
+.people-collage__badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-2deg);
+  z-index: 4;
+  background: var(--pc-navy);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 2px solid var(--pc-green);
+  box-shadow: 0 10px 24px rgba(19, 32, 46, 0.25);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .people-collage {
+    min-height: 26rem;
+  }
+  .people-collage__hero {
+    width: 62%;
+    left: 4%;
+    top: 8%;
+  }
+  .people-collage__tile--wide {
+    width: 48%;
+    right: 4%;
+    bottom: 8%;
+  }
+  .people-collage__tile--wellbeing {
+    display: none;
+  }
+  .people-collage__circle--i,
+  .people-collage__circle--j,
+  .people-collage__circle--l,
+  .people-collage__circle--m,
+  .people-collage__circle--n,
+  .people-collage__circle--o {
+    display: none;
+  }
+}
+
+/* ===== Recruitment lifecycle split ===== */
+.recruit-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 1.1rem 1.35rem;
+  align-items: center;
+  margin: 0.65rem 0 1.25rem;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+}
+
+.recruit-split__media {
+  margin: 0;
+  border-radius: 0.65rem;
+  overflow: hidden;
+  background: #f4f7f9;
+  border: 1px solid rgba(19, 32, 46, 0.08);
+}
+
+.recruit-split__media img {
+  display: block;
+  width: 100%;
+  max-height: 14rem;
+  object-fit: contain;
+  background: #fff;
+}
+
+.recruit-split__copy {
+  margin: 0;
+}
+
+.recruit-split__copy p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  .recruit-split {
+    grid-template-columns: 1fr;
+  }
+  .recruit-split__media img {
+    max-height: 12rem;
+  }
+}
+
+@media print {
+  .people-collage-figure,
+  .recruit-split {
     break-inside: avoid;
   }
 }
