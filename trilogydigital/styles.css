@@ -1744,6 +1744,16 @@ tr:nth-child(even) td {
   aspect-ratio: 16 / 10;
 }
 
+.figure--qa figcaption {
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+  background: rgba(239, 242, 246, 0.5);
+  border-top: 1px solid rgba(218, 223, 227, 0.6);
+  padding: 0.7rem 1rem;
+}
+
 .workflow-callouts {
   display: grid;
   gap: 0.85rem;
