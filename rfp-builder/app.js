@@ -764,8 +764,13 @@
       els.logoPreview.innerHTML = `<img src="${state.logoDataUrl}" alt="Customer logo">`;
       els.coverClientLogo.src = state.logoDataUrl;
       els.coverClientLogo.hidden = false;
+    } else {
+      els.logoPreview.innerHTML = "<span>Logo preview + colour palette</span>";
+      els.coverClientLogo.removeAttribute("src");
+      els.coverClientLogo.hidden = true;
     }
 
+    applyTheme();
     renderAll();
     toast(
       keepClient
