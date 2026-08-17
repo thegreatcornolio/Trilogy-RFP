@@ -131,6 +131,69 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  // Potential AI Savings dials: fill rings + count up on scroll
+  const aiSavingsBlocks = document.querySelectorAll('[data-animate="ai-savings"]');
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const finishAiDial = (ring) => {
+    const target = Number(ring.getAttribute("data-pct") || 0);
+    ring.style.setProperty("--pct", `${target}%`);
+    const valueEl = ring.querySelector(".dial__value");
+    if (valueEl) valueEl.textContent = `${target}%`;
+  };
+
+  const animateAiSavings = (root) => {
+    if (root.dataset.animated === "1") return;
+    root.dataset.animated = "1";
+    root.classList.add("is-inview");
+
+    const rings = [...root.querySelectorAll(".dial__ring[data-pct]")];
+    if (reduceMotion) {
+      rings.forEach(finishAiDial);
+      return;
+    }
+
+    rings.forEach((ring, index) => {
+      const target = Number(ring.getAttribute("data-pct") || 0);
+      const valueEl = ring.querySelector(".dial__value");
+      const delay = index * 140;
+      const duration = 1100;
+
+      window.setTimeout(() => {
+        const started = performance.now();
+        const tick = (now) => {
+          const t = Math.min(1, (now - started) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          const current = target * eased;
+          ring.style.setProperty("--pct", `${current.toFixed(1)}%`);
+          if (valueEl) valueEl.textContent = `${Math.round(current)}%`;
+          if (t < 1) requestAnimationFrame(tick);
+          else finishAiDial(ring);
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    });
+  };
+
+  if (aiSavingsBlocks.length && "IntersectionObserver" in window) {
+    const aiIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          animateAiSavings(entry.target);
+          aiIo.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.35, rootMargin: "0px 0px -6% 0px" }
+    );
+    aiSavingsBlocks.forEach((block) => aiIo.observe(block));
+    window.addEventListener("beforeprint", () => {
+      aiSavingsBlocks.forEach((block) => animateAiSavings(block));
+    });
+  } else {
+    aiSavingsBlocks.forEach((block) => animateAiSavings(block));
+  }
+
   // Glossary A–Z letter index
   const glossary = document.querySelector("[data-glossary]");
   if (glossary) {

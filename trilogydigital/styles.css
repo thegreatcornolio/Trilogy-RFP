@@ -1996,6 +1996,32 @@ tr:nth-child(even) td {
   --secondary: rgba(213, 236, 103, 0.35);
 }
 
+.ai-savings[data-animate="ai-savings"].is-inview .dial {
+  animation: ai-savings-rise 0.55s ease both;
+}
+
+.ai-savings[data-animate="ai-savings"].is-inview .dial:nth-child(1) { animation-delay: 0.05s; }
+.ai-savings[data-animate="ai-savings"].is-inview .dial:nth-child(2) { animation-delay: 0.14s; }
+.ai-savings[data-animate="ai-savings"].is-inview .dial:nth-child(3) { animation-delay: 0.23s; }
+.ai-savings[data-animate="ai-savings"].is-inview .dial:nth-child(4) { animation-delay: 0.32s; }
+
+@keyframes ai-savings-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-savings[data-animate="ai-savings"].is-inview .dial {
+    animation: none;
+  }
+}
+
 .ai-savings__split {
   display: grid;
   gap: 1rem;
