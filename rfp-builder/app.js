@@ -475,7 +475,7 @@
 
   /** Drop retired template sections (e.g. People merged into Operational Leadership) */
   function pruneRetiredSections() {
-    const retired = new Set(["section-09"]);
+    const retired = new Set(["section-09", "section-06"]);
     const before = state.sectionOrder.length;
     state.sectionOrder = state.sectionOrder.filter((id) => !retired.has(id));
     return state.sectionOrder.length !== before;
