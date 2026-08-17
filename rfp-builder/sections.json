@@ -18,7 +18,7 @@
       "editable": true,
       "placeholderKey": "specific-client-experience",
       "placeholderLabel": "Specific Client Experience",
-      "summary": "Company overview switches automatically by entity (Digital / BPO / GCC entity packs), plus the Specific Client Experience placeholder."
+      "summary": "Company overview switches automatically by entity (Digital / BPO / GCC), plus the Specific Client Experience placeholder."
     },
     {
       "id": "section-03",
@@ -39,7 +39,14 @@
       "num": "05",
       "title": "Service Offering",
       "editable": false,
-      "summary": "Journey choice, BPO, Trilogy Ai, SLAs and sectors."
+      "summary": "Journey choice, BPO, GCC, Trilogy Ai, SLAs and sectors."
+    },
+    {
+      "id": "section-06",
+      "num": "06",
+      "title": "Global Capability Centres",
+      "editable": false,
+      "summary": "DBIT / own-your-operation model."
     },
     {
       "id": "section-07",
