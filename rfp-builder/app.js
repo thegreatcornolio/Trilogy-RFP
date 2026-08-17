@@ -452,15 +452,27 @@
   function renderLibrary() {
     els.library.innerHTML = "";
     state.catalog.forEach((sec) => {
+      const used = state.sectionOrder.includes(sec.id);
       const li = document.createElement("li");
-      li.className =
-        "library-item" + (state.sectionOrder.includes(sec.id) ? " is-used" : "");
+      li.className = "library-item" + (used ? " is-used" : "");
       li.dataset.id = sec.id;
       li.innerHTML = `<div class="sec-num">${sec.num}</div>
         <div class="sec-body"><strong>${sec.title}</strong><span>${sec.summary}${
         sec.editable ? " · editable" : ""
-      }</span></div>`;
-      li.addEventListener("dblclick", () => addSection(sec.id));
+      }</span></div>
+        <button type="button" class="library-add"${
+          used ? " disabled" : ""
+        } aria-label="Add ${sec.title}">${used ? "Added" : "Add"}</button>`;
+      const addBtn = li.querySelector(".library-add");
+      addBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (used) return;
+        addSection(sec.id);
+      });
+      li.addEventListener("dblclick", () => {
+        if (!used) addSection(sec.id);
+      });
       els.library.appendChild(li);
     });
   }
