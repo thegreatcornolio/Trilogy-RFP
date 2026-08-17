@@ -2095,25 +2095,30 @@ tr:nth-child(even) td {
 }
 
 .tk-outcome {
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0.75rem;
-  background: #fff;
-  padding: 1rem 0.9rem;
+  background: var(--brand-navy);
+  padding: 1.1rem 1rem;
+  color: #fff;
 }
 
 .tk-outcome__value {
   font-family: var(--font-heading);
-  font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
   font-weight: 700;
   line-height: 1.1;
-  color: var(--brand-navy);
+  color: var(--brand-green);
+}
+
+.tk-outcome:nth-child(even) .tk-outcome__value {
+  color: var(--brand-lime);
 }
 
 .tk-outcome__label {
-  margin-top: 0.45rem;
+  margin-top: 0.5rem;
   font-size: 0.75rem;
   line-height: 1.4;
-  color: var(--muted-foreground);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 @media (max-width: 520px) {

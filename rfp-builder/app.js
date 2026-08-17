@@ -290,10 +290,29 @@
     return h === "#fff" || h === "#ffffff";
   }
 
-  /** Always offer white so Document Type / accents stay readable on dark logos */
-  function ensureWhiteInPalette(palette) {
+  function isNearNavy(hex) {
+    const h = String(hex || "").toLowerCase();
+    return h === "#13202e" || h === "#0e1b2a";
+  }
+
+  /** Always keep Trilogy greens, navy and white selectable — even with a client logo */
+  const TRILOGY_BRAND_COLOURS = [
+    "#61d779",
+    "#d5ec67",
+    "#2f9e4a",
+    "#13202e",
+    "#ffffff",
+  ];
+
+  function ensureBrandPalette(palette) {
     const list = Array.isArray(palette) ? [...palette] : [];
-    if (!list.some(isNearWhite)) list.push("#ffffff");
+    const have = new Set(list.map((c) => String(c).toLowerCase()));
+    TRILOGY_BRAND_COLOURS.forEach((c) => {
+      if (!have.has(c.toLowerCase())) {
+        list.push(c);
+        have.add(c.toLowerCase());
+      }
+    });
     return list;
   }
 
@@ -306,12 +325,7 @@
 
   function clearLogo() {
     state.logoDataUrl = "";
-    state.palette = ensureWhiteInPalette([
-      "#61d779",
-      "#d5ec67",
-      "#2f9e4a",
-      "#e2b93b",
-    ]);
+    state.palette = ensureBrandPalette([]);
     state.theme = {
       primary: "#61d779",
       accent: "#d5ec67",
@@ -332,7 +346,7 @@
   function renderPalette() {
     // Keep palette container empty — roles show colours directly
     if (els.themeSwatches) els.themeSwatches.innerHTML = "";
-    state.palette = ensureWhiteInPalette(state.palette);
+    state.palette = ensureBrandPalette(state.palette);
 
     const roles = [
       ["primary", "Primary"],
@@ -347,14 +361,21 @@
       swatches.className = "theme-role__swatches";
       state.palette.forEach((c) => {
         const btn = document.createElement("button");
+        const light = isNearWhite(c);
+        const navy = isNearNavy(c);
         btn.type = "button";
         btn.className =
           "swatch" +
           (state.theme[key] === c ? " is-selected" : "") +
-          (isNearWhite(c) ? " swatch--light" : "");
+          (light ? " swatch--light" : "") +
+          (navy ? " swatch--navy" : "");
         btn.style.background = c;
         btn.setAttribute("aria-label", `${label} ${c}`);
-        btn.title = isNearWhite(c) ? `${label} · White` : label;
+        btn.title = light
+          ? `${label} · White`
+          : navy
+            ? `${label} · Trilogy navy`
+            : label;
         btn.addEventListener("click", () => {
           state.theme[key] = c;
           state.status = "draft";
@@ -1245,7 +1266,7 @@
       applyTheme();
       renderOrder();
       autosaveLocal();
-      toast(`Logo applied — ${state.palette.length} colours available (incl. white)`);
+      toast(`Logo applied — Trilogy colours stay available alongside logo colours`);
     };
     reader.readAsDataURL(file);
   });
