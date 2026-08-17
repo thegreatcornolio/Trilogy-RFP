@@ -4857,3 +4857,365 @@ tr:nth-child(even) td {
     margin-bottom: 0.85rem;
   }
 }
+
+
+/* ===== MIS live dashboard + AI insights ===== */
+.mis-dash-figure,
+.mis-ai-figure {
+  margin: 0.85rem 0 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.mis-dash-figure figcaption,
+.mis-ai-figure figcaption {
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+  background: rgba(239, 242, 246, 0.5);
+  border-top: 1px solid rgba(218, 223, 227, 0.6);
+  padding: 0.7rem 1rem;
+}
+
+.mis-dash {
+  padding: 1rem;
+  background: #eef1f5;
+  display: grid;
+  gap: 1rem;
+}
+
+.mis-dash__section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(19, 32, 46, 0.55);
+  margin: 0 0 0.65rem 0.15rem;
+}
+
+.mis-dash__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.mis-kpi {
+  background: #fff;
+  border-radius: 0.85rem;
+  padding: 0.9rem 0.95rem 1rem;
+  border-top: 4px solid #16a34a;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+  min-height: 10.5rem;
+}
+
+.mis-kpi--miss {
+  border-top-color: #dc2626;
+}
+
+.mis-kpi__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.mis-kpi__icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(19, 32, 46, 0.06);
+  color: var(--brand-navy);
+}
+
+.mis-kpi__badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.22rem 0.55rem;
+  background: rgba(22, 163, 74, 0.12);
+  color: #15803d;
+  white-space: nowrap;
+}
+
+.mis-kpi--miss .mis-kpi__badge {
+  background: rgba(220, 38, 38, 0.12);
+  color: #b91c1c;
+}
+
+.mis-kpi__label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(19, 32, 46, 0.55);
+}
+
+.mis-kpi__value {
+  margin-top: 0.25rem;
+  font-size: clamp(1.55rem, 2.8vw, 2rem);
+  font-weight: 800;
+  color: var(--brand-navy);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.mis-kpi__target {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: rgba(19, 32, 46, 0.7);
+}
+
+.mis-kpi__detail {
+  margin-top: 0.35rem;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  color: rgba(19, 32, 46, 0.55);
+}
+
+.mis-ai {
+  padding: 1rem;
+  background: #eef1f5;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.mis-ai__ask {
+  background: #fff;
+  border-radius: 0.9rem;
+  padding: 1rem 1.05rem 1.05rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+.mis-ai__ask-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(19, 32, 46, 0.55);
+  margin-bottom: 0.7rem;
+}
+
+.mis-ai__ask-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.mis-ai__input {
+  border: 1px solid rgba(19, 32, 46, 0.12);
+  border-radius: 0.7rem;
+  padding: 0.75rem 0.9rem;
+  font-size: 0.86rem;
+  color: rgba(19, 32, 46, 0.45);
+  background: #f8fafc;
+}
+
+.mis-ai__ask-btn {
+  border: 0;
+  border-radius: 0.7rem;
+  background: var(--brand-lime);
+  color: var(--brand-navy);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.75rem 1.15rem;
+  cursor: default;
+}
+
+.mis-ai__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.mis-ai__chips span {
+  border-radius: 999px;
+  border: 1px solid rgba(19, 32, 46, 0.12);
+  background: #f8fafc;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  color: rgba(19, 32, 46, 0.7);
+}
+
+.mis-ai__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.mis-ai__stat {
+  background: #fff;
+  border-radius: 0.85rem;
+  padding: 0.9rem 0.95rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+.mis-ai__stat-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(19, 32, 46, 0.5);
+}
+
+.mis-ai__stat-value {
+  margin-top: 0.35rem;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.mis-ai__stat-value--green { color: #16a34a; }
+.mis-ai__stat-value--sm { font-size: 0.95rem; font-weight: 700; }
+.mis-ai__stat-value--row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.15rem;
+}
+
+.mis-ai__donut {
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  background: conic-gradient(#16a34a 0 76%, #dc2626 76% 100%);
+  box-shadow: inset 0 0 0 4px #fff;
+  flex: none;
+}
+
+.mis-ai__stat-meta {
+  margin-top: 0.3rem;
+  font-size: 0.74rem;
+  color: rgba(19, 32, 46, 0.55);
+  line-height: 1.35;
+}
+
+.mis-ai__split-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(19, 32, 46, 0.55);
+  margin: 0.15rem 0 0 0.15rem;
+}
+
+.mis-ai__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.mis-ai__panel {
+  background: #fff;
+  border-radius: 0.85rem;
+  padding: 1rem 1.05rem 1.1rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+.mis-ai__panel h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--brand-navy);
+}
+
+.mis-ai__panel p {
+  margin: 0.25rem 0 0.85rem;
+  font-size: 0.78rem;
+  color: rgba(19, 32, 46, 0.55);
+  line-height: 1.4;
+}
+
+.mis-ai__stack {
+  display: flex;
+  height: 0.85rem;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.mis-ai__stack-neg { background: #dc2626; }
+.mis-ai__stack-neu { background: #94a3b8; }
+.mis-ai__stack-pos { background: #16a34a; }
+
+.mis-ai__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.9rem;
+  margin-top: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.mis-ai__legend .is-neg { color: #b91c1c; }
+.mis-ai__legend .is-neu { color: #64748b; }
+.mis-ai__legend .is-pos { color: #15803d; }
+
+.mis-ai__stars {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mis-ai__star-row {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr 1.6rem;
+  gap: 0.55rem;
+  align-items: center;
+  font-size: 0.78rem;
+  color: rgba(19, 32, 46, 0.7);
+}
+
+.mis-ai__bar {
+  height: 0.7rem;
+  border-radius: 999px;
+  background: #eef2f7;
+  overflow: hidden;
+}
+
+.mis-ai__bar i {
+  display: block;
+  height: 100%;
+  background: #eab308;
+  border-radius: 999px;
+}
+
+.mis-ai__star-row strong {
+  text-align: right;
+  color: var(--brand-navy);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .mis-dash__grid,
+  .mis-ai__stats,
+  .mis-ai__split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .mis-dash__grid,
+  .mis-ai__stats,
+  .mis-ai__split {
+    grid-template-columns: 1fr;
+  }
+
+  .mis-ai__ask-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .mis-dash-figure,
+  .mis-ai-figure {
+    break-inside: avoid;
+  }
+}
