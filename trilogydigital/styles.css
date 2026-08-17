@@ -642,6 +642,13 @@ h4 {
 }
 
 /* —— Why Cape Town / Why South Africa (Value Prop) —— */
+.vp-subhead {
+  margin: 1.35rem 0 0.65rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+
 .location-banner {
   position: relative;
   overflow: hidden;
