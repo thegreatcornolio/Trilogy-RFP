@@ -389,6 +389,10 @@ a {
   border-bottom: 1px solid var(--border);
 }
 
+#document-contents .section-head {
+  gap: 0;
+}
+
 .section-num {
   font-family: var(--font-heading);
   font-size: 1.5rem;

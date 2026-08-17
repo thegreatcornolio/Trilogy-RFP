@@ -388,13 +388,14 @@
 
   function renderOrder() {
     els.orderList.innerHTML = "";
-    state.sectionOrder.forEach((id) => {
+    state.sectionOrder.forEach((id, index) => {
       const sec = sectionById(id);
       if (!sec) return;
+      const displayNum = String(index + 1).padStart(2, "0");
       const li = document.createElement("li");
       li.className = "order-item";
       li.dataset.id = id;
-      li.innerHTML = `<div class="sec-num">${sec.num}</div>
+      li.innerHTML = `<div class="sec-num">${displayNum}</div>
         <div class="sec-body"><strong>${sec.title}</strong><span>${sec.summary}</span></div>
         <button type="button" class="remove" aria-label="Remove">×</button>`;
       li.querySelector(".remove").addEventListener("click", () => {
@@ -404,6 +405,44 @@
       });
       els.orderList.appendChild(li);
     });
+  }
+
+  function sectionTitleForId(id, blockHtml) {
+    const sec = sectionById(id);
+    if (sec?.title) return sec.title;
+    const m = String(blockHtml || "").match(/<h2>([\s\S]*?)<\/h2>/);
+    if (m) {
+      return m[1].replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").trim();
+    }
+    return id;
+  }
+
+  function buildDocumentContentsHtml(entries) {
+    const rows = entries
+      .map(
+        (entry, i) =>
+          `<tr><td>${i + 1}</td><td><a href="#${entry.id}">${escapeHtml(
+            entry.title
+          )}</a></td></tr>`
+      )
+      .join("\n                  ");
+    return `<section class="proposal-page" id="document-contents">
+        <div class="section-head">
+          <h2>Document Contents</h2>
+        </div>
+        <div class="section-body">
+          <div class="covers-box" id="doc-contents">
+            <div class="covers-box__head">Document contents</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  ${rows}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>`;
   }
 
   function renderPlaceholders() {
@@ -718,12 +757,48 @@
       );
     }
 
-    // Keep only selected sections (+ cover)
-    const wanted = new Set(payload.sectionOrder || []);
+    // Keep, reorder and renumber selected sections; add Document Contents
+    const sectionBlocks = new Map();
     html = html.replace(
       /<section class="proposal-page" id="(section-\d+)">[\s\S]*?<\/section>/g,
-      (block, id) => (wanted.has(id) ? block : "")
+      (block, id) => {
+        sectionBlocks.set(id, block);
+        return "<!--__SECTION_SLOT__-->";
+      }
     );
+    html = html.replace(/(?:<!--__SECTION_SLOT__-->\s*)+/g, "<!--__SECTIONS__-->");
+
+    const orderedIds = (payload.sectionOrder || []).filter((id) =>
+      sectionBlocks.has(id)
+    );
+    const orderedEntries = orderedIds.map((id, index) => {
+      const num = String(index + 1).padStart(2, "0");
+      let block = sectionBlocks.get(id);
+      block = block.replace(
+        /(<span class="section-num">)[\s\S]*?(<\/span>)/,
+        `$1${num}$2`
+      );
+      return {
+        id,
+        num,
+        title: sectionTitleForId(id, block),
+        block,
+      };
+    });
+
+    const assembledSections =
+      (orderedEntries.length
+        ? `${buildDocumentContentsHtml(orderedEntries)}\n`
+        : "") + orderedEntries.map((entry) => entry.block).join("\n");
+
+    if (html.includes("<!--__SECTIONS__-->")) {
+      html = html.replace("<!--__SECTIONS__-->", assembledSections);
+    } else if (assembledSections) {
+      html = html.replace(
+        /(<\/section>\s*)(<\/div>\s*<\/main>)/,
+        `$1${assembledSections}\n      $2`
+      );
+    }
 
     // Inject editable placeholder content
     const ph = payload.placeholders || {};
