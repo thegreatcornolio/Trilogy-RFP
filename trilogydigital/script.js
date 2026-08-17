@@ -157,4 +157,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+  // Executive Summary savings calculator (website model)
+  const savingsCalc = document.querySelector("[data-savings-calc]");
+  if (savingsCalc) {
+    const seatsInput = savingsCalc.querySelector("[data-seats]");
+    const costInput = savingsCalc.querySelector("[data-cost]");
+    const seatsLabel = savingsCalc.querySelector("[data-seats-label]");
+    const costLabel = savingsCalc.querySelector("[data-cost-label]");
+    const ukValue = savingsCalc.querySelector("[data-uk-value]");
+    const ukMeta = savingsCalc.querySelector("[data-uk-meta]");
+    const bpoValue = savingsCalc.querySelector("[data-bpo-value]");
+    const gccValue = savingsCalc.querySelector("[data-gcc-value]");
+    const bpoBadge = savingsCalc.querySelector(".savings-calc__badge:not(.savings-calc__badge--lime)");
+    const gccBadge = savingsCalc.querySelector(".savings-calc__badge--lime");
+    const gbp = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+      maximumFractionDigits: 0,
+    });
+    const formatK = (n) => `£${Math.round(n / 1000).toLocaleString("en-GB")}k`;
+
+    const update = () => {
+      const seats = Number(seatsInput.value) || 0;
+      const cost = Number(costInput.value) || 0;
+      const uk = seats * cost * 12;
+      const bpo = uk * 0.5;
+      const gcc = bpo * 0.75;
+      const bpoSave = 50;
+      const gccSave = uk ? Math.round((1 - gcc / uk) * 100) : 0;
+
+      if (seatsLabel) seatsLabel.textContent = String(seats);
+      if (costLabel) costLabel.textContent = gbp.format(cost);
+      if (ukValue) ukValue.textContent = formatK(uk);
+      if (ukMeta) ukMeta.textContent = `per year · ${seats} seats`;
+      if (bpoValue) bpoValue.textContent = formatK(bpo);
+      if (gccValue) gccValue.textContent = formatK(gcc);
+      if (bpoBadge) bpoBadge.textContent = `Save ~${bpoSave}%`;
+      if (gccBadge) gccBadge.textContent = `Save ~${gccSave}% total`;
+    };
+
+    seatsInput?.addEventListener("input", update);
+    costInput?.addEventListener("input", update);
+    update();
+  }
+
+
 });
