@@ -1731,6 +1731,93 @@ tr:nth-child(even) td {
   }
 }
 
+.figure__media--contain img {
+  object-fit: contain;
+  background: #fff;
+}
+
+.figure--carom .figure__media {
+  aspect-ratio: 16 / 10;
+}
+
+.ai-savings {
+  margin: 0.5rem 0 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.ai-savings__dials {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem 1.15rem;
+}
+
+@media (min-width: 720px) {
+  .ai-savings__dials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ai-savings__dials .dial {
+  align-items: flex-start;
+}
+
+.ai-savings__dials .dial__ring {
+  --secondary: rgba(213, 236, 103, 0.35);
+}
+
+.ai-savings__split {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem 1.15rem;
+  border-top: 1px solid var(--border);
+  background: rgba(239, 242, 246, 0.55);
+}
+
+@media (min-width: 720px) {
+  .ai-savings__split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ai-savings__split h4 {
+  margin: 0 0 0.4rem;
+  color: var(--brand-navy);
+  font-size: 1rem;
+}
+
+.ai-savings__split p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(19, 32, 46, 0.88);
+}
+
+.ai-savings__quote {
+  border-top: 1px solid rgba(97, 215, 121, 0.35);
+  background: rgba(97, 215, 121, 0.12);
+  border-left: 4px solid var(--brand-green);
+  padding: 1rem 1.15rem 1.15rem;
+}
+
+.ai-savings__quote p {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--brand-navy);
+}
+
+.ai-savings__quote cite {
+  display: block;
+  font-size: 0.78rem;
+  font-style: normal;
+  color: rgba(19, 32, 46, 0.7);
+}
+
 /* —— Technology: CAROM + AI platforms + orchestration —— */
 .carom-figure {
   margin: 0.5rem 0 1.5rem;
