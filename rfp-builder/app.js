@@ -69,7 +69,7 @@
       secondary: "#2f9e4a",
       navy: "#13202e",
     },
-    palette: ["#61d779", "#d5ec67", "#2f9e4a", "#e2b93b", "#ffffff"],
+    palette: ["#61d779", "#d5ec67", "#2f9e4a", "#13202e", "#ffffff"],
     selectedPaletteIndex: 0,
     logoDataUrl: "",
     status: "draft",
@@ -736,7 +736,11 @@
       navy: "#13202e",
       ...(d.theme || {}),
     };
-    state.palette = d.palette && d.palette.length ? d.palette : [state.theme.primary, state.theme.accent, state.theme.secondary];
+    state.palette = ensureBrandPalette(
+      d.palette && d.palette.length
+        ? d.palette
+        : [state.theme.primary, state.theme.accent, state.theme.secondary]
+    );
     state.logoDataUrl = d.logoDataUrl || "";
     state.status = d.status || "draft";
     state.currentSlug = slug;
