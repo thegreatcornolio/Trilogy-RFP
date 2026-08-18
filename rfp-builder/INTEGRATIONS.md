@@ -5,7 +5,7 @@ Configure the three webhook URLs in `app.js` → `CONFIG.webhooks`.
 | Event | Status | Detail |
 | --- | --- | --- |
 | `saveDraft` | Wired | Existing PA HTTP URL in `app.js` |
-| `finalCommit` | **Build next** | Step-by-step: [`FINAL-COMMIT-POWER-AUTOMATE.md`](./FINAL-COMMIT-POWER-AUTOMATE.md) |
+| `finalCommit` | **Wired** | HTTP URL in `app.js`; see [`FINAL-COMMIT-POWER-AUTOMATE.md`](./FINAL-COMMIT-POWER-AUTOMATE.md) |
 | `sendForAcceptance` | Not wired | DocuSign envelope flow (below) |
 
 Sample payload: `proposals/_schema/final-commit.example.json`
@@ -39,7 +39,7 @@ Sample payload: `proposals/_schema/final-commit.example.json`
 5. Optional: Teams notification with  
    `https://proposal.trilogybpo.com/proposals/{client}/{doc}/`
 
-Until `CONFIG.webhooks.finalCommit` is set, the builder downloads HTML/JSON locally as a fallback.
+Until the webhook fails or is removed, successful Final commits publish via Power Automate and no longer download files locally. Downloads remain as a fallback only.
 
 ---
 

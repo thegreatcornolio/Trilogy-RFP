@@ -7,7 +7,8 @@
     webhooks: {
       saveDraft:
         "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/12897ac2d1e94a149bd39340b39ac8c9/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VqvO6vdmGXNlJj9PJIiu0J46H762ddWTxLEcL6Soa90",
-      finalCommit: "",
+      finalCommit:
+        "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/07/workflows/8db2801b2037475cb210d73b416f9682/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZkC9WTB8WUx6tHfbihGbeb9Z-Y7Aup4-N2VAuuX5aTM",
       sendForAcceptance: "",
     },
     // Client-side gate only (static site) — change this PIN to restrict draft admin tools
@@ -1750,7 +1751,13 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    return { ok: res.ok, status: res.status };
+    let data = null;
+    try {
+      data = await res.json();
+    } catch {
+      data = null;
+    }
+    return { ok: res.ok, status: res.status, data };
   }
 
   function download(filename, text, type = "application/json") {
@@ -2741,21 +2748,30 @@ if (ph["case-studies"] !== undefined) {
       payload.event = "finalCommit";
       payload.builtHtml = await assembleFullProposal(payload, { isPreview: false });
       autosaveLocal({ updateIndex: true });
-      download(`${payload.slug}-index.html`, payload.builtHtml, "text/html");
-      download(
-        `${payload.slug}-draft.json`,
-        JSON.stringify({ ...payload, builtHtml: undefined }, null, 2)
-      );
-      download(
-        `${payload.slug}-costing.json`,
-        JSON.stringify(costingExportPayload(), null, 2)
-      );
+
+      const fallbackDownloads = () => {
+        download(`${payload.slug}-index.html`, payload.builtHtml, "text/html");
+        download(
+          `${payload.slug}-draft.json`,
+          JSON.stringify({ ...payload, builtHtml: undefined }, null, 2)
+        );
+        download(
+          `${payload.slug}-costing.json`,
+          JSON.stringify(costingExportPayload(), null, 2)
+        );
+      };
+
       const res = await postWebhook(CONFIG.webhooks.finalCommit, payload);
       if (res.skipped) {
+        fallbackDownloads();
         toast(`Final HTML exported — ${payload.paths.folder}`);
       } else if (res.ok) {
-        toast("Final commit sent to build flow");
+        const liveUrl =
+          res.data?.url ||
+          `https://proposal.trilogybpo.com/${payload.paths.folder}`;
+        toast(`Final commit published — ${liveUrl}`);
       } else {
+        fallbackDownloads();
         toast(`Commit webhook failed (${res.status}) — files downloaded`);
       }
       updatePreview();
