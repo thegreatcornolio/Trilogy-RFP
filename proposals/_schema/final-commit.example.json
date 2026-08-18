@@ -1,0 +1,58 @@
+{
+  "event": "finalCommit",
+  "version": 4,
+  "status": "committed",
+  "slug": "acme-corp__short-company-overview",
+  "clientSlug": "acme-corp",
+  "docSlug": "short-company-overview",
+  "updatedAt": "2026-08-18T15:00:00.000Z",
+  "committedAt": "2026-08-18T15:00:00.000Z",
+  "meta": {
+    "entityName": "Short Company Overview",
+    "clientName": "Acme Corp",
+    "documentType": "Short Company Overview",
+    "proposalTitle": "Short Company Overview",
+    "date": "2026-08-18",
+    "dateDisplay": "18 August 2026",
+    "validUntil": "Valid for 90 days",
+    "preparedBy": "Craig Shalekoff",
+    "title": "Commercial",
+    "contact": "craigs@trilogybpo.com"
+  },
+  "paths": {
+    "folder": "proposals/acme-corp/short-company-overview/",
+    "draft": "proposals/acme-corp/short-company-overview/draft.json",
+    "final": "proposals/acme-corp/short-company-overview/index.html",
+    "acceptance": "proposals/acme-corp/short-company-overview/acceptance.json",
+    "logo": "proposals/acme-corp/logo.png",
+    "commercialFolder": "proposals/acme-corp/short-company-overview/commercial/",
+    "costingJson": "proposals/acme-corp/short-company-overview/commercial/costing.json",
+    "costingCsv": "proposals/acme-corp/short-company-overview/commercial/costing.csv"
+  },
+  "sectionOrder": [
+    "section-01",
+    "section-02",
+    "section-03",
+    "section-04",
+    "section-05",
+    "section-06",
+    "section-08",
+    "section-10",
+    "section-11",
+    "section-12",
+    "section-17"
+  ],
+  "placeholders": {
+    "executive-summary": "<h3>Company Overview</h3><p>Example HTML summary.</p>"
+  },
+  "commercialSchedule": {
+    "includeInProposal": true,
+    "currency": "GBP",
+    "hoursPerMonth": 160,
+    "title": "Proposed Commercial Schedule",
+    "disclaimer": "Indicative rates for discussion. Final rates confirmed in the Statement of Work.",
+    "rows": []
+  },
+  "builtHtml": "<!doctype html><html><body><h1>Built proposal HTML goes here</h1></body></html>",
+  "notes": "Omit builtHtml from the draft.json file written to GitHub. Use paths.final for index.html."
+}
