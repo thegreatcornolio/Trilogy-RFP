@@ -742,13 +742,14 @@
 
   function renderLibrary() {
     els.library.innerHTML = "";
-    const allAdded =
+    const allInLibraryOrder =
       state.catalog.length > 0 &&
-      state.catalog.every((sec) => state.sectionOrder.includes(sec.id));
+      state.catalog.length === state.sectionOrder.length &&
+      state.catalog.every((sec, i) => state.sectionOrder[i] === sec.id);
     const addAllBtn = document.getElementById("btnAddAllSections");
     if (addAllBtn) {
-      addAllBtn.disabled = allAdded;
-      addAllBtn.textContent = allAdded ? "All added" : "Add all";
+      addAllBtn.disabled = allInLibraryOrder;
+      addAllBtn.textContent = allInLibraryOrder ? "All added" : "Add all";
     }
     state.catalog.forEach((sec) => {
       const used = state.sectionOrder.includes(sec.id);
@@ -2110,6 +2111,10 @@ if (ph["case-studies"] !== undefined) {
 
   document.getElementById("btnNewDocument").addEventListener("click", () => {
     startNewDocument();
+  });
+
+  document.getElementById("btnAddAllSections")?.addEventListener("click", () => {
+    addAllSections();
   });
 
   // Commercial schedule editor (admin-only)
