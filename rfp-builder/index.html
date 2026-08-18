@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=exec-summary-1">
+  <link rel="stylesheet" href="styles.css?v=add-all-1">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=exec-summary-1" defer></script>
+  <script src="app.js?v=add-all-1" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -83,8 +83,11 @@
       </section>
 
       <section class="block">
-        <h2>2. Section library</h2>
-        <p class="hint">Click <strong>Add</strong> (or drag) to include a section. Editable sections open a content box below.</p>
+        <div class="block__head">
+          <h2>2. Section library</h2>
+          <button type="button" class="btn btn--accent btn--small" id="btnAddAllSections" title="Add every section in library order">Add all</button>
+        </div>
+        <p class="hint">Click <strong>Add</strong> (or drag) to include a section, or use <strong>Add all</strong> then remove what you don’t need from Proposal order. Editable sections open a content box below.</p>
         <ul class="library" id="library"></ul>
       </section>
 
