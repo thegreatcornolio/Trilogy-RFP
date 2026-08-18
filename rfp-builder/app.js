@@ -1100,7 +1100,6 @@
     });
     return [
       "This Executive Summary highlights the sections included in this proposal.",
-      "",
       ...blocks,
     ].join("\n\n");
   }
