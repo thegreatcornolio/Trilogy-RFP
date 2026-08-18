@@ -5459,6 +5459,17 @@ tr:nth-child(even) td {
   line-height: 1.45;
 }
 
+.commercial-schedule__note {
+  margin: 0 0 0.85rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(239, 242, 246, 0.7);
+  border: 1px solid rgba(19, 32, 46, 0.12);
+  font-size: 0.84rem;
+  color: rgba(19, 32, 46, 0.78);
+  line-height: 1.45;
+}
+
 .commercial-schedule__table td:nth-child(2),
 .commercial-schedule__table td:nth-child(4),
 .commercial-schedule__table td:nth-child(5),

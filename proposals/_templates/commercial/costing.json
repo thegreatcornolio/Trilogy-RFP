@@ -1,6 +1,7 @@
 {
   "version": 1,
   "currency": "GBP",
+  "hoursPerMonth": 160,
   "includeInProposal": true,
   "title": "Proposed Commercial Schedule",
   "disclaimer": "Indicative rates for discussion. Final rates confirmed in the Statement of Work.",

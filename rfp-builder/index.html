@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=admin-drafts-1">
+  <link rel="stylesheet" href="styles.css?v=commercial-3">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=commercial-2" defer></script>
+  <script src="app.js?v=commercial-3" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -120,13 +120,19 @@
       <div class="block" id="commercialScheduleBlock" hidden>
         <div class="block__head">
           <h2>Commercial schedule</h2>
-          <label class="inline-check">
+          <label class="inline-check" id="commercialIncludeLabel">
             <input type="checkbox" id="commercialInclude" checked>
             Include in proposal
           </label>
         </div>
-        <p class="hint">Deal-specific call-centre pricing. Click into any cell to edit. Use <strong>Add row</strong> or <strong>Load starter roles</strong> to begin. Saved into the draft and exported as <code>commercial/costing.json</code>.</p>
-        <div class="commercial-editor">
+        <p class="hint" id="commercialHint">Deal-specific call-centre pricing. Owner-only edit. Monthly calc changes with Model (FTE vs Hour vs Interaction). Saved as <code>commercial/costing.json</code>.</p>
+        <div class="commercial-locked" id="commercialLocked" hidden>
+          <p><strong>Commercials sit with the commercial owner.</strong></p>
+          <p>Inserting or editing deal pricing requires Admin unlock. Others can still preview a schedule already saved in the draft.</p>
+          <button type="button" class="btn btn--primary" id="btnCommercialUnlock">Unlock Admin to edit</button>
+          <div class="commercial-readonly" id="commercialReadonly" hidden></div>
+        </div>
+        <div class="commercial-editor" id="commercialEditor">
           <div class="form-grid commercial-editor__meta">
             <label>Currency
               <select id="commercialCurrency">
@@ -136,6 +142,9 @@
                 <option value="ZAR">ZAR</option>
               </select>
             </label>
+            <label>Hours / FTE / month
+              <input id="commercialHoursPerMonth" type="number" min="1" step="0.5" value="160" title="Used when Model = Hour: Monthly = FTE × hours × hourly rate">
+            </label>
             <label class="full">Schedule title
               <input id="commercialTitle" type="text" value="Proposed Commercial Schedule">
             </label>
@@ -143,6 +152,11 @@
               <input id="commercialDisclaimer" type="text" value="Indicative rates for discussion. Final rates confirmed in the Statement of Work.">
             </label>
           </div>
+          <p class="hint commercial-calc-hint" id="commercialCalcHint">
+            <strong>FTE:</strong> FTE × monthly rate ·
+            <strong>Hour:</strong> FTE × hours/month × hourly rate ·
+            <strong>Interaction / Gain-share:</strong> qty × rate (qty in FTE column)
+          </p>
           <div class="commercial-editor__actions">
             <button type="button" class="btn btn--primary" id="btnCommercialSeed">Load starter roles</button>
             <button type="button" class="btn btn--accent" id="btnCommercialAddRow">+ Add row</button>
@@ -157,7 +171,7 @@
               <thead>
                 <tr>
                   <th>Role</th>
-                  <th>FTE</th>
+                  <th>FTE / Qty</th>
                   <th>Unit</th>
                   <th>Rate</th>
                   <th>Monthly</th>
