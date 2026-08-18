@@ -1741,7 +1741,9 @@ tr:nth-child(even) td {
 }
 
 .figure--ops-delivery .figure__media {
-  aspect-ratio: 14 / 9;
+  aspect-ratio: 1 / 1;
+  max-width: 36rem;
+  margin: 0 auto;
 }
 
 
@@ -5438,4 +5440,47 @@ tr:nth-child(even) td {
   .recruit-split {
     break-inside: avoid;
   }
+}
+
+
+/* ===== Commercial schedule (builder-injected) ===== */
+.commercial-schedule {
+  margin: 1rem 0 1.35rem;
+}
+
+.commercial-schedule h3 {
+  margin: 0 0 0.55rem;
+}
+
+.commercial-schedule__disclaimer {
+  margin: 0 0 0.75rem;
+  font-size: 0.86rem;
+  color: rgba(19, 32, 46, 0.7);
+  line-height: 1.45;
+}
+
+.commercial-schedule__table td:nth-child(2),
+.commercial-schedule__table td:nth-child(4),
+.commercial-schedule__table td:nth-child(5),
+.commercial-schedule__table th:nth-child(2),
+.commercial-schedule__table th:nth-child(4),
+.commercial-schedule__table th:nth-child(5) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.commercial-schedule__total td {
+  font-weight: 700;
+  border-top: 2px solid rgba(19, 32, 46, 0.18);
+}
+
+.commercial-schedule--placeholder {
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 0.75rem;
+  background: rgba(239, 242, 246, 0.45);
+}
+
+.commercial-schedule--placeholder code {
+  font-size: 0.78rem;
 }

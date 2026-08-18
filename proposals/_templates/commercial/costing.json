@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "currency": "GBP",
+  "includeInProposal": true,
+  "title": "Proposed Commercial Schedule",
+  "disclaimer": "Indicative rates for discussion. Final rates confirmed in the Statement of Work.",
+  "rows": [
+    {
+      "role": "Customer Service Agent",
+      "fte": 20,
+      "unit": "per FTE / month",
+      "rate": 750,
+      "model": "FTE",
+      "notes": ""
+    },
+    {
+      "role": "Senior / Specialist Agent",
+      "fte": 4,
+      "unit": "per FTE / month",
+      "rate": 900,
+      "model": "FTE",
+      "notes": ""
+    },
+    {
+      "role": "Quality Analyst",
+      "fte": 2,
+      "unit": "per FTE / month",
+      "rate": 1050,
+      "model": "FTE",
+      "notes": "1:20 QA ratio"
+    },
+    {
+      "role": "Team Leader",
+      "fte": 2,
+      "unit": "per FTE / month",
+      "rate": 1200,
+      "model": "FTE",
+      "notes": "1:12 span of control"
+    }
+  ],
+  "internal": {
+    "_comment": "Never render in the proposal. Keep build-up here or in costing.xlsx Internal tab.",
+    "marginPct": null,
+    "fxRate": null,
+    "loadedCostNotes": ""
+  }
+}

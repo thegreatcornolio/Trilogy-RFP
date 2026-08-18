@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=admin-drafts-1">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=admin-drafts-1" defer></script>
+  <script src="app.js?v=commercial-1" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -115,6 +115,64 @@
         <h2>Editable placeholders</h2>
         <p class="hint">Typed content is injected into the full template on Preview / Final commit.</p>
         <div id="placeholders" class="placeholders"></div>
+      </div>
+
+      <div class="block" id="commercialScheduleBlock" hidden>
+        <div class="block__head">
+          <h2>Commercial schedule</h2>
+          <label class="inline-check">
+            <input type="checkbox" id="commercialInclude" checked>
+            Include in proposal
+          </label>
+        </div>
+        <p class="hint">Deal-specific call-centre pricing. Saved into the draft and exported as <code>commercial/costing.json</code> under the proposal folder. Internal margin/FX stay out of the proposal table.</p>
+        <div class="commercial-editor">
+          <div class="form-grid commercial-editor__meta">
+            <label>Currency
+              <select id="commercialCurrency">
+                <option value="GBP">GBP</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="ZAR">ZAR</option>
+              </select>
+            </label>
+            <label class="full">Schedule title
+              <input id="commercialTitle" type="text" value="Proposed Commercial Schedule">
+            </label>
+            <label class="full">Client disclaimer
+              <input id="commercialDisclaimer" type="text" value="Indicative rates for discussion. Final rates confirmed in the Statement of Work.">
+            </label>
+          </div>
+          <div class="table-wrap commercial-editor__table-wrap">
+            <table class="commercial-editor__table" id="commercialTable">
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>FTE</th>
+                  <th>Unit</th>
+                  <th>Rate</th>
+                  <th>Monthly</th>
+                  <th>Model</th>
+                  <th>Notes</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="commercialRows"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4"><strong>Total monthly</strong></td>
+                  <td id="commercialTotal">—</td>
+                  <td colspan="3"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="commercial-editor__actions">
+            <button type="button" class="btn btn--ghost" id="btnCommercialAddRow">Add row</button>
+            <button type="button" class="btn btn--ghost" id="btnCommercialSeed">Load starter roles</button>
+            <button type="button" class="btn btn--ghost" id="btnCommercialExport">Export costing.json</button>
+          </div>
+        </div>
       </div>
 
       <div class="block preview-block">

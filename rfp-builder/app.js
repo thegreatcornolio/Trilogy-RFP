@@ -61,10 +61,29 @@
     },
   };
 
+  const DEFAULT_COMMERCIAL_ROWS = [
+    { role: "Customer Service Agent", fte: 20, unit: "per FTE / month", rate: 750, model: "FTE", notes: "" },
+    { role: "Senior / Specialist Agent", fte: 4, unit: "per FTE / month", rate: 900, model: "FTE", notes: "" },
+    { role: "Quality Analyst", fte: 2, unit: "per FTE / month", rate: 1050, model: "FTE", notes: "1:20 QA ratio" },
+    { role: "Team Leader", fte: 2, unit: "per FTE / month", rate: 1200, model: "FTE", notes: "1:12 span of control" },
+  ];
+
+  function emptyCommercialSchedule() {
+    return {
+      includeInProposal: true,
+      currency: "GBP",
+      title: "Proposed Commercial Schedule",
+      disclaimer:
+        "Indicative rates for discussion. Final rates confirmed in the Statement of Work.",
+      rows: [],
+    };
+  }
+
   const state = {
     catalog: [],
     sectionOrder: [],
     placeholders: {},
+    commercialSchedule: emptyCommercialSchedule(),
     entityContent: ENTITY_CONTENT_FALLBACK,
     theme: {
       primary: "#61d779",
@@ -91,6 +110,13 @@
     library: document.getElementById("library"),
     orderList: document.getElementById("orderList"),
     placeholders: document.getElementById("placeholders"),
+    commercialBlock: document.getElementById("commercialScheduleBlock"),
+    commercialInclude: document.getElementById("commercialInclude"),
+    commercialCurrency: document.getElementById("commercialCurrency"),
+    commercialTitle: document.getElementById("commercialTitle"),
+    commercialDisclaimer: document.getElementById("commercialDisclaimer"),
+    commercialRows: document.getElementById("commercialRows"),
+    commercialTotal: document.getElementById("commercialTotal"),
     logoInput: document.getElementById("logoInput"),
     logoPreview: document.getElementById("logoPreview"),
     themeSwatches: document.getElementById("themeSwatches"),
@@ -159,6 +185,9 @@
       final: `${base}/index.html`,
       acceptance: `${base}/acceptance.json`,
       folder: `${base}/`,
+      commercialFolder: `${base}/commercial/`,
+      costingJson: `${base}/commercial/costing.json`,
+      costingCsv: `${base}/commercial/costing.csv`,
     };
   }
 
@@ -568,6 +597,182 @@
       </section>`;
   }
 
+
+  function moneySymbol(currency) {
+    return ({ GBP: "£", USD: "$", EUR: "€", ZAR: "R" }[currency] || `${currency} `);
+  }
+
+  function formatMoney(amount, currency) {
+    const n = Number(amount);
+    if (!Number.isFinite(n)) return "—";
+    try {
+      return new Intl.NumberFormat("en-GB", {
+        style: "currency",
+        currency: currency || "GBP",
+        maximumFractionDigits: 0,
+      }).format(n);
+    } catch {
+      return `${moneySymbol(currency)}${Math.round(n).toLocaleString("en-GB")}`;
+    }
+  }
+
+  function rowMonthly(row) {
+    const fte = Number(row.fte) || 0;
+    const rate = Number(row.rate) || 0;
+    return fte * rate;
+  }
+
+  function normalizeCommercialSchedule(raw) {
+    const base = emptyCommercialSchedule();
+    if (!raw || typeof raw !== "object") return base;
+    return {
+      includeInProposal: raw.includeInProposal !== false,
+      currency: raw.currency || "GBP",
+      title: raw.title || base.title,
+      disclaimer: raw.disclaimer || base.disclaimer,
+      rows: Array.isArray(raw.rows)
+        ? raw.rows.map((r) => ({
+            role: r.role || "",
+            fte: Number(r.fte) || 0,
+            unit: r.unit || "per FTE / month",
+            rate: Number(r.rate) || 0,
+            model: r.model || "FTE",
+            notes: r.notes || "",
+          }))
+        : [],
+    };
+  }
+
+  function costingExportPayload() {
+    const s = state.commercialSchedule;
+    return {
+      version: 1,
+      currency: s.currency,
+      includeInProposal: s.includeInProposal,
+      title: s.title,
+      disclaimer: s.disclaimer,
+      rows: s.rows.map((r) => ({
+        ...r,
+        monthly: rowMonthly(r),
+      })),
+      internal: {
+        _comment:
+          "Never render in the proposal. Keep build-up in costing.xlsx Internal tab.",
+        marginPct: null,
+        fxRate: null,
+        loadedCostNotes: "",
+      },
+    };
+  }
+
+  function commercialScheduleHtml(schedule) {
+    const s = normalizeCommercialSchedule(schedule);
+    if (!s.includeInProposal || !s.rows.length) return "";
+    const rows = s.rows
+      .map((r) => {
+        const monthly = rowMonthly(r);
+        return `<tr>
+          <td>${escapeHtml(r.role || "—")}</td>
+          <td>${Number(r.fte) || 0}</td>
+          <td>${escapeHtml(r.unit || "")}</td>
+          <td>${formatMoney(r.rate, s.currency)}</td>
+          <td>${formatMoney(monthly, s.currency)}</td>
+          <td>${escapeHtml(r.model || "")}</td>
+          <td>${escapeHtml(r.notes || "")}</td>
+        </tr>`;
+      })
+      .join("");
+    const total = s.rows.reduce((sum, r) => sum + rowMonthly(r), 0);
+    return `<div class="commercial-schedule" data-commercial-schedule>
+  <h3>${escapeHtml(s.title)}</h3>
+  <p class="commercial-schedule__disclaimer">${escapeHtml(s.disclaimer)}</p>
+  <div class="table-wrap">
+    <table class="commercial-schedule__table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>FTE</th>
+          <th>Unit</th>
+          <th>Rate</th>
+          <th>Monthly</th>
+          <th>Model</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+      <tfoot>
+        <tr class="commercial-schedule__total">
+          <td colspan="4">Total monthly</td>
+          <td>${formatMoney(total, s.currency)}</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>`;
+  }
+
+  function syncCommercialFormFromState() {
+    const s = state.commercialSchedule;
+    if (els.commercialInclude) els.commercialInclude.checked = !!s.includeInProposal;
+    if (els.commercialCurrency) els.commercialCurrency.value = s.currency || "GBP";
+    if (els.commercialTitle) els.commercialTitle.value = s.title || "";
+    if (els.commercialDisclaimer) els.commercialDisclaimer.value = s.disclaimer || "";
+  }
+
+  function readCommercialFormMeta() {
+    if (!els.commercialInclude) return;
+    state.commercialSchedule.includeInProposal = !!els.commercialInclude.checked;
+    state.commercialSchedule.currency = els.commercialCurrency?.value || "GBP";
+    state.commercialSchedule.title =
+      els.commercialTitle?.value.trim() || "Proposed Commercial Schedule";
+    state.commercialSchedule.disclaimer =
+      els.commercialDisclaimer?.value.trim() ||
+      emptyCommercialSchedule().disclaimer;
+  }
+
+  function renderCommercialSchedule() {
+    const show = state.sectionOrder.includes("section-17");
+    if (els.commercialBlock) els.commercialBlock.hidden = !show;
+    if (!show || !els.commercialRows) return;
+
+    syncCommercialFormFromState();
+    const currency = state.commercialSchedule.currency || "GBP";
+    els.commercialRows.innerHTML = "";
+
+    state.commercialSchedule.rows.forEach((row, idx) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td class="col-role"><input data-field="role" data-idx="${idx}" type="text" value="${escapeHtml(row.role)}"></td>
+        <td><input data-field="fte" data-idx="${idx}" type="number" min="0" step="0.5" value="${Number(row.fte) || 0}"></td>
+        <td class="col-unit"><input data-field="unit" data-idx="${idx}" type="text" value="${escapeHtml(row.unit)}"></td>
+        <td><input data-field="rate" data-idx="${idx}" type="number" min="0" step="10" value="${Number(row.rate) || 0}"></td>
+        <td class="col-monthly">${formatMoney(rowMonthly(row), currency)}</td>
+        <td class="col-model">
+          <select data-field="model" data-idx="${idx}">
+            <option value="FTE"${row.model === "FTE" ? " selected" : ""}>FTE</option>
+            <option value="Hour"${row.model === "Hour" ? " selected" : ""}>Hour</option>
+            <option value="Interaction"${row.model === "Interaction" ? " selected" : ""}>Interaction</option>
+            <option value="Gain-share"${row.model === "Gain-share" ? " selected" : ""}>Gain-share</option>
+          </select>
+        </td>
+        <td class="col-notes"><input data-field="notes" data-idx="${idx}" type="text" value="${escapeHtml(row.notes)}"></td>
+        <td><button type="button" class="btn-row-remove" data-remove-row="${idx}" aria-label="Remove row">×</button></td>`;
+      els.commercialRows.appendChild(tr);
+    });
+
+    const total = state.commercialSchedule.rows.reduce((sum, r) => sum + rowMonthly(r), 0);
+    if (els.commercialTotal) els.commercialTotal.textContent = formatMoney(total, currency);
+  }
+
+  function markCommercialDirty() {
+    readCommercialFormMeta();
+    state.status = "draft";
+    renderCommercialSchedule();
+    updatePreview();
+    autosaveLocal();
+  }
+
   function renderPlaceholders() {
     const editable = state.sectionOrder
       .map(sectionById)
@@ -608,6 +813,7 @@
     renderLibrary();
     renderOrder();
     renderPlaceholders();
+    renderCommercialSchedule();
     updatePreview();
     applyTheme();
   }
@@ -636,7 +842,7 @@
     const meta = readMeta();
     const paths = customerPaths(meta);
     return {
-      version: 2,
+      version: 3,
       status: state.status,
       slug: draftSlug(meta),
       clientSlug: clientSlug(meta),
@@ -647,6 +853,7 @@
       logoDataUrl: state.logoDataUrl,
       sectionOrder: [...state.sectionOrder],
       placeholders: { ...state.placeholders },
+      commercialSchedule: normalizeCommercialSchedule(state.commercialSchedule),
       acceptance: {
         ...state.acceptance,
         signerName: els.fields.signerName.value.trim(),
@@ -836,6 +1043,7 @@
     state.sectionOrder = d.sectionOrder || [];
     pruneRetiredSections();
     state.placeholders = d.placeholders || {};
+    state.commercialSchedule = normalizeCommercialSchedule(d.commercialSchedule);
     state.theme = {
       primary: "#61d779",
       accent: "#d5ec67",
@@ -883,6 +1091,7 @@
     state.currentSlug = null;
     state.status = "draft";
     state.placeholders = {};
+    state.commercialSchedule = emptyCommercialSchedule();
     state.sectionOrder = [
       "section-01",
       "section-02",
@@ -1130,7 +1339,30 @@
         `$1\n          <h3>Commercial Notes</h3>\n          ${placeholderHtml(ph["commercial-notes"])}\n`
       );
     }
-    if (ph["case-studies"] !== undefined) {
+    
+    // Inject deal-specific commercial schedule table
+    const scheduleHtml = commercialScheduleHtml(payload.commercialSchedule);
+    if (scheduleHtml) {
+      if (html.includes("<!--__COMMERCIAL_SCHEDULE__-->")) {
+        html = html.replace(
+          /<!--__COMMERCIAL_SCHEDULE__-->[\s\S]*?(?=<h3>Commercial Flexibility)/,
+          `${scheduleHtml}\n`
+        );
+      } else {
+        html = html.replace(
+          /(<div class="commercial-schedule commercial-schedule--placeholder"[\s\S]*?<\/div>)/,
+          scheduleHtml
+        );
+      }
+    } else if (html.includes("<!--__COMMERCIAL_SCHEDULE__-->")) {
+      // Hide placeholder when no schedule included
+      html = html.replace(
+        /<!--__COMMERCIAL_SCHEDULE__-->[\s\S]*?(?=<h3>Commercial Flexibility)/,
+        ""
+      );
+    }
+
+if (ph["case-studies"] !== undefined) {
       html = html.replace(
         /(<section class="proposal-page" id="section-18">[\s\S]*?<div class="section-body">)/,
         `$1\n          ${placeholderHtml(ph["case-studies"])}\n`
@@ -1275,7 +1507,7 @@
 
         if (!palette.length) {
           resolve({
-            palette: ensureWhiteInPalette([
+            palette: ensureBrandPalette([
               "#61d779",
               "#d5ec67",
               "#2f9e4a",
@@ -1292,7 +1524,7 @@
         }
 
         resolve({
-          palette: ensureWhiteInPalette(palette),
+          palette: ensureBrandPalette(palette),
           theme: {
             primary: palette[0],
             accent: palette[1] || palette[0],
@@ -1303,7 +1535,7 @@
       };
       img.onerror = () =>
         resolve({
-          palette: ensureWhiteInPalette([
+          palette: ensureBrandPalette([
             "#61d779",
             "#d5ec67",
             "#2f9e4a",
@@ -1369,15 +1601,22 @@
       els.logoPreview.innerHTML = `<img src="${state.logoDataUrl}" alt="Customer logo">`;
       els.coverClientLogo.src = state.logoDataUrl;
       els.coverClientLogo.hidden = false;
-      const extracted = await extractPaletteFromImage(state.logoDataUrl);
-      state.palette = ensureWhiteInPalette(extracted.palette);
-      state.theme = extracted.theme;
-      state.selectedPaletteIndex = 0;
+      try {
+        const extracted = await extractPaletteFromImage(state.logoDataUrl);
+        state.palette = ensureBrandPalette(extracted.palette);
+        state.theme = extracted.theme;
+        state.selectedPaletteIndex = 0;
+        toast("Logo applied — pick Primary / Accent / Secondary from logo + Trilogy colours");
+      } catch (err) {
+        console.error(err);
+        state.palette = ensureBrandPalette(state.palette);
+        toast("Logo applied — colour extraction failed; Trilogy colours remain available");
+      }
       state.status = "draft";
       applyTheme();
       renderOrder();
+      updatePreview();
       autosaveLocal();
-      toast(`Logo applied — Trilogy colours stay available alongside logo colours`);
     };
     reader.readAsDataURL(file);
   });
@@ -1451,6 +1690,95 @@
     startNewDocument();
   });
 
+  // Commercial schedule editor
+  const onCommercialMetaChange = () => {
+    readCommercialFormMeta();
+    state.status = "draft";
+    updatePreview();
+    autosaveLocal();
+  };
+  els.commercialInclude?.addEventListener("change", onCommercialMetaChange);
+  els.commercialCurrency?.addEventListener("change", () => {
+    onCommercialMetaChange();
+    renderCommercialSchedule();
+  });
+  els.commercialTitle?.addEventListener("input", onCommercialMetaChange);
+  els.commercialDisclaimer?.addEventListener("input", onCommercialMetaChange);
+
+  els.commercialRows?.addEventListener("input", (e) => {
+    const el = e.target.closest("[data-field][data-idx]");
+    if (!el) return;
+    const idx = Number(el.getAttribute("data-idx"));
+    const field = el.getAttribute("data-field");
+    const row = state.commercialSchedule.rows[idx];
+    if (!row) return;
+    if (field === "fte" || field === "rate") row[field] = Number(el.value) || 0;
+    else row[field] = el.value;
+    state.status = "draft";
+    // refresh monthly cell + total without full re-render (keeps focus)
+    const tr = el.closest("tr");
+    const monthlyCell = tr?.querySelector(".col-monthly");
+    if (monthlyCell) {
+      monthlyCell.textContent = formatMoney(
+        rowMonthly(row),
+        state.commercialSchedule.currency
+      );
+    }
+    const total = state.commercialSchedule.rows.reduce((sum, r) => sum + rowMonthly(r), 0);
+    if (els.commercialTotal) {
+      els.commercialTotal.textContent = formatMoney(
+        total,
+        state.commercialSchedule.currency
+      );
+    }
+    updatePreview();
+    autosaveLocal();
+  });
+  els.commercialRows?.addEventListener("change", (e) => {
+    const el = e.target.closest("select[data-field][data-idx]");
+    if (!el) return;
+    const idx = Number(el.getAttribute("data-idx"));
+    const row = state.commercialSchedule.rows[idx];
+    if (!row) return;
+    row.model = el.value;
+    state.status = "draft";
+    updatePreview();
+    autosaveLocal();
+  });
+  els.commercialRows?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-remove-row]");
+    if (!btn) return;
+    const idx = Number(btn.getAttribute("data-remove-row"));
+    state.commercialSchedule.rows.splice(idx, 1);
+    markCommercialDirty();
+  });
+
+  document.getElementById("btnCommercialAddRow")?.addEventListener("click", () => {
+    state.commercialSchedule.rows.push({
+      role: "",
+      fte: 1,
+      unit: "per FTE / month",
+      rate: 0,
+      model: "FTE",
+      notes: "",
+    });
+    markCommercialDirty();
+  });
+  document.getElementById("btnCommercialSeed")?.addEventListener("click", () => {
+    state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
+    markCommercialDirty();
+    toast("Starter call-centre roles loaded");
+  });
+  document.getElementById("btnCommercialExport")?.addEventListener("click", () => {
+    readCommercialFormMeta();
+    const payload = draftPayload();
+    const name = payload.slug
+      ? `${payload.slug}-costing.json`
+      : "costing.json";
+    download(name, JSON.stringify(costingExportPayload(), null, 2));
+    toast(`Exported — place at ${payload.paths.costingJson || "commercial/costing.json"}`);
+  });
+
   document.getElementById("btnPreviewDraft").addEventListener("click", () => openPreview());
 
   document.getElementById("btnExportDraft").addEventListener("click", () => {
@@ -1491,6 +1819,10 @@
       download(
         `${payload.slug}-draft.json`,
         JSON.stringify({ ...payload, builtHtml: undefined }, null, 2)
+      );
+      download(
+        `${payload.slug}-costing.json`,
+        JSON.stringify(costingExportPayload(), null, 2)
       );
       const res = await postWebhook(CONFIG.webhooks.finalCommit, payload);
       if (res.skipped) {

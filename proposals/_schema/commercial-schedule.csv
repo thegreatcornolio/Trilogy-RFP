@@ -1,0 +1,5 @@
+role,fte,unit,rate_gbp,model,notes
+Customer Service Agent,20,per FTE / month,750,FTE,
+Senior / Specialist Agent,4,per FTE / month,900,FTE,
+Quality Analyst,2,per FTE / month,1050,FTE,1:20 QA ratio
+Team Leader,2,per FTE / month,1200,FTE,1:12 span of control
