@@ -68,15 +68,32 @@
     { role: "Team Leader", fte: 2, unit: "per FTE / month", rate: 1200, model: "FTE", notes: "1:12 span of control" },
   ];
 
+  const DEFAULT_HOURS_PER_MONTH = 160;
+
   function emptyCommercialSchedule() {
     return {
       includeInProposal: true,
       currency: "GBP",
+      hoursPerMonth: DEFAULT_HOURS_PER_MONTH,
       title: "Proposed Commercial Schedule",
       disclaimer:
         "Indicative rates for discussion. Final rates confirmed in the Statement of Work.",
       rows: [],
     };
+  }
+
+  function unitForModel(model) {
+    switch (model) {
+      case "Hour":
+        return "per hour";
+      case "Interaction":
+        return "per interaction";
+      case "Gain-share":
+        return "gain-share / month";
+      case "FTE":
+      default:
+        return "per FTE / month";
+    }
   }
 
   const state = {
@@ -111,8 +128,12 @@
     orderList: document.getElementById("orderList"),
     placeholders: document.getElementById("placeholders"),
     commercialBlock: document.getElementById("commercialScheduleBlock"),
+    commercialEditor: document.getElementById("commercialEditor"),
+    commercialLocked: document.getElementById("commercialLocked"),
+    commercialReadonly: document.getElementById("commercialReadonly"),
     commercialInclude: document.getElementById("commercialInclude"),
     commercialCurrency: document.getElementById("commercialCurrency"),
+    commercialHoursPerMonth: document.getElementById("commercialHoursPerMonth"),
     commercialTitle: document.getElementById("commercialTitle"),
     commercialDisclaimer: document.getElementById("commercialDisclaimer"),
     commercialRows: document.getElementById("commercialRows"),
@@ -617,29 +638,45 @@
     }
   }
 
-  function rowMonthly(row) {
-    const fte = Number(row.fte) || 0;
+  function scheduleHoursPerMonth(schedule) {
+    const n = Number(schedule?.hoursPerMonth);
+    return Number.isFinite(n) && n > 0 ? n : DEFAULT_HOURS_PER_MONTH;
+  }
+
+  /** Model-aware monthly: FTE = qty×rate; Hour = qty×hours×rate; Interaction/Gain-share = qty×rate */
+  function rowMonthly(row, schedule = state.commercialSchedule) {
+    const qty = Number(row.fte) || 0;
     const rate = Number(row.rate) || 0;
-    return fte * rate;
+    const model = row.model || "FTE";
+    if (model === "Hour") {
+      return qty * scheduleHoursPerMonth(schedule) * rate;
+    }
+    return qty * rate;
   }
 
   function normalizeCommercialSchedule(raw) {
     const base = emptyCommercialSchedule();
     if (!raw || typeof raw !== "object") return base;
+    const hours = Number(raw.hoursPerMonth);
     return {
       includeInProposal: raw.includeInProposal !== false,
       currency: raw.currency || "GBP",
+      hoursPerMonth:
+        Number.isFinite(hours) && hours > 0 ? hours : DEFAULT_HOURS_PER_MONTH,
       title: raw.title || base.title,
       disclaimer: raw.disclaimer || base.disclaimer,
       rows: Array.isArray(raw.rows)
-        ? raw.rows.map((r) => ({
-            role: r.role || "",
-            fte: Number(r.fte) || 0,
-            unit: r.unit || "per FTE / month",
-            rate: Number(r.rate) || 0,
-            model: r.model || "FTE",
-            notes: r.notes || "",
-          }))
+        ? raw.rows.map((r) => {
+            const model = r.model || "FTE";
+            return {
+              role: r.role || "",
+              fte: Number(r.fte) || 0,
+              unit: r.unit || unitForModel(model),
+              rate: Number(r.rate) || 0,
+              model,
+              notes: r.notes || "",
+            };
+          })
         : [],
     };
   }
@@ -649,12 +686,19 @@
     return {
       version: 1,
       currency: s.currency,
+      hoursPerMonth: scheduleHoursPerMonth(s),
       includeInProposal: s.includeInProposal,
       title: s.title,
       disclaimer: s.disclaimer,
+      calcNotes: {
+        FTE: "monthly = fte × rate (rate = monthly per FTE)",
+        Hour: "monthly = fte × hoursPerMonth × rate (rate = hourly)",
+        Interaction: "monthly = qty × rate (qty in fte field = interactions)",
+        "Gain-share": "monthly = qty × rate (estimated monthly share)",
+      },
       rows: s.rows.map((r) => ({
         ...r,
-        monthly: rowMonthly(r),
+        monthly: rowMonthly(r, s),
       })),
       internal: {
         _comment:
@@ -669,13 +713,16 @@
   function commercialScheduleHtml(schedule) {
     const s = normalizeCommercialSchedule(schedule);
     if (!s.includeInProposal || !s.rows.length) return "";
+    const hours = scheduleHoursPerMonth(s);
+    const hasHour = s.rows.some((r) => r.model === "Hour");
     const rows = s.rows
       .map((r) => {
-        const monthly = rowMonthly(r);
+        const monthly = rowMonthly(r, s);
+        const unit = r.unit || unitForModel(r.model);
         return `<tr>
           <td>${escapeHtml(r.role || "—")}</td>
           <td>${Number(r.fte) || 0}</td>
-          <td>${escapeHtml(r.unit || "")}</td>
+          <td>${escapeHtml(unit)}</td>
           <td>${formatMoney(r.rate, s.currency)}</td>
           <td>${formatMoney(monthly, s.currency)}</td>
           <td>${escapeHtml(r.model || "")}</td>
@@ -683,16 +730,20 @@
         </tr>`;
       })
       .join("");
-    const total = s.rows.reduce((sum, r) => sum + rowMonthly(r), 0);
+    const total = s.rows.reduce((sum, r) => sum + rowMonthly(r, s), 0);
+    const hourNote = hasHour
+      ? `<p class="commercial-schedule__note">Hour model assumes <strong>${hours}</strong> paid hours per FTE per month (Monthly = FTE × hours × hourly rate).</p>`
+      : "";
     return `<div class="commercial-schedule" data-commercial-schedule>
   <h3>${escapeHtml(s.title)}</h3>
   <p class="commercial-schedule__disclaimer">${escapeHtml(s.disclaimer)}</p>
+  ${hourNote}
   <div class="table-wrap">
     <table class="commercial-schedule__table">
       <thead>
         <tr>
           <th>Role</th>
-          <th>FTE</th>
+          <th>FTE / Qty</th>
           <th>Unit</th>
           <th>Rate</th>
           <th>Monthly</th>
@@ -717,6 +768,9 @@
     const s = state.commercialSchedule;
     if (els.commercialInclude) els.commercialInclude.checked = !!s.includeInProposal;
     if (els.commercialCurrency) els.commercialCurrency.value = s.currency || "GBP";
+    if (els.commercialHoursPerMonth) {
+      els.commercialHoursPerMonth.value = scheduleHoursPerMonth(s);
+    }
     if (els.commercialTitle) els.commercialTitle.value = s.title || "";
     if (els.commercialDisclaimer) els.commercialDisclaimer.value = s.disclaimer || "";
   }
@@ -725,6 +779,9 @@
     if (!els.commercialInclude) return;
     state.commercialSchedule.includeInProposal = !!els.commercialInclude.checked;
     state.commercialSchedule.currency = els.commercialCurrency?.value || "GBP";
+    const hours = Number(els.commercialHoursPerMonth?.value);
+    state.commercialSchedule.hoursPerMonth =
+      Number.isFinite(hours) && hours > 0 ? hours : DEFAULT_HOURS_PER_MONTH;
     state.commercialSchedule.title =
       els.commercialTitle?.value.trim() || "Proposed Commercial Schedule";
     state.commercialSchedule.disclaimer =
@@ -732,25 +789,68 @@
       emptyCommercialSchedule().disclaimer;
   }
 
+  function renderCommercialReadonly(rows, currency, schedule) {
+    if (!els.commercialReadonly) return;
+    if (!rows.length) {
+      els.commercialReadonly.hidden = true;
+      els.commercialReadonly.innerHTML = "";
+      return;
+    }
+    const body = rows
+      .map((r) => {
+        const unit = r.unit || unitForModel(r.model);
+        return `<tr>
+          <td>${escapeHtml(r.role || "—")}</td>
+          <td>${Number(r.fte) || 0}</td>
+          <td>${escapeHtml(unit)}</td>
+          <td>${formatMoney(r.rate, currency)}</td>
+          <td>${formatMoney(rowMonthly(r, schedule), currency)}</td>
+          <td>${escapeHtml(r.model || "")}</td>
+        </tr>`;
+      })
+      .join("");
+    const total = rows.reduce((sum, r) => sum + rowMonthly(r, schedule), 0);
+    els.commercialReadonly.hidden = false;
+    els.commercialReadonly.innerHTML = `<div class="table-wrap"><table class="commercial-editor__table commercial-editor__table--readonly">
+      <thead><tr><th>Role</th><th>FTE / Qty</th><th>Unit</th><th>Rate</th><th>Monthly</th><th>Model</th></tr></thead>
+      <tbody>${body}</tbody>
+      <tfoot><tr><td colspan="4"><strong>Total monthly</strong></td><td>${formatMoney(total, currency)}</td><td></td></tr></tfoot>
+    </table></div>`;
+  }
+
   function renderCommercialSchedule() {
     const show = state.sectionOrder.includes("section-17");
     if (els.commercialBlock) els.commercialBlock.hidden = !show;
-    if (!show || !els.commercialRows) return;
+    if (!show) return;
 
+    const unlocked = isAdminUnlocked();
+    const schedule = state.commercialSchedule;
+    const currency = schedule.currency || "GBP";
+    const rows = schedule.rows || [];
+
+    if (els.commercialInclude) els.commercialInclude.disabled = !unlocked;
+    if (els.commercialLocked) els.commercialLocked.hidden = unlocked;
+    if (els.commercialEditor) els.commercialEditor.hidden = !unlocked;
+
+    if (!unlocked) {
+      renderCommercialReadonly(rows, currency, schedule);
+      return;
+    }
+
+    if (!els.commercialRows) return;
     syncCommercialFormFromState();
-    const currency = state.commercialSchedule.currency || "GBP";
-    const rows = state.commercialSchedule.rows || [];
     if (els.commercialEmpty) els.commercialEmpty.hidden = rows.length > 0;
     els.commercialRows.innerHTML = "";
 
     rows.forEach((row, idx) => {
       const tr = document.createElement("tr");
+      const rateStep = row.model === "Hour" || row.model === "Interaction" ? "0.01" : "10";
       tr.innerHTML = `
         <td class="col-role"><input data-field="role" data-idx="${idx}" type="text" value="${escapeHtml(row.role)}" placeholder="Role name"></td>
         <td><input data-field="fte" data-idx="${idx}" type="number" min="0" step="0.5" value="${Number(row.fte) || 0}"></td>
-        <td class="col-unit"><input data-field="unit" data-idx="${idx}" type="text" value="${escapeHtml(row.unit)}" placeholder="per FTE / month"></td>
-        <td><input data-field="rate" data-idx="${idx}" type="number" min="0" step="10" value="${Number(row.rate) || 0}"></td>
-        <td class="col-monthly">${formatMoney(rowMonthly(row), currency)}</td>
+        <td class="col-unit"><input data-field="unit" data-idx="${idx}" type="text" value="${escapeHtml(row.unit || unitForModel(row.model))}" placeholder="${escapeHtml(unitForModel(row.model))}"></td>
+        <td><input data-field="rate" data-idx="${idx}" type="number" min="0" step="${rateStep}" value="${Number(row.rate) || 0}"></td>
+        <td class="col-monthly">${formatMoney(rowMonthly(row, schedule), currency)}</td>
         <td class="col-model">
           <select data-field="model" data-idx="${idx}">
             <option value="FTE"${row.model === "FTE" ? " selected" : ""}>FTE</option>
@@ -764,7 +864,7 @@
       els.commercialRows.appendChild(tr);
     });
 
-    const total = rows.reduce((sum, r) => sum + rowMonthly(r), 0);
+    const total = rows.reduce((sum, r) => sum + rowMonthly(r, schedule), 0);
     if (els.commercialTotal) els.commercialTotal.textContent = formatMoney(total, currency);
   }
 
@@ -826,6 +926,7 @@
     state.sectionOrder.push(id);
     if (
       id === "section-17" &&
+      isAdminUnlocked() &&
       (!state.commercialSchedule.rows || !state.commercialSchedule.rows.length)
     ) {
       state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
@@ -994,6 +1095,9 @@
       if (clearInput) clearInput.value = "";
       if (clearBtn) clearBtn.disabled = true;
     }
+    // Commercial schedule edit rights follow admin unlock
+    renderCommercialSchedule();
+    updatePreview();
   }
 
   function openAdminModal() {
@@ -1699,8 +1803,16 @@ if (ph["case-studies"] !== undefined) {
     startNewDocument();
   });
 
-  // Commercial schedule editor
+  // Commercial schedule editor (admin-only)
+  const requireCommercialAdmin = () => {
+    if (isAdminUnlocked()) return true;
+    toast("Unlock Admin to edit commercials");
+    openAdminModal();
+    return false;
+  };
+
   const onCommercialMetaChange = () => {
+    if (!isAdminUnlocked()) return;
     readCommercialFormMeta();
     state.status = "draft";
     updatePreview();
@@ -1711,10 +1823,24 @@ if (ph["case-studies"] !== undefined) {
     onCommercialMetaChange();
     renderCommercialSchedule();
   });
+  els.commercialHoursPerMonth?.addEventListener("input", () => {
+    if (!isAdminUnlocked()) return;
+    readCommercialFormMeta();
+    state.status = "draft";
+    // Recalc Hour-model monthlies when hours/month changes
+    renderCommercialSchedule();
+    updatePreview();
+    autosaveLocal();
+  });
   els.commercialTitle?.addEventListener("input", onCommercialMetaChange);
   els.commercialDisclaimer?.addEventListener("input", onCommercialMetaChange);
 
+  document.getElementById("btnCommercialUnlock")?.addEventListener("click", () => {
+    openAdminModal();
+  });
+
   els.commercialRows?.addEventListener("input", (e) => {
+    if (!isAdminUnlocked()) return;
     const el = e.target.closest("[data-field][data-idx]");
     if (!el) return;
     const idx = Number(el.getAttribute("data-idx"));
@@ -1733,7 +1859,10 @@ if (ph["case-studies"] !== undefined) {
         state.commercialSchedule.currency
       );
     }
-    const total = state.commercialSchedule.rows.reduce((sum, r) => sum + rowMonthly(r), 0);
+    const total = state.commercialSchedule.rows.reduce(
+      (sum, r) => sum + rowMonthly(r),
+      0
+    );
     if (els.commercialTotal) {
       els.commercialTotal.textContent = formatMoney(
         total,
@@ -1744,29 +1873,37 @@ if (ph["case-studies"] !== undefined) {
     autosaveLocal();
   });
   els.commercialRows?.addEventListener("change", (e) => {
+    if (!isAdminUnlocked()) return;
     const el = e.target.closest("select[data-field][data-idx]");
     if (!el) return;
     const idx = Number(el.getAttribute("data-idx"));
     const row = state.commercialSchedule.rows[idx];
     if (!row) return;
     row.model = el.value;
+    row.unit = unitForModel(row.model);
     state.status = "draft";
-    updatePreview();
-    autosaveLocal();
+    markCommercialDirty();
+    toast(
+      row.model === "Hour"
+        ? `Hour model: monthly = FTE × ${scheduleHoursPerMonth(state.commercialSchedule)} hrs × hourly rate`
+        : `${row.model} model: monthly = qty × rate`
+    );
   });
   els.commercialRows?.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-remove-row]");
     if (!btn) return;
+    if (!requireCommercialAdmin()) return;
     const idx = Number(btn.getAttribute("data-remove-row"));
     state.commercialSchedule.rows.splice(idx, 1);
     markCommercialDirty();
   });
 
   document.getElementById("btnCommercialAddRow")?.addEventListener("click", () => {
+    if (!requireCommercialAdmin()) return;
     state.commercialSchedule.rows.push({
       role: "",
       fte: 1,
-      unit: "per FTE / month",
+      unit: unitForModel("FTE"),
       rate: 0,
       model: "FTE",
       notes: "",
@@ -1774,11 +1911,13 @@ if (ph["case-studies"] !== undefined) {
     markCommercialDirty();
   });
   document.getElementById("btnCommercialSeed")?.addEventListener("click", () => {
+    if (!requireCommercialAdmin()) return;
     state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
     markCommercialDirty();
     toast("Starter call-centre roles loaded");
   });
   document.getElementById("btnCommercialExport")?.addEventListener("click", () => {
+    if (!requireCommercialAdmin()) return;
     readCommercialFormMeta();
     const payload = draftPayload();
     const name = payload.slug

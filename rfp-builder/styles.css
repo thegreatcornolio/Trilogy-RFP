@@ -925,6 +925,42 @@ code {
   gap: 0.85rem;
 }
 
+.commercial-locked {
+  border: 1px solid #d5dde5;
+  border-radius: 0.75rem;
+  background: #f7f9fb;
+  padding: 1rem 1.1rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.commercial-locked p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #334155;
+}
+
+.commercial-readonly {
+  margin-top: 0.35rem;
+}
+
+.commercial-editor__table--readonly input,
+.commercial-editor__table--readonly select {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.commercial-calc-hint {
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.5rem;
+  background: #eef8f1;
+  border: 1px solid #c6e6d0;
+  color: #1f5b32;
+}
+
 .commercial-editor__meta {
   margin-bottom: 0.15rem;
 }
