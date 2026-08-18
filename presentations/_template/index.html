@@ -23,18 +23,20 @@
 <body class="deck">
   <div class="deck-bars" aria-hidden="true"><span></span><span></span><span></span></div>
   <header class="deck-chrome">
-    <img class="deck-chrome__logo" src="../_shared/trilogy-logo.svg" alt="Trilogy">
+    <img class="deck-chrome__logo brand-logo" data-logo="trilogy" data-logo-bases="../_shared/logos" alt="Trilogy">
     <p class="deck-chrome__title"><!-- TITLE --></p>
     <span class="deck-chrome__progress" data-progress-label>1 / 1</span>
   </header>
   <div class="deck-progressbar" aria-hidden="true"><span data-progress-bar></span></div>
 
-  <main class="slides">
-    <section class="slide slide--cover is-active" data-slide="1">
-      <p class="eyebrow">Trilogy presentation</p>
-      <h1><!-- TITLE --></h1>
-      <p class="lede">Replace this template with extracted source slides. Keep section order; apply the blended theme tokens above.</p>
-    </section>
+  <main class="slides" data-frame>
+    <div class="stage" data-stage>
+      <section class="slide slide--cover is-active" data-slide="1">
+        <p class="eyebrow">Trilogy presentation</p>
+        <h1><!-- TITLE --></h1>
+        <p class="lede">Replace this template with extracted source slides. Keep section order; apply the blended theme tokens above.</p>
+      </section>
+    </div>
   </main>
 
   <p class="deck-hint">Arrow keys or Space to advance</p>

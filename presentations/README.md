@@ -4,7 +4,22 @@ Drop a source file here. It is converted into a branded HTML deck and published 
 
 **Live index:** [proposal.trilogybpo.com/presentations/](https://proposal.trilogybpo.com/presentations/)
 
-## Drop a file
+## Drop logos (do not recreate them)
+
+Use official files. The HTML looks these up by filename.
+
+**Trilogy (all decks)**
+
+`presentations/_shared/logos/trilogy.png` (or `.svg` / `.webp` / `.jpg`)
+
+**This Medscheme deck**
+
+`presentations/medscheme-international-proposal/assets/logos/medscheme.png`  
+`presentations/medscheme-international-proposal/assets/logos/precision-point.png`
+
+(or `.svg`). Transparent PNG/SVG works best on navy slides.
+
+## Drop a source file
 
 Put the source at **`presentations/`** (this folder) or **`presentations/_inbox/`**.
 
@@ -37,12 +52,14 @@ presentations/
   index.html                gallery (GitHub Pages)
   catalog.json              published decks
   _inbox/                   optional drop zone
-  _shared/                  deck chrome (CSS, JS, logos)
+  _shared/                  deck chrome (CSS, JS)
+    logos/                  official Trilogy logo (`trilogy.png` / `.svg`)
   _template/                HTML skeleton copied for each new deck
   <slug>/
     index.html
     theme.json
     assets/
+      logos/                client / partner logos for that deck
     source/
 ```
 
