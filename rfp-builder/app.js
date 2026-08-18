@@ -824,6 +824,12 @@
   function addSection(id) {
     if (state.sectionOrder.includes(id)) return;
     state.sectionOrder.push(id);
+    if (
+      id === "section-17" &&
+      (!state.commercialSchedule.rows || !state.commercialSchedule.rows.length)
+    ) {
+      state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
+    }
     state.status = "draft";
     renderAll();
     autosaveLocal();
