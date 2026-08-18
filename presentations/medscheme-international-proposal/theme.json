@@ -1,0 +1,36 @@
+{
+  "slug": "medscheme-international-proposal",
+  "title": "Global Sales Capability Proposal",
+  "client": "Medscheme International",
+  "sourceFile": "Medscheme_International_Proposal_with_Shared_Services_18082026.pptx",
+  "sourceType": "pptx",
+  "date": "2026-08-18",
+  "extracted": {
+    "primary": "#20b070",
+    "accent": "#caea70",
+    "secondary": "#2060a0",
+    "dark": "#0c1926",
+    "teal": "#043e3e",
+    "magenta": "#e01050",
+    "gold": "#f0c000",
+    "orange": "#e04030",
+    "light": "#f5f7f9",
+    "palette": ["#0c1926", "#caea70", "#20b070", "#e01050", "#2060a0", "#f0c000", "#043e3e", "#ffffff"]
+  },
+  "trilogy": {
+    "primary": "#61d779",
+    "accent": "#d5ec67",
+    "secondary": "#2f9e4a",
+    "navy": "#13202e",
+    "white": "#ffffff"
+  },
+  "blend": {
+    "navy": "#112430",
+    "navy2": "#163544",
+    "primary": "#44c575",
+    "accent": "#d6e256",
+    "secondary": "#29a559",
+    "white": "#ffffff",
+    "sourceBrand": "#e01050"
+  }
+}

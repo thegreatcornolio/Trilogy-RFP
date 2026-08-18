@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilogy presentations</title>
+  <meta name="description" content="HTML presentation decks converted from uploaded source files.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared/gallery.css">
+</head>
+<body>
+  <div class="bars" aria-hidden="true"><span></span><span></span><span></span></div>
+  <main class="wrap">
+    <div class="brand">
+      <img src="_shared/trilogy-logo.svg" alt="Trilogy">
+    </div>
+    <p class="eyebrow">Presentations</p>
+    <h1>Converted decks</h1>
+    <p class="lede">Each file dropped into this folder becomes a branded HTML presentation. Colours are a blend of Trilogy green/navy and the source deck.</p>
+
+    <div id="empty" class="empty">
+      <p><strong>No decks yet.</strong> Drop a <code>.pptx</code>, <code>.pdf</code>, or similar source into <code>presentations/</code> or <code>presentations/_inbox/</code>. The converted HTML will appear here.</p>
+    </div>
+
+    <div id="grid" class="grid hidden" aria-live="polite"></div>
+
+    <p class="foot">
+      Pipeline notes: <a href="README.md">presentations/README.md</a>
+      · Site: <a href="https://proposal.trilogybpo.com/">proposal.trilogybpo.com</a>
+    </p>
+  </main>
+  <script>
+    const empty = document.getElementById("empty");
+    const grid = document.getElementById("grid");
+
+    fetch("catalog.json", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((catalog) => {
+        const items = catalog.items || [];
+        if (!items.length) return;
+        empty.classList.add("hidden");
+        grid.classList.remove("hidden");
+        grid.innerHTML = items.map((item) => {
+          const blend = item.blend || {};
+          const swatches = [blend.primary, blend.accent, blend.secondary, blend.navy, blend.sourceBrand]
+            .filter(Boolean)
+            .map((hex) => `<i style="background:${hex}" title="${hex}"></i>`)
+            .join("");
+          const href = item.slug ? (item.slug.replace(/\/?$/, "/") ) : "#";
+          const meta = [item.client, item.sourceType].filter(Boolean).join(" · ");
+          return `<a class="card" href="${href}">
+            <h2>${item.title || item.slug}</h2>
+            <p>${meta || "HTML presentation"}</p>
+            <div class="swatches">${swatches}</div>
+          </a>`;
+        }).join("");
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
