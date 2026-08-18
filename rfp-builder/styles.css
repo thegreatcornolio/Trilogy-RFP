@@ -573,11 +573,27 @@ code {
   padding: 0.85rem 0.95rem 1rem;
 }
 
+.placeholder-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+}
+
+.placeholder-card__head h3 {
+  margin: 0;
+}
+
 .placeholder-card h3 {
   margin: 0 0 0.55rem;
   font-family: var(--display);
   font-size: 0.95rem;
   color: var(--navy);
+}
+
+.placeholder-card__hint {
+  margin: 0 0 0.65rem;
 }
 
 .placeholder-card textarea {
@@ -589,6 +605,16 @@ code {
   font: inherit;
   resize: vertical;
   background: #fff;
+}
+
+.placeholder-card textarea[data-key="executive-summary"] {
+  min-height: 16rem;
+  line-height: 1.45;
+}
+
+.btn--small {
+  padding: 0.28rem 0.65rem;
+  font-size: 0.78rem;
 }
 
 .placeholder-card .empty-hint {

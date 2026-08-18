@@ -68,6 +68,213 @@
     { role: "Team Leader", fte: 2, unit: "per FTE / month", rate: 1200, model: "FTE", notes: "1:12 span of control" },
   ];
 
+  /** Short Exec Summary blurbs + cover lists used to prepopulate section-01 */
+  const EXEC_SUMMARY_HIGHLIGHTS = {
+    "section-02": {
+      title: "Company Overview",
+      intro:
+        "We have included a Company Overview that introduces who Trilogy is, how we are structured as a South African CX partner, and the leadership experience behind our UK and US delivery.",
+      covers: [
+        "Company overview",
+        "Meet the Team",
+        "Our Awards, Certifications & Memberships",
+        "South African Footprint",
+        "Relevant UK & US Client Experience",
+        "Management Journey & UK Client Experience",
+        "Specific Client Experience",
+        "Examples of Similar-Sized Operations",
+        "Brands Our Leadership Has Delivered For",
+      ],
+    },
+    "section-03": {
+      title: "Operational Leadership & Delivery",
+      intro:
+        "We have included Operational Leadership & Delivery to show how accountable leadership, people strategy and culture translate into day-to-day performance.",
+      covers: [
+        "Leadership model",
+        "Our People & Workforce",
+        "Culture and CRAFT",
+      ],
+    },
+    "section-04": {
+      title: "Our Value Proposition & Differentiators",
+      intro:
+        "We have included Our Value Proposition & Differentiators to set out why clients choose Trilogy and how we stand apart from traditional offshore providers.",
+      covers: [
+        "Our Secret Sauce",
+        "Our Achievements",
+        "How We Differ From Local Competitors",
+        "Why Cape Town / Why South Africa",
+      ],
+    },
+    "section-05": {
+      title: "Service Offering",
+      intro:
+        "We have included our Service Offering so you can see the delivery paths available — BPO, GCC and AI-enabled support — and the service lines behind them.",
+      covers: [
+        "Outsourced Contact Centre — Trilogy BPO",
+        "Capability Centres — Trilogy GCC",
+        "AI Contact Centre Tools — Trilogy Ai",
+        "Core Service Lines",
+        "Tiered Tech Support SLAs",
+        "Sector Delivery Experience",
+      ],
+    },
+    "section-06": {
+      title: "Global Capability Centres",
+      intro:
+        "We have included Global Capability Centres to explain our Design, Build, Innovate & Transfer (DBIT) path from outsourced delivery to a client-owned centre.",
+      covers: [
+        "The challenge with traditional BPO savings",
+        "Flipping the incentive structure",
+        "DBIT methodology",
+        "Incubator roadmap",
+        "Proven 36-month outcomes",
+        "Flexible financial structures",
+        "Risk mitigation",
+      ],
+    },
+    "section-07": {
+      title: "Trilogy Test Kitchen",
+      intro:
+        "We have included the Trilogy Test Kitchen to show how innovation is proven safely before it reaches live customer journeys.",
+      covers: [
+        "Why most innovation efforts stall",
+        "The Test Kitchen difference",
+        "Measurable technology outcomes",
+        "Risk mitigation by design",
+      ],
+    },
+    "section-08": {
+      title: "Technology, AI & Automation Capability",
+      intro:
+        "We have included Technology, AI & Automation Capability to outline the platform stack, orchestration layer and AI tools that support efficient, resilient delivery.",
+      covers: [
+        "Technology Stack",
+        "AI-Enabled Platforms",
+        "Orchestration Layer",
+        "Trilogy Ai",
+        "Potential AI Savings",
+        "CRM Integration",
+        "Hosting & Resilience",
+        "Cybersecurity & INFOSEC",
+        "Typical Automation Levels",
+      ],
+    },
+    "section-10": {
+      title: "Management Information Systems (MIS)",
+      intro:
+        "We have included Management Information Systems to show how live, daily, weekly and monthly MI keeps performance visible and actionable.",
+      covers: [
+        "Analytics capabilities",
+        "Real-Time (Live) Dashboard",
+        "Daily MI Reporting",
+        "Weekly MI Reporting",
+        "Monthly Business Review (MBR)",
+        "Reporting principles",
+        "AI Insights under the Hood",
+      ],
+    },
+    "section-11": {
+      title: "Forecasting & Demand Management",
+      intro:
+        "We have included Forecasting & Demand Management to explain how workforce planning keeps staffing aligned to volume and service levels.",
+      covers: [
+        "WFM methodology",
+        "System advantages & scalability",
+        "Accuracy examples",
+      ],
+    },
+    "section-12": {
+      title: "Quality & Analytics",
+      intro:
+        "We have included Quality & Analytics to demonstrate how Genii interaction intelligence and continuous improvement protect customer experience.",
+      covers: [
+        "Workflow automation",
+        "II-QA scoring methodology",
+        "Genii Analytics",
+        "Discover Audit",
+        "Continuous improvement",
+        "Customer experience programmes",
+        "Operational insight & reporting",
+      ],
+    },
+    "section-13": {
+      title: "Compliance, Ethics & Risk",
+      intro:
+        "We have included Compliance, Ethics & Risk to confirm the accreditations, data protection and ethics standards that underpin delivery.",
+      covers: [
+        "Accreditations",
+        "Data Protection & Residency",
+        "Cross-Border Data Transfers",
+        "Business Ethics & Anti-Corruption",
+      ],
+    },
+    "section-14": {
+      title: "Safety & Security",
+      intro:
+        "We have included Safety & Security to cover physical, personnel and information security controls across our sites.",
+      covers: [
+        "Security governance",
+        "Physical & site security",
+        "Personnel security",
+        "Incident & investigation management",
+        "Health, safety & risk management",
+      ],
+    },
+    "section-15": {
+      title: "Business Continuity & Disaster Recovery",
+      intro:
+        "We have included Business Continuity & Disaster Recovery to show how service resilience is planned, tested and maintained.",
+      covers: [
+        "Continuity planning",
+        "Disaster recovery",
+        "Resilience and failover",
+      ],
+    },
+    "section-16": {
+      title: "Transition & Implementation Methodology",
+      intro:
+        "We have included Transition & Implementation Methodology to set out how we mobilise safely — from scope and knowledge transfer through to go-live governance.",
+      covers: [
+        "Scope of services",
+        "Transition & implementation",
+        "Client pre-requisites",
+        "Governance & meeting cadence",
+        "Knowledge transfer",
+        "Top transition risks & mitigations",
+      ],
+    },
+    "section-17": {
+      title: "Commercial Models & Pricing",
+      intro:
+        "We have included Commercial Models & Pricing to outline the commercial mechanisms available and, where completed, the proposed schedule for this opportunity.",
+      covers: [
+        "Pricing mechanisms",
+        "Indicative monthly base FTE rates",
+        "Proposed commercial schedule",
+        "Commercial flexibility",
+      ],
+    },
+    "section-18": {
+      title: "Case Studies & References",
+      intro:
+        "We have included Case Studies & References so relevant proof points and client references can be tailored to this opportunity.",
+      covers: ["Relevant case studies", "Reference clients"],
+    },
+    "section-19": {
+      title: "Next Steps",
+      intro:
+        "We have included Next Steps to make the path from this proposal to discovery, commercial agreement and mobilisation clear.",
+      covers: [
+        "Confirm scope and volumes",
+        "Discovery workshop",
+        "Agree commercial model",
+        "Progress to SOW",
+      ],
+    },
+  };
+
   const DEFAULT_HOURS_PER_MONTH = 160;
 
   function emptyCommercialSchedule() {
@@ -100,6 +307,7 @@
     catalog: [],
     sectionOrder: [],
     placeholders: {},
+    execSummaryAutoText: "",
     commercialSchedule: emptyCommercialSchedule(),
     entityContent: ENTITY_CONTENT_FALLBACK,
     theme: {
@@ -574,6 +782,8 @@
         <button type="button" class="remove" aria-label="Remove">×</button>`;
       li.querySelector(".remove").addEventListener("click", () => {
         state.sectionOrder = state.sectionOrder.filter((x) => x !== id);
+        state.status = "draft";
+        maybeRefreshExecutiveSummary();
         renderAll();
         autosaveLocal();
       });
@@ -876,7 +1086,43 @@
     autosaveLocal();
   }
 
+  function buildExecutiveSummaryFromSections(order = state.sectionOrder) {
+    const ids = (order || []).filter(
+      (id) => id !== "section-01" && EXEC_SUMMARY_HIGHLIGHTS[id]
+    );
+    if (!ids.length) {
+      return "Add proposal sections in the builder and this Executive Summary will prepopulate with a short highlight of what is included. You can edit this text freely.";
+    }
+    const blocks = ids.map((id) => {
+      const item = EXEC_SUMMARY_HIGHLIGHTS[id];
+      const covers = (item.covers || []).join(", ");
+      return `${item.title}\n${item.intro}\nIt covers: ${covers}.`;
+    });
+    return [
+      "This Executive Summary highlights the sections included in this proposal.",
+      "",
+      ...blocks,
+    ].join("\n\n");
+  }
+
+  function maybeRefreshExecutiveSummary({ force = false } = {}) {
+    if (!state.sectionOrder.includes("section-01")) return false;
+    const next = buildExecutiveSummaryFromSections(state.sectionOrder);
+    const key = "executive-summary";
+    const current = state.placeholders[key] || "";
+    const canOverwrite =
+      force ||
+      !current.trim() ||
+      current === state.execSummaryAutoText;
+    if (!canOverwrite) return false;
+    state.placeholders[key] = next;
+    state.execSummaryAutoText = next;
+    return true;
+  }
+
   function renderPlaceholders() {
+    maybeRefreshExecutiveSummary();
+
     const editable = state.sectionOrder
       .map(sectionById)
       .filter((s) => s && s.editable && s.placeholderKey);
@@ -893,9 +1139,19 @@
       const card = document.createElement("div");
       card.className = "placeholder-card";
       const value = state.placeholders[key] || "";
-      card.innerHTML = `<h3>${sec.placeholderLabel || sec.title}</h3>
+      const isExec = key === "executive-summary";
+      const rebuildBtn = isExec
+        ? `<button type="button" class="btn btn--ghost btn--small" data-rebuild-exec>Rebuild from sections</button>`
+        : "";
+      const execHint = isExec
+        ? `<p class="hint placeholder-card__hint">Prepopulated from the sections in Document order. Edit freely — rebuild only overwrites when you click the button (or when the text still matches the last auto draft).</p>`
+        : "";
+      card.innerHTML = `<div class="placeholder-card__head"><h3>${
+        sec.placeholderLabel || sec.title
+      }</h3>${rebuildBtn}</div>
+        ${execHint}
         <p class="empty-hint">${value ? "" : "Content placeholder"}</p>
-        <textarea data-key="${key}" placeholder="Type ${
+        <textarea data-key="${key}" rows="${isExec ? 14 : 6}" placeholder="Type ${
         sec.placeholderLabel || sec.title
       } content…">${escapeHtml(value)}</textarea>`;
       const ta = card.querySelector("textarea");
@@ -907,6 +1163,14 @@
         state.status = "draft";
         updatePreview();
         autosaveLocal();
+      });
+      card.querySelector("[data-rebuild-exec]")?.addEventListener("click", () => {
+        maybeRefreshExecutiveSummary({ force: true });
+        state.status = "draft";
+        renderPlaceholders();
+        updatePreview();
+        autosaveLocal();
+        toast("Executive Summary rebuilt from selected sections");
       });
       els.placeholders.appendChild(card);
     });
@@ -932,6 +1196,7 @@
       state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
     }
     state.status = "draft";
+    maybeRefreshExecutiveSummary();
     renderAll();
     autosaveLocal();
   }
@@ -952,7 +1217,7 @@
     const meta = readMeta();
     const paths = customerPaths(meta);
     return {
-      version: 3,
+      version: 4,
       status: state.status,
       slug: draftSlug(meta),
       clientSlug: clientSlug(meta),
@@ -963,6 +1228,7 @@
       logoDataUrl: state.logoDataUrl,
       sectionOrder: [...state.sectionOrder],
       placeholders: { ...state.placeholders },
+      execSummaryAutoText: state.execSummaryAutoText || "",
       commercialSchedule: normalizeCommercialSchedule(state.commercialSchedule),
       acceptance: {
         ...state.acceptance,
@@ -1156,6 +1422,7 @@
     state.sectionOrder = d.sectionOrder || [];
     pruneRetiredSections();
     state.placeholders = d.placeholders || {};
+    state.execSummaryAutoText = d.execSummaryAutoText || "";
     state.commercialSchedule = normalizeCommercialSchedule(d.commercialSchedule);
     state.theme = {
       primary: "#61d779",
@@ -1204,6 +1471,7 @@
     state.currentSlug = null;
     state.status = "draft";
     state.placeholders = {};
+    state.execSummaryAutoText = "";
     state.commercialSchedule = emptyCommercialSchedule();
     state.sectionOrder = [
       "section-01",
@@ -1212,6 +1480,7 @@
       "section-04",
       "section-05",
     ];
+    maybeRefreshExecutiveSummary({ force: true });
     state.logoDataUrl = keepLogo;
     state.theme = keepTheme;
     state.palette = keepPalette;
@@ -1276,11 +1545,16 @@
   }
 
   function placeholderHtml(text) {
-    const body = escapeHtml(text || "").replace(/\n/g, "<br>");
     if (!text || !text.trim()) {
       return `<div class="placeholder-block"><p class="placeholder-label">Content placeholder</p></div>`;
     }
-    return `<div class="placeholder-block is-filled"><div class="prose"><p>${body}</p></div></div>`;
+    const paragraphs = String(text)
+      .split(/\n\s*\n/)
+      .map((block) => block.trim())
+      .filter(Boolean)
+      .map((block) => `<p>${escapeHtml(block).replace(/\n/g, "<br>")}</p>`)
+      .join("");
+    return `<div class="placeholder-block is-filled"><div class="prose">${paragraphs}</div></div>`;
   }
 
   /** Build full proposal from master trilogydigital template */
@@ -2026,6 +2300,7 @@ if (ph["case-studies"] !== undefined) {
         "section-04",
         "section-05",
       ];
+      maybeRefreshExecutiveSummary({ force: true });
       try {
         await loadEntityContent();
       } catch (err) {
@@ -2060,6 +2335,7 @@ if (ph["case-studies"] !== undefined) {
           if (id && !state.sectionOrder.includes(id)) {
             state.sectionOrder.splice(evt.newIndex, 0, id);
             state.status = "draft";
+            maybeRefreshExecutiveSummary();
             renderAll();
             autosaveLocal();
           } else {
@@ -2071,6 +2347,7 @@ if (ph["case-studies"] !== undefined) {
             (li) => li.dataset.id
           );
           state.status = "draft";
+          maybeRefreshExecutiveSummary();
           renderLibrary();
           renderPlaceholders();
           updatePreview();
