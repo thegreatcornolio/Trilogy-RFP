@@ -67,8 +67,9 @@ Use your existing DocuSign business license via Power Automate’s DocuSign conn
 ## Local use (no webhooks yet)
 
 - Drafts autosave to `localStorage` in the current browser only
-- **Export draft JSON** / **Export built HTML** download files you can drop into `proposals/{slug}/`
+- **Export draft JSON** / **Final commit** download files when the matching webhook URL is empty
 - Point `CONFIG.webhooks.*` at your Power Automate HTTP trigger URLs when ready
+- Final commit PA build guide: [`FINAL-COMMIT-POWER-AUTOMATE.md`](./FINAL-COMMIT-POWER-AUTOMATE.md)
 - **Admin** (bottom-left) is PIN-gated draft management: delete individual local drafts or clear all. This never deletes SQL / SharePoint / committed proposal files. Change `CONFIG.adminPin` in `app.js` (default `trilogy-admin`).
 
 ## Live
