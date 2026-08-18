@@ -1,5 +1,21 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "items": []
+  "updatedAt": "2026-08-18T20:50:00.000Z",
+  "items": [
+    {
+      "slug": "medscheme-international-proposal",
+      "title": "Global Sales Capability Proposal",
+      "client": "Medscheme International",
+      "sourceType": "pptx",
+      "date": "2026-08-18",
+      "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/",
+      "blend": {
+        "primary": "#44c575",
+        "accent": "#d6e256",
+        "secondary": "#29a559",
+        "navy": "#112430",
+        "sourceBrand": "#e01050"
+      }
+    }
+  ]
 }
