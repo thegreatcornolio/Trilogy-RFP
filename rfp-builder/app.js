@@ -275,6 +275,141 @@
     },
   };
 
+  /** Curated pack for “Short Company Overview” proposal-from option */
+  const SHORT_COMPANY_OVERVIEW_SECTIONS = [
+    "section-01",
+    "section-02",
+    "section-03",
+    "section-04",
+    "section-05",
+    "section-06",
+    "section-08",
+    "section-10",
+    "section-11",
+    "section-12",
+    "section-17",
+  ];
+
+  const SHORT_EXEC_SUMMARY_HIGHLIGHTS = {
+    "section-02": {
+      title: "Company Overview",
+      intro:
+        "We have included a Company Overview using the Trilogy Digital narrative — who we are, our footprint, leadership journey and the brands our leadership has delivered for.",
+      covers: [
+        "Company overview",
+        "Meet the Team",
+        "Our Awards, Certifications & Memberships",
+        "South African Footprint",
+        "Management Journey & UK Client Experience",
+        "Brands Our Leadership Has Delivered For",
+      ],
+    },
+    "section-03": {
+      title: "Operational Leadership & Delivery",
+      intro:
+        "We have included Our People & Workforce — attraction, retention, UK cultural immersion, leadership pathway, EVP, wellbeing and CRAFT culture.",
+      covers: [
+        "Our People & Workforce",
+        "UK Cultural Immersion",
+        "Tenure & Attrition",
+        "Attraction & Retention",
+        "Trilogy Leadership Pathway",
+        "Employee Value Proposition",
+        "Employee Wellbeing",
+        "Our Culture — CRAFT",
+      ],
+    },
+    "section-04": {
+      title: "Our Value Proposition & Differentiators",
+      intro:
+        "We have included Our Value Proposition & Differentiators — secret sauce, achievements, competitor contrast and Why Cape Town / Why South Africa.",
+      covers: [
+        "Value proposition overview",
+        "Our Secret Sauce",
+        "Our Achievements",
+        "How We Differ From Local Competitors",
+        "Why Cape Town / Why South Africa",
+      ],
+    },
+    "section-05": {
+      title: "Service Offering",
+      intro:
+        "We have included the full Service Offering across BPO, GCC and AI-enabled delivery paths.",
+      covers: [
+        "Outsourced Contact Centre — Trilogy BPO",
+        "Capability Centres — Trilogy GCC",
+        "AI Contact Centre Tools — Trilogy Ai",
+        "Core Service Lines",
+        "Tiered Tech Support SLAs",
+        "Sector Delivery Experience",
+      ],
+    },
+    "section-06": {
+      title: "Global Capability Centres",
+      intro:
+        "We have included Global Capability Centres and the full DBIT path from outsourced delivery to a client-owned centre.",
+      covers: [
+        "DBIT methodology",
+        "Incubator roadmap",
+        "Proven outcomes",
+        "Flexible financial structures",
+        "Risk mitigation",
+      ],
+    },
+    "section-08": {
+      title: "Technology, AI & Automation Capability",
+      intro:
+        "We have included Technology, AI & Automation focused on the stack, AI platforms, orchestration, Trilogy Ai and potential AI savings.",
+      covers: [
+        "Introduction",
+        "Technology Stack",
+        "AI-Enabled Platforms",
+        "Orchestration Layer",
+        "Trilogy Ai",
+        "Potential AI Savings",
+      ],
+    },
+    "section-10": {
+      title: "Management Information Systems (MIS)",
+      intro:
+        "We have included MIS highlights — analytics capabilities, the reporting framework, live dashboards and AI Insights under the Hood.",
+      covers: [
+        "Analytics Capabilities",
+        "Trilogy BPO MI Reporting Framework",
+        "Real-Time (Live) Dashboard",
+        "AI Insights under the Hood",
+      ],
+    },
+    "section-11": {
+      title: "Forecasting & Demand Management",
+      intro:
+        "We have included our WFM Methodology — planning, intraday management and reporting in a continuous feedback loop.",
+      covers: ["WFM Methodology"],
+    },
+    "section-12": {
+      title: "Quality & Analytics",
+      intro:
+        "We have included Continuous Improvement — Genii-led improvement loops, CX programmes and operational insight frameworks.",
+      covers: [
+        "Continuous Improvement",
+        "Continuous Improvement Initiatives",
+        "Customer Experience Programmes",
+        "Operational Insight & Reporting Frameworks",
+      ],
+    },
+    "section-17": {
+      title: "Commercial Models & Pricing",
+      intro:
+        "We have included Commercial Models & Pricing so deal commercials can be confirmed for this opportunity.",
+      covers: [
+        "Pricing mechanisms",
+        "Indicative rates",
+        "Proposed commercial schedule",
+        "Commercial flexibility",
+      ],
+    },
+  };
+
   const DEFAULT_HOURS_PER_MONTH = 160;
 
   function emptyCommercialSchedule() {
@@ -443,8 +578,22 @@
     return checked ? checked.value : "Trilogy Digital";
   }
 
+  function isShortCompanyOverview(entity = getEntityName()) {
+    return entity === "Short Company Overview";
+  }
+
+  /** Brand / narrative entity — Short Company Overview always uses Trilogy Digital copy */
+  function brandEntityName(entity = getEntityName()) {
+    return isShortCompanyOverview(entity) ? "Trilogy Digital" : entity;
+  }
+
   function setEntityName(value) {
-    const allowed = new Set(["Trilogy Digital", "Trilogy BPO", "Trilogy GCC"]);
+    const allowed = new Set([
+      "Trilogy Digital",
+      "Trilogy BPO",
+      "Trilogy GCC",
+      "Short Company Overview",
+    ]);
     const normalized =
       value === "Trilogy" || !allowed.has(value) ? "Trilogy Digital" : value;
     const input = document.querySelector(
@@ -527,13 +676,34 @@
   function renderEntityOverviewPreview() {
     const body = document.getElementById("entityOverviewPreviewBody");
     const hint = document.getElementById("entityOverviewHint");
-    const entity = getEntityName();
+    const profile = getEntityName();
+    const brand = brandEntityName(profile);
     if (hint) {
-      hint.textContent = `Company Overview uses the ${entity} narrative.`;
+      hint.textContent = isShortCompanyOverview(profile)
+        ? "Short Company Overview uses the Trilogy Digital narrative and a curated section pack."
+        : `Company Overview uses the ${profile} narrative.`;
     }
     if (!body) return;
-    const html = companyOverviewHtml(entity);
+    const html = companyOverviewHtml(brand);
     body.innerHTML = html || "<p>No overview copy loaded.</p>";
+  }
+
+  function applyShortCompanyOverviewPreset() {
+    state.sectionOrder = [...SHORT_COMPANY_OVERVIEW_SECTIONS];
+    if (els.fields.documentType) {
+      els.fields.documentType.value = "Short Company Overview";
+    }
+    if (els.fields.proposalTitle) {
+      els.fields.proposalTitle.value = "Short Company Overview";
+    }
+    if (
+      state.sectionOrder.includes("section-17") &&
+      isAdminUnlocked() &&
+      (!state.commercialSchedule.rows || !state.commercialSchedule.rows.length)
+    ) {
+      state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
+    }
+    maybeRefreshExecutiveSummary({ force: true });
   }
 
   function applyTheme() {
@@ -709,7 +879,7 @@
       if (!el) return;
       el.textContent = val || fallback;
     };
-    els.pvEntity.textContent = m.entityName;
+    els.pvEntity.textContent = brandEntityName(m.entityName);
     fill(els.preview.documentType, m.documentType, "RFP / RFI Response");
     fill(
       els.preview.proposalTitle,
@@ -1124,19 +1294,22 @@
   }
 
   function buildExecutiveSummaryFromSections(order = state.sectionOrder) {
-    const ids = (order || []).filter(
-      (id) => id !== "section-01" && EXEC_SUMMARY_HIGHLIGHTS[id]
-    );
+    const map = isShortCompanyOverview()
+      ? SHORT_EXEC_SUMMARY_HIGHLIGHTS
+      : EXEC_SUMMARY_HIGHLIGHTS;
+    const ids = (order || []).filter((id) => id !== "section-01" && map[id]);
     if (!ids.length) {
       return "Add proposal sections in the builder and this Executive Summary will prepopulate with a short highlight of what is included. You can edit this text freely.";
     }
     const blocks = ids.map((id) => {
-      const item = EXEC_SUMMARY_HIGHLIGHTS[id];
+      const item = map[id];
       const covers = (item.covers || []).join(", ");
       return `${item.title}\n${item.intro}\nIt covers: ${covers}.`;
     });
     return [
-      "This Executive Summary highlights the sections included in this proposal.",
+      isShortCompanyOverview()
+        ? "This Short Company Overview highlights the curated sections included in this proposal."
+        : "This Executive Summary highlights the sections included in this proposal.",
       ...blocks,
     ].join("\n\n");
   }
@@ -1593,6 +1766,145 @@
     return `<div class="placeholder-block is-filled"><div class="prose">${paragraphs}</div></div>`;
   }
 
+  function parseSectionFragment(blockHtml) {
+    const doc = new DOMParser().parseFromString(blockHtml, "text/html");
+    return doc.body.firstElementChild || doc.body;
+  }
+
+  function removeNodesThroughNextH3(startEl) {
+    if (!startEl) return;
+    let node = startEl;
+    while (node) {
+      const next = node.nextElementSibling;
+      const stop = next && /^H[23]$/.test(next.tagName);
+      node.remove();
+      if (stop) break;
+      node = next;
+    }
+  }
+
+  function removeHeadingBlockById(root, id) {
+    const el = root.querySelector(`#${CSS.escape(id)}`);
+    if (!el) return;
+    removeNodesThroughNextH3(el);
+  }
+
+  function removeHeadingBlockByText(root, title) {
+    const target = String(title || "").trim().toLowerCase();
+    const el = [...root.querySelectorAll("h3")].find(
+      (h) => h.textContent.replace(/\s+/g, " ").trim().toLowerCase() === target
+    );
+    if (!el) return;
+    removeNodesThroughNextH3(el);
+  }
+
+  function removeElementById(root, id) {
+    root.querySelector(`#${CSS.escape(id)}`)?.remove();
+  }
+
+  function pruneCoversTable(root, coversId, removeHrefs) {
+    const box = root.querySelector(`#${CSS.escape(coversId)}`);
+    if (!box) return;
+    const drop = new Set(
+      (removeHrefs || []).map((h) => (h.startsWith("#") ? h : `#${h}`))
+    );
+    box.querySelectorAll("tbody tr").forEach((tr) => {
+      const href = tr.querySelector("a[href]")?.getAttribute("href") || "";
+      if (drop.has(href)) tr.remove();
+    });
+    [...box.querySelectorAll("tbody tr")].forEach((tr, i) => {
+      const numCell = tr.querySelector("td");
+      if (numCell) numCell.textContent = String(i + 1);
+    });
+  }
+
+  function keepFromIdThroughEnd(root, startId) {
+    const body = root.querySelector(".section-body") || root;
+    const start = body.querySelector(`#${CSS.escape(startId)}`);
+    if (!start) return;
+    [...body.children].forEach((child) => {
+      if (child === start || child.contains(start)) return;
+      // Remove nodes that appear before the keep-start element
+      if (
+        child.compareDocumentPosition(start) & Node.DOCUMENT_POSITION_FOLLOWING
+      ) {
+        child.remove();
+      }
+    });
+  }
+
+  function removeFromIdToEnd(root, id) {
+    const el = root.querySelector(`#${CSS.escape(id)}`);
+    if (!el) return;
+    let node = el;
+    while (node) {
+      const next = node.nextElementSibling;
+      node.remove();
+      node = next;
+    }
+  }
+
+  /** Trim master section HTML to the Short Company Overview content pack */
+  function applyShortOverviewSectionFilter(id, blockHtml) {
+    const root = parseSectionFragment(blockHtml);
+    if (!root) return blockHtml;
+
+    if (id === "section-02") {
+      removeHeadingBlockById(root, "uk-us-experience");
+      removeHeadingBlockById(root, "specific-client-experience");
+      removeHeadingBlockById(root, "similar-operations");
+      pruneCoversTable(root, "covers", [
+        "#uk-us-experience",
+        "#specific-client-experience",
+        "#similar-operations",
+      ]);
+    }
+
+    if (id === "section-03") {
+      removeElementById(root, "ops-covers");
+      removeElementById(root, "ops-leadership-model");
+      keepFromIdThroughEnd(root, "our-people-workforce");
+      removeFromIdToEnd(root, "adapting-to-your-culture");
+    }
+
+    if (id === "section-08") {
+      [
+        "tech-crm-integration",
+        "tech-hosting-resilience",
+        "tech-cybersecurity",
+        "tech-automation-levels",
+        "tech-platform-demo",
+      ].forEach((hid) => removeHeadingBlockById(root, hid));
+      pruneCoversTable(root, "tech-covers", [
+        "#tech-crm-integration",
+        "#tech-hosting-resilience",
+        "#tech-cybersecurity",
+        "#tech-automation-levels",
+        "#tech-platform-demo",
+      ]);
+    }
+
+    if (id === "section-10") {
+      [
+        "Daily MI Reporting",
+        "Weekly MI Reporting",
+        "Monthly Business Review (MBR)",
+        "Our Reporting Principles",
+      ].forEach((title) => removeHeadingBlockByText(root, title));
+    }
+
+    if (id === "section-11") {
+      removeHeadingBlockByText(root, "System Advantages & Scalability");
+      removeHeadingBlockByText(root, "Accuracy Examples");
+    }
+
+    if (id === "section-12") {
+      keepFromIdThroughEnd(root, "continuous-improvement");
+    }
+
+    return root.outerHTML;
+  }
+
   /** Build full proposal from master trilogydigital template */
   async function assembleFullProposal(payload, { isPreview = false } = {}) {
     await loadEntityContent();
@@ -1605,7 +1917,8 @@
     html = html.replace(/src="(script\.js[^"]*)"/, `src="${base}$1"`);
     html = html.replace(/(src|href)="assets\//g, `$1="${base}assets/`);
 
-    const entity = payload.meta.entityName || "Trilogy Digital";
+    const profile = payload.meta.entityName || "Trilogy Digital";
+    const entity = brandEntityName(profile);
     const clientLogo = payload.logoDataUrl
       ? `<img class="cover__client-logo" src="${payload.logoDataUrl}" alt="${escapeHtml(
           payload.meta.clientName || "Client"
@@ -1713,9 +2026,13 @@
     const orderedIds = (payload.sectionOrder || []).filter((id) =>
       sectionBlocks.has(id)
     );
+    const shortPack = isShortCompanyOverview(profile);
     const orderedEntries = orderedIds.map((id, index) => {
       const num = String(index + 1).padStart(2, "0");
       let block = sectionBlocks.get(id);
+      if (shortPack) {
+        block = applyShortOverviewSectionFilter(id, block);
+      }
       block = block.replace(
         /(<span class="section-num">)[\s\S]*?(<\/span>)/,
         `$1${num}$2`
@@ -2010,7 +2327,14 @@ if (ph["case-studies"] !== undefined) {
   document.querySelectorAll('input[name="entityName"]').forEach((r) => {
     r.addEventListener("change", () => {
       state.status = "draft";
-      updatePreview();
+      if (isShortCompanyOverview()) {
+        applyShortCompanyOverviewPreset();
+        renderAll();
+        toast("Short Company Overview pack loaded — trim commercials as needed");
+      } else {
+        renderEntityOverviewPreview();
+        updatePreview();
+      }
       autosaveLocal();
     });
   });
