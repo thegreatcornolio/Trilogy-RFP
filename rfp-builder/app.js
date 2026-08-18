@@ -294,7 +294,7 @@
     "section-02": {
       title: "Company Overview",
       intro:
-        "We have included a Company Overview using the Trilogy Digital narrative — who we are, our footprint, leadership journey and the brands our leadership has delivered for.",
+        "A concise introduction to Trilogy Digital — who we are, how we are structured, and the leadership experience behind UK and US delivery.",
       covers: [
         "Company overview",
         "Meet the Team",
@@ -305,15 +305,12 @@
       ],
     },
     "section-03": {
-      title: "Operational Leadership & Delivery",
+      title: "Our People & Workforce",
       intro:
-        "We have included Our People & Workforce — attraction, retention, UK cultural immersion, leadership pathway, EVP, wellbeing and CRAFT culture.",
+        "How we attract, develop and look after people — the employee lifecycle, recruitment, EVP, wellbeing and CRAFT culture.",
       covers: [
         "Our People & Workforce",
-        "UK Cultural Immersion",
-        "Tenure & Attrition",
-        "Attraction & Retention",
-        "Trilogy Leadership Pathway",
+        "Employee lifecycle & recruitment",
         "Employee Value Proposition",
         "Employee Wellbeing",
         "Our Culture — CRAFT",
@@ -322,7 +319,7 @@
     "section-04": {
       title: "Our Value Proposition & Differentiators",
       intro:
-        "We have included Our Value Proposition & Differentiators — secret sauce, achievements, competitor contrast and Why Cape Town / Why South Africa.",
+        "Why clients choose Trilogy — secret sauce, achievements, competitor contrast, and Why Cape Town / Why South Africa.",
       covers: [
         "Value proposition overview",
         "Our Secret Sauce",
@@ -334,32 +331,30 @@
     "section-05": {
       title: "Service Offering",
       intro:
-        "We have included the full Service Offering across BPO, GCC and AI-enabled delivery paths.",
+        "The full delivery choice across outsourced BPO, capability centres and AI-enabled support.",
       covers: [
-        "Outsourced Contact Centre — Trilogy BPO",
-        "Capability Centres — Trilogy GCC",
-        "AI Contact Centre Tools — Trilogy Ai",
-        "Core Service Lines",
-        "Tiered Tech Support SLAs",
-        "Sector Delivery Experience",
+        "Trilogy BPO",
+        "Trilogy GCC",
+        "Trilogy Ai",
+        "Core service lines",
+        "SLAs and sector experience",
       ],
     },
     "section-06": {
       title: "Global Capability Centres",
       intro:
-        "We have included Global Capability Centres and the full DBIT path from outsourced delivery to a client-owned centre.",
+        "Our Design, Build, Innovate & Transfer path from outsourced delivery to a client-owned centre.",
       covers: [
         "DBIT methodology",
         "Incubator roadmap",
         "Proven outcomes",
         "Flexible financial structures",
-        "Risk mitigation",
       ],
     },
     "section-08": {
       title: "Technology, AI & Automation Capability",
       intro:
-        "We have included Technology, AI & Automation focused on the stack, AI platforms, orchestration, Trilogy Ai and potential AI savings.",
+        "Human-led, AI-enhanced delivery — technology stack, orchestration, Trilogy Ai and the savings case.",
       covers: [
         "Introduction",
         "Technology Stack",
@@ -372,35 +367,35 @@
     "section-10": {
       title: "Management Information Systems (MIS)",
       intro:
-        "We have included MIS highlights — analytics capabilities, the reporting framework, live dashboards and AI Insights under the Hood.",
+        "How performance stays visible — analytics, the MI framework, live dashboards and AI Insights.",
       covers: [
         "Analytics Capabilities",
-        "Trilogy BPO MI Reporting Framework",
+        "MI Reporting Framework",
         "Real-Time (Live) Dashboard",
         "AI Insights under the Hood",
       ],
     },
     "section-11": {
-      title: "Forecasting & Demand Management",
+      title: "WFM Methodology",
       intro:
-        "We have included our WFM Methodology — planning, intraday management and reporting in a continuous feedback loop.",
+        "A continuous planning loop across workforce scheduling, intraday management and reporting.",
       covers: ["WFM Methodology"],
     },
     "section-12": {
-      title: "Quality & Analytics",
+      title: "Continuous Improvement",
       intro:
-        "We have included Continuous Improvement — Genii-led improvement loops, CX programmes and operational insight frameworks.",
+        "Genii-led improvement loops that turn interaction intelligence into action across CX and operations.",
       covers: [
         "Continuous Improvement",
         "Continuous Improvement Initiatives",
         "Customer Experience Programmes",
-        "Operational Insight & Reporting Frameworks",
+        "Operational Insight & Reporting",
       ],
     },
     "section-17": {
       title: "Commercial Models & Pricing",
       intro:
-        "We have included Commercial Models & Pricing so deal commercials can be confirmed for this opportunity.",
+        "Commercial mechanisms and the proposed schedule for this opportunity.",
       covers: [
         "Pricing mechanisms",
         "Indicative rates",
@@ -1299,19 +1294,19 @@
       : EXEC_SUMMARY_HIGHLIGHTS;
     const ids = (order || []).filter((id) => id !== "section-01" && map[id]);
     if (!ids.length) {
-      return "Add proposal sections in the builder and this Executive Summary will prepopulate with a short highlight of what is included. You can edit this text freely.";
+      return "<p>Add proposal sections in the builder and this Executive Summary will prepopulate with a short highlight of what is included. You can edit this HTML freely.</p>";
     }
+    const intro = isShortCompanyOverview()
+      ? "<p>This <strong>Short Company Overview</strong> sets out the curated narrative for this opportunity — who Trilogy Digital is, how we deliver, and the commercial model proposed.</p>"
+      : "<p>This Executive Summary highlights the sections included in this proposal.</p>";
     const blocks = ids.map((id) => {
       const item = map[id];
-      const covers = (item.covers || []).join(", ");
-      return `${item.title}\n${item.intro}\nIt covers: ${covers}.`;
+      const covers = escapeHtml((item.covers || []).join(", "));
+      return `<h3>${escapeHtml(item.title)}</h3>
+<p>${escapeHtml(item.intro)}</p>
+<p><strong>It covers:</strong> ${covers}.</p>`;
     });
-    return [
-      isShortCompanyOverview()
-        ? "This Short Company Overview highlights the curated sections included in this proposal."
-        : "This Executive Summary highlights the sections included in this proposal.",
-      ...blocks,
-    ].join("\n\n");
+    return [intro, ...blocks].join("\n");
   }
 
   function maybeRefreshExecutiveSummary({ force = false } = {}) {
@@ -1334,7 +1329,17 @@
 
     const editable = state.sectionOrder
       .map(sectionById)
-      .filter((s) => s && s.editable && s.placeholderKey);
+      .filter((s) => s && s.editable && s.placeholderKey)
+      .filter((s) => {
+        // Short pack removes Specific Client Experience entirely
+        if (
+          isShortCompanyOverview() &&
+          s.placeholderKey === "specific-client-experience"
+        ) {
+          return false;
+        }
+        return true;
+      });
 
     if (!editable.length) {
       els.placeholders.innerHTML =
@@ -1353,16 +1358,20 @@
         ? `<button type="button" class="btn btn--ghost btn--small" data-rebuild-exec>Rebuild from sections</button>`
         : "";
       const execHint = isExec
-        ? `<p class="hint placeholder-card__hint">Prepopulated from the sections in Document order. Edit freely — rebuild only overwrites when you click the button (or when the text still matches the last auto draft).</p>`
+        ? `<p class="hint placeholder-card__hint">HTML supported — use <code>&lt;h3&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;strong&gt;</code>, lists, etc. Rebuild only overwrites when you click the button (or when the text still matches the last auto draft).</p>`
         : "";
       card.innerHTML = `<div class="placeholder-card__head"><h3>${
         sec.placeholderLabel || sec.title
-      }</h3>${rebuildBtn}</div>
+      }${isExec ? ' <span class="pill pill--html">HTML</span>' : ""}</h3>${rebuildBtn}</div>
         ${execHint}
         <p class="empty-hint">${value ? "" : "Content placeholder"}</p>
-        <textarea data-key="${key}" rows="${isExec ? 14 : 6}" placeholder="Type ${
-        sec.placeholderLabel || sec.title
-      } content…">${escapeHtml(value)}</textarea>`;
+        <textarea data-key="${key}" class="${isExec ? "is-html" : ""}" rows="${
+        isExec ? 18 : 6
+      }" spellcheck="${isExec ? "false" : "true"}" placeholder="${
+        isExec
+          ? "HTML e.g. <h3>Company Overview</h3><p>…</p>"
+          : `Type ${sec.placeholderLabel || sec.title} content…`
+      }">${escapeHtml(value)}</textarea>`;
       const ta = card.querySelector("textarea");
       const hint = card.querySelector(".empty-hint");
       if (value) hint.style.display = "none";
@@ -1753,9 +1762,67 @@
     URL.revokeObjectURL(a.href);
   }
 
+  function looksLikeHtml(text) {
+    return /<\/?[a-z][\s\S]*>/i.test(String(text || ""));
+  }
+
+  function sanitizeBasicHtml(html) {
+    const doc = new DOMParser().parseFromString(
+      `<div id="__sanitize_root__">${html}</div>`,
+      "text/html"
+    );
+    const root = doc.getElementById("__sanitize_root__");
+    if (!root) return "";
+    const allowed = new Set([
+      "P",
+      "BR",
+      "STRONG",
+      "B",
+      "EM",
+      "I",
+      "U",
+      "H2",
+      "H3",
+      "H4",
+      "UL",
+      "OL",
+      "LI",
+      "A",
+      "SPAN",
+      "DIV",
+    ]);
+    const walk = (node) => {
+      [...node.children].forEach((child) => {
+        if (!allowed.has(child.tagName)) {
+          const textNode = doc.createTextNode(child.textContent || "");
+          child.replaceWith(textNode);
+          return;
+        }
+        if (child.tagName === "A") {
+          const href = child.getAttribute("href") || "";
+          [...child.attributes].forEach((attr) => child.removeAttribute(attr.name));
+          if (/^(https?:|mailto:|#)/i.test(href)) child.setAttribute("href", href);
+        } else {
+          [...child.attributes].forEach((attr) => {
+            if (attr.name === "id" || attr.name === "class") return;
+            child.removeAttribute(attr.name);
+          });
+        }
+        walk(child);
+      });
+    };
+    walk(root);
+    return root.innerHTML;
+  }
+
   function placeholderHtml(text) {
-    if (!text || !text.trim()) {
+    if (!text || !String(text).trim()) {
       return `<div class="placeholder-block"><p class="placeholder-label">Content placeholder</p></div>`;
+    }
+    if (looksLikeHtml(text)) {
+      return `<div class="placeholder-block is-filled"><div class="prose">${sanitizeBasicHtml(
+        text
+      )}</div></div>`;
     }
     const paragraphs = String(text)
       .split(/\n\s*\n/)
@@ -1771,14 +1838,35 @@
     return doc.body.firstElementChild || doc.body;
   }
 
-  function removeNodesThroughNextH3(startEl) {
+  function headingLevel(el) {
+    const m = /^H([1-6])$/.exec(el?.tagName || "");
+    return m ? Number(m[1]) : 99;
+  }
+
+  /** Remove a heading and following siblings until a heading of same/higher level */
+  function removeHeadingSubtree(startEl) {
+    if (!startEl) return;
+    const level = headingLevel(startEl);
+    let node = startEl;
+    while (node) {
+      const next = node.nextElementSibling;
+      const nextLevel = headingLevel(next);
+      node.remove();
+      if (next && nextLevel <= level) break;
+      node = next;
+    }
+  }
+
+  function removeFromElementUntil(startEl, stopFn) {
     if (!startEl) return;
     let node = startEl;
     while (node) {
       const next = node.nextElementSibling;
-      const stop = next && /^H[23]$/.test(next.tagName);
+      if (next && stopFn(next)) {
+        node.remove();
+        break;
+      }
       node.remove();
-      if (stop) break;
       node = next;
     }
   }
@@ -1786,16 +1874,23 @@
   function removeHeadingBlockById(root, id) {
     const el = root.querySelector(`#${CSS.escape(id)}`);
     if (!el) return;
-    removeNodesThroughNextH3(el);
+    removeHeadingSubtree(el);
   }
 
-  function removeHeadingBlockByText(root, title) {
+  function removeHeadingBlockByText(root, title, tagName = "h3") {
     const target = String(title || "").trim().toLowerCase();
-    const el = [...root.querySelectorAll("h3")].find(
+    const el = [...root.querySelectorAll(tagName)].find(
       (h) => h.textContent.replace(/\s+/g, " ").trim().toLowerCase() === target
     );
     if (!el) return;
-    removeNodesThroughNextH3(el);
+    removeHeadingSubtree(el);
+  }
+
+  function findHeadingByText(root, title, tagName = "h3") {
+    const target = String(title || "").trim().toLowerCase();
+    return [...root.querySelectorAll(tagName)].find(
+      (h) => h.textContent.replace(/\s+/g, " ").trim().toLowerCase() === target
+    );
   }
 
   function removeElementById(root, id) {
@@ -1824,7 +1919,6 @@
     if (!start) return;
     [...body.children].forEach((child) => {
       if (child === start || child.contains(start)) return;
-      // Remove nodes that appear before the keep-start element
       if (
         child.compareDocumentPosition(start) & Node.DOCUMENT_POSITION_FOLLOWING
       ) {
@@ -1842,6 +1936,15 @@
       node.remove();
       node = next;
     }
+  }
+
+  function promoteHeading(el, tagName) {
+    if (!el || el.tagName.toLowerCase() === tagName.toLowerCase()) return el;
+    const next = el.ownerDocument.createElement(tagName);
+    [...el.attributes].forEach((attr) => next.setAttribute(attr.name, attr.value));
+    next.innerHTML = el.innerHTML;
+    el.replaceWith(next);
+    return next;
   }
 
   /** Trim master section HTML to the Short Company Overview content pack */
@@ -1864,10 +1967,37 @@
       removeElementById(root, "ops-covers");
       removeElementById(root, "ops-leadership-model");
       keepFromIdThroughEnd(root, "our-people-workforce");
+      [
+        "agent-profile",
+        "training-management-structure",
+        "uk-cultural-immersion",
+        "tenure-attrition",
+        "attraction-retention",
+        "trilogy-leadership-pathway",
+      ].forEach((hid) => removeHeadingBlockById(root, hid));
       removeFromIdToEnd(root, "adapting-to-your-culture");
     }
 
+    if (id === "section-04") {
+      // Why Cape Town / Why South Africa becomes a main heading; SA / Cape Town stay subheads
+      const why = root.querySelector("#why-cape-town-sa");
+      if (why) promoteHeading(why, "h2");
+    }
+
     if (id === "section-08") {
+      const autonomous = findHeadingByText(
+        root,
+        "The AI proposition — Autonomous CX",
+        "h4"
+      );
+      if (autonomous) {
+        removeFromElementUntil(autonomous, (el) => /^H[23]$/.test(el.tagName));
+      }
+      removeHeadingBlockByText(
+        root,
+        "Additional Trilogy Ai point solutions",
+        "h4"
+      );
       [
         "tech-crm-integration",
         "tech-hosting-resilience",
@@ -1896,10 +2026,17 @@
     if (id === "section-11") {
       removeHeadingBlockByText(root, "System Advantages & Scalability");
       removeHeadingBlockByText(root, "Accuracy Examples");
+      const title = root.querySelector(".section-head h2");
+      if (title) title.innerHTML = "WFM Methodology";
     }
 
     if (id === "section-12") {
+      // Drop II-QA / Genii / Discover content; Continuous Improvement becomes the section
       keepFromIdThroughEnd(root, "continuous-improvement");
+      const title = root.querySelector(".section-head h2");
+      if (title) title.innerHTML = "Continuous Improvement";
+      const ci = root.querySelector("#continuous-improvement");
+      if (ci) ci.remove();
     }
 
     return root.outerHTML;
