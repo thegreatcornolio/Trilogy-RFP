@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 3,
   "status": "draft",
   "slug": "",
   "meta": {
@@ -29,5 +29,17 @@
     "sharePointPath": ""
   },
   "updatedAt": null,
-  "committedAt": null
+  "committedAt": null,
+  "commercialSchedule": {
+    "includeInProposal": true,
+    "currency": "GBP",
+    "title": "Proposed Commercial Schedule",
+    "disclaimer": "Indicative rates for discussion. Final rates confirmed in the Statement of Work.",
+    "rows": []
+  },
+  "pathsExample": {
+    "folder": "proposals/{client}/{doc}/",
+    "commercial": "proposals/{client}/{doc}/commercial/",
+    "costingJson": "proposals/{client}/{doc}/commercial/costing.json"
+  }
 }
