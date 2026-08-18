@@ -1877,20 +1877,23 @@
     removeHeadingSubtree(el);
   }
 
-  function removeHeadingBlockByText(root, title, tagName = "h3") {
-    const target = String(title || "").trim().toLowerCase();
-    const el = [...root.querySelectorAll(tagName)].find(
-      (h) => h.textContent.replace(/\s+/g, " ").trim().toLowerCase() === target
+  function findHeadingByText(root, title, tagName = "h3") {
+    const normalize = (s) =>
+      String(s || "")
+        .replace(/[\u2013\u2014]/g, "-")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+    const target = normalize(title);
+    return [...root.querySelectorAll(tagName)].find(
+      (h) => normalize(h.textContent) === target
     );
-    if (!el) return;
-    removeHeadingSubtree(el);
   }
 
-  function findHeadingByText(root, title, tagName = "h3") {
-    const target = String(title || "").trim().toLowerCase();
-    return [...root.querySelectorAll(tagName)].find(
-      (h) => h.textContent.replace(/\s+/g, " ").trim().toLowerCase() === target
-    );
+  function removeHeadingBlockByText(root, title, tagName = "h3") {
+    const el = findHeadingByText(root, title, tagName);
+    if (!el) return;
+    removeHeadingSubtree(el);
   }
 
   function removeElementById(root, id) {
