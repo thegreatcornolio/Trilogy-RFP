@@ -908,3 +908,102 @@ code {
   .meta, .meta--3 { grid-template-columns: 1fr 1fr; }
   .form-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ===== Commercial schedule editor ===== */
+.inline-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.commercial-editor {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.commercial-editor__meta {
+  margin-bottom: 0.15rem;
+}
+
+.commercial-editor__table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: #fff;
+}
+
+.commercial-editor__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.commercial-editor__table th,
+.commercial-editor__table td {
+  padding: 0.45rem 0.4rem;
+  border-bottom: 1px solid #e6ebf0;
+  vertical-align: middle;
+}
+
+.commercial-editor__table th {
+  text-align: left;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+  background: #f7f9fb;
+}
+
+.commercial-editor__table input,
+.commercial-editor__table select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d5dde5;
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.4rem;
+  font: inherit;
+  background: #fff;
+}
+
+.commercial-editor__table input[type="number"] {
+  width: 4.5rem;
+  text-align: right;
+}
+
+.commercial-editor__table .col-role { min-width: 9rem; }
+.commercial-editor__table .col-unit { min-width: 7.5rem; }
+.commercial-editor__table .col-model { min-width: 5.5rem; }
+.commercial-editor__table .col-notes { min-width: 7rem; }
+.commercial-editor__table .col-monthly {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: right;
+  padding-right: 0.6rem;
+}
+
+.commercial-editor__table tfoot td {
+  background: #f7f9fb;
+}
+
+.commercial-editor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.btn-row-remove {
+  border: 0;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.2rem 0.35rem;
+}
+
+.btn-row-remove:hover { color: #b91c1c; }

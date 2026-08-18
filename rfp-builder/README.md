@@ -18,12 +18,19 @@ Drafts stay editable until **Final commit**. After that you can still reopen the
 
 ```text
 proposals/
-  {customer-slug}/
-    draft.json          # editable working state
-    logo.png            # customer logo
-    index.html          # final built presentation (after commit)
-    acceptance.json     # DocuSign / sign-off metadata
+  {client-slug}/
+    logo.png                 # shared customer logo
+    {doc-slug}/
+      draft.json             # editable working state
+      index.html             # final built presentation (after commit)
+      acceptance.json        # DocuSign / sign-off metadata
+      commercial/            # deal-specific costing
+        costing.json         # client schedule (builder import/export)
+        costing.csv          # optional spreadsheet export
+        costing.xlsx         # optional full workbook (internal tab never published)
 ```
+
+See `proposals/_templates/commercial/README.md` for the commercial sheet conventions.
 
 ## Integrations you can wire (SQL / Power Automate / DocuSign / SharePoint)
 
