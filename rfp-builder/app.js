@@ -742,6 +742,15 @@
 
   function renderLibrary() {
     els.library.innerHTML = "";
+    const allInLibraryOrder =
+      state.catalog.length > 0 &&
+      state.catalog.length === state.sectionOrder.length &&
+      state.catalog.every((sec, i) => state.sectionOrder[i] === sec.id);
+    const addAllBtn = document.getElementById("btnAddAllSections");
+    if (addAllBtn) {
+      addAllBtn.disabled = allInLibraryOrder;
+      addAllBtn.textContent = allInLibraryOrder ? "All added" : "Add all";
+    }
     state.catalog.forEach((sec) => {
       const used = state.sectionOrder.includes(sec.id);
       const li = document.createElement("li");
@@ -766,6 +775,34 @@
       });
       els.library.appendChild(li);
     });
+  }
+
+  /** Add every library section in catalog order (then trim from Proposal order). */
+  function addAllSections() {
+    if (!state.catalog.length) return;
+    const allIds = state.catalog.map((sec) => sec.id);
+    const alreadyComplete =
+      allIds.length === state.sectionOrder.length &&
+      allIds.every((id, i) => state.sectionOrder[i] === id);
+    if (alreadyComplete) {
+      toast("All sections already added in library order");
+      return;
+    }
+    const hadCommercial = state.sectionOrder.includes("section-17");
+    state.sectionOrder = [...allIds];
+    if (
+      !hadCommercial &&
+      state.sectionOrder.includes("section-17") &&
+      isAdminUnlocked() &&
+      (!state.commercialSchedule.rows || !state.commercialSchedule.rows.length)
+    ) {
+      state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
+    }
+    state.status = "draft";
+    maybeRefreshExecutiveSummary();
+    renderAll();
+    autosaveLocal();
+    toast("All sections added in library order — remove any you don’t need from Proposal order");
   }
 
   function renderOrder() {
@@ -2074,6 +2111,10 @@ if (ph["case-studies"] !== undefined) {
 
   document.getElementById("btnNewDocument").addEventListener("click", () => {
     startNewDocument();
+  });
+
+  document.getElementById("btnAddAllSections")?.addEventListener("click", () => {
+    addAllSections();
   });
 
   // Commercial schedule editor (admin-only)
