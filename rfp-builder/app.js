@@ -14,6 +14,8 @@
     // Client-side gate only (static site) — change this PIN to restrict draft admin tools
     adminPin: "trilogy-admin",
     adminSessionKey: "trilogy-rfp-admin-unlocked",
+    publishedKey: "trilogy-rfp-published-v1",
+    pagesBase: "https://proposal.trilogybpo.com/",
   };
 
   // Resolve asset bases from the builder folder even when the URL has no trailing slash
@@ -22,6 +24,7 @@
     const builderDir = href.replace(/\/index\.html$/i, "").replace(/\/?$/, "/");
     CONFIG.templateBase = new URL("../trilogydigital/", builderDir).href;
     CONFIG.entityContentUrl = new URL("entity-content.json", builderDir).href;
+    CONFIG.publishedCatalogUrl = new URL("../proposals/catalog.json", builderDir).href;
   })();
 
   // Embedded fallback so Company Overview never depends on a JSON fetch succeeding
@@ -1432,6 +1435,130 @@
     localStorage.setItem(CONFIG.indexKey, JSON.stringify(list));
   }
 
+  function publicUrlForFolder(folder) {
+    const path = String(folder || "").replace(/^\/+/, "");
+    return `${CONFIG.pagesBase}${path}`;
+  }
+
+  function getLocalPublished() {
+    try {
+      return JSON.parse(localStorage.getItem(CONFIG.publishedKey) || "[]");
+    } catch {
+      return [];
+    }
+  }
+
+  function setLocalPublished(list) {
+    localStorage.setItem(CONFIG.publishedKey, JSON.stringify(list || []));
+  }
+
+  function rememberPublished(entry) {
+    if (!entry?.slug || !entry?.url) return;
+    const next = getLocalPublished().filter((x) => x.slug !== entry.slug);
+    next.unshift({
+      slug: entry.slug,
+      clientSlug: entry.clientSlug || "",
+      docSlug: entry.docSlug || "",
+      clientName: entry.clientName || entry.slug,
+      documentType: entry.documentType || "Document",
+      folder: entry.folder || "",
+      url: entry.url,
+      committedAt: entry.committedAt || new Date().toISOString(),
+    });
+    setLocalPublished(next);
+  }
+
+  function mergePublishedLists(remoteItems, localItems) {
+    const map = new Map();
+    [...(remoteItems || []), ...(localItems || [])].forEach((item) => {
+      if (!item?.slug) return;
+      const prev = map.get(item.slug);
+      if (!prev) {
+        map.set(item.slug, item);
+        return;
+      }
+      const prevTime = Date.parse(prev.committedAt || prev.updatedAt || 0) || 0;
+      const nextTime = Date.parse(item.committedAt || item.updatedAt || 0) || 0;
+      if (nextTime >= prevTime) map.set(item.slug, { ...prev, ...item });
+    });
+    return [...map.values()].sort((a, b) => {
+      const at = Date.parse(a.committedAt || a.updatedAt || 0) || 0;
+      const bt = Date.parse(b.committedAt || b.updatedAt || 0) || 0;
+      return bt - at;
+    });
+  }
+
+  async function loadRemotePublishedCatalog() {
+    try {
+      const res = await fetch(`${CONFIG.publishedCatalogUrl}?v=${Date.now()}`, {
+        cache: "no-store",
+      });
+      if (!res.ok) return [];
+      const data = await res.json();
+      return Array.isArray(data?.items) ? data.items : [];
+    } catch {
+      return [];
+    }
+  }
+
+  async function renderPublishedList() {
+    const host = document.getElementById("publishedList");
+    if (!host) return;
+    const remote = await loadRemotePublishedCatalog();
+    const localCommitted = getIndex()
+      .filter((item) => item.status === "committed")
+      .map((item) => {
+        const folder =
+          item.folder ||
+          `proposals/${item.clientSlug || "customer"}/${item.docSlug || "document"}/`;
+        return {
+          slug: item.slug,
+          clientSlug: item.clientSlug,
+          docSlug: item.docSlug,
+          clientName: item.clientName,
+          documentType: item.documentType,
+          folder,
+          url: item.publicUrl || publicUrlForFolder(folder),
+          committedAt: item.committedAt || item.updatedAt,
+        };
+      });
+    const items = mergePublishedLists(remote, [
+      ...getLocalPublished(),
+      ...localCommitted,
+    ]);
+
+    if (!items.length) {
+      host.innerHTML =
+        '<p class="hint">No published proposals yet. Use <strong>Final commit</strong> to publish one.</p>';
+      return;
+    }
+
+    host.innerHTML = items
+      .map((item) => {
+        const when = item.committedAt
+          ? new Date(item.committedAt).toLocaleString()
+          : "—";
+        const hasLocal = !!localStorage.getItem(CONFIG.storagePrefix + item.slug);
+        return `<article class="published-item" data-slug="${escapeHtml(item.slug)}">
+          <div>
+            <strong>${escapeHtml(item.clientName || item.slug)}</strong>
+            <span>${escapeHtml(item.documentType || "Document")}</span>
+            <a class="published-item__url" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.url)}</a>
+            <span class="published-item__meta">Committed ${escapeHtml(when)}</span>
+          </div>
+          <div class="published-item__actions">
+            <a class="btn btn--primary btn--small" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">Open</a>
+            ${
+              hasLocal
+                ? `<button type="button" class="btn btn--ghost btn--small" data-open-published="${escapeHtml(item.slug)}">Open draft</button>`
+                : ""
+            }
+          </div>
+        </article>`;
+      })
+      .join("");
+  }
+
   function draftPayload() {
     const meta = readMeta();
     const paths = customerPaths(meta);
@@ -1477,12 +1604,28 @@
         docSlug: payload.docSlug,
         clientName: meta.clientName,
         documentType: meta.documentType,
+        folder: payload.paths.folder,
+        publicUrl: publicUrlForFolder(payload.paths.folder),
         updatedAt: payload.updatedAt,
+        committedAt: payload.committedAt,
         status: payload.status,
       });
       setIndex(idx);
       refreshExistingSelect();
       els.existingSelect.value = payload.slug;
+      if (payload.status === "committed") {
+        rememberPublished({
+          slug: payload.slug,
+          clientSlug: payload.clientSlug,
+          docSlug: payload.docSlug,
+          clientName: meta.clientName,
+          documentType: meta.documentType,
+          folder: payload.paths.folder,
+          url: publicUrlForFolder(payload.paths.folder),
+          committedAt: payload.committedAt || payload.updatedAt,
+        });
+        renderPublishedList();
+      }
     }
   }
 
@@ -2769,6 +2912,17 @@ if (ph["case-studies"] !== undefined) {
         const liveUrl =
           res.data?.url ||
           `https://proposal.trilogybpo.com/${payload.paths.folder}`;
+        rememberPublished({
+          slug: payload.slug,
+          clientSlug: payload.clientSlug,
+          docSlug: payload.docSlug,
+          clientName: payload.meta.clientName,
+          documentType: payload.meta.documentType,
+          folder: payload.paths.folder,
+          url: liveUrl,
+          committedAt: payload.committedAt || payload.updatedAt,
+        });
+        renderPublishedList();
         toast(`Final commit published — ${liveUrl}`);
       } else {
         fallbackDownloads();
@@ -2828,6 +2982,20 @@ if (ph["case-studies"] !== undefined) {
       }
       renderAll();
       refreshExistingSelect();
+      renderPublishedList();
+
+      document.getElementById("btnRefreshPublished")?.addEventListener("click", () => {
+        renderPublishedList();
+        toast("Published list refreshed");
+      });
+      document.getElementById("publishedList")?.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-open-published]");
+        if (!btn) return;
+        const slug = btn.getAttribute("data-open-published");
+        if (!slug) return;
+        els.existingSelect.value = slug;
+        loadDraft(slug);
+      });
 
       // Restore last working draft so hard refresh keeps saved section order
       try {
