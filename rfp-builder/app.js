@@ -117,6 +117,7 @@
     commercialDisclaimer: document.getElementById("commercialDisclaimer"),
     commercialRows: document.getElementById("commercialRows"),
     commercialTotal: document.getElementById("commercialTotal"),
+    commercialEmpty: document.getElementById("commercialEmpty"),
     logoInput: document.getElementById("logoInput"),
     logoPreview: document.getElementById("logoPreview"),
     themeSwatches: document.getElementById("themeSwatches"),
@@ -738,14 +739,16 @@
 
     syncCommercialFormFromState();
     const currency = state.commercialSchedule.currency || "GBP";
+    const rows = state.commercialSchedule.rows || [];
+    if (els.commercialEmpty) els.commercialEmpty.hidden = rows.length > 0;
     els.commercialRows.innerHTML = "";
 
-    state.commercialSchedule.rows.forEach((row, idx) => {
+    rows.forEach((row, idx) => {
       const tr = document.createElement("tr");
       tr.innerHTML = `
-        <td class="col-role"><input data-field="role" data-idx="${idx}" type="text" value="${escapeHtml(row.role)}"></td>
+        <td class="col-role"><input data-field="role" data-idx="${idx}" type="text" value="${escapeHtml(row.role)}" placeholder="Role name"></td>
         <td><input data-field="fte" data-idx="${idx}" type="number" min="0" step="0.5" value="${Number(row.fte) || 0}"></td>
-        <td class="col-unit"><input data-field="unit" data-idx="${idx}" type="text" value="${escapeHtml(row.unit)}"></td>
+        <td class="col-unit"><input data-field="unit" data-idx="${idx}" type="text" value="${escapeHtml(row.unit)}" placeholder="per FTE / month"></td>
         <td><input data-field="rate" data-idx="${idx}" type="number" min="0" step="10" value="${Number(row.rate) || 0}"></td>
         <td class="col-monthly">${formatMoney(rowMonthly(row), currency)}</td>
         <td class="col-model">
@@ -756,12 +759,12 @@
             <option value="Gain-share"${row.model === "Gain-share" ? " selected" : ""}>Gain-share</option>
           </select>
         </td>
-        <td class="col-notes"><input data-field="notes" data-idx="${idx}" type="text" value="${escapeHtml(row.notes)}"></td>
-        <td><button type="button" class="btn-row-remove" data-remove-row="${idx}" aria-label="Remove row">×</button></td>`;
+        <td class="col-notes"><input data-field="notes" data-idx="${idx}" type="text" value="${escapeHtml(row.notes)}" placeholder="Optional"></td>
+        <td><button type="button" class="btn-row-remove" data-remove-row="${idx}" aria-label="Remove row" title="Remove row">×</button></td>`;
       els.commercialRows.appendChild(tr);
     });
 
-    const total = state.commercialSchedule.rows.reduce((sum, r) => sum + rowMonthly(r), 0);
+    const total = rows.reduce((sum, r) => sum + rowMonthly(r), 0);
     if (els.commercialTotal) els.commercialTotal.textContent = formatMoney(total, currency);
   }
 
@@ -821,6 +824,12 @@
   function addSection(id) {
     if (state.sectionOrder.includes(id)) return;
     state.sectionOrder.push(id);
+    if (
+      id === "section-17" &&
+      (!state.commercialSchedule.rows || !state.commercialSchedule.rows.length)
+    ) {
+      state.commercialSchedule.rows = DEFAULT_COMMERCIAL_ROWS.map((r) => ({ ...r }));
+    }
     state.status = "draft";
     renderAll();
     autosaveLocal();

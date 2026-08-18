@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=admin-drafts-1">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=commercial-1" defer></script>
+  <script src="app.js?v=commercial-2" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -125,7 +125,7 @@
             Include in proposal
           </label>
         </div>
-        <p class="hint">Deal-specific call-centre pricing. Saved into the draft and exported as <code>commercial/costing.json</code> under the proposal folder. Internal margin/FX stay out of the proposal table.</p>
+        <p class="hint">Deal-specific call-centre pricing. Click into any cell to edit. Use <strong>Add row</strong> or <strong>Load starter roles</strong> to begin. Saved into the draft and exported as <code>commercial/costing.json</code>.</p>
         <div class="commercial-editor">
           <div class="form-grid commercial-editor__meta">
             <label>Currency
@@ -142,6 +142,15 @@
             <label class="full">Client disclaimer
               <input id="commercialDisclaimer" type="text" value="Indicative rates for discussion. Final rates confirmed in the Statement of Work.">
             </label>
+          </div>
+          <div class="commercial-editor__actions">
+            <button type="button" class="btn btn--primary" id="btnCommercialSeed">Load starter roles</button>
+            <button type="button" class="btn btn--accent" id="btnCommercialAddRow">+ Add row</button>
+            <button type="button" class="btn btn--ghost" id="btnCommercialExport">Export costing.json</button>
+          </div>
+          <div class="commercial-empty" id="commercialEmpty" hidden>
+            <p><strong>No pricing rows yet.</strong></p>
+            <p>Load the starter call-centre roles, or add a blank row and type directly in the table cells.</p>
           </div>
           <div class="table-wrap commercial-editor__table-wrap">
             <table class="commercial-editor__table" id="commercialTable">
@@ -166,11 +175,6 @@
                 </tr>
               </tfoot>
             </table>
-          </div>
-          <div class="commercial-editor__actions">
-            <button type="button" class="btn btn--ghost" id="btnCommercialAddRow">Add row</button>
-            <button type="button" class="btn btn--ghost" id="btnCommercialSeed">Load starter roles</button>
-            <button type="button" class="btn btn--ghost" id="btnCommercialExport">Export costing.json</button>
           </div>
         </div>
       </div>
