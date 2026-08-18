@@ -607,9 +607,20 @@ code {
   background: #fff;
 }
 
-.placeholder-card textarea[data-key="executive-summary"] {
-  min-height: 16rem;
+.placeholder-card textarea.is-html {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
   line-height: 1.45;
+  min-height: 18rem;
+}
+
+.pill--html {
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  background: #eef8f1;
+  border-color: #c6e6d0;
+  color: #1f5b32;
+  box-shadow: none;
 }
 
 .btn--small {
