@@ -9,7 +9,7 @@
       "editable": true,
       "placeholderKey": "executive-summary",
       "placeholderLabel": "Executive Summary",
-      "summary": "Editable narrative for this opportunity."
+      "summary": "Editable narrative, auto-prepopulated from selected sections (still fully editable)."
     },
     {
       "id": "section-02",
