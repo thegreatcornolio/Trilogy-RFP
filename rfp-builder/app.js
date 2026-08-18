@@ -842,7 +842,7 @@
     const meta = readMeta();
     const paths = customerPaths(meta);
     return {
-      version: 2,
+      version: 3,
       status: state.status,
       slug: draftSlug(meta),
       clientSlug: clientSlug(meta),
