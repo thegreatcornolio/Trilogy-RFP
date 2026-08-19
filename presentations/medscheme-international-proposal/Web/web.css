@@ -411,61 +411,93 @@ tr:last-child td { border-bottom: 0; }
 }
 .step p { margin: 0; color: var(--muted); font-size: 0.9rem; }
 
-.gate {
-  display: grid;
-  grid-template-columns: 1.4fr 0.85fr;
-  gap: 1rem;
+.eval-label {
+  margin: 1.4rem 0 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lime);
 }
-.gate-banner {
-  margin: 0.85rem 0;
-  padding: 0.7rem 1rem;
-  border-radius: 0.5rem;
+.eval-against {
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+}
+.eval-areas {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.7rem;
+}
+.eval-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.05rem 0.6rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: rgba(255,255,255,0.04);
+}
+.eval-area:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  right: -0.5rem;
+  top: 50%;
+  transform: translate(50%, -50%);
+  color: var(--green);
+  font-size: 1.25rem;
+  font-weight: 700;
+  z-index: 1;
+}
+.eval-area span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 999px;
   background: var(--lime);
   color: var(--navy);
   font-family: var(--display);
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
-  text-align: center;
 }
-.gate-side {
-  padding: 1.1rem 1.15rem;
-  border-radius: 0.85rem;
-  background: color-mix(in srgb, var(--brand) 16%, var(--navy-2));
-  border: 1px solid color-mix(in srgb, var(--brand) 45%, transparent);
-}
-.gate-side .price {
-  font-family: var(--display);
-  font-size: 1.2rem;
-  color: var(--white);
-  margin: 0.25rem 0 0.8rem;
-}
-
-.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.chip {
-  padding: 0.32rem 0.65rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  font-size: 0.75rem;
-}
-
-.chevrons {
+.eval-area h3 { margin: 0; color: var(--white); }
+.eval-area p { margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--muted); }
+.eval-lenses {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0.3rem;
-  margin-top: 0.85rem;
+  gap: 0.7rem;
 }
-.chevron {
-  padding: 0.5rem 0.55rem;
-  text-align: center;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--navy);
+.eval-lens {
+  padding: 1rem 1.05rem 1.1rem;
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--green) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--green) 42%, transparent);
+}
+.eval-lens h3 { color: var(--lime); }
+.eval-lens p { margin: 0; color: var(--ink); }
+.eval-commercial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+.eval-commercial div {
+  padding: 1rem 1.15rem;
+  border-radius: 0.75rem;
   background: var(--lime);
-  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
+  color: var(--navy);
+  font-size: 1.05rem;
 }
-.chevron:first-child {
-  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
-  background: var(--green);
+.eval-commercial strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .foot {
@@ -482,14 +514,15 @@ tr:last-child td { border-bottom: 0; }
 .foot a { color: var(--green); }
 
 @media (max-width: 960px) {
-  .grid-2, .grid-3, .grid-4, .stat-row, .checks, .hub, .steps, .gate, .chevrons {
+  .grid-2, .grid-3, .grid-4, .stat-row, .checks, .hub, .steps, .eval-areas, .eval-lenses, .eval-commercial {
     grid-template-columns: 1fr 1fr;
   }
   .hub__core { grid-column: 1 / -1; aspect-ratio: auto; min-height: 6.5rem; border-radius: 0.9rem; }
+  .eval-area:not(:last-child)::after { display: none; }
 }
 
 @media (max-width: 640px) {
-  .grid-2, .grid-3, .grid-4, .stat-row, .checks, .hub, .steps, .gate, .chevrons {
+  .grid-2, .grid-3, .grid-4, .stat-row, .checks, .hub, .steps, .eval-areas, .eval-lenses, .eval-commercial {
     grid-template-columns: 1fr;
   }
   h1 { max-width: none; }
