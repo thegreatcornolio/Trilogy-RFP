@@ -1,14 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Sales Capability Proposal — Medscheme International</title>
-  <meta name="description" content="Trilogy Global Sales Capability Proposal for Medscheme International, including the Shared Services Hub.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="web.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Sales Capability Proposal — Medscheme International</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0C1926; --card:#132A3D; --card2:#0F2233; --border:#2C4A61;
+    --lime:#CAEA70; --white:#F5F7F9; --muted:#9FB0BD; --red:#E8737A;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:'Wix Madefor Text',Segoe UI,Arial,sans-serif;background:var(--navy);color:var(--white);line-height:1.55;}
+  h1,h2,h3,h4,h5,.brandfont{font-family:'Montserrat',Segoe UI,Arial,sans-serif;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 40px;}
+  img{max-width:100%;display:block;}
+
+  nav.topnav{position:sticky;top:0;z-index:50;background:rgba(12,25,38,0.96);border-bottom:1px solid var(--border);backdrop-filter:blur(6px);}
+  nav.topnav .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;flex-wrap:wrap;gap:10px;}
+  nav.topnav .logo{height:46px;}
+  nav.topnav .links{display:flex;gap:16px;flex-wrap:wrap;}
+  nav.topnav .links a{color:var(--muted);text-decoration:none;font-size:11.5px;font-weight:700;font-family:'Montserrat';letter-spacing:.2px;}
+  nav.topnav .links a:hover{color:var(--lime);}
+  @media (max-width:1050px){ nav.topnav .links{display:none;} }
+
+  .hero{padding:100px 0 90px;}
+  .hero .tag{display:inline-block;font-family:'Montserrat';font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--lime);font-weight:700;margin-bottom:18px;}
+  .hero h1{font-size:46px;line-height:1.18;margin:0 0 8px;font-weight:800;}
+  .hero h1 .accent{color:var(--lime);display:block;}
+  .hero p.lede{font-size:18px;color:var(--muted);font-style:italic;max-width:640px;margin:20px 0 60px;}
+  .hero .prepared .label{font-family:'Montserrat';font-size:12px;letter-spacing:1.5px;color:var(--muted);font-weight:700;margin-bottom:14px;}
+  .hero .prepared img{height:52px;}
+
+  section{padding:80px 0;border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .reveal{opacity:1;transform:none;}
+  .reveal.visible{opacity:1;transform:none;}
+  .eyebrow{font-family:'Montserrat';font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--lime);font-weight:700;margin:0 0 14px;}
+  h2.sectitle{font-size:30px;margin:0 0 16px;font-weight:800;}
+  p.section-sub{color:var(--white);max-width:820px;margin:0 0 36px;font-size:15.5px;}
+
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px;}
+  .card.tint{background:var(--card2);}
+
+  ul.tick{margin:0;padding:0;list-style:none;}
+  ul.tick li{padding-left:22px;position:relative;margin-bottom:12px;font-size:14.5px;color:var(--white);}
+  ul.tick li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;background:var(--lime);border-radius:2px;}
+
+  table.datatable{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px;}
+  table.datatable th{background:var(--navy);color:var(--lime);font-family:'Montserrat';font-size:11.5px;text-transform:uppercase;padding:10px 12px;text-align:left;border:1px solid var(--border);}
+  table.datatable td{padding:9px 12px;border:1px solid var(--border);color:var(--white);}
+  table.datatable tr:nth-child(even) td{background:rgba(255,255,255,0.03);}
+
+  .stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;}
+  .stat-card{flex:1;min-width:150px;background:var(--navy);color:#fff;border-radius:10px;padding:18px 16px;text-align:center;border:1px solid var(--border);}
+  .stat-card .big{font-family:'Montserrat';font-weight:800;font-size:24px;color:var(--lime);display:block;}
+  .stat-card .small{font-size:11.5px;color:var(--muted);}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media (max-width:900px){ .grid-3,.grid-4{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .grid-3,.grid-4{grid-template-columns:1fr;} }
+
+  .icon-circle{width:56px;height:56px;border-radius:50%;background:var(--card2);border:2px solid var(--lime);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;}
+
+  .flow{display:flex;gap:0;align-items:stretch;margin-top:10px;min-width:0;}
+  .step{flex:1;min-width:0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 18px;text-align:center;}
+  .flow .arrow{flex:0 0 34px;display:flex;align-items:center;justify-content:center;color:var(--lime);font-size:20px;}
+  .step .icon-circle{margin:0 auto 16px;}
+  .step h4{margin:0 0 10px;font-size:16px;}
+  .step p{color:var(--muted);font-size:13px;margin:0;}
+  .flow.gated .step.gated-step{border-color:var(--lime);box-shadow:0 0 0 2px rgba(202,234,112,0.25) inset;}
+  .step.excluded{opacity:0.45;border-style:dashed;}
+  @media (max-width:900px){.flow{flex-direction:column;} .flow .arrow{transform:rotate(90deg);padding:6px 0;}}
+
+  .gate-wrap{position:relative;border:2px solid var(--lime);border-radius:18px;padding:26px 20px 20px;margin-top:6px;}
+  .gate-label{position:absolute;top:-14px;left:24px;background:var(--lime);color:var(--navy);font-family:'Montserrat';font-weight:800;font-size:12px;letter-spacing:1px;padding:5px 14px;border-radius:20px;}
+  .gate-outer{flex-wrap:nowrap;min-width:0;}
+  .gate-outer > .gate-wrap{flex:1 1 auto;min-width:0;}
+  .gate-outer > .step.excluded{min-width:0;}
+  @media (max-width:1050px){ .gate-outer{flex-direction:column;} .gate-outer > .arrow{transform:rotate(90deg);padding:10px 0;} .gate-wrap{width:100%;} }
+
+  .pillars-row{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;margin-top:30px;}
+  .pillar-item{flex:1;min-width:110px;text-align:center;}
+  .pillar-item .icon-circle{margin:0 auto 10px;width:52px;height:52px;font-size:21px;}
+  .pillar-item span{font-weight:700;font-size:13px;color:var(--white);}
+
+  .chevron-row{display:flex;margin-top:28px;}
+  .chevron{flex:1;position:relative;padding:16px 26px 16px 34px;color:#fff;font-family:'Montserrat';font-weight:700;font-size:13.5px;display:flex;align-items:center;justify-content:center;text-align:center;clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%, 12% 50%);margin-left:-14px;}
+  .chevron:first-child{margin-left:0;clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%);}
+  .chevron.in-scope{background:linear-gradient(135deg,#0d5a45,#123a5e);}
+  .chevron.out-scope{background:#3a4652;color:var(--muted);}
+
+  .hub-diagram{display:flex;align-items:center;gap:50px;margin-top:10px;}
+  .hub-diagram .sources{display:flex;flex-direction:column;gap:14px;flex:1 1 0;min-width:0;}
+  .hub-diagram .source-box{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;}
+  .hub-diagram .source-box .icon-circle{width:44px;height:44px;font-size:17px;margin-bottom:8px;}
+  .hub-diagram .source-box h5{margin:0 0 4px;font-size:14px;}
+  .hub-diagram .source-box p{margin:0;font-size:12.5px;color:var(--muted);}
+  .hub-diagram .hub{flex:0 0 280px;background:var(--card);border:2px solid var(--lime);border-radius:14px;padding:26px 18px;text-align:center;}
+  .hub-diagram .hub h3{color:var(--lime);font-size:20px;margin:0 0 4px;}
+  .hub-diagram .hub p{font-size:12.5px;color:var(--muted);margin:2px 0 0;}
+  @media (max-width:900px){ .hub-diagram{flex-direction:column;gap:20px;} .hub-diagram .sources,.hub-diagram .hub{flex:1 1 auto;width:100%;} #hubLines{display:none;} }
+
+  .engagement-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
+  @media (max-width:800px){.engagement-grid{grid-template-columns:1fr;}}
+  .engagement-card{background:var(--card2);border:1px solid var(--lime);border-radius:14px;padding:24px;}
+  .engagement-card .label{font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:1px;margin-bottom:8px;}
+  .engagement-card .value{font-size:24px;font-weight:800;color:var(--lime);}
+  .engagement-card .sub{font-size:13px;color:var(--white);margin-top:6px;}
+
+  footer.sitefoot{padding:50px 0;text-align:center;color:var(--muted);font-size:13px;}
+  footer.sitefoot img{height:22px;margin:0 auto 16px;}
+</style>
 </head>
 <body>
 
@@ -27,7 +134,7 @@
       <a href="#hub-model">Model</a>
       <a href="#engagement">Approach</a>
       <a href="#gate1">Proposal</a>
-      <a class="deck-link" href="../">Slide deck</a>
+      <a href="../" style="color:#CAEA70;">Slide deck</a>
     </div>
   </div>
 </nav>

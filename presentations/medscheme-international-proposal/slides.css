@@ -2,6 +2,12 @@
   background: var(--blend-navy);
 }
 
+.slide.slide--cover:not(.slide--section) {
+  background:
+    linear-gradient(90deg, rgba(12, 25, 38, 0.82) 0%, rgba(12, 25, 38, 0.55) 48%, rgba(12, 25, 38, 0.18) 100%),
+    url("assets/cover-bg.jpg") right center / cover no-repeat;
+}
+
 .slide--cover .tag {
   display: inline-block;
   margin: 0 0 1.1rem;
