@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-19T10:50:00.000Z",
+  "updatedAt": "2026-08-19T19:40:51.000Z",
   "items": [
     {
       "slug": "medscheme-international-proposal",
@@ -10,11 +10,11 @@
       "date": "2026-08-18",
       "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/",
       "blend": {
-      "primary": "#CAEA70",
-      "accent": "#CAEA70",
-      "secondary": "#132A3D",
-      "navy": "#0C1926",
-      "sourceBrand": "#E8737A"
+        "primary": "#CAEA70",
+        "accent": "#CAEA70",
+        "secondary": "#132A3D",
+        "navy": "#0C1926",
+        "sourceBrand": "#E8737A"
       }
     },
     {
@@ -25,11 +25,11 @@
       "date": "2026-08-19",
       "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/Web/",
       "blend": {
-      "primary": "#CAEA70",
-      "accent": "#CAEA70",
-      "secondary": "#132A3D",
-      "navy": "#0C1926",
-      "sourceBrand": "#E8737A"
+        "primary": "#CAEA70",
+        "accent": "#CAEA70",
+        "secondary": "#132A3D",
+        "navy": "#0C1926",
+        "sourceBrand": "#E8737A"
       }
     },
     {
@@ -40,11 +40,26 @@
       "date": "2026-08-19",
       "url": "https://proposal.trilogybpo.com/presentations/lightningfibre/Web/",
       "blend": {
-      "primary": "#61d779",
-      "accent": "#d5ec67",
-      "secondary": "#2f9e4a",
-      "navy": "#13202e",
-      "sourceBrand": "#1a3e59"
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#1a3e59"
+      }
+    },
+    {
+      "slug": "AiSalesEnablement",
+      "title": "AI Sales Enablement",
+      "client": "Visibilitie partnership",
+      "sourceType": "scrolling webpage",
+      "date": "2026-08-19",
+      "url": "https://proposal.trilogybpo.com/presentations/AiSalesEnablement/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#13202e"
       }
     }
   ]
