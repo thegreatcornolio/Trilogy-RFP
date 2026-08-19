@@ -5604,7 +5604,7 @@ tr:nth-child(even) td {
   }
 }
 
-/* AI Sales Enablement — cycling blue spotlight on qualification pillars */
+/* AI Sales Enablement — cycling brand spotlight on pillar cards */
 .pillars--spotlight > .pillar {
   transition:
     background-color 0.45s ease,
@@ -5619,19 +5619,34 @@ tr:nth-child(even) td {
   transition: color 0.45s ease;
 }
 
-.pillars--spotlight > .pillar.is-spotlight {
-  background: #1d4ed8;
-  border-color: #1e40af;
-  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.28);
+.pillars--spotlight-navy > .pillar.is-spotlight {
+  background: var(--brand-navy);
+  border-color: var(--brand-navy);
+  box-shadow: 0 10px 24px rgba(19, 32, 46, 0.28);
   transform: translateY(-2px);
 }
 
-.pillars--spotlight > .pillar.is-spotlight h4 {
+.pillars--spotlight-navy > .pillar.is-spotlight h4 {
   color: #fff;
 }
 
-.pillars--spotlight > .pillar.is-spotlight p {
+.pillars--spotlight-navy > .pillar.is-spotlight p {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.pillars--spotlight-green > .pillar.is-spotlight {
+  background: var(--brand-green);
+  border-color: var(--brand-green);
+  box-shadow: 0 10px 24px rgba(97, 215, 121, 0.35);
+  transform: translateY(-2px);
+}
+
+.pillars--spotlight-green > .pillar.is-spotlight h4 {
+  color: var(--brand-navy);
+}
+
+.pillars--spotlight-green > .pillar.is-spotlight p {
+  color: rgba(19, 32, 46, 0.88);
 }
 
 @media (prefers-reduced-motion: reduce) {
