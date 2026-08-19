@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Lighting Fibre — Pro Forma Proposal — Trilogy Digital</title>
+  <meta name="description" content="Pro Forma Proposal for Lighting Fibre — Human Led · Ai-enabled">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=lighting-fibre-1">
+  <script>document.documentElement.classList.add("js-reveal");</script>
+  <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
+  <style>
+    .cover__brand { align-items: center !important; text-align: center !important; }
+    .cover__logo { margin-left: auto; margin-right: auto; }
+    .covers-box__head { display: block !important; width: 100% !important; box-sizing: border-box; }
+  </style>
+  <style id="rfp-client-theme">
+    :root {
+      --brand-green: #61d779 !important;
+      --brand-lime: #d5ec67 !important;
+    }
+    .cover__client-logo {
+      display: block;
+      max-height: 4.4rem;
+      width: auto;
+      max-width: min(20rem, 86vw);
+      object-fit: contain;
+      background: #fff;
+      border-radius: 0.45rem;
+      padding: 0.5rem 0.85rem;
+      margin: 0.45rem auto 0.15rem;
+    }
+    .meta-label, .cover__tagline { color: #2f9e4a !important; }
+    .badge {
+      border-color: color-mix(in srgb, #61d779 55%, transparent) !important;
+      color: #d5ec67 !important;
+      box-shadow: inset 3px 0 0 #2f9e4a;
+    }
+    .section-num, .covers-table td:first-child { color: #61d779 !important; }
+
+    /* Brands marquee — two equal groups so -50% loops cleanly; no lazy-load. */
+    .brand-marquee {
+      margin: 0.35rem 0 0;
+    }
+    .brand-marquee__viewport {
+      overflow: hidden;
+      min-height: 4.35rem;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .brand-marquee__track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      gap: 0 !important;
+      animation: lf-brand-marquee 70s linear infinite;
+      will-change: transform;
+    }
+    .brand-marquee__group {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      padding-inline-end: 1.75rem;
+      flex: 0 0 auto;
+    }
+    .brand-marquee__item {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.35rem;
+      padding: 0 0.35rem;
+    }
+    .brand-marquee__item img {
+      height: 40px;
+      width: auto;
+      max-width: 132px;
+      object-fit: contain;
+      filter: grayscale(1);
+      opacity: 0.9;
+    }
+    .brand-marquee__item--large img {
+      height: 56px;
+      max-width: 148px;
+    }
+    .brand-marquee:hover .brand-marquee__track {
+      animation-play-state: paused;
+    }
+    @keyframes lf-brand-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .brand-marquee__track {
+        animation: none;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+      }
+      .brand-marquee__group {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-inline-end: 0;
+      }
+      .brand-marquee__group[aria-hidden="true"] { display: none; }
+      .brand-marquee__viewport {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+    }
+
+    html.js-reveal .proposal-page {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    html.js-reveal .proposal-page.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .page-nav {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      .cover {
+        padding: 2rem 1.15rem 2.25rem !important;
+      }
+      .cover__body {
+        margin-top: 2.4rem !important;
+      }
+      .cover h1 {
+        font-size: 1.85rem !important;
+      }
+      .proposal-page {
+        padding: 1.75rem 1.15rem !important;
+      }
+      .page-nav {
+        display: block;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: #13202e;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+      }
+      .page-nav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.7rem 1rem;
+      }
+      .page-nav__brand {
+        height: 28px;
+        width: auto;
+        max-width: 9.5rem;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 0.3rem;
+        padding: 0.2rem 0.4rem;
+      }
+      .page-nav button {
+        appearance: none;
+        border: 1px solid rgba(213,236,103,0.45);
+        background: transparent;
+        color: #d5ec67;
+        font: 700 0.68rem/1 Inter, sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.75rem;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .page-nav__links {
+        display: none;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 0 1rem 0.9rem;
+      }
+      .page-nav.is-open .page-nav__links { display: flex; }
+      .page-nav__links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.92rem;
+        padding: 0.35rem 0;
+      }
+      .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="page-nav" aria-label="Page sections">
+  <div class="page-nav__inner">
+    <img class="page-nav__brand" src="lighting-fibre-logo.svg" alt="Lighting Fibre">
+    <button type="button" data-nav-toggle aria-expanded="false" aria-controls="lf-nav-links">Menu</button>
+  </div>
+  <div class="page-nav__links" id="lf-nav-links">
+    <a href="#cover">Introduction</a>
+    <a href="#section-02">Company Overview</a>
+    <a href="#section-04">Value Proposition</a>
+    <a href="#why-sa">Why South Africa / Cape Town</a>
+    <a href="#delivery-summary">Delivery Summary</a>
+    <a href="#section-08">Technology &amp; AI</a>
+    <a href="#continuous-improvement">Continuous Improvement</a>
+    <a href="#commercial">Commercial</a>
+  </div>
+</nav>
+<main class="main">
+  <div class="proposal-shell">
+    <section class="cover" id="cover">
+      <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="cover__brand">
+        <span class="cover__brand-name">Trilogy Digital</span>
+        <span class="cover__brand-line">A Trilogy Group Company</span>
+        <img class="cover__logo" src="../../../trilogydigital/assets/trilogy-logo.png" alt="Trilogy">
+        <img class="cover__client-logo" src="lighting-fibre-logo.svg" alt="Lighting Fibre">
+      </div>
+      <div class="cover__body">
+        <div class="badge">Pro Forma Proposal</div>
+        <h1>Pro Forma Proposal</h1>
+        <p class="cover__tagline">Human Led · Ai-enabled</p>
+      </div>
+      <div class="meta-grid meta-grid--3">
+        <div><div class="meta-label">Prepared for</div><div class="meta-value">Lighting Fibre</div></div>
+        <div><div class="meta-label">Date</div><div class="meta-value">[Submission Date]</div></div>
+        <div><div class="meta-label">Valid until</div><div class="meta-value">Valid for 90 days</div></div>
+      </div>
+      <div class="meta-grid meta-grid--3">
+        <div><div class="meta-label">Prepared by</div><div class="meta-value">Chief Bottle Washer</div></div>
+        <div><div class="meta-label">Title</div><div class="meta-value">CBW</div></div>
+        <div><div class="meta-label">Contact</div><div class="meta-value">name@trilogydigital.com</div></div>
+      </div>
+      <p class="cover__disclaimer">This document is commercial-in-confidence and prepared exclusively for the recipient named above. It may not be reproduced or disclosed to third parties without the written consent of Trilogy Digital (Pty) Ltd.</p>
+    </section>
+
+    <section class="proposal-page" id="document-contents">
+      <div class="section-head">
+        <h2>Document Contents</h2>
+      </div>
+      <div class="section-body">
+        <div class="covers-box" id="doc-contents">
+          <div class="covers-box__head">Document contents</div>
+          <div class="table-wrap covers-table-wrap">
+            <table class="covers-table">
+              <tbody>
+                <tr><td>1</td><td><a href="#section-02">Company Overview</a></td></tr>
+                <tr><td>2</td><td><a href="#section-04">Our Value Proposition &amp; Differentiators</a></td></tr>
+                <tr><td>3</td><td><a href="#why-sa">Why South Africa / Why Cape Town</a></td></tr>
+                <tr><td>4</td><td><a href="#delivery-summary">Delivery Summary</a></td></tr>
+                <tr><td>5</td><td><a href="#section-08">Technology, AI &amp; Automation Capability</a></td></tr>
+                <tr><td>6</td><td><a href="#continuous-improvement">Continuous Improvement</a></td></tr>
+                <tr><td>7</td><td><a href="#commercial">Commercial</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="section-02">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>Company Overview</h2>
+      </div>
+      <div class="section-body">
+<div class="covers-box" id="covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#co-overview">Company overview</a></td></tr>
+                  <tr><td>2</td><td><a href="#meet-the-team">Meet the Team</a></td></tr>
+                  <tr><td>3</td><td><a href="#awards-certifications-memberships">Our Awards, Certifications &amp; Memberships</a></td></tr>
+                  <tr><td>4</td><td><a href="#sa-footprint">South African Footprint</a></td></tr>
+                  <tr><td>5</td><td><a href="#uk-us-experience">Relevant UK &amp; US Client Experience</a></td></tr>
+                  <tr><td>6</td><td><a href="#management-journey">Management Journey &amp; UK Client Experience</a></td></tr>
+                  <tr><td>7</td><td><a href="#similar-operations">Examples of Similar-Sized Operations</a></td></tr>
+                  <tr><td>8</td><td><a href="#leadership-brands">Brands Our Leadership Has Delivered For</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="prose" id="co-overview">
+            <p>Trilogy Digital (Pty) Ltd is a purpose-built customer experience (CX) joint venture between Trilogy BPO and CXG, operating as a single integrated entity and now a Trilogy Group company. The partnership marries CXG's 27-year operational tenure and scale within the South African market to Trilogy's deep expertise in managing UK campaigns and delivering advanced digital and AI capabilities.</p>
+            <p>The combined leadership team brings over 25 years of industry expertise, having previously established and successfully exited two major BPOs. Over their careers they have managed more than 36 contact centre operations, scaled over 10,000 seats globally, and delivered CX programmes for brands including John Lewis &amp; Partners, British Gas, Vodafone UK, Aldi UK, and Virgin.</p>
+            <p>Today, Trilogy Digital deploys over 1,000 CX specialists across five operational sites in South Africa, anchored by its flagship campus at Mutual Park in Cape Town. Despite this scale, Trilogy Digital remains an owner-led, high-touch business — focused on being responsive.</p>
+          </div>
+
+          <div class="stats stats--4 stats--banner">
+            <div class="stat"><div class="stat__value">30+</div><div class="stat__label">Contact centres built worldwide</div></div>
+            <div class="stat"><div class="stat__value">10,000+</div><div class="stat__label">Agent seats scaled globally</div></div>
+            <div class="stat"><div class="stat__value">12</div><div class="stat__label">Years experience in building AI/ML platforms</div></div>
+            <div class="stat"><div class="stat__value">25+ yrs</div><div class="stat__label">Combined leadership experience</div></div>
+          </div>
+
+          <figure class="jv-diagram" aria-label="Trilogy Digital joint venture structure">
+            <div class="jv-diagram__canvas">
+              <div class="jv-diagram__parent">
+                <strong>Trilogy Digital (Pty) Ltd</strong>
+                <span>50/50 joint venture · a Trilogy Group company · vision to create 2,500 FTEs in South Africa within three years</span>
+              </div>
+              <div class="jv-diagram__connector" aria-hidden="true">
+                <span class="jv-diagram__vline"></span>
+                <span class="jv-diagram__hline"></span>
+                <span class="jv-diagram__drop jv-diagram__drop--l"></span>
+                <span class="jv-diagram__drop jv-diagram__drop--r"></span>
+              </div>
+              <div class="jv-diagram__children">
+                <div class="jv-diagram__child">
+                  <strong>Trilogy BPO (50%)</strong>
+                  <p>Owner-led and privately owned. Brings deep UK campaign management experience and advanced digital and AI capability.</p>
+                </div>
+                <div class="jv-diagram__child">
+                  <strong>CXG (50%)</strong>
+                  <p>27 years of operational tenure and scale within the South African contact centre market.</p>
+                </div>
+              </div>
+            </div>
+          </figure>
+
+          <h3 id="meet-the-team">Meet the Team</h3>
+          <div class="team-roster">
+            <div class="team-roster__group">
+              <div class="team-roster__label">Leadership Team</div>
+              <div class="team-roster__grid team-roster__grid--5">
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/kobus-van-der-westhuizen.png" alt="Portrait of Kobus van der Westhuizen" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Kobus van der Westhuizen</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Kobus van der Westhuizen (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">CEO &amp; Founder</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/tanya-phillips.png" alt="Portrait of Tanya Phillips" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Tanya Phillips</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Tanya Phillips (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Chief Operating Officer</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/rudi-jansen.png" alt="Portrait of Rudi Jansen" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Rudi Jansen</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Rudi Jansen (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Director of People</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/craig-shalekoff.png" alt="Portrait of Craig Shalekoff" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Craig Shalekoff</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Craig Shalekoff (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">CTO &amp; Founder</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/vancyon-van-zyl.png" alt="Portrait of Vancyon van Zyl" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Vancyon van Zyl</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Vancyon van Zyl (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Director of Transitions</div>
+                </article>
+              </div>
+            </div>
+
+            <div class="team-roster__group">
+              <div class="team-roster__label">Team</div>
+              <div class="team-roster__grid team-roster__grid--5">
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/keanu-vieira.png" alt="Portrait of Keanu Vieira" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Keanu Vieira</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Keanu Vieira (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Head of CX Solutions</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/jason-luboyera.png" alt="Portrait of Jason Luboyera" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Jason Luboyera</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Jason Luboyera (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Head of Digital</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/tish-carruthers.png" alt="Portrait of Tish Carruthers" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Tish Carruthers</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Tish Carruthers (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Marketing &amp; Intelligence Lead</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/brandon-grant.png" alt="Portrait of Brandon Grant" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Brandon Grant</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Brandon Grant (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Head of Digital Contact</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/lizelle-mclaughlin.png" alt="Portrait of Lizelle McLaughlin" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Lizelle McLaughlin</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Lizelle McLaughlin (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Head of Projects</div>
+                </article>
+              </div>
+            </div>
+
+            <div class="team-roster__group">
+              <div class="team-roster__label">Board Members</div>
+              <div class="team-roster__grid team-roster__grid--5">
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/kobus-van-der-westhuizen.png" alt="Portrait of Kobus van der Westhuizen" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Kobus van der Westhuizen</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Kobus van der Westhuizen (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">CEO &amp; Founder</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/craig-shalekoff.png" alt="Portrait of Craig Shalekoff" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Craig Shalekoff</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Craig Shalekoff (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">CTO &amp; Founder</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/frank-kilbourn.png" alt="Portrait of Frank Kilbourn" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Frank Kilbourn</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Frank Kilbourn (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Non-Executive Director</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/jonathan-broll.png" alt="Portrait of Jonathan Broll" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Jonathan Broll</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Jonathan Broll (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Non-Executive Director</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/heather-wallace.png" alt="Portrait of Heather Wallace" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Heather Wallace</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Heather Wallace (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Non-Executive Director</div>
+                </article>
+              </div>
+            </div>
+
+            <!-- ENTITY_DIGITAL_ONLY_START -->
+            <div class="team-roster__group entity-digital-only" id="digital-jv-partners" data-entity-only="Trilogy Digital">
+              <div class="team-roster__label">Joint Venture Partners</div>
+              <div class="team-roster__grid team-roster__grid--5">
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/yaron-assabi.png" alt="Portrait of Yaron Assabi" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Yaron Assabi</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Yaron Assabi (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">Founder, Digital Solutions Group</div>
+                </article>
+                <article class="team-card">
+                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/brandon-mezaros.png" alt="Portrait of Brandon Mezaros" loading="lazy"></div>
+                  <div class="team-card__name-row">
+                    <h4>Brandon Mezaros</h4>
+                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Brandon Mezaros (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
+                  </div>
+                  <div class="team-card__role">CEO, Customer Experience Group</div>
+                </article>
+              </div>
+            </div>
+            <!-- ENTITY_DIGITAL_ONLY_END -->
+          </div>
+
+          <h3 id="awards-certifications-memberships">Our Awards, Certifications &amp; Memberships</h3>
+          <aside class="key-message" role="note">
+            <span class="key-message__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </span>
+            <p>Over nearly a decade, our award record reflects consistent industry leadership across outsourcing, technology and social impact.</p>
+          </aside>
+
+          <div class="awards-panel">
+            <ol class="awards-timeline" data-animate="timeline">
+              <li class="reveal-item">
+                <div class="awards-timeline__year">2016</div>
+                <div class="awards-timeline__body">CCMG Best Outsourced Partnership Winner · BPESA Best Outsourced Winner &amp; Best Use of Social Media</div>
+              </li>
+              <li class="reveal-item">
+                <div class="awards-timeline__year">2017</div>
+                <div class="awards-timeline__body">BPESA / CCMG Best Outsourced Contact Centre · Best Use of Social Media &amp; Technology Innovation</div>
+              </li>
+              <li class="reveal-item">
+                <div class="awards-timeline__year">2018 – 2019</div>
+                <div class="awards-timeline__body">Best Outsourced Contact Centre Finalist · Best Outsourced Partnership (Engage UK) Finalist · BPESA Best Impact Sourcing &amp; Service Provider Winner</div>
+              </li>
+              <li class="reveal-item">
+                <div class="awards-timeline__year">2021</div>
+                <div class="awards-timeline__body">
+                  Contact Centre World, Best Partnership
+                  <span class="award-pill">Ranked #1 EMEA · #2 Globally</span>
+                </div>
+              </li>
+              <li class="reveal-item">
+                <div class="awards-timeline__year">2022 – 2023</div>
+                <div class="awards-timeline__body">
+                  BPESA Best Partnership &amp; Shared Services Finalist · Cape BPO Top Technical Innovation Finalist
+                  <span class="award-pill">BPESA &amp; Cape BPO National Top Service Provider, Winner</span>
+                </div>
+              </li>
+              <li class="reveal-item">
+                <div class="awards-timeline__year">2025</div>
+                <div class="awards-timeline__body">CapeBPO &amp; BPESA Top Support Service Provider Finalist · BPESA Top BPO Operator Finalist &amp; Runner-Up</div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="cred-grid">
+            <div class="cred-card">
+              <div class="cred-card__logos">
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/capebpo.svg" alt="CapeBPO — From Cape Town to the World" loading="lazy"></div>
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/bpesa.svg" alt="BPESA Proud Member 2026 | 2027" loading="lazy"></div>
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/ccmg.svg" alt="CCMG Contact Centre Management Group" loading="lazy"></div>
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/gbpo.svg" alt="g-bpo Accredited" loading="lazy"></div>
+              </div>
+              <div class="cred-card__foot">Memberships</div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-card__logos">
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/cyber-essentials-plus.svg" alt="Cyber Essentials Plus" loading="lazy"></div>
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/pci-dss.svg" alt="PCI DSS Compliant" loading="lazy"></div>
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/iso-9001.svg" alt="ISO 9001:2015" loading="lazy"></div>
+                <div class="cred-logo cred-logo--img"><img src="../../../trilogydigital/assets/badges/iso-27001.svg" alt="ISO 27001 Certified" loading="lazy"></div>
+              </div>
+              <div class="cred-card__foot">Accreditations</div>
+            </div>
+          </div>
+
+          <h3 id="sa-footprint">South African Footprint</h3>
+          <div class="prose" id="sa-footprint-copy">
+            <p>Trilogy Digital's footprint has more than 1,000 FTEs across Cape Town, Johannesburg, with the majority in Cape Town, across two sites. Every site is Trilogy Digital owned or leased and operated directly, never via franchise or affiliate. This offers an advantage where your current operation is in Cape Town. Your operation will fit seamlessly into our current operations, offering stability and risk mitigation associated with a new site.</p>
+          </div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Site</th><th>Status</th><th>Scale</th></tr></thead>
+            <tbody>
+              <tr><td>Mutual Park, Cape Town</td><td>Active, primary UK-client site</td><td>5-star green-energy campus; scalable to 1,000+ seats</td></tr>
+              <tr><td>Century City, Cape Town</td><td>Active</td><td>150+ FTE; scalable to 300 within 24 months</td></tr>
+              <tr><td>Rosebank Quarters, Johannesburg</td><td>Active</td><td>200+ FTE; scalable to 400 within 24 months</td></tr>
+              <tr><td>Maharishi Institute, Johannesburg</td><td>Active</td><td>100+ FTE; 750+ pre-assessed graduate pipeline per year</td></tr>
+              <tr><td>National WFH continuity layer</td><td>Active</td><td>40–60% cloud-first from home for flex &amp; BCP</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3 id="uk-us-experience">Relevant UK &amp; US Client Experience</h3>
+          <div class="prose">
+            <p>Our leadership team has transferred, deployed and managed multiple operations in Cape Town, South Africa from inception. We also provided CX programmes for globally recognised UK brands including John Lewis &amp; Partners, British Gas, Vodafone UK and Aldi UK. Our operational and HR (People) experience is aligned with your UK and US requirements.</p>
+            <p>All our lessons learnt during these transitions, including job profiling, recruitment strategies and transferring of knowledge, provide us with a unique opportunity to leverage this experience and position ourselves as your ideal partner of choice.</p>
+            <p>We understand the importance of retaining competence and tenured staff and key individuals, including those in positions of operational leadership. We know our ways of working to be effective in delivering a tangible employee value proposition and believe our ways of working, including our core values, are closely aligned to those of your business. The investment made to date will not be lost, as we have significant experience in transitioning work between operators and core expertise in managing the change associated with the change of employer as a going concern.</p>
+          </div>
+
+          <h3 id="management-journey">Management Journey &amp; UK Client Experience</h3>
+          <figure class="figure one-team-figure">
+            <div class="figure__media one-team-figure__media">
+              <img src="../../../trilogydigital/assets/one-team-20-years.png" alt="Management Journey and UK Client Experience — One Team, 20 Years timeline" loading="lazy">
+            </div>
+          </figure>
+          <div class="prose">
+            <p>We feel confident that together we can transition the existing operation effectively, minimise risk and craft a long-term delivery strategy focused on elevating your customer experience, leveraging AI where appropriate, and building a partnership that creates true bi-directional value for both parties.</p>
+          </div>
+
+<h3 id="similar-operations">Examples of Similar-Sized Operations</h3>
+          <div class="prose">
+            <p>While we operate at 1,000+ FTE in aggregate, our model is deliberately built to run focused, boutique pods with senior attention. We ideally stand up smaller (20–80) dedicated teams with its own Operations Manager, Team Leaders, Product Specialist / trainer and account management rather than absorbing you into a shared pool of resources. We have repeatedly launched and scaled teams of this size, including recently launching a global BPO's first 100 seats in six weeks before scaling to 1,000+. Named, comparably sized references can be shared under mutual NDA.</p>
+          </div>
+
+          <h3 id="leadership-brands">Brands Our Leadership Has Delivered For</h3>
+          <p class="brand-callout">25 years behind the world&#x27;s brands.</p>
+          <div class="prose">
+            <p>Over the past 25 years, Trilogy&#x27;s leadership has managed over 30 contact centres for some of the world&#x27;s most recognised brands. That gives us insight into the challenges and opportunities of offshore customer-service delivery, with deep vertical expertise across telecommunications, utilities, retail, fast food, insurance and technology.</p>
+          </div>
+          <div class="brand-marquee" aria-label="Brand logos"><div class="brand-marquee__viewport"><div class="brand-marquee__track"><div class="brand-marquee__group"><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/afrihost.png" alt="Afrihost" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/jd.png" alt="JD" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/mercedes-benz.png" alt="Mercedes-Benz" decoding="async"></div><div class="brand-marquee__item brand-marquee__item--large"><img src="../../../trilogydigital/assets/clients/marquee/vuma.png" alt="Vuma" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/telecom-namibia.png" alt="Telecom Namibia" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/ascensos.png" alt="Ascensos" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/peloton.png" alt="Peloton" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/kfc.png" alt="KFC" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/burger-king.png" alt="Burger King" decoding="async"></div><div class="brand-marquee__item brand-marquee__item--large"><img src="../../../trilogydigital/assets/clients/marquee/hc.png" alt="HomeChoice" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/coolideas.png" alt="Cool Ideas" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/virgin.png" alt="Virgin" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/pick-n-pay.png" alt="Pick n Pay" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/df.png" alt="DF" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/startek.png" alt="Startek" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/pizza-hut.png" alt="Pizza Hut" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/telkom.png" alt="Telkom" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/iceland.png" alt="Iceland" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/sadv.png" alt="SA Digital Villages" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/dfa.png" alt="DFA" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/aldi.png" alt="Aldi" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/webafrica.png" alt="Webafrica" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/nandos.png" alt="Nando's" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/john-lewis.png" alt="John Lewis" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/esimplified.png" alt="eSimplified" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/ppl-prs.png" alt="PPL PRS" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/rain.png" alt="Rain" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/b-and-q.png" alt="B&amp;Q" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/fibertime.png" alt="Fibertime" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/ventrica.png" alt="Ventrica" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/british-gas.png" alt="British Gas" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/kliq.png" alt="Kliq" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/cellc.png" alt="Cell C" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/dfs.png" alt="DFS" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/sun-international.png" alt="Sun International" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/herotel.png" alt="Herotel" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/mtn.png" alt="MTN" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/vodacom.png" alt="Vodacom" decoding="async"></div></div><div class="brand-marquee__group" aria-hidden="true"><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/afrihost.png" alt="Afrihost" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/jd.png" alt="JD" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/mercedes-benz.png" alt="Mercedes-Benz" decoding="async"></div><div class="brand-marquee__item brand-marquee__item--large"><img src="../../../trilogydigital/assets/clients/marquee/vuma.png" alt="Vuma" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/telecom-namibia.png" alt="Telecom Namibia" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/ascensos.png" alt="Ascensos" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/peloton.png" alt="Peloton" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/kfc.png" alt="KFC" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/burger-king.png" alt="Burger King" decoding="async"></div><div class="brand-marquee__item brand-marquee__item--large"><img src="../../../trilogydigital/assets/clients/marquee/hc.png" alt="HomeChoice" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/coolideas.png" alt="Cool Ideas" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/virgin.png" alt="Virgin" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/pick-n-pay.png" alt="Pick n Pay" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/df.png" alt="DF" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/startek.png" alt="Startek" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/pizza-hut.png" alt="Pizza Hut" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/telkom.png" alt="Telkom" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/iceland.png" alt="Iceland" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/sadv.png" alt="SA Digital Villages" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/dfa.png" alt="DFA" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/aldi.png" alt="Aldi" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/webafrica.png" alt="Webafrica" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/nandos.png" alt="Nando's" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/john-lewis.png" alt="John Lewis" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/esimplified.png" alt="eSimplified" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/ppl-prs.png" alt="PPL PRS" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/rain.png" alt="Rain" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/b-and-q.png" alt="B&amp;Q" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/fibertime.png" alt="Fibertime" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/ventrica.png" alt="Ventrica" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/british-gas.png" alt="British Gas" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/kliq.png" alt="Kliq" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/cellc.png" alt="Cell C" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/dfs.png" alt="DFS" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/sun-international.png" alt="Sun International" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/herotel.png" alt="Herotel" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/mtn.png" alt="MTN" decoding="async"></div><div class="brand-marquee__item"><img src="../../../trilogydigital/assets/clients/marquee/vodacom.png" alt="Vodacom" decoding="async"></div></div></div></div></div>
+          </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="section-04">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Our Value Proposition &amp; Differentiators</h2>
+      </div>
+      <div class="section-body">
+<div class="covers-box" id="value-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#value-overview">Value proposition overview</a></td></tr>
+                  <tr><td>2</td><td><a href="#secret-sauce">Our Secret Sauce</a></td></tr>
+                  <tr><td>3</td><td><a href="#our-achievements">Our Achievements</a></td></tr>
+                  <tr><td>4</td><td><a href="#local-competitors">How We Differ From Local Competitors</a></td></tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+
+          <figure class="figure figure--video figure--tagline-overlay">
+            <div class="figure__media">
+              <video src="../../../trilogydigital/assets/video/hero.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Trilogy customer experience in action"></video>
+              <div class="video-tagline">
+                <p>Human Empathy, with AI Efficiency.</p>
+              </div>
+            </div>
+          </figure>
+
+          <div class="prose" id="value-overview">
+            <p>We are a premium (boutique) customer service, back-office and tech-support BPO partner — enterprise-ready and AI-enabled. We are not a commodity offshore provider. We are a high-quality, owner-led, high-touch delivery partner that competes on quality first and cost second, with the scale, technology depth and client portfolio to prove it.</p>
+            <p>In practical terms: 40–60% below UK onshore delivery costs; higher CSAT than comparable offshore markets; an active AI toolset deployed in production (not in planning); and a leadership team with 25+ years of UK-market experience who are personally accountable for every programme.</p>
+          </div>
+
+          <h3 id="secret-sauce">Our Secret Sauce</h3>
+          <div class="sauce-table-wrap">
+            <table class="sauce-table">
+              <thead>
+                <tr><th>Differentiator</th><th>What it means for you</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Proprietary AI built in-house</strong></td>
+                  <td>We do not white-label third-party AI; our platform represents 8 years of in-house AI/ML development.</td>
+                </tr>
+                <tr>
+                  <td><strong>“Test Kitchen” model</strong></td>
+                  <td>A dedicated innovation hub that designs, tests and deploys new AI and digital capabilities in a sandbox without disrupting BAU operations.</td>
+                </tr>
+                <tr>
+                  <td><strong>Outcome-aligned commercial models</strong></td>
+                  <td>Including our Value Creation Model (VCM), which ties commercial success to client outcomes, retention and CX uplift.</td>
+                </tr>
+                <tr>
+                  <td><strong>Agnostic technology approach</strong></td>
+                  <td>We are equally comfortable operating within client-owned platforms or deploying our own; we do not force platform migration.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="our-achievements">Our Achievements</h3>
+          <div class="prose">
+            <p>Two decades of consistent excellence in the BPO industry has positioned Trilogy as a trusted partner for global brands. Our track record speaks to our ability to deliver results at scale while maintaining the highest standards of quality and innovation.</p>
+          </div>
+          <div class="stats stats--4 stats--achieve">
+            <div class="stat">
+              <div class="stat__value">45K</div>
+              <div class="stat__label">Jobs Created</div>
+              <p class="stat__note">Our team has created 45,000 jobs over the past 20 years, making a significant positive impact on South Africa’s economy and communities.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">20</div>
+              <div class="stat__label">Years of Experience</div>
+              <p class="stat__note">Two decades of proven track record in providing exceptional value to our customers across multiple industries and geographies.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">8</div>
+              <div class="stat__label">Years in AI/ML</div>
+              <p class="stat__note">Eight years of experience developing AI and Machine Learning platforms, analytics solutions, and digital automation tools.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">36</div>
+              <div class="stat__label">Blue Chip Centres Built</div>
+              <p class="stat__note">Successfully built and launched 36 contact centres for blue chip companies in South Africa over 20 years.</p>
+            </div>
+          </div>
+
+          <h3 id="local-competitors">How We Differ From Local Competitors</h3>
+          <div class="prose">
+            <p>Our largest local competitors include Merchants, Concentrix, Teleperformance SA and Sigma Connected. Trilogy Digital is differentiated on four structural grounds:</p>
+          </div>
+          <ul class="list-check">
+            <li><strong>Dedicated UK-client focus</strong> versus their multi-geography generalism.</li>
+            <li><strong>Owner-led model</strong> versus large corporate cultures and red tape — owners and CEO/COO participate directly in MBRs/QBRs.</li>
+            <li><strong>Proprietary in-house AI suite</strong> versus third-party vendor dependency.</li>
+            <li><strong>Outcome-aligned, entrepreneurial commercial models</strong> versus traditional seat-based billing.</li>
+          </ul>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="why-sa">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Why South Africa / Why Cape Town</h2>
+      </div>
+      <div class="section-body">
+
+
+          <h4 class="vp-subhead" id="why-south-africa-vp">Why South Africa?</h4>
+          <div class="prose">
+            <p>South Africa has consistently been ranked the second most attractive Business Process Outsourcing location globally, after consecutive years of high performance. Source: McKinsey.</p>
+          </div>
+
+          <div class="location-banner" aria-label="Cape Town location advantages">
+            <div class="location-banner__media" aria-hidden="true">
+              <img src="../../../trilogydigital/assets/location/cape-town.jpg" alt="" loading="lazy">
+              <video autoplay muted loop playsinline preload="metadata" poster="../../../trilogydigital/assets/location/cape-town.jpg">
+                <source src="../../../trilogydigital/assets/location/cape-town-scroll.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="location-banner__content">
+              <div class="location-callouts location-callouts--primary">
+                <article class="location-callout location-callout--accent">
+                  <div class="location-callout__stat">60%</div>
+                  <h5>Cost efficiency meets quality</h5>
+                  <p>Up to 60% lower operational costs than UK and USA markets, substantial wage arbitrage without compromising quality.</p>
+                </article>
+                <article class="location-callout">
+                  <div class="location-callout__stat location-callout__stat--green">#1</div>
+                  <h5>Cape Town: the premium hub</h5>
+                  <p>The leading BPO destination, with rapid growth, exceptional infrastructure and the largest skilled talent pool in the region.</p>
+                </article>
+              </div>
+              <div class="location-callouts location-callouts--secondary">
+                <article class="location-callout">
+                  <h5>Industry recognition</h5>
+                  <p>Ranked a top-three global BPO destination for three consecutive years by leading industry analysts.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Time-zone synergy</h5>
+                  <p>GMT+2 alignment, a 1 to 2 hour difference with the UK and extended USA coverage.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Quality talent pool</h5>
+                  <p>A young, educated and highly professional workforce ready to deliver exceptional customer experiences.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Language &amp; cultural excellence</h5>
+                  <p>Over 95% workforce proficiency in English with neutral accents that resonate with Western consumers.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="vp-subhead" id="why-cape-town-vp">Why Cape Town</h4>
+          <div class="prose">
+            <p>South Africa — and Cape Town in particular — is one of the world's premier destinations for UK-facing customer experience delivery. It combines deep English-language and UK cultural alignment, a mature BPO ecosystem, favourable time zones and compelling cost advantages, all without the quality trade-offs associated with other offshore markets.</p>
+          </div>
+          <h4 class="vp-subhead">Why the Location Wins</h4>
+          <ul class="list-check">
+            <li><strong>BPO ecosystem leadership</strong> — Cape Town has led South Africa’s BPO export performance for nine consecutive years, drawing on a 67,000-strong regional BPO workforce with established English-language and UK-cultural alignment.</li>
+            <li><strong>Operational readiness</strong> — sites are live today; no site setup phase, landlord negotiation or infrastructure lead time.</li>
+            <li><strong>ESG alignment</strong> — our flagship site holds a 5-Star Green Energy rating from the Green Building Council South Africa (GBCSA).</li>
+            <li><strong>Premium infrastructure</strong> — multi-redundant fibre, N+1 generator and UPS power resilience, and biometric access control.</li>
+            <li><strong>Multi-site resilience</strong> — the network spans Cape Town and Johannesburg, eliminating single geographic points of failure and enabling live volume routing between sites.</li>
+            <li><strong>Time-zone synergy</strong> — GMT+2 offers just a 1–2 hour difference with the UK and extended coverage for USA programmes.</li>
+          </ul>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="delivery-summary">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>Delivery Summary</h2>
+      </div>
+      <div class="section-body">
+<h3 id="core-service-lines">Core Service Lines</h3>
+          <ul class="list-check">
+            <li><strong>Inbound customer service</strong> — omnichannel handling of voice, WhatsApp, live chat, email and social media through a single unified agent desktop and one view of the customer.</li>
+            <li><strong>Complaints handling</strong> — a 5-layer Complaint Intelligence Architecture that maps surface complaints to systemic process failures and converts them into insight.</li>
+            <li><strong>Back-office processing</strong> — humans or RPA automate document workflows, CRM data entry, billing reconciliation and regulatory data compilation (40–60% labour reduction on eligible workflows).</li>
+            <li><strong>Sales &amp; retentions</strong> — AI-assisted inbound sales conversion and save/retain programmes targeting &gt;40% save rates.</li>
+            <li><strong>Tech support (tiered L1–L3)</strong> — from first-line triage to engineering escalation and outage management, with tiered SLAs.</li>
+          </ul>
+
+          <h3 id="tech-support-slas">Tiered Tech Support SLAs</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Tier</th><th>Scope</th><th>Target SLA</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>L1</td><td>First-line triage, FAQ resolution, account queries, standard troubleshooting</td><td>FCR &gt;70%; AHT &lt;8 min</td></tr>
+                <tr><td>L2</td><td>Specialist diagnosis, configuration, advanced troubleshooting, billing disputes</td><td>FCR &gt;85%; AHT &lt;15 min</td></tr>
+                <tr><td>L3</td><td>Engineering escalation, known-fault tracking, outage notification management</td><td>Acknowledge &lt;30 min</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="sector-delivery">Sector Delivery Experience</h3>
+          <div class="prose">
+            <p>Over the past 20 years, the Trilogy Digital team has built and managed more than 50 contact and back-office centres across multiple verticals.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Sector</th><th>Scale / Clients</th><th>Services delivered</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Logistics / Parcel</td><td>1 active client across a 2,700-store network</td><td>Multichannel parcel tracking, failed-delivery resolution, USSD &amp; WhatsApp contact, refund processing</td></tr>
+                <tr><td>Telecoms / Broadband</td><td>5 active clients; 1,000,000+ subscribers</td><td>Multichannel technical support, churn prevention, billing back-office</td></tr>
+                <tr><td>Retail / E-commerce</td><td>2 current, 6 previous (John Lewis, Aldi UK, Iceland, JD Sports, KFC, Nando’s)</td><td>End-to-end CX, order management, service recovery, AI-driven WhatsApp service</td></tr>
+                <tr><td>Utilities</td><td>1 current, 1 previous (British Gas)</td><td>Customer service, billing disputes, regulated complaints management</td></tr>
+                <tr><td>Medical / Wellness</td><td>1 current client</td><td>UK wellness-sector customer service</td></tr>
+                <tr><td>B2B Services</td><td>Multiple</td><td>24/7 ITIL 4-aligned helpdesks, account management, S-NOC capability</td></tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="section-08">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2>Technology, AI &amp; Automation Capability</h2>
+      </div>
+      <div class="section-body">
+<div class="covers-box" id="tech-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#tech-introduction">Introduction</a></td></tr>
+                  <tr><td>2</td><td><a href="#technology-stack">Technology Stack</a></td></tr>
+                  <tr><td>3</td><td><a href="#ai-enabled-platforms">AI-Enabled Platforms</a></td></tr>
+                  <tr><td>4</td><td><a href="#orchestration-layer">Orchestration Layer</a></td></tr>
+                  <tr><td>5</td><td><a href="#trilogy-ai">Trilogy Ai</a></td></tr>
+                  <tr><td>6</td><td><a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+<h3 id="tech-introduction">Introduction</h3>
+<div class="prose"><p>Trilogy's mission statement is to provide Human-Led, AI-enhanced solutions. This means that while we have spent over 8 years developing AI and digital automation solutions, our primary focus remains the people in our operation and how we assist them to deliver better service to their customers. Our AI solutions are geared specifically to enhancing the agent's ability to support their customers, and our systems provide support for Voice, Email, WhatsApp and almost all social media and RCS platforms.</p></div>
+
+<h3 id="technology-stack">Technology Stack</h3>
+<figure class="figure figure--carom">
+  <div class="figure__media figure__media--contain"><img src="../../../trilogydigital/assets/technology-stack.png?v=1" alt="Technology stack — Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine, with Genii analytics and development partners." loading="lazy"></div>
+  <figcaption>Figure — Technology Stack: Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine</figcaption>
+</figure>
+
+<div class="prose"><p>Trilogy has two approaches to technology. <strong>Approach 1</strong> — deploy our fully owned and managed platform, providing the end-to-end technology solution for our customers on our QContact platform. <strong>Approach 2</strong> — operate as a technology-agnostic, client-based partner, deploying and managing within the client's own stack.</p><p>QContact is a cloud-based omnichannel customer communications platform that unifies calls, emails, WhatsApp, live chat and social media into a single interface. Founded in 2017, it provides built-in CRM functionality, case management and communication AI tools, omnichannel inbox, Communication AI (call transcriptions, conversation summaries and sentiment analysis), native WhatsApp integration and workflow automation.</p></div>
+
+<h3 id="ai-enabled-platforms">AI-Enabled Platforms</h3>
+<div class="ai-platforms" aria-label="Trilogy AI platform suite">
+  <article class="ai-platform ai-platform--voice">
+    <h4>guruvoice.ai</h4>
+    <p>Fully automated AI voice platform for inbound service and proactive outbound (services, sales, collections).</p>
+  </article>
+  <article class="ai-platform ai-platform--assist">
+    <h4>Agent assist</h4>
+    <p>Live AI-generated response suggestions, knowledge-base access and process guidance on-screen during every contact.</p>
+  </article>
+  <article class="ai-platform ai-platform--acwa">
+    <h4>acwa.ai</h4>
+    <p>After-Call Work Assistant — automates callbacks, CRM updates, document dispatch and logistics notifications.</p>
+  </article>
+  <article class="ai-platform ai-platform--collect">
+    <h4>collect.ai</h4>
+    <p>Digital &amp; autonomous collections — AI-driven segmentation, predictive analytics and automated recovery communication.</p>
+  </article>
+  <article class="ai-platform ai-platform--anychat">
+    <h4>anychat.ai</h4>
+    <p>Real-time language translation enabling any agent to service any customer regardless of language.</p>
+  </article>
+</div>
+
+<h3 id="orchestration-layer">Orchestration Layer</h3>
+<div class="prose"><p>People, technology, process and AI/ML analytics work as one continuous system — orchestrated for voice, digital and automation so CX outcomes compound rather than fragment.</p></div>
+<div class="orch" aria-label="Orchestration layer">
+  <div class="orch__quad orch__quad--people">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+    <h4>People</h4>
+    <p>Digital agents, management and shared services as an outsourced operation.</p>
+  </div>
+  <div class="orch__quad orch__quad--tech">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+    <h4>Technology</h4>
+    <p>Leverage the technology stack to provide omnichannel customer engagement.</p>
+  </div>
+  <div class="orch__quad orch__quad--process">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="16" width="6" height="4" rx="1"/><rect x="16" y="16" width="6" height="4" rx="1"/><path d="M12 6v4M12 10H5v6M12 10h7v6"/></svg></span>
+    <h4>Process</h4>
+    <p>WhatsApp customer engagement, messaging and digital campaigns.</p>
+  </div>
+  <div class="orch__quad orch__quad--aiml">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>
+    <h4>AI / ML Analytics</h4>
+    <p>Customer interaction, behavioural science and next-best-action recommender platform.</p>
+  </div>
+  <div class="orch__hub">
+    <strong>Orchestration</strong>
+    <span>Voice, digital &amp; automation orchestration for effective CX</span>
+  </div>
+</div>
+
+<h3 id="trilogy-ai">Trilogy Ai</h3>
+<div class="prose"><p><strong>Human empathy — AI accuracy.</strong> Trilogy Ai is our agentic AI capability for Autonomous Customer Engagement (ACE): fully automated platforms for sales, service, marketing, collections and retention — with or without an agent in the loop.</p></div>
+<div class="pillars pillars--2">
+  <div class="pillar"><h4>Fully automated</h4><p>Automated customer engagement platforms for sales, service, marketing, collections and retentions.</p></div>
+  <div class="pillar"><h4>Award-winning industry partner</h4><p>Developed with South Africa’s leading machine-learning partner — production-proven, not a lab demo.</p></div>
+  <div class="pillar"><h4>Proven benefits</h4><p>Deployed for customers already seeing returns of over 500% improvement in targeted business models.</p></div>
+  <div class="pillar"><h4>Agentless when it fits</h4><p>ACE runs with or without an agent in the loop — the only fully autonomous path when the use case allows it.</p></div>
+</div>
+<div class="callout">“We are advancing toward a world where 100 percent of customer interactions will involve AI in some form… transitioning from legacy chatbots to advanced AI agents.” — Zendesk CEO / 2026 CX Trends Report</div>
+
+<h3 id="potential-ai-savings">Potential AI Savings</h3>
+<div class="prose"><p>Independent industry benchmarks reinforce the impact of a human-led, AI-enabled model. The following are representative outcomes achievable across an asynchronous customer operation like yours.</p></div>
+<div class="ai-savings" data-animate="ai-savings" aria-label="Potential AI savings">
+  <div class="ai-savings__dials">
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="27"><span class="dial__value">0%</span></div>
+      <div><h4>AHT Reduction</h4><p>Organisations using AI report up to a 27% reduction in Average Handle Time.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="20"><span class="dial__value">0%</span></div>
+      <div><h4>Revenue Optimisation</h4><p>AI-led outreach outperforms traditional methods by 20% in sales and collections.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="35"><span class="dial__value">0%</span></div>
+      <div><h4>Customer Satisfaction</h4><p>Businesses using AI-driven sentiment analysis report a 35% increase in CSAT.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="90"><span class="dial__value">0%</span></div>
+      <div><h4>At-Risk Identification</h4><p>AI identifies at-risk customers with 90% accuracy for proactive intervention.</p></div>
+    </div>
+  </div>
+  <div class="ai-savings__split">
+    <div>
+      <h4>Quality &amp; Compliance</h4>
+      <p>Achieve <strong>100% Quality Assurance (QA)</strong> coverage by using AI to audit every single conversation for legal compliance and brand standards.</p>
+    </div>
+    <div>
+      <h4>The Churn Defence</h4>
+      <p>Companies using AI-driven sentiment analysis can increase long-term customer lifetime value (LTV) by <strong>15–20%</strong> through proactive intervention.</p>
+    </div>
+  </div>
+  <div class="ai-savings__quote">
+    <p>“95% of decision-makers already using AI report immediate cost and time savings… while AI-powered predictive analytics can drive a 25% increase in recovery rates for outbound functions.”</p>
+    <cite>— Salesforce / NobelBiz (2025/2026). Source: Salesforce: What is an AI Contact Center?</cite>
+  </div>
+</div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="continuous-improvement">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2>Continuous Improvement</h2>
+      </div>
+      <div class="section-body">
+
+<div class="prose">
+  <p>Trilogy is leveraging the Genii Analytics platform, combined with our MIS platform, to identify improvement opportunities on a continuous cycle. It covers 100% of all interactions. The platform, once configured, provides insights on the four quadrants, impacting Customer Experience and Business Performance: Agent Performance, Operations Performance, Business Performance and Customer Experience.</p>
+  <p>Continuous improvement loop — Design, Operate, Deploy and Improve around an Analytics &amp; Insights hub — driving People Performance, Operational Performance, Business Performance and Customer CX.</p>
+</div>
+<figure class="ci-loop-figure">
+  <div class="ci-loop" aria-label="Continuous improvement infinity loop">
+    <svg class="ci-loop__svg" viewBox="0 0 720 360" role="img" aria-hidden="true">
+      <defs>
+        <filter id="ciSoft" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#13202e" flood-opacity="0.22"/>
+        </filter>
+      </defs>
+      <!-- True infinity / lemniscate stroke -->
+      <path d="M120 180
+               C120 70 250 70 360 180
+               C470 290 600 290 600 180
+               C600 70 470 70 360 180
+               C250 290 120 290 120 180 Z"
+            fill="none" stroke="#61d779" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Navy hub sits on the crossing -->
+      <g filter="url(#ciSoft)">
+        <circle cx="360" cy="180" r="72" fill="#13202e"/>
+        <circle cx="360" cy="180" r="80" fill="none" stroke="#d5ec67" stroke-width="8" opacity="0.55"/>
+        <text x="360" y="170" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="0.06em">ANALYTICS &amp;</text>
+        <text x="360" y="192" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="0.06em">INSIGHTS</text>
+      </g>
+      <!-- Corner labels anchored to each lobe -->
+      <g font-size="13" font-weight="800" letter-spacing="0.08em">
+        <rect x="148" y="78" width="86" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="191" y="98" text-anchor="middle" fill="#fff">DESIGN</text>
+        <rect x="486" y="78" width="96" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="534" y="98" text-anchor="middle" fill="#fff">OPERATE</text>
+        <rect x="486" y="252" width="90" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="531" y="272" text-anchor="middle" fill="#fff">DEPLOY</text>
+        <rect x="142" y="252" width="98" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="191" y="272" text-anchor="middle" fill="#fff">IMPROVE</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption>Figure 2 — Continuous Improvement</figcaption>
+</figure>
+
+<h3 id="continuous-improvement-initiatives">Continuous Improvement Initiatives</h3>
+<figure class="genii-intel-figure">
+  <div class="genii-intel" aria-label="Genii Analytics Solution — four intelligence dimensions">
+    <div class="genii-intel__brand"><span class="genii-intel__logo">genii</span><div><strong>Interaction Analytics Intelligence</strong><p>One platform. Four intelligence dimensions.</p></div></div>
+    <div class="genii-intel__hub">Interaction Analytics</div>
+    <article class="genii-intel__card genii-intel__card--customer">
+      <h4>Customer Intelligence</h4>
+      <ul><li>Churn Risk</li><li>Brand Conflict Points</li><li>Frustrations</li><li>Sentiment</li><li>Experience</li><li>Effort</li></ul>
+    </article>
+    <article class="genii-intel__card genii-intel__card--agent">
+      <h4>Agent Intelligence &amp; QA</h4>
+      <ul><li>Agent Auto QA</li><li>Behaviours</li><li>Performance</li><li>Effectiveness</li><li>Compliance</li></ul>
+    </article>
+    <article class="genii-intel__card genii-intel__card--business">
+      <h4>Business Intelligence</h4>
+      <ul><li>Issues Impacting Customers</li><li>Contact Reasons</li><li>Supply Chain Issues</li><li>Product Issues</li><li>Pricing Issues</li></ul>
+    </article>
+    <article class="genii-intel__card genii-intel__card--ops">
+      <h4>Operational Intelligence</h4>
+      <ul><li>Ops Performance</li><li>FCR / nFCR</li><li>Repeats</li><li>AHT</li><li>Compliance</li></ul>
+    </article>
+    <p class="genii-intel__foot">Powered by Genii Analytics · AI-Driven Contact Centre Intelligence</p>
+  </div>
+  <figcaption>Figure 3 — Genii Analytics Solution</figcaption>
+</figure>
+<div class="prose">
+  <p>Continuous improvement is structured around four pillars, each directly applicable to a digital-first, asynchronous voucher operation. Improvement is data-led and time-boxed, Voice of Customer signals are operationalised within 48 hours rather than waiting for a monthly report.</p>
+</div>
+<ul class="list-check">
+  <li><strong>First Contact / First Response Resolution</strong> — deep root-cause analytics identify repeat-contact drivers and digital deflection opportunities across email, WhatsApp and social.</li>
+  <li><strong>CSAT / Sentiment</strong> — AI sentiment analysis across interactions with integrated Voice of Customer loops operationalised within 48 hours.</li>
+  <li><strong>Agent performance improvements</strong> — automated QA on all interactions highlights areas for improvement for every agent.</li>
+  <li><strong>Operational improvement</strong> — daily briefs, weekly coaching huddles and monthly MBR action tracking driven by live data, not lagging reports; leverages data to spot opportunities for ongoing agent development and improvement in operational metrics.</li>
+  <li><strong>Technological improvement</strong> — the Test Kitchen designs, tests and deploys new automation in a sandbox without disrupting your live service.</li>
+  <li><strong>Real-time AI insights at the touch of a button</strong> — our hr.guru, included in our QContact suite, mines real-time insights and turns queries into meaningful outcomes, enabling team leaders to identify root-cause DSAT drivers and change behaviour on the fly.</li>
+</ul>
+
+<h3 id="customer-experience-programmes">Customer Experience Programmes</h3>
+<div class="prose">
+  <p>Our CX programmes combine full-coverage quality intelligence with behavioural coaching. Through our partner Genii we digitise up to 100% of interactions, map the “linguistic DNA” of top performers, and coach the wider team toward those behaviours, turning quality from a 1% sampling exercise into a genuine CX-improvement engine. For your asynchronous channels this is particularly powerful, because tone, accuracy and completeness of written responses are the primary CX levers.</p>
+</div>
+
+<h3 id="operational-insight-reporting">Operational Insight &amp; Reporting Frameworks</h3>
+<figure class="figure figure--ops-delivery">
+  <div class="figure__media figure__media--contain">
+    <img src="../../../trilogydigital/assets/ops-delivery-model.png?v=2" alt="Operations / Continuous Improvement Delivery Model — Continuous Improvement, Recruitment, Training, Coaching, Operations (MIS &amp; Analytics), Deployment / Transition, and QA." loading="lazy">
+  </div>
+  <figcaption>Figure 4 — Operations / Continuous Improvement Delivery Model</figcaption>
+</figure>
+<div class="prose">
+  <p>Our MI framework spans real-time dashboards through to Quarterly Business Reviews, with every report designed to be action-oriented, insights, root causes and recommended actions, not just metrics. Digital-specific views (emails received and pending, average response time, WhatsApp and chat queues, and backlog status) are available digitally. Secure API exports let your team pull performance directly into your own BI environment, including Power BI.</p>
+</div>
+<div class="table-wrap">
+  <table class="mi-framework-table">
+    <thead>
+      <tr><th>Frequency</th><th>Purpose</th><th>Delivery</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Real-time</td><td>Monitor digital queues, backlog and SLA as they happen</td><td>Live dashboard</td></tr>
+      <tr><td>Daily</td><td>Review prior-day volume, CX, productivity, quality &amp; workforce</td><td>Daily MI report</td></tr>
+      <tr><td>Weekly</td><td>Trends, root cause and actions taken</td><td>Weekly Business Review</td></tr>
+      <tr><td>Monthly</td><td>Strategic scorecard incl. continuous-improvement tracking</td><td>Monthly Business Review</td></tr>
+      <tr><td>Quarterly</td><td>Roadmap, innovation and executive alignment</td><td>Quarterly Business Review</td></tr>
+    </tbody>
+  </table>
+</div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="commercial">
+      <div class="section-head">
+        <span class="section-num">07</span>
+        <h2>Commercial</h2>
+      </div>
+      <div class="section-body">
+        <h3>Pricing Mechanisms</h3>
+        <ul class="list-check">
+          <li>Fixed monthly per FTE / seat.</li>
+          <li>Per productive hour (based on actual productivity) or per paid hour (agent hours employed).</li>
+          <li>Per-interaction rate for digital and automated interactions, scaling with volume.</li>
+          <li>Gain-share models — used where AI and digital automation lead to headcount reduction.</li>
+        </ul>
+        <div class="commercial-schedule" data-commercial-schedule>
+          <h3>Indicative Commercial Schedule</h3>
+          <p class="commercial-schedule__disclaimer">Indicative rates for discussion. Final rates confirmed in the Statement of Work.</p>
+          <div class="table-wrap">
+            <table class="commercial-schedule__table">
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>FTE / Qty</th>
+                  <th>Unit</th>
+                  <th>Rate</th>
+                  <th>Monthly</th>
+                  <th>Model</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Customer Service Agent</td>
+                  <td>12</td>
+                  <td>per hour</td>
+                  <td>£11.05</td>
+                  <td>£22,940</td>
+                  <td>Per Paid Hour</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Senior / Specialist Agent</td>
+                  <td>1</td>
+                  <td>per hour</td>
+                  <td>Included</td>
+                  <td>Included</td>
+                  <td>Per Paid Hour</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Quality Analyst</td>
+                  <td>1</td>
+                  <td>per hour</td>
+                  <td>Included</td>
+                  <td>Included</td>
+                  <td>Per Paid Hour</td>
+                  <td>1:20 QA ratio</td>
+                </tr>
+                <tr>
+                  <td>Team Leader</td>
+                  <td>1</td>
+                  <td>per hour</td>
+                  <td>£11.05</td>
+                  <td>£1,912</td>
+                  <td>Per Paid Hour</td>
+                  <td>1:12 span of control</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="commercial-schedule__total">
+                  <td colspan="4">Total monthly</td>
+                  <td>£24,851</td>
+                  <td colspan="2"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <h3>Commercial Flexibility</h3>
+        <ul class="list-check">
+          <li>Gain share — welcomed on all AI and digital automation that leads to headcount reduction; shared by both parties.</li>
+          <li>Open-book pricing — our preferred model for strategic partnerships; transparent breakdown of costs and margin with CPI-linked adjustment and client audit rights.</li>
+          <li>Currency — client-facing contracts can be issued in the client’s home currency (e.g. GBP), eliminating exchange-rate risk for the client.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="../../../trilogydigital/script.js"></script>
+<script>
+  (function () {
+    var pages = document.querySelectorAll(".proposal-page");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+      pages.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+          el.classList.add("is-visible");
+        } else {
+          io.observe(el);
+        }
+      });
+    } else {
+      pages.forEach(function (el) { el.classList.add("is-visible"); });
+    }
+
+    var nav = document.querySelector(".page-nav");
+    var toggle = document.querySelector("[data-nav-toggle]");
+    if (nav && toggle) {
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  })();
+</script>
+</body>
+</html>
