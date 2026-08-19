@@ -5495,3 +5495,111 @@ tr:nth-child(even) td {
 .commercial-schedule--placeholder code {
   font-size: 0.78rem;
 }
+
+/* AI Sales Enablement — animated avatar social reactions */
+.ai-avatars-figure {
+  margin: 1rem 0 1.25rem;
+}
+
+.ai-avatars {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem;
+  padding: 0.7rem;
+  background: #0a0a0a;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(19, 32, 46, 0.18);
+}
+
+.ai-avatar {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 0.65rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #111;
+}
+
+.ai-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.ai-avatar:hover img {
+  transform: scale(1.05);
+}
+
+.ai-avatar__fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 42%);
+  pointer-events: none;
+}
+
+.ai-avatar-reaction {
+  position: absolute;
+  bottom: 10%;
+  z-index: 2;
+  font-size: clamp(0.7rem, 1.6vw, 0.95rem);
+  line-height: 1;
+  pointer-events: none;
+  animation-name: ai-avatar-float-reaction;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  user-select: none;
+}
+
+.ai-avatar-reaction--sm {
+  font-size: clamp(0.58rem, 1.3vw, 0.78rem);
+}
+
+@keyframes ai-avatar-float-reaction {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-50px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.8);
+  }
+}
+
+@media (max-width: 640px) {
+  .ai-avatars {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.3rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-avatar-reaction {
+    animation: none;
+    opacity: 0.95;
+    transform: translateY(-18px) scale(1);
+  }
+
+  .ai-avatar:hover img {
+    transform: none;
+  }
+}
+
+@media print {
+  .ai-avatar-reaction {
+    animation: none !important;
+    opacity: 0.95;
+    transform: translateY(-14px) scale(1);
+  }
+}
