@@ -33,12 +33,12 @@
       }
     },
     {
-      "slug": "Lighting Fibre/Web",
+      "slug": "lightningfibre/Web",
       "title": "Pro Forma Proposal (web)",
-      "client": "Lighting Fibre",
+      "client": "lightningfibre",
       "sourceType": "scrolling webpage",
       "date": "2026-08-19",
-      "url": "https://proposal.trilogybpo.com/presentations/Lighting%20Fibre/Web/",
+      "url": "https://proposal.trilogybpo.com/presentations/lightningfibre/Web/",
       "blend": {
       "primary": "#61d779",
       "accent": "#d5ec67",
