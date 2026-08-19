@@ -210,7 +210,7 @@
       font-weight: 700;
     }
 
-    /* One Team, 20 Years — HTML timeline (larger type, alternating above/below) */
+    /* One Team, 20 Years — two rails, companies above / UK clients below */
     .ot-timeline {
       margin: 0.85rem 0 1.35rem;
       background: #13202e;
@@ -224,7 +224,7 @@
       justify-content: space-between;
       gap: 1.25rem;
       align-items: flex-start;
-      margin-bottom: 1.1rem;
+      margin-bottom: 0.35rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid rgba(255,255,255,0.12);
     }
@@ -262,100 +262,133 @@
       color: #d5ec67;
       margin-bottom: 0.12rem;
     }
-    .ot-timeline__rail {
-      position: relative;
+    .ot-timeline__band {
       display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 0.45rem;
-      padding: 0.35rem 0 0.2rem;
+      grid-template-columns: 4.7rem minmax(0, 1fr);
+      grid-template-rows: auto 1.6rem auto;
+      column-gap: 0.55rem;
+      margin-top: 1.15rem;
+    }
+    .ot-timeline__band + .ot-timeline__band {
+      margin-top: 1.65rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .ot-axis {
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+    }
+    .ot-axis__co,
+    .ot-axis__uk {
+      margin: 0;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #61d779;
+      line-height: 1.2;
+    }
+    .ot-axis__co { grid-row: 1; align-self: end; padding-bottom: 0.45rem; }
+    .ot-axis__uk { grid-row: 3; align-self: start; padding-top: 0.5rem; }
+    .ot-timeline__track {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+      position: relative;
+    }
+    .ot-timeline__rail {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      gap: 0 0.85rem;
       list-style: none;
       margin: 0;
+      padding: 0;
     }
-    .ot-timeline__rail::before {
-      content: "";
-      position: absolute;
-      left: 4%;
-      right: 4%;
-      top: 50%;
-      height: 4px;
-      background: #61d779;
-      border-radius: 999px;
-      transform: translateY(-50%);
-    }
+    .ot-timeline__rail--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ot-timeline__rail--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .ot-node {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      min-width: 0;
       position: relative;
       z-index: 1;
-      display: grid;
-      grid-template-rows: minmax(11rem, auto) 1.35rem minmax(11rem, auto);
-      align-items: stretch;
-      min-width: 0;
-    }
-    .ot-node__company,
-    .ot-node__clients {
-      min-width: 0;
     }
     .ot-node__company {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      text-align: center;
-      padding-bottom: 0.45rem;
-    }
-    .ot-node__clients {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      text-align: center;
-      padding-top: 0.55rem;
-      margin: 0;
-      padding-left: 0;
-      list-style: none;
-      font-size: 0.86rem;
-      line-height: 1.35;
-      color: rgba(255,255,255,0.86);
-    }
-    .ot-node:nth-child(even) .ot-node__company {
-      grid-row: 3;
-      justify-content: flex-start;
-      padding: 0.55rem 0 0;
-    }
-    .ot-node:nth-child(even) .ot-node__clients {
       grid-row: 1;
+      display: flex;
+      flex-direction: column;
       justify-content: flex-end;
-      padding: 0 0 0.45rem;
+      text-align: center;
+      padding-bottom: 0.4rem;
+      min-height: 7.2rem;
+    }
+    .ot-node__spine {
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .ot-node__spine::before {
+      content: "";
+      position: absolute;
+      left: calc(-50% - 0.43rem);
+      right: calc(-50% - 0.43rem);
+      height: 4px;
+      background: #61d779;
+      z-index: 0;
+    }
+    .ot-timeline__rail li:first-child .ot-node__spine::before { left: 50%; }
+    .ot-timeline__rail li:last-child .ot-node__spine::before { right: 50%; }
+    .ot-node__clients {
+      grid-row: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+      margin: 0;
+      padding: 0.55rem 0 0;
+      list-style: none;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.9);
     }
     .ot-node__note {
       display: inline-block;
-      margin: 0 auto 0.35rem;
-      padding: 0.18rem 0.4rem;
-      border: 1px solid rgba(255,255,255,0.35);
+      margin: 0 auto 0.4rem;
+      padding: 0.22rem 0.45rem;
+      border: 1px solid rgba(97, 215, 121, 0.55);
       border-radius: 0.35rem;
-      font-size: 0.68rem;
-      line-height: 1.25;
-      color: rgba(255,255,255,0.72);
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: rgba(255,255,255,0.78);
       max-width: 100%;
     }
     .ot-node__co {
       font-family: Poppins, Inter, sans-serif;
       font-weight: 700;
-      font-size: 1.08rem;
+      font-size: 1.18rem;
       line-height: 1.2;
       color: #fff;
     }
     .ot-node__co.is-now { color: #d5ec67; }
     .ot-node__dates {
-      margin-top: 0.15rem;
-      font-size: 0.78rem;
+      margin-top: 0.18rem;
+      font-size: 0.86rem;
       color: rgba(255,255,255,0.62);
     }
     .ot-node__dot {
+      position: relative;
+      z-index: 1;
       width: 16px;
       height: 16px;
-      margin: 0 auto;
       border-radius: 50%;
       background: #13202e;
       box-shadow: 0 0 0 5px #61d779;
-      align-self: center;
     }
     .seat-pricing h3,
     .seat-example h3,
@@ -389,48 +422,50 @@
     @media (max-width: 860px) {
       .ot-timeline__head { flex-direction: column; }
       .ot-timeline__exco { width: 100%; }
-      .ot-timeline__rail {
-        grid-template-columns: 1fr;
-        gap: 0;
+      .ot-timeline__band,
+      .ot-axis,
+      .ot-timeline__track,
+      .ot-timeline__rail,
+      .ot-node {
+        display: block;
       }
-      .ot-timeline__rail::before {
-        left: 11px;
-        right: auto;
-        top: 0.5rem;
-        bottom: 0.5rem;
-        width: 4px;
-        height: auto;
-        transform: none;
+      .ot-timeline__band {
+        grid-template-columns: 1fr;
+      }
+      .ot-axis { display: none; }
+      .ot-node__spine::before { display: none; }
+      .ot-timeline__rail--4,
+      .ot-timeline__rail--3 {
+        display: block;
       }
       .ot-node {
+        display: grid;
         grid-template-columns: 28px 1fr;
         grid-template-rows: auto auto;
         gap: 0 0.75rem;
         padding: 0.85rem 0;
         border-bottom: 1px solid rgba(255,255,255,0.1);
       }
-      .ot-node:nth-child(even) .ot-node__company,
-      .ot-node .ot-node__company {
+      .ot-node__company {
         grid-row: 1;
         grid-column: 2;
         justify-content: flex-start;
         text-align: left;
         padding: 0;
+        min-height: 0;
       }
-      .ot-node:nth-child(even) .ot-node__clients,
-      .ot-node .ot-node__clients {
-        grid-row: 2;
-        grid-column: 2;
-        justify-content: flex-start;
-        text-align: left;
-        padding: 0.4rem 0 0;
-        font-size: 0.95rem;
-      }
-      .ot-node__dot {
+      .ot-node__spine {
         grid-row: 1 / span 2;
         grid-column: 1;
-        align-self: start;
-        margin: 0.35rem 0 0;
+        align-items: flex-start;
+        padding-top: 0.45rem;
+      }
+      .ot-node__clients {
+        grid-row: 2;
+        grid-column: 2;
+        text-align: left;
+        padding: 0.4rem 0 0;
+        font-size: 1rem;
       }
       .ot-node__co { font-size: 1.12rem; }
       .ot-node__note { margin: 0 0 0.35rem; }
@@ -851,100 +886,120 @@
                 <li><span>Head of Transitions</span> Vancyon Van Zyl</li>
               </ul>
             </div>
-            <ol class="ot-timeline__rail">
-              <li class="ot-node">
-                <div class="ot-node__company">
-                  <div class="ot-node__note">Aegis acquires CCN</div>
-                  <div class="ot-node__co">CCN</div>
-                  <div class="ot-node__dates">2005 – 2008</div>
-                </div>
-                <div class="ot-node__dot" aria-hidden="true"></div>
-                <ul class="ot-node__clients">
-                  <li>Virgin Mobile</li>
-                  <li>Virgin Media</li>
-                  <li>Centrica</li>
-                  <li>British Gas</li>
-                  <li>Dynarod</li>
-                </ul>
-              </li>
-              <li class="ot-node">
-                <div class="ot-node__company">
-                  <div class="ot-node__co">Aegis</div>
-                  <div class="ot-node__dates">2008 – 2013</div>
-                </div>
-                <div class="ot-node__dot" aria-hidden="true"></div>
-                <ul class="ot-node__clients">
-                  <li>Aegis / Startek (GCC)</li>
-                  <li>SA Tourism (Europe)</li>
-                  <li>Lexis Nexis</li>
-                </ul>
-              </li>
-              <li class="ot-node">
-                <div class="ot-node__company">
-                  <div class="ot-node__co">Genii Ai</div>
-                  <div class="ot-node__dates">2013 – 2021</div>
-                </div>
-                <div class="ot-node__dot" aria-hidden="true"></div>
-                <ul class="ot-node__clients">
-                  <li>—</li>
-                </ul>
-              </li>
-              <li class="ot-node">
-                <div class="ot-node__company">
-                  <div class="ot-node__note">Ascensos acquires Digital Tribe</div>
-                  <div class="ot-node__co">Digital Tribe</div>
-                  <div class="ot-node__dates">2021 – 2023</div>
-                </div>
-                <div class="ot-node__dot" aria-hidden="true"></div>
-                <ul class="ot-node__clients">
-                  <li>Ascensos (GCC)</li>
-                </ul>
-              </li>
-              <li class="ot-node">
-                <div class="ot-node__company">
-                  <div class="ot-node__co">Ascensos</div>
-                  <div class="ot-node__dates">2023 – 2025</div>
-                </div>
-                <div class="ot-node__dot" aria-hidden="true"></div>
-                <ul class="ot-node__clients">
-                  <li>John Lewis</li>
-                  <li>WeWork</li>
-                  <li>Iceland</li>
-                  <li>JD Sports</li>
-                  <li>Aldi</li>
-                  <li>Virgin ED</li>
-                </ul>
-              </li>
-              <li class="ot-node">
-                <div class="ot-node__company">
-                  <div class="ot-node__co">Trilogy BPO</div>
-                  <div class="ot-node__dates">2025 – Now</div>
-                </div>
-                <div class="ot-node__dot" aria-hidden="true"></div>
-                <ul class="ot-node__clients">
-                  <li>Ventrica (GCC)</li>
-                  <li>Burger King</li>
-                </ul>
-              </li>
-              <li class="ot-node">
-                <div class="ot-node__company">
-                  <div class="ot-node__note">Trilogy DSG JV</div>
-                  <div class="ot-node__co is-now">Trilogy Digital</div>
-                  <div class="ot-node__dates">April 2026</div>
-                </div>
-                <div class="ot-node__dot" aria-hidden="true"></div>
-                <ul class="ot-node__clients">
-                  <li>NAD Clinic</li>
-                  <li>Multichoice</li>
-                  <li>MTN</li>
-                  <li>Telkom</li>
-                  <li>Afrihost</li>
-                  <li>Vodacom</li>
-                  <li>KFC</li>
-                  <li>PEP Stores</li>
-                </ul>
-              </li>
-            </ol>
+
+            <div class="ot-timeline__band">
+              <div class="ot-axis" aria-hidden="true">
+                <p class="ot-axis__co">Companies</p>
+                <p class="ot-axis__uk">UK Clients</p>
+              </div>
+              <div class="ot-timeline__track">
+                <ol class="ot-timeline__rail ot-timeline__rail--4">
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">CCN</div>
+                      <div class="ot-node__dates">2005 – 2008</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Virgin Mobile</li>
+                      <li>Virgin Media</li>
+                      <li>Centrica</li>
+                      <li>British Gas</li>
+                      <li>Dynarod</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__note">Aegis acquires CCN</div>
+                      <div class="ot-node__co">Aegis</div>
+                      <div class="ot-node__dates">2008 – 2013</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Aegis / Startek (GCC)</li>
+                      <li>SA Tourism (Europe)</li>
+                      <li>Lexis Nexis</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">Genii Ai</div>
+                      <div class="ot-node__dates">2013 – 2021</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>—</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">Digital Tribe</div>
+                      <div class="ot-node__dates">2021 – 2023</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Ascensos (GCC)</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="ot-timeline__band">
+              <div class="ot-axis" aria-hidden="true">
+                <p class="ot-axis__co">Companies</p>
+                <p class="ot-axis__uk">UK Clients</p>
+              </div>
+              <div class="ot-timeline__track">
+                <ol class="ot-timeline__rail ot-timeline__rail--3" start="5">
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__note">Ascensos acquires Digital Tribe</div>
+                      <div class="ot-node__co">Ascensos</div>
+                      <div class="ot-node__dates">2023 – 2025</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>John Lewis</li>
+                      <li>WeWork</li>
+                      <li>Iceland</li>
+                      <li>JD Sports</li>
+                      <li>Aldi</li>
+                      <li>Virgin ED</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">Trilogy BPO</div>
+                      <div class="ot-node__dates">2025 – Now</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Ventrica (GCC)</li>
+                      <li>Burger King</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__note">Trilogy DSG JV</div>
+                      <div class="ot-node__co is-now">Trilogy Digital</div>
+                      <div class="ot-node__dates">April 2026</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>NAD Clinic</li>
+                      <li>Multichoice</li>
+                      <li>MTN</li>
+                      <li>Telkom</li>
+                      <li>Afrihost</li>
+                      <li>Vodacom</li>
+                      <li>KFC</li>
+                      <li>PEP Stores</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </div>
           </figure>
           <div class="prose">
             <p>We feel confident that together we can transition the existing operation effectively, minimise risk and craft a long-term delivery strategy focused on elevating your customer experience, leveraging AI where appropriate, and building a partnership that creates true bi-directional value for both parties.</p>
