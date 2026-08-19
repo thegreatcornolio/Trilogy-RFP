@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=lighting-fibre-1">
+  <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=lightningfibre-2">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -192,6 +192,245 @@
         -webkit-overflow-scrolling: touch;
       }
     }
+
+    .doc-note {
+      margin: 1.25rem 0 0;
+    }
+    .doc-note p {
+      margin: 0 0 0.9rem;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .doc-note p:last-child { margin-bottom: 0; }
+    .doc-note__sign {
+      font-weight: 600;
+    }
+
+    /* One Team, 20 Years — HTML timeline (larger type, alternating above/below) */
+    .ot-timeline {
+      margin: 0.85rem 0 1.35rem;
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      padding: 1.35rem 1.15rem 1.55rem;
+      overflow: visible;
+    }
+    .ot-timeline__head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: flex-start;
+      margin-bottom: 1.1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .ot-timeline__title {
+      margin: 0 0 0.35rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #61d779;
+    }
+    .ot-timeline__sub {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.88);
+      max-width: 22rem;
+    }
+    .ot-timeline__exco {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem 1.4rem;
+      font-size: 0.92rem;
+    }
+    .ot-timeline__exco span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d5ec67;
+      margin-bottom: 0.12rem;
+    }
+    .ot-timeline__rail {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0.45rem;
+      padding: 0.35rem 0 0.2rem;
+      list-style: none;
+      margin: 0;
+    }
+    .ot-timeline__rail::before {
+      content: "";
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      top: 50%;
+      height: 4px;
+      background: #61d779;
+      border-radius: 999px;
+      transform: translateY(-50%);
+    }
+    .ot-node {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-rows: minmax(11rem, auto) 1.35rem minmax(11rem, auto);
+      align-items: stretch;
+      min-width: 0;
+    }
+    .ot-node__company,
+    .ot-node__clients {
+      min-width: 0;
+    }
+    .ot-node__company {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-align: center;
+      padding-bottom: 0.45rem;
+    }
+    .ot-node__clients {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+      padding-top: 0.55rem;
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      font-size: 0.86rem;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.86);
+    }
+    .ot-node:nth-child(even) .ot-node__company {
+      grid-row: 3;
+      justify-content: flex-start;
+      padding: 0.55rem 0 0;
+    }
+    .ot-node:nth-child(even) .ot-node__clients {
+      grid-row: 1;
+      justify-content: flex-end;
+      padding: 0 0 0.45rem;
+    }
+    .ot-node__note {
+      display: inline-block;
+      margin: 0 auto 0.35rem;
+      padding: 0.18rem 0.4rem;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 0.35rem;
+      font-size: 0.68rem;
+      line-height: 1.25;
+      color: rgba(255,255,255,0.72);
+      max-width: 100%;
+    }
+    .ot-node__co {
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+    .ot-node__co.is-now { color: #d5ec67; }
+    .ot-node__dates {
+      margin-top: 0.15rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.62);
+    }
+    .ot-node__dot {
+      width: 16px;
+      height: 16px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #13202e;
+      box-shadow: 0 0 0 5px #61d779;
+      align-self: center;
+    }
+    .seat-pricing h3,
+    .seat-example h3,
+    .seat-includes h3,
+    .seat-notes h3 {
+      margin: 1.15rem 0 0.55rem;
+    }
+    .seat-pricing .table-wrap table td:nth-child(4),
+    .seat-pricing .table-wrap table td:nth-child(5),
+    .seat-pricing .table-wrap table th:nth-child(4),
+    .seat-pricing .table-wrap table th:nth-child(5),
+    .seat-example .table-wrap table td:nth-child(n+2),
+    .seat-example .table-wrap table th:nth-child(n+2) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .seat-example__lede {
+      margin: 0 0 0.7rem;
+      color: rgba(19, 32, 46, 0.72);
+    }
+    .seat-example .table-wrap table tfoot td {
+      font-weight: 700;
+      border-top: 2px solid rgba(19, 32, 46, 0.18);
+    }
+    .seat-notes ol {
+      margin: 0.35rem 0 0;
+      padding-left: 1.2rem;
+    }
+    .seat-notes li { margin: 0.28rem 0; }
+    @media (max-width: 860px) {
+      .ot-timeline__head { flex-direction: column; }
+      .ot-timeline__exco { width: 100%; }
+      .ot-timeline__rail {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .ot-timeline__rail::before {
+        left: 11px;
+        right: auto;
+        top: 0.5rem;
+        bottom: 0.5rem;
+        width: 4px;
+        height: auto;
+        transform: none;
+      }
+      .ot-node {
+        grid-template-columns: 28px 1fr;
+        grid-template-rows: auto auto;
+        gap: 0 0.75rem;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .ot-node:nth-child(even) .ot-node__company,
+      .ot-node .ot-node__company {
+        grid-row: 1;
+        grid-column: 2;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 0;
+      }
+      .ot-node:nth-child(even) .ot-node__clients,
+      .ot-node .ot-node__clients {
+        grid-row: 2;
+        grid-column: 2;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 0.4rem 0 0;
+        font-size: 0.95rem;
+      }
+      .ot-node__dot {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+        align-self: start;
+        margin: 0.35rem 0 0;
+      }
+      .ot-node__co { font-size: 1.12rem; }
+      .ot-node__note { margin: 0 0 0.35rem; }
+    }
   </style>
 </head>
 <body>
@@ -259,6 +498,11 @@
               </tbody>
             </table>
           </div>
+        </div>
+        <div class="prose doc-note">
+          <p>The document is presented to <strong>Lightning Fibre</strong> to give you an indication of who Trilogy Digital is, what we offer, and what you could expect to pay if you were to outsource your contact center to us. This we hope allows you to consider us in the future for your outsourcing needs. We have kept this document fairly short as our key goal here is to both establish our credibility, and to give you some indicative commercials to allow you to factor this into future business models. We can always share our full company overview with you at any time you like.</p>
+          <p>Thank you for taking the time to review this, and we hope that the indicative commercials make you think of Trilogy and of Cape Town when the time comes to outsource. We love it here and would love you to come and visit one of the top three outsourcing destinations globally for the past 5 years.</p>
+          <p class="doc-note__sign">Regards, Keanu</p>
         </div>
       </div>
     </section>
@@ -577,10 +821,113 @@
           </div>
 
           <h3 id="management-journey">Management Journey &amp; UK Client Experience</h3>
-          <figure class="figure one-team-figure">
-            <div class="figure__media one-team-figure__media">
-              <img src="../../../trilogydigital/assets/one-team-20-years.png" alt="Management Journey and UK Client Experience — One Team, 20 Years timeline" loading="lazy">
+          <figure class="ot-timeline" aria-label="One Team, 20 Years — Management Journey and UK Client Experience">
+            <div class="ot-timeline__head">
+              <div>
+                <p class="ot-timeline__title">One Team, 20 Years</p>
+                <p class="ot-timeline__sub">Same founders / EXCO team have worked together across all these companies.</p>
+              </div>
+              <ul class="ot-timeline__exco">
+                <li><span>CEO</span> Kobus van der Westhuizen</li>
+                <li><span>COO</span> Tanya Phillips</li>
+                <li><span>CTO</span> Craig Shalekoff</li>
+                <li><span>Head of Transitions</span> Vancyon Van Zyl</li>
+              </ul>
             </div>
+            <ol class="ot-timeline__rail">
+              <li class="ot-node">
+                <div class="ot-node__company">
+                  <div class="ot-node__note">Aegis acquires CCN</div>
+                  <div class="ot-node__co">CCN</div>
+                  <div class="ot-node__dates">2005 – 2008</div>
+                </div>
+                <div class="ot-node__dot" aria-hidden="true"></div>
+                <ul class="ot-node__clients">
+                  <li>Virgin Mobile</li>
+                  <li>Virgin Media</li>
+                  <li>Centrica</li>
+                  <li>British Gas</li>
+                  <li>Dynarod</li>
+                </ul>
+              </li>
+              <li class="ot-node">
+                <div class="ot-node__company">
+                  <div class="ot-node__co">Aegis</div>
+                  <div class="ot-node__dates">2008 – 2013</div>
+                </div>
+                <div class="ot-node__dot" aria-hidden="true"></div>
+                <ul class="ot-node__clients">
+                  <li>Aegis / Startek (GCC)</li>
+                  <li>SA Tourism (Europe)</li>
+                  <li>Lexis Nexis</li>
+                </ul>
+              </li>
+              <li class="ot-node">
+                <div class="ot-node__company">
+                  <div class="ot-node__co">Genii Ai</div>
+                  <div class="ot-node__dates">2013 – 2021</div>
+                </div>
+                <div class="ot-node__dot" aria-hidden="true"></div>
+                <ul class="ot-node__clients">
+                  <li>—</li>
+                </ul>
+              </li>
+              <li class="ot-node">
+                <div class="ot-node__company">
+                  <div class="ot-node__note">Ascensos acquires Digital Tribe</div>
+                  <div class="ot-node__co">Digital Tribe</div>
+                  <div class="ot-node__dates">2021 – 2023</div>
+                </div>
+                <div class="ot-node__dot" aria-hidden="true"></div>
+                <ul class="ot-node__clients">
+                  <li>Ascensos (GCC)</li>
+                </ul>
+              </li>
+              <li class="ot-node">
+                <div class="ot-node__company">
+                  <div class="ot-node__co">Ascensos</div>
+                  <div class="ot-node__dates">2023 – 2025</div>
+                </div>
+                <div class="ot-node__dot" aria-hidden="true"></div>
+                <ul class="ot-node__clients">
+                  <li>John Lewis</li>
+                  <li>WeWork</li>
+                  <li>Iceland</li>
+                  <li>JD Sports</li>
+                  <li>Aldi</li>
+                  <li>Virgin ED</li>
+                </ul>
+              </li>
+              <li class="ot-node">
+                <div class="ot-node__company">
+                  <div class="ot-node__co">Trilogy BPO</div>
+                  <div class="ot-node__dates">2025 – Now</div>
+                </div>
+                <div class="ot-node__dot" aria-hidden="true"></div>
+                <ul class="ot-node__clients">
+                  <li>Ventrica (GCC)</li>
+                  <li>Burger King</li>
+                </ul>
+              </li>
+              <li class="ot-node">
+                <div class="ot-node__company">
+                  <div class="ot-node__note">Trilogy DSG JV</div>
+                  <div class="ot-node__co is-now">Trilogy Digital</div>
+                  <div class="ot-node__dates">April 2026</div>
+                </div>
+                <div class="ot-node__dot" aria-hidden="true"></div>
+                <ul class="ot-node__clients">
+                  <li>NAD Clinic</li>
+                  <li>Multichoice</li>
+                  <li>MTN</li>
+                  <li>Telkom</li>
+                  <li>Afrihost</li>
+                  <li>Vodacom</li>
+                  <li>KFC</li>
+                  <li>PEP Stores</li>
+                </ul>
+              </li>
+            </ol>
           </figure>
           <div class="prose">
             <p>We feel confident that together we can transition the existing operation effectively, minimise risk and craft a long-term delivery strategy focused on elevating your customer experience, leveraging AI where appropriate, and building a partnership that creates true bi-directional value for both parties.</p>
@@ -1088,69 +1435,133 @@
           <li>Per-interaction rate for digital and automated interactions, scaling with volume.</li>
           <li>Gain-share models — used where AI and digital automation lead to headcount reduction.</li>
         </ul>
-        <div class="commercial-schedule" data-commercial-schedule>
-          <h3>Indicative Commercial Schedule</h3>
+
+        <div class="seat-pricing">
+          <h3>Indicative Pricing for a Fully Loaded Seat</h3>
           <p class="commercial-schedule__disclaimer">Indicative rates for discussion. Final rates confirmed in the Statement of Work.</p>
           <div class="table-wrap">
-            <table class="commercial-schedule__table">
+            <table>
               <thead>
                 <tr>
                   <th>Role</th>
-                  <th>FTE / Qty</th>
-                  <th>Unit</th>
-                  <th>Rate</th>
-                  <th>Monthly</th>
-                  <th>Model</th>
-                  <th>Notes</th>
+                  <th>Activity</th>
+                  <th>Skill Set</th>
+                  <th>Range (Min)</th>
+                  <th>Range (Max)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Customer Service Agent</td>
+                  <td>Customer Support Tier 1</td>
+                  <td>Handles generic customer queries</td>
+                  <td>English proficient, computer literacy, soft skills</td>
+                  <td>£1,290</td>
+                  <td>£1,590</td>
+                </tr>
+                <tr>
+                  <td>Customer Support Tier 2</td>
+                  <td>Handles more complex customer queries</td>
+                  <td>English proficient, computer literacy, soft skills, systems skills</td>
+                  <td>£1,350</td>
+                  <td>£1,690</td>
+                </tr>
+                <tr>
+                  <td>Technical Support Tier 1</td>
+                  <td>Handle general desktop-type support</td>
+                  <td>As above + MCSE or MSP</td>
+                  <td>£1,690</td>
+                  <td>£1,850</td>
+                </tr>
+                <tr>
+                  <td>Technical Support Tier 2</td>
+                  <td>Handle more complex type support</td>
+                  <td>As above + CCNA / Zendesk / MS Expert</td>
+                  <td>£2,500</td>
+                  <td>£3,000</td>
+                </tr>
+                <tr>
+                  <td>Technical Support Tier 3</td>
+                  <td>Generally handles call out — very complex</td>
+                  <td>Not catered for in contact centre</td>
+                  <td>—</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Backoffice Support Functions</td>
+                  <td>Billing queries / onboarding / administration</td>
+                  <td>As above with specific back-office processing experience</td>
+                  <td>£1,790</td>
+                  <td>£2,000</td>
+                </tr>
+                <tr>
+                  <td>Finance &amp; Accounting Support Function</td>
+                  <td>Accounts &amp; payments, accounts receivable</td>
+                  <td>As above with CCA or Articled</td>
+                  <td>£2,250</td>
+                  <td>£2,500</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="seat-includes">
+          <h3>A fully loaded seat price includes all of the below</h3>
+          <ul class="list-check">
+            <li>Operations Manager (if larger than 30 seats)</li>
+            <li>Team Leader (at 1:12 agents)</li>
+            <li>Quality Analyst (1:50)</li>
+            <li>Trainer (1:50)</li>
+            <li>Subject Matter Experts (1:50)</li>
+            <li>All shared services (IT, HR, Recruitment, MIS)</li>
+            <li>Facilities</li>
+            <li>Technology</li>
+            <li>Medical &amp; Wellbeing</li>
+            <li>All salaries &amp; benefits</li>
+            <li>Dedicated branded space</li>
+          </ul>
+        </div>
+
+        <div class="seat-example">
+          <h3>Example Pricing for Lightning Fibre</h3>
+          <p class="seat-example__lede">Based on 12 Tier 1 Technical Support Agents.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>No.</th>
+                  <th>CTC</th>
+                  <th>Total monthly cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Technical Support Tier 1</td>
                   <td>12</td>
-                  <td>per hour</td>
-                  <td>£11.05</td>
-                  <td>£22,940</td>
-                  <td>Per Paid Hour</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Senior / Specialist Agent</td>
-                  <td>1</td>
-                  <td>per hour</td>
-                  <td>Included</td>
-                  <td>Included</td>
-                  <td>Per Paid Hour</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>Quality Analyst</td>
-                  <td>1</td>
-                  <td>per hour</td>
-                  <td>Included</td>
-                  <td>Included</td>
-                  <td>Per Paid Hour</td>
-                  <td>1:20 QA ratio</td>
-                </tr>
-                <tr>
-                  <td>Team Leader</td>
-                  <td>1</td>
-                  <td>per hour</td>
-                  <td>£11.05</td>
-                  <td>£1,912</td>
-                  <td>Per Paid Hour</td>
-                  <td>1:12 span of control</td>
+                  <td>£1,770</td>
+                  <td>£21,240</td>
                 </tr>
               </tbody>
               <tfoot>
-                <tr class="commercial-schedule__total">
-                  <td colspan="4">Total monthly</td>
-                  <td>£24,851</td>
-                  <td colspan="2"></td>
+                <tr>
+                  <td colspan="3">Total monthly</td>
+                  <td>£21,240</td>
                 </tr>
               </tfoot>
             </table>
           </div>
+        </div>
+
+        <div class="seat-notes">
+          <h3>Notes</h3>
+          <ol>
+            <li>Any client software / hardware specifics (e.g. SAP / Salesforce licence) excluded.</li>
+            <li>Any AI tools and associated costs (Meta, Azure, AWS) excluded.</li>
+            <li>Any additional insurances beyond basic business assurance excluded.</li>
+            <li>Any other items that may be discovered during project implementation.</li>
+            <li>Final pricing subject to accurate job descriptions.</li>
+          </ol>
         </div>
         <h3>Commercial Flexibility</h3>
         <ul class="list-check">
