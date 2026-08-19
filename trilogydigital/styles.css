@@ -5603,3 +5603,57 @@ tr:nth-child(even) td {
     transform: translateY(-14px) scale(1);
   }
 }
+
+/* AI Sales Enablement — cycling blue spotlight on qualification pillars */
+.pillars--spotlight > .pillar {
+  transition:
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    color 0.45s ease,
+    box-shadow 0.45s ease,
+    transform 0.45s ease;
+}
+
+.pillars--spotlight > .pillar h4,
+.pillars--spotlight > .pillar p {
+  transition: color 0.45s ease;
+}
+
+.pillars--spotlight > .pillar.is-spotlight {
+  background: #1d4ed8;
+  border-color: #1e40af;
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.28);
+  transform: translateY(-2px);
+}
+
+.pillars--spotlight > .pillar.is-spotlight h4 {
+  color: #fff;
+}
+
+.pillars--spotlight > .pillar.is-spotlight p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillars--spotlight > .pillar {
+    transition: none;
+    transform: none;
+  }
+}
+
+@media print {
+  .pillars--spotlight > .pillar.is-spotlight {
+    background: rgba(239, 242, 246, 0.5);
+    border-color: var(--border);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .pillars--spotlight > .pillar.is-spotlight h4 {
+    color: inherit;
+  }
+
+  .pillars--spotlight > .pillar.is-spotlight p {
+    color: rgba(19, 32, 46, 0.85);
+  }
+}
