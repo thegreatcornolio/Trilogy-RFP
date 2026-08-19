@@ -42,6 +42,8 @@ Each source becomes one published deck:
 
 **URL:** `https://proposal.trilogybpo.com/presentations/<slug>/`
 
+Medscheme scrolling webpage: [proposal.trilogybpo.com/presentations/medscheme-international-proposal/Web/](https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/Web/)
+
 The raw upload is moved out of the drop zone once the deck exists.
 
 ## Folder layout
