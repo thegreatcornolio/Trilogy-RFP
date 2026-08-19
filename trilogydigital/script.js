@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     root._spotlightTimer = window.setInterval(() => {
       index = (index + 1) % cards.length;
       setSpotlightIndex(root, index);
-    }, 2800);
+    }, 1800);
   };
 
   const stopSpotlight = (root) => {
