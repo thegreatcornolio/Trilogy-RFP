@@ -97,7 +97,7 @@ img {
   flex: 1;
   margin: 0;
   font-family: var(--display);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--muted);
@@ -175,7 +175,7 @@ img {
 .eyebrow,
 .kicker {
   margin: 0 0 0.55rem;
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -193,37 +193,37 @@ img {
 }
 
 .slide h1 {
-  font-size: 3.15rem;
+  font-size: 3.7rem;
 }
 
 .slide h2 {
-  font-size: 2.05rem;
+  font-size: 2.4rem;
 }
 
 .slide h3 {
   margin: 0 0 0.4rem;
   font-family: var(--display);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   color: var(--blend-primary);
 }
 
 .slide p,
 .slide li {
   color: var(--ink);
-  font-size: 1.02rem;
+  font-size: 1.22rem;
   line-height: 1.45;
 }
 
 .lede {
-  max-width: 42rem;
-  font-size: 1.2rem;
+  max-width: 44rem;
+  font-size: 1.42rem;
   color: var(--muted);
 }
 
 .subhead {
   margin: -0.25rem 0 0.95rem;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: 1.18rem;
 }
 
 .slide ul {
@@ -273,9 +273,9 @@ img {
 
 .cover-logos img,
 .cover-logos .brand-logo {
-  height: 2.5rem;
+  height: 4.375rem;
   width: auto;
-  max-width: 14rem;
+  max-width: 22rem;
   object-fit: contain;
 }
 
@@ -299,7 +299,7 @@ img {
 
 .stat dt {
   margin: 0 0 0.3rem;
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -313,7 +313,7 @@ img {
 .stat__value {
   display: block;
   font-family: var(--display);
-  font-size: 1.85rem;
+  font-size: 2.15rem;
   font-weight: 650;
   letter-spacing: -0.03em;
   color: var(--white);
@@ -323,7 +323,7 @@ img {
   display: block;
   margin-top: 0.3rem;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 1rem;
 }
 
 .table-wrap {
@@ -335,7 +335,7 @@ img {
 table.deck-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.82rem;
+  font-size: 0.98rem;
 }
 
 .deck-table th,
@@ -349,7 +349,7 @@ table.deck-table {
 .deck-table th {
   background: color-mix(in srgb, var(--blend-primary) 12%, transparent);
   color: var(--blend-accent);
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 600;
@@ -374,7 +374,7 @@ table.deck-table {
 
 .footnote {
   margin: 0.55rem 0 0;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   line-height: 1.4;
   color: var(--muted);
 }
@@ -428,7 +428,7 @@ table.deck-table {
 }
 
 .chart__label {
-  font-size: 0.72rem;
+  font-size: 0.88rem;
   color: var(--muted);
 }
 
@@ -436,7 +436,7 @@ table.deck-table {
   display: flex;
   gap: 1rem;
   margin: 0.5rem 0 0;
-  font-size: 0.75rem;
+  font-size: 0.92rem;
   color: var(--muted);
 }
 
@@ -464,7 +464,7 @@ table.deck-table {
 
 .step__n {
   margin: 0 0 0.55rem;
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: var(--blend-accent);
@@ -476,7 +476,7 @@ table.deck-table {
 
 .step p {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 1.05rem;
   color: var(--muted);
 }
 
@@ -526,7 +526,7 @@ table.deck-table {
 
 .hub__core strong {
   font-family: var(--display);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   letter-spacing: 0.08em;
   color: var(--white);
 }
@@ -534,7 +534,7 @@ table.deck-table {
 .hub__core span {
   display: block;
   margin-top: 0.25rem;
-  font-size: 0.7rem;
+  font-size: 0.84rem;
   color: var(--blend-accent);
 }
 
@@ -579,7 +579,7 @@ table.deck-table {
 .chevron {
   padding: 0.5rem 0.65rem;
   text-align: center;
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--blend-navy);
   background: var(--blend-accent);
@@ -590,6 +590,42 @@ table.deck-table {
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
   background: var(--blend-primary);
   color: var(--blend-navy);
+}
+
+.deck-chrome__web {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blend-accent);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+}
+
+.logo-plate {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 0.4rem;
+  padding: 0.22rem 0.4rem;
+}
+
+.logo-plate img,
+.logo-plate .brand-logo,
+.logo-plate .logo-fallback {
+  height: 1.7rem;
+  margin: 0;
+  max-width: 10rem;
+}
+
+.cover-logos .logo-plate--cover {
+  padding: 0.45rem 0.8rem;
+}
+
+.cover-logos .logo-plate--cover img,
+.cover-logos .logo-plate--cover .brand-logo {
+  height: 4.375rem;
+  max-width: 22rem;
 }
 
 .deck-nav {
