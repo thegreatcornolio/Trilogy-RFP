@@ -25,12 +25,12 @@
     "white": "#ffffff"
   },
   "blend": {
-    "navy": "#112430",
-    "navy2": "#163544",
-    "primary": "#44c575",
-    "accent": "#d6e256",
-    "secondary": "#29a559",
-    "white": "#ffffff",
-    "sourceBrand": "#e01050"
+    "navy": "#0C1926",
+    "navy2": "#0F2233",
+    "primary": "#CAEA70",
+    "accent": "#CAEA70",
+    "secondary": "#132A3D",
+    "white": "#F5F7F9",
+    "sourceBrand": "#E8737A"
   }
 }

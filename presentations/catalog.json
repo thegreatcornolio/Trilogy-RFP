@@ -10,11 +10,11 @@
       "date": "2026-08-18",
       "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/",
       "blend": {
-        "primary": "#44c575",
-        "accent": "#d6e256",
-        "secondary": "#29a559",
-        "navy": "#112430",
-        "sourceBrand": "#e01050"
+      "primary": "#CAEA70",
+      "accent": "#CAEA70",
+      "secondary": "#132A3D",
+      "navy": "#0C1926",
+      "sourceBrand": "#E8737A"
       }
     },
     {
@@ -25,11 +25,11 @@
       "date": "2026-08-19",
       "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/Web/",
       "blend": {
-        "primary": "#44c575",
-        "accent": "#d6e256",
-        "secondary": "#29a559",
-        "navy": "#112430",
-        "sourceBrand": "#e01050"
+      "primary": "#CAEA70",
+      "accent": "#CAEA70",
+      "secondary": "#132A3D",
+      "navy": "#0C1926",
+      "sourceBrand": "#E8737A"
       }
     }
   ]
