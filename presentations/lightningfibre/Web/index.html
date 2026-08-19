@@ -120,6 +120,15 @@
       opacity: 1;
       transform: none;
     }
+    /* Tall sections (Company Overview) never reach the IO threshold on a phone,
+       so they stayed opacity:0 — a huge blank scroll. Always show on mobile. */
+    @media (max-width: 720px) {
+      html.js-reveal .proposal-page {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
 
     .page-nav {
       display: none;
@@ -187,9 +196,103 @@
         font-size: 0.92rem;
         padding: 0.35rem 0;
       }
+      .proposal-shell,
+      .main {
+        overflow-x: hidden;
+        max-width: 100%;
+      }
       .table-wrap {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+      }
+    }
+
+    /* Stack commercial tables as cards so they fit a phone width. */
+    @media (max-width: 860px) {
+      .seat-pricing .table-wrap,
+      .seat-example .table-wrap {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+      }
+      .seat-pricing table,
+      .seat-example table {
+        display: grid;
+        gap: 0.75rem;
+        width: 100%;
+        border: 0;
+      }
+      .seat-pricing thead,
+      .seat-example thead {
+        display: none;
+      }
+      .seat-pricing tbody,
+      .seat-example tbody,
+      .seat-example tfoot {
+        display: contents;
+      }
+      .seat-pricing tbody tr,
+      .seat-example tbody tr,
+      .seat-example tfoot tr {
+        display: grid;
+        border: 1px solid rgba(19, 32, 46, 0.14);
+        border-radius: 0.65rem;
+        overflow: hidden;
+        background: #fff;
+      }
+      .seat-pricing td,
+      .seat-example td {
+        display: grid;
+        grid-template-columns: 6.6rem minmax(0, 1fr);
+        align-items: start;
+        gap: 0.55rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.6rem 0.8rem;
+        border: 0;
+        border-top: 1px solid rgba(19, 32, 46, 0.08);
+        white-space: normal !important;
+        text-align: left !important;
+        background: #fff !important;
+        font-variant-numeric: tabular-nums;
+      }
+      .seat-pricing td::before,
+      .seat-example td::before {
+        content: attr(data-label);
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(19, 32, 46, 0.52);
+        line-height: 1.3;
+        padding-top: 0.12rem;
+      }
+      .seat-pricing tbody td:first-child,
+      .seat-example tbody td:first-child {
+        grid-template-columns: 1fr;
+        border-top: 0;
+        background: #13202e !important;
+        color: #fff !important;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+      .seat-pricing tbody td:first-child::before,
+      .seat-example tbody td:first-child::before {
+        display: none;
+      }
+      .seat-example tfoot td[colspan] {
+        display: none;
+      }
+      .seat-example tfoot td:last-child {
+        grid-template-columns: 1fr auto;
+        border-top: 0;
+        background: #13202e !important;
+        color: #d5ec67 !important;
+        font-weight: 700;
+      }
+      .seat-example tfoot td:last-child::before {
+        color: #fff;
       }
     }
 
@@ -1525,53 +1628,53 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Customer Support Tier 1</td>
-                  <td>Handles generic customer queries</td>
-                  <td>English proficient, computer literacy, soft skills</td>
-                  <td>£1,290</td>
-                  <td>£1,590</td>
+                  <td data-label="Role">Customer Support Tier 1</td>
+                  <td data-label="Activity">Handles generic customer queries</td>
+                  <td data-label="Skill Set">English proficient, computer literacy, soft skills</td>
+                  <td data-label="Range (Min)">£1,290</td>
+                  <td data-label="Range (Max)">£1,590</td>
                 </tr>
                 <tr>
-                  <td>Customer Support Tier 2</td>
-                  <td>Handles more complex customer queries</td>
-                  <td>English proficient, computer literacy, soft skills, systems skills</td>
-                  <td>£1,350</td>
-                  <td>£1,690</td>
+                  <td data-label="Role">Customer Support Tier 2</td>
+                  <td data-label="Activity">Handles more complex customer queries</td>
+                  <td data-label="Skill Set">English proficient, computer literacy, soft skills, systems skills</td>
+                  <td data-label="Range (Min)">£1,350</td>
+                  <td data-label="Range (Max)">£1,690</td>
                 </tr>
                 <tr>
-                  <td>Technical Support Tier 1</td>
-                  <td>Handle general desktop-type support</td>
-                  <td>As above + MCSE or MSP</td>
-                  <td>£1,690</td>
-                  <td>£1,850</td>
+                  <td data-label="Role">Technical Support Tier 1</td>
+                  <td data-label="Activity">Handle general desktop-type support</td>
+                  <td data-label="Skill Set">As above + MCSE or MSP</td>
+                  <td data-label="Range (Min)">£1,690</td>
+                  <td data-label="Range (Max)">£1,850</td>
                 </tr>
                 <tr>
-                  <td>Technical Support Tier 2</td>
-                  <td>Handle more complex type support</td>
-                  <td>As above + CCNA / Zendesk / MS Expert</td>
-                  <td>£2,500</td>
-                  <td>£3,000</td>
+                  <td data-label="Role">Technical Support Tier 2</td>
+                  <td data-label="Activity">Handle more complex type support</td>
+                  <td data-label="Skill Set">As above + CCNA / Zendesk / MS Expert</td>
+                  <td data-label="Range (Min)">£2,500</td>
+                  <td data-label="Range (Max)">£3,000</td>
                 </tr>
                 <tr>
-                  <td>Technical Support Tier 3</td>
-                  <td>Generally handles call out — very complex</td>
-                  <td>Not catered for in contact centre</td>
-                  <td>—</td>
-                  <td>—</td>
+                  <td data-label="Role">Technical Support Tier 3</td>
+                  <td data-label="Activity">Generally handles call out — very complex</td>
+                  <td data-label="Skill Set">Not catered for in contact centre</td>
+                  <td data-label="Range (Min)">—</td>
+                  <td data-label="Range (Max)">—</td>
                 </tr>
                 <tr>
-                  <td>Backoffice Support Functions</td>
-                  <td>Billing queries / onboarding / administration</td>
-                  <td>As above with specific back-office processing experience</td>
-                  <td>£1,790</td>
-                  <td>£2,000</td>
+                  <td data-label="Role">Backoffice Support Functions</td>
+                  <td data-label="Activity">Billing queries / onboarding / administration</td>
+                  <td data-label="Skill Set">As above with specific back-office processing experience</td>
+                  <td data-label="Range (Min)">£1,790</td>
+                  <td data-label="Range (Max)">£2,000</td>
                 </tr>
                 <tr>
-                  <td>Finance &amp; Accounting Support Function</td>
-                  <td>Accounts &amp; payments, accounts receivable</td>
-                  <td>As above with CCA or Articled</td>
-                  <td>£2,250</td>
-                  <td>£2,500</td>
+                  <td data-label="Role">Finance &amp; Accounting Support Function</td>
+                  <td data-label="Activity">Accounts &amp; payments, accounts receivable</td>
+                  <td data-label="Skill Set">As above with CCA or Articled</td>
+                  <td data-label="Range (Min)">£2,250</td>
+                  <td data-label="Range (Max)">£2,500</td>
                 </tr>
               </tbody>
             </table>
@@ -1610,16 +1713,16 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Technical Support Tier 1</td>
-                  <td>12</td>
-                  <td>£1,770</td>
-                  <td>£21,240</td>
+                  <td data-label="Description">Technical Support Tier 1</td>
+                  <td data-label="No.">12</td>
+                  <td data-label="CTC">£1,770</td>
+                  <td data-label="Total monthly cost">£21,240</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <td colspan="3">Total monthly</td>
-                  <td>£21,240</td>
+                  <td data-label="Total monthly">£21,240</td>
                 </tr>
               </tfoot>
             </table>
@@ -1650,23 +1753,26 @@
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
-    if ("IntersectionObserver" in window) {
+    var isNarrow = window.matchMedia("(max-width: 720px)").matches;
+    if (isNarrow || !("IntersectionObserver" in window)) {
+      pages.forEach(function (el) { el.classList.add("is-visible"); });
+    } else {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           entry.target.classList.add("is-visible");
           io.unobserve(entry.target);
         });
-      }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+      }, { threshold: 0, rootMargin: "80px 0px 80px 0px" });
       pages.forEach(function (el) {
-        if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        var nearTop = el.getBoundingClientRect().top < window.innerHeight * 0.92;
+        var tallerThanViewport = el.offsetHeight > window.innerHeight;
+        if (nearTop || tallerThanViewport) {
           el.classList.add("is-visible");
         } else {
           io.observe(el);
         }
       });
-    } else {
-      pages.forEach(function (el) { el.classList.add("is-visible"); });
     }
 
     var nav = document.querySelector(".page-nav");
