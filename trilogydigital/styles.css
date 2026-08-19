@@ -5682,8 +5682,8 @@ tr:nth-child(even) td {
   margin: 0.85rem 0 1.15rem;
   padding: 0.85rem 1rem;
   border-radius: 0.85rem;
-  background: var(--brand-navy);
-  border: 1px solid rgba(19, 32, 46, 0.9);
+  background: transparent;
+  border: 2px solid var(--brand-navy);
 }
 
 .ai-sales-logos__item {
@@ -5692,6 +5692,8 @@ tr:nth-child(even) td {
   justify-content: center;
   min-height: 3.25rem;
   padding: 0.2rem 0.35rem;
+  border-radius: 0.45rem;
+  overflow: hidden;
 }
 
 .ai-sales-logos__item img {
@@ -5701,6 +5703,7 @@ tr:nth-child(even) td {
   height: 42px;
   object-fit: contain;
   filter: none;
+  border-radius: 0.35rem;
 }
 
 @media (min-width: 900px) {
