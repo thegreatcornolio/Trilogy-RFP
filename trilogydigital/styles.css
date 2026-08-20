@@ -282,6 +282,7 @@ a {
   align-items: center;
   text-align: center;
   gap: 0.55rem;
+  padding-top: 3.25rem;
 }
 
 .cover__brand-name {
@@ -300,11 +301,27 @@ a {
 }
 
 .cover__logo {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.35rem;
+  z-index: 3;
   display: block;
-  width: min(17.5rem, 72vw);
+  width: min(9.75rem, 46vw);
   height: auto;
-  margin-top: 0.15rem;
-  border-radius: 0.45rem;
+  margin: 0;
+  border-radius: 0.35rem;
+}
+
+@media (min-width: 640px) {
+  .cover__brand {
+    padding-top: 2.75rem;
+  }
+
+  .cover__logo {
+    top: 1.6rem;
+    left: 2.1rem;
+    width: min(11.5rem, 24vw);
+  }
 }
 
 .cover__body {

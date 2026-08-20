@@ -2438,8 +2438,7 @@ if (ph["case-studies"] !== undefined) {
       margin: 0 auto 0.35rem;
     }
     .cover__brand { align-items: center !important; text-align: center !important; }
-    .cover__logo { margin-left: auto; margin-right: auto; }
-    .meta-label, .cover__tagline { color: ${payload.theme.secondary || payload.theme.primary} !important; }
+.meta-label, .cover__tagline { color: ${payload.theme.secondary || payload.theme.primary} !important; }
     .badge {
       border-color: color-mix(in srgb, ${payload.theme.primary} 55%, transparent) !important;
       color: ${payload.theme.accent} !important;
