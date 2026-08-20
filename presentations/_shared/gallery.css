@@ -60,9 +60,9 @@ body {
 }
 
 .brand img {
-  height: 2.65rem;
+  height: 4.75rem;
   width: auto;
-  max-width: min(16rem, 72vw);
+  max-width: min(22rem, 82vw);
   object-fit: contain;
   object-position: left center;
   display: block;

@@ -282,7 +282,7 @@ a {
   align-items: center;
   text-align: center;
   gap: 0.55rem;
-  padding-top: 3.25rem;
+  padding-top: 5rem;
 }
 
 .cover__brand-name {
@@ -302,25 +302,31 @@ a {
 
 .cover__logo {
   position: absolute;
-  top: 1.25rem;
-  left: 1.35rem;
+  top: 1.15rem;
+  left: 1.2rem;
   z-index: 3;
   display: block;
-  width: min(9.75rem, 46vw);
+  width: min(14.5rem, 58vw);
   height: auto;
   margin: 0;
-  border-radius: 0.35rem;
+  border-radius: 0.4rem;
 }
 
 @media (min-width: 640px) {
   .cover__brand {
-    padding-top: 2.75rem;
+    padding-top: 4.5rem;
   }
 
   .cover__logo {
-    top: 1.6rem;
-    left: 2.1rem;
-    width: min(11.5rem, 24vw);
+    top: 1.5rem;
+    left: 2rem;
+    width: min(18rem, 32vw);
+  }
+}
+
+@media (min-width: 1100px) {
+  .cover__logo {
+    width: min(20rem, 28vw);
   }
 }
 

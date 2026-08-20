@@ -56,7 +56,7 @@ a {
 
 .hero {
   position: relative;
-  padding: 4.5rem 0 2.25rem;
+  padding: 5.75rem 0 2.25rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -77,11 +77,11 @@ a {
 
 .logo--trilogy {
   position: absolute;
-  top: 1.15rem;
+  top: 1rem;
   left: 0;
   z-index: 3;
-  width: min(10.5rem, 46vw);
-  border-radius: 0.35rem;
+  width: min(16rem, 62vw);
+  border-radius: 0.4rem;
   margin: 0;
 }
 
