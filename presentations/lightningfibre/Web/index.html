@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=lightningfibre-3">
+  <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=lightningfibre-4">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -212,6 +212,15 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         max-width: 100%;
+      }
+    }
+
+    /* Desktop only: the shared template caps .main at 860px (a document column).
+       Phones are already narrower than that, so raising max-width cannot change
+       the mobile layout — and the 720px rules above are left untouched. */
+    @media (min-width: 900px) {
+      .main {
+        max-width: min(72.5rem, calc(100vw - 4rem));
       }
     }
 
