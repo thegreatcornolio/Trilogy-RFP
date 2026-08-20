@@ -5739,3 +5739,83 @@ tr:nth-child(even) td {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Employee Value Proposition — animated spotlight cards */
+.evp-belief {
+  margin: 0.15rem 0 0.35rem;
+}
+
+.evp-belief p {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--brand-navy);
+}
+
+.pillars--evp {
+  margin: 0.25rem 0 1.15rem;
+}
+
+.pillars--evp > .pillar--evp {
+  background: var(--brand-navy);
+  border: 1px solid rgba(19, 32, 46, 0.9);
+  border-left: 4px solid var(--brand-green);
+  color: #fff;
+  min-height: 100%;
+}
+
+.pillars--evp > .pillar--evp h4 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.pillars--evp > .pillar--evp p {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.evp-card__icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  margin: 0 0 0.65rem;
+  color: var(--brand-green);
+}
+
+.evp-card__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight {
+  background: var(--brand-green);
+  border-color: var(--brand-green);
+  border-left-color: var(--brand-navy);
+  box-shadow: 0 10px 24px rgba(97, 215, 121, 0.35);
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight h4 {
+  color: var(--brand-navy);
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight p {
+  color: rgba(19, 32, 46, 0.88);
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight .evp-card__icon {
+  color: var(--brand-navy);
+}
+
+@media print {
+  .pillars--evp > .pillar--evp {
+    background: rgba(239, 242, 246, 0.5);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand-green);
+    color: inherit;
+  }
+
+  .pillars--evp > .pillar--evp h4,
+  .pillars--evp > .pillar--evp p {
+    color: inherit;
+  }
+}
