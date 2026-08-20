@@ -56,7 +56,7 @@ a {
 
 .hero {
   position: relative;
-  padding: 3rem 0 2.25rem;
+  padding: 4.5rem 0 2.25rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -74,6 +74,16 @@ a {
 .hero__bars span:nth-child(1) { background: var(--green); }
 .hero__bars span:nth-child(2) { background: var(--lime); }
 .hero__bars span:nth-child(3) { background: rgba(97, 215, 121, 0.45); }
+
+.logo--trilogy {
+  position: absolute;
+  top: 1.15rem;
+  left: 0;
+  z-index: 3;
+  width: min(10.5rem, 46vw);
+  border-radius: 0.35rem;
+  margin: 0;
+}
 
 .eyebrow {
   margin: 0 0 0.85rem;
@@ -144,18 +154,8 @@ h3 {
   flex-wrap: wrap;
 }
 
-.logo--trilogy {
-  width: min(16rem, 70vw);
-  border-radius: 0.4rem;
-}
-
 .logo--ooba {
   width: min(11rem, 48vw);
-}
-
-.logo-x {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 1.4rem;
 }
 
 .toc {

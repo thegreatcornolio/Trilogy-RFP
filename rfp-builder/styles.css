@@ -491,6 +491,7 @@ code {
   text-align: center;
   gap: 0.4rem;
   margin-bottom: 1.5rem;
+  padding-top: 2.4rem;
 }
 
 .cover-preview__client {
@@ -516,9 +517,13 @@ code {
 }
 
 .cover-preview__trilogy {
-  width: min(12rem, 70%);
-  border-radius: 0.35rem;
-  margin-top: 0.15rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 3;
+  width: min(7.5rem, 42%);
+  border-radius: 0.3rem;
+  margin: 0;
 }
 
 .cover-preview__body {
