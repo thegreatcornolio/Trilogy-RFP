@@ -5340,6 +5340,234 @@ tr:nth-child(even) td {
 
 
 /* ===== People differentiator collage ===== */
+/* ===== Our People · Our Promise (EVP graphic) ===== */
+.evp-promise-figure {
+  margin: 0.5rem 0 1.35rem;
+  border: 1px solid rgba(19, 32, 46, 0.35);
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: #0f1720;
+}
+
+.evp-promise-figure figcaption {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(15, 23, 32, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.7rem 1rem;
+}
+
+.evp-promise {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.95fr) minmax(0, 1.35fr);
+  gap: 1.25rem 1.75rem;
+  padding: 1.35rem 1.25rem 1.5rem;
+  background:
+    radial-gradient(circle at 18% 78%, rgba(97, 215, 121, 0.12), transparent 42%),
+    linear-gradient(160deg, #13202e 0%, #0f1720 55%, #101820 100%);
+  color: #fff;
+}
+
+.evp-promise__intro {
+  position: relative;
+  min-height: 22rem;
+}
+
+.evp-promise__title {
+  margin: 0 0 0.85rem;
+  padding-left: 0.85rem;
+  border-left: 4px solid var(--brand-green);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.evp-promise__title-strong {
+  color: #fff;
+}
+
+.evp-promise__title-soft {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+.evp-promise__belief {
+  margin: 0 0 1.25rem;
+  max-width: 28rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.evp-promise__photos {
+  position: relative;
+  height: 14.5rem;
+  margin-top: 0.5rem;
+}
+
+.evp-promise__photo {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(213, 236, 103, 0.85);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  background: #13202e;
+}
+
+.evp-promise__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.evp-promise__photo--team {
+  width: 10.5rem;
+  height: 10.5rem;
+  left: 0.4rem;
+  top: 0.2rem;
+  z-index: 2;
+}
+
+.evp-promise__photo--nate {
+  width: 7.5rem;
+  height: 7.5rem;
+  left: 7.2rem;
+  top: 5.6rem;
+  z-index: 3;
+  border-color: var(--brand-green);
+}
+
+.evp-promise__photo--day {
+  width: 4.4rem;
+  height: 4.4rem;
+  left: 11.6rem;
+  top: 0.8rem;
+  z-index: 1;
+  border-color: rgba(97, 215, 121, 0.7);
+}
+
+.evp-promise__photo--viview {
+  width: 3.6rem;
+  height: 3.6rem;
+  left: 0.1rem;
+  top: 9.8rem;
+  z-index: 1;
+  border-color: rgba(213, 236, 103, 0.65);
+}
+
+.evp-promise__pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+  align-content: start;
+}
+
+.evp-promise__item {
+  padding: 0.15rem 0 0.15rem 0.85rem;
+  border-left: 3px solid var(--brand-green);
+}
+
+.evp-promise__item:nth-child(even) {
+  margin-top: 0.85rem;
+}
+
+.evp-promise__item:nth-child(odd) {
+  margin-top: 0;
+}
+
+.evp-promise__item:nth-child(3),
+.evp-promise__item:nth-child(4) {
+  margin-top: 0.35rem;
+}
+
+.evp-promise__item:nth-child(4) {
+  margin-top: 1.15rem;
+}
+
+.evp-promise__item:nth-child(5) {
+  margin-top: 0.2rem;
+}
+
+.evp-promise__item:nth-child(6) {
+  margin-top: 1rem;
+}
+
+.evp-promise__icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  color: var(--brand-green);
+  margin-bottom: 0.4rem;
+}
+
+.evp-promise__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.evp-promise__item h5 {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.evp-promise__item p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 860px) {
+  .evp-promise {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .evp-promise__intro {
+    min-height: 0;
+  }
+
+  .evp-promise__photos {
+    height: 12.5rem;
+    max-width: 18rem;
+  }
+
+  .evp-promise__photo--team {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .evp-promise__photo--nate {
+    width: 6.4rem;
+    height: 6.4rem;
+    left: 6.2rem;
+    top: 4.8rem;
+  }
+
+  .evp-promise__photo--day {
+    left: 10rem;
+  }
+
+  .evp-promise__item:nth-child(n) {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .evp-promise__pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .evp-promise__photo--day,
+  .evp-promise__photo--viview {
+    display: none;
+  }
+}
+
 .people-collage-figure {
   margin: 0.5rem 0 1.35rem;
   border: 1px solid var(--border);
