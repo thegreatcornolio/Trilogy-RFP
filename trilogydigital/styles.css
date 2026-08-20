@@ -327,6 +327,12 @@ a {
   margin-bottom: 0.75rem;
 }
 
+.badge--navy {
+  background: var(--brand-navy);
+  border-color: var(--brand-green);
+  color: #fff;
+}
+
 .cover h1 {
   margin: 0;
   font-family: var(--font-heading);
@@ -4643,6 +4649,16 @@ tr:nth-child(even) td {
   width: min(38rem, 100%);
   height: auto;
   display: block;
+}
+
+.ci-loop__orb {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ci-loop__orb {
+    display: none;
+  }
 }
 
 /* ===== Genii four dimensions (Figure 3) ===== */
