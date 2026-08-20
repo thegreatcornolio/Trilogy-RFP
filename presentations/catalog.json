@@ -63,6 +63,21 @@
       }
     },
     {
+      "slug": "reassured/Web",
+      "title": "Pro Forma Proposal (web)",
+      "client": "Reassured",
+      "sourceType": "scrolling webpage",
+      "date": "2026-08-20",
+      "url": "https://proposal.trilogybpo.com/presentations/reassured/Web/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#a94392"
+      }
+    },
+    {
       "slug": "AiSalesEnablement",
       "title": "AI Sales Enablement",
       "client": "Visibilitie partnership",
