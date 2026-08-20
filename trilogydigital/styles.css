@@ -197,6 +197,14 @@ a {
   }
 }
 
+/* Desktop only — 860px is a document column. Phones are already narrower,
+   so this cannot change the mobile layout. */
+@media (min-width: 900px) {
+  .main {
+    max-width: min(72.5rem, calc(100vw - 4rem));
+  }
+}
+
 .proposal-shell {
   overflow: hidden;
   border-radius: 0.75rem;
@@ -1454,6 +1462,86 @@ td {
 
 tr:nth-child(even) td {
   background: rgba(239, 242, 246, 0.45);
+}
+
+/* Stack wide cadence tables as labelled cards on small screens. */
+@media (max-width: 860px) {
+  .table-wrap--stack {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .table-wrap--stack table {
+    display: block;
+    width: 100%;
+    border: 0;
+  }
+
+  .table-wrap--stack thead {
+    display: none;
+  }
+
+  .table-wrap--stack tbody {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .table-wrap--stack tr {
+    display: grid;
+    border: 1px solid rgba(19, 32, 46, 0.14);
+    border-radius: 0.65rem;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .table-wrap--stack td {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    align-items: start;
+    gap: 0.55rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.6rem 0.8rem;
+    border: 0;
+    border-top: 1px solid rgba(19, 32, 46, 0.08);
+    background: #fff !important;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .table-wrap--stack td::before {
+    content: attr(data-label);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(19, 32, 46, 0.52);
+    line-height: 1.3;
+    padding-top: 0.12rem;
+  }
+
+  .table-wrap--stack td:nth-child(1)::before { content: "Frequency"; }
+  .table-wrap--stack td:nth-child(2)::before { content: "Phase"; }
+  .table-wrap--stack td:nth-child(3)::before { content: "Meeting type"; }
+  .table-wrap--stack td:nth-child(4)::before { content: "Focus"; }
+
+  .table-wrap--stack td[data-label]::before {
+    content: attr(data-label);
+  }
+
+  .table-wrap--stack td:first-child {
+    grid-template-columns: 1fr;
+    border-top: 0;
+    background: var(--brand-navy) !important;
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .table-wrap--stack td:first-child::before {
+    content: none;
+  }
 }
 
 .columns {
@@ -5340,6 +5428,8 @@ tr:nth-child(even) td {
 .people-collage__circle--m { width: 3.2rem; height: 3.2rem; right: 44%; top: 4%; border-color: var(--pc-lime); }
 .people-collage__circle--n { width: 3.3rem; height: 3.3rem; left: 28%; top: 4%; border-color: var(--pc-navy); }
 .people-collage__circle--o { width: 3.1rem; height: 3.1rem; right: 22%; bottom: 4%; border-color: var(--pc-green); }
+.people-collage__circle--p { width: 5.4rem; height: 5.4rem; left: 6%; top: 42%; border-color: var(--pc-lime); z-index: 3; }
+.people-collage__circle--q { width: 4.5rem; height: 4.5rem; right: 40%; bottom: 36%; border-color: var(--pc-green); z-index: 3; }
 
 .people-collage__badge {
   position: absolute;
@@ -5384,6 +5474,20 @@ tr:nth-child(even) td {
   .people-collage__circle--n,
   .people-collage__circle--o {
     display: none;
+  }
+
+  .people-collage__circle--p {
+    width: 4.6rem;
+    height: 4.6rem;
+    left: 4%;
+    top: 46%;
+  }
+
+  .people-collage__circle--q {
+    width: 3.8rem;
+    height: 3.8rem;
+    right: 34%;
+    bottom: 42%;
   }
 }
 
@@ -5494,4 +5598,312 @@ tr:nth-child(even) td {
 
 .commercial-schedule--placeholder code {
   font-size: 0.78rem;
+}
+
+/* AI Sales Enablement — animated avatar social reactions */
+.ai-avatars-figure {
+  margin: 1rem 0 1.25rem;
+}
+
+.ai-avatars {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem;
+  padding: 0.7rem;
+  background: #0a0a0a;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(19, 32, 46, 0.18);
+}
+
+.ai-avatar {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 0.65rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #111;
+}
+
+.ai-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.ai-avatar:hover img {
+  transform: scale(1.05);
+}
+
+.ai-avatar__fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent 42%);
+  pointer-events: none;
+}
+
+.ai-avatar-reaction {
+  position: absolute;
+  bottom: 10%;
+  z-index: 2;
+  font-size: clamp(0.7rem, 1.6vw, 0.95rem);
+  line-height: 1;
+  pointer-events: none;
+  animation-name: ai-avatar-float-reaction;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  user-select: none;
+}
+
+.ai-avatar-reaction--sm {
+  font-size: clamp(0.58rem, 1.3vw, 0.78rem);
+}
+
+@keyframes ai-avatar-float-reaction {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-50px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.8);
+  }
+}
+
+@media (max-width: 640px) {
+  .ai-avatars {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.3rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-avatar-reaction {
+    animation: none;
+    opacity: 0.95;
+    transform: translateY(-18px) scale(1);
+  }
+
+  .ai-avatar:hover img {
+    transform: none;
+  }
+}
+
+@media print {
+  .ai-avatar-reaction {
+    animation: none !important;
+    opacity: 0.95;
+    transform: translateY(-14px) scale(1);
+  }
+}
+
+/* AI Sales Enablement — cycling brand spotlight on pillar cards */
+.pillars--spotlight > .pillar {
+  transition:
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    color 0.45s ease,
+    box-shadow 0.45s ease,
+    transform 0.45s ease;
+}
+
+.pillars--spotlight > .pillar h4,
+.pillars--spotlight > .pillar p {
+  transition: color 0.45s ease;
+}
+
+.pillars--spotlight-navy > .pillar.is-spotlight {
+  background: var(--brand-navy);
+  border-color: var(--brand-navy);
+  box-shadow: 0 10px 24px rgba(19, 32, 46, 0.28);
+  transform: translateY(-2px);
+}
+
+.pillars--spotlight-navy > .pillar.is-spotlight h4 {
+  color: #fff;
+}
+
+.pillars--spotlight-navy > .pillar.is-spotlight p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.pillars--spotlight-green > .pillar.is-spotlight {
+  background: var(--brand-green);
+  border-color: var(--brand-green);
+  box-shadow: 0 10px 24px rgba(97, 215, 121, 0.35);
+  transform: translateY(-2px);
+}
+
+.pillars--spotlight-green > .pillar.is-spotlight h4 {
+  color: var(--brand-navy);
+}
+
+.pillars--spotlight-green > .pillar.is-spotlight p {
+  color: rgba(19, 32, 46, 0.88);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillars--spotlight > .pillar {
+    transition: none;
+    transform: none;
+  }
+}
+
+@media print {
+  .pillars--spotlight > .pillar.is-spotlight {
+    background: rgba(239, 242, 246, 0.5);
+    border-color: var(--border);
+    box-shadow: none;
+    transform: none;
+  }
+
+  .pillars--spotlight > .pillar.is-spotlight h4 {
+    color: inherit;
+  }
+
+  .pillars--spotlight > .pillar.is-spotlight p {
+    color: rgba(19, 32, 46, 0.85);
+  }
+}
+
+/* AI Sales Enablement — Visibilitie European reference logos */
+.ai-sales-logos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem 0.85rem;
+  align-items: center;
+  margin: 0.85rem 0 1.15rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  background: transparent;
+  border: 2px solid var(--brand-navy);
+}
+
+.ai-sales-logos__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 0.45rem;
+  overflow: hidden;
+}
+
+.ai-sales-logos__item img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 42px;
+  object-fit: contain;
+  filter: none;
+  border-radius: 0.35rem;
+}
+
+@media (min-width: 900px) {
+  .ai-sales-logos {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.35rem 0.75rem;
+    padding: 0.95rem 1.1rem;
+  }
+
+  .ai-sales-logos__item img {
+    height: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .ai-sales-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Employee Value Proposition — animated spotlight cards */
+.evp-belief {
+  margin: 0.15rem 0 0.35rem;
+}
+
+.evp-belief p {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--brand-navy);
+}
+
+.pillars--evp {
+  margin: 0.25rem 0 1.15rem;
+}
+
+.pillars--evp > .pillar--evp {
+  background: var(--brand-navy);
+  border: 1px solid rgba(19, 32, 46, 0.9);
+  border-left: 4px solid var(--brand-green);
+  color: #fff;
+  min-height: 100%;
+}
+
+.pillars--evp > .pillar--evp h4 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.pillars--evp > .pillar--evp p {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.evp-card__icon {
+  width: 1.55rem;
+  height: 1.55rem;
+  margin: 0 0 0.65rem;
+  color: var(--brand-green);
+}
+
+.evp-card__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight {
+  background: var(--brand-green);
+  border-color: var(--brand-green);
+  border-left-color: var(--brand-navy);
+  box-shadow: 0 10px 24px rgba(97, 215, 121, 0.35);
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight h4 {
+  color: var(--brand-navy);
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight p {
+  color: rgba(19, 32, 46, 0.88);
+}
+
+.pillars--evp.pillars--spotlight-green > .pillar--evp.is-spotlight .evp-card__icon {
+  color: var(--brand-navy);
+}
+
+@media print {
+  .pillars--evp > .pillar--evp {
+    background: rgba(239, 242, 246, 0.5);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--brand-green);
+    color: inherit;
+  }
+
+  .pillars--evp > .pillar--evp h4,
+  .pillars--evp > .pillar--evp p {
+    color: inherit;
+  }
 }

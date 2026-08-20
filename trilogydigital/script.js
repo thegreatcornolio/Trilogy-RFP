@@ -266,4 +266,51 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  // AI Sales Enablement — cycle blue highlight across qualification pillars while in view
+  const spotlightBlocks = document.querySelectorAll('[data-animate="pillar-spotlight"]');
+  const reduceSpotlightMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const setSpotlightIndex = (root, index) => {
+    const cards = root.querySelectorAll(":scope > .pillar");
+    cards.forEach((card, i) => {
+      card.classList.toggle("is-spotlight", i === index);
+    });
+    root.dataset.spotlightIndex = String(index);
+  };
+
+  const startSpotlight = (root) => {
+    if (root._spotlightTimer || reduceSpotlightMotion) return;
+    const cards = root.querySelectorAll(":scope > .pillar");
+    if (!cards.length) return;
+    let index = Number(root.dataset.spotlightIndex || 0);
+    setSpotlightIndex(root, index);
+    root._spotlightTimer = window.setInterval(() => {
+      index = (index + 1) % cards.length;
+      setSpotlightIndex(root, index);
+    }, 1800);
+  };
+
+  const stopSpotlight = (root) => {
+    if (!root._spotlightTimer) return;
+    window.clearInterval(root._spotlightTimer);
+    root._spotlightTimer = null;
+  };
+
+  if (spotlightBlocks.length) {
+    spotlightBlocks.forEach((block) => setSpotlightIndex(block, 0));
+
+    if (!reduceSpotlightMotion && "IntersectionObserver" in window) {
+      const spotlightIo = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) startSpotlight(entry.target);
+            else stopSpotlight(entry.target);
+          });
+        },
+        { threshold: 0.35 }
+      );
+      spotlightBlocks.forEach((block) => spotlightIo.observe(block));
+    }
+  }
+
 });

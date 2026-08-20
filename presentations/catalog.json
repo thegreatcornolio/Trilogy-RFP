@@ -1,35 +1,50 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T20:50:00.000Z",
+  "updatedAt": "2026-08-20T11:12:00.000Z",
   "items": [
     {
-      "slug": "medscheme-international-proposal",
-      "title": "Global Sales Capability Proposal",
-      "client": "Medscheme International",
-      "sourceType": "pptx",
-      "date": "2026-08-18",
-      "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/",
+      "slug": "lightningfibre/Web",
+      "title": "Pro Forma Proposal",
+      "client": "Lightning Fibre",
+      "sourceType": "scrolling webpage",
+      "date": "2026-08-20",
+      "url": "https://proposal.trilogybpo.com/presentations/lightningfibre/Web/",
       "blend": {
-        "primary": "#44c575",
-        "accent": "#d6e256",
-        "secondary": "#29a559",
-        "navy": "#112430",
-        "sourceBrand": "#e01050"
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#1a3e59"
       }
     },
     {
-      "slug": "medscheme-international-proposal/Web",
-      "title": "Global Sales Capability Proposal (web)",
-      "client": "Medscheme International",
+      "slug": "itstechnology/Web",
+      "title": "Pro Forma Proposal",
+      "client": "ITS Technology",
       "sourceType": "scrolling webpage",
-      "date": "2026-08-19",
-      "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/Web/",
+      "date": "2026-08-20",
+      "url": "https://proposal.trilogybpo.com/presentations/itstechnology/Web/",
       "blend": {
-        "primary": "#44c575",
-        "accent": "#d6e256",
-        "secondary": "#29a559",
-        "navy": "#112430",
-        "sourceBrand": "#e01050"
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#411b89"
+      }
+    },
+    {
+      "slug": "reassured/Web",
+      "title": "Pro Forma Proposal",
+      "client": "Reassured",
+      "sourceType": "scrolling webpage",
+      "date": "2026-08-20",
+      "url": "https://proposal.trilogybpo.com/presentations/reassured/Web/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#a94392"
       }
     }
   ]

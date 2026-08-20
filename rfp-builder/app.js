@@ -165,6 +165,20 @@
         "Typical Automation Levels",
       ],
     },
+    "section-20": {
+      title: "AI Sales Enablement",
+      intro:
+        "We have included AI Sales Enablement — Trilogy’s exclusive South Africa partnership with Visibilitie for AI-avatar acquisition, consented intent leads and real-time CRM delivery via Synapse™.",
+      covers: [
+        "Exclusive South Africa partnership",
+        "Intent-based lead generation",
+        "AI avatar acquisition",
+        "Consented qualification",
+        "Synapse™ CRM connection",
+        "Performance optimisation",
+        "Floor coaching and cold→hot transition",
+      ],
+    },
     "section-10": {
       title: "Management Information Systems (MIS)",
       intro:

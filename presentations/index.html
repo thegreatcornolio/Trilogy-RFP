@@ -8,13 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="_shared/gallery.css">
+  <link rel="stylesheet" href="_shared/gallery.css?v=official-logo-1">
 </head>
 <body>
   <div class="bars" aria-hidden="true"><span></span><span></span><span></span></div>
   <main class="wrap">
     <div class="brand">
-      <img src="_shared/trilogy-logo.svg" alt="Trilogy">
+      <img src="_shared/trilogy.png" alt="Trilogy">
     </div>
     <p class="eyebrow">Presentations</p>
     <h1>Converted decks</h1>
@@ -49,10 +49,10 @@
             .map((hex) => `<i style="background:${hex}" title="${hex}"></i>`)
             .join("");
           const href = item.slug ? (item.slug.replace(/\/?$/, "/") ) : "#";
-          const meta = [item.client, item.sourceType].filter(Boolean).join(" · ");
+          const title = (item.title || "").replace(/\s*\(web\)\s*$/i, "").trim();
           return `<a class="card" href="${href}">
-            <h2>${item.title || item.slug}</h2>
-            <p>${meta || "HTML presentation"}</p>
+            <h2>${item.client || item.slug}</h2>
+            <p>${title || "Pro Forma Proposal"}</p>
             <div class="swatches">${swatches}</div>
           </a>`;
         }).join("");
