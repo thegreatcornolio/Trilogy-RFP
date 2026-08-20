@@ -1456,6 +1456,86 @@ tr:nth-child(even) td {
   background: rgba(239, 242, 246, 0.45);
 }
 
+/* Stack wide cadence tables as labelled cards on small screens. */
+@media (max-width: 860px) {
+  .table-wrap--stack {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .table-wrap--stack table {
+    display: block;
+    width: 100%;
+    border: 0;
+  }
+
+  .table-wrap--stack thead {
+    display: none;
+  }
+
+  .table-wrap--stack tbody {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .table-wrap--stack tr {
+    display: grid;
+    border: 1px solid rgba(19, 32, 46, 0.14);
+    border-radius: 0.65rem;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .table-wrap--stack td {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    align-items: start;
+    gap: 0.55rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.6rem 0.8rem;
+    border: 0;
+    border-top: 1px solid rgba(19, 32, 46, 0.08);
+    background: #fff !important;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .table-wrap--stack td::before {
+    content: attr(data-label);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(19, 32, 46, 0.52);
+    line-height: 1.3;
+    padding-top: 0.12rem;
+  }
+
+  .table-wrap--stack td:nth-child(1)::before { content: "Frequency"; }
+  .table-wrap--stack td:nth-child(2)::before { content: "Phase"; }
+  .table-wrap--stack td:nth-child(3)::before { content: "Meeting type"; }
+  .table-wrap--stack td:nth-child(4)::before { content: "Focus"; }
+
+  .table-wrap--stack td[data-label]::before {
+    content: attr(data-label);
+  }
+
+  .table-wrap--stack td:first-child {
+    grid-template-columns: 1fr;
+    border-top: 0;
+    background: var(--brand-navy) !important;
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .table-wrap--stack td:first-child::before {
+    content: none;
+  }
+}
+
 .columns {
   display: grid;
   gap: 0.75rem;
