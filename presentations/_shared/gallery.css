@@ -60,8 +60,11 @@ body {
 }
 
 .brand img {
-  height: 2rem;
+  height: 2.65rem;
   width: auto;
+  max-width: min(16rem, 72vw);
+  object-fit: contain;
+  object-position: left center;
   display: block;
 }
 
