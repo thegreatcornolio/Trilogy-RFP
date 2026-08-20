@@ -1,41 +1,11 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T07:50:00.000Z",
+  "updatedAt": "2026-08-20T11:12:00.000Z",
   "items": [
     {
-      "slug": "medscheme-international-proposal",
-      "title": "Global Sales Capability Proposal",
-      "client": "Medscheme International",
-      "sourceType": "pptx",
-      "date": "2026-08-18",
-      "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/",
-      "blend": {
-        "primary": "#CAEA70",
-        "accent": "#CAEA70",
-        "secondary": "#132A3D",
-        "navy": "#0C1926",
-        "sourceBrand": "#E8737A"
-      }
-    },
-    {
-      "slug": "medscheme-international-proposal/Web",
-      "title": "Global Sales Capability Proposal (web)",
-      "client": "Medscheme International",
-      "sourceType": "scrolling webpage",
-      "date": "2026-08-19",
-      "url": "https://proposal.trilogybpo.com/presentations/medscheme-international-proposal/Web/",
-      "blend": {
-        "primary": "#CAEA70",
-        "accent": "#CAEA70",
-        "secondary": "#132A3D",
-        "navy": "#0C1926",
-        "sourceBrand": "#E8737A"
-      }
-    },
-    {
       "slug": "lightningfibre/Web",
-      "title": "Pro Forma Proposal (web)",
-      "client": "lightningfibre",
+      "title": "Pro Forma Proposal",
+      "client": "Lightning Fibre",
       "sourceType": "scrolling webpage",
       "date": "2026-08-20",
       "url": "https://proposal.trilogybpo.com/presentations/lightningfibre/Web/",
@@ -49,7 +19,7 @@
     },
     {
       "slug": "itstechnology/Web",
-      "title": "Pro Forma Proposal (web)",
+      "title": "Pro Forma Proposal",
       "client": "ITS Technology",
       "sourceType": "scrolling webpage",
       "date": "2026-08-20",
@@ -64,7 +34,7 @@
     },
     {
       "slug": "reassured/Web",
-      "title": "Pro Forma Proposal (web)",
+      "title": "Pro Forma Proposal",
       "client": "Reassured",
       "sourceType": "scrolling webpage",
       "date": "2026-08-20",
@@ -75,21 +45,6 @@
         "secondary": "#2f9e4a",
         "navy": "#13202e",
         "sourceBrand": "#a94392"
-      }
-    },
-    {
-      "slug": "AiSalesEnablement",
-      "title": "AI Sales Enablement",
-      "client": "Visibilitie partnership",
-      "sourceType": "scrolling webpage",
-      "date": "2026-08-19",
-      "url": "https://proposal.trilogybpo.com/presentations/AiSalesEnablement/",
-      "blend": {
-        "primary": "#61d779",
-        "accent": "#d5ec67",
-        "secondary": "#2f9e4a",
-        "navy": "#13202e",
-        "sourceBrand": "#13202e"
       }
     }
   ]

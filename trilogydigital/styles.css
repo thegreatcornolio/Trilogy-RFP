@@ -197,6 +197,14 @@ a {
   }
 }
 
+/* Desktop only — 860px is a document column. Phones are already narrower,
+   so this cannot change the mobile layout. */
+@media (min-width: 900px) {
+  .main {
+    max-width: min(72.5rem, calc(100vw - 4rem));
+  }
+}
+
 .proposal-shell {
   overflow: hidden;
   border-radius: 0.75rem;
