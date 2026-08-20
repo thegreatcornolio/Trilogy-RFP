@@ -505,15 +505,17 @@ code {
 
 .cover-preview__entity {
   font-family: var(--display);
-  font-size: 1.35rem;
+  font-size: clamp(1.55rem, 3.5vw, 2rem);
   font-weight: 700;
+  line-height: 1.15;
 }
 
 .cover-preview__line {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-size: clamp(0.78rem, 1.5vw, 0.92rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.58);
 }
 
 .cover-preview__trilogy {

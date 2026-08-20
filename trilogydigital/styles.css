@@ -287,17 +287,18 @@ a {
 
 .cover__brand-name {
   font-family: var(--font-heading);
-  font-size: 1.875rem;
+  font-size: clamp(2.35rem, 5.2vw, 3.35rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.12;
 }
 
 .cover__brand-line {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: clamp(0.92rem, 1.7vw, 1.12rem);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .cover__logo {
