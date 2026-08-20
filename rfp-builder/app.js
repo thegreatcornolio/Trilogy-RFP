@@ -97,6 +97,7 @@
       covers: [
         "Leadership model",
         "Our People & Workforce",
+        "Soul Impact Offering",
         "Culture and CRAFT",
       ],
     },
