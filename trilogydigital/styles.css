@@ -5345,7 +5345,7 @@ tr:nth-child(even) td {
   --pc-green: var(--brand-green);
   --pc-lime: var(--brand-lime);
   position: relative;
-  min-height: 22rem;
+  min-height: 28rem;
   padding: 1rem;
   background:
     radial-gradient(circle at 12% 20%, rgba(97, 215, 121, 0.18), transparent 42%),
@@ -5356,9 +5356,9 @@ tr:nth-child(even) td {
 
 .people-collage__hero {
   position: absolute;
-  left: 4%;
-  top: 12%;
-  width: min(46%, 20rem);
+  left: 3%;
+  top: 8%;
+  width: min(38%, 18rem);
   aspect-ratio: 4 / 3;
   border-radius: 1.1rem;
   overflow: hidden;
@@ -5387,20 +5387,57 @@ tr:nth-child(even) td {
 }
 
 .people-collage__tile--wide {
-  right: 3%;
-  bottom: 10%;
-  width: min(34%, 15rem);
+  right: 2%;
+  bottom: 8%;
+  width: min(30%, 14rem);
   aspect-ratio: 16 / 10;
   transform: rotate(4deg);
 }
 
-.people-collage__tile--wellbeing {
-  left: 34%;
-  bottom: 8%;
-  width: min(22%, 9.5rem);
-  aspect-ratio: 1;
+.people-collage__tile--floor {
+  left: 28%;
+  bottom: 6%;
+  width: min(20%, 9rem);
+  aspect-ratio: 4 / 3;
   border-radius: 1rem;
-  transform: rotate(-6deg);
+  transform: rotate(-5deg);
+}
+
+.people-collage__tile--day {
+  right: 18%;
+  top: 6%;
+  width: min(22%, 10rem);
+  aspect-ratio: 16 / 9;
+  transform: rotate(3deg);
+  z-index: 2;
+}
+
+.people-collage__tile--nad {
+  left: 42%;
+  bottom: 30%;
+  width: min(14%, 6.5rem);
+  aspect-ratio: 3 / 4;
+  border-radius: 1rem;
+  transform: rotate(-7deg);
+  z-index: 2;
+}
+
+.people-collage__tile--recruit {
+  right: 34%;
+  bottom: 10%;
+  width: min(18%, 8rem);
+  aspect-ratio: 4 / 3;
+  transform: rotate(6deg);
+}
+
+.people-collage__tile--viview {
+  left: 2%;
+  bottom: 28%;
+  width: min(16%, 7rem);
+  aspect-ratio: 3 / 4;
+  border-radius: 1rem;
+  transform: rotate(5deg);
+  z-index: 2;
 }
 
 .people-collage__circle {
@@ -5413,30 +5450,31 @@ tr:nth-child(even) td {
   z-index: 3;
 }
 
-.people-collage__circle--a { width: 5.6rem; height: 5.6rem; right: 18%; top: 6%; border-color: var(--pc-green); }
-.people-collage__circle--b { width: 4.8rem; height: 4.8rem; right: 6%; top: 18%; border-color: var(--pc-lime); }
-.people-collage__circle--c { width: 5.2rem; height: 5.2rem; right: 28%; top: 22%; border-color: var(--pc-navy); }
-.people-collage__circle--d { width: 4.2rem; height: 4.2rem; right: 12%; top: 40%; border-color: var(--pc-green); }
-.people-collage__circle--e { width: 4.6rem; height: 4.6rem; left: 48%; top: 8%; border-color: var(--pc-lime); }
-.people-collage__circle--f { width: 3.8rem; height: 3.8rem; left: 58%; top: 28%; border-color: var(--pc-green); }
-.people-collage__circle--g { width: 4.4rem; height: 4.4rem; left: 2%; bottom: 18%; border-color: var(--pc-navy); }
-.people-collage__circle--h { width: 3.6rem; height: 3.6rem; left: 16%; bottom: 6%; border-color: var(--pc-lime); }
-.people-collage__circle--i { width: 4rem; height: 4rem; left: 52%; bottom: 28%; border-color: var(--pc-green); }
-.people-collage__circle--j { width: 3.4rem; height: 3.4rem; right: 36%; bottom: 18%; border-color: var(--pc-lime); }
-.people-collage__circle--k { width: 3.8rem; height: 3.8rem; right: 2%; bottom: 36%; border-color: var(--pc-navy); }
-.people-collage__circle--l { width: 3.5rem; height: 3.5rem; left: 42%; top: 36%; border-color: var(--pc-green); }
-.people-collage__circle--m { width: 3.2rem; height: 3.2rem; right: 44%; top: 4%; border-color: var(--pc-lime); }
-.people-collage__circle--n { width: 3.3rem; height: 3.3rem; left: 28%; top: 4%; border-color: var(--pc-navy); }
-.people-collage__circle--o { width: 3.1rem; height: 3.1rem; right: 22%; bottom: 4%; border-color: var(--pc-green); }
-.people-collage__circle--p { width: 5.4rem; height: 5.4rem; left: 6%; top: 42%; border-color: var(--pc-lime); z-index: 3; }
-.people-collage__circle--q { width: 4.5rem; height: 4.5rem; right: 40%; bottom: 36%; border-color: var(--pc-green); z-index: 3; }
+.people-collage__circle--a { width: 5.2rem; height: 5.2rem; right: 8%; top: 28%; border-color: var(--pc-green); }
+.people-collage__circle--b { width: 4.4rem; height: 4.4rem; right: 4%; top: 48%; border-color: var(--pc-lime); }
+.people-collage__circle--c { width: 4.8rem; height: 4.8rem; right: 22%; top: 34%; border-color: var(--pc-navy); }
+.people-collage__circle--d { width: 3.8rem; height: 3.8rem; right: 12%; top: 62%; border-color: var(--pc-green); }
+.people-collage__circle--e { width: 4.2rem; height: 4.2rem; left: 44%; top: 4%; border-color: var(--pc-lime); }
+.people-collage__circle--f { width: 3.5rem; height: 3.5rem; left: 56%; top: 22%; border-color: var(--pc-green); }
+.people-collage__circle--g { width: 4rem; height: 4rem; left: 18%; bottom: 4%; border-color: var(--pc-navy); }
+.people-collage__circle--h { width: 3.4rem; height: 3.4rem; left: 34%; bottom: 2%; border-color: var(--pc-lime); }
+.people-collage__circle--i { width: 3.6rem; height: 3.6rem; left: 58%; bottom: 34%; border-color: var(--pc-green); }
+.people-collage__circle--j { width: 3.2rem; height: 3.2rem; right: 40%; bottom: 28%; border-color: var(--pc-lime); }
+.people-collage__circle--k { width: 3.5rem; height: 3.5rem; right: 2%; bottom: 22%; border-color: var(--pc-navy); }
+.people-collage__circle--l { width: 3.3rem; height: 3.3rem; left: 40%; top: 28%; border-color: var(--pc-green); }
+.people-collage__circle--m { width: 3rem; height: 3rem; right: 48%; top: 2%; border-color: var(--pc-lime); }
+.people-collage__circle--n { width: 3.1rem; height: 3.1rem; left: 26%; top: 2%; border-color: var(--pc-navy); }
+.people-collage__circle--o { width: 3rem; height: 3rem; right: 28%; bottom: 2%; border-color: var(--pc-green); }
+.people-collage__circle--p { width: 5.6rem; height: 5.6rem; left: 8%; top: 44%; border-color: var(--pc-lime); z-index: 4; }
+.people-collage__circle--q { width: 4.6rem; height: 4.6rem; right: 42%; top: 38%; border-color: var(--pc-green); z-index: 4; }
+.people-collage__circle--r { width: 3.8rem; height: 3.8rem; left: 52%; top: 48%; border-color: var(--pc-navy); z-index: 4; }
 
 .people-collage__badge {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 52%;
   transform: translate(-50%, -50%) rotate(-2deg);
-  z-index: 4;
+  z-index: 5;
   background: var(--pc-navy);
   color: #fff;
   font-size: 0.72rem;
@@ -5452,42 +5490,51 @@ tr:nth-child(even) td {
 
 @media (max-width: 720px) {
   .people-collage {
-    min-height: 26rem;
+    min-height: 30rem;
   }
   .people-collage__hero {
-    width: 62%;
-    left: 4%;
-    top: 8%;
+    width: 58%;
+    left: 3%;
+    top: 6%;
   }
   .people-collage__tile--wide {
-    width: 48%;
-    right: 4%;
-    bottom: 8%;
+    width: 46%;
+    right: 3%;
+    bottom: 6%;
   }
-  .people-collage__tile--wellbeing {
+  .people-collage__tile--floor,
+  .people-collage__tile--nad,
+  .people-collage__tile--recruit,
+  .people-collage__tile--viview {
     display: none;
+  }
+  .people-collage__tile--day {
+    width: 42%;
+    right: 3%;
+    top: 8%;
   }
   .people-collage__circle--i,
   .people-collage__circle--j,
   .people-collage__circle--l,
   .people-collage__circle--m,
   .people-collage__circle--n,
-  .people-collage__circle--o {
+  .people-collage__circle--o,
+  .people-collage__circle--r {
     display: none;
   }
 
   .people-collage__circle--p {
-    width: 4.6rem;
-    height: 4.6rem;
+    width: 4.8rem;
+    height: 4.8rem;
     left: 4%;
-    top: 46%;
+    top: 48%;
   }
 
   .people-collage__circle--q {
-    width: 3.8rem;
-    height: 3.8rem;
-    right: 34%;
-    bottom: 42%;
+    width: 4rem;
+    height: 4rem;
+    right: 36%;
+    top: 42%;
   }
 }
 
