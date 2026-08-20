@@ -491,7 +491,7 @@ code {
   text-align: center;
   gap: 0.4rem;
   margin-bottom: 1.5rem;
-  padding-top: 2.4rem;
+  padding-top: 3.4rem;
 }
 
 .cover-preview__client {
@@ -518,10 +518,10 @@ code {
 
 .cover-preview__trilogy {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.85rem;
+  left: 0.85rem;
   z-index: 3;
-  width: min(7.5rem, 42%);
+  width: min(10.5rem, 52%);
   border-radius: 0.3rem;
   margin: 0;
 }
