@@ -35,6 +35,13 @@
       "summary": "Tagline, differentiators, achievements and competitive edge."
     },
     {
+      "id": "section-09",
+      "num": "09",
+      "title": "Why Cape Town / Why South Africa",
+      "editable": false,
+      "summary": "Location advantages for SA and Cape Town, plus sights collage."
+    },
+    {
       "id": "section-05",
       "num": "05",
       "title": "Service Offering",
