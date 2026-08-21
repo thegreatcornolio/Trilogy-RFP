@@ -90,6 +90,15 @@
         "Brands Our Leadership Has Delivered For",
       ],
     },
+    "section-21": {
+      title: "Why we want to work with you",
+      intro:
+        "We have included Why we want to work with you — our researched reasons for partnering, and the pain points we believe matter most for your operation.",
+      covers: [
+        "Why we want to work with you",
+        "Your potential pain points",
+      ],
+    },
     "section-03": {
       title: "Operational Leadership & Delivery",
       intro:
@@ -333,6 +342,15 @@
         "Brands Our Leadership Has Delivered For",
       ],
     },
+    "section-21": {
+      title: "Why we want to work with you",
+      intro:
+        "Our researched fit for your business — why we want to partner, and the pain points we are set up to solve.",
+      covers: [
+        "Why we want to work with you",
+        "Your potential pain points",
+      ],
+    },
     "section-03": {
       title: "Our People & Workforce",
       intro:
@@ -488,6 +506,10 @@
     palette: ["#61d779", "#d5ec67", "#2f9e4a", "#13202e", "#ffffff"],
     selectedPaletteIndex: 0,
     logoDataUrl: "",
+    insightsDoc: {
+      fileName: "",
+      extractedAt: "",
+    },
     status: "draft",
     currentSlug: null,
     acceptance: {
@@ -1363,7 +1385,341 @@
     return true;
   }
 
+  const INSIGHTS_CDN = {
+    pdfJs: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",
+    pdfWorker: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js",
+    mammoth: "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js",
+  };
+
+  function loadExternalScript(src) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[data-insights-src="${src}"]`);
+      if (existing) {
+        if (existing.dataset.loaded === "1") return resolve();
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), {
+          once: true,
+        });
+        return;
+      }
+      const s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      s.dataset.insightsSrc = src;
+      s.onload = () => {
+        s.dataset.loaded = "1";
+        resolve();
+      };
+      s.onerror = () => reject(new Error(`Failed to load ${src}`));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function extractTextFromInsightsFile(file) {
+    const name = String(file?.name || "").toLowerCase();
+    const type = String(file?.type || "").toLowerCase();
+
+    if (
+      name.endsWith(".txt") ||
+      name.endsWith(".md") ||
+      name.endsWith(".markdown") ||
+      type.startsWith("text/")
+    ) {
+      return await file.text();
+    }
+
+    if (name.endsWith(".docx") || type.includes("wordprocessingml")) {
+      await loadExternalScript(INSIGHTS_CDN.mammoth);
+      if (!window.mammoth?.extractRawText) {
+        throw new Error("DOCX reader failed to load");
+      }
+      const result = await window.mammoth.extractRawText({
+        arrayBuffer: await file.arrayBuffer(),
+      });
+      return String(result?.value || "");
+    }
+
+    if (name.endsWith(".pdf") || type === "application/pdf") {
+      await loadExternalScript(INSIGHTS_CDN.pdfJs);
+      const pdfjsLib = window.pdfjsLib;
+      if (!pdfjsLib?.getDocument) {
+        throw new Error("PDF reader failed to load");
+      }
+      pdfjsLib.GlobalWorkerOptions.workerSrc = INSIGHTS_CDN.pdfWorker;
+      const loadingTask = pdfjsLib.getDocument({ data: await file.arrayBuffer() });
+      const pdf = await loadingTask.promise;
+      const pages = [];
+      for (let i = 1; i <= pdf.numPages; i += 1) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        let pageText = "";
+        let lastY = null;
+        content.items.forEach((item) => {
+          const str = item.str || "";
+          const y = Array.isArray(item.transform) ? item.transform[5] : null;
+          if (lastY != null && y != null && Math.abs(lastY - y) > 6) {
+            pageText += "\n";
+          } else if (pageText && !pageText.endsWith("\n") && !pageText.endsWith(" ")) {
+            pageText += " ";
+          }
+          pageText += str;
+          if (y != null) lastY = y;
+        });
+        pages.push(pageText.trim());
+      }
+      return pages.join("\n\n");
+    }
+
+    // Best-effort for odd office exports
+    if (name.endsWith(".rtf")) {
+      const raw = await file.text();
+      return raw
+        .replace(/\\par[d]?/g, "\n")
+        .replace(/\{\\[^{}]+\}/g, " ")
+        .replace(/\\[a-z]+\d* ?/gi, " ")
+        .replace(/[{}]/g, " ")
+        .replace(/[ \t]+\n/g, "\n")
+        .replace(/\n{3,}/g, "\n\n");
+    }
+
+    throw new Error("Unsupported file type. Use PDF, DOCX, TXT or Markdown.");
+  }
+
+  function classifyInsightsHeading(line) {
+    const t = String(line || "")
+      .replace(/^#{1,6}\s+/, "")
+      .replace(/^\d+[\.\)]\s+/, "")
+      .replace(/^[-*•]\s+/, "")
+      .trim()
+      .toLowerCase();
+    if (!t || t.length > 90) return null;
+    if (
+      /pain\s*points?/.test(t) ||
+      /potential\s+(pain|challenges|issues|problems)/.test(t) ||
+      /^(your\s+)?(key\s+)?(challenges?|issues?|problems?|frictions?)\b/.test(t) ||
+      /what\s+(keeps|is)\s+you\s+up/.test(t)
+    ) {
+      return "pain";
+    }
+    if (
+      /why\s+we\s+want\s+to\s+work/.test(t) ||
+      /why\s+(trilogy|we)\s+(want|chose|care)/.test(t) ||
+      /reasons?\s+(we|to)\s+want/.test(t) ||
+      /why\s+(this\s+)?(partnership|opportunity)/.test(t) ||
+      /our\s+(interest|fit|rationale)/.test(t) ||
+      /^reasons?\b/.test(t)
+    ) {
+      return "reasons";
+    }
+    return null;
+  }
+
+  function isLikelyHeading(line, nextLine) {
+    const t = String(line || "").trim();
+    if (!t || t.length > 90) return false;
+    if (/^#{1,6}\s+\S/.test(t)) return true;
+    if (/^\d+[\.\)]\s+\S/.test(t) && t.length < 70) return true;
+    if (/^[A-Z0-9][A-Z0-9\s &'\/-]{2,70}$/.test(t) && t === t.toUpperCase()) return true;
+    if (classifyInsightsHeading(t) && (!nextLine || !String(nextLine).trim() || String(nextLine).trim().length > 20)) {
+      return true;
+    }
+    // Title Case short lines followed by blank or body text
+    if (/^[A-Z][\w &'\/-]{2,70}$/.test(t) && !/[.!?]$/.test(t) && classifyInsightsHeading(t)) {
+      return true;
+    }
+    return Boolean(classifyInsightsHeading(t));
+  }
+
+  function splitInsightsDocument(rawText) {
+    const text = String(rawText || "")
+      .replace(/\r\n/g, "\n")
+      .replace(/\u00a0/g, " ")
+      .trim();
+    if (!text) {
+      return { reasons: "", painPoints: "", note: "Document was empty." };
+    }
+
+    const lines = text.split("\n");
+    const blocks = [];
+    let current = { kind: "preamble", lines: [] };
+
+    for (let i = 0; i < lines.length; i += 1) {
+      const line = lines[i];
+      const next = lines[i + 1];
+      const kind = isLikelyHeading(line, next) ? classifyInsightsHeading(line) : null;
+      if (kind) {
+        if (current.lines.some((l) => String(l).trim())) blocks.push(current);
+        current = { kind, lines: [] };
+        continue;
+      }
+      current.lines.push(line);
+    }
+    if (current.lines.some((l) => String(l).trim())) blocks.push(current);
+
+    const pick = (kind) =>
+      blocks
+        .filter((b) => b.kind === kind)
+        .map((b) => b.lines.join("\n").trim())
+        .filter(Boolean)
+        .join("\n\n");
+
+    let reasons = pick("reasons");
+    let painPoints = pick("pain");
+    const preamble = pick("preamble");
+
+    if (!reasons && preamble) reasons = preamble;
+    if (!reasons && !painPoints) {
+      // No labelled headings — put whole doc into reasons; leave pain blank with note
+      reasons = text;
+      return {
+        reasons,
+        painPoints: "",
+        note: "No labelled pain-points heading found — pasted full document under reasons. Add a heading like “Your potential pain points” in the doc, or paste pain points manually.",
+      };
+    }
+    if (!painPoints) {
+      return {
+        reasons,
+        painPoints: "",
+        note: "Reasons extracted. No pain-points section detected — add a heading such as “Your potential pain points” or fill that box manually.",
+      };
+    }
+    if (!reasons) {
+      return {
+        reasons: "",
+        painPoints,
+        note: "Pain points extracted. No “Why we want to work with you” heading detected — fill reasons manually or label that section in the document.",
+      };
+    }
+    return { reasons, painPoints, note: "" };
+  }
+
+  function insightsTextToHtml(text) {
+    const raw = String(text || "").trim();
+    if (!raw) return "";
+    if (looksLikeHtml(raw)) return raw;
+
+    const blocks = raw.split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+    const htmlParts = [];
+
+    blocks.forEach((block) => {
+      const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
+      const listish =
+        lines.length >= 2 &&
+        lines.filter((l) => /^([-*•]|–|—|\d+[\.)])\s+/.test(l)).length >=
+          Math.ceil(lines.length * 0.5);
+      if (listish) {
+        const items = lines
+          .map((l) => l.replace(/^([-*•]|–|—|\d+[\.)])\s+/, "").trim())
+          .filter(Boolean)
+          .map((l) => `<li>${escapeHtml(l)}</li>`)
+          .join("");
+        htmlParts.push(`<ul class="list-check">${items}</ul>`);
+      } else {
+        htmlParts.push(`<p>${escapeHtml(block).replace(/\n/g, "<br>")}</p>`);
+      }
+    });
+    return htmlParts.join("\n");
+  }
+
+  async function applyInsightsDocument(file) {
+    const raw = await extractTextFromInsightsFile(file);
+    const split = splitInsightsDocument(raw);
+    state.placeholders["why-work-reasons"] = insightsTextToHtml(split.reasons);
+    state.placeholders["why-work-pain-points"] = insightsTextToHtml(split.painPoints);
+    state.insightsDoc = {
+      fileName: file.name || "insights-document",
+      extractedAt: new Date().toISOString(),
+    };
+    // Keep a marker so the special card is recognised as filled
+    state.placeholders["why-work-with-you"] = [
+      state.placeholders["why-work-reasons"] || "",
+      state.placeholders["why-work-pain-points"] || "",
+    ]
+      .filter(Boolean)
+      .join("\n\n")
+      || "extracted";
+    return split;
+  }
+
+  function renderWhyWorkPlaceholderCard(sec) {
+    const card = document.createElement("div");
+    card.className = "placeholder-card placeholder-card--insights";
+    const reasons = state.placeholders["why-work-reasons"] || "";
+    const pain = state.placeholders["why-work-pain-points"] || "";
+    const fileLabel = state.insightsDoc?.fileName
+      ? `Last file: <strong>${escapeHtml(state.insightsDoc.fileName)}</strong>`
+      : "Accepted: PDF, DOCX, TXT or Markdown.";
+    card.innerHTML = `
+      <div class="placeholder-card__head">
+        <h3>${escapeHtml(sec.placeholderLabel || sec.title)} <span class="pill pill--html">Insights</span></h3>
+      </div>
+      <p class="hint placeholder-card__hint">Upload the client insights piece. We scrape <strong>Why we want to work with you</strong> and <strong>Your potential pain points</strong> from labelled headings each time you upload. You can edit the extracted text afterwards.</p>
+      <div class="insights-upload">
+        <label class="insights-upload__btn btn btn--primary btn--small">
+          Upload insights document
+          <input type="file" accept=".pdf,.docx,.txt,.md,.markdown,.rtf,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,text/markdown" data-insights-file hidden>
+        </label>
+        <span class="insights-upload__meta hint" data-insights-meta>${fileLabel}</span>
+      </div>
+      <p class="hint insights-upload__status" data-insights-status hidden></p>
+      <label class="insights-field-label">Why we want to work with you</label>
+      <textarea data-key="why-work-reasons" class="is-html" rows="10" spellcheck="false" placeholder="Reasons HTML or plain text…">${escapeHtml(reasons)}</textarea>
+      <label class="insights-field-label">Your potential pain points</label>
+      <textarea data-key="why-work-pain-points" class="is-html" rows="8" spellcheck="false" placeholder="Pain points HTML or plain text…">${escapeHtml(pain)}</textarea>
+    `;
+
+    const statusEl = card.querySelector("[data-insights-status]");
+    const metaEl = card.querySelector("[data-insights-meta]");
+    const fileInput = card.querySelector("[data-insights-file]");
+
+    card.querySelectorAll("textarea[data-key]").forEach((ta) => {
+      ta.addEventListener("input", () => {
+        state.placeholders[ta.dataset.key] = ta.value;
+        state.placeholders["why-work-with-you"] = [
+          state.placeholders["why-work-reasons"] || "",
+          state.placeholders["why-work-pain-points"] || "",
+        ]
+          .filter(Boolean)
+          .join("\n\n");
+        state.status = "draft";
+        updatePreview();
+        autosaveLocal();
+      });
+    });
+
+    fileInput.addEventListener("change", async () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      statusEl.hidden = false;
+      statusEl.textContent = `Reading ${file.name}…`;
+      try {
+        const split = await applyInsightsDocument(file);
+        statusEl.textContent = split.note
+          ? `Extracted with note: ${split.note}`
+          : `Extracted reasons and pain points from ${file.name}.`;
+        if (metaEl) {
+          metaEl.innerHTML = `Last file: <strong>${escapeHtml(file.name)}</strong>`;
+        }
+        state.status = "draft";
+        renderPlaceholders();
+        updatePreview();
+        autosaveLocal();
+        toast("Insights document scraped into section");
+      } catch (err) {
+        console.warn(err);
+        statusEl.textContent = err?.message || "Could not read that document.";
+        toast(err?.message || "Insights upload failed");
+      } finally {
+        fileInput.value = "";
+      }
+    });
+
+    return card;
+  }
+
   function renderPlaceholders() {
+
     maybeRefreshExecutiveSummary();
 
     const editable = state.sectionOrder
@@ -1389,6 +1745,10 @@
     els.placeholders.innerHTML = "";
     editable.forEach((sec) => {
       const key = sec.placeholderKey;
+      if (key === "why-work-with-you") {
+        els.placeholders.appendChild(renderWhyWorkPlaceholderCard(sec));
+        return;
+      }
       const card = document.createElement("div");
       card.className = "placeholder-card";
       const value = state.placeholders[key] || "";
@@ -1609,6 +1969,7 @@
       theme: { ...state.theme },
       palette: [...state.palette],
       logoDataUrl: state.logoDataUrl,
+      insightsDoc: { ...(state.insightsDoc || { fileName: "", extractedAt: "" }) },
       sectionOrder: [...state.sectionOrder],
       placeholders: { ...state.placeholders },
       execSummaryAutoText: state.execSummaryAutoText || "",
@@ -1876,6 +2237,11 @@
         : [state.theme.primary, state.theme.accent, state.theme.secondary]
     );
     state.logoDataUrl = d.logoDataUrl || "";
+    state.insightsDoc = {
+      fileName: "",
+      extractedAt: "",
+      ...(d.insightsDoc || {}),
+    };
     state.status = d.status || "draft";
     state.currentSlug = slug;
     state.acceptance = d.acceptance || state.acceptance;
@@ -1911,6 +2277,7 @@
     state.status = "draft";
     state.placeholders = {};
     state.execSummaryAutoText = "";
+    state.insightsDoc = { fileName: "", extractedAt: "" };
     state.commercialSchedule = emptyCommercialSchedule();
     state.sectionOrder = [
       "section-01",
@@ -2473,6 +2840,22 @@ if (ph["case-studies"] !== undefined) {
       html = html.replace(
         /(<section class="proposal-page" id="section-19">[\s\S]*?<div class="section-body">)/,
         `$1\n          ${placeholderHtml(ph["next-steps"])}\n`
+      );
+    }
+
+    // Why we want to work with you — reasons + pain points from insights doc
+    const whyReasonsHtml = placeholderHtml(ph["why-work-reasons"] || "");
+    const whyPainHtml = placeholderHtml(ph["why-work-pain-points"] || "");
+    if (html.includes("<!--__WHY_WORK_REASONS__-->")) {
+      html = html.replace(
+        /<!--__WHY_WORK_REASONS__-->\s*<div class="placeholder-block"[\s\S]*?<\/div>/,
+        whyReasonsHtml
+      );
+    }
+    if (html.includes("<!--__WHY_WORK_PAIN__-->")) {
+      html = html.replace(
+        /<!--__WHY_WORK_PAIN__-->\s*<div class="placeholder-block"[\s\S]*?<\/div>/,
+        whyPainHtml
       );
     }
 

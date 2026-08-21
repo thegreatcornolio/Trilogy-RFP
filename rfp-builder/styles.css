@@ -1166,3 +1166,46 @@ code {
 }
 
 .btn-row-remove:hover { color: #b91c1c; }
+
+/* ===== Client insights upload (Why we want to work with you) ===== */
+.placeholder-card--insights {
+  border-style: solid;
+  border-color: #c6e6d0;
+  background: linear-gradient(180deg, #f7fbf8 0%, #f7f9fb 40%);
+}
+
+.insights-upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 0.85rem;
+  margin: 0 0 0.75rem;
+}
+
+.insights-upload__btn {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+  margin: 0;
+}
+
+.insights-upload__meta {
+  margin: 0;
+}
+
+.insights-upload__status {
+  margin: 0 0 0.75rem;
+  color: #1f5b32;
+}
+
+.insights-field-label {
+  display: block;
+  margin: 0.65rem 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.placeholder-card--insights textarea.is-html {
+  min-height: 10rem;
+}
