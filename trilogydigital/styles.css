@@ -6481,9 +6481,9 @@ tr:nth-child(even) td {
 .cape-sights-collage {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 7.5rem;
-  gap: 0.45rem;
-  padding: 0.55rem;
+  grid-auto-rows: 6.75rem;
+  gap: 0.4rem;
+  padding: 0.5rem;
   background:
     radial-gradient(circle at 12% 80%, rgba(97, 215, 121, 0.1), transparent 40%),
     linear-gradient(160deg, #13202e 0%, #0f1720 55%, #101820 100%);
