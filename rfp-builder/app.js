@@ -1485,56 +1485,299 @@
     throw new Error("Unsupported file type. Use PDF, DOCX, TXT or Markdown.");
   }
 
+  function collapseSpacedCaps(s) {
+    // "K E Y  T A K E A W A Y S" → "KEYTAKEAWAYS" then expanded back to words below
+    return String(s || "").replace(/\b(?:[A-Z]\s+){2,}[A-Z]\b/g, (m) =>
+      m.replace(/\s+/g, "")
+    );
+  }
+
+  function expandCompactBriefHeadings(s) {
+    return String(s || "")
+      .replace(/KEYTAKEAWAYS(?:FORTHEPITCH)?/gi, "KEY TAKEAWAYS FOR THE PITCH")
+      .replace(/PROSPECTINTELLIGENCEBRIEF/gi, "PROSPECT INTELLIGENCE BRIEF")
+      .replace(/EXECUTIVESUMMARY/gi, "EXECUTIVE SUMMARY")
+      .replace(/COMPANYOVERVIEW/gi, "COMPANY OVERVIEW")
+      .replace(/CURRENTOPERATINGSETUP/gi, "CURRENT OPERATING SETUP")
+      .replace(/COMPETITIVECONTEXT/gi, "COMPETITIVE CONTEXT")
+      .replace(/STRATEGICFIT/gi, "STRATEGIC FIT")
+      .replace(/DECISION[\s-]?MAKERMAP/gi, "DECISION-MAKER MAP")
+      .replace(/GROWTH(?:AND)?MOMENTUM/gi, "GROWTH & MOMENTUM")
+      .replace(/NEXTSTEPS/gi, "NEXT STEPS");
+  }
+
+  function normalizeInsightsText(rawText) {
+    let text = String(rawText || "")
+      .replace(/\r\n/g, "\n")
+      .replace(/\u00a0/g, " ")
+      .replace(/[ \t]+\n/g, "\n");
+
+    // Drop deck footers / page chrome from Prospect Intelligence Briefs
+    text = text
+      .replace(/TRILOGY BPO\s*\|\s*PROSPECT INTELLIGENCE BRIEF[^\n]*/gi, "\n")
+      .replace(/TRILOGY BPO\s*\|\s*CAPE TOWN[^\n]*/gi, "\n")
+      .replace(/\bREASSURED LTD\s*[·•.\-]\s*\d+\b/gi, "\n")
+      .replace(/\b[A-Z][A-Z0-9 &/.'-]{2,40}\s*[·•]\s*\d{1,2}\b/g, "\n");
+
+    // Fix spaced-out PDF headings: "K E Y T A K E A W A Y S" → "KEY TAKEAWAYS"
+    text = text
+      .split("\n")
+      .map((line) => expandCompactBriefHeadings(collapseSpacedCaps(line)))
+      .join("\n");
+
+    // Soft hyphen / broken word cleanup common in PDF copy
+    // Important: never collapse newlines — heading detection depends on them.
+    text = text
+      .replace(/(\w)\s*-\s*\n\s*(\w)/g, "$1$2")
+      .replace(/[^\S\n]{2,}/g, " ")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+    return text;
+  }
+
   function classifyInsightsHeading(line) {
-    const t = String(line || "")
+    const t = collapseSpacedCaps(String(line || ""))
       .replace(/^#{1,6}\s+/, "")
       .replace(/^\d+[\.\)]\s+/, "")
       .replace(/^[-*•]\s+/, "")
       .trim()
-      .toLowerCase();
-    if (!t || t.length > 90) return null;
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+    if (!t || t.length > 100) return null;
+
+    // Explicit pain / challenge labels
     if (
       /pain\s*points?/.test(t) ||
       /potential\s+(pain|challenges|issues|problems)/.test(t) ||
-      /^(your\s+)?(key\s+)?(challenges?|issues?|problems?|frictions?)\b/.test(t) ||
-      /what\s+(keeps|is)\s+you\s+up/.test(t)
+      /^(your\s+)?(key\s+)?(challenges?|issues?|problems?|frictions?|objections?)\b/.test(t) ||
+      /what\s+(keeps|is)\s+you\s+up/.test(t) ||
+      /competitive\s+context/.test(t) ||
+      /incumbent\s+(left\s+a\s+)?gap/.test(t) ||
+      /current\s+operating\s+setup/.test(t) ||
+      /operating\s+(setup|model|challenges?)/.test(t) ||
+      /cost\s+base/.test(t) && /uk|onshore|100%/.test(t)
     ) {
       return "pain";
     }
+
+    // Explicit why / fit / takeaways → reasons
     if (
       /why\s+we\s+want\s+to\s+work/.test(t) ||
       /why\s+(trilogy|we)\s+(want|chose|care)/.test(t) ||
       /reasons?\s+(we|to)\s+want/.test(t) ||
       /why\s+(this\s+)?(partnership|opportunity)/.test(t) ||
       /our\s+(interest|fit|rationale)/.test(t) ||
-      /^reasons?\b/.test(t)
+      /^reasons?\b/.test(t) ||
+      /strategic\s+fit/.test(t) ||
+      /key\s+takeaways?/.test(t) ||
+      /takeaways?\s+for\s+the\s+pitch/.test(t) ||
+      /why\s+.+\s*,?\s*why\s+now/.test(t) ||
+      /^executive\s+summary$/.test(t) ||
+      /^why\s+[a-z0-9]/.test(t)
     ) {
       return "reasons";
     }
+
+    // Neutral brief sections we intentionally skip as headings of other kinds
+    if (
+      /company\s+overview/.test(t) ||
+      /decision[-\s]?maker/.test(t) ||
+      /growth\s*(&|and)?\s*momentum?/.test(t) ||
+      /^next\s+steps$/.test(t) ||
+      /product\s+range/.test(t) ||
+      /insurer\s+panel/.test(t) ||
+      /business\s+model/.test(t)
+    ) {
+      return "skip";
+    }
+
     return null;
   }
 
   function isLikelyHeading(line, nextLine) {
-    const t = String(line || "").trim();
-    if (!t || t.length > 90) return false;
+    const raw = String(line || "").trim();
+    if (!raw || raw.length > 110) return false;
+    const t = collapseSpacedCaps(raw);
     if (/^#{1,6}\s+\S/.test(t)) return true;
     if (/^\d+[\.\)]\s+\S/.test(t) && t.length < 70) return true;
-    if (/^[A-Z0-9][A-Z0-9\s &'\/-]{2,70}$/.test(t) && t === t.toUpperCase()) return true;
-    if (classifyInsightsHeading(t) && (!nextLine || !String(nextLine).trim() || String(nextLine).trim().length > 20)) {
+    // ALL CAPS short titles (common in PDF briefs)
+    if (/^[A-Z0-9][A-Z0-9\s &'\/-]{2,80}$/.test(t) && t === t.toUpperCase() && t.length <= 80) {
       return true;
     }
-    // Title Case short lines followed by blank or body text
+    if (classifyInsightsHeading(t)) return true;
     if (/^[A-Z][\w &'\/-]{2,70}$/.test(t) && !/[.!?]$/.test(t) && classifyInsightsHeading(t)) {
       return true;
     }
-    return Boolean(classifyInsightsHeading(t));
+    return false;
+  }
+
+  function cleanInsightsChunk(chunk) {
+    return String(chunk || "")
+      .replace(/TRILOGY BPO[^\n]*/gi, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  /** Prospect Intelligence Brief fallback when labelled headings are missing */
+  function extractFromProspectBrief(text) {
+    const src = String(text || "");
+    const isBrief =
+      /prospect\s+intelligence\s+brief/i.test(src) ||
+      /key\s+takeaways?\s+for\s+the\s+pitch/i.test(src) ||
+      /strategic\s+fit/i.test(src) ||
+      /competitive\s+context/i.test(src);
+
+    if (!isBrief) return null;
+
+    const sectionAfter = (startRe, endRes) => {
+      const m = startRe.exec(src);
+      if (!m) return "";
+      const from = m.index + m[0].length;
+      let to = src.length;
+      endRes.forEach((re) => {
+        re.lastIndex = 0;
+        const copy = new RegExp(re.source, re.flags.includes("g") ? re.flags : re.flags + "g");
+        copy.lastIndex = from;
+        const hit = copy.exec(src);
+        if (hit && hit.index < to) to = hit.index;
+      });
+      return cleanInsightsChunk(src.slice(from, to));
+    };
+
+    const endCommon = [
+      /(?:^|\n)\s*(?:COMPANY OVERVIEW|GROWTH\s*&?\s*MOMENTUM|CURRENT OPERATING SETUP|DECISION[-\s]?MAKER|COMPETITIVE CONTEXT|STRATEGIC FIT|NEXT STEPS)\b/gim,
+    ];
+
+    // Start takeaways at the takeaways heading only (not "Why X, why now" metrics)
+    const takeaways = sectionAfter(
+      /(?:KEY\s+TAKEAWAYS?(?:\s+FOR\s+THE\s+PITCH)?|KEYTAKEAWAYS(?:FORTHEPITCH)?)/i,
+      endCommon
+    );
+    const strategicFit = sectionAfter(/STRATEGIC\s+FIT/i, [
+      /(?:^|\n)\s*(?:NEXT STEPS|COMPETITIVE CONTEXT|DECISION[-\s]?MAKER|COMPANY OVERVIEW)\b/gim,
+    ]);
+
+    const operating = sectionAfter(/CURRENT\s+OPERATING\s+SETUP/i, [
+      /(?:^|\n)\s*(?:DECISION[-\s]?MAKER|COMPETITIVE CONTEXT|STRATEGIC FIT|GROWTH|NEXT STEPS|COMPANY OVERVIEW)\b/gim,
+    ]);
+    const competitive = sectionAfter(/COMPETITIVE\s+CONTEXT/i, [
+      /(?:^|\n)\s*(?:STRATEGIC FIT|NEXT STEPS|DECISION[-\s]?MAKER|CURRENT OPERATING|GROWTH)\b/gim,
+    ]);
+
+    // Pain points: cost-base / incumbent gap / Townsend objections / competitive weaknesses
+    const painBits = [];
+    const pushPain = (p) => {
+      const cleaned = String(p || "").replace(/\s+/g, " ").trim();
+      if (!cleaned || cleaned.length < 12) return;
+      if (/decision[\s-]?maker|who to engage|mark townsend$/i.test(cleaned)) return;
+      painBits.push(cleaned);
+    };
+
+    const costBase = src.match(/100%\s*UK[-\s]?based[^.•\n]{0,180}/i);
+    if (costBase) pushPain(costBase[0]);
+
+    const zeroOffshore = src.match(/zero offshore presence[^\n.]{0,80}/i);
+    if (zeroOffshore) pushPain("Five UK office locations — zero offshore presence");
+
+    const under = src.match(
+      /(?:incumbent|outworx)[^.•\n]{0,50}under[-\s]?delivered[^.•\n]{0,100}/i
+    );
+    if (under) pushPain(under[0]);
+
+    const objectionRe = /"([^"]{6,120})"/g;
+    let om;
+    while ((om = objectionRe.exec(competitive || src))) {
+      pushPain(`Prior SA outsourcing objection: ${om[1].trim()}`);
+    }
+
+    String(competitive || "")
+      .split(/\n|•/)
+      .map((l) => l.trim())
+      .filter((l) => l.length > 28 && l.length < 220)
+      .filter((l) =>
+        /generalist|under[-\s]?deliver|not purpose|limited evidence|entry[-\s]?level|high[-\s]?churn|rigid shift|metrics[\s-]?first/i.test(
+          l
+        )
+      )
+      .slice(0, 6)
+      .forEach((l) => pushPain(l.replace(/^[-*•]\s*/, "")));
+
+    // Build reasons from takeaway bullets + strategic-fit prose only
+    const takeawayBullets = String(takeaways || "")
+      .split(/\n/)
+      .map((l) => l.trim())
+      .filter((l) => /^([-*•]|\d+[\.\)])\s+/.test(l))
+      .map((l) => l.replace(/^([-*•]|\d+[\.\)])\s+/, "- "));
+
+    let fitProse = cleanInsightsChunk(strategicFit)
+      .replace(/(?:^|\n)\s*Next Steps[\s\S]*$/i, "")
+      .trim();
+    // Drop fit section title-only leftovers
+    fitProse = fitProse
+      .replace(/^Trilogy maps directly onto[^\n]*\n?/i, "")
+      .trim();
+
+    const fitBlocks = [];
+    // Keep thematic paragraphs from strategic fit (title + body pairs flattened to bullets where useful)
+    const fitLines = fitProse.split(/\n/).map((l) => l.trim()).filter(Boolean);
+    let i = 0;
+    while (i < fitLines.length) {
+      const line = fitLines[i];
+      const next = fitLines[i + 1] || "";
+      if (
+        line.length < 60 &&
+        !/[.!?]$/.test(line) &&
+        next &&
+        next.length > 40
+      ) {
+        fitBlocks.push(`- ${line}: ${next}`);
+        i += 2;
+        continue;
+      }
+      if (line.length > 40) fitBlocks.push(`- ${line}`);
+      i += 1;
+    }
+
+    let reasons = [...takeawayBullets, ...fitBlocks].join("\n");
+    // Deduplicate near-identical lines
+    const seenR = new Set();
+    reasons = reasons
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean)
+      .filter((l) => {
+        const k = l.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 80);
+        if (seenR.has(k)) return false;
+        seenR.add(k);
+        return true;
+      })
+      .join("\n");
+
+    // Deduplicate pain
+    const seen = new Set();
+    const painPoints = painBits
+      .map((p) => p.replace(/\s+/g, " ").trim())
+      .filter((p) => {
+        const k = p.toLowerCase();
+        if (seen.has(k) || p.length < 12) return false;
+        seen.add(k);
+        return true;
+      })
+      .map((p) => `- ${p.replace(/^[-*•]\s*/, "")}`)
+      .join("\n");
+
+    if (!reasons && !painPoints) return null;
+
+    return {
+      reasons,
+      painPoints,
+      note: "Mapped from Prospect Intelligence Brief sections (takeaways / strategic fit → reasons; operating & competitive context → pain points).",
+    };
   }
 
   function splitInsightsDocument(rawText) {
-    const text = String(rawText || "")
-      .replace(/\r\n/g, "\n")
-      .replace(/\u00a0/g, " ")
-      .trim();
+    const text = normalizeInsightsText(rawText);
     if (!text) {
       return { reasons: "", painPoints: "", note: "Document was empty." };
     }
@@ -1546,35 +1789,45 @@
     for (let i = 0; i < lines.length; i += 1) {
       const line = lines[i];
       const next = lines[i + 1];
-      const kind = isLikelyHeading(line, next) ? classifyInsightsHeading(line) : null;
-      if (kind) {
-        if (current.lines.some((l) => String(l).trim())) blocks.push(current);
-        current = { kind, lines: [] };
+      if (!isLikelyHeading(line, next)) {
+        current.lines.push(line);
         continue;
       }
-      current.lines.push(line);
+      const kind = classifyInsightsHeading(line) || "skip";
+      if (current.lines.some((l) => String(l).trim())) blocks.push(current);
+      current = { kind, lines: [] };
     }
     if (current.lines.some((l) => String(l).trim())) blocks.push(current);
 
     const pick = (kind) =>
       blocks
         .filter((b) => b.kind === kind)
-        .map((b) => b.lines.join("\n").trim())
+        .map((b) => cleanInsightsChunk(b.lines.join("\n")))
         .filter(Boolean)
         .join("\n\n");
 
     let reasons = pick("reasons");
     let painPoints = pick("pain");
-    const preamble = pick("preamble");
 
-    if (!reasons && preamble) reasons = preamble;
-    if (!reasons && !painPoints) {
-      // No labelled headings — put whole doc into reasons; leave pain blank with note
-      reasons = text;
+    // Prospect Intelligence Briefs: always prefer the dedicated section mapper
+    const brief = extractFromProspectBrief(text);
+    if (brief && brief.reasons && brief.painPoints) {
       return {
-        reasons,
+        reasons: brief.reasons,
+        painPoints: brief.painPoints,
+        note: brief.note || "",
+      };
+    }
+    if (brief) {
+      if (!reasons && brief.reasons) reasons = brief.reasons;
+      if (!painPoints && brief.painPoints) painPoints = brief.painPoints;
+    }
+
+    if (!reasons && !painPoints) {
+      return {
+        reasons: text,
         painPoints: "",
-        note: "No labelled pain-points heading found — pasted full document under reasons. Add a heading like “Your potential pain points” in the doc, or paste pain points manually.",
+        note: "No labelled sections found — pasted full document under reasons. Use headings like “Why we want to work with you” and “Your potential pain points”, or upload a Prospect Intelligence Brief.",
       };
     }
     if (!painPoints) {
@@ -1588,18 +1841,25 @@
       return {
         reasons: "",
         painPoints,
-        note: "Pain points extracted. No “Why we want to work with you” heading detected — fill reasons manually or label that section in the document.",
+        note: "Pain points extracted. No reasons section detected — fill reasons manually or label that section in the document.",
       };
     }
     return { reasons, painPoints, note: "" };
   }
 
   function insightsTextToHtml(text) {
-    const raw = String(text || "").trim();
+    const raw = cleanInsightsChunk(text);
     if (!raw) return "";
     if (looksLikeHtml(raw)) return raw;
 
-    const blocks = raw.split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+    // Prefer bullet extraction from “•” / “-” / numbered lines mixed in prose blocks
+    const unified = raw
+      .replace(/\u2022/g, "\n• ")
+      .replace(/\s+•\s+/g, "\n• ")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+    const blocks = unified.split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
     const htmlParts = [];
 
     blocks.forEach((block) => {
@@ -1607,16 +1867,29 @@
       const listish =
         lines.length >= 2 &&
         lines.filter((l) => /^([-*•]|–|—|\d+[\.)])\s+/.test(l)).length >=
-          Math.ceil(lines.length * 0.5);
+          Math.ceil(lines.length * 0.4);
       if (listish) {
         const items = lines
           .map((l) => l.replace(/^([-*•]|–|—|\d+[\.)])\s+/, "").trim())
-          .filter(Boolean)
+          .filter((l) => l.length > 2)
           .map((l) => `<li>${escapeHtml(l)}</li>`)
           .join("");
-        htmlParts.push(`<ul class="list-check">${items}</ul>`);
+        if (items) htmlParts.push(`<ul class="list-check">${items}</ul>`);
+      } else if (lines.length === 1 && /^([-*•]|–|—|\d+[\.)])\s+/.test(lines[0])) {
+        const item = lines[0].replace(/^([-*•]|–|—|\d+[\.)])\s+/, "").trim();
+        htmlParts.push(`<ul class="list-check"><li>${escapeHtml(item)}</li></ul>`);
       } else {
-        htmlParts.push(`<p>${escapeHtml(block).replace(/\n/g, "<br>")}</p>`);
+        // Split long “•”-joined single lines into a list when possible
+        const bulletBits = block.split(/\s*•\s*/).map((s) => s.trim()).filter(Boolean);
+        if (bulletBits.length >= 3) {
+          htmlParts.push(
+            `<ul class="list-check">${bulletBits
+              .map((l) => `<li>${escapeHtml(l)}</li>`)
+              .join("")}</ul>`
+          );
+        } else {
+          htmlParts.push(`<p>${escapeHtml(block).replace(/\n/g, "<br>")}</p>`);
+        }
       }
     });
     return htmlParts.join("\n");
