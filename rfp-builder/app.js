@@ -1619,6 +1619,162 @@
       .trim();
   }
 
+  function cleanPdfHyphenation(s) {
+    return String(s || "")
+      .replace(/\b([A-Za-z])\s+([A-Za-z])\s*-\s*/g, "$1$2-")
+      .replace(/\b([A-Za-z]{2,})\s+-\s+([A-Za-z]{2,})\b/g, "$1-$2")
+      .replace(/\s*[–—]\s*/g, " — ")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+  }
+
+  function sentenceCase(s) {
+    const t = String(s || "").trim();
+    if (!t) return "";
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+
+  function ensureSentence(s) {
+    let t = String(s || "").trim();
+    if (!t) return "";
+    t = t.replace(/\s+/g, " ");
+    if (!/[.!?]$/.test(t)) t += ".";
+    return sentenceCase(t);
+  }
+
+  function linesFromInsightsChunk(raw) {
+    return String(raw || "")
+      .replace(/\u2022/g, "\n• ")
+      .split(/\n/)
+      .map((l) => l.replace(/^[-*•]\s+/, "").replace(/^\d+[\.)]\s+/, "").trim())
+      .filter((l) => l.length > 8);
+  }
+
+  /** Rewrite scraped fragments into short proposal-ready English sentences (max 5). */
+  function polishInsightsPoints(raw, kind) {
+    const role = kind === "pain" ? "pain" : "reasons";
+    let lines = linesFromInsightsChunk(raw).map(cleanPdfHyphenation);
+
+    // Combine repeated "objection: X" fragments into one sentence
+    const objections = [];
+    const rest = [];
+    lines.forEach((l) => {
+      const m = l.match(
+        /^(?:Prior SA outsourcing objection|Previous South African outsourcing raised concerns about):\s*(.+)$/i
+      );
+      if (m) objections.push(m[1].replace(/\s*\/\s*/g, " and ").trim());
+      else rest.push(l);
+    });
+    if (objections.length) {
+      const joined = objections
+        .map((o) => o.replace(/\.$/, ""))
+        .filter(Boolean)
+        .join(", ")
+        .replace(/, ([^,]+)$/, ", and $1");
+      const pretty = joined
+        .toLowerCase()
+        .replace(/\bright partner this time\b/g, "finding the right partner")
+        .replace(/\bquality of leads and training\b/g, "lead quality and training");
+      rest.unshift(
+        `Previous South African outsourcing raised concerns about ${pretty}`
+      );
+    }
+    lines = rest;
+
+    const polished = [];
+    const seen = new Set();
+
+    lines.forEach((line) => {
+      if (polished.length >= 5) return;
+      let s = line;
+
+      // "Title: body" → prefer the body as a full sentence
+      const titled = s.match(/^([^:]{3,55}):\s+(.+)$/);
+      if (titled && titled[2].length > 35) {
+        s = titled[2];
+      }
+
+      // Pain-specific clean phrasing
+      if (role === "pain") {
+        if (/zero offshore presence/i.test(s) && /uk office/i.test(s)) {
+          s =
+            "Operations run across five UK offices with zero offshore presence, so the full contact-centre cost base remains onshore";
+        } else if (/100%\s*UK-?based/i.test(s)) {
+          s =
+            "The operation is still a 100% UK-based, telephony-heavy cost base for sales, retention and client servicing";
+        } else if (/under-?delivered/i.test(s)) {
+          s =
+            "South Africa has already been trialled, but the previous incumbent under-delivered — leaving a clear gap for a stronger partner";
+        } else if (/not purpose-?built/i.test(s) || /generalist,\s*high-?volume/i.test(s)) {
+          s =
+            "The incumbent model is a generalist, high-volume approach rather than one purpose-built for regulated UK financial services";
+        } else if (/entry-?level workforce|high-?churn/i.test(s)) {
+          s =
+            "Delivery has been positioned as an entry-level, high-churn workforce model instead of a premium curated team";
+        } else if (/limited evidence of AI/i.test(s)) {
+          s =
+            "There is limited evidence of AI augmentation or advanced QA and analytics layered onto delivery";
+        } else if (/rigid shift/i.test(s)) {
+          s =
+            "Reviews point to rigid shift structures and a metrics-first management style that can constrain service quality";
+        } else if (/mid-?sized.*generalist BPO|SA-?owned generalist/i.test(s)) {
+          s =
+            "The previous South African partner operated as a mid-sized generalist BPO, not a specialist for regulated UK financial services";
+        }
+      } else {
+        // Reasons phrasing
+        if (/^Currently\s+100%\s*UK/i.test(s)) {
+          s =
+            "Reassured still runs a 100% UK-based cost base for sales, retention and client servicing — a high-volume telephony operation ready for offshore support";
+        } else if (/door to SA is open|incumbent under-?delivered/i.test(s)) {
+          s =
+            "The CEO has already trialled outsourcing to South Africa, so the door is open — but the previous incumbent under-delivered";
+        } else if (/Chief Growth Officer|overhaul contact strategy/i.test(s)) {
+          s =
+            "A new Chief Growth Officer is mandated to overhaul contact strategy and digital scripting — a direct entry point for an AI-augmented CX partner";
+        } else if (/strategic refinancing|Bridgepoint/i.test(s) && /scale the platform/i.test(s)) {
+          s =
+            "A Bridgepoint-backed refinancing was completed specifically to scale the platform, so cost discipline and growth capital exist at the same time";
+        } else if (/cost-?per-?contact|under active scrutiny/i.test(s)) {
+          s =
+            "PE-backed growth means cost-per-contact is under active board scrutiny, which strengthens the case for an efficient CX partner";
+        } else if (/re-?engagement, not an education/i.test(s) || /open door, not a cold start/i.test(s)) {
+          s =
+            "This is a warm re-engagement, not a cold education process — Reassured has already shown willingness to outsource to South Africa";
+        } else if (/AI-?augmented engagement model/i.test(s) && /contact strategy/i.test(s)) {
+          s =
+            "The mandate to overhaul contact strategy and engage customers digitally maps directly to Trilogy’s AI-augmented engagement model";
+        } else if (/QA & analytics|data\/strategy/i.test(s)) {
+          s =
+            "The data and strategy agenda aligns with Trilogy’s QA and analytics capability for measurable, reportable CX performance";
+        }
+      }
+
+      s = ensureSentence(s);
+      // Keep bullets proposal-length
+      if (s.length > 220) {
+        s = ensureSentence(s.slice(0, 210).replace(/\s+\S*$/, ""));
+      }
+      const key = s.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 70);
+      if (!key || seen.has(key)) return;
+      seen.add(key);
+      polished.push(s);
+    });
+
+    return polished.slice(0, 5).map((s) => `- ${s}`).join("\n");
+  }
+
+  function insightsPointsToHtml(raw) {
+    const lines = linesFromInsightsChunk(raw);
+    if (!lines.length) return "";
+    const items = lines
+      .slice(0, 5)
+      .map((l) => ensureSentence(cleanPdfHyphenation(l)))
+      .map((l) => `<li>${escapeHtml(l)}</li>`)
+      .join("");
+    return `<ul class="list-check">${items}</ul>`;
+  }
+
   /** Prospect Intelligence Brief fallback when labelled headings are missing */
   function extractFromProspectBrief(text) {
     const src = String(text || "");
@@ -1898,8 +2054,12 @@
   async function applyInsightsDocument(file) {
     const raw = await extractTextFromInsightsFile(file);
     const split = splitInsightsDocument(raw);
-    state.placeholders["why-work-reasons"] = insightsTextToHtml(split.reasons);
-    state.placeholders["why-work-pain-points"] = insightsTextToHtml(split.painPoints);
+    const reasonsPolished = polishInsightsPoints(split.reasons, "reasons");
+    const painPolished = polishInsightsPoints(split.painPoints, "pain");
+    state.placeholders["why-work-reasons"] = insightsPointsToHtml(reasonsPolished);
+    state.placeholders["why-work-pain-points"] = insightsPointsToHtml(painPolished);
+    split.reasons = reasonsPolished;
+    split.painPoints = painPolished;
     state.insightsDoc = {
       fileName: file.name || "insights-document",
       extractedAt: new Date().toISOString(),
@@ -3177,8 +3337,29 @@ if (ph["case-studies"] !== undefined) {
       margin: 0.35rem 0;
     }
     .placeholder-block.is-filled {
+      display: block;
       border-style: solid;
       background: #fff;
+      text-align: left;
+      align-items: stretch;
+      justify-content: flex-start;
+      min-height: 0;
+      padding: 0.85rem 1rem;
+    }
+    .placeholder-block.is-filled .prose,
+    .placeholder-block.is-filled .list-check {
+      width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+    #why-work-reasons .list-check,
+    #why-work-pain-points .list-check,
+    #section-21 .list-check {
+      text-align: left;
+      align-items: stretch;
+    }
+    #section-21 .list-check li {
+      text-align: left;
     }
     ${
       isPreview

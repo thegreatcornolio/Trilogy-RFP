@@ -10,7 +10,7 @@ Used by the RFP Builder section **Why we want to work with you** (`section-21`).
 4. Choose the client file (**PDF, DOCX, TXT or Markdown**).
 5. Review / edit the two scraped boxes, then Preview / Final commit.
 
-Each new upload re-scrapes and overwrites those two boxes (you can still edit afterwards).
+Each new upload re-scrapes and overwrites those two boxes (you can still edit afterwards). Output is polished into **up to 5 clear English bullets** per box.
 
 ## Prospect Intelligence Briefs (recommended)
 

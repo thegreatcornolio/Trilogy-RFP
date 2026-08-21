@@ -3653,6 +3653,34 @@ tr:nth-child(even) td {
   text-transform: uppercase;
 }
 
+.placeholder-block.is-filled {
+  display: block;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 0;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border-style: solid;
+}
+
+.placeholder-block.is-filled .prose,
+.placeholder-block.is-filled .list-check {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+#section-21 .list-check,
+#why-work-reasons .list-check,
+#why-work-pain-points .list-check {
+  text-align: left;
+}
+
+#section-21 .list-check li {
+  text-align: left;
+}
+
 
 /* —— This section covers (linked table) —— */
 .covers-box {
