@@ -313,4 +313,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
+
+  // South African Footprint — animated map pin drops
+  const saMaps = document.querySelectorAll('[data-animate="sa-pins"]');
+  const reduceSaMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (saMaps.length) {
+    const reveal = (el) => el.classList.add("is-visible");
+    if (reduceSaMotion) {
+      saMaps.forEach(reveal);
+    } else if ("IntersectionObserver" in window) {
+      const saIo = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            reveal(entry.target);
+            saIo.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.3 }
+      );
+      saMaps.forEach((el) => saIo.observe(el));
+    } else {
+      saMaps.forEach(reveal);
+    }
+  }
+
 });

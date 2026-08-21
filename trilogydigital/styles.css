@@ -6287,3 +6287,176 @@ tr:nth-child(even) td {
     display: none !important;
   }
 }
+
+/* ===== South African Footprint map ===== */
+.sa-map-figure {
+  margin: 0.85rem 0 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.sa-map {
+  padding: 0.85rem 0.85rem 0.35rem;
+  background:
+    radial-gradient(circle at 18% 78%, rgba(97, 215, 121, 0.1), transparent 42%),
+    radial-gradient(circle at 78% 22%, rgba(213, 236, 103, 0.12), transparent 40%),
+    linear-gradient(180deg, #f7fafc 0%, #eef3f7 100%);
+}
+
+.sa-map__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+}
+
+.sa-map__sea {
+  fill: #e8eef4;
+}
+
+.sa-map__pin-anim {
+  opacity: 0;
+  transform: translateY(-28px);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.sa-map.is-visible .sa-map__pin-anim {
+  animation: sa-pin-drop 0.7s cubic-bezier(0.22, 1.2, 0.36, 1) forwards;
+  animation-delay: var(--pin-delay, 0s);
+}
+
+.sa-map__marker {
+  transform-origin: 0 24px;
+}
+
+.sa-map__teardrop {
+  fill: var(--brand-green);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.sa-map__core {
+  fill: var(--brand-navy);
+}
+
+.sa-map__pulse {
+  fill: rgba(97, 215, 121, 0.28);
+  opacity: 0;
+  transform-origin: center;
+}
+
+.sa-map.is-visible .sa-map__pulse {
+  animation: sa-pin-pulse 1.8s ease-out var(--pin-delay, 0s) infinite;
+}
+
+.sa-map__label rect {
+  fill: #fff;
+  stroke: rgba(19, 32, 46, 0.12);
+  stroke-width: 1;
+}
+
+.sa-map__label-title {
+  fill: var(--brand-navy);
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sa-map__label-sub {
+  fill: rgba(19, 32, 46, 0.62);
+  font-family: var(--font-body, Inter), system-ui, sans-serif;
+  font-size: 8.5px;
+  font-weight: 500;
+}
+
+.sa-map__note {
+  margin: 0.35rem 1rem 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(19, 32, 46, 0.82);
+}
+
+.sa-map__note strong {
+  color: var(--brand-navy);
+}
+
+.sa-map-figure figcaption {
+  border-top: 1px solid rgba(218, 223, 227, 0.6);
+  background: rgba(239, 242, 246, 0.5);
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+}
+
+@keyframes sa-pin-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-34px) scale(0.7);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(3px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sa-pin-pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.35);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+@media (max-width: 720px) {
+  .sa-map {
+    padding: 0.55rem 0.45rem 0.2rem;
+  }
+
+  .sa-map__svg {
+    max-height: none;
+  }
+
+  .sa-map__label {
+    display: none;
+  }
+
+  .sa-map__note {
+    font-size: 0.82rem;
+    margin: 0.25rem 0.75rem 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-map__pin-anim {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sa-map.is-visible .sa-map__pin-anim,
+  .sa-map.is-visible .sa-map__pulse {
+    animation: none;
+  }
+}
+
+@media print {
+  .sa-map__pin-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
