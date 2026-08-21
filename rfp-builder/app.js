@@ -109,7 +109,17 @@
         "Our Secret Sauce",
         "Our Achievements",
         "How We Differ From Local Competitors",
-        "Why Cape Town / Why South Africa",
+      ],
+    },
+    "section-09": {
+      title: "Why Cape Town / Why South Africa",
+      intro:
+        "We have included Why Cape Town / Why South Africa to explain the location advantage — cost, talent, time zones and lifestyle — that underpins UK-facing delivery.",
+      covers: [
+        "Why South Africa",
+        "Why Cape Town",
+        "Why the Location Wins",
+        "Sights in and around Cape Town",
       ],
     },
     "section-05": {
@@ -338,13 +348,23 @@
     "section-04": {
       title: "Our Value Proposition & Differentiators",
       intro:
-        "Why clients choose Trilogy — secret sauce, achievements, competitor contrast, and Why Cape Town / Why South Africa.",
+        "Why clients choose Trilogy — secret sauce, achievements and competitor contrast.",
       covers: [
         "Value proposition overview",
         "Our Secret Sauce",
         "Our Achievements",
         "How We Differ From Local Competitors",
-        "Why Cape Town / Why South Africa",
+      ],
+    },
+    "section-09": {
+      title: "Why Cape Town / Why South Africa",
+      intro:
+        "The Cape Town and South Africa location case — cost, talent, time zones and lifestyle.",
+      covers: [
+        "Why South Africa",
+        "Why Cape Town",
+        "Why the Location Wins",
+        "Sights in and around Cape Town",
       ],
     },
     "section-05": {
@@ -916,9 +936,9 @@
     return state.catalog.find((s) => s.id === id);
   }
 
-  /** Drop retired template sections (e.g. People merged into Operational Leadership) */
+  /** Drop retired template sections (kept for forward-compat with old drafts) */
   function pruneRetiredSections() {
-    const retired = new Set(["section-09"]);
+    const retired = new Set([]);
     const before = state.sectionOrder.length;
     state.sectionOrder = state.sectionOrder.filter((id) => !retired.has(id));
     return state.sectionOrder.length !== before;
@@ -2186,12 +2206,6 @@
         "trilogy-leadership-pathway",
       ].forEach((hid) => removeHeadingBlockById(root, hid));
       removeFromIdToEnd(root, "adapting-to-your-culture");
-    }
-
-    if (id === "section-04") {
-      // Why Cape Town / Why South Africa becomes a main heading; SA / Cape Town stay subheads
-      const why = root.querySelector("#why-cape-town-sa");
-      if (why) promoteHeading(why, "h2");
     }
 
     if (id === "section-08") {
