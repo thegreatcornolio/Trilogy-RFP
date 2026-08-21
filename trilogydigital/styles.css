@@ -6238,3 +6238,52 @@ tr:nth-child(even) td {
     color: inherit;
   }
 }
+
+/* ===== Presentation jump nav (back to top / back to main) ===== */
+.jump-nav {
+  position: fixed;
+  z-index: 55;
+  right: 0.9rem;
+  bottom: calc(6.35rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  pointer-events: none;
+}
+
+.jump-nav a {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: #13202e;
+  color: #d5ec67;
+  border: 1px solid #61d779;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(19, 32, 46, 0.22);
+}
+
+.jump-nav a:hover,
+.jump-nav a:focus-visible {
+  background: #61d779;
+  color: #13202e;
+}
+
+.jump-nav__main {
+  background: #d5ec67;
+  color: #13202e;
+  border-color: #d5ec67;
+}
+
+@media print {
+  .jump-nav {
+    display: none !important;
+  }
+}
