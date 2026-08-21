@@ -1,16 +1,5 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-18T20:32:39.000Z",
-  "items": [
-    {
-      "slug": "generic-customer__pro-forma-proposal",
-      "clientSlug": "generic-customer",
-      "docSlug": "pro-forma-proposal",
-      "clientName": "Generic Customer",
-      "documentType": "Pro Forma Proposal",
-      "folder": "proposals/generic-customer/pro-forma-proposal/",
-      "url": "https://proposal.trilogybpo.com/proposals/generic-customer/pro-forma-proposal/",
-      "committedAt": "2026-08-18T20:32:39.000Z"
-    }
-  ]
+  "updatedAt": "2026-08-21T14:25:00.000Z",
+  "items": []
 }
