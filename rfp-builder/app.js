@@ -1927,7 +1927,7 @@
       <div class="placeholder-card__head">
         <h3>${escapeHtml(sec.placeholderLabel || sec.title)} <span class="pill pill--html">Insights</span></h3>
       </div>
-      <p class="hint placeholder-card__hint">Upload the client insights piece. We scrape <strong>Why we want to work with you</strong> and <strong>Your potential pain points</strong> from labelled headings each time you upload. You can edit the extracted text afterwards.</p>
+      <p class="hint placeholder-card__hint">Upload the client <strong>Prospect Intelligence Brief</strong> (PDF/DOCX/TXT). We map <strong>Key takeaways + Strategic fit</strong> into reasons, and <strong>operating setup + competitive context / objections</strong> into <strong>Your potential pain points</strong>. You can edit either box after upload.</p>
       <div class="insights-upload">
         <label class="insights-upload__btn btn btn--primary btn--small">
           Upload insights document
