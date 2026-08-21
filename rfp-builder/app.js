@@ -1537,10 +1537,11 @@
           committedAt: item.committedAt || item.updatedAt,
         };
       });
-    const items = mergePublishedLists(remote, [
+    let items = mergePublishedLists(remote, [
       ...getLocalPublished(),
       ...localCommitted,
     ]);
+    items = await pruneMissingPublished(items);
 
     if (!items.length) {
       host.innerHTML =
@@ -1568,6 +1569,7 @@
                 ? `<button type="button" class="btn btn--ghost btn--small" data-open-published="${escapeHtml(item.slug)}">Open draft</button>`
                 : ""
             }
+            <button type="button" class="btn btn--ghost btn--small" data-forget-published="${escapeHtml(item.slug)}" title="Remove from this browser list">Remove</button>
           </div>
         </article>`;
       })
@@ -1648,11 +1650,51 @@
     const keys = [];
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if (k && (k === CONFIG.indexKey || k.startsWith(CONFIG.storagePrefix))) keys.push(k);
+      if (
+        k &&
+        (k === CONFIG.indexKey ||
+          k === CONFIG.publishedKey ||
+          k.startsWith(CONFIG.storagePrefix))
+      ) {
+        keys.push(k);
+      }
     }
     keys.forEach((k) => localStorage.removeItem(k));
     refreshExistingSelect();
-    toast("Local drafts cleared");
+    renderPublishedList();
+    toast("Local drafts and published list cleared");
+  }
+
+  function forgetPublished(slug) {
+    if (!slug) return;
+    setLocalPublished(getLocalPublished().filter((item) => item.slug !== slug));
+    const nextIndex = getIndex().map((item) =>
+      item.slug === slug ? { ...item, status: "draft", committedAt: null } : item
+    );
+    setIndex(nextIndex);
+  }
+
+  async function pruneMissingPublished(items) {
+    const checks = await Promise.all(
+      (items || []).map(async (item) => {
+        if (!item?.url) return null;
+        try {
+          const res = await fetch(item.url, {
+            method: "HEAD",
+            cache: "no-store",
+            mode: "cors",
+          });
+          if (res.status === 404) return item.slug;
+        } catch {
+          /* keep item if we cannot verify (offline / blocked) */
+        }
+        return null;
+      })
+    );
+    const missing = new Set(checks.filter(Boolean));
+    if (!missing.size) return items || [];
+    setLocalPublished(getLocalPublished().filter((item) => !missing.has(item.slug)));
+    return (items || []).filter((item) => !missing.has(item.slug));
   }
 
   function deleteLocalDraft(slug) {
@@ -3002,7 +3044,34 @@ if (ph["case-studies"] !== undefined) {
         renderPublishedList();
         toast("Published list refreshed");
       });
+      document.getElementById("btnClearPublished")?.addEventListener("click", () => {
+        if (
+          !confirm(
+            "Clear this browser’s published proposals list?\n\nThis does not delete GitHub files — only the remembered list in this browser."
+          )
+        ) {
+          return;
+        }
+        setLocalPublished([]);
+        const nextIndex = getIndex().map((item) =>
+          item.status === "committed"
+            ? { ...item, status: "draft", committedAt: null }
+            : item
+        );
+        setIndex(nextIndex);
+        renderPublishedList();
+        toast("Published list cleared in this browser");
+      });
       document.getElementById("publishedList")?.addEventListener("click", (e) => {
+        const forgetBtn = e.target.closest("[data-forget-published]");
+        if (forgetBtn) {
+          const slug = forgetBtn.getAttribute("data-forget-published");
+          if (!slug) return;
+          forgetPublished(slug);
+          renderPublishedList();
+          toast(`Removed from published list: ${slug}`);
+          return;
+        }
         const btn = e.target.closest("[data-open-published]");
         if (!btn) return;
         const slug = btn.getAttribute("data-open-published");
