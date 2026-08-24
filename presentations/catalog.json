@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T11:12:00.000Z",
+  "updatedAt": "2026-08-24T13:40:00.000Z",
   "items": [
+    {
+      "slug": "medscheme/proposal",
+      "title": "International Proposal",
+      "client": "Medscheme",
+      "sourceType": "PDF proposal",
+      "date": "2026-08-18",
+      "url": "https://proposal.trilogybpo.com/presentations/medscheme/proposal/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#c4a35a"
+      }
+    },
     {
       "slug": "lightningfibre/Web",
       "title": "Pro Forma Proposal",
