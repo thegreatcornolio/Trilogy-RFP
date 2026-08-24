@@ -31,6 +31,8 @@
     <div class="toolbar__actions">
       <a href="Medscheme-International-Proposal.pdf" download>Download PDF</a>
       <button type="button" onclick="window.print()">Print</button>
+      <button type="button" id="btn-docusign">Send for signature</button>
+      <span id="docusign-status" class="toolbar__status" hidden></span>
     </div>
   </div>
 
@@ -485,6 +487,60 @@
       var gate = document.getElementById("proposal-gate");
       if (gate) gate.remove();
     }
+
+    (function () {
+      var WEBHOOK = "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/21/workflows/7e91de10fcb94f148ac8eaf4b9eba139/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qHrnTPOs-mXgwKtVyn153GDFMHsIg9WCFQl8pQEuap4";
+      var btn = document.getElementById("btn-docusign");
+      var statusEl = document.getElementById("docusign-status");
+      if (!btn) return;
+
+      function setStatus(text) {
+        if (!statusEl) return;
+        statusEl.hidden = !text;
+        statusEl.textContent = text || "";
+      }
+
+      btn.addEventListener("click", async function () {
+        if (!window.confirm("Send this proposal to Mujeeb Bray for DocuSign? This uses one live envelope. Kobus signs second.")) {
+          return;
+        }
+        btn.disabled = true;
+        setStatus("Sending…");
+        try {
+          var res = await fetch(WEBHOOK, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              event: "sendForAcceptance",
+              clientName: "Medscheme",
+              proposalTitle: "Medscheme Sales Enablement for International and Shared Service Augmentation Project",
+              emailSubject: "Trilogy BPO proposal for signature — Medscheme",
+              clientSigner: {
+                name: "Mujeeb Bray",
+                email: "Mujeeb.Bray@medscheme.co.za",
+                title: "Chief Operating Officer"
+              },
+              trilogySigner: {
+                name: "Kobus van der Westhuizen",
+                email: "kobusvwd@trilogybpo.com",
+                title: "CEO"
+              }
+            })
+          });
+          var data = null;
+          try { data = await res.json(); } catch (e) { data = null; }
+          if (!res.ok) {
+            throw new Error((data && (data.error || data.message)) || ("HTTP " + res.status));
+          }
+          setStatus("Sent. Mujeeb will get the DocuSign email.");
+          btn.textContent = "Sent";
+        } catch (err) {
+          btn.disabled = false;
+          setStatus("Send failed. Check the Power Automate run.");
+          console.error(err);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
