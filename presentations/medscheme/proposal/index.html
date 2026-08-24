@@ -18,7 +18,7 @@
   </script>
   <link rel="stylesheet" href="../../_shared/gate.css?v=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medscheme Sales Enablement for International and Shared Service Augmentation Project — Trilogy Digital</title>
+  <title>Medscheme Sales Enablement for International and Shared Service Augmentation Project — Trilogy BPO</title>
   <meta name="description" content="Proposal for Medscheme — Human Led · Ai-enabled">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,15 +31,17 @@
     <div class="toolbar__actions">
       <a href="Medscheme-International-Proposal.pdf" download>Download PDF</a>
       <button type="button" onclick="window.print()">Print</button>
+      <button type="button" id="btn-docusign">Send for signature</button>
+      <span id="docusign-status" class="toolbar__status" hidden></span>
     </div>
   </div>
 
   <!-- 1. Cover — same chrome as live presentations -->
   <section class="sheet sheet--cover cover" id="cover">
     <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
-    <img class="cover__logo" src="../../../trilogydigital/assets/trilogy-logo.png" alt="Trilogy">
+    <img class="cover__logo" src="../../../trilogydigital/assets/trilogy-logo.png" alt="Trilogy BPO">
     <div class="cover__brand">
-      <span class="cover__brand-name">Trilogy Digital</span>
+      <span class="cover__brand-name">Trilogy BPO</span>
       <span class="cover__brand-line">A Trilogy Group Company</span>
       <img class="cover__client-logo" src="../../_shared/Medscheme-Logo-50.jpg" alt="Medscheme">
     </div>
@@ -59,7 +61,7 @@
         <div><div class="meta-label">Title</div><div class="meta-value">CEO</div></div>
         <div><div class="meta-label">Contact</div><div class="meta-value">kobusvwd@trilogybpo.com</div></div>
       </div>
-      <p class="cover__disclaimer">This document is commercial-in-confidence and prepared exclusively for the recipient named above. It may not be reproduced or disclosed to third parties without the written consent of Trilogy Digital (Pty) Ltd.</p>
+      <p class="cover__disclaimer">This document is commercial-in-confidence and prepared exclusively for the recipient named above. It may not be reproduced or disclosed to third parties without the written consent of Trilogy BPO (Pty) Ltd.</p>
     </div>
   </section>
 
@@ -68,7 +70,7 @@
     <p class="kicker">Cover letter</p>
     <h2>Introduction</h2>
     <p class="lede">Dear Mujeeb,</p>
-    <p>Thank you for the discussions with the Medscheme and Trilogy teams. This proposal sets out how Trilogy Digital will help Medscheme take its healthcare BPO capability into the United Kingdom and United States, and how we will assess Medscheme Shared Services against international BPO best practice.</p>
+    <p>Thank you for the discussions with the Medscheme and Trilogy BPO teams. This proposal sets out how Trilogy BPO will help Medscheme take its healthcare BPO capability into the United Kingdom and United States, and how we will assess Medscheme Shared Services against international BPO best practice.</p>
     <p>It covers two workstreams. Each is contracted in the currency in which it will be delivered and billed:</p>
     <ul class="ticks">
       <li><strong>Sales Enablement Solution</strong> — United States Dollars (USD).</li>
@@ -85,7 +87,7 @@
       <tr><td>01</td><td>The opportunity — South Africa’s BPO position, the healthcare gap, and Medscheme’s capability</td><td>Offer</td></tr>
       <tr><td>02</td><td>Cost comparison and indicative revenue to 2,000 seats</td><td>Offer</td></tr>
       <tr><td>03</td><td>UK and US healthcare outsourcing market</td><td>Offer</td></tr>
-      <tr><td>04</td><td>Who is at the table — Medscheme, Trilogy, Precision Point</td><td>Offer</td></tr>
+      <tr><td>04</td><td>Who is at the table — Medscheme, Trilogy BPO, Precision Point</td><td>Offer</td></tr>
       <tr><td>05</td><td>Why this, why now</td><td>Offer</td></tr>
       <tr><td>06</td><td>Partnership structure — consulting agreement and commissions</td><td>Offer</td></tr>
       <tr><td>07</td><td>Sales Enablement Solution — scope and commercials in <strong>USD</strong></td><td>Commercials</td></tr>
@@ -94,7 +96,7 @@
       <tr><td>10</td><td>Acceptance — Mujeeb Bray, Chief Operating Officer</td><td>Sign-off</td></tr>
     </table>
     <div class="sheet__footer">
-      <span>Trilogy Digital (Pty) Ltd · Commercial-in-confidence</span>
+      <span>Trilogy BPO (Pty) Ltd · Commercial-in-confidence</span>
       <span>Medscheme International proposal · 18 August 2026</span>
     </div>
   </section>
@@ -102,14 +104,14 @@
   <!-- 3. What we are offering -->
   <section class="sheet sheet--inner" id="offer">
     <p class="kicker">01 — Outline &amp; offer</p>
-    <h2>What Trilogy is offering</h2>
+    <h2>What Trilogy BPO is offering</h2>
     <p>Two complementary workstreams. Sales Enablement opens UK and US demand for Medscheme’s healthcare BPO. Shared Services Gate 1 readies the operating engine behind that growth.</p>
 
     <div class="offer-grid">
       <article class="offer-card">
         <div class="currency currency--usd">Workstream A · USD</div>
         <h3>Sales Enablement Solution</h3>
-        <p>Trilogy, working with Precision Point, will position Medscheme International in the UK and US healthcare BPO market.</p>
+        <p>Trilogy BPO, working with Precision Point, will position Medscheme International in the UK and US healthcare BPO market.</p>
         <ul class="ticks">
           <li>Months 1–3: initiation and market positioning.</li>
           <li>Months 4–12: market engagement and sales.</li>
@@ -140,12 +142,12 @@
     <h3>Who is at the table, and the structure</h3>
     <ul class="ticks">
       <li><strong>Medscheme</strong> — healthcare BPO / GBS; payer administration, regulatory compliance and scheme management, ready for international offshoring.</li>
-      <li><strong>Trilogy</strong> — front-end CX and UK/US market access; 30+ centres built; established UK and US sales network.</li>
+      <li><strong>Trilogy BPO</strong> — front-end CX and UK/US market access; 30+ centres built; established UK and US sales network.</li>
       <li><strong>Precision Point</strong> — CX advisory and vendor selection; 300+ deployments; 2026 Silver Stevie® Award for Clinical Process Orchestration.</li>
-      <li>Consulting agreement with Trilogy for international business development; Trilogy contracts Precision Point and other consultants. Services and commissions, to be finalised before the end of August.</li>
+      <li>Consulting agreement with Trilogy BPO for international business development; Trilogy BPO contracts Precision Point and other consultants. Services and commissions, to be finalised before the end of August.</li>
     </ul>
     <div class="sheet__footer">
-      <span>Trilogy Digital (Pty) Ltd · Commercial-in-confidence</span>
+      <span>Trilogy BPO (Pty) Ltd · Commercial-in-confidence</span>
       <span>Medscheme International proposal · 18 August 2026</span>
     </div>
   </section>
@@ -197,7 +199,7 @@
             <td class="num">$0 in this fee</td>
           </tr>
           <tr>
-            <td>Trilogy Lead Gen Team<br><span class="muted small">Cape Town based, months 1–12</span></td>
+            <td>Trilogy BPO Lead Gen Team<br><span class="muted small">Cape Town based, months 1–12</span></td>
             <td class="num">$5,000</td>
             <td class="num">$5,000</td>
             <td class="num">$5,000</td>
@@ -246,13 +248,13 @@
     </div>
 
     <div class="note">
-      <strong>Commission.</strong> Medscheme will pay a commission of <strong>15%</strong> on all revenues billed by Medscheme directly to clients. This percentage will be validated and revised once Trilogy and Precision Point have completed the retail “Market Pricing” exercise in the first three months of consulting work.
+      <strong>Commission.</strong> Medscheme will pay a commission of <strong>15%</strong> on all revenues billed by Medscheme directly to clients. This percentage will be validated and revised once Trilogy BPO and Precision Point have completed the retail “Market Pricing” exercise in the first three months of consulting work.
     </div>
     <div class="note">
       <strong>Pass-through.</strong> Travel, expenses and marketing are excluded from the professional-fee total and will be billed at cost, with prior agreement.
     </div>
     <div class="sheet__footer">
-      <span>Trilogy Digital (Pty) Ltd · Commercial-in-confidence</span>
+      <span>Trilogy BPO (Pty) Ltd · Commercial-in-confidence</span>
       <span>Sales Enablement · contracted in USD</span>
     </div>
   </section>
@@ -267,7 +269,7 @@
     <div class="flow">
       <div class="flow__step flow__step--in">
         <h4>1. Discovery</h4>
-        <p>Trilogy practitioners embed in the Medscheme environment to observe and document how each Hub discipline operates today.</p>
+        <p>Trilogy BPO practitioners embed in the Medscheme environment to observe and document how each Hub discipline operates today.</p>
       </div>
       <div class="flow__arrow" aria-hidden="true">›</div>
       <div class="flow__step flow__step--in">
@@ -277,7 +279,7 @@
       <div class="flow__arrow" aria-hidden="true">›</div>
       <div class="flow__step flow__step--in">
         <h4>3. Measurement</h4>
-        <p>Findings are benchmarked against Trilogy standards, surfacing gaps and opportunities.</p>
+        <p>Findings are benchmarked against Trilogy BPO standards, surfacing gaps and opportunities.</p>
       </div>
       <div class="flow__arrow" aria-hidden="true">›</div>
       <div class="flow__step flow__step--out">
@@ -330,7 +332,7 @@
       <strong>Outcome.</strong> A roadmap with measurable outcomes and associated costs. Improvement / augmentation is a separate commercial, agreed after Gate 1 findings are reviewed.
     </div>
     <div class="sheet__footer">
-      <span>Trilogy Digital (Pty) Ltd · Commercial-in-confidence</span>
+      <span>Trilogy BPO (Pty) Ltd · Commercial-in-confidence</span>
       <span>Shared Services Gate 1 · contracted in ZAR</span>
     </div>
   </section>
@@ -417,7 +419,7 @@
     </div>
     <p class="small muted">Acceptance of this proposal is acceptance of both workstreams on the terms above, unless the parties initial a change on the sign-off page.</p>
     <div class="sheet__footer">
-      <span>Trilogy Digital (Pty) Ltd · Commercial-in-confidence</span>
+      <span>Trilogy BPO (Pty) Ltd · Commercial-in-confidence</span>
       <span>Combined view · USD and ZAR uncombined</span>
     </div>
   </section>
@@ -449,7 +451,7 @@
         </div>
       </div>
       <div class="sign-block">
-        <p class="sign-block__party">For Trilogy Digital (Pty) Ltd</p>
+        <p class="sign-block__party">For Trilogy BPO (Pty) Ltd</p>
         <div class="sign-row">
           <label>Name</label>
           <div class="value">Kobus van der Westhuizen</div>
@@ -470,10 +472,10 @@
     </div>
 
     <div class="note" style="margin-top:8mm">
-      Valid for 90 days from 18 August 2026. This document is commercial-in-confidence and prepared exclusively for Medscheme. It may not be reproduced or disclosed to third parties without the written consent of Trilogy Digital (Pty) Ltd.
+      Valid for 90 days from 18 August 2026. This document is commercial-in-confidence and prepared exclusively for Medscheme. It may not be reproduced or disclosed to third parties without the written consent of Trilogy BPO (Pty) Ltd.
     </div>
     <div class="sheet__footer">
-      <span>Trilogy Digital (Pty) Ltd · Commercial-in-confidence</span>
+      <span>Trilogy BPO (Pty) Ltd · Commercial-in-confidence</span>
       <span>Sign-off · Mujeeb Bray, COO, Medscheme</span>
     </div>
   </section>
@@ -485,6 +487,60 @@
       var gate = document.getElementById("proposal-gate");
       if (gate) gate.remove();
     }
+
+    (function () {
+      var WEBHOOK = "https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/21/workflows/7e91de10fcb94f148ac8eaf4b9eba139/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qHrnTPOs-mXgwKtVyn153GDFMHsIg9WCFQl8pQEuap4";
+      var btn = document.getElementById("btn-docusign");
+      var statusEl = document.getElementById("docusign-status");
+      if (!btn) return;
+
+      function setStatus(text) {
+        if (!statusEl) return;
+        statusEl.hidden = !text;
+        statusEl.textContent = text || "";
+      }
+
+      btn.addEventListener("click", async function () {
+        if (!window.confirm("Send this proposal to Mujeeb Bray for DocuSign? This uses one live envelope. Kobus signs second.")) {
+          return;
+        }
+        btn.disabled = true;
+        setStatus("Sending…");
+        try {
+          var res = await fetch(WEBHOOK, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              event: "sendForAcceptance",
+              clientName: "Medscheme",
+              proposalTitle: "Medscheme Sales Enablement for International and Shared Service Augmentation Project",
+              emailSubject: "Trilogy BPO proposal for signature — Medscheme",
+              clientSigner: {
+                name: "Mujeeb Bray",
+                email: "Mujeeb.Bray@medscheme.co.za",
+                title: "Chief Operating Officer"
+              },
+              trilogySigner: {
+                name: "Kobus van der Westhuizen",
+                email: "kobusvwd@trilogybpo.com",
+                title: "CEO"
+              }
+            })
+          });
+          var data = null;
+          try { data = await res.json(); } catch (e) { data = null; }
+          if (!res.ok) {
+            throw new Error((data && (data.error || data.message)) || ("HTTP " + res.status));
+          }
+          setStatus("Sent. Mujeeb will get the DocuSign email.");
+          btn.textContent = "Sent";
+        } catch (err) {
+          btn.disabled = false;
+          setStatus("Send failed. Check the Power Automate run.");
+          console.error(err);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
