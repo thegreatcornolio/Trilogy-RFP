@@ -178,7 +178,7 @@ a { color: inherit; }
 
 .cover__body {
   margin-top: 12mm;
-  max-width: 120mm;
+  max-width: 168mm;
 }
 
 .badge {
@@ -200,10 +200,11 @@ a { color: inherit; }
 .cover h1 {
   margin: 0;
   font-family: var(--display);
-  font-size: 26pt;
+  font-size: 20pt;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.02em;
+  max-width: 168mm;
 }
 
 .cover__tagline {
