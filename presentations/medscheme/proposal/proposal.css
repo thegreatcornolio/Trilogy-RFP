@@ -291,6 +291,15 @@ a { color: inherit; }
   color: var(--navy);
 }
 
+#offer h3 { margin: 3.5mm 0 2mm; }
+#offer p { margin: 0 0 2.4mm; }
+#offer .offer-grid { margin: 1mm 0 2mm; }
+#offer .offer-card { padding: 3.4mm 4.2mm; }
+#offer .offer-card .ticks li { margin-bottom: 1.35mm; }
+#offer .stats { margin: 1.5mm 0 2.5mm; }
+#offer .stat { padding: 3.2mm 4mm; }
+#offer .stat__value { font-size: 12pt; }
+
 .sheet p { margin: 0 0 3mm; color: rgba(19, 32, 46, 0.9); }
 
 .lede {
@@ -534,9 +543,44 @@ table.data {
   font-size: 12pt;
 }
 
+.note-list {
+  list-style: none;
+  margin: 5mm 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5mm;
+  counter-reset: notes;
+}
+
+.note-list li {
+  counter-increment: notes;
+  display: grid;
+  grid-template-columns: 14mm 1fr;
+  gap: 4mm;
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  padding: 5.5mm 6mm;
+  background: var(--paper);
+  font-size: 11.5pt;
+  line-height: 1.45;
+  color: var(--navy);
+}
+
+.note-list li::before {
+  content: counter(notes, decimal-leading-zero);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14pt;
+  color: var(--green);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
 .pillars {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3mm;
   margin: 2mm 0 4mm;
 }
