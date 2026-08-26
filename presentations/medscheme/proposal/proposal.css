@@ -291,15 +291,6 @@ a { color: inherit; }
   color: var(--navy);
 }
 
-#offer h3 { margin: 3.5mm 0 2mm; }
-#offer p { margin: 0 0 2.4mm; }
-#offer .offer-grid { margin: 1mm 0 2mm; }
-#offer .offer-card { padding: 3.4mm 4.2mm; }
-#offer .offer-card .ticks li { margin-bottom: 1.35mm; }
-#offer .stats { margin: 1.5mm 0 2.5mm; }
-#offer .stat { padding: 3.2mm 4mm; }
-#offer .stat__value { font-size: 12pt; }
-
 .sheet p { margin: 0 0 3mm; color: rgba(19, 32, 46, 0.9); }
 
 .lede {
@@ -373,35 +364,6 @@ a { color: inherit; }
 
 .currency--usd { background: rgba(97, 215, 121, 0.16); color: #1f6b38; }
 .currency--zar { background: #13202e; color: var(--lime); }
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3.5mm;
-  margin: 2mm 0 4mm;
-}
-
-.stat {
-  background: var(--navy);
-  color: #fff;
-  border-radius: 0.65rem;
-  padding: 4mm 4.5mm;
-}
-
-.stat__value {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 13pt;
-  color: var(--lime);
-  line-height: 1.15;
-}
-
-.stat__label {
-  margin-top: 1.5mm;
-  font-size: 8pt;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.35;
-}
 
 .partners {
   display: grid;
