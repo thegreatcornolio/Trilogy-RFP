@@ -177,13 +177,13 @@ a { color: inherit; }
 
 .cover__client-logo {
   display: block;
-  max-height: 16mm;
+  max-height: 28mm;
   width: auto;
-  max-width: 78mm;
+  max-width: 42mm;
   object-fit: contain;
-  background: #000;
+  background: #fff;
   border-radius: 0.45rem;
-  padding: 0.45rem 0.9rem;
+  padding: 0.55rem 0.7rem;
   margin: 0.35rem auto 0.1rem;
 }
 
@@ -560,11 +560,11 @@ table.data {
 
 .note-list {
   list-style: none;
-  margin: 5mm 0 0;
+  margin: 4mm 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 4.5mm;
+  gap: 3.5mm;
   counter-reset: notes;
 }
 
@@ -576,10 +576,10 @@ table.data {
   align-items: start;
   border: 1px solid var(--line);
   border-radius: 0.7rem;
-  padding: 5.5mm 6mm;
+  padding: 4.2mm 5.5mm;
   background: var(--paper);
-  font-size: 11.5pt;
-  line-height: 1.45;
+  font-size: 10.5pt;
+  line-height: 1.4;
   color: var(--navy);
 }
 
