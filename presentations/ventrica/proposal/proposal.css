@@ -537,6 +537,20 @@ table.data {
   width: 42mm;
 }
 
+.data--build {
+  font-size: 7pt;
+}
+
+.data--build th,
+.data--build td {
+  padding: 1.15mm 1.8mm;
+}
+
+.seat-build h3 {
+  margin: 0 0 2mm;
+  font-size: 10pt;
+}
+
 .data .total-opt td {
   font-weight: 700;
   background: rgba(213, 236, 103, 0.38) !important;
