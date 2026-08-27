@@ -367,8 +367,8 @@ a { color: inherit; }
 .currency--opt { background: var(--wash); color: var(--muted); }
 
 .combined__head .currency--gbp {
-  color: var(--navy);
-  background: var(--lime);
+  color: var(--lime);
+  background: rgba(213, 236, 103, 0.14);
 }
 
 .facts {
