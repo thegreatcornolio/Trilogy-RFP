@@ -366,6 +366,11 @@ a { color: inherit; }
 .currency--zar { background: #13202e; color: var(--lime); }
 .currency--opt { background: var(--wash); color: var(--muted); }
 
+.combined__head .currency--gbp {
+  color: var(--lime);
+  background: rgba(213, 236, 103, 0.18);
+}
+
 .facts {
   display: grid;
   grid-template-columns: 1fr 1fr;
