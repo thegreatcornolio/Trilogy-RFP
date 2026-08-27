@@ -514,6 +514,26 @@ table.data {
   border-top: 2px solid rgba(19, 32, 46, 0.18);
 }
 
+.data--schedule {
+  font-size: 7pt;
+}
+
+.data--schedule th,
+.data--schedule td {
+  padding: 1.7mm 1.3mm;
+}
+
+.data--schedule td:first-child,
+.data--schedule th:first-child {
+  width: 42mm;
+}
+
+.data .total-opt td {
+  font-weight: 700;
+  background: rgba(213, 236, 103, 0.38) !important;
+  border-top: 2px solid rgba(19, 32, 46, 0.18);
+}
+
 .muted { color: var(--muted); }
 .small { font-size: 8.5pt; }
 
