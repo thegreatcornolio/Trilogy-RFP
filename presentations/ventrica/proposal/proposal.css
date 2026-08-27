@@ -365,10 +365,14 @@ a { color: inherit; }
 .currency--gbp { background: rgba(97, 215, 121, 0.16); color: #1f6b38; }
 .currency--zar { background: #13202e; color: var(--lime); }
 .currency--opt { background: var(--wash); color: var(--muted); }
+.currency--on-navy {
+  color: #13202e;
+  background: #d5ec67;
+}
 
-.combined__head .currency--gbp {
-  color: var(--lime);
-  background: rgba(213, 236, 103, 0.14);
+.combined__head .currency--opt {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .facts {
