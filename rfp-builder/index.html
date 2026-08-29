@@ -7,9 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=cover-brand-type-1">
+  <link rel="stylesheet" href="styles.css?v=published-clear-1">
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
-  <script src="app.js?v=ai-sales-1" defer></script>
+  <script src="app.js?v=insights-polish-1" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -37,9 +37,12 @@
       <section class="block">
         <div class="block__head">
           <h2>Published proposals</h2>
-          <button type="button" class="btn btn--ghost btn--small" id="btnRefreshPublished">Refresh</button>
+          <div class="block__head-actions">
+            <button type="button" class="btn btn--ghost btn--small" id="btnRefreshPublished">Refresh</button>
+            <button type="button" class="btn btn--ghost btn--small" id="btnClearPublished" title="Clear this browser’s published list">Clear list</button>
+          </div>
         </div>
-        <p class="hint">Live committed proposals. Open the public page, or reload the local draft if it still exists in this browser.</p>
+        <p class="hint">Live proposals from <code>proposals/catalog.json</code>, plus any still remembered in this browser. Deleting GitHub folders does not clear the browser list — use <strong>Remove</strong> or <strong>Clear list</strong>.</p>
         <div class="published-list" id="publishedList">
           <p class="hint">Loading published list…</p>
         </div>
@@ -129,7 +132,7 @@
 
       <div class="block">
         <h2>Editable placeholders</h2>
-        <p class="hint">Typed content is injected into the full template on Preview / Final commit.</p>
+        <p class="hint">Typed content is injected into the full template on Preview / Final commit. For <strong>Why we want to work with you</strong>, upload the client insights PDF/DOCX — reasons and pain points are scraped from labelled headings.</p>
         <div id="placeholders" class="placeholders"></div>
       </div>
 

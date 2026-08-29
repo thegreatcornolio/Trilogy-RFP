@@ -12,6 +12,15 @@
       "summary": "Editable narrative, auto-prepopulated from selected sections (still fully editable)."
     },
     {
+      "id": "section-21",
+      "num": "21",
+      "title": "Why we want to work with you",
+      "editable": true,
+      "placeholderKey": "why-work-with-you",
+      "placeholderLabel": "Why we want to work with you",
+      "summary": "Per-client insights document — partnership reasons plus researched pain points."
+    },
+    {
       "id": "section-02",
       "num": "02",
       "title": "Company Overview",
@@ -33,6 +42,13 @@
       "title": "Our Value Proposition & Differentiators",
       "editable": false,
       "summary": "Tagline, differentiators, achievements and competitive edge."
+    },
+    {
+      "id": "section-09",
+      "num": "09",
+      "title": "Why Cape Town / Why South Africa",
+      "editable": false,
+      "summary": "Location advantages for SA and Cape Town, plus sights collage."
     },
     {
       "id": "section-05",

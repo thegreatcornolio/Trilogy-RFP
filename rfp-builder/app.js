@@ -90,6 +90,15 @@
         "Brands Our Leadership Has Delivered For",
       ],
     },
+    "section-21": {
+      title: "Why we want to work with you",
+      intro:
+        "We have included Why we want to work with you — our researched reasons for partnering, and the pain points we believe matter most for your operation.",
+      covers: [
+        "Why we want to work with you",
+        "Your potential pain points",
+      ],
+    },
     "section-03": {
       title: "Operational Leadership & Delivery",
       intro:
@@ -109,7 +118,17 @@
         "Our Secret Sauce",
         "Our Achievements",
         "How We Differ From Local Competitors",
-        "Why Cape Town / Why South Africa",
+      ],
+    },
+    "section-09": {
+      title: "Why Cape Town / Why South Africa",
+      intro:
+        "We have included Why Cape Town / Why South Africa to explain the location advantage — cost, talent, time zones and lifestyle — that underpins UK-facing delivery.",
+      covers: [
+        "Why South Africa",
+        "Why Cape Town",
+        "Why the Location Wins",
+        "Sights in and around Cape Town",
       ],
     },
     "section-05": {
@@ -323,6 +342,15 @@
         "Brands Our Leadership Has Delivered For",
       ],
     },
+    "section-21": {
+      title: "Why we want to work with you",
+      intro:
+        "Our researched fit for your business — why we want to partner, and the pain points we are set up to solve.",
+      covers: [
+        "Why we want to work with you",
+        "Your potential pain points",
+      ],
+    },
     "section-03": {
       title: "Our People & Workforce",
       intro:
@@ -338,13 +366,23 @@
     "section-04": {
       title: "Our Value Proposition & Differentiators",
       intro:
-        "Why clients choose Trilogy — secret sauce, achievements, competitor contrast, and Why Cape Town / Why South Africa.",
+        "Why clients choose Trilogy — secret sauce, achievements and competitor contrast.",
       covers: [
         "Value proposition overview",
         "Our Secret Sauce",
         "Our Achievements",
         "How We Differ From Local Competitors",
-        "Why Cape Town / Why South Africa",
+      ],
+    },
+    "section-09": {
+      title: "Why Cape Town / Why South Africa",
+      intro:
+        "The Cape Town and South Africa location case — cost, talent, time zones and lifestyle.",
+      covers: [
+        "Why South Africa",
+        "Why Cape Town",
+        "Why the Location Wins",
+        "Sights in and around Cape Town",
       ],
     },
     "section-05": {
@@ -468,6 +506,10 @@
     palette: ["#61d779", "#d5ec67", "#2f9e4a", "#13202e", "#ffffff"],
     selectedPaletteIndex: 0,
     logoDataUrl: "",
+    insightsDoc: {
+      fileName: "",
+      extractedAt: "",
+    },
     status: "draft",
     currentSlug: null,
     acceptance: {
@@ -916,9 +958,9 @@
     return state.catalog.find((s) => s.id === id);
   }
 
-  /** Drop retired template sections (e.g. People merged into Operational Leadership) */
+  /** Drop retired template sections (kept for forward-compat with old drafts) */
   function pruneRetiredSections() {
-    const retired = new Set(["section-09"]);
+    const retired = new Set([]);
     const before = state.sectionOrder.length;
     state.sectionOrder = state.sectionOrder.filter((id) => !retired.has(id));
     return state.sectionOrder.length !== before;
@@ -1343,7 +1385,774 @@
     return true;
   }
 
+  const INSIGHTS_CDN = {
+    pdfJs: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js",
+    pdfWorker: "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js",
+    mammoth: "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js",
+  };
+
+  function loadExternalScript(src) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[data-insights-src="${src}"]`);
+      if (existing) {
+        if (existing.dataset.loaded === "1") return resolve();
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", () => reject(new Error(`Failed to load ${src}`)), {
+          once: true,
+        });
+        return;
+      }
+      const s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      s.dataset.insightsSrc = src;
+      s.onload = () => {
+        s.dataset.loaded = "1";
+        resolve();
+      };
+      s.onerror = () => reject(new Error(`Failed to load ${src}`));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function extractTextFromInsightsFile(file) {
+    const name = String(file?.name || "").toLowerCase();
+    const type = String(file?.type || "").toLowerCase();
+
+    if (
+      name.endsWith(".txt") ||
+      name.endsWith(".md") ||
+      name.endsWith(".markdown") ||
+      type.startsWith("text/")
+    ) {
+      return await file.text();
+    }
+
+    if (name.endsWith(".docx") || type.includes("wordprocessingml")) {
+      await loadExternalScript(INSIGHTS_CDN.mammoth);
+      if (!window.mammoth?.extractRawText) {
+        throw new Error("DOCX reader failed to load");
+      }
+      const result = await window.mammoth.extractRawText({
+        arrayBuffer: await file.arrayBuffer(),
+      });
+      return String(result?.value || "");
+    }
+
+    if (name.endsWith(".pdf") || type === "application/pdf") {
+      await loadExternalScript(INSIGHTS_CDN.pdfJs);
+      const pdfjsLib = window.pdfjsLib;
+      if (!pdfjsLib?.getDocument) {
+        throw new Error("PDF reader failed to load");
+      }
+      pdfjsLib.GlobalWorkerOptions.workerSrc = INSIGHTS_CDN.pdfWorker;
+      const loadingTask = pdfjsLib.getDocument({ data: await file.arrayBuffer() });
+      const pdf = await loadingTask.promise;
+      const pages = [];
+      for (let i = 1; i <= pdf.numPages; i += 1) {
+        const page = await pdf.getPage(i);
+        const content = await page.getTextContent();
+        let pageText = "";
+        let lastY = null;
+        content.items.forEach((item) => {
+          const str = item.str || "";
+          const y = Array.isArray(item.transform) ? item.transform[5] : null;
+          if (lastY != null && y != null && Math.abs(lastY - y) > 6) {
+            pageText += "\n";
+          } else if (pageText && !pageText.endsWith("\n") && !pageText.endsWith(" ")) {
+            pageText += " ";
+          }
+          pageText += str;
+          if (y != null) lastY = y;
+        });
+        pages.push(pageText.trim());
+      }
+      return pages.join("\n\n");
+    }
+
+    // Best-effort for odd office exports
+    if (name.endsWith(".rtf")) {
+      const raw = await file.text();
+      return raw
+        .replace(/\\par[d]?/g, "\n")
+        .replace(/\{\\[^{}]+\}/g, " ")
+        .replace(/\\[a-z]+\d* ?/gi, " ")
+        .replace(/[{}]/g, " ")
+        .replace(/[ \t]+\n/g, "\n")
+        .replace(/\n{3,}/g, "\n\n");
+    }
+
+    throw new Error("Unsupported file type. Use PDF, DOCX, TXT or Markdown.");
+  }
+
+  function collapseSpacedCaps(s) {
+    // "K E Y  T A K E A W A Y S" → "KEYTAKEAWAYS" then expanded back to words below
+    return String(s || "").replace(/\b(?:[A-Z]\s+){2,}[A-Z]\b/g, (m) =>
+      m.replace(/\s+/g, "")
+    );
+  }
+
+  function expandCompactBriefHeadings(s) {
+    return String(s || "")
+      .replace(/KEYTAKEAWAYS(?:FORTHEPITCH)?/gi, "KEY TAKEAWAYS FOR THE PITCH")
+      .replace(/PROSPECTINTELLIGENCEBRIEF/gi, "PROSPECT INTELLIGENCE BRIEF")
+      .replace(/EXECUTIVESUMMARY/gi, "EXECUTIVE SUMMARY")
+      .replace(/COMPANYOVERVIEW/gi, "COMPANY OVERVIEW")
+      .replace(/CURRENTOPERATINGSETUP/gi, "CURRENT OPERATING SETUP")
+      .replace(/COMPETITIVECONTEXT/gi, "COMPETITIVE CONTEXT")
+      .replace(/STRATEGICFIT/gi, "STRATEGIC FIT")
+      .replace(/DECISION[\s-]?MAKERMAP/gi, "DECISION-MAKER MAP")
+      .replace(/GROWTH(?:AND)?MOMENTUM/gi, "GROWTH & MOMENTUM")
+      .replace(/NEXTSTEPS/gi, "NEXT STEPS");
+  }
+
+  function normalizeInsightsText(rawText) {
+    let text = String(rawText || "")
+      .replace(/\r\n/g, "\n")
+      .replace(/\u00a0/g, " ")
+      .replace(/[ \t]+\n/g, "\n");
+
+    // Drop deck footers / page chrome from Prospect Intelligence Briefs
+    text = text
+      .replace(/TRILOGY BPO\s*\|\s*PROSPECT INTELLIGENCE BRIEF[^\n]*/gi, "\n")
+      .replace(/TRILOGY BPO\s*\|\s*CAPE TOWN[^\n]*/gi, "\n")
+      .replace(/\bREASSURED LTD\s*[·•.\-]\s*\d+\b/gi, "\n")
+      .replace(/\b[A-Z][A-Z0-9 &/.'-]{2,40}\s*[·•]\s*\d{1,2}\b/g, "\n");
+
+    // Fix spaced-out PDF headings: "K E Y T A K E A W A Y S" → "KEY TAKEAWAYS"
+    text = text
+      .split("\n")
+      .map((line) => expandCompactBriefHeadings(collapseSpacedCaps(line)))
+      .join("\n");
+
+    // Soft hyphen / broken word cleanup common in PDF copy
+    // Important: never collapse newlines — heading detection depends on them.
+    text = text
+      .replace(/(\w)\s*-\s*\n\s*(\w)/g, "$1$2")
+      .replace(/[^\S\n]{2,}/g, " ")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+    return text;
+  }
+
+  function classifyInsightsHeading(line) {
+    const t = collapseSpacedCaps(String(line || ""))
+      .replace(/^#{1,6}\s+/, "")
+      .replace(/^\d+[\.\)]\s+/, "")
+      .replace(/^[-*•]\s+/, "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
+    if (!t || t.length > 100) return null;
+
+    // Explicit pain / challenge labels
+    if (
+      /pain\s*points?/.test(t) ||
+      /potential\s+(pain|challenges|issues|problems)/.test(t) ||
+      /^(your\s+)?(key\s+)?(challenges?|issues?|problems?|frictions?|objections?)\b/.test(t) ||
+      /what\s+(keeps|is)\s+you\s+up/.test(t) ||
+      /competitive\s+context/.test(t) ||
+      /incumbent\s+(left\s+a\s+)?gap/.test(t) ||
+      /current\s+operating\s+setup/.test(t) ||
+      /operating\s+(setup|model|challenges?)/.test(t) ||
+      /cost\s+base/.test(t) && /uk|onshore|100%/.test(t)
+    ) {
+      return "pain";
+    }
+
+    // Explicit why / fit / takeaways → reasons
+    if (
+      /why\s+we\s+want\s+to\s+work/.test(t) ||
+      /why\s+(trilogy|we)\s+(want|chose|care)/.test(t) ||
+      /reasons?\s+(we|to)\s+want/.test(t) ||
+      /why\s+(this\s+)?(partnership|opportunity)/.test(t) ||
+      /our\s+(interest|fit|rationale)/.test(t) ||
+      /^reasons?\b/.test(t) ||
+      /strategic\s+fit/.test(t) ||
+      /key\s+takeaways?/.test(t) ||
+      /takeaways?\s+for\s+the\s+pitch/.test(t) ||
+      /why\s+.+\s*,?\s*why\s+now/.test(t) ||
+      /^executive\s+summary$/.test(t) ||
+      /^why\s+[a-z0-9]/.test(t)
+    ) {
+      return "reasons";
+    }
+
+    // Neutral brief sections we intentionally skip as headings of other kinds
+    if (
+      /company\s+overview/.test(t) ||
+      /decision[-\s]?maker/.test(t) ||
+      /growth\s*(&|and)?\s*momentum?/.test(t) ||
+      /^next\s+steps$/.test(t) ||
+      /product\s+range/.test(t) ||
+      /insurer\s+panel/.test(t) ||
+      /business\s+model/.test(t)
+    ) {
+      return "skip";
+    }
+
+    return null;
+  }
+
+  function isLikelyHeading(line, nextLine) {
+    const raw = String(line || "").trim();
+    if (!raw || raw.length > 110) return false;
+    const t = collapseSpacedCaps(raw);
+    if (/^#{1,6}\s+\S/.test(t)) return true;
+    if (/^\d+[\.\)]\s+\S/.test(t) && t.length < 70) return true;
+    // ALL CAPS short titles (common in PDF briefs)
+    if (/^[A-Z0-9][A-Z0-9\s &'\/-]{2,80}$/.test(t) && t === t.toUpperCase() && t.length <= 80) {
+      return true;
+    }
+    if (classifyInsightsHeading(t)) return true;
+    if (/^[A-Z][\w &'\/-]{2,70}$/.test(t) && !/[.!?]$/.test(t) && classifyInsightsHeading(t)) {
+      return true;
+    }
+    return false;
+  }
+
+  function cleanInsightsChunk(chunk) {
+    return String(chunk || "")
+      .replace(/TRILOGY BPO[^\n]*/gi, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function cleanPdfHyphenation(s) {
+    return String(s || "")
+      .replace(/\b([A-Za-z])\s+([A-Za-z])\s*-\s*/g, "$1$2-")
+      .replace(/\b([A-Za-z]{2,})\s+-\s+([A-Za-z]{2,})\b/g, "$1-$2")
+      .replace(/\s*[–—]\s*/g, " — ")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+  }
+
+  function sentenceCase(s) {
+    const t = String(s || "").trim();
+    if (!t) return "";
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  }
+
+  function ensureSentence(s) {
+    let t = String(s || "").trim();
+    if (!t) return "";
+    t = t.replace(/\s+/g, " ");
+    if (!/[.!?]$/.test(t)) t += ".";
+    return sentenceCase(t);
+  }
+
+  function linesFromInsightsChunk(raw) {
+    return String(raw || "")
+      .replace(/\u2022/g, "\n• ")
+      .split(/\n/)
+      .map((l) => l.replace(/^[-*•]\s+/, "").replace(/^\d+[\.)]\s+/, "").trim())
+      .filter((l) => l.length > 8);
+  }
+
+  /** Rewrite scraped fragments into short proposal-ready English sentences (max 5). */
+  function polishInsightsPoints(raw, kind) {
+    const role = kind === "pain" ? "pain" : "reasons";
+    let lines = linesFromInsightsChunk(raw).map(cleanPdfHyphenation);
+
+    // Combine repeated "objection: X" fragments into one sentence
+    const objections = [];
+    const rest = [];
+    lines.forEach((l) => {
+      const m = l.match(
+        /^(?:Prior SA outsourcing objection|Previous South African outsourcing raised concerns about):\s*(.+)$/i
+      );
+      if (m) objections.push(m[1].replace(/\s*\/\s*/g, " and ").trim());
+      else rest.push(l);
+    });
+    if (objections.length) {
+      const joined = objections
+        .map((o) => o.replace(/\.$/, ""))
+        .filter(Boolean)
+        .join(", ")
+        .replace(/, ([^,]+)$/, ", and $1");
+      const pretty = joined
+        .toLowerCase()
+        .replace(/\bright partner this time\b/g, "finding the right partner")
+        .replace(/\bquality of leads and training\b/g, "lead quality and training");
+      rest.unshift(
+        `Previous South African outsourcing raised concerns about ${pretty}`
+      );
+    }
+    lines = rest;
+
+    const polished = [];
+    const seen = new Set();
+
+    lines.forEach((line) => {
+      if (polished.length >= 5) return;
+      let s = line;
+
+      // "Title: body" → prefer the body as a full sentence
+      const titled = s.match(/^([^:]{3,55}):\s+(.+)$/);
+      if (titled && titled[2].length > 35) {
+        s = titled[2];
+      }
+
+      // Pain-specific clean phrasing
+      if (role === "pain") {
+        if (/zero offshore presence/i.test(s) && /uk office/i.test(s)) {
+          s =
+            "Operations run across five UK offices with zero offshore presence, so the full contact-centre cost base remains onshore";
+        } else if (/100%\s*UK-?based/i.test(s)) {
+          s =
+            "The operation is still a 100% UK-based, telephony-heavy cost base for sales, retention and client servicing";
+        } else if (/under-?delivered/i.test(s)) {
+          s =
+            "South Africa has already been trialled, but the previous incumbent under-delivered — leaving a clear gap for a stronger partner";
+        } else if (/not purpose-?built/i.test(s) || /generalist,\s*high-?volume/i.test(s)) {
+          s =
+            "The incumbent model is a generalist, high-volume approach rather than one purpose-built for regulated UK financial services";
+        } else if (/entry-?level workforce|high-?churn/i.test(s)) {
+          s =
+            "Delivery has been positioned as an entry-level, high-churn workforce model instead of a premium curated team";
+        } else if (/limited evidence of AI/i.test(s)) {
+          s =
+            "There is limited evidence of AI augmentation or advanced QA and analytics layered onto delivery";
+        } else if (/rigid shift/i.test(s)) {
+          s =
+            "Reviews point to rigid shift structures and a metrics-first management style that can constrain service quality";
+        } else if (/mid-?sized.*generalist BPO|SA-?owned generalist/i.test(s)) {
+          s =
+            "The previous South African partner operated as a mid-sized generalist BPO, not a specialist for regulated UK financial services";
+        }
+      } else {
+        // Reasons phrasing
+        if (/^Currently\s+100%\s*UK/i.test(s)) {
+          s =
+            "Reassured still runs a 100% UK-based cost base for sales, retention and client servicing — a high-volume telephony operation ready for offshore support";
+        } else if (/door to SA is open|incumbent under-?delivered/i.test(s)) {
+          s =
+            "The CEO has already trialled outsourcing to South Africa, so the door is open — but the previous incumbent under-delivered";
+        } else if (/Chief Growth Officer|overhaul contact strategy/i.test(s)) {
+          s =
+            "A new Chief Growth Officer is mandated to overhaul contact strategy and digital scripting — a direct entry point for an AI-augmented CX partner";
+        } else if (/strategic refinancing|Bridgepoint/i.test(s) && /scale the platform/i.test(s)) {
+          s =
+            "A Bridgepoint-backed refinancing was completed specifically to scale the platform, so cost discipline and growth capital exist at the same time";
+        } else if (/cost-?per-?contact|under active scrutiny/i.test(s)) {
+          s =
+            "PE-backed growth means cost-per-contact is under active board scrutiny, which strengthens the case for an efficient CX partner";
+        } else if (/re-?engagement, not an education/i.test(s) || /open door, not a cold start/i.test(s)) {
+          s =
+            "This is a warm re-engagement, not a cold education process — Reassured has already shown willingness to outsource to South Africa";
+        } else if (/AI-?augmented engagement model/i.test(s) && /contact strategy/i.test(s)) {
+          s =
+            "The mandate to overhaul contact strategy and engage customers digitally maps directly to Trilogy’s AI-augmented engagement model";
+        } else if (/QA & analytics|data\/strategy/i.test(s)) {
+          s =
+            "The data and strategy agenda aligns with Trilogy’s QA and analytics capability for measurable, reportable CX performance";
+        }
+      }
+
+      s = ensureSentence(s);
+      // Keep bullets proposal-length
+      if (s.length > 220) {
+        s = ensureSentence(s.slice(0, 210).replace(/\s+\S*$/, ""));
+      }
+      const key = s.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 70);
+      if (!key || seen.has(key)) return;
+      seen.add(key);
+      polished.push(s);
+    });
+
+    return polished.slice(0, 5).map((s) => `- ${s}`).join("\n");
+  }
+
+  function insightsPointsToHtml(raw) {
+    const lines = linesFromInsightsChunk(raw);
+    if (!lines.length) return "";
+    const items = lines
+      .slice(0, 5)
+      .map((l) => ensureSentence(cleanPdfHyphenation(l)))
+      .map((l) => `<li>${escapeHtml(l)}</li>`)
+      .join("");
+    return `<ul class="list-check">${items}</ul>`;
+  }
+
+  /** Prospect Intelligence Brief fallback when labelled headings are missing */
+  function extractFromProspectBrief(text) {
+    const src = String(text || "");
+    const isBrief =
+      /prospect\s+intelligence\s+brief/i.test(src) ||
+      /key\s+takeaways?\s+for\s+the\s+pitch/i.test(src) ||
+      /strategic\s+fit/i.test(src) ||
+      /competitive\s+context/i.test(src);
+
+    if (!isBrief) return null;
+
+    const sectionAfter = (startRe, endRes) => {
+      const m = startRe.exec(src);
+      if (!m) return "";
+      const from = m.index + m[0].length;
+      let to = src.length;
+      endRes.forEach((re) => {
+        re.lastIndex = 0;
+        const copy = new RegExp(re.source, re.flags.includes("g") ? re.flags : re.flags + "g");
+        copy.lastIndex = from;
+        const hit = copy.exec(src);
+        if (hit && hit.index < to) to = hit.index;
+      });
+      return cleanInsightsChunk(src.slice(from, to));
+    };
+
+    const endCommon = [
+      /(?:^|\n)\s*(?:COMPANY OVERVIEW|GROWTH\s*&?\s*MOMENTUM|CURRENT OPERATING SETUP|DECISION[-\s]?MAKER|COMPETITIVE CONTEXT|STRATEGIC FIT|NEXT STEPS)\b/gim,
+    ];
+
+    // Start takeaways at the takeaways heading only (not "Why X, why now" metrics)
+    const takeaways = sectionAfter(
+      /(?:KEY\s+TAKEAWAYS?(?:\s+FOR\s+THE\s+PITCH)?|KEYTAKEAWAYS(?:FORTHEPITCH)?)/i,
+      endCommon
+    );
+    const strategicFit = sectionAfter(/STRATEGIC\s+FIT/i, [
+      /(?:^|\n)\s*(?:NEXT STEPS|COMPETITIVE CONTEXT|DECISION[-\s]?MAKER|COMPANY OVERVIEW)\b/gim,
+    ]);
+
+    const operating = sectionAfter(/CURRENT\s+OPERATING\s+SETUP/i, [
+      /(?:^|\n)\s*(?:DECISION[-\s]?MAKER|COMPETITIVE CONTEXT|STRATEGIC FIT|GROWTH|NEXT STEPS|COMPANY OVERVIEW)\b/gim,
+    ]);
+    const competitive = sectionAfter(/COMPETITIVE\s+CONTEXT/i, [
+      /(?:^|\n)\s*(?:STRATEGIC FIT|NEXT STEPS|DECISION[-\s]?MAKER|CURRENT OPERATING|GROWTH)\b/gim,
+    ]);
+
+    // Pain points: cost-base / incumbent gap / Townsend objections / competitive weaknesses
+    const painBits = [];
+    const pushPain = (p) => {
+      const cleaned = String(p || "").replace(/\s+/g, " ").trim();
+      if (!cleaned || cleaned.length < 12) return;
+      if (/decision[\s-]?maker|who to engage|mark townsend$/i.test(cleaned)) return;
+      painBits.push(cleaned);
+    };
+
+    const costBase = src.match(/100%\s*UK[-\s]?based[^.•\n]{0,180}/i);
+    if (costBase) pushPain(costBase[0]);
+
+    const zeroOffshore = src.match(/zero offshore presence[^\n.]{0,80}/i);
+    if (zeroOffshore) pushPain("Five UK office locations — zero offshore presence");
+
+    const under = src.match(
+      /(?:incumbent|outworx)[^.•\n]{0,50}under[-\s]?delivered[^.•\n]{0,100}/i
+    );
+    if (under) pushPain(under[0]);
+
+    const objectionRe = /"([^"]{6,120})"/g;
+    let om;
+    while ((om = objectionRe.exec(competitive || src))) {
+      pushPain(`Prior SA outsourcing objection: ${om[1].trim()}`);
+    }
+
+    String(competitive || "")
+      .split(/\n|•/)
+      .map((l) => l.trim())
+      .filter((l) => l.length > 28 && l.length < 220)
+      .filter((l) =>
+        /generalist|under[-\s]?deliver|not purpose|limited evidence|entry[-\s]?level|high[-\s]?churn|rigid shift|metrics[\s-]?first/i.test(
+          l
+        )
+      )
+      .slice(0, 6)
+      .forEach((l) => pushPain(l.replace(/^[-*•]\s*/, "")));
+
+    // Build reasons from takeaway bullets + strategic-fit prose only
+    const takeawayBullets = String(takeaways || "")
+      .split(/\n/)
+      .map((l) => l.trim())
+      .filter((l) => /^([-*•]|\d+[\.\)])\s+/.test(l))
+      .map((l) => l.replace(/^([-*•]|\d+[\.\)])\s+/, "- "));
+
+    let fitProse = cleanInsightsChunk(strategicFit)
+      .replace(/(?:^|\n)\s*Next Steps[\s\S]*$/i, "")
+      .trim();
+    // Drop fit section title-only leftovers
+    fitProse = fitProse
+      .replace(/^Trilogy maps directly onto[^\n]*\n?/i, "")
+      .trim();
+
+    const fitBlocks = [];
+    // Keep thematic paragraphs from strategic fit (title + body pairs flattened to bullets where useful)
+    const fitLines = fitProse.split(/\n/).map((l) => l.trim()).filter(Boolean);
+    let i = 0;
+    while (i < fitLines.length) {
+      const line = fitLines[i];
+      const next = fitLines[i + 1] || "";
+      if (
+        line.length < 60 &&
+        !/[.!?]$/.test(line) &&
+        next &&
+        next.length > 40
+      ) {
+        fitBlocks.push(`- ${line}: ${next}`);
+        i += 2;
+        continue;
+      }
+      if (line.length > 40) fitBlocks.push(`- ${line}`);
+      i += 1;
+    }
+
+    let reasons = [...takeawayBullets, ...fitBlocks].join("\n");
+    // Deduplicate near-identical lines
+    const seenR = new Set();
+    reasons = reasons
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean)
+      .filter((l) => {
+        const k = l.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 80);
+        if (seenR.has(k)) return false;
+        seenR.add(k);
+        return true;
+      })
+      .join("\n");
+
+    // Deduplicate pain
+    const seen = new Set();
+    const painPoints = painBits
+      .map((p) => p.replace(/\s+/g, " ").trim())
+      .filter((p) => {
+        const k = p.toLowerCase();
+        if (seen.has(k) || p.length < 12) return false;
+        seen.add(k);
+        return true;
+      })
+      .map((p) => `- ${p.replace(/^[-*•]\s*/, "")}`)
+      .join("\n");
+
+    if (!reasons && !painPoints) return null;
+
+    return {
+      reasons,
+      painPoints,
+      note: "Mapped from Prospect Intelligence Brief sections (takeaways / strategic fit → reasons; operating & competitive context → pain points).",
+    };
+  }
+
+  function splitInsightsDocument(rawText) {
+    const text = normalizeInsightsText(rawText);
+    if (!text) {
+      return { reasons: "", painPoints: "", note: "Document was empty." };
+    }
+
+    const lines = text.split("\n");
+    const blocks = [];
+    let current = { kind: "preamble", lines: [] };
+
+    for (let i = 0; i < lines.length; i += 1) {
+      const line = lines[i];
+      const next = lines[i + 1];
+      if (!isLikelyHeading(line, next)) {
+        current.lines.push(line);
+        continue;
+      }
+      const kind = classifyInsightsHeading(line) || "skip";
+      if (current.lines.some((l) => String(l).trim())) blocks.push(current);
+      current = { kind, lines: [] };
+    }
+    if (current.lines.some((l) => String(l).trim())) blocks.push(current);
+
+    const pick = (kind) =>
+      blocks
+        .filter((b) => b.kind === kind)
+        .map((b) => cleanInsightsChunk(b.lines.join("\n")))
+        .filter(Boolean)
+        .join("\n\n");
+
+    let reasons = pick("reasons");
+    let painPoints = pick("pain");
+
+    // Prospect Intelligence Briefs: always prefer the dedicated section mapper
+    const brief = extractFromProspectBrief(text);
+    if (brief && brief.reasons && brief.painPoints) {
+      return {
+        reasons: brief.reasons,
+        painPoints: brief.painPoints,
+        note: brief.note || "",
+      };
+    }
+    if (brief) {
+      if (!reasons && brief.reasons) reasons = brief.reasons;
+      if (!painPoints && brief.painPoints) painPoints = brief.painPoints;
+    }
+
+    if (!reasons && !painPoints) {
+      return {
+        reasons: text,
+        painPoints: "",
+        note: "No labelled sections found — pasted full document under reasons. Use headings like “Why we want to work with you” and “Your potential pain points”, or upload a Prospect Intelligence Brief.",
+      };
+    }
+    if (!painPoints) {
+      return {
+        reasons,
+        painPoints: "",
+        note: "Reasons extracted. No pain-points section detected — add a heading such as “Your potential pain points” or fill that box manually.",
+      };
+    }
+    if (!reasons) {
+      return {
+        reasons: "",
+        painPoints,
+        note: "Pain points extracted. No reasons section detected — fill reasons manually or label that section in the document.",
+      };
+    }
+    return { reasons, painPoints, note: "" };
+  }
+
+  function insightsTextToHtml(text) {
+    const raw = cleanInsightsChunk(text);
+    if (!raw) return "";
+    if (looksLikeHtml(raw)) return raw;
+
+    // Prefer bullet extraction from “•” / “-” / numbered lines mixed in prose blocks
+    const unified = raw
+      .replace(/\u2022/g, "\n• ")
+      .replace(/\s+•\s+/g, "\n• ")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+
+    const blocks = unified.split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+    const htmlParts = [];
+
+    blocks.forEach((block) => {
+      const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
+      const listish =
+        lines.length >= 2 &&
+        lines.filter((l) => /^([-*•]|–|—|\d+[\.)])\s+/.test(l)).length >=
+          Math.ceil(lines.length * 0.4);
+      if (listish) {
+        const items = lines
+          .map((l) => l.replace(/^([-*•]|–|—|\d+[\.)])\s+/, "").trim())
+          .filter((l) => l.length > 2)
+          .map((l) => `<li>${escapeHtml(l)}</li>`)
+          .join("");
+        if (items) htmlParts.push(`<ul class="list-check">${items}</ul>`);
+      } else if (lines.length === 1 && /^([-*•]|–|—|\d+[\.)])\s+/.test(lines[0])) {
+        const item = lines[0].replace(/^([-*•]|–|—|\d+[\.)])\s+/, "").trim();
+        htmlParts.push(`<ul class="list-check"><li>${escapeHtml(item)}</li></ul>`);
+      } else {
+        // Split long “•”-joined single lines into a list when possible
+        const bulletBits = block.split(/\s*•\s*/).map((s) => s.trim()).filter(Boolean);
+        if (bulletBits.length >= 3) {
+          htmlParts.push(
+            `<ul class="list-check">${bulletBits
+              .map((l) => `<li>${escapeHtml(l)}</li>`)
+              .join("")}</ul>`
+          );
+        } else {
+          htmlParts.push(`<p>${escapeHtml(block).replace(/\n/g, "<br>")}</p>`);
+        }
+      }
+    });
+    return htmlParts.join("\n");
+  }
+
+  async function applyInsightsDocument(file) {
+    const raw = await extractTextFromInsightsFile(file);
+    const split = splitInsightsDocument(raw);
+    const reasonsPolished = polishInsightsPoints(split.reasons, "reasons");
+    const painPolished = polishInsightsPoints(split.painPoints, "pain");
+    state.placeholders["why-work-reasons"] = insightsPointsToHtml(reasonsPolished);
+    state.placeholders["why-work-pain-points"] = insightsPointsToHtml(painPolished);
+    split.reasons = reasonsPolished;
+    split.painPoints = painPolished;
+    state.insightsDoc = {
+      fileName: file.name || "insights-document",
+      extractedAt: new Date().toISOString(),
+    };
+    // Keep a marker so the special card is recognised as filled
+    state.placeholders["why-work-with-you"] = [
+      state.placeholders["why-work-reasons"] || "",
+      state.placeholders["why-work-pain-points"] || "",
+    ]
+      .filter(Boolean)
+      .join("\n\n")
+      || "extracted";
+    return split;
+  }
+
+  function renderWhyWorkPlaceholderCard(sec) {
+    const card = document.createElement("div");
+    card.className = "placeholder-card placeholder-card--insights";
+    const reasons = state.placeholders["why-work-reasons"] || "";
+    const pain = state.placeholders["why-work-pain-points"] || "";
+    const fileLabel = state.insightsDoc?.fileName
+      ? `Last file: <strong>${escapeHtml(state.insightsDoc.fileName)}</strong>`
+      : "Accepted: PDF, DOCX, TXT or Markdown.";
+    card.innerHTML = `
+      <div class="placeholder-card__head">
+        <h3>${escapeHtml(sec.placeholderLabel || sec.title)} <span class="pill pill--html">Insights</span></h3>
+      </div>
+      <p class="hint placeholder-card__hint">Upload the client <strong>Prospect Intelligence Brief</strong> (PDF/DOCX/TXT). We map <strong>Key takeaways + Strategic fit</strong> into reasons, and <strong>operating setup + competitive context / objections</strong> into <strong>Your potential pain points</strong>. You can edit either box after upload.</p>
+      <div class="insights-upload">
+        <label class="insights-upload__btn btn btn--primary btn--small">
+          Upload insights document
+          <input type="file" accept=".pdf,.docx,.txt,.md,.markdown,.rtf,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,text/markdown" data-insights-file hidden>
+        </label>
+        <span class="insights-upload__meta hint" data-insights-meta>${fileLabel}</span>
+      </div>
+      <p class="hint insights-upload__status" data-insights-status hidden></p>
+      <label class="insights-field-label">Why we want to work with you</label>
+      <textarea data-key="why-work-reasons" class="is-html" rows="10" spellcheck="false" placeholder="Reasons HTML or plain text…">${escapeHtml(reasons)}</textarea>
+      <label class="insights-field-label">Your potential pain points</label>
+      <textarea data-key="why-work-pain-points" class="is-html" rows="8" spellcheck="false" placeholder="Pain points HTML or plain text…">${escapeHtml(pain)}</textarea>
+    `;
+
+    const statusEl = card.querySelector("[data-insights-status]");
+    const metaEl = card.querySelector("[data-insights-meta]");
+    const fileInput = card.querySelector("[data-insights-file]");
+
+    card.querySelectorAll("textarea[data-key]").forEach((ta) => {
+      ta.addEventListener("input", () => {
+        state.placeholders[ta.dataset.key] = ta.value;
+        state.placeholders["why-work-with-you"] = [
+          state.placeholders["why-work-reasons"] || "",
+          state.placeholders["why-work-pain-points"] || "",
+        ]
+          .filter(Boolean)
+          .join("\n\n");
+        state.status = "draft";
+        updatePreview();
+        autosaveLocal();
+      });
+    });
+
+    fileInput.addEventListener("change", async () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      statusEl.hidden = false;
+      statusEl.textContent = `Reading ${file.name}…`;
+      try {
+        const split = await applyInsightsDocument(file);
+        statusEl.textContent = split.note
+          ? `Extracted with note: ${split.note}`
+          : `Extracted reasons and pain points from ${file.name}.`;
+        if (metaEl) {
+          metaEl.innerHTML = `Last file: <strong>${escapeHtml(file.name)}</strong>`;
+        }
+        state.status = "draft";
+        renderPlaceholders();
+        updatePreview();
+        autosaveLocal();
+        toast("Insights document scraped into section");
+      } catch (err) {
+        console.warn(err);
+        statusEl.textContent = err?.message || "Could not read that document.";
+        toast(err?.message || "Insights upload failed");
+      } finally {
+        fileInput.value = "";
+      }
+    });
+
+    return card;
+  }
+
   function renderPlaceholders() {
+
     maybeRefreshExecutiveSummary();
 
     const editable = state.sectionOrder
@@ -1369,6 +2178,10 @@
     els.placeholders.innerHTML = "";
     editable.forEach((sec) => {
       const key = sec.placeholderKey;
+      if (key === "why-work-with-you") {
+        els.placeholders.appendChild(renderWhyWorkPlaceholderCard(sec));
+        return;
+      }
       const card = document.createElement("div");
       card.className = "placeholder-card";
       const value = state.placeholders[key] || "";
@@ -1537,10 +2350,11 @@
           committedAt: item.committedAt || item.updatedAt,
         };
       });
-    const items = mergePublishedLists(remote, [
+    let items = mergePublishedLists(remote, [
       ...getLocalPublished(),
       ...localCommitted,
     ]);
+    items = await pruneMissingPublished(items);
 
     if (!items.length) {
       host.innerHTML =
@@ -1568,6 +2382,7 @@
                 ? `<button type="button" class="btn btn--ghost btn--small" data-open-published="${escapeHtml(item.slug)}">Open draft</button>`
                 : ""
             }
+            <button type="button" class="btn btn--ghost btn--small" data-forget-published="${escapeHtml(item.slug)}" title="Remove from this browser list">Remove</button>
           </div>
         </article>`;
       })
@@ -1587,6 +2402,7 @@
       theme: { ...state.theme },
       palette: [...state.palette],
       logoDataUrl: state.logoDataUrl,
+      insightsDoc: { ...(state.insightsDoc || { fileName: "", extractedAt: "" }) },
       sectionOrder: [...state.sectionOrder],
       placeholders: { ...state.placeholders },
       execSummaryAutoText: state.execSummaryAutoText || "",
@@ -1648,11 +2464,51 @@
     const keys = [];
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
-      if (k && (k === CONFIG.indexKey || k.startsWith(CONFIG.storagePrefix))) keys.push(k);
+      if (
+        k &&
+        (k === CONFIG.indexKey ||
+          k === CONFIG.publishedKey ||
+          k.startsWith(CONFIG.storagePrefix))
+      ) {
+        keys.push(k);
+      }
     }
     keys.forEach((k) => localStorage.removeItem(k));
     refreshExistingSelect();
-    toast("Local drafts cleared");
+    renderPublishedList();
+    toast("Local drafts and published list cleared");
+  }
+
+  function forgetPublished(slug) {
+    if (!slug) return;
+    setLocalPublished(getLocalPublished().filter((item) => item.slug !== slug));
+    const nextIndex = getIndex().map((item) =>
+      item.slug === slug ? { ...item, status: "draft", committedAt: null } : item
+    );
+    setIndex(nextIndex);
+  }
+
+  async function pruneMissingPublished(items) {
+    const checks = await Promise.all(
+      (items || []).map(async (item) => {
+        if (!item?.url) return null;
+        try {
+          const res = await fetch(item.url, {
+            method: "HEAD",
+            cache: "no-store",
+            mode: "cors",
+          });
+          if (res.status === 404) return item.slug;
+        } catch {
+          /* keep item if we cannot verify (offline / blocked) */
+        }
+        return null;
+      })
+    );
+    const missing = new Set(checks.filter(Boolean));
+    if (!missing.size) return items || [];
+    setLocalPublished(getLocalPublished().filter((item) => !missing.has(item.slug)));
+    return (items || []).filter((item) => !missing.has(item.slug));
   }
 
   function deleteLocalDraft(slug) {
@@ -1814,6 +2670,11 @@
         : [state.theme.primary, state.theme.accent, state.theme.secondary]
     );
     state.logoDataUrl = d.logoDataUrl || "";
+    state.insightsDoc = {
+      fileName: "",
+      extractedAt: "",
+      ...(d.insightsDoc || {}),
+    };
     state.status = d.status || "draft";
     state.currentSlug = slug;
     state.acceptance = d.acceptance || state.acceptance;
@@ -1849,6 +2710,7 @@
     state.status = "draft";
     state.placeholders = {};
     state.execSummaryAutoText = "";
+    state.insightsDoc = { fileName: "", extractedAt: "" };
     state.commercialSchedule = emptyCommercialSchedule();
     state.sectionOrder = [
       "section-01",
@@ -2146,12 +3008,6 @@
       removeFromIdToEnd(root, "adapting-to-your-culture");
     }
 
-    if (id === "section-04") {
-      // Why Cape Town / Why South Africa becomes a main heading; SA / Cape Town stay subheads
-      const why = root.querySelector("#why-cape-town-sa");
-      if (why) promoteHeading(why, "h2");
-    }
-
     if (id === "section-08") {
       const autonomous = findHeadingByText(
         root,
@@ -2420,6 +3276,22 @@ if (ph["case-studies"] !== undefined) {
       );
     }
 
+    // Why we want to work with you — reasons + pain points from insights doc
+    const whyReasonsHtml = placeholderHtml(ph["why-work-reasons"] || "");
+    const whyPainHtml = placeholderHtml(ph["why-work-pain-points"] || "");
+    if (html.includes("<!--__WHY_WORK_REASONS__-->")) {
+      html = html.replace(
+        /<!--__WHY_WORK_REASONS__-->\s*<div class="placeholder-block"[\s\S]*?<\/div>/,
+        whyReasonsHtml
+      );
+    }
+    if (html.includes("<!--__WHY_WORK_PAIN__-->")) {
+      html = html.replace(
+        /<!--__WHY_WORK_PAIN__-->\s*<div class="placeholder-block"[\s\S]*?<\/div>/,
+        whyPainHtml
+      );
+    }
+
     const themeCss = `
   <style id="rfp-client-theme">
     :root {
@@ -2465,8 +3337,29 @@ if (ph["case-studies"] !== undefined) {
       margin: 0.35rem 0;
     }
     .placeholder-block.is-filled {
+      display: block;
       border-style: solid;
       background: #fff;
+      text-align: left;
+      align-items: stretch;
+      justify-content: flex-start;
+      min-height: 0;
+      padding: 0.85rem 1rem;
+    }
+    .placeholder-block.is-filled .prose,
+    .placeholder-block.is-filled .list-check {
+      width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+    #why-work-reasons .list-check,
+    #why-work-pain-points .list-check,
+    #section-21 .list-check {
+      text-align: left;
+      align-items: stretch;
+    }
+    #section-21 .list-check li {
+      text-align: left;
     }
     ${
       isPreview
@@ -3002,7 +3895,34 @@ if (ph["case-studies"] !== undefined) {
         renderPublishedList();
         toast("Published list refreshed");
       });
+      document.getElementById("btnClearPublished")?.addEventListener("click", () => {
+        if (
+          !confirm(
+            "Clear this browser’s published proposals list?\n\nThis does not delete GitHub files — only the remembered list in this browser."
+          )
+        ) {
+          return;
+        }
+        setLocalPublished([]);
+        const nextIndex = getIndex().map((item) =>
+          item.status === "committed"
+            ? { ...item, status: "draft", committedAt: null }
+            : item
+        );
+        setIndex(nextIndex);
+        renderPublishedList();
+        toast("Published list cleared in this browser");
+      });
       document.getElementById("publishedList")?.addEventListener("click", (e) => {
+        const forgetBtn = e.target.closest("[data-forget-published]");
+        if (forgetBtn) {
+          const slug = forgetBtn.getAttribute("data-forget-published");
+          if (!slug) return;
+          forgetPublished(slug);
+          renderPublishedList();
+          toast(`Removed from published list: ${slug}`);
+          return;
+        }
         const btn = e.target.closest("[data-open-published]");
         if (!btn) return;
         const slug = btn.getAttribute("data-open-published");

@@ -3653,6 +3653,34 @@ tr:nth-child(even) td {
   text-transform: uppercase;
 }
 
+.placeholder-block.is-filled {
+  display: block;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 0;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border-style: solid;
+}
+
+.placeholder-block.is-filled .prose,
+.placeholder-block.is-filled .list-check {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+#section-21 .list-check,
+#why-work-reasons .list-check,
+#why-work-pain-points .list-check {
+  text-align: left;
+}
+
+#section-21 .list-check li {
+  text-align: left;
+}
+
 
 /* —— This section covers (linked table) —— */
 .covers-box {
@@ -6285,5 +6313,324 @@ tr:nth-child(even) td {
 @media print {
   .jump-nav {
     display: none !important;
+  }
+}
+
+/* ===== South African Footprint map ===== */
+.sa-map-figure {
+  margin: 0.85rem 0 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.sa-map {
+  padding: 0.85rem 0.85rem 0.35rem;
+  background:
+    radial-gradient(circle at 18% 78%, rgba(97, 215, 121, 0.1), transparent 42%),
+    radial-gradient(circle at 78% 22%, rgba(213, 236, 103, 0.12), transparent 40%),
+    linear-gradient(180deg, #f7fafc 0%, #eef3f7 100%);
+}
+
+.sa-map__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+}
+
+.sa-map__sea {
+  fill: #e8eef4;
+}
+
+.sa-map__pin-anim {
+  opacity: 0;
+  transform: translateY(-28px);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.sa-map.is-visible .sa-map__pin-anim {
+  animation: sa-pin-drop 0.7s cubic-bezier(0.22, 1.2, 0.36, 1) forwards;
+  animation-delay: var(--pin-delay, 0s);
+}
+
+.sa-map__marker {
+  transform-origin: 0 24px;
+}
+
+.sa-map__teardrop {
+  fill: var(--brand-green);
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.sa-map__core {
+  fill: var(--brand-navy);
+}
+
+.sa-map__pulse {
+  fill: rgba(97, 215, 121, 0.28);
+  opacity: 0;
+  transform-origin: center;
+}
+
+.sa-map.is-visible .sa-map__pulse {
+  animation: sa-pin-pulse 1.8s ease-out var(--pin-delay, 0s) infinite;
+}
+
+.sa-map__label rect {
+  fill: #fff;
+  stroke: rgba(19, 32, 46, 0.12);
+  stroke-width: 1;
+}
+
+.sa-map__label-title {
+  fill: var(--brand-navy);
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sa-map__label-sub {
+  fill: rgba(19, 32, 46, 0.62);
+  font-family: var(--font-body, Inter), system-ui, sans-serif;
+  font-size: 8.5px;
+  font-weight: 500;
+}
+
+.sa-map__note {
+  margin: 0.35rem 1rem 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(19, 32, 46, 0.82);
+}
+
+.sa-map__note strong {
+  color: var(--brand-navy);
+}
+
+.sa-map-figure figcaption {
+  border-top: 1px solid rgba(218, 223, 227, 0.6);
+  background: rgba(239, 242, 246, 0.5);
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+}
+
+@keyframes sa-pin-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-34px) scale(0.7);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(3px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sa-pin-pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.35);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+@media (max-width: 720px) {
+  .sa-map {
+    padding: 0.55rem 0.45rem 0.2rem;
+  }
+
+  .sa-map__svg {
+    max-height: none;
+  }
+
+  .sa-map__label {
+    display: none;
+  }
+
+  .sa-map__note {
+    font-size: 0.82rem;
+    margin: 0.25rem 0.75rem 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-map__pin-anim {
+    opacity: 1;
+    transform: none;
+  }
+
+  .sa-map.is-visible .sa-map__pin-anim,
+  .sa-map.is-visible .sa-map__pulse {
+    animation: none;
+  }
+}
+
+@media print {
+  .sa-map__pin-anim {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===== Cape Town sights collage ===== */
+.cape-sights-figure {
+  margin: 0.85rem 0 1.35rem;
+  border: 1px solid rgba(19, 32, 46, 0.12);
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: #0f1720;
+}
+
+.cape-sights-figure figcaption {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(15, 23, 32, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.7rem 1rem;
+}
+
+.cape-sights-collage {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 6.75rem;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  background:
+    radial-gradient(circle at 12% 80%, rgba(97, 215, 121, 0.1), transparent 40%),
+    linear-gradient(160deg, #13202e 0%, #0f1720 55%, #101820 100%);
+}
+
+.cape-sights-collage__empty {
+  grid-column: 1 / -1;
+  min-height: 14rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  text-align: center;
+  padding: 2rem 1.25rem;
+  color: rgba(255, 255, 255, 0.78);
+  border: 1px dashed rgba(213, 236, 103, 0.35);
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cape-sights-collage__empty strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.cape-sights-collage__empty span {
+  max-width: 36rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.cape-sights-collage__empty code {
+  font-size: 0.8em;
+  color: var(--brand-lime, #d5ec67);
+}
+
+.cape-sights-collage__tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #13202e;
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.cape-sights-collage__tile--hero {
+  grid-column: span 6;
+  grid-row: span 3;
+}
+
+.cape-sights-collage__tile--wide {
+  grid-column: span 6;
+  grid-row: span 2;
+}
+
+.cape-sights-collage__tile--tall {
+  grid-column: span 3;
+  grid-row: span 3;
+}
+
+.cape-sights-collage__tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.cape-sights-collage__tile:hover img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 900px) {
+  .cape-sights-collage {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 6.5rem;
+  }
+
+  .cape-sights-collage__tile {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .cape-sights-collage__tile--hero,
+  .cape-sights-collage__tile--wide {
+    grid-column: span 6;
+  }
+
+  .cape-sights-collage__tile--tall {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .cape-sights-collage {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 8rem;
+  }
+
+  .cape-sights-collage__tile,
+  .cape-sights-collage__tile--hero,
+  .cape-sights-collage__tile--wide,
+  .cape-sights-collage__tile--tall {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .cape-sights-collage__tile--hero {
+    grid-row: span 2;
+  }
+}
+
+@media print {
+  .cape-sights-collage__tile:hover img {
+    transform: none;
   }
 }

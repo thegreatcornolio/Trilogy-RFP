@@ -2,7 +2,7 @@
 
 Drop a source file here. It is converted into a branded HTML deck and published on GitHub Pages.
 
-**Live index:** [proposal.trilogybpo.com/presentations/](https://proposal.trilogybpo.com/presentations/)
+The presentations gallery and each deck are password-gated and marked `noindex`. Do not share the live URL without the password.
 
 ## Drop logos (do not recreate them)
 
