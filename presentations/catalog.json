@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-26T09:00:00.000Z",
+  "updatedAt": "2026-08-29T20:30:00.000Z",
   "items": [
+    {
+      "slug": "odm",
+      "title": "Help Desk & Contact Centre Outsourcing",
+      "client": "One Digital Media",
+      "sourceType": "scrolling webpage",
+      "date": "2026-08-29",
+      "url": "https://proposal.trilogybpo.com/presentations/odm/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#111111"
+      }
+    },
     {
       "slug": "ventrica/proposal",
       "title": "Managed Office Space — Two-Year Agreement",
