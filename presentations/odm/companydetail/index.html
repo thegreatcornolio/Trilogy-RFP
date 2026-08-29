@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+    <style>html.proposal-locked,html.proposal-locked body{overflow:hidden}html.proposal-locked body>*:not(#proposal-gate){visibility:hidden!important}</style>
+  <script>
+    (function () {
+      var KEY = "trilogyOdmUnlock";
+      var HASH = "4e96823623497c0edd7740247ee986b98805b876c32000099b0e0e5574f3ca77";
+      try {
+        if (sessionStorage.getItem(KEY) !== HASH) document.documentElement.classList.add("proposal-locked");
+      } catch (e) {
+        document.documentElement.classList.add("proposal-locked");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../../_shared/gate.css?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>One Digital Media — Operational Information — Trilogy Digital</title>
+  <meta name="description" content="Operational information for the One Digital Media proposal — how Trilogy delivers">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=sa-sights-1">
+  <script>document.documentElement.classList.add("js-reveal");</script>
+  <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
+  <style>
+    .cover__brand { align-items: center !important; text-align: center !important; }
+.covers-box__head { display: block !important; width: 100% !important; box-sizing: border-box; }
+  </style>
+  <style id="rfp-client-theme">
+    :root {
+      --brand-green: #61d779 !important;
+      --brand-lime: #d5ec67 !important;
+    }
+    .cover__client-logo {
+      display: block;
+      max-height: 4.4rem;
+      width: auto;
+      max-width: min(20rem, 86vw);
+      object-fit: contain;
+      background: #fff;
+      border-radius: 0.45rem;
+      padding: 0.5rem 0.85rem;
+      margin: 0.45rem auto 0.15rem;
+    }
+    .meta-label, .cover__tagline { color: #2f9e4a !important; }
+    .badge {
+      border-color: color-mix(in srgb, #61d779 55%, transparent) !important;
+      color: #d5ec67 !important;
+      box-shadow: inset 3px 0 0 #2f9e4a;
+    }
+    .section-num, .covers-table td:first-child { color: #61d779 !important; }
+
+    /* Brands marquee — two equal groups so -50% loops cleanly; no lazy-load. */
+    .brand-marquee {
+      margin: 0.35rem 0 0;
+    }
+    .brand-marquee__viewport {
+      overflow: hidden;
+      min-height: 4.35rem;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .brand-marquee__track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      gap: 0 !important;
+      animation: odm-brand-marquee 70s linear infinite;
+      will-change: transform;
+    }
+    .brand-marquee__group {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      padding-inline-end: 1.75rem;
+      flex: 0 0 auto;
+    }
+    .brand-marquee__item {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.35rem;
+      padding: 0 0.35rem;
+    }
+    .brand-marquee__item img {
+      height: 40px;
+      width: auto;
+      max-width: 132px;
+      object-fit: contain;
+      filter: grayscale(1);
+      opacity: 0.9;
+    }
+    .brand-marquee__item--large img {
+      height: 56px;
+      max-width: 148px;
+    }
+    .brand-marquee:hover .brand-marquee__track {
+      animation-play-state: paused;
+    }
+    @keyframes odm-brand-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .brand-marquee__track {
+        animation: none;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+      }
+      .brand-marquee__group {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-inline-end: 0;
+      }
+      .brand-marquee__group[aria-hidden="true"] { display: none; }
+      .brand-marquee__viewport {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+    }
+
+    html.js-reveal .proposal-page {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    html.js-reveal .proposal-page.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    /* Tall sections (Company Overview) never reach the IO threshold on a phone,
+       so they stayed opacity:0 — a huge blank scroll. Always show on mobile. */
+    @media (max-width: 720px) {
+      html.js-reveal .proposal-page {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .reveal-item {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .awards-timeline {
+        --line-progress: 100%;
+      }
+    }
+
+    .page-nav {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      .cover {
+        padding: 2rem 1.15rem 2.25rem !important;
+      }
+      .cover__body {
+        margin-top: 2.4rem !important;
+      }
+      .cover h1 {
+        font-size: 1.85rem !important;
+      }
+      .proposal-page {
+        padding: 1.75rem 1.15rem !important;
+      }
+      .page-nav {
+        display: block;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: #13202e;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+      }
+      .page-nav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.7rem 1rem;
+      }
+      .page-nav__brand {
+        height: 28px;
+        width: auto;
+        max-width: 9.5rem;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 0.3rem;
+        padding: 0.2rem 0.4rem;
+      }
+      .page-nav button {
+        appearance: none;
+        border: 1px solid rgba(213,236,103,0.45);
+        background: transparent;
+        color: #d5ec67;
+        font: 700 0.68rem/1 Inter, sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.75rem;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .page-nav__links {
+        display: none;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 0 1rem 0.9rem;
+      }
+      .page-nav.is-open .page-nav__links { display: flex; }
+      .page-nav__links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.92rem;
+        padding: 0.35rem 0;
+      }
+      .proposal-shell,
+      .main {
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+      .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+      }
+    }
+
+    /* Desktop only: the shared template caps .main at 860px (a document column).
+       Phones are already narrower than that, so raising max-width cannot change
+       the mobile layout — and the 720px rules above are left untouched. */
+    @media (min-width: 900px) {
+      .main {
+        max-width: min(72.5rem, calc(100vw - 4rem));
+      }
+    }
+
+    /* Stack commercial tables as cards so they fit a phone width. */
+    @media (max-width: 860px) {
+      .seat-pricing .table-wrap,
+      .seat-example .table-wrap {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+      }
+      .seat-pricing table,
+      .seat-example table {
+        display: grid;
+        gap: 0.75rem;
+        width: 100%;
+        border: 0;
+      }
+      .seat-pricing thead,
+      .seat-example thead {
+        display: none;
+      }
+      .seat-pricing tbody,
+      .seat-example tbody,
+      .seat-example tfoot {
+        display: contents;
+      }
+      .seat-pricing tbody tr,
+      .seat-example tbody tr,
+      .seat-example tfoot tr {
+        display: grid;
+        border: 1px solid rgba(19, 32, 46, 0.14);
+        border-radius: 0.65rem;
+        overflow: hidden;
+        background: #fff;
+      }
+      .seat-pricing td,
+      .seat-example td {
+        display: grid;
+        grid-template-columns: 6.6rem minmax(0, 1fr);
+        align-items: start;
+        gap: 0.55rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.6rem 0.8rem;
+        border: 0;
+        border-top: 1px solid rgba(19, 32, 46, 0.08);
+        white-space: normal !important;
+        text-align: left !important;
+        background: #fff !important;
+        font-variant-numeric: tabular-nums;
+      }
+      .seat-pricing td::before,
+      .seat-example td::before {
+        content: attr(data-label);
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(19, 32, 46, 0.52);
+        line-height: 1.3;
+        padding-top: 0.12rem;
+      }
+      .seat-pricing tbody td:first-child,
+      .seat-example tbody td:first-child {
+        grid-template-columns: 1fr;
+        border-top: 0;
+        background: #13202e !important;
+        color: #fff !important;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+      .seat-pricing tbody td:first-child::before,
+      .seat-example tbody td:first-child::before {
+        display: none;
+      }
+      .seat-example tfoot td[colspan] {
+        display: none;
+      }
+      .seat-example tfoot td:last-child {
+        grid-template-columns: 1fr auto;
+        border-top: 0;
+        background: #13202e !important;
+        color: #d5ec67 !important;
+        font-weight: 700;
+      }
+      .seat-example tfoot td:last-child::before {
+        color: #fff;
+      }
+    }
+
+    .doc-note {
+      margin: 0;
+    }
+    .doc-note p {
+      margin: 0 0 0.9rem;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .doc-note p:last-child { margin-bottom: 0; }
+    .doc-note p.doc-note__name {
+      margin: 0.15rem 0 0;
+    }
+    .doc-note p.doc-note__role {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* One Team, 20 Years — two rails, companies above / UK clients below */
+    .ot-timeline {
+      margin: 0.85rem 0 1.35rem;
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      padding: 1.35rem 1.15rem 1.55rem;
+      overflow: visible;
+    }
+    .ot-timeline__head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: flex-start;
+      margin-bottom: 0.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .ot-timeline__title {
+      margin: 0 0 0.35rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #61d779;
+    }
+    .ot-timeline__sub {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.88);
+      max-width: 22rem;
+    }
+    .ot-timeline__exco {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem 1.4rem;
+      font-size: 0.92rem;
+    }
+    .ot-timeline__exco span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d5ec67;
+      margin-bottom: 0.12rem;
+    }
+    .ot-timeline__band {
+      display: grid;
+      grid-template-columns: 4.7rem minmax(0, 1fr);
+      grid-template-rows: auto 1.6rem auto;
+      column-gap: 0.55rem;
+      margin-top: 1.15rem;
+    }
+    .ot-timeline__band + .ot-timeline__band {
+      margin-top: 1.65rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .ot-axis {
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+    }
+    .ot-axis__co,
+    .ot-axis__uk {
+      margin: 0;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #61d779;
+      line-height: 1.2;
+    }
+    .ot-axis__co { grid-row: 1; align-self: end; padding-bottom: 0.45rem; }
+    .ot-axis__uk { grid-row: 3; align-self: start; padding-top: 0.5rem; }
+    .ot-timeline__track {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+      position: relative;
+    }
+    .ot-timeline__rail {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      gap: 0 0.85rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .ot-timeline__rail--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ot-timeline__rail--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ot-node {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .ot-node__company {
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-align: center;
+      padding-bottom: 0.4rem;
+      min-height: 7.2rem;
+    }
+    .ot-node__spine {
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .ot-node__spine::before {
+      content: "";
+      position: absolute;
+      left: calc(-50% - 0.43rem);
+      right: calc(-50% - 0.43rem);
+      height: 4px;
+      background: #61d779;
+      z-index: 0;
+    }
+    .ot-timeline__rail li:first-child .ot-node__spine::before { left: 50%; }
+    .ot-timeline__rail li:last-child .ot-node__spine::before { right: 50%; }
+    .ot-node__clients {
+      grid-row: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+      margin: 0;
+      padding: 0.55rem 0 0;
+      list-style: none;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.9);
+    }
+    .ot-node__note {
+      display: inline-block;
+      margin: 0 auto 0.4rem;
+      padding: 0.22rem 0.45rem;
+      border: 1px solid rgba(97, 215, 121, 0.55);
+      border-radius: 0.35rem;
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: rgba(255,255,255,0.78);
+      max-width: 100%;
+    }
+    .ot-node__co {
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+    .ot-node__co.is-now { color: #d5ec67; }
+    .ot-node__dates {
+      margin-top: 0.18rem;
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.62);
+    }
+    .ot-node__dot {
+      position: relative;
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #13202e;
+      box-shadow: 0 0 0 5px #61d779;
+    }
+    .seat-pricing h3,
+    .seat-example h3,
+    .seat-includes h3,
+    .seat-notes h3 {
+      margin: 1.15rem 0 0.55rem;
+    }
+    .seat-pricing .table-wrap table td:nth-child(4),
+    .seat-pricing .table-wrap table td:nth-child(5),
+    .seat-pricing .table-wrap table th:nth-child(4),
+    .seat-pricing .table-wrap table th:nth-child(5),
+    .seat-example .table-wrap table td:nth-child(n+2),
+    .seat-example .table-wrap table th:nth-child(n+2) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .seat-example__lede {
+      margin: 0 0 0.7rem;
+      color: rgba(19, 32, 46, 0.72);
+    }
+    .seat-example .table-wrap table tfoot td {
+      font-weight: 700;
+      border-top: 2px solid rgba(19, 32, 46, 0.18);
+    }
+    .seat-notes ol {
+      margin: 0.35rem 0 0;
+      padding-left: 1.2rem;
+    }
+    .seat-notes li { margin: 0.28rem 0; }
+    @media (max-width: 860px) {
+      .ot-timeline__head { flex-direction: column; }
+      .ot-timeline__exco { width: 100%; }
+      .ot-timeline__band,
+      .ot-axis,
+      .ot-timeline__track,
+      .ot-timeline__rail,
+      .ot-node {
+        display: block;
+      }
+      .ot-timeline__band {
+        grid-template-columns: 1fr;
+      }
+      .ot-axis { display: none; }
+      .ot-node__spine::before { display: none; }
+      .ot-timeline__rail--4,
+      .ot-timeline__rail--3 {
+        display: block;
+      }
+      .ot-node {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        grid-template-rows: auto auto;
+        gap: 0 0.75rem;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .ot-node__company {
+        grid-row: 1;
+        grid-column: 2;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 0;
+        min-height: 0;
+      }
+      .ot-node__spine {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+        align-items: flex-start;
+        padding-top: 0.45rem;
+      }
+      .ot-node__clients {
+        grid-row: 2;
+        grid-column: 2;
+        text-align: left;
+        padding: 0.4rem 0 0;
+        font-size: 1rem;
+      }
+      .ot-node__co { font-size: 1.12rem; }
+      .ot-node__note { margin: 0 0 0.35rem; }
+    }
+
+    .detail-cta {
+      margin: 0.25rem 0 0;
+      padding: 1.4rem 1.45rem 1.5rem;
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      border: 1px solid rgba(97, 215, 121, 0.45);
+    }
+    .detail-cta h3 {
+      margin: 0 0 0.55rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #d5ec67;
+    }
+    .detail-cta p {
+      margin: 0 0 1.1rem;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.9);
+    }
+    .detail-cta__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.72rem 1.2rem;
+      border-radius: 999px;
+      background: #61d779;
+      color: #13202e !important;
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none !important;
+      box-shadow: 0 8px 18px rgba(19, 32, 46, 0.18);
+    }
+    .detail-cta__btn:hover,
+    .detail-cta__btn:focus-visible {
+      background: #d5ec67;
+    }
+    table.doc-control th {
+      width: 11rem;
+      background: #13202e;
+      color: #fff;
+      font-weight: 600;
+    }
+  </style>
+  <style id="cta-dock">
+    body {
+      padding-bottom: 5.75rem;
+    }
+
+    .cta-dock {
+      position: fixed;
+      z-index: 60;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding: 0 0.85rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
+      pointer-events: none;
+    }
+
+    .cta-dock__inner {
+      pointer-events: auto;
+      display: flex;
+      align-items: stretch;
+      gap: 0.4rem;
+      width: min(52rem, 100%);
+      padding: 0.4rem;
+      border-radius: 999px;
+      background: rgba(19, 32, 46, 0.94);
+      border: 1px solid rgba(213, 236, 103, 0.32);
+      box-shadow:
+        0 16px 40px rgba(8, 14, 22, 0.38),
+        0 0 0 1px rgba(97, 215, 121, 0.08) inset;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      animation: cta-dock-in 0.7s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .cta-dock__btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 2.75rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font: 600 0.78rem/1.1 Inter, sans-serif;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      background: transparent;
+      border: 1px solid transparent;
+      opacity: 0;
+      animation: cta-btn-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .cta-dock__btn:nth-child(1) { animation-delay: 0.45s; }
+    .cta-dock__btn:nth-child(2) { animation-delay: 0.55s; }
+    .cta-dock__btn:nth-child(3) { animation-delay: 0.65s; }
+    .cta-dock__btn:nth-child(4) { animation-delay: 0.75s; }
+
+    .cta-dock__btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background: rgba(97, 215, 121, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      animation: cta-btn-glow 8s ease-in-out infinite;
+    }
+
+    .cta-dock__btn:nth-child(1)::after { animation-delay: 2.1s; }
+    .cta-dock__btn:nth-child(2)::after { animation-delay: 4.1s; }
+    .cta-dock__btn:nth-child(3)::after { animation-delay: 6.1s; }
+    .cta-dock__btn:nth-child(4)::after { animation-delay: 8.1s; }
+
+    .cta-dock__btn svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cta-dock__btn--whatsapp svg {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .cta-dock__short { display: none; }
+
+    .cta-dock__btn:hover,
+    .cta-dock__btn:focus-visible {
+      background: #61d779;
+      color: #13202e;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .cta-dock__btn:hover::after,
+    .cta-dock__btn:focus-visible::after {
+      opacity: 0;
+      animation: none;
+    }
+
+    .cta-dock__btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(213, 236, 103, 0.65);
+    }
+
+    @keyframes cta-dock-in {
+      from { opacity: 0; transform: translateY(1.8rem) scale(0.96); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes cta-btn-in {
+      from { opacity: 0; transform: translateY(0.55rem); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes cta-btn-glow {
+      0%, 18%, 100% { opacity: 0; }
+      8%, 12% { opacity: 1; }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding-bottom: 6.4rem;
+      }
+      .cta-dock__inner {
+        border-radius: 1.15rem;
+        gap: 0.28rem;
+        padding: 0.35rem;
+      }
+      .cta-dock__btn {
+        flex-direction: column;
+        gap: 0.28rem;
+        min-height: 3.55rem;
+        padding: 0.45rem 0.2rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: normal;
+        text-align: center;
+        border-radius: 0.85rem;
+      }
+      .cta-dock__full { display: none; }
+      .cta-dock__short { display: block; }
+      .cta-dock__btn svg {
+        width: 1.15rem;
+        height: 1.15rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-dock__inner,
+      .cta-dock__btn,
+      .cta-dock__btn::after {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .cta-dock__btn::after { opacity: 0; }
+    }
+
+    @media print {
+      .cta-dock { display: none !important; }
+      body { padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body id="top">
+<nav class="page-nav" aria-label="Page sections">
+  <div class="page-nav__inner">
+    <img class="page-nav__brand" src="../odm-logo.png" alt="one digital media">
+    <button type="button" data-nav-toggle aria-expanded="false" aria-controls="odm-nav-links">Menu</button>
+  </div>
+  <div class="page-nav__links" id="odm-nav-links">
+    <a href="../">Back to main</a>
+    <a href="#doc-contents">This section covers</a>
+    <a href="#section-03">Operational Leadership</a>
+    <a href="#section-04">Value Proposition</a>
+    <a href="#section-08">Technology &amp; AI</a>
+    <a href="#ai-sales-enablement">AI Sales Enablement</a>
+    <a href="#top">Back to top</a>
+  </div>
+</nav>
+<main class="main">
+  <div class="proposal-shell">
+    <section class="proposal-page" id="document-contents">
+      <div class="section-body">
+        <div class="covers-box" id="doc-contents">
+          <div class="covers-box__head">This section covers</div>
+          <div class="table-wrap covers-table-wrap">
+            <table class="covers-table">
+              <tbody>
+                <tr><td>1</td><td><a href="#section-03">Operational Leadership &amp; Delivery</a></td></tr>
+                <tr><td>2</td><td><a href="#section-04">Our Value Proposition &amp; Differentiators</a></td></tr>
+                <tr><td>3</td><td><a href="#section-08">Technology, AI &amp; Automation Capability</a></td></tr>
+                <tr><td>4</td><td><a href="#ai-sales-enablement">AI Sales Enablement</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="proposal-page" id="section-03">
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2 id="operational-leadership">Operational Leadership &amp; Delivery</h2>
+        </div>
+        <div class="section-body">
+          <div class="covers-box" id="ops-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#ops-leadership-model">Operational leadership model</a></td></tr>
+                  <tr><td>2</td><td><a href="#our-people-workforce">Our People &amp; Workforce</a></td></tr>
+                  <tr><td>3</td><td><a href="#the-trilogy-employee-lifecycle">The Trilogy Employee Lifecycle</a></td></tr>
+                  <tr><td>4</td><td><a href="#trilogy-s-recruitment-process">Trilogy&#x27;s Recruitment Process</a></td></tr>
+                  <tr><td>5</td><td><a href="#recruitment-lifecycle-application-to-onboarding">Recruitment Lifecycle — Application to Onboarding</a></td></tr>
+                  <tr><td>6</td><td><a href="#agent-profile">Agent Profile</a></td></tr>
+                  <tr><td>7</td><td><a href="#training-management-structure">Training Management Structure</a></td></tr>
+                  <tr><td>8</td><td><a href="#uk-cultural-immersion">UK Cultural Immersion</a></td></tr>
+                  <tr><td>9</td><td><a href="#tenure-attrition">Tenure &amp; Attrition</a></td></tr>
+                  <tr><td>10</td><td><a href="#attraction-retention">Attraction &amp; Retention</a></td></tr>
+                  <tr><td>11</td><td><a href="#trilogy-leadership-pathway">Trilogy Leadership Pathway</a></td></tr>
+                  <tr><td>12</td><td><a href="#employee-value-proposition-our-people-our-promise">Employee Value Proposition — Our People. Our Promise.</a></td></tr>
+                  <tr><td>13</td><td><a href="#employee-wellbeing-a-differentiator">Employee Wellbeing — A Differentiator</a></td></tr>
+                  <tr><td>14</td><td><a href="#soul-impact-offering">Soul Impact Offering</a></td></tr>
+                  <tr><td>15</td><td><a href="#our-culture-craft">Our Culture — CRAFT</a></td></tr>
+                  <tr><td>16</td><td><a href="#adapting-to-your-culture">Adapting to Your Culture</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="prose" id="ops-leadership-model">
+            <p>The operations will be managed from our Cape Town site. Trilogy will recruit, train and deploy 6 agents and 1 team leader as a dedicated ODM-branded team. Seat pricing includes a dedicated trainer/coach and a dedicated quality assessor to support product, process, system and replacement training.</p>
+            <p>Tanya Phillips, our COO, will be the executive lead, supported by Vancyon van Zyl, who is Director of Transitions and Operations, and Rudi Jansen, our Chief People Officer. The dedicated Operations Manager will own the day-to-day performance, and a Key Account Manager will be responsible for owning the strategic, commercial relationship and roadmap. Key Account management will be provided by a UK-based senior Account Manager. The CEO and COO participate directly in your monthly and quarterly business reviews and will participate in your strategy sessions as and when required.</p>
+            <p>Your team will have direct contact both for any discussions or escalations.</p>
+          </div>
+
+          <h3 id="our-people-workforce">Our People &amp; Workforce</h3>
+          <div class="tagline-block"><p>Our people are our differentiator.</p></div>
+<figure class="evp-promise-figure">
+  <div class="evp-promise" aria-label="Our People · Our Promise — Employee Value Proposition">
+    <div class="evp-promise__intro">
+      <h4 class="evp-promise__title"><span class="evp-promise__title-strong">Our People</span> <span class="evp-promise__title-soft">· Our Promise</span></h4>
+      <p class="evp-promise__belief">At Trilogy BPO, our Employee Value Proposition is built on one unshakeable belief: When people thrive, business follows.</p>
+      <div class="evp-promise__photos" aria-hidden="true">
+        <div class="evp-promise__photo evp-promise__photo--team">
+          <img src="../../../trilogydigital/assets/team/people-floor/team.png" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--nate">
+          <img src="../../../trilogydigital/assets/team/people-floor/nate.png" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--day">
+          <img src="../../../trilogydigital/assets/team/people-floor/day.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--viview">
+          <img src="../../../trilogydigital/assets/team/people-floor/viview.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--floor">
+          <img src="../../../trilogydigital/assets/team/people-floor/floor.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--recruit">
+          <img src="../../../trilogydigital/assets/team/people-floor/recruit.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--office">
+          <img src="../../../trilogydigital/assets/team/people-floor/office.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--training">
+          <img src="../../../trilogydigital/assets/team/people-floor/training.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="evp-promise__pillars">
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6.5-4.1-6.5-8.8A3.7 3.7 0 0 1 12 9.2a3.7 3.7 0 0 1 6.5 3c0 4.7-6.5 8.8-6.5 8.8Z"/><circle cx="12" cy="10.2" r="2.1"/></svg>
+        </div>
+        <h5>Wellbeing Support</h5>
+        <p>On-site counsellors and a culture that genuinely supports mental and physical health.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="7" r="2.2"/><circle cx="17.5" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8.2 8.6 10.4 15.2M15.8 8.6 13.6 15.2M8.7 7h6.6"/></svg>
+        </div>
+        <h5>Unapologetically Inclusive</h5>
+        <p>DE&amp;I isn’t a policy — it’s who we are. Every voice belongs here.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.2v9.6M14.4 9.1c-.5-.8-1.3-1.2-2.4-1.2-1.6 0-2.7 1-2.7 2.3s1.1 2.2 2.8 2.6c1.6.4 2.7 1.1 2.7 2.5s-1.2 2.4-2.9 2.4c-1.2 0-2.1-.5-2.6-1.3"/></svg>
+        </div>
+        <h5>Competitive Salary</h5>
+        <p>Market-aligned compensation that recognises and rewards the value you bring.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.4s-6.8-4.2-6.8-9.1A3.9 3.9 0 0 1 12 8.1a3.9 3.9 0 0 1 6.8 3.2c0 4.9-6.8 9.1-6.8 9.1Z"/></svg>
+        </div>
+        <h5>Meaningful Benefits</h5>
+        <p>Relevant, real-world benefits designed around the lives of our people.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16.5 9.2 11l3.3 3.2L20 7.5"/><path d="M14.5 7.5H20V13"/></svg>
+        </div>
+        <h5>Leadership Development</h5>
+        <p>We invest in growing leaders at every level, from first-time managers to executives.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3.8 2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 9l5-.7L12 3.8Z"/></svg>
+        </div>
+        <h5>Reward &amp; Recognition</h5>
+        <p>Celebrating contributions — big and small — because people deserve to feel seen.</p>
+      </article>
+    </div>
+  </div>
+  <figcaption>Our People · Our Promise — when people thrive, business follows.</figcaption>
+</figure>
+<div class="prose"><p>At Trilogy, how we attract, source, onboard and retain talent is our secret sauce. Our people processes are built to support the full employee lifecycle — from candidate to top performer — with our culture and our approach to Diversity, Equity & Inclusion embraced at every stage rather than bolted on as a standalone policy.</p></div><h4 id="the-trilogy-employee-lifecycle">The Trilogy Employee Lifecycle</h4><div class="lifecycle"><div class="life-step"><div class="life-step__num">1</div><h4>Attract</h4><p>Campaign-driven, mobile-first sourcing with unique links and QR codes per line of business.</p></div><div class="life-step"><div class="life-step__num">2</div><h4>Recruit</h4><p>AI-enhanced behavioural and CEFR language assessment; automated, bias-reduced shortlisting.</p></div><div class="life-step"><div class="life-step__num">3</div><h4>Onboard</h4><p>Zero re-keying handover into a single digital employee file; pre-boarding to 90-day journey.</p></div><div class="life-step"><div class="life-step__num">4</div><h4>Train</h4><p>Role-specific LMS pathways with randomised assessments and operational-readiness sign-off.</p></div><div class="life-step"><div class="life-step__num">5</div><h4>Develop</h4><p>Continuous, data-led development and a clear path from advisor to team leader and beyond.</p></div><div class="life-step"><div class="life-step__num">6</div><h4>Perform</h4><p>Coaching cadence and QA-driven refreshers keep capability ahead of account demands.</p></div><div class="life-step"><div class="life-step__num">7</div><h4>Improve</h4><p>Quality insights, assessment results and performance trends shape what we train, and when.</p></div><div class="life-step"><div class="life-step__num">8</div><h4>Offboard</h4><p>Structured exit process, insight loop and alumni/rehire approach that feeds retention.</p></div></div><h4 id="trilogy-s-recruitment-process">Trilogy's Recruitment Process</h4>
+<div class="process-flow process-flow--horizontal" aria-label="Trilogy recruitment process">
+  <div class="process-flow__step">
+    <div class="process-flow__num">1</div>
+    <div class="process-flow__body">
+      <h5>Plan &amp; Source</h5>
+      <p>Skills needs analysis &amp; job profile; customized recruitment plan; talent sourcing via partners, advertising, referrals, WOLC and campaigns.</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">→</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">2</div>
+    <div class="process-flow__body">
+      <h5>Assess &amp; Select</h5>
+      <p>Assessment &amp; selection; screening; competency-based interviews; outcomes-based assessments.</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">→</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">3</div>
+    <div class="process-flow__body">
+      <h5>Verify &amp; Hire</h5>
+      <p>Reference &amp; integrity checks; shortlist &amp; compliance report; client acceptance interviews; hiring.</p>
+    </div>
+  </div>
+</div>
+<h4 id="recruitment-lifecycle-application-to-onboarding">Recruitment Lifecycle — Application to Onboarding</h4>
+<div class="recruit-split">
+  <figure class="recruit-split__media">
+    <img src="../../../trilogydigital/assets/v4-images/v4-15.jpg" alt="From application to onboarding — a single automated recruitment pipeline." loading="lazy">
+  </figure>
+  <div class="recruit-split__copy prose">
+    <p>Our recruitment engine runs as a single automated pipeline — from first application to Day 1 handover — with POPIA-compliant consent, automated assessment and zero re-keying into the digital employee file. Every step is communicated to candidates via email and WhatsApp in parallel.</p>
+  </div>
+</div>
+<div class="process-flow process-flow--vertical" aria-label="Recruitment lifecycle from application to onboarding">
+  <div class="process-flow__step">
+    <div class="process-flow__num">1</div>
+    <div class="process-flow__body">
+      <h5>Job Posting &amp; Application</h5>
+      <p>Campaign-specific link/QR code; mobile application, ID/CV/selfie upload, POPIA consent captured</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">2</div>
+    <div class="process-flow__body">
+      <h5>Candidate Profile &amp; Compliance Data</h5>
+      <p>Personal details and Employment Equity data captured and auto-classified for reporting</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">3</div>
+    <div class="process-flow__body">
+      <h5>Automated Assessment &amp; Screening</h5>
+      <p>Role-specific, objective online assessment triggered automatically; results scored and shortlisted against role thresholds</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">4</div>
+    <div class="process-flow__body">
+      <h5>Shortlist Review &amp; Interview</h5>
+      <p>Recruiter reviews ranked shortlist; candidate self-books a face-to-face interview; joint HR + Operations decision</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">5</div>
+    <div class="process-flow__body">
+      <h5>Pre-Employment Checks &amp; Documentation</h5>
+      <p>Background verification triggered on verbal offer; banking, tax and next-of-kin details completed via secure portal</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">6</div>
+    <div class="process-flow__body">
+      <h5>Digital Employee File &amp; Contract</h5>
+      <p>All data consolidated into one digital record; contract and offer letter auto-populated and e-signed</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">7</div>
+    <div class="process-flow__body">
+      <h5>Onboarding Handover</h5>
+      <p>Approved employee file pushed automatically to onboarding — zero re-keying, candidate welcomed with start date confirmed</p>
+    </div>
+  </div>
+  <div class="process-flow__footer">
+    <strong>Every step communicated via Email + WhatsApp, in parallel.</strong>
+    <span>Built for compliance with POPIA · BCEA · Employment Equity Act — full audit trail throughout.</span>
+  </div>
+</div>
+<h4 id="agent-profile">Agent Profile</h4><div class="prose"><p>The typical Trilogy Digital UK-facing agent is an English-first South African professional aged 22–35 — digitally native, highly empathetic, and culturally attuned to UK consumer expectations before a single day of induction. Educational backgrounds span NSC (Matric) through to tertiary degrees, typically with 1–3 years of prior customer-facing experience.</p></div><h4 id="training-management-structure">Training Management Structure</h4><div class="prose"><p>Training runs as a continuous, SAQA/NQF-aligned cycle — strategic planning, coaching and gap analysis, curriculum development, workshop/OJT/coaching and verification — underpinned by quality and performance management.</p></div>
+<figure class="train-cycle-figure">
+  <div class="train-cycle" aria-label="Training management continuous cycle">
+    <svg class="train-cycle__svg" viewBox="0 0 920 400" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <filter id="trainSoft" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#13202e" flood-opacity="0.22"/>
+        </filter>
+        <filter id="trainOrbGlow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <path id="trainLoopPath" class="train-cycle__track" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#61d779" stroke-width="10" stroke-linejoin="round"/>
+      <path class="train-cycle__flow" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#d5ec67" stroke-width="4" stroke-linecap="round" stroke-dasharray="18 26"/>
+      <g class="train-cycle__orb" filter="url(#trainOrbGlow)">
+        <circle r="13" fill="#d5ec67" opacity="0.95"/>
+        <circle r="6" fill="#fff" opacity="0.92"/>
+        <animateMotion dur="8s" repeatCount="indefinite" calcMode="linear">
+          <mpath href="#trainLoopPath" xlink:href="#trainLoopPath"/>
+        </animateMotion>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="30" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="64" cy="81" r="18" fill="#d5ec67"/>
+        <text x="64" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">1</text>
+        <text x="168" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Strategic</text>
+        <text x="168" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Planning</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="330" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="364" cy="81" r="18" fill="#d5ec67"/>
+        <text x="364" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">2</text>
+        <text x="468" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Coaching &amp; Gap</text>
+        <text x="468" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Analysis</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="630" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="664" cy="81" r="18" fill="#d5ec67"/>
+        <text x="664" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">3</text>
+        <text x="768" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Curriculum</text>
+        <text x="768" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Development</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="630" y="274" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="664" cy="319" r="18" fill="#d5ec67"/>
+        <text x="664" y="325" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">4</text>
+        <text x="768" y="314" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Poppins, Inter, sans-serif">Workshop / OJT</text>
+        <text x="768" y="334" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Coaching</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="30" y="274" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="64" cy="319" r="18" fill="#d5ec67"/>
+        <text x="64" y="325" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">5</text>
+        <text x="168" y="324" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Verification</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="318" y="158" width="284" height="84" rx="16" fill="#13202e" stroke="#d5ec67" stroke-width="3"/>
+        <text x="460" y="192" text-anchor="middle" fill="#d5ec67" font-size="16" font-weight="700" letter-spacing="0.12em" font-family="Poppins, Inter, sans-serif">TRAINING CYCLE</text>
+        <text x="460" y="216" text-anchor="middle" fill="#fff" font-size="12" font-weight="500" font-family="Inter, sans-serif">SAQA / NQF aligned · continuous improvement</text>
+      </g>
+    </svg>
+    <ol class="train-cycle__blocks">
+      <li class="train-cycle__block"><span class="train-cycle__num">1</span><span class="train-cycle__label">Strategic Planning</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">2</span><span class="train-cycle__label">Coaching &amp; Gap Analysis</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">3</span><span class="train-cycle__label">Curriculum Development</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">4</span><span class="train-cycle__label">Workshop / OJT / Coaching</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">5</span><span class="train-cycle__label">Verification</span></li>
+    </ol>
+    <p class="train-cycle__loopback" aria-hidden="true">Loops back to Strategic Planning</p>
+  </div>
+  <p class="train-cycle__note"><strong>A continuous cycle</strong> — verification insights feed straight back into strategic planning, so every cohort sharpens the next.</p>
+  <figcaption>Figure — Training Management Structure: a continuous five-stage training cycle</figcaption>
+</figure>
+<h4 id="uk-cultural-immersion">UK Cultural Immersion</h4><div class="prose"><p>Every agent deployed on a UK mandate completes a UK Cultural Immersion programme before going live, covering UK consumer psychology, regional geography and idioms, brand-specific tone of voice, the UK seasonal/holiday calendar, and the regulatory environment relevant to the programme (e.g. Ofwat, Ofgem, FCA, Ofcom, Consumer Rights Act).</p></div><h4 id="tenure-attrition">Tenure &amp; Attrition</h4><div class="table-wrap"><table><thead><tr><th>Role</th><th>Typical tenure</th></tr></thead><tbody><tr><td>Customer Service Agent</td><td>18–30 months — above sector average</td></tr><tr><td>Senior / Specialist Agent</td><td>24–36 months, with funded external qualifications</td></tr><tr><td>Team Leader</td><td>3+ years; &gt;60% promoted internally</td></tr><tr><td>Quality Analyst</td><td>2–4 years, typically developed internally</td></tr></tbody></table></div><div class="prose"><p>Industry average monthly attrition sits between 9–12%; our team has maintained 3–4% monthly attrition. Full attrition data by site and role is provided under NDA at RFP stage.</p></div><h4 id="attraction-retention">Attraction &amp; Retention</h4><ul class="list-check"><li>Leadership Development — internal NQF5-aligned qualifications, unique to the market.</li><li>Blended recruitment — Maharishi Institute graduate pipeline, specialist agencies using our Corporate Behaviours psychometric framework, referrals, and CapeBPO government hiring partnerships.</li><li>Compensation — entry-level pay 15–20% above BPO sector minimums, medical aid contributions, quarterly bonuses, and an Employee Assistance Programme (EAP).</li></ul><h4 id="trilogy-leadership-pathway">Trilogy Leadership Pathway</h4><div class="prose"><p>We grow leaders at every level through a staged programme matched to leadership level — from Emerging Leaders (the inner game of leadership), to Leading Others (the bridge to leadership), to Leading of Leaders (strategic leadership at scale).</p></div><div class="callout">A staged leadership programme, matched to each leadership level.</div><h4 id="employee-value-proposition-our-people-our-promise">Employee Value Proposition — Our People. Our Promise.</h4><div class="prose"><p>Our EVP rests on a simple idea: look after our people, and strong performance follows. It runs through six pillars across the employee lifecycle.</p></div><div class="pillars pillars--3"><div class="pillar"><h4>Competitive Salary</h4><p>Market-benchmarked pay per role and line of business, plus monthly performance bonuses.</p></div><div class="pillar"><h4>Meaningful Benefits</h4><p>Medical insurance, transport and meal allowances, funeral/life cover and staff discounts.</p></div><div class="pillar"><h4>Wellbeing Support</h4><p>On-site counsellors and a culture that genuinely supports mental and physical health.</p></div><div class="pillar"><h4>Unapologetically Inclusive</h4><p>DE&amp;I woven through how we lead, our policies and our culture — every voice belongs here.</p></div><div class="pillar"><h4>Leadership Development</h4><p>We grow leaders at every level via Trilogy’s structured leadership pathway.</p></div><div class="pillar"><h4>Reward &amp; Recognition</h4><p>Monthly recognition, spot bonuses, fun days, lunches and team building.</p></div></div><h4 id="employee-wellbeing-a-differentiator">Employee Wellbeing — A Differentiator</h4><figure class="figure">
+  <div class="figure__media"><img src="../../../trilogydigital/assets/wellbeing.jpg" alt="Confidential, onsite, trauma-informed support — embedded from Day 1 via Soul Impact." loading="lazy"></div>
+  <figcaption>Confidential, onsite, trauma-informed support — embedded from Day 1 via Soul Impact.</figcaption>
+</figure><div class="prose"><p>Wellbeing is not an add-on — it is embedded into how we run operations. We partner with Soul Impact, a specialist provider of onsite, trauma-informed mental health support built for the contact centre industry, giving every employee direct, confidential access to professional counselling as part of their working life.</p><p>LifeLine-accredited trauma counsellors deliver crisis counselling, impact counselling and coaching in confidential 50-minute sessions — onsite or virtual, booked via a simple QR code. A wellbeing session is embedded into induction, so every new starter knows the support exists from Day 1.</p><p>Data-led, trauma-informed wellbeing support for South African companies — onsite Impact Counselling &amp; Leadership Resilience Training that turns real-time wellbeing data into preventative care.</p></div>
+<h4 id="soul-impact-offering">Soul Impact Offering</h4>
+<span class="badge badge--navy">Tailored to the CX industry</span>
+<div class="prose"><p>Trauma-informed support for maximum impact in a limited timeframe — onsite, embedded and part of your company culture.</p></div>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Offering</th><th>What it delivers</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Crisis Counselling</td><td>Immediate, confidential trauma-informed support when people need it most.</td></tr>
+      <tr><td>Impact Counselling</td><td>Focused counselling for maximum impact in a limited timeframe — onsite or virtual, booked via QR.</td></tr>
+      <tr><td>Coaching</td><td>Practical coaching that builds resilience and performance alongside counselling support.</td></tr>
+      <tr><td>Leadership Resilience Training</td><td>Equips leaders to read wellbeing signals early and turn real-time data into preventative care.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Step</th><th>How it works</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Onsite Wellbeing Team &amp; QR booking triages employees</td></tr>
+      <tr><td>2</td><td>Counsellors deliver Impact Counselling onsite or virtually</td></tr>
+      <tr><td>3</td><td>Monthly feedback data reveals trends</td></tr>
+      <tr><td>4</td><td>Specialist referral network &amp; induction embedding</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="prose"><p>#VibeCheck — every week we run an anonymous employee-satisfaction pulse. Each person rates their week across five mood measures, from “Tough” to “Unreal,” and can add their own words. It gives us an honest, ongoing read on morale — and a steady signal of what we are getting right and what we can do better.</p></div><div class="two-col"><figure class="figure">
+  <div class="figure__media"><img src="../../../trilogydigital/assets/v4-images/v4-22.png" alt="#VibeCheck — weekly mood trend and score breakdown." loading="lazy"></div>
+  <figcaption>#VibeCheck — weekly mood trend and score breakdown.</figcaption>
+</figure><figure class="figure">
+  <div class="figure__media"><img src="../../../trilogydigital/assets/v4-images/v4-23.png" alt="#VibeCheck — scores by campaign, with weekly highs and lows." loading="lazy"></div>
+  <figcaption>#VibeCheck — scores by campaign, with weekly highs and lows.</figcaption>
+</figure></div><h4 id="our-culture-craft">Our Culture — CRAFT</h4><div class="prose"><p>Culture is the difference between a documented procedure and a team that actually lives it. At Trilogy, every person matters and every voice counts — we lead with respect, care and empathy. Everything we stand for is captured in a single word: CRAFT.</p></div><div class="craft"><div class="craft-item"><div class="craft-item__letter">C</div><h4>Customer Obsession</h4><p>Our clients come first. We anticipate their needs and exceed expectations, every time.</p></div><div class="craft-item"><div class="craft-item__letter">R</div><h4>Relentless Excellence</h4><p>Good enough is never the goal. We deliver the best, every time.</p></div><div class="craft-item"><div class="craft-item__letter">A</div><h4>And Collectiveness</h4><p>We win together. There is no “my success” — only ours.</p></div><div class="craft-item"><div class="craft-item__letter">F</div><h4>Fun</h4><p>We take the work seriously. Not ourselves.</p></div><div class="craft-item"><div class="craft-item__letter">T</div><h4>Trust</h4><p>We do what we say. We show up. Trust is earned here.</p></div></div><h4 id="adapting-to-your-culture">Adapting to Your Culture</h4><div class="pillars pillars--2"><div class="pillar"><h4>Brand Induction</h4><p>Your brand values, tone and ways of working embedded into induction from Day 1.</p></div><div class="pillar"><h4>Culture Calibration</h4><p>Calibration sessions with your leadership to align on culture, standards and expectations.</p></div><div class="pillar"><h4>Recognition &amp; Site Branding</h4><p>Co-branded recognition programmes and your branding visible across the site.</p></div><div class="pillar"><h4>Brand Ambassadors</h4><p>Nominated champions who carry and reinforce your brand across every team.</p></div></div>
+        </div>
+      </section>
+
+
+<section class="proposal-page" id="section-04">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Our Value Proposition &amp; Differentiators</h2>
+      </div>
+      <div class="section-body">
+<div class="covers-box" id="value-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#value-overview">Value proposition overview</a></td></tr>
+                  <tr><td>2</td><td><a href="#secret-sauce">Our Secret Sauce</a></td></tr>
+                  <tr><td>3</td><td><a href="#our-achievements">Our Achievements</a></td></tr>
+                  <tr><td>4</td><td><a href="#local-competitors">How We Differ From Local Competitors</a></td></tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+
+          <figure class="figure figure--video figure--tagline-overlay">
+            <div class="figure__media">
+              <video src="../../../trilogydigital/assets/video/hero.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Trilogy customer experience in action"></video>
+              <div class="video-tagline">
+                <p>Human Empathy, with AI Efficiency.</p>
+              </div>
+            </div>
+          </figure>
+
+          <div class="prose" id="value-overview">
+            <p>We are a premium (boutique) customer service, back-office and tech-support BPO partner — enterprise-ready and AI-enabled. We are not a commodity offshore provider. We are a high-quality, owner-led, high-touch delivery partner that competes on quality first and cost second, with the scale, technology depth and client portfolio to prove it.</p>
+            <p>In practical terms: 40–60% below UK onshore delivery costs; higher CSAT than comparable offshore markets; an active AI toolset deployed in production (not in planning); and a leadership team with 25+ years of UK-market experience who are personally accountable for every programme.</p>
+          </div>
+
+          <h3 id="secret-sauce">Our Secret Sauce</h3>
+          <div class="sauce-table-wrap">
+            <table class="sauce-table">
+              <thead>
+                <tr><th>Differentiator</th><th>What it means for you</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Proprietary AI built in-house</strong></td>
+                  <td>We do not white-label third-party AI; our platform represents 8 years of in-house AI/ML development.</td>
+                </tr>
+                <tr>
+                  <td><strong>“Test Kitchen” model</strong></td>
+                  <td>A dedicated innovation hub that designs, tests and deploys new AI and digital capabilities in a sandbox without disrupting BAU operations.</td>
+                </tr>
+                <tr>
+                  <td><strong>Outcome-aligned commercial models</strong></td>
+                  <td>Including our Value Creation Model (VCM), which ties commercial success to client outcomes, retention and CX uplift.</td>
+                </tr>
+                <tr>
+                  <td><strong>Agnostic technology approach</strong></td>
+                  <td>We are equally comfortable operating within client-owned platforms or deploying our own; we do not force platform migration.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="our-achievements">Our Achievements</h3>
+          <div class="prose">
+            <p>Two decades of consistent excellence in the BPO industry has positioned Trilogy as a trusted partner for global brands. Our track record speaks to our ability to deliver results at scale while maintaining the highest standards of quality and innovation.</p>
+          </div>
+          <div class="stats stats--4 stats--achieve">
+            <div class="stat">
+              <div class="stat__value">45K</div>
+              <div class="stat__label">Jobs Created</div>
+              <p class="stat__note">Our team has created 45,000 jobs over the past 20 years, making a significant positive impact on South Africa’s economy and communities.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">20</div>
+              <div class="stat__label">Years of Experience</div>
+              <p class="stat__note">Two decades of proven track record in providing exceptional value to our customers across multiple industries and geographies.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">8</div>
+              <div class="stat__label">Years in AI/ML</div>
+              <p class="stat__note">Eight years of experience developing AI and Machine Learning platforms, analytics solutions, and digital automation tools.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">36</div>
+              <div class="stat__label">Blue Chip Centres Built</div>
+              <p class="stat__note">Successfully built and launched 36 contact centres for blue chip companies in South Africa over 20 years.</p>
+            </div>
+          </div>
+
+          <h3 id="local-competitors">How We Differ From Local Competitors</h3>
+          <div class="prose">
+            <p>Our largest local competitors include Merchants, Concentrix, Teleperformance SA and Sigma Connected. Trilogy Digital is differentiated on four structural grounds:</p>
+          </div>
+          <ul class="list-check">
+            <li><strong>Dedicated UK-client focus</strong> versus their multi-geography generalism.</li>
+            <li><strong>Owner-led model</strong> versus large corporate cultures and red tape — owners and CEO/COO participate directly in MBRs/QBRs.</li>
+            <li><strong>Proprietary in-house AI suite</strong> versus third-party vendor dependency.</li>
+            <li><strong>Outcome-aligned, entrepreneurial commercial models</strong> versus traditional seat-based billing.</li>
+          </ul>
+      </div>
+    </section>
+
+<section class="proposal-page" id="section-08">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Technology, AI &amp; Automation Capability</h2>
+      </div>
+      <div class="section-body">
+<div class="covers-box" id="tech-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#tech-introduction">Introduction</a></td></tr>
+                  <tr><td>2</td><td><a href="#technology-stack">Technology Stack</a></td></tr>
+                  <tr><td>3</td><td><a href="#ai-enabled-platforms">AI-Enabled Platforms</a></td></tr>
+                  <tr><td>4</td><td><a href="#orchestration-layer">Orchestration Layer</a></td></tr>
+                  <tr><td>5</td><td><a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+<h3 id="tech-introduction">Introduction</h3>
+<div class="prose"><p>Trilogy's mission statement is to provide Human-Led, AI-enhanced solutions. This means that while we have spent over 8 years developing AI and digital automation solutions, our primary focus remains the people in our operation and how we assist them to deliver better service to their customers. Our AI solutions are geared specifically to enhancing the agent's ability to support their customers, and our systems provide support for Voice, Email, WhatsApp and almost all social media and RCS platforms.</p></div>
+
+<h3 id="technology-stack">Technology Stack</h3>
+<figure class="figure figure--carom">
+  <div class="figure__media figure__media--contain"><img src="../../../trilogydigital/assets/technology-stack.png?v=1" alt="Technology stack — Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine, with Genii analytics and development partners." loading="lazy"></div>
+  <figcaption>Figure — Technology Stack: Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine</figcaption>
+</figure>
+
+<div class="prose"><p>Trilogy has two approaches to technology. <strong>Approach 1</strong> — deploy our fully owned and managed platform, providing the end-to-end technology solution for our customers on our QContact platform. <strong>Approach 2</strong> — operate as a technology-agnostic, client-based partner, deploying and managing within the client's own stack.</p><p>QContact is a cloud-based omnichannel customer communications platform that unifies calls, emails, WhatsApp, live chat and social media into a single interface. Founded in 2017, it provides built-in CRM functionality, case management and communication AI tools, omnichannel inbox, Communication AI (call transcriptions, conversation summaries and sentiment analysis), native WhatsApp integration and workflow automation.</p></div>
+
+<h3 id="ai-enabled-platforms">AI-Enabled Platforms</h3>
+<div class="ai-platforms" aria-label="Trilogy AI platform suite">
+  <article class="ai-platform ai-platform--voice">
+    <h4>guruvoice.ai</h4>
+    <p>Fully automated AI voice platform for inbound service and proactive outbound (services, sales, collections).</p>
+  </article>
+  <article class="ai-platform ai-platform--assist">
+    <h4>Agent assist</h4>
+    <p>Live AI-generated response suggestions, knowledge-base access and process guidance on-screen during every contact.</p>
+  </article>
+  <article class="ai-platform ai-platform--acwa">
+    <h4>acwa.ai</h4>
+    <p>After-Call Work Assistant — automates callbacks, CRM updates, document dispatch and logistics notifications.</p>
+  </article>
+  <article class="ai-platform ai-platform--collect">
+    <h4>collect.ai</h4>
+    <p>Digital &amp; autonomous collections — AI-driven segmentation, predictive analytics and automated recovery communication.</p>
+  </article>
+  <article class="ai-platform ai-platform--anychat">
+    <h4>anychat.ai</h4>
+    <p>Real-time language translation enabling any agent to service any customer regardless of language.</p>
+  </article>
+</div>
+
+<h3 id="orchestration-layer">Orchestration Layer</h3>
+<div class="prose"><p>People, technology, process and AI/ML analytics work as one continuous system — orchestrated for voice, digital and automation so CX outcomes compound rather than fragment.</p></div>
+<div class="orch" aria-label="Orchestration layer">
+  <div class="orch__quad orch__quad--people">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+    <h4>People</h4>
+    <p>Digital agents, management and shared services as an outsourced operation.</p>
+  </div>
+  <div class="orch__quad orch__quad--tech">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+    <h4>Technology</h4>
+    <p>Leverage the technology stack to provide omnichannel customer engagement.</p>
+  </div>
+  <div class="orch__quad orch__quad--process">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="16" width="6" height="4" rx="1"/><rect x="16" y="16" width="6" height="4" rx="1"/><path d="M12 6v4M12 10H5v6M12 10h7v6"/></svg></span>
+    <h4>Process</h4>
+    <p>WhatsApp customer engagement, messaging and digital campaigns.</p>
+  </div>
+  <div class="orch__quad orch__quad--aiml">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>
+    <h4>AI / ML Analytics</h4>
+    <p>Customer interaction, behavioural science and next-best-action recommender platform.</p>
+  </div>
+  <div class="orch__hub">
+    <strong>Orchestration</strong>
+    <span>Voice, digital &amp; automation orchestration for effective CX</span>
+  </div>
+</div>
+
+<h3 id="potential-ai-savings">Potential AI Savings</h3>
+<div class="prose"><p>Independent industry benchmarks reinforce the impact of a human-led, AI-enabled model. The following are representative outcomes achievable across an asynchronous customer operation like yours.</p></div>
+<div class="ai-savings" data-animate="ai-savings" aria-label="Potential AI savings">
+  <div class="ai-savings__dials">
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="27"><span class="dial__value">0%</span></div>
+      <div><h4>AHT Reduction</h4><p>Organisations using AI report up to a 27% reduction in Average Handle Time.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="20"><span class="dial__value">0%</span></div>
+      <div><h4>Revenue Optimisation</h4><p>AI-led outreach outperforms traditional methods by 20% in sales and collections.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="35"><span class="dial__value">0%</span></div>
+      <div><h4>Customer Satisfaction</h4><p>Businesses using AI-driven sentiment analysis report a 35% increase in CSAT.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="90"><span class="dial__value">0%</span></div>
+      <div><h4>At-Risk Identification</h4><p>AI identifies at-risk customers with 90% accuracy for proactive intervention.</p></div>
+    </div>
+  </div>
+  <div class="ai-savings__split">
+    <div>
+      <h4>Quality &amp; Compliance</h4>
+      <p>Achieve <strong>100% Quality Assurance (QA)</strong> coverage by using AI to audit every single conversation for legal compliance and brand standards.</p>
+    </div>
+    <div>
+      <h4>The Churn Defence</h4>
+      <p>Companies using AI-driven sentiment analysis can increase long-term customer lifetime value (LTV) by <strong>15–20%</strong> through proactive intervention.</p>
+    </div>
+  </div>
+  <div class="ai-savings__quote">
+    <p>“95% of decision-makers already using AI report immediate cost and time savings… while AI-powered predictive analytics can drive a 25% increase in recovery rates for outbound functions.”</p>
+    <cite>— Salesforce / NobelBiz (2025/2026). Source: Salesforce: What is an AI Contact Center?</cite>
+  </div>
+</div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="ai-sales-enablement">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>AI Sales Enablement</h2>
+      </div>
+      <div class="section-body">
+
+          <div class="covers-box" id="ai-sales-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#ai-sales-partner">Exclusive South Africa Partnership</a></td></tr>
+                  <tr><td>2</td><td><a href="#ai-sales-challenge">The Challenge — Cold Outbound Is Breaking</a></td></tr>
+                  <tr><td>3</td><td><a href="#ai-sales-approach">Our Approach — Intent-Based Lead Generation</a></td></tr>
+                  <tr><td>4</td><td><a href="#ai-sales-acquisition">01 · Acquisition</a></td></tr>
+                  <tr><td>5</td><td><a href="#ai-sales-qualification">02 · Qualification</a></td></tr>
+                  <tr><td>6</td><td><a href="#ai-sales-connection">03 · Connection</a></td></tr>
+                  <tr><td>7</td><td><a href="#ai-sales-optimisation">04 · Optimisation</a></td></tr>
+                  <tr><td>8</td><td><a href="#ai-sales-why-trilogy">Why Trilogy + Visibilitie</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="callout" id="ai-sales-partner"><strong>Exclusive South Africa partner.</strong> Trilogy is Visibilitie’s only partner in South Africa. Together we bring Visibilitie’s AI-powered, intent-based sales acquisition model into local delivery — with Trilogy’s call-centre operations expertise behind conversion, coaching and scale.</div>
+
+          <h3 id="ai-sales-challenge">The Challenge — Cold Outbound Is Breaking</h3>
+          <div class="prose">
+            <p>Traditional cold calling and abusive outbound canvassing are under pressure everywhere — commercially and regulatorily. Contact rates fall, brand risk rises, and sales teams burn capacity on low-intent lists. The shift clients need is clear: stop chasing cold contacts and start speaking to people who have already asked to be called.</p>
+            <p>Visibilitie was built for that pivot. Their platform replaces cold outreach with consented, intent-based leads — prospects who discover an offer on social video, engage with an AI conversation, and explicitly request a callback.</p>
+          </div>
+
+          <h3 id="ai-sales-approach">Our Approach — Intent-Based Lead Generation</h3>
+          <div class="prose">
+            <p>Through Trilogy’s exclusive South Africa partnership with Visibilitie, we deliver an end-to-end AI Sales Enablement model: attract at scale with AI avatars, qualify with explicit consent, push hot leads into your CRM in real time, then improve continuously against market benchmarks.</p>
+          </div>
+          <div class="stats stats--4">
+            <div class="stat"><div class="stat__value">1,000+</div><div class="stat__label">AI avatars generating offer content 24/7</div></div>
+            <div class="stat"><div class="stat__value">6</div><div class="stat__label">Platforms — Meta, TikTok, YouTube, Spotify, Snapchat &amp; more</div></div>
+            <div class="stat"><div class="stat__value">&lt;300ms</div><div class="stat__label">Real-time lead delivery into CRM via Synapse™</div></div>
+            <div class="stat"><div class="stat__value">100%</div><div class="stat__label">Consented, opt-in, auditable intent leads</div></div>
+          </div>
+
+          <h3 id="ai-sales-acquisition">01 · Acquisition — AI Avatars That Attract Prospects</h3>
+          <div class="prose">
+            <p>A network of 1,000+ AI avatars publishes continuously across Facebook, Instagram, TikTok, YouTube, Spotify and Snapchat. They communicate your offers around the clock, capturing attention where audiences already spend time and generating inbound interest at scale.</p>
+          </div>
+          <figure class="figure ai-avatars-figure">
+            <div class="ai-avatars" aria-label="AI avatars with live social reactions">
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-01.png" alt="AI avatar — professional in office" loading="lazy" width="133" height="246">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:60%;animation-delay:0s;animation-duration:3s" aria-hidden="true">❤️</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:20%;animation-delay:1.8s;animation-duration:3.5s" aria-hidden="true">💬</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-02.png" alt="AI avatar — creator in bright interior" loading="lazy" width="134" height="241">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:30%;animation-delay:1.2s;animation-duration:2.8s" aria-hidden="true">🔥</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:55%;animation-delay:0.3s;animation-duration:2.9s" aria-hidden="true">🙌</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-03.png" alt="AI avatar — traveller on a train" loading="lazy" width="136" height="248">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:70%;animation-delay:2.1s;animation-duration:3.2s" aria-hidden="true">👍</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:40%;animation-delay:1.5s;animation-duration:3.1s" aria-hidden="true">💯</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-04.png" alt="AI avatar — specialist in studio" loading="lazy" width="133" height="242">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:45%;animation-delay:0.6s;animation-duration:2.5s" aria-hidden="true">😍</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:65%;animation-delay:2.4s;animation-duration:2.7s" aria-hidden="true">⭐</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-05.png" alt="AI avatar — logistics creator" loading="lazy" width="135" height="241">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:20%;animation-delay:1.8s;animation-duration:3.5s" aria-hidden="true">💬</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:35%;animation-delay:0.9s;animation-duration:3.3s" aria-hidden="true">🎯</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-06.png" alt="AI avatar — outdoor retail setting" loading="lazy" width="135" height="240">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:55%;animation-delay:0.3s;animation-duration:2.9s" aria-hidden="true">🙌</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:50%;animation-delay:1.7s;animation-duration:2.6s" aria-hidden="true">👏</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-07.png" alt="AI avatar — lifestyle creator outdoors" loading="lazy" width="135" height="244">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:40%;animation-delay:1.5s;animation-duration:3.1s" aria-hidden="true">💯</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:60%;animation-delay:0s;animation-duration:3s" aria-hidden="true">❤️</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-08.png" alt="AI avatar — home creator in kitchen" loading="lazy" width="135" height="248">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:65%;animation-delay:2.4s;animation-duration:2.7s" aria-hidden="true">⭐</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:30%;animation-delay:1.2s;animation-duration:2.8s" aria-hidden="true">🔥</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-09.png" alt="AI avatar — home setting" loading="lazy" width="130" height="241">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:35%;animation-delay:0.9s;animation-duration:3.3s" aria-hidden="true">🎯</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:70%;animation-delay:2.1s;animation-duration:3.2s" aria-hidden="true">👍</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../trilogydigital/assets/ai-sales/avatar-10.png" alt="AI avatar — trades workshop" loading="lazy" width="137" height="246">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:50%;animation-delay:1.7s;animation-duration:2.6s" aria-hidden="true">👏</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:45%;animation-delay:0.6s;animation-duration:2.5s" aria-hidden="true">😍</span>
+              </div>
+            </div>
+            <figcaption>AI avatars publish continuously on social — likes, claps, stars and reactions float in as audiences engage.</figcaption>
+          </figure>
+          <ul class="list-check">
+            <li><strong>50+ videos / week</strong> — continuous creative production for social video formats.</li>
+            <li><strong>Multi-platform reach</strong> — Meta, TikTok, YouTube, Spotify and Snapchat covered in one motion.</li>
+            <li><strong>Always-on acquisition</strong> — offers communicated 24/7 without proportional headcount growth.</li>
+            <li><strong>High-volume funnel</strong> — designed to feed commercial teams with a steady flow of new prospects.</li>
+          </ul>
+
+          <h3 id="ai-sales-qualification">02 · Qualification — The Prospect Asks for Your Call</h3>
+          <div class="prose">
+            <p>Prospects interact with a conversational chatbot, explore the offer, then complete a secure callback form with <strong>explicit consent</strong>. They know they will be called. The result is an intent-based lead — not a scraped cold contact.</p>
+          </div>
+          <div class="pillars pillars--2 pillars--spotlight pillars--spotlight-navy" data-animate="pillar-spotlight">
+            <div class="pillar"><h4>Explicit consent</h4><p>Opt-in is captured and verified before any outbound contact is scheduled.</p></div>
+            <div class="pillar"><h4>GDPR-aligned capture</h4><p>Data collection and callback requests are designed for privacy-compliant processing.</p></div>
+            <div class="pillar"><h4>Intent-based leads</h4><p>Only prospects who request a conversation enter the sales queue.</p></div>
+            <div class="pillar"><h4>Fake-lead filtering</h4><p>Qualification reduces wasted dialler time and protects agent productivity.</p></div>
+          </div>
+
+          <h3 id="ai-sales-connection">03 · Connection — Synapse™ Into Your CRM</h3>
+          <div class="prose">
+            <p><strong>Synapse™</strong> pushes each qualified lead into your CRM in real time (Salesforce, HubSpot and equivalent platforms) and can pull statuses back to close the loop. No manual list uploads. No stale spreadsheets.</p>
+          </div>
+          <ul class="list-check">
+            <li><strong>Real-time API delivery</strong> — leads land while intent is still hot.</li>
+            <li><strong>Sub-second routing</strong> — Visibilitie cites delivery under 300ms into connected CRMs.</li>
+            <li><strong>Bidirectional sync</strong> — lead push and status pull for continuous optimisation.</li>
+            <li><strong>Plug-and-play integration</strong> — designed for rapid commercial onboarding.</li>
+          </ul>
+
+          <h3 id="ai-sales-optimisation">04 · Optimisation — Performance Versus Market</h3>
+          <div class="prose">
+            <p>An AI-augmented performance dashboard tracks volume, reachability and conversion — with market benchmarks so teams can see what “good” looks like and act on it. Continuous improvement is built into the loop: the system learns from outcomes and improves acquisition and conversion over time.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Signal</th><th>What you see</th><th>Why it matters</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Lead volume</td><td>Daily / period volume with trend</td><td>Protects commercial capacity planning</td></tr>
+                <tr><td>Reachability</td><td>Contactability versus market benchmark</td><td>Shows whether intent leads are live and callable</td></tr>
+                <tr><td>Conversion</td><td>Sales conversion with comparative lift</td><td>Links acquisition quality to revenue outcomes</td></tr>
+                <tr><td>Continuous loop</td><td>Status feedback into Synapse™</td><td>Improves targeting and creative based on real sales results</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout">Illustrative Visibilitie performance framing from live market reporting includes stronger reachability and conversion versus cold-market baselines. Exact programme KPIs are agreed per sector and volume commitment.</div>
+
+          <h3 id="ai-sales-why-trilogy">Why Trilogy + Visibilitie</h3>
+          <div class="prose">
+            <p>Visibilitie is more than a lead vendor — and Trilogy is more than a fulfilment partner. Combined, we cover the full journey from digital attraction to converted sale on the floor.</p>
+          </div>
+          <div class="pillars pillars--3 pillars--spotlight pillars--spotlight-green" data-animate="pillar-spotlight">
+            <div class="pillar"><h4>Exclusive SA partnership</h4><p>Trilogy is Visibilitie’s only South Africa partner — local accountability with European AI acquisition technology.</p></div>
+            <div class="pillar"><h4>Call-centre operators</h4><p>We run live operations. We understand supervisor reality, dialler constraints, scripts, coaching and conversion KPIs.</p></div>
+            <div class="pillar"><h4>Cold → hot transition</h4><p>We help sales organisations move from cold outbound to intent leads without breaking volume or revenue mid-shift.</p></div>
+            <div class="pillar"><h4>Floor readiness</h4><p>Scripts, workflows and coaching adapted for callback conversion — not classic cold-call behaviours.</p></div>
+            <div class="pillar"><h4>Training &amp; coaching</h4><p>Team leaders and agents are trained to handle warm, consented conversations that convert faster.</p></div>
+            <div class="pillar"><h4>Transparent partnership</h4><p>Shared dashboards, real-time reporting and weekly performance reviews — growth built together.</p></div>
+          </div>
+
+          <div class="prose">
+            <p>Trusted Visibilitie reference brands in Europe include names such as MetLife, TotalEnergies, April, ADM Value, Meilleurtaux and Groupe Magnolia. South African programmes are structured through Trilogy as the exclusive local partner.</p>
+          </div>
+          <div class="ai-sales-logos" aria-label="Visibilitie European reference brands">
+            <div class="ai-sales-logos__item"><img src="../../../trilogydigital/assets/ai-sales/logos/metlife.png" alt="MetLife" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../trilogydigital/assets/ai-sales/logos/totalenergies.png" alt="TotalEnergies" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../trilogydigital/assets/ai-sales/logos/april.png" alt="April" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../trilogydigital/assets/ai-sales/logos/admvalue.png" alt="ADM Value" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../trilogydigital/assets/ai-sales/logos/meilleurtaux.png" alt="Meilleurtaux" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../trilogydigital/assets/ai-sales/logos/magnolia.png" alt="Groupe Magnolia" loading="lazy" width="620" height="353"></div>
+          </div>
+          <div class="callout">Commercial model is typically CPL (cost per lead) / volume-based, scoped by sector and daily lead commitment. Trilogy will confirm commercial terms for ODM after discovery on target offers, geographies, volumes and CRM stack.</div>
+      </div>
+    </section>
+
+</div>
+</main>
+<nav class="jump-nav" aria-label="Page shortcuts">
+  <a class="jump-nav__main" href="../">Back to main</a>
+  <a href="#top">Back to top</a>
+</nav>
+<aside class="cta-dock" aria-label="Contact Trilogy">
+  <nav class="cta-dock__inner">
+    <a class="cta-dock__btn" href="https://trilogybpo.com" target="_blank" rel="noopener noreferrer" aria-label="Visit trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.8 4 6 4 9s-1.4 6.2-4 9c-2.6-2.8-4-6-4-9s1.4-6.2 4-9Z"/></svg>
+      <span class="cta-dock__full">Visit our Site</span>
+      <span class="cta-dock__short">Visit</span>
+    </a>
+    <a class="cta-dock__btn cta-dock__btn--whatsapp" href="https://wa.me/27719691163?text=hi" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Trilogy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.55 2 2.06 6.48 2.06 12c0 1.76.46 3.48 1.34 5L2 22l5.16-1.35A9.93 9.93 0 0 0 12.04 22c5.5 0 9.97-4.48 9.97-10 0-2.67-1.04-5.18-2.96-7.09Zm-7.01 15.36c-1.52 0-3.01-.41-4.31-1.17l-.31-.18-3.06.8.82-2.98-.2-.33a8.2 8.2 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.83c.02 4.54-3.68 8.26-8.17 8.26Zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74 1.76.76 2.12.82 2.87.69.44-.08 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
+      <span class="cta-dock__full">WhatsApp us</span>
+      <span class="cta-dock__short">WhatsApp</span>
+    </a>
+    <a class="cta-dock__btn" href="mailto:sales@trilogybpo.com" aria-label="Email sales@trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+      <span class="cta-dock__full">Email Us</span>
+      <span class="cta-dock__short">Email</span>
+    </a>
+    <a class="cta-dock__btn" href="tel:+447458158591" aria-label="Call +44 7458 158591">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.8c.4-.4 1-.5 1.5-.3l2.1.8c.6.2 1 .8 1 1.4v2.1c0 .4-.2.8-.5 1.1l-1.2 1.2a12.4 12.4 0 0 0 5.3 5.3l1.2-1.2c.3-.3.7-.5 1.1-.5h2.1c.6 0 1.2.4 1.4 1l.8 2.1c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.5.5-1.2.7-1.9.6C12.3 20.8 3.2 11.7 3.6 5.1c0-.7.2-1.4.7-1.9Z"/></svg>
+      <span class="cta-dock__full">Call Us</span>
+      <span class="cta-dock__short">Call</span>
+    </a>
+  </nav>
+</aside>
+<script src="../../../trilogydigital/script.js?v=sa-map-1"></script>
+<script>
+  (function () {
+    var pages = document.querySelectorAll(".proposal-page");
+    var isNarrow = window.matchMedia("(max-width: 720px)").matches;
+    if (isNarrow || !("IntersectionObserver" in window)) {
+      pages.forEach(function (el) { el.classList.add("is-visible"); });
+      document.querySelectorAll(".reveal-item").forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0, rootMargin: "80px 0px 80px 0px" });
+      pages.forEach(function (el) {
+        var nearTop = el.getBoundingClientRect().top < window.innerHeight * 0.92;
+        var tallerThanViewport = el.offsetHeight > window.innerHeight;
+        if (nearTop || tallerThanViewport) {
+          el.classList.add("is-visible");
+        } else {
+          io.observe(el);
+        }
+      });
+    }
+
+    var nav = document.querySelector(".page-nav");
+    var toggle = document.querySelector("[data-nav-toggle]");
+    if (nav && toggle) {
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  })();
+</script>
+<script src="../../_shared/gate.js?v=2" data-storage-key="trilogyOdmUnlock" data-hash="4e96823623497c0edd7740247ee986b98805b876c32000099b0e0e5574f3ca77"></script>
+</body>
+</html>
