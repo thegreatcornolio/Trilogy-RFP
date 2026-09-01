@@ -126,6 +126,53 @@
   }
 }
 
+.voila-web .main {
+  container-type: inline-size;
+}
+
+.voila-web .voila-payline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  font-family: Poppins, Inter, sans-serif;
+  font-size: clamp(1.15rem, 7.2cqi, 3.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #13202e;
+}
+
+.voila-web .voila-payline__ch {
+  flex: 0 0 auto;
+  color: #13202e;
+  transition: color 0.18s ease;
+}
+
+.voila-web .voila-payline__ch.is-green {
+  color: #61d779;
+}
+
+.voila-web .voila-payline__space {
+  flex: 0 0 0.42em;
+}
+
+@media (max-width: 720px) {
+  .voila-web .voila-payline {
+    font-size: clamp(0.95rem, 6.4cqi, 1.45rem);
+    margin-bottom: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voila-web .voila-payline__ch {
+    transition: none;
+  }
+}
+
 .voila-cover {
   position: absolute;
   inset: 0;
