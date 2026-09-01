@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=sa-sights-1">
-  <link rel="stylesheet" href="../voila.css?v=sale-1">
+  <link rel="stylesheet" href="../voila.css?v=pay-1">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -77,6 +77,31 @@
 </section>
 
 <main class="main">
+  <p class="voila-payline" aria-label="No costs — pay per sale">
+    <span class="voila-payline__ch" data-ch>N</span>
+    <span class="voila-payline__ch" data-ch>O</span>
+    <span class="voila-payline__space" aria-hidden="true"></span>
+    <span class="voila-payline__ch" data-ch>C</span>
+    <span class="voila-payline__ch" data-ch>O</span>
+    <span class="voila-payline__ch" data-ch>S</span>
+    <span class="voila-payline__ch" data-ch>T</span>
+    <span class="voila-payline__ch" data-ch>S</span>
+    <span class="voila-payline__space" aria-hidden="true"></span>
+    <span class="voila-payline__ch" data-ch>-</span>
+    <span class="voila-payline__space" aria-hidden="true"></span>
+    <span class="voila-payline__ch" data-ch>P</span>
+    <span class="voila-payline__ch" data-ch>A</span>
+    <span class="voila-payline__ch" data-ch>Y</span>
+    <span class="voila-payline__space" aria-hidden="true"></span>
+    <span class="voila-payline__ch" data-ch>P</span>
+    <span class="voila-payline__ch" data-ch>E</span>
+    <span class="voila-payline__ch" data-ch>R</span>
+    <span class="voila-payline__space" aria-hidden="true"></span>
+    <span class="voila-payline__ch" data-ch>S</span>
+    <span class="voila-payline__ch" data-ch>A</span>
+    <span class="voila-payline__ch" data-ch>L</span>
+    <span class="voila-payline__ch" data-ch>E</span>
+  </p>
   <div class="proposal-shell">
 
     <section class="proposal-page" id="pitch">
@@ -391,6 +416,30 @@
         });
       });
     }
+
+    (function runPayline() {
+      var chars = document.querySelectorAll(".voila-payline [data-ch]");
+      if (!chars.length) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        chars.forEach(function (el) { el.classList.add("is-green"); });
+        return;
+      }
+      var i = 0;
+      function step() {
+        chars[i].classList.add("is-green");
+        i += 1;
+        if (i >= chars.length) {
+          setTimeout(function () {
+            chars.forEach(function (el) { el.classList.remove("is-green"); });
+            i = 0;
+            setTimeout(step, 1000);
+          }, 1000);
+        } else {
+          setTimeout(step, 1000);
+        }
+      }
+      step();
+    })();
   })();
 </script>
 <script src="../../_shared/gate.js?v=2" data-storage-key="trilogyVoilaUnlock" data-hash="b72843d704d32eaf30c0090b1deaf1f6963f0e199b0d070b4d21a7369ecaf622"></script>
