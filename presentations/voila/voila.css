@@ -361,103 +361,38 @@
   }
 }
 
-.voila-web .voila-process__traveller {
+.voila-web .voila-process__circuit {
   position: absolute;
-  top: calc(1.55rem + 1.5px);
-  left: 6%;
-  z-index: 0;
-  width: 0.85rem;
-  height: 0.85rem;
-  margin: 0;
-  border-radius: 50%;
-  background: #d5ec67;
-  box-shadow:
-    0 0 0 5px rgba(213, 236, 103, 0.4),
-    0 0 22px rgba(97, 215, 121, 0.95);
-  transform: translate(-50%, -50%);
-  animation: voila-travel 6s linear infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
   pointer-events: none;
+  z-index: 0;
 }
 
-@keyframes voila-travel {
-  from { left: 6%; }
-  to { left: 94%; }
+.voila-web .voila-process__traveller {
+  fill: #61d779;
+  filter: drop-shadow(0 0 6px rgba(97, 215, 121, 0.95));
 }
 
-.voila-web .voila-process__steps li {
-  animation: voila-step-navy 6s infinite;
-}
-
-.voila-web .voila-process__steps li:nth-child(1) { animation-delay: 0s; }
-.voila-web .voila-process__steps li:nth-child(2) { animation-delay: 1s; }
-.voila-web .voila-process__steps li:nth-child(3) { animation-delay: 2s; }
-.voila-web .voila-process__steps li:nth-child(4) { animation-delay: 3s; }
-.voila-web .voila-process__steps li:nth-child(5) { animation-delay: 4s; }
-.voila-web .voila-process__steps li:nth-child(6) { animation-delay: 5s; }
-
-.voila-web .voila-process__steps li strong {
-  animation: voila-step-navy-strong 6s infinite;
-}
-
-.voila-web .voila-process__steps li p {
-  animation: voila-step-navy-p 6s infinite;
-}
-
-.voila-web .voila-process__steps li:nth-child(1) strong,
-.voila-web .voila-process__steps li:nth-child(1) p { animation-delay: 0s; }
-.voila-web .voila-process__steps li:nth-child(2) strong,
-.voila-web .voila-process__steps li:nth-child(2) p { animation-delay: 1s; }
-.voila-web .voila-process__steps li:nth-child(3) strong,
-.voila-web .voila-process__steps li:nth-child(3) p { animation-delay: 2s; }
-.voila-web .voila-process__steps li:nth-child(4) strong,
-.voila-web .voila-process__steps li:nth-child(4) p { animation-delay: 3s; }
-.voila-web .voila-process__steps li:nth-child(5) strong,
-.voila-web .voila-process__steps li:nth-child(5) p { animation-delay: 4s; }
-.voila-web .voila-process__steps li:nth-child(6) strong,
-.voila-web .voila-process__steps li:nth-child(6) p { animation-delay: 5s; }
-
-.voila-web .voila-process__steps li .voila-process__num {
-  animation: voila-step-navy-num 6s infinite;
-}
-
-.voila-web .voila-process__steps li:nth-child(1) .voila-process__num { animation-delay: 0s; }
-.voila-web .voila-process__steps li:nth-child(2) .voila-process__num { animation-delay: 1s; }
-.voila-web .voila-process__steps li:nth-child(3) .voila-process__num { animation-delay: 2s; }
-.voila-web .voila-process__steps li:nth-child(4) .voila-process__num { animation-delay: 3s; }
-.voila-web .voila-process__steps li:nth-child(5) .voila-process__num { animation-delay: 4s; }
-.voila-web .voila-process__steps li:nth-child(6) .voila-process__num { animation-delay: 5s; }
-
-@keyframes voila-step-navy {
-  0%, 16.66% {
-    background: #13202e;
-    border-color: #13202e;
-    box-shadow: 0 14px 28px rgba(19, 32, 46, 0.28);
-  }
-  16.67%, 100% {
-    background: #fff;
-    border-color: rgba(19, 32, 46, 0.12);
-    box-shadow: 0 10px 24px rgba(19, 32, 46, 0.06);
+@media (max-width: 900px) {
+  .voila-web .voila-process__circuit {
+    display: none;
   }
 }
 
-@keyframes voila-step-navy-strong {
-  0%, 16.66% { color: #fff; }
-  16.67%, 100% { color: #13202e; }
-}
-
-@keyframes voila-step-navy-p {
-  0%, 16.66% { color: rgba(255, 255, 255, 0.92); }
-  16.67%, 100% { color: #5b6570; }
-}
-
-@keyframes voila-step-navy-num {
-  0%, 16.66% {
-    background: #d5ec67;
-    color: #13202e;
+@media (prefers-reduced-motion: reduce) {
+  .voila-web .voila-stats .stat,
+  .voila-web .voila-process__traveller,
+  .voila-web .voila-cycle--lime > .pillar,
+  .voila-web .voila-cycle--lime > .pillar h4,
+  .voila-web .voila-cycle--lime > .pillar p {
+    animation: none !important;
+    transform: none !important;
   }
-  16.67%, 100% {
-    background: #13202e;
-    color: #d5ec67;
+  .voila-web .voila-process__circuit {
+    display: none;
   }
 }
 
@@ -511,27 +446,6 @@
 @keyframes voila-lime-p {
   0%, 24.9% { color: rgba(19, 32, 46, 0.88); }
   25%, 100% { color: rgba(19, 32, 46, 0.85); }
-}
-
-@media (max-width: 900px) {
-  .voila-web .voila-process__traveller {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .voila-web .voila-stats .stat,
-  .voila-web .voila-process__traveller,
-  .voila-web .voila-process__steps li,
-  .voila-web .voila-process__steps li strong,
-  .voila-web .voila-process__steps li p,
-  .voila-web .voila-process__steps li .voila-process__num,
-  .voila-web .voila-cycle--lime > .pillar,
-  .voila-web .voila-cycle--lime > .pillar h4,
-  .voila-web .voila-cycle--lime > .pillar p {
-    animation: none !important;
-    transform: none !important;
-  }
 }
 
 .voila-avatars {

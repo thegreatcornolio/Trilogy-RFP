@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=sa-sights-1">
-  <link rel="stylesheet" href="../voila.css?v=motion-1">
+  <link rel="stylesheet" href="../voila.css?v=flow-loop-1">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -112,7 +112,14 @@
           <p>AI does the hunting and the paperwork. Humans do the selling. The loop feeds itself.</p>
         </div>
         <div class="voila-process">
-          <span class="voila-process__traveller" aria-hidden="true"></span>
+          <svg class="voila-process__circuit" aria-hidden="true">
+            <path id="voila-flow-path" fill="none"></path>
+            <circle class="voila-process__traveller" r="7" fill="#61d779">
+              <animateMotion dur="8s" repeatCount="indefinite" rotate="0">
+                <mpath href="#voila-flow-path"></mpath>
+              </animateMotion>
+            </circle>
+          </svg>
           <ol class="voila-process__steps">
             <li>
               <span class="voila-process__num">01</span>
@@ -383,6 +390,48 @@
         });
       });
     }
+
+    function layoutVoilaOrbit() {
+      var root = document.querySelector(".voila-process");
+      if (!root || window.matchMedia("(max-width: 900px)").matches) return;
+      var path = document.getElementById("voila-flow-path");
+      var nums = root.querySelectorAll(".voila-process__num");
+      var loop = root.querySelector(".voila-process__loop");
+      if (!path || nums.length < 2 || !loop) return;
+      var box = root.getBoundingClientRect();
+      var first = nums[0].getBoundingClientRect();
+      var last = nums[nums.length - 1].getBoundingClientRect();
+      var loopBox = loop.getBoundingClientRect();
+      var x1 = first.left + first.width / 2 - box.left;
+      var x2 = last.left + last.width / 2 - box.left;
+      var yTop = first.top + first.height / 2 - box.top;
+      var yLoopTop = loopBox.top - box.top;
+      var yBot = loopBox.bottom - box.top - 1;
+      var xLeft = loopBox.left - box.left + 1;
+      var xRight = loopBox.right - box.left - 1;
+      var r = 14;
+      var d = [
+        "M", x1, yTop,
+        "L", x2, yTop,
+        "L", x2, yLoopTop,
+        "L", xRight, yLoopTop,
+        "L", xRight, yBot - r,
+        "Q", xRight, yBot, xRight - r, yBot,
+        "L", xLeft + r, yBot,
+        "Q", xLeft, yBot, xLeft, yBot - r,
+        "L", xLeft, yLoopTop,
+        "L", x1, yLoopTop,
+        "Z"
+      ].join(" ");
+      path.setAttribute("d", d);
+      var motion = root.querySelector("animateMotion");
+      if (motion && motion.beginElement) {
+        try { motion.beginElement(); } catch (e) {}
+      }
+    }
+    layoutVoilaOrbit();
+    window.addEventListener("resize", layoutVoilaOrbit);
+    window.addEventListener("load", layoutVoilaOrbit);
   })();
 </script>
 <script src="../../_shared/gate.js?v=2" data-storage-key="trilogyVoilaUnlock" data-hash="b72843d704d32eaf30c0090b1deaf1f6963f0e199b0d070b4d21a7369ecaf622"></script>
