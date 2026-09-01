@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../_shared/deck.css">
-  <link rel="stylesheet" href="../voila.css?v=sale-1">
-  <link rel="stylesheet" href="../slides.css?v=sale-1">
+  <link rel="stylesheet" href="../voila.css?v=fill-1">
+  <link rel="stylesheet" href="../slides.css?v=fill-1">
   <style id="deck-theme">
     :root {
       --blend-navy: #13202e;
@@ -36,7 +36,18 @@
     }
   </style>
 </head>
-<body class="deck">
+<body class="deck voila-cover-on">
+  <div class="voila-cover-bleed" data-cover-bleed>
+    <video class="voila-cover-bleed__video" autoplay muted loop playsinline>
+      <source src="../../../trilogydigital/assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div class="voila-cover-bleed__scrim"></div>
+    <div class="voila-cover-bleed__copy">
+      <p class="voila-cover__brand">Trilogy Digital</p>
+      <h1 class="voila-cover__title">Trilogy Voilà</h1>
+      <p class="voila-cover__tag">Ai Demand Generation - Human Empathy Selling</p>
+    </div>
+  </div>
   <div class="deck-bars" aria-hidden="true"><span></span><span></span><span></span></div>
   <header class="deck-chrome">
     <img class="deck-chrome__logo brand-logo" data-logo="trilogy" data-logo-bases="../../_shared/logos" alt="Trilogy">
@@ -49,19 +60,7 @@
   <main class="slides" data-frame>
     <div class="stage" data-stage>
 
-      <section class="slide slide--cover is-active" data-slide="1">
-        <div class="voila-cover">
-          <video class="voila-cover__video" autoplay muted loop playsinline>
-            <source src="../../../trilogydigital/assets/video/hero.mp4" type="video/mp4">
-          </video>
-          <div class="voila-cover__scrim"></div>
-          <div class="voila-cover__copy">
-            <p class="voila-cover__brand">Trilogy Digital</p>
-            <h1 class="voila-cover__title">Trilogy Voilà</h1>
-            <p class="voila-cover__tag">Ai Demand Generation - Human Empathy Selling</p>
-          </div>
-        </div>
-      </section>
+      <section class="slide slide--cover is-active" data-slide="1"></section>
 
       <section class="slide" data-slide="2">
         <p class="kicker">The pitch</p>
@@ -115,12 +114,8 @@
         <div class="voila-process voila-process--dark">
           <svg class="voila-process__circuit" aria-hidden="true">
             <path id="voila-flow-path" fill="none"></path>
-            <circle class="voila-process__traveller" r="7" fill="#61d779">
-              <animateMotion dur="8s" repeatCount="indefinite" rotate="0">
-                <mpath href="#voila-flow-path"></mpath>
-              </animateMotion>
-            </circle>
           </svg>
+          <span class="voila-process__dot" aria-hidden="true"></span>
           <ol class="voila-process__steps">
             <li>
               <span class="voila-process__num">01</span>
@@ -278,7 +273,7 @@
     <button type="button" data-next aria-label="Next slide">›</button>
   </nav>
   <script src="../../_shared/deck.js"></script>
-  <script src="../voila.js?v=sale-1"></script>
+  <script src="../voila.js?v=fill-1"></script>
   <script src="../../_shared/gate.js?v=2" data-storage-key="trilogyVoilaUnlock" data-hash="b72843d704d32eaf30c0090b1deaf1f6963f0e199b0d070b4d21a7369ecaf622"></script>
 </body>
 </html>
