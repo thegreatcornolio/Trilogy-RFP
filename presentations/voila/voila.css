@@ -80,11 +80,11 @@
 
 .voila-hero__tag {
   margin: 0;
-  max-width: 22rem;
+  max-width: min(42rem, 100%);
   font-family: Poppins, Inter, sans-serif;
-  font-size: clamp(1.15rem, 2.6vw, 1.7rem);
+  font-size: clamp(1.05rem, 2.4vw, 1.55rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: 0;
   color: #fff;
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
@@ -133,9 +133,12 @@
 }
 
 .voila-cover__video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
@@ -144,11 +147,10 @@
   inset: 0;
   background:
     linear-gradient(
-      90deg,
-      rgba(19, 32, 46, 0.84) 0%,
-      rgba(19, 32, 46, 0.48) 42%,
-      rgba(19, 32, 46, 0.1) 68%,
-      transparent 82%
+      180deg,
+      rgba(10, 18, 28, 0.12) 0%,
+      rgba(10, 18, 28, 0.22) 48%,
+      rgba(10, 18, 28, 0.5) 100%
     );
   pointer-events: none;
 }
@@ -160,6 +162,7 @@
   right: 72px;
   bottom: 72px;
   color: #fff;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 .voila-cover__brand {
@@ -184,11 +187,11 @@
 
 .voila-cover__tag {
   margin: 0;
-  max-width: 22rem;
+  max-width: 46rem;
   font-family: Poppins, Inter, sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.55rem;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.2;
   color: #fff;
 }
 
@@ -384,7 +387,7 @@
   }
 }
 
-.voila-web .voila-process__circuit {
+.voila-process__circuit {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -394,7 +397,7 @@
   z-index: 0;
 }
 
-.voila-web .voila-process__traveller {
+.voila-process__traveller {
   fill: #61d779;
   filter: drop-shadow(0 0 6px rgba(97, 215, 121, 0.95));
 }
@@ -405,70 +408,175 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .voila-web .voila-stats .stat,
-  .voila-web .voila-process__traveller,
-  .voila-web .voila-cycle--lime > .pillar,
-  .voila-web .voila-cycle--lime > .pillar h4,
-  .voila-web .voila-cycle--lime > .pillar p {
-    animation: none !important;
-    transform: none !important;
-  }
-  .voila-web .voila-process__circuit {
-    display: none;
-  }
+.voila-pair > .panel,
+.voila-web .voila-pair > .pillar {
+  animation: voila-pair-card 2s ease-in-out infinite;
 }
 
-.voila-web .voila-cycle--lime > .pillar {
-  animation: voila-lime-card 4s infinite;
+.voila-pair > .panel:nth-child(2),
+.voila-web .voila-pair > .pillar:nth-child(2) {
+  animation-delay: 1s;
 }
 
-.voila-web .voila-cycle--lime > .pillar:nth-child(1) { animation-delay: 0s; }
-.voila-web .voila-cycle--lime > .pillar:nth-child(2) { animation-delay: 1s; }
-.voila-web .voila-cycle--lime > .pillar:nth-child(3) { animation-delay: 2s; }
-.voila-web .voila-cycle--lime > .pillar:nth-child(4) { animation-delay: 3s; }
-
-.voila-web .voila-cycle--lime > .pillar h4,
-.voila-web .voila-cycle--lime > .pillar p {
-  animation: voila-lime-text 4s infinite;
-}
-
-.voila-web .voila-cycle--lime > .pillar:nth-child(1) h4,
-.voila-web .voila-cycle--lime > .pillar:nth-child(1) p { animation-delay: 0s; }
-.voila-web .voila-cycle--lime > .pillar:nth-child(2) h4,
-.voila-web .voila-cycle--lime > .pillar:nth-child(2) p { animation-delay: 1s; }
-.voila-web .voila-cycle--lime > .pillar:nth-child(3) h4,
-.voila-web .voila-cycle--lime > .pillar:nth-child(3) p { animation-delay: 2s; }
-.voila-web .voila-cycle--lime > .pillar:nth-child(4) h4,
-.voila-web .voila-cycle--lime > .pillar:nth-child(4) p { animation-delay: 3s; }
-
-@keyframes voila-lime-card {
-  0%, 24.9% {
-    background: #d5ec67;
+@keyframes voila-pair-card {
+  0%, 45% {
     border-color: #d5ec67;
-    box-shadow: 0 14px 28px rgba(213, 236, 103, 0.38);
-    transform: translateY(-2px);
+    background: color-mix(in srgb, #61d779 16%, transparent);
+    box-shadow: 0 14px 28px rgba(97, 215, 121, 0.18), 0 0 0 2px rgba(213, 236, 103, 0.35);
+    transform: translateY(-3px);
   }
-  25%, 100% {
-    background: rgba(239, 242, 246, 0.5);
-    border-color: var(--border, #dadfe3);
+  55%, 100% {
+    border-color: color-mix(in srgb, #61d779 45%, transparent);
+    background: color-mix(in srgb, #fff 4%, transparent);
     box-shadow: none;
     transform: none;
   }
 }
 
-@keyframes voila-lime-text {
-  0%, 24.9% { color: #13202e; }
-  25%, 100% { color: #13202e; }
+.voila-web .voila-pair > .pillar {
+  --voila-pair-rest-bg: rgba(239, 242, 246, 0.5);
+  --voila-pair-rest-border: var(--border, #dadfe3);
 }
 
-.voila-web .voila-cycle--lime > .pillar p {
-  animation-name: voila-lime-p;
+.voila-web .voila-pair > .pillar {
+  animation-name: voila-pair-card-web;
 }
 
-@keyframes voila-lime-p {
-  0%, 24.9% { color: rgba(19, 32, 46, 0.88); }
-  25%, 100% { color: rgba(19, 32, 46, 0.85); }
+@keyframes voila-pair-card-web {
+  0%, 45% {
+    border-color: #d5ec67;
+    background: #d5ec67;
+    box-shadow: 0 14px 28px rgba(213, 236, 103, 0.38);
+    transform: translateY(-3px);
+  }
+  55%, 100% {
+    border-color: var(--voila-pair-rest-border);
+    background: var(--voila-pair-rest-bg);
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.voila-cycle--mix > :nth-child(1) {
+  --voila-cycle-bg: #13202e;
+  --voila-cycle-border: #d5ec67;
+  --voila-cycle-title: #d5ec67;
+  --voila-cycle-body: #fff;
+}
+.voila-cycle--mix > :nth-child(2) {
+  --voila-cycle-bg: #61d779;
+  --voila-cycle-border: #61d779;
+  --voila-cycle-title: #13202e;
+  --voila-cycle-body: #13202e;
+}
+.voila-cycle--mix > :nth-child(3) {
+  --voila-cycle-bg: #d5ec67;
+  --voila-cycle-border: #d5ec67;
+  --voila-cycle-title: #13202e;
+  --voila-cycle-body: #13202e;
+}
+.voila-cycle--mix > :nth-child(4) {
+  --voila-cycle-bg: #2f9e4a;
+  --voila-cycle-border: #61d779;
+  --voila-cycle-title: #fff;
+  --voila-cycle-body: #fff;
+}
+
+.voila-web .voila-cycle--mix > .pillar {
+  --voila-cycle-rest-bg: rgba(239, 242, 246, 0.5);
+  --voila-cycle-rest-border: var(--border, #dadfe3);
+  --voila-cycle-rest-title: #13202e;
+  --voila-cycle-rest-body: rgba(19, 32, 46, 0.85);
+}
+
+.slide .voila-cycle--mix > .panel {
+  --voila-cycle-rest-bg: color-mix(in srgb, #fff 4%, transparent);
+  --voila-cycle-rest-border: var(--line);
+  --voila-cycle-rest-title: var(--blend-primary);
+  --voila-cycle-rest-body: var(--ink);
+}
+
+.voila-cycle--mix > .panel,
+.voila-cycle--mix > .pillar {
+  animation: voila-mix-card 4s infinite;
+}
+
+.voila-cycle--mix > .panel:nth-child(1),
+.voila-cycle--mix > .pillar:nth-child(1) { animation-delay: 0s; }
+.voila-cycle--mix > .panel:nth-child(2),
+.voila-cycle--mix > .pillar:nth-child(2) { animation-delay: 1s; }
+.voila-cycle--mix > .panel:nth-child(3),
+.voila-cycle--mix > .pillar:nth-child(3) { animation-delay: 2s; }
+.voila-cycle--mix > .panel:nth-child(4),
+.voila-cycle--mix > .pillar:nth-child(4) { animation-delay: 3s; }
+
+.voila-cycle--mix > .panel h3,
+.voila-cycle--mix > .pillar h4 {
+  animation: voila-mix-title 4s infinite;
+}
+
+.voila-cycle--mix > .panel p,
+.voila-cycle--mix > .pillar p {
+  animation: voila-mix-body 4s infinite;
+}
+
+.voila-cycle--mix > :nth-child(1) h3,
+.voila-cycle--mix > :nth-child(1) h4,
+.voila-cycle--mix > :nth-child(1) p { animation-delay: 0s; }
+.voila-cycle--mix > :nth-child(2) h3,
+.voila-cycle--mix > :nth-child(2) h4,
+.voila-cycle--mix > :nth-child(2) p { animation-delay: 1s; }
+.voila-cycle--mix > :nth-child(3) h3,
+.voila-cycle--mix > :nth-child(3) h4,
+.voila-cycle--mix > :nth-child(3) p { animation-delay: 2s; }
+.voila-cycle--mix > :nth-child(4) h3,
+.voila-cycle--mix > :nth-child(4) h4,
+.voila-cycle--mix > :nth-child(4) p { animation-delay: 3s; }
+
+@keyframes voila-mix-card {
+  0%, 24.9% {
+    background: var(--voila-cycle-bg);
+    border-color: var(--voila-cycle-border);
+    box-shadow: 0 14px 28px rgba(19, 32, 46, 0.22), 0 0 0 2px var(--voila-cycle-border);
+    transform: translateY(-2px);
+  }
+  25%, 100% {
+    background: var(--voila-cycle-rest-bg);
+    border-color: var(--voila-cycle-rest-border);
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+@keyframes voila-mix-title {
+  0%, 24.9% { color: var(--voila-cycle-title); }
+  25%, 100% { color: var(--voila-cycle-rest-title); }
+}
+
+@keyframes voila-mix-body {
+  0%, 24.9% { color: var(--voila-cycle-body); }
+  25%, 100% { color: var(--voila-cycle-rest-body); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voila-web .voila-stats .stat,
+  .voila-process__traveller,
+  .voila-pair > .panel,
+  .voila-web .voila-pair > .pillar,
+  .voila-cycle--mix > .panel,
+  .voila-cycle--mix > .pillar,
+  .voila-cycle--mix > .panel h3,
+  .voila-cycle--mix > .panel p,
+  .voila-cycle--mix > .pillar h4,
+  .voila-cycle--mix > .pillar p,
+  .voila-avatar .ai-avatar-reaction {
+    animation: none !important;
+    transform: none !important;
+  }
+  .voila-web .voila-process__circuit,
+  .voila-process__circuit {
+    display: none;
+  }
 }
 
 .voila-avatars {
@@ -478,12 +586,57 @@
   justify-content: center;
 }
 
-.voila-avatars img {
+.voila-avatar {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 0.7rem;
+}
+
+.voila-avatars img,
+.voila-avatar img {
   width: 5.4rem;
   height: 9.6rem;
   object-fit: cover;
   border-radius: 0.7rem;
   display: block;
+}
+
+.voila-avatar .ai-avatar-reaction {
+  position: absolute;
+  bottom: 12%;
+  z-index: 2;
+  font-size: 1.15rem;
+  line-height: 1;
+  pointer-events: none;
+  animation-name: voila-avatar-heart;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  user-select: none;
+}
+
+.voila-avatar .ai-avatar-reaction--sm {
+  font-size: 0.85rem;
+}
+
+@keyframes voila-avatar-heart {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-52px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-82px) scale(0.8);
+  }
 }
 
 .voila-cta a {

@@ -20,6 +20,22 @@
 
 .slide .voila-process__steps {
   gap: 0.7rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.slide .voila-process__steps::before {
+  display: block;
+}
+
+.slide .voila-process__loop {
+  margin: 0.15rem 1.2rem 0;
+  border: 2px dashed color-mix(in srgb, #61d779 45%, transparent);
+  border-top: 0;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.slide .voila-process__circuit {
+  display: block;
 }
 
 .slide .voila-process__steps li {
@@ -45,11 +61,26 @@
   gap: 0.55rem;
 }
 
-.slide .voila-avatars img {
+.slide .voila-avatar {
+  border-radius: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.slide .voila-avatars img,
+.slide .voila-avatar img {
   width: 7.4rem;
   height: 13.2rem;
   border-radius: 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 0;
+}
+
+.slide .voila-avatar .ai-avatar-reaction {
+  font-size: 1.45rem;
+}
+
+.slide .voila-cover__tag {
+  max-width: 46rem;
+  font-size: 1.55rem;
 }
 
 .slide .voila-cta {
