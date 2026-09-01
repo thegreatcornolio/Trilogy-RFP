@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <style>html.proposal-locked,html.proposal-locked body{overflow:hidden}html.proposal-locked body>*:not(#proposal-gate){visibility:hidden!important}</style>
-  <script>try{if(sessionStorage.getItem("trilogyPresentationsUnlock")!=="1243e7b60989608203a3598a5e452d346fc931dded6e82ee3b18c1877b2d3581")document.documentElement.classList.add("proposal-locked")}catch(e){document.documentElement.classList.add("proposal-locked")}</script>
+  <script>
+    (function () {
+      var KEY = "trilogyVoilaUnlock";
+      var HASH = "b72843d704d32eaf30c0090b1deaf1f6963f0e199b0d070b4d21a7369ecaf622";
+      try {
+        if (sessionStorage.getItem(KEY) !== HASH) document.documentElement.classList.add("proposal-locked");
+      } catch (e) {
+        document.documentElement.classList.add("proposal-locked");
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="../../_shared/gate.css?v=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Trilogy Voilà</title>
@@ -375,6 +385,6 @@
     }
   })();
 </script>
-<script src="../../_shared/gate.js?v=1"></script>
+<script src="../../_shared/gate.js?v=2" data-storage-key="trilogyVoilaUnlock" data-hash="b72843d704d32eaf30c0090b1deaf1f6963f0e199b0d070b4d21a7369ecaf622"></script>
 </body>
 </html>
