@@ -133,23 +133,24 @@
 .voila-web .voila-payline {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   margin: 0 0 1.15rem;
   padding: 0;
   font-family: Poppins, Inter, sans-serif;
-  font-size: clamp(1.15rem, 7.2cqi, 3.4rem);
+  font-size: clamp(1.35rem, 5cqi, 2.85rem);
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #13202e;
+  color: #d5ec67;
 }
 
 .voila-web .voila-payline__ch {
   flex: 0 0 auto;
-  color: #13202e;
-  transition: color 0.18s ease;
+  color: #d5ec67;
+  transition: color 0.12s ease;
 }
 
 .voila-web .voila-payline__ch.is-green {
@@ -157,7 +158,7 @@
 }
 
 .voila-web .voila-payline__space {
-  flex: 0 0 0.42em;
+  flex: 0 0 0.33em;
 }
 
 @media (max-width: 720px) {
