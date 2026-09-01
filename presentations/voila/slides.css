@@ -1,12 +1,73 @@
 /* Trilogy Voilà — 16:9 deck overrides on top of presentations/_shared/deck.css */
 
-.slide.slide--cover {
-  padding: 0;
-  justify-content: stretch;
+.voila-cover-bleed {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  overflow: hidden;
+  pointer-events: none;
+  background: #0a121c;
 }
 
-.slide .voila-cover__title {
-  font-size: 4.4rem;
+body.voila-cover-on .voila-cover-bleed {
+  display: block;
+}
+
+body.voila-cover-on .slides {
+  background: transparent;
+}
+
+body.voila-cover-on .deck-chrome {
+  background: linear-gradient(180deg, rgba(10, 18, 28, 0.42), rgba(10, 18, 28, 0.12));
+}
+
+body.voila-cover-on .deck-progressbar {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.voila-cover-on .deck-hint {
+  color: rgba(255, 255, 255, 0.78);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+}
+
+body.voila-cover-on .deck-nav button {
+  background: rgba(10, 18, 28, 0.35);
+}
+
+.voila-cover-bleed__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.voila-cover-bleed__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 18, 28, 0.08) 0%,
+      rgba(10, 18, 28, 0.18) 52%,
+      rgba(10, 18, 28, 0.48) 100%
+    );
+}
+
+.voila-cover-bleed__copy {
+  position: absolute;
+  z-index: 1;
+  left: clamp(1.5rem, 4vw, 4.5rem);
+  right: clamp(1.5rem, 4vw, 4.5rem);
+  bottom: 4.6rem;
+  color: #fff;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.voila-cover-bleed__copy .voila-cover__title {
+  font-size: clamp(3.4rem, 7vw, 6rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 0.95;
@@ -14,24 +75,123 @@
   margin: 0 0 0.55rem;
 }
 
-.slide .voila-process {
+.voila-cover-bleed__copy .voila-cover__tag {
+  max-width: 52rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+}
+
+.slide.slide--cover {
+  padding: 0;
+  justify-content: stretch;
+  background: transparent;
+}
+
+.slide:not(.slide--cover) {
+  padding: 24px 40px 28px;
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
+.slide:not(.slide--cover) h2 {
+  font-size: 2.85rem;
+  margin: 0 0 0.55rem;
+  max-width: none;
+}
+
+.slide .lede {
+  max-width: none;
+  width: 100%;
+  font-size: 1.72rem;
+  line-height: 1.38;
+  margin: 0 0 0.85rem;
+}
+
+.slide .kicker {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.slide .stats,
+.slide .two-col,
+.slide .voila-process,
+.slide .grid.cols-3,
+.slide .voila-cta {
+  width: 100%;
   margin-top: 0.35rem;
+  flex: 1 1 auto;
+}
+
+.slide .stats {
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.slide .stat {
+  padding: 1.45rem 1.3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide .stat dt {
+  font-size: 0.95rem;
+}
+
+.slide .stat__value {
+  font-size: 3.1rem;
+}
+
+.slide .stat__note {
+  font-size: 1.18rem;
+}
+
+.slide .two-col {
+  gap: 1.15rem;
+  align-items: stretch;
+}
+
+.slide .panel {
+  padding: 1.5rem 1.5rem 1.55rem;
+}
+
+.slide .panel h3 {
+  font-size: 1.5rem;
+}
+
+.slide .panel p {
+  font-size: 1.28rem;
+  line-height: 1.4;
+}
+
+.slide .voila-process {
+  width: 100%;
+  margin-top: 0.35rem;
+  flex: 1 1 auto;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 .slide .voila-process__steps {
-  gap: 0.7rem;
+  gap: 0.85rem;
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  flex: 1 1 auto;
+  align-items: stretch;
 }
 
 .slide .voila-process__steps::before {
   display: block;
+  top: 1.85rem;
+  height: 4px;
 }
 
 .slide .voila-process__loop {
-  margin: 0.15rem 1.2rem 0;
-  border: 2px dashed color-mix(in srgb, #61d779 45%, transparent);
+  margin: 0.25rem 0.4rem 0;
+  border: 3px dashed color-mix(in srgb, #61d779 45%, transparent);
   border-top: 0;
   border-radius: 0 0 1rem 1rem;
+  font-size: 1.18rem;
+  padding: 0.8rem 1rem 0.9rem;
 }
 
 .slide .voila-process__circuit {
@@ -39,52 +199,80 @@
 }
 
 .slide .voila-process__steps li {
-  padding: 1rem 0.75rem 1.05rem;
+  padding: 1.2rem 0.8rem 1.25rem;
+}
+
+.slide .voila-process__num {
+  width: 2.45rem;
+  height: 2.45rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
 .slide .voila-process__steps strong {
-  font-size: 1.05rem;
+  font-size: 1.18rem;
 }
 
 .slide .voila-process__steps p {
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   line-height: 1.35;
 }
 
-.slide .voila-process__loop {
-  margin-top: 0.2rem;
-  font-size: 1.05rem;
+.slide .voila-process__dot {
+  display: block;
 }
 
 .slide .voila-avatars {
-  margin-top: 0.4rem;
-  gap: 0.55rem;
+  width: 100%;
+  margin-top: 0.2rem;
+  flex: 1 1 auto;
+  gap: 0.7rem;
+  justify-content: stretch;
+  overflow: visible;
+  align-items: stretch;
 }
 
 .slide .voila-avatar {
-  border-radius: 0.85rem;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .slide .voila-avatars img,
 .slide .voila-avatar img {
-  width: 7.4rem;
-  height: 13.2rem;
-  border-radius: 0.85rem;
+  width: 100%;
+  height: 100%;
+  min-height: 16rem;
+  object-fit: cover;
+  aspect-ratio: auto;
+  border-radius: 1rem;
   border: 0;
 }
 
 .slide .voila-avatar .ai-avatar-reaction {
-  font-size: 1.45rem;
+  font-size: 1.7rem;
 }
 
-.slide .voila-cover__tag {
-  max-width: 46rem;
-  font-size: 1.55rem;
+.slide .footnote {
+  width: 100%;
+  max-width: none;
+  margin-top: 0.85rem;
+  font-size: 1.2rem;
+}
+
+.slide .grid.cols-3 {
+  width: 100%;
+  margin-top: 0.35rem;
+  flex: 1 1 auto;
 }
 
 .slide .voila-cta {
-  margin-top: 0.4rem;
+  width: 100%;
+  margin-top: 0.35rem;
+  flex: 1 1 auto;
 }
 
 .slide .voila-cta p + p {

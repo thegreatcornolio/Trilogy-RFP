@@ -402,6 +402,22 @@
   filter: drop-shadow(0 0 6px rgba(97, 215, 121, 0.95));
 }
 
+.voila-process__dot {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border-radius: 999px;
+  background: #61d779;
+  box-shadow: 0 0 0 4px rgba(97, 215, 121, 0.28), 0 0 16px rgba(97, 215, 121, 0.95);
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+}
+
 @media (max-width: 900px) {
   .voila-web .voila-process__circuit {
     display: none;

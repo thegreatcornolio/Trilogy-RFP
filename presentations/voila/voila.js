@@ -1,8 +1,23 @@
 (function () {
+  function syncCoverBleed() {
+    var on = !!document.querySelector(".slide.slide--cover.is-active");
+    document.body.classList.toggle("voila-cover-on", on);
+    var bleed = document.querySelector("[data-cover-bleed] video");
+    if (bleed) {
+      if (on) {
+        try { bleed.play(); } catch (e) {}
+      } else {
+        try { bleed.pause(); } catch (e) {}
+      }
+    }
+  }
+
   function layoutVoilaOrbit(root) {
-    root = root || document.querySelector(".slide.is-active .voila-process") || document.querySelector(".voila-process");
-    if (!root) return;
     var isDeck = document.body.classList.contains("deck");
+    root = root || (isDeck
+      ? document.querySelector(".slide.is-active .voila-process")
+      : document.querySelector(".voila-process"));
+    if (!root) return;
     if (!isDeck && window.matchMedia("(max-width: 900px)").matches) return;
     var path = root.querySelector("#voila-flow-path, .voila-process__circuit path");
     var nums = root.querySelectorAll(".voila-process__num");
@@ -40,6 +55,37 @@
       "Z"
     ].join(" ");
     path.setAttribute("d", d);
+
+    var dot = root.querySelector(".voila-process__dot");
+    if (dot && path.getTotalLength) {
+      if (root._voilaPath === d && root._voilaTravel) {
+        /* keep the running traveller */
+      } else {
+        root._voilaPath = d;
+        if (root._voilaStop) root._voilaStop();
+        var len = 0;
+        try { len = path.getTotalLength(); } catch (e) { len = 0; }
+        if (len > 1) {
+          var start = performance.now();
+          var dur = 8000;
+          var running = true;
+          function tick(now) {
+            if (!running) return;
+            var t = ((now - start) % dur) / dur;
+            var pt = path.getPointAtLength(t * len);
+            dot.style.transform = "translate(" + pt.x + "px," + pt.y + "px)";
+            root._voilaTravel = requestAnimationFrame(tick);
+          }
+          root._voilaStop = function () {
+            running = false;
+            if (root._voilaTravel) cancelAnimationFrame(root._voilaTravel);
+            root._voilaTravel = 0;
+          };
+          root._voilaTravel = requestAnimationFrame(tick);
+        }
+      }
+    }
+
     var motion = root.querySelector("animateMotion");
     if (motion && motion.beginElement) {
       try { motion.beginElement(); } catch (e) {}
@@ -47,6 +93,7 @@
   }
 
   function scheduleLayout() {
+    syncCoverBleed();
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         layoutVoilaOrbit();
