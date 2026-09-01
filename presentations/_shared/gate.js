@@ -1,6 +1,7 @@
 (function () {
-  var KEY = "trilogyPresentationsUnlock";
-  var HASH = "1243e7b60989608203a3598a5e452d346fc931dded6e82ee3b18c1877b2d3581";
+  var script = document.currentScript;
+  var KEY = (script && script.getAttribute("data-storage-key")) || "trilogyPresentationsUnlock";
+  var HASH = (script && script.getAttribute("data-hash")) || "1243e7b60989608203a3598a5e452d346fc931dded6e82ee3b18c1877b2d3581";
   var root = document.documentElement;
 
   function unlocked() {

@@ -1,7 +1,82 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T11:12:00.000Z",
+  "updatedAt": "2026-09-01T11:00:00.000Z",
   "items": [
+    {
+      "slug": "voila/presentation",
+      "title": "Ai Demand Generation - Human Empathy Selling — slide deck",
+      "client": "Trilogy Voilà",
+      "sourceType": "PowerPoint-style deck",
+      "date": "2026-09-01",
+      "url": "https://proposal.trilogybpo.com/presentations/voila/presentation/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#61d779"
+      }
+    },
+    {
+      "slug": "voila/web",
+      "title": "Ai Demand Generation - Human Empathy Selling — webpage",
+      "client": "Trilogy Voilà",
+      "sourceType": "scrolling webpage",
+      "date": "2026-09-01",
+      "url": "https://proposal.trilogybpo.com/presentations/voila/web/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#d5ec67"
+      }
+    },
+    {
+      "slug": "odm",
+      "title": "Help Desk & Contact Centre Outsourcing",
+      "client": "One Digital Media",
+      "sourceType": "scrolling webpage",
+      "date": "2026-08-29",
+      "url": "https://proposal.trilogybpo.com/presentations/odm/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#111111"
+      }
+    },
+    {
+      "slug": "ventrica/proposal",
+      "title": "Managed Office Space — Two-Year Agreement",
+      "client": "Ventrica",
+      "sourceType": "PDF proposal",
+      "date": "2026-08-26",
+      "url": "https://proposal.trilogybpo.com/presentations/ventrica/proposal/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#e45b4a"
+      }
+    },
+    {
+      "slug": "medscheme/proposal",
+      "title": "International Business Development and Shared Service Re-Engineering Project",
+      "client": "Medscheme",
+      "sourceType": "PDF proposal",
+      "date": "2026-08-26",
+      "url": "https://proposal.trilogybpo.com/presentations/medscheme/proposal/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#c4a35a"
+      }
+    },
     {
       "slug": "lightningfibre/Web",
       "title": "Pro Forma Proposal",
