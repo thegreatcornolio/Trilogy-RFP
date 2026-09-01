@@ -101,6 +101,29 @@
   .voila-web .jump-nav a:not(:last-child) {
     display: none;
   }
+  .voila-web .voila-hero {
+    min-height: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: calc(100svh - 7.75rem);
+    align-items: flex-end;
+  }
+  .voila-web .voila-hero__video {
+    object-fit: contain;
+    object-position: center center;
+  }
+  .voila-web .voila-hero__copy {
+    margin-top: 0;
+    padding: 0 1.15rem 1.15rem;
+  }
+  .voila-web .voila-hero__copy h1 {
+    font-size: clamp(1.85rem, 8.5vw, 2.45rem);
+    margin-bottom: 0.4rem;
+  }
+  .voila-web .voila-hero__tag {
+    font-size: clamp(1rem, 4.4vw, 1.25rem);
+  }
 }
 
 .voila-cover {
