@@ -37,7 +37,7 @@
   position: relative;
   z-index: 1;
   width: min(46rem, calc(100% - 2.4rem));
-  padding: 0 1.2rem 4.5rem;
+  padding: 0 1.2rem calc(9.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 .voila-hero__brand {
@@ -73,7 +73,13 @@
 
 @media (min-width: 720px) {
   .voila-hero__copy {
-    padding: 0 2.5rem 5.5rem;
+    padding: 0 2.5rem 6.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .voila-web .jump-nav a:not(:last-child) {
+    display: none;
   }
 }
 
