@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=sa-sights-1">
-  <link rel="stylesheet" href="../voila.css?v=brand-2">
+  <link rel="stylesheet" href="../voila.css?v=pay-2">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -79,18 +79,7 @@
 </section>
 
 <main class="main">
-  <p class="voila-payline" aria-label="No costs — pay per sale">
-    <span class="voila-payline__ch" data-ch>N</span>
-    <span class="voila-payline__ch" data-ch>O</span>
-    <span class="voila-payline__space" aria-hidden="true"></span>
-    <span class="voila-payline__ch" data-ch>C</span>
-    <span class="voila-payline__ch" data-ch>O</span>
-    <span class="voila-payline__ch" data-ch>S</span>
-    <span class="voila-payline__ch" data-ch>T</span>
-    <span class="voila-payline__ch" data-ch>S</span>
-    <span class="voila-payline__space" aria-hidden="true"></span>
-    <span class="voila-payline__ch" data-ch>-</span>
-    <span class="voila-payline__space" aria-hidden="true"></span>
+  <p class="voila-payline" aria-label="Pay per sale only">
     <span class="voila-payline__ch" data-ch>P</span>
     <span class="voila-payline__ch" data-ch>A</span>
     <span class="voila-payline__ch" data-ch>Y</span>
@@ -103,6 +92,11 @@
     <span class="voila-payline__ch" data-ch>A</span>
     <span class="voila-payline__ch" data-ch>L</span>
     <span class="voila-payline__ch" data-ch>E</span>
+    <span class="voila-payline__space" aria-hidden="true"></span>
+    <span class="voila-payline__ch" data-ch>O</span>
+    <span class="voila-payline__ch" data-ch>N</span>
+    <span class="voila-payline__ch" data-ch>L</span>
+    <span class="voila-payline__ch" data-ch>Y</span>
   </p>
   <div class="proposal-shell">
 
@@ -441,16 +435,16 @@
       var chars = document.querySelectorAll(".voila-payline [data-ch]");
       if (!chars.length) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        chars.forEach(function (el) { el.classList.add("is-green"); });
+        chars.forEach(function (el) { el.classList.add("is-lit"); });
         return;
       }
       var i = 0;
       function step() {
-        chars[i].classList.add("is-green");
+        chars[i].classList.add("is-lit");
         i += 1;
         if (i >= chars.length) {
           setTimeout(function () {
-            chars.forEach(function (el) { el.classList.remove("is-green"); });
+            chars.forEach(function (el) { el.classList.remove("is-lit"); });
             i = 0;
             setTimeout(step, 500);
           }, 500);
