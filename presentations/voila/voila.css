@@ -240,17 +240,17 @@
   line-height: 1.1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #d5ec67;
+  color: #13202e;
 }
 
 .voila-web .voila-payline__ch {
   flex: 0 0 auto;
-  color: #d5ec67;
+  color: #13202e;
   transition: color 0.12s ease;
 }
 
-.voila-web .voila-payline__ch.is-green {
-  color: #61d779;
+.voila-web .voila-payline__ch.is-lit {
+  color: #d5ec67;
 }
 
 .voila-web .voila-payline__space {
