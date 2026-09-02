@@ -80,6 +80,10 @@
   color: #fff;
 }
 
+.voila-hero__name {
+  color: #61d779;
+}
+
 .voila-hero__headline {
   margin: 0 0 1.5rem;
   max-width: min(42rem, 100%);
@@ -101,7 +105,7 @@
   font-style: italic;
   line-height: 1.7;
   letter-spacing: 0;
-  color: #fff;
+  color: #61d779;
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
@@ -324,6 +328,10 @@
   color: #fff;
 }
 
+.voila-cover__title .voila-hero__name {
+  color: #61d779;
+}
+
 .voila-cover__headline {
   margin: 0 0 1.1rem;
   max-width: 46rem;
@@ -342,7 +350,7 @@
   font-weight: 500;
   font-style: italic;
   line-height: 1.5;
-  color: #fff;
+  color: #61d779;
 }
 
 .voila-process {
