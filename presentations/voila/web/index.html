@@ -21,7 +21,7 @@
   <meta name="description" content="Trilogy Voilà — Ai Demand Generation - Human Empathy Selling. We close. You only pay for each successful sale.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../trilogydigital/styles.css?v=sa-sights-1">
   <link rel="stylesheet" href="../voila.css?v=pay-2">
   <script>document.documentElement.classList.add("js-reveal");</script>
@@ -70,25 +70,16 @@
   </video>
   <div class="voila-hero__scrim"></div>
   <div class="voila-hero__copy">
-    <p class="voila-hero__brand">Trilogy Digital</p>
-    <h1>Trilogy Voilà</h1>
+    <img class="voila-hero__logo" src="../trilogy-logo.png" alt="Trilogy" width="1400" height="301">
+    <h1>Trilogy <span class="voila-hero__name">Voilà</span></h1>
+    <p class="voila-hero__headline">B2C Sales</p>
     <p class="voila-hero__tag">Ai Demand Generation - Human Empathy Selling</p>
+    <p class="voila-hero__powered">Powered by Visibilitie.ai</p>
   </div>
 </section>
 
 <main class="main">
-  <p class="voila-payline" aria-label="No costs — pay per sale">
-    <span class="voila-payline__ch" data-ch>N</span>
-    <span class="voila-payline__ch" data-ch>O</span>
-    <span class="voila-payline__space" aria-hidden="true"></span>
-    <span class="voila-payline__ch" data-ch>C</span>
-    <span class="voila-payline__ch" data-ch>O</span>
-    <span class="voila-payline__ch" data-ch>S</span>
-    <span class="voila-payline__ch" data-ch>T</span>
-    <span class="voila-payline__ch" data-ch>S</span>
-    <span class="voila-payline__space" aria-hidden="true"></span>
-    <span class="voila-payline__ch" data-ch>-</span>
-    <span class="voila-payline__space" aria-hidden="true"></span>
+  <p class="voila-payline" aria-label="Pay per sale only">
     <span class="voila-payline__ch" data-ch>P</span>
     <span class="voila-payline__ch" data-ch>A</span>
     <span class="voila-payline__ch" data-ch>Y</span>
@@ -101,6 +92,11 @@
     <span class="voila-payline__ch" data-ch>A</span>
     <span class="voila-payline__ch" data-ch>L</span>
     <span class="voila-payline__ch" data-ch>E</span>
+    <span class="voila-payline__space" aria-hidden="true"></span>
+    <span class="voila-payline__ch" data-ch>O</span>
+    <span class="voila-payline__ch" data-ch>N</span>
+    <span class="voila-payline__ch" data-ch>L</span>
+    <span class="voila-payline__ch" data-ch>Y</span>
   </p>
   <div class="proposal-shell">
 
@@ -112,7 +108,8 @@
       <div class="section-body">
         <div class="prose">
           <p>Your best buyers are already raising their hands. Most outbound never hears them. Cold lists, spray-and-pray sequences and generic bots burn brand equity. Decision-makers ignore them. Your team spends the day chasing people who never asked to be called.</p>
-          <p><strong>Trilogy Voilà</strong> is end-to-end demand generation and sale. AI attracts and qualifies. Trilogy closes. Your CRM is updated in under 300ms with the closed sale. You only pay for each successful sale.</p>
+          <p><strong>Trilogy Voilà</strong> is end-to-end demand generation and sale. AI attracts and qualifies. Trilogy closes.</p>
+          <p><strong>Digital Design with AI.</strong> “Our digital design agency will develop the Ai movies based on your product and target market.”</p>
         </div>
         <div class="stats stats--4 voila-stats">
           <div class="stat"><div class="stat__value">1,000+</div><div class="stat__label">AI avatars generating offer content 24/7</div></div>
@@ -262,6 +259,23 @@
           <li><strong>Always-on acquisition</strong> — offers communicated 24/7 without proportional headcount growth.</li>
           <li><strong>High-volume funnel</strong> — designed to feed closed sales, not a pile of leads.</li>
         </ul>
+        <section class="voila-clips-block" aria-labelledby="voila-clips-heading">
+          <h3 id="voila-clips-heading">Car Insurance Voila Videos</h3>
+          <div class="voila-clips">
+            <video controls playsinline preload="none" poster="videos/scr-0001.jpg" width="720" height="1280">
+              <source src="videos/scr-0001.mp4" type="video/mp4">
+            </video>
+            <video controls playsinline preload="none" poster="videos/scr-0002.jpg" width="720" height="1280">
+              <source src="videos/scr-0002.mp4" type="video/mp4">
+            </video>
+            <video controls playsinline preload="none" poster="videos/scr-0003.jpg" width="720" height="1280">
+              <source src="videos/scr-0003.mp4" type="video/mp4">
+            </video>
+            <video controls playsinline preload="none" poster="videos/scr-0004.jpg" width="720" height="1280">
+              <source src="videos/scr-0004.mp4" type="video/mp4">
+            </video>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -421,16 +435,16 @@
       var chars = document.querySelectorAll(".voila-payline [data-ch]");
       if (!chars.length) return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        chars.forEach(function (el) { el.classList.add("is-green"); });
+        chars.forEach(function (el) { el.classList.add("is-lit"); });
         return;
       }
       var i = 0;
       function step() {
-        chars[i].classList.add("is-green");
+        chars[i].classList.add("is-lit");
         i += 1;
         if (i >= chars.length) {
           setTimeout(function () {
-            chars.forEach(function (el) { el.classList.remove("is-green"); });
+            chars.forEach(function (el) { el.classList.remove("is-lit"); });
             i = 0;
             setTimeout(step, 500);
           }, 500);
@@ -440,6 +454,15 @@
       }
       step();
     })();
+
+    var clips = document.querySelectorAll(".voila-clips video");
+    clips.forEach(function (vid) {
+      vid.addEventListener("play", function () {
+        clips.forEach(function (other) {
+          if (other !== vid) other.pause();
+        });
+      });
+    });
   })();
 </script>
 <script src="../../_shared/gate.js?v=2" data-storage-key="trilogyVoilaUnlock" data-hash="b72843d704d32eaf30c0090b1deaf1f6963f0e199b0d070b4d21a7369ecaf622"></script>
