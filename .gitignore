@@ -1,2 +1,4 @@
 trilogy-screenshots/
 trilogy-screenshots-verify/
+.DS_Store
+**/__pycache__/
