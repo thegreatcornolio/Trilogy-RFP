@@ -95,15 +95,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const total = chart.querySelector("[data-gcc-total]");
     const pill = chart.querySelector("[data-gcc-pill]");
-    const target = 61;
+    const from = chart.hasAttribute("data-gcc-from")
+      ? Number(chart.getAttribute("data-gcc-from"))
+      : 0;
+    const to = chart.hasAttribute("data-gcc-to")
+      ? Number(chart.getAttribute("data-gcc-to"))
+      : 61;
+    const pillTpl = chart.getAttribute("data-gcc-pill-template") || "+{v}% cumulative";
     const started = performance.now();
     const duration = 1200;
     const tick = (now) => {
       const t = Math.min(1, (now - started) / duration);
       const eased = 1 - Math.pow(1 - t, 3);
-      const val = Math.round(target * eased);
+      const val = Math.round(from + (to - from) * eased);
       if (total) total.innerHTML = `${val}<span>%</span>`;
-      if (pill) pill.textContent = `+${val}% cumulative`;
+      if (pill) pill.textContent = pillTpl.replace(/\{v\}/g, String(val));
       if (t < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
