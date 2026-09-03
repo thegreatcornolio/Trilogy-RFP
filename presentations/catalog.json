@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-01T11:00:00.000Z",
+  "updatedAt": "2026-09-03T09:00:00.000Z",
   "items": [
+    {
+      "slug": "gcc",
+      "title": "Global Capability Centre Overview",
+      "client": "Trilogy GCC",
+      "sourceType": "scrolling webpage",
+      "date": "2026-09-03",
+      "url": "https://proposal.trilogybpo.com/GCC/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#61d779"
+      }
+    },
     {
       "slug": "voila/presentation",
       "title": "Ai Demand Generation - Human Empathy Selling — slide deck",
