@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sa-sights-1">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=gcc-dbit-1">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -131,15 +131,94 @@
       }
     }
 
+    .gcc-jump {
+      display: grid;
+      gap: 0.7rem;
+      margin: 0 0 1.35rem;
+    }
+    @media (min-width: 720px) {
+      .gcc-jump {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    .gcc-jump__card {
+      display: flex;
+      flex-direction: column;
+      min-height: 4.55rem;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--border, #d5dbe3);
+      border-radius: 0.55rem;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(19, 32, 46, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .gcc-jump__card:hover,
+    .gcc-jump__card:focus-visible {
+      transform: translateY(-2px);
+      border-color: #61d779;
+      box-shadow: 0 12px 24px rgba(19, 32, 46, 0.14);
+      outline: none;
+    }
+    .gcc-jump__num {
+      display: block;
+      background: #13202e;
+      color: #61d779;
+      font: 700 0.72rem/1 Poppins, Inter, sans-serif;
+      letter-spacing: 0.14em;
+      padding: 0.48rem 0.85rem 0.4rem;
+    }
+    .gcc-jump__title {
+      display: block;
+      padding: 0.7rem 0.85rem 0.8rem;
+      color: #13202e;
+      font: 700 0.95rem/1.25 Poppins, Inter, sans-serif;
+    }
+    .proposal-page {
+      scroll-margin-top: 1.25rem;
+    }
+    @media (max-width: 720px) {
+      .proposal-page {
+        scroll-margin-top: 4.35rem;
+      }
+    }
+
     .dbit-flow {
-      margin: 0.35rem 0 1.1rem;
+      position: relative;
+      margin: 0.35rem 0 1.35rem;
     }
     .dbit-flow__rail {
-      position: relative;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      z-index: 0;
       display: block;
-      height: 1.75rem;
-      margin: 0 0 0.85rem;
+      height: 1.85rem;
+      margin: 0;
+      transform: translateY(-50%);
       overflow: hidden;
+      pointer-events: none;
+    }
+    .dbit-flow .columns {
+      position: relative;
+      z-index: 1;
+    }
+    @media (min-width: 900px) {
+      .dbit-flow .columns.columns--4 {
+        gap: 1.75rem;
+      }
+      .dbit-flow .col-card {
+        width: 80%;
+        margin-inline: auto;
+        background: #fff;
+      }
+    }
+    @media (max-width: 899px) {
+      .dbit-flow__rail {
+        display: none;
+      }
     }
     .dbit-flow__svg {
       display: block;
@@ -197,17 +276,28 @@
     .dbit-flow.is-inview .col-card:nth-child(3) { animation-delay: 0.3s; }
     .dbit-flow.is-inview .col-card:nth-child(4) { animation-delay: 0.42s; }
 
-    .gcc-cards .pillar {
+    .gcc-cards:not(.pillars--spotlight) .pillar {
       opacity: 0;
       transform: translateY(16px);
     }
-    .gcc-cards.is-inview .pillar {
+    .gcc-cards:not(.pillars--spotlight).is-inview .pillar {
       animation: gcc-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-    .gcc-cards.is-inview .pillar:nth-child(1) { animation-delay: 0.05s; }
-    .gcc-cards.is-inview .pillar:nth-child(2) { animation-delay: 0.14s; }
-    .gcc-cards.is-inview .pillar:nth-child(3) { animation-delay: 0.23s; }
-    .gcc-cards.is-inview .pillar:nth-child(4) { animation-delay: 0.32s; }
+    .gcc-cards:not(.pillars--spotlight).is-inview .pillar:nth-child(1) { animation-delay: 0.05s; }
+    .gcc-cards:not(.pillars--spotlight).is-inview .pillar:nth-child(2) { animation-delay: 0.14s; }
+    .gcc-cards:not(.pillars--spotlight).is-inview .pillar:nth-child(3) { animation-delay: 0.23s; }
+    .gcc-cards:not(.pillars--spotlight).is-inview .pillar:nth-child(4) { animation-delay: 0.32s; }
+
+    .gcc-cards.pillars--spotlight .pillar {
+      opacity: 0;
+    }
+    .gcc-cards.pillars--spotlight.is-inview .pillar {
+      animation: gcc-fade-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .gcc-cards.pillars--spotlight.is-inview .pillar:nth-child(1) { animation-delay: 0.05s; }
+    .gcc-cards.pillars--spotlight.is-inview .pillar:nth-child(2) { animation-delay: 0.14s; }
+    .gcc-cards.pillars--spotlight.is-inview .pillar:nth-child(3) { animation-delay: 0.23s; }
+    .gcc-cards.pillars--spotlight.is-inview .pillar:nth-child(4) { animation-delay: 0.32s; }
 
     .dials[data-animate="ai-savings"] .dial {
       opacity: 0;
@@ -224,6 +314,45 @@
     @keyframes gcc-rise {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: none; }
+    }
+    @keyframes gcc-fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .dbit-case-figure {
+      margin: 0.35rem 0 1rem;
+    }
+    .dbit-case-figure .figure__media {
+      aspect-ratio: auto;
+    }
+    .dbit-case-figure .figure__media img {
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .dbit-split h4 {
+      margin: 0 0 0.55rem;
+    }
+    .dbit-split .list-check {
+      margin-top: 0.35rem;
+    }
+    .dbit-staffing {
+      gap: 0.75rem;
+    }
+    @media (min-width: 720px) {
+      .dbit-staffing {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    .dbit-case {
+      margin: 0 0 1.85rem;
+    }
+    .dbit-case h4 {
+      margin: 0 0 0.7rem;
+    }
+    .dbit-case .list-check {
+      margin-top: 0.55rem;
     }
 
     @media (max-width: 720px) {
@@ -462,6 +591,20 @@
       <p class="cover__disclaimer">This document is commercial-in-confidence. It may not be reproduced or disclosed to third parties without the written consent of Trilogy CX (Pty) Ltd.</p>
     </section>
 <section class="proposal-page" id="section-02">
+        <nav class="gcc-jump" aria-label="Jump to main sections">
+          <a class="gcc-jump__card" href="#section-02">
+            <span class="gcc-jump__num">01</span>
+            <span class="gcc-jump__title">Company Overview</span>
+          </a>
+          <a class="gcc-jump__card" href="#section-09">
+            <span class="gcc-jump__num">02</span>
+            <span class="gcc-jump__title">Why Cape Town / Why South Africa</span>
+          </a>
+          <a class="gcc-jump__card" href="#section-06">
+            <span class="gcc-jump__num">03</span>
+            <span class="gcc-jump__title">GCC</span>
+          </a>
+        </nav>
         <div class="section-head">
           <span class="section-num">01</span>
           <h2>Company Overview</h2>
@@ -1019,7 +1162,23 @@
           <h2>Global Capability Centres</h2>
         </div>
         <div class="section-body">
-<div class="tagline-block"><p>Own Your Offshore Operation — Offshoring Without the BPO Tax.</p></div><div class="prose"><p>For organisations seeking maximum control and long-term cost optimisation, building your own capability centre in South Africa represents the ultimate strategic move. With Trilogy's DBIT methodology, you can establish a fully operational centre with confidence, backed by our decades of local-market expertise.</p><p>Global Capability Centres provide 20–30% cost savings compared to traditional outsourcing while giving you complete ownership and control over operations, technology choices and strategic direction. We handle the complexity of setup, compliance and local regulations so you can focus on growing your business.</p></div><h3>The Challenge — Traditional BPO Savings Stop at Labour Arbitrage</h3><div class="prose"><p>The traditional BPO model contains a structural flaw: providers earn margin based on headcount. Every agent represents recurring revenue, so when automation reduces staff requirements it directly reduces the provider's income. This creates a powerful disincentive to innovate — BPOs are economically motivated to maintain, not reduce, your agent count.</p><p>A further barrier lies between the company's in-house IT systems and security protocols and a BPO trying to access those systems — historically a blocker to RPA, innovation and technology integration. Migrating your offshore BPO operation to an offshore captive unlocks this further cost-reduction opportunity and removes the barriers to innovation.</p></div><div class="callout">Bottom line: if a supplier makes less money when you automate, they will never automate fast enough.</div><h3>Our Solution — Flipping the Incentive Structure</h3><div class="prose"><p>Trilogy enables you to own your offshore operation outright. This isn't traditional outsourcing — it's a structured pathway to building and controlling your own Global Capability Centre in South Africa, with aligned incentives from day one.</p></div><div class="pillars pillars--2 gcc-cards" data-animate="gcc-cards"><div class="pillar"><h4>You Employ the Staff</h4><p>Your employees work for your entity, following your culture, processes and standards — complete operational control without vendor intermediation.</p></div><div class="pillar"><h4>100% Open-Book Costs</h4><p>Full transparency into every operating expense. No hidden markups, no black-box pricing — you see exactly where every rand is spent.</p></div><div class="pillar"><h4>Fixed Management Fee</h4><p>Our compensation is decoupled from headcount. We earn the same whether you run 100 agents or 50 — so we are incentivised to help you optimise.</p></div><div class="pillar"><h4>Savings Accrue to You</h4><p>Every efficiency improvement, automation win and headcount reduction flows directly to your bottom line, not a vendor’s margin.</p></div></div><div class="callout">This is offshoring without the BPO tax — you capture 100% of the value creation.</div><h3>The DBIT Methodology — Design, Build, Innovate &amp; Transfer</h3>
+<div class="tagline-block"><p>Own Your Offshore Operation — Offshoring Without the BPO Tax.</p></div><div class="prose"><p>For organisations seeking maximum control and long-term cost optimisation, building your own capability centre in South Africa represents the ultimate strategic move. With Trilogy's DBIT methodology, you can establish a fully operational centre with confidence, backed by our decades of local-market expertise.</p><p>Global Capability Centres provide 20–30% cost savings compared to traditional outsourcing while giving you complete ownership and control over operations, technology choices and strategic direction. We handle the complexity of setup, compliance and local regulations so you can focus on growing your business.</p></div>
+          <div class="covers-box" id="gcc-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#dbit-how">How DBIT works</a></td></tr>
+                  <tr><td>2</td><td><a href="#dbit-turnkey">Turnkey build &amp; staffing</a></td></tr>
+                  <tr><td>3</td><td><a href="#dbit-experience">Team + experience</a></td></tr>
+                  <tr><td>4</td><td><a href="#dbit-roadmap">Compounding savings</a></td></tr>
+                  <tr><td>5</td><td><a href="#dbit-cases">Case studies</a></td></tr>
+                  <tr><td>6</td><td><a href="#dbit-commercials">Commercial models</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <h3>The Challenge — Traditional BPO Savings Stop at Labour Arbitrage</h3><div class="prose"><p>The traditional BPO model contains a structural flaw: providers earn margin based on headcount. Every agent represents recurring revenue, so when automation reduces staff requirements it directly reduces the provider's income. This creates a powerful disincentive to innovate — BPOs are economically motivated to maintain, not reduce, your agent count.</p><p>A further barrier lies between the company's in-house IT systems and security protocols and a BPO trying to access those systems — historically a blocker to RPA, innovation and technology integration. Migrating your offshore BPO operation to an offshore captive unlocks this further cost-reduction opportunity and removes the barriers to innovation.</p></div><div class="callout">Bottom line: if a supplier makes less money when you automate, they will never automate fast enough.</div><h3>Our Solution — Flipping the Incentive Structure</h3><div class="prose"><p>Trilogy enables you to own your offshore operation outright. This isn't traditional outsourcing — it's a structured pathway to building and controlling your own Global Capability Centre in South Africa, with aligned incentives from day one.</p></div><div class="pillars pillars--2 gcc-cards pillars--spotlight pillars--spotlight-navy" data-animate="pillar-spotlight"><div class="pillar"><h4>You Employ the Staff</h4><p>Your employees work for your entity, following your culture, processes and standards — complete operational control without vendor intermediation.</p></div><div class="pillar"><h4>100% Open-Book Costs</h4><p>Full transparency into every operating expense. No hidden markups, no black-box pricing — you see exactly where every rand is spent.</p></div><div class="pillar"><h4>Fixed Management Fee</h4><p>Our compensation is decoupled from headcount. We earn the same whether you run 100 agents or 50 — so we are incentivised to help you optimise.</p></div><div class="pillar"><h4>Savings Accrue to You</h4><p>Every efficiency improvement, automation win and headcount reduction flows directly to your bottom line, not a vendor’s margin.</p></div></div><div class="callout">This is offshoring without the BPO tax — you capture 100% of the value creation.</div><h3>The DBIT Methodology — Design, Build, Innovate &amp; Transfer</h3>
 <div class="dbit-flow" data-animate="dbit-flow">
   <div class="dbit-flow__rail" aria-hidden="true">
     <svg class="dbit-flow__svg" viewBox="0 0 1000 28" preserveAspectRatio="none">
@@ -1036,7 +1195,69 @@
     <span class="dbit-flow__pulse"></span>
   </div>
   <div class="columns columns--4"><div class="col-card"><div class="col-card__head">Design</div><div class="col-card__body">We architect your operating model, technology stack and organisational structure around your specific service-delivery requirements and growth trajectory.</div></div><div class="col-card"><div class="col-card__head">Build</div><div class="col-card__body">We stand up the full operation — recruitment, training, facilities, technology implementation, compliance and governance frameworks.</div></div><div class="col-card"><div class="col-card__head">Innovate</div><div class="col-card__body">We actively reduce required headcount through digital deflection, intelligent routing, automation and AI-assisted resolution — because we are not paid on heads.</div></div><div class="col-card"><div class="col-card__head">Transfer</div><div class="col-card__body">We transition full operational ownership to your team when you are ready, with ongoing support as needed.</div></div></div>
-</div><div class="pillars pillars--3"><div class="pillar"><h4>Same Customers</h4><p>Your brand, your customer relationships, your service standards.</p></div><div class="pillar"><h4>Same SLAs</h4><p>Meeting or exceeding your current service-level agreements.</p></div><div class="pillar"><h4>Better Economics</h4><p>Fewer people, lower cost, full control.</p></div></div><h3>The Benefits of DBIT</h3><div class="prose"><p>Building your own capability centre through DBIT delivers advantages across multiple dimensions — beyond cost savings, you gain strategic control, operational flexibility and the freedom to innovate without constraints.</p></div><div class="dials" data-animate="ai-savings"><div class="dial">
+</div>
+
+<h3 id="dbit-how">How DBIT Works — A Phased, Holistic Build</h3>
+<div class="prose">
+  <p>The success of a GCC migration depends on proper planning and implementation of a holistic project — not a facilities fit-out on its own. DBIT covers every layer of the operation:</p>
+</div>
+<div class="pillars pillars--3">
+  <div class="pillar"><h4>Strategic &amp; Operational Objectives</h4><p>Business case, migration strategy, project plan, deliverables and a risk matrix with mitigation from day one.</p></div>
+  <div class="pillar"><h4>People, Culture &amp; Brand</h4><p>HR and people plan (including Section 197 where required), recruitment, training, and your culture transferred into the South African centre.</p></div>
+  <div class="pillar"><h4>Management Practices</h4><p>Management processes, practices and systems, plus MI/BI so the captive is measurable from go-live.</p></div>
+  <div class="pillar"><h4>Process Optimisation &amp; Innovation</h4><p>Process mapping, design and optimisation — then digital and autonomous innovation once the operation is stable.</p></div>
+  <div class="pillar"><h4>Platform &amp; Facilities</h4><p>Site build-out, connectivity and a fully kitted floor, delivered to your design specification and branding.</p></div>
+  <div class="pillar"><h4>Technology &amp; Innovation</h4><p>Systems integration, data security, disaster recovery, and global plus local best-practice baked into the stack.</p></div>
+</div>
+
+<h3 id="dbit-design">Design Phase</h3>
+<div class="prose">
+  <p>We complete an exhaustive migration plan before anything is stood up — so localisation risk is designed out, not discovered at go-live.</p>
+</div>
+<div class="two-col dbit-split">
+  <div>
+    <h4>The plan includes</h4>
+    <ul class="list-check">
+      <li>Comprehensive business case</li>
+      <li>Due diligence and requirements specification</li>
+      <li>Migration strategy and plan objectives</li>
+      <li>Project plan and deliverables</li>
+      <li>Risk matrix and mitigation plan</li>
+      <li>HR &amp; people plan (Section 197)</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Functional coverage</h4>
+    <ul class="list-check">
+      <li>Process mapping, design and optimisation</li>
+      <li>Technology, connectivity and data security</li>
+      <li>Systems and process integration</li>
+      <li>Facilities, recruitment and training</li>
+      <li>Management information and business intelligence</li>
+      <li>Disaster recovery and best-practice integration</li>
+    </ul>
+  </div>
+</div>
+
+<h3 id="dbit-build">Build &amp; Operate</h3>
+<div class="prose">
+  <p>This phase migrates a BPO operation to a captive — People, Process, Technology and Facilities together. Trilogy supports the captive management team with local know-how, experience, project management and change management through go-live and the operate period that follows.</p>
+</div>
+<div class="pillars pillars--2">
+  <div class="pillar"><h4>Design &amp; Build for Purpose</h4><p>The operation is built to the design specification and branding — not a generic BPO floor with your logo added later.</p></div>
+  <div class="pillar"><h4>OPEX vs CAPEX</h4><p>No CAPEX is required for the build-out. Trilogy offers a fully kitted operation to spec on a monthly OPEX commercial model, or a CAPEX path if you want to own the infrastructure.</p></div>
+  <div class="pillar"><h4>Vendor Management</h4><p>Tried-and-tested vendor ecosystem. We manage quality and budgets — vendor negotiation is how cost and quality stay in balance.</p></div>
+  <div class="pillar"><h4>Project Management</h4><p>Experienced project management to an on-time go-live. When so many workstreams have to land on one date, this function is critical.</p></div>
+</div>
+
+<h3 id="dbit-innovate">Innovate &amp; Transfer</h3>
+<div class="prose">
+  <p>Once SLAs, KPIs and quality metrics are stable, innovation starts. Trilogy helps the company innovate against its strategic objectives — an agile process that aligns internal teams to the plans and projects in this phase. Innovation covers process, technology, people and customer opportunities. Trilogy CX acts as instigator, collaborator and manager, helping internal teams Design, Configure, Deploy, Test and Improve.</p>
+  <p>In Transfer, operations, technology, facilities, people, management and knowledge move to the company — with project and change management, and the professional services needed for a clean handover of the people required.</p>
+</div>
+<div class="callout">Who DBIT is for: in-house operations that want to maximise cost without paying outsourced rates; already-outsourced operations at maturity that are ready to own the centre; and organisations that want the extra savings of digital and autonomous customer service.</div>
+
+<div class="pillars pillars--3"><div class="pillar"><h4>Same Customers</h4><p>Your brand, your customer relationships, your service standards.</p></div><div class="pillar"><h4>Same SLAs</h4><p>Meeting or exceeding your current service-level agreements.</p></div><div class="pillar"><h4>Better Economics</h4><p>Fewer people, lower cost, full control.</p></div></div><h3>The Benefits of DBIT</h3><div class="prose"><p>Building your own capability centre through DBIT delivers advantages across multiple dimensions — beyond cost savings, you gain strategic control, operational flexibility and the freedom to innovate without constraints.</p></div><div class="dials" data-animate="ai-savings"><div class="dial">
   <div class="dial__ring" style="--pct:0%" data-pct="50"><span class="dial__value">0%</span></div>
   <div><h4>Cheaper Than Onshoring</h4><p>Achieve 50–60% cost savings compared to maintaining operations in high-cost markets while accessing the same quality talent and capabilities.</p></div>
 </div><div class="dial">
@@ -1053,7 +1274,7 @@
   <p>Evolve your model as you grow — from an outsourced operation to your own contact centre, with management control and risk mitigation at every step.</p>
 </div>
 
-<div class="gcc-savings" data-animate="gcc-savings" data-gcc-from="100" data-gcc-to="20" data-gcc-pill-template="{v}% remaining cost" aria-label="Compounding cost reduction chart">
+<div class="gcc-savings" data-animate="gcc-savings" data-gcc-from="100" data-gcc-to="25" data-gcc-pill-template="{v}% remaining cost" aria-label="Compounding cost reduction chart">
   <div class="gcc-savings__eyebrow">DBIT evolution</div>
   <h4 class="gcc-savings__title">Compounding savings on the path to a GCC.</h4>
   <p class="gcc-savings__lead">Start at 100% on-shore cost, then step the cost base down.</p>
@@ -1063,11 +1284,11 @@
       <div class="gcc-savings__summary-label">Remaining cost</div>
       <div class="gcc-savings__summary-value" data-gcc-total>100<span>%</span></div>
       <div class="gcc-savings__pill" data-gcc-pill>100% remaining cost</div>
-      <p class="gcc-savings__summary-note">In-house / on-shore starts at 100%. Outsourcing to SA halves the cost. A GCC takes a further 30% of that remainder. Innovation through Trilogy Digital &amp; Ai then removes another 15% of the original cost base — down to 20% remaining.</p>
+      <p class="gcc-savings__summary-note">In-house / on-shore starts at 100%. Outsourcing to SA halves the cost. A GCC takes a further 30% of that remainder. Innovation through Trilogy Digital &amp; Ai then takes a further ~29% of the remaining 35% — down to 25% of the original cost base.</p>
     </div>
 
     <div class="gcc-savings__chart-wrap">
-      <svg class="gcc-savings__svg" viewBox="0 0 318 236" width="100%" height="auto" role="img" aria-label="Animated chart of remaining cost falling from 100 percent to 20 percent">
+      <svg class="gcc-savings__svg" viewBox="0 0 318 236" width="100%" height="auto" role="img" aria-label="Animated chart of remaining cost falling from 100 percent to 25 percent">
         <defs>
           <linearGradient id="gccArea" x1="0" y1="1" x2="0" y2="0">
             <stop offset="0%" stop-color="#0E7C46" stop-opacity="0"></stop>
@@ -1085,8 +1306,8 @@
           <g><line x1="20" x2="298" y1="73" y2="73"></line><text x="8" y="76">75</text></g>
           <g><line x1="20" x2="298" y1="24" y2="24"></line><text x="8" y="27">100</text></g>
         </g>
-        <path class="gcc-savings__area" d="M 54 220 L 54 24 L 124 122 L 194 151.4 L 264 180.8 L 264 220 Z" fill="url(#gccArea)"></path>
-        <path class="gcc-savings__line" d="M 54 24 L 124 122 L 194 151.4 L 264 180.8" fill="none" pathLength="1"></path>
+        <path class="gcc-savings__area" d="M 54 220 L 54 24 L 124 122 L 194 151.4 L 264 171 L 264 220 Z" fill="url(#gccArea)"></path>
+        <path class="gcc-savings__line" d="M 54 24 L 124 122 L 194 151.4 L 264 171" fill="none" pathLength="1"></path>
 
         <!-- Starting Point: 100% remaining cost -->
         <g class="gcc-savings__col" data-step="0">
@@ -1109,11 +1330,11 @@
           <text class="gcc-savings__pct" x="194" y="139.4" text-anchor="middle">35%</text>
         </g>
 
-        <!-- Step 3: 20% remaining after a further 15% of original -->
+        <!-- Step 3: 25% remaining after a further ~29% of the 35% -->
         <g class="gcc-savings__col" data-step="3">
-          <rect class="gcc-savings__bar" x="238" y="220" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="180.8" data-h="39.2"></rect>
-          <circle class="gcc-savings__dot" cx="264" cy="180.8" r="0" data-r="5.5"></circle>
-          <text class="gcc-savings__pct" x="264" y="168.8" text-anchor="middle">20%</text>
+          <rect class="gcc-savings__bar" x="238" y="220" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="171" data-h="49"></rect>
+          <circle class="gcc-savings__dot" cx="264" cy="171" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="264" y="159" text-anchor="middle">25%</text>
         </g>
       </svg>
 
@@ -1138,8 +1359,8 @@
         <div class="gcc-savings__step" data-step="3">
           <div class="gcc-savings__step-num">Step 3</div>
           <div class="gcc-savings__step-name">Innovation through Trilogy Digital &amp; Ai</div>
-          <div class="gcc-savings__step-desc">20% of cost remaining</div>
-          <div class="gcc-savings__step-pill">Further 15% of total</div>
+          <div class="gcc-savings__step-desc">25% of cost remaining</div>
+          <div class="gcc-savings__step-pill">Further ~29% of the 35%</div>
         </div>
       </div>
     </div>
@@ -1147,9 +1368,153 @@
 </div>
 
 <div class="prose">
-  <p>Each stage drives cost down from a 100% in-house / on-shore base: Outsourcing to SA halves the cost; a GCC takes a further 30% of that remainder; Innovation through Trilogy Digital &amp; Ai then removes another 15% of the original cost base.</p>
+  <p>Each stage drives cost down from a 100% in-house / on-shore base: Outsourcing to SA halves the cost; a GCC takes a further 30% of that remainder; Innovation through Trilogy Digital &amp; Ai then takes a further ~29% of the remaining 35% — landing at 25% of original cost.</p>
 </div>
-<h3>Proven Results — Quantified Outcomes Over 36 Months</h3><div class="prose"><p>Our clients typically experience a compounding effect across three value drivers. These aren't projections — they are based on realised results across our existing client base operating in South Africa.</p></div><div class="stats stats--3"><div class="stat"><div class="stat__value">20–30%</div><div class="stat__label">Margin removal savings — immediate reduction versus offshore BPO by eliminating vendor markup.</div></div><div class="stat"><div class="stat__value">15–20%</div><div class="stat__label">Digital &amp; AI deflection — efficiency gains from automation, self-service and AI resolution.</div></div><div class="stat"><div class="stat__value">30–50%</div><div class="stat__label">Total cost reduction — combined impact over 36 months as automation matures and scales.</div></div></div><h3>Flexible Financial Structures</h3><ul class="list-check"><li>CAPEX model — build owned infrastructure for long-term strategic control.</li><li>OPEX model — minimise upfront investment with operational-expense treatment.</li><li>Government incentives — leverage available job-creation grants and incentives per FTE.</li></ul><h3>Risk Mitigation</h3><div class="prose"><p>South Africa offers political stability, a legal framework aligned with Western standards, same-day time-zone overlap with European markets, and a mature BPO talent ecosystem with strong English proficiency.</p></div>
+<h3>Proven Results — Quantified Outcomes Over 36 Months</h3><div class="prose"><p>Our clients typically experience a compounding effect across three value drivers. These aren't projections — they are based on realised results across our existing client base operating in South Africa.</p></div><div class="stats stats--3"><div class="stat"><div class="stat__value">20–30%</div><div class="stat__label">Margin removal savings — immediate reduction versus offshore BPO by eliminating vendor markup.</div></div><div class="stat"><div class="stat__value">15–20%</div><div class="stat__label">Digital &amp; AI deflection — efficiency gains from automation, self-service and AI resolution.</div></div><div class="stat"><div class="stat__value">30–50%</div><div class="stat__label">Total cost reduction — combined impact over 36 months as automation matures and scales.</div></div></div>
+
+<h3 id="dbit-turnkey">Turnkey Build</h3>
+<div class="prose">
+  <p>Trilogy stands up the site and the technology stack as a single programme — construction through to telephony — so the captive is ready to operate, not merely occupied.</p>
+</div>
+<div class="columns columns--2">
+  <div class="col-card">
+    <div class="col-card__head">Site build-out</div>
+    <div class="col-card__body">
+      <ul class="list-check">
+        <li>Construction, electrical, fire &amp; HVAC</li>
+        <li>Floors, furniture &amp; fittings, joinery</li>
+        <li>Signage, windows and acoustics</li>
+        <li>Facilities contingency and professional services</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-card">
+    <div class="col-card__head">IT build-out</div>
+    <div class="col-card__body">
+      <ul class="list-check">
+        <li>Access control, AV and CCTV security</li>
+        <li>Networking, LAN, switches and connectivity</li>
+        <li>Computers, laptops, equipment and telephony</li>
+        <li>IT professional services and contingency</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3 id="dbit-staffing">Turnkey Staffing</h3>
+<div class="prose">
+  <p>We staff the senior in-country team, operations layer and business services so the centre can run — then transfer that capability with the operation.</p>
+</div>
+<div class="columns dbit-staffing">
+  <div class="col-card">
+    <div class="col-card__head">Exec staffing</div>
+    <div class="col-card__body">Country Executive, Managing Director, Transition Manager, HR Director and IT Director.</div>
+  </div>
+  <div class="col-card">
+    <div class="col-card__head">Operations staffing</div>
+    <div class="col-card__body">Senior Operations Manager, Ops Manager, Team Leaders, Quality Auditors, HR Admins, IT Support, MIS and agents.</div>
+  </div>
+  <div class="col-card">
+    <div class="col-card__head">Business &amp; facilities</div>
+    <div class="col-card__body">Business registration &amp; legal, finance, project and business management, plus facilities usage, equipment, personnel, security, cleaning, connectivity, rental and utilities.</div>
+  </div>
+</div>
+
+<h3 id="dbit-experience">Team + Experience</h3>
+<div class="prose">
+  <p>Trilogy is tenured BPO executives and managers who have built more than 30 contact centres over 25 years. The most recent engagement helped a global BPO build 1,000 seats over 24 months, with the first 100 seats live in six weeks.</p>
+  <p>We know the local business environment, socio-economic conditions, laws and compliance, vendor ecosystem and cost parameters. That is how a GCC is established accurately and cost-effectively — people, facilities, process and technology together.</p>
+</div>
+<div class="callout">“We know where the pitfalls and the golden nuggets are by now.” We mitigate your localisation risks.</div>
+<div class="prose">
+  <p>The same management team built three BPO companies that were sold to international groups:</p>
+</div>
+<div class="pillars pillars--3">
+  <div class="pillar">
+    <h4>CCN</h4>
+    <p>100 → 850 seats in 3 years. 15% EBITDA. Differentiation: VIP service at a higher price for higher quality. Brands included Virgin Media, British Gas, Mercedes-Benz, BMW, GM and Southern Sun.</p>
+  </div>
+  <div class="pillar">
+    <h4>Aegis South Africa</h4>
+    <p>Started with 4 people; grew to 2,000 seats in 5 years. 15% EBITDA. Differentiation: SMART people and SMART technology. Brands included AIG, the National Lottery, Department of Home Affairs and Telkom Mobile.</p>
+  </div>
+  <div class="pillar">
+    <h4>Digital Tribe / Codified</h4>
+    <p>Started in 2021 with 3 people; grew to 1,000 seats in 3 years. Differentiation: digital and autonomous platforms. Brands included Ascensos, ALDI and JD Sports. Codified is a BOT pioneer in SA, an AWS Global partner and one of two Infobip development partners globally.</p>
+  </div>
+</div>
+
+<h3 id="dbit-cases">Case Studies</h3>
+<div class="prose">
+  <p>Two DBIT programmes that show the model at scale — Aegis (now Startek) and Ascensos in Cape Town.</p>
+</div>
+
+<article class="dbit-case" id="case-aegis">
+  <h4>Case Study — Aegis South Africa</h4>
+  <figure class="figure dbit-case-figure">
+    <div class="figure__media">
+      <img src="assets/dbit-case-aegis.png" alt="Trilogy Aegis DBIT case study: global BPO landing in South Africa, 2,500 seats in five years, still operating as Startek" loading="lazy">
+    </div>
+    <figcaption>Aegis DBIT — design, build and operate in two South African locations, then a lasting in-country operation.</figcaption>
+  </figure>
+  <div class="prose">
+    <p>A global BPO needed a team to land in South Africa. Trilogy designed, built and operated Aegis South Africa in two geographic locations, ran the contact centre for three years, and grew the SA business by 2,500 seats.</p>
+  </div>
+  <ul class="list-check">
+    <li>Grew to 2,500 seats within 5 years, with EBITDA of over 15%.</li>
+    <li>Differentiation: SMART people and SMART technology.</li>
+    <li>Brands included British Gas, Virgin Mobile, AIG, the National Lottery, Department of Home Affairs and Telkom Mobile.</li>
+    <li>The operation continues in Africa, rebranded as Startek, still retaining key staff Trilogy brought in to manage the business.</li>
+  </ul>
+</article>
+
+<article class="dbit-case" id="case-ascensos">
+  <h4>Case Study — Ascensos</h4>
+  <figure class="figure dbit-case-figure">
+    <div class="figure__media">
+      <img src="assets/dbit-case-ascensos.png" alt="Trilogy Ascensos DBIT case study: Cape Town capability centre, first 100 FTEs live in six weeks, 1,500 seats across four locations" loading="lazy">
+    </div>
+    <figcaption>Ascensos DBIT — Cape Town capability centre, first 100 FTEs live in six weeks, then a four-site scale-up.</figcaption>
+  </figure>
+  <div class="prose">
+    <p>Trilogy’s DBIT team assisted Digital Tribe and Ascensos to establish a capability centre in Cape Town, with the first 100 FTEs going live within six weeks. The team designed and built a centre of excellence, oversaw and ran the operation for two to four years, and handed over a world-class operation to the incumbent.</p>
+  </div>
+  <ul class="list-check">
+    <li>Built 1,500 seats over 3 years across 4 locations.</li>
+    <li>Delivered over $6 million in refunds from structuring and administering government incentives.</li>
+    <li>Built a leadership team that remains in place and runs Ascensos South Africa.</li>
+    <li>Won multiple contact-centre performance awards, every client contract tendered for, and nationwide recognition as a top place to work.</li>
+    <li>Stood up incentive schemes that reduced the cost of operating in SA, and an innovation platform to reduce voice dependency.</li>
+  </ul>
+</article>
+
+<h3 id="dbit-commercials">Commercial Models</h3>
+<div class="prose">
+  <p>Trilogy provides DBIT on the commercial model that fits the client — always with a path to ownership, not a locked-in BPO tax.</p>
+</div>
+<div class="pillars pillars--3">
+  <div class="pillar">
+    <h4>Open-book build + management fee</h4>
+    <p>Detailed open-book cost and budget with full transparency, plus a management fee. You see the build and the run-rate.</p>
+  </div>
+  <div class="pillar">
+    <h4>Cost per productive hour</h4>
+    <p>All costs rolled into a per-productive-hour rate. If you are a BPO taking the centre to market, you add your own margin.</p>
+  </div>
+  <div class="pillar">
+    <h4>Facility managed services (OPEX)</h4>
+    <p>Full facility managed services as an OPEX model. Trilogy provides the CAPEX for the build so you are not funding the fit-out up front.</p>
+  </div>
+</div>
+<div class="callout">Trilogy will assist you to apply and administer DTIC job-creation grants — circa $7,500 per job created — from application through to payment.</div>
+<ul class="list-check">
+  <li>CAPEX model — build owned infrastructure for long-term strategic control.</li>
+  <li>OPEX model — minimise upfront investment with operational-expense treatment.</li>
+  <li>Government incentives — leverage available job-creation grants and incentives per FTE.</li>
+</ul>
+
+<h3>Risk Mitigation</h3>
+<div class="prose"><p>South Africa offers political stability, a legal framework aligned with Western standards, same-day time-zone overlap with European markets, and a mature BPO talent ecosystem with strong English proficiency. DBIT is how those advantages are converted into a live captive without absorbing localisation risk yourself.</p></div>
         </div>
       </section>
 
@@ -1184,7 +1549,7 @@
     </a>
   </nav>
 </aside>
-<script src="../trilogydigital/script.js?v=gcc-cost-1"></script>
+<script src="../trilogydigital/script.js?v=gcc-dbit-1"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
@@ -1227,7 +1592,7 @@
       });
     }
 
-    var motionBlocks = document.querySelectorAll("[data-animate='dbit-flow'], [data-animate='gcc-cards']");
+    var motionBlocks = document.querySelectorAll("[data-animate='dbit-flow'], [data-animate='gcc-cards'], [data-animate='pillar-spotlight']");
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!motionBlocks.length) return;
     var reveal = function (el) { el.classList.add("is-inview"); };

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Smooth in-page jumps for covers table
-  document.querySelectorAll('.covers-table a[href^="#"]').forEach((link) => {
+  document.querySelectorAll('.covers-table a[href^="#"], .gcc-jump a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
       const id = link.getAttribute("href");
       const target = document.querySelector(id);
