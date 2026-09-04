@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.proposal-locked,html.proposal-locked body{overflow:hidden}html.proposal-locked body>*:not(#proposal-gate){visibility:hidden!important}</style>
+  <script>
+    (function () {
+      var KEY = "trilogyCompanyOverviewUnlock";
+      var HASH = "1e602740ceb46223485e29e830c741cf9cc8530886bcaa7bf77cd8293e6a81a6";
+      try {
+        if (sessionStorage.getItem(KEY) !== HASH) document.documentElement.classList.add("proposal-locked");
+      } catch (e) {
+        document.documentElement.classList.add("proposal-locked");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../presentations/_shared/gate.css?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Trilogy Digital — Operational Overview</title>
+  <meta name="description" content="Trilogy Digital Operational Overview — BPO, GCC, Technology, MIS and delivery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-1">
+  <script>document.documentElement.classList.add("js-reveal");</script>
+  <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
+  <style>
+    .cover__brand { align-items: center !important; text-align: center !important; }
+    .covers-box__head { display: block !important; width: 100% !important; box-sizing: border-box; }
+    .cover__brand-line { display: block; }
+    .meta-grid--2 { grid-template-columns: 1fr; }
+    @media (min-width: 640px) {
+      .meta-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    }
+    html.js-reveal .proposal-page {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    html.js-reveal .proposal-page.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Reliable brand marquee — two equal groups so -50% loops cleanly */
+    .brand-marquee { margin: 0.35rem 0 0.85rem; }
+    .brand-marquee__viewport {
+      overflow: hidden;
+      min-height: 4.35rem;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .brand-marquee__track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      animation: co-brand-marquee 70s linear infinite;
+    }
+    .brand-marquee__group {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      gap: 1.75rem;
+      padding-right: 1.75rem;
+    }
+    .brand-marquee__item {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.4rem;
+      padding: 0 0.35rem;
+    }
+    .brand-marquee__item img {
+      display: block;
+      max-height: 2.6rem;
+      max-width: 7.5rem;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(1) contrast(1.05);
+      opacity: 0.88;
+    }
+    .brand-marquee__item--large img { max-height: 3.1rem; max-width: 9rem; }
+    .brand-marquee:hover .brand-marquee__track { animation-play-state: paused; }
+    @keyframes co-brand-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .brand-marquee__track { animation: none; flex-wrap: wrap; width: auto; }
+      .brand-marquee__group { flex-wrap: wrap; padding-right: 0; }
+      .brand-marquee__group[aria-hidden="true"] { display: none; }
+      .brand-marquee__viewport { -webkit-mask-image: none; mask-image: none; }
+    }
+    .co-next-page {
+      margin: 2rem 0 1rem;
+      padding: 1.25rem 1.35rem;
+      border-radius: 0.85rem;
+      border: 1px solid rgba(97, 215, 121, 0.45);
+      background: linear-gradient(135deg, #13202e 0%, #1a2d3f 100%);
+      color: #fff;
+    }
+    .co-next-page h3 { margin: 0 0 0.45rem; color: #fff; font-size: 1.15rem; }
+    .co-next-page p { margin: 0 0 0.85rem; color: rgba(255,255,255,0.82); }
+    .co-next-page a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      color: #d5ec67;
+      text-decoration: none;
+    }
+    .co-next-page a:hover { color: #61d779; }
+
+  </style>
+</head>
+<body class="proposal-doc" id="top">
+<nav class="page-nav" aria-label="Document sections">
+  <div class="page-nav__brand">Trilogy Digital</div>
+  <button type="button" class="page-nav__toggle" data-nav-toggle aria-expanded="false" aria-controls="page-nav-links">Menu</button>
+  <div class="page-nav__links" id="page-nav-links">
+      <a href="index.html">← Company Overview</a>
+      <a href="#section-bpo-cc">BPO Contact Centres</a>
+      <a href="#section-06">GCC</a>
+      <a href="#section-08">Technology</a>
+      <a href="#section-07">Test Kitchen</a>
+      <a href="#section-10">MIS</a>
+      <a href="#section-03">Ops Leadership</a>
+      <a href="#section-11">Forecasting</a>
+      <a href="#section-12">Quality</a>
+      <a href="#section-13">Compliance</a>
+      <a href="#section-14">Safety</a>
+      <a href="#section-16">Transition</a>
+      <a href="#section-18">Case Studies</a>
+  </div>
+</nav>
+<main class="main">
+  <div class="proposal-shell">
+
+    <section class="cover" id="cover">
+      <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="cover__brand">
+        <span class="cover__brand-name">Trilogy Digital</span>
+        <span class="cover__brand-line">A Trilogy Group Company</span>
+        <img class="cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
+      </div>
+      <div class="cover__body">
+        <div class="badge">Operational Overview</div>
+        <h1>Trilogy Digital Operational Overview</h1>
+        <p class="cover__tagline">Human Led · Ai-enabled</p>
+      </div>
+      <div class="meta-grid meta-grid--2">
+        <div><div class="meta-label">Date</div><div class="meta-value">4 September 2026</div></div>
+        <div><div class="meta-label">Contact</div><div class="meta-value"><a href="mailto:sales@trilogybpo.com">sales@trilogybpo.com</a></div></div>
+      </div>
+      <p class="cover__disclaimer">This document is commercial-in-confidence. It may not be reproduced or disclosed to third parties without the written consent of Trilogy CX (Pty) Ltd.</p>
+    </section>
+
+      <section class="proposal-page" id="section-bpo-cc">
+        
+        <nav class="gcc-jump" aria-label="Jump to operational sections">
+          <a class="gcc-jump__card" href="#section-bpo-cc"><span class="gcc-jump__num">04</span><span class="gcc-jump__title">BPO Contact Centres</span></a>
+          <a class="gcc-jump__card" href="#section-06"><span class="gcc-jump__num">05</span><span class="gcc-jump__title">Trilogy GCC</span></a>
+          <a class="gcc-jump__card" href="#section-08"><span class="gcc-jump__num">06</span><span class="gcc-jump__title">Technology &amp; AI</span></a>
+          <a class="gcc-jump__card" href="#section-07"><span class="gcc-jump__num">07</span><span class="gcc-jump__title">Test Kitchen</span></a>
+          <a class="gcc-jump__card" href="#section-10"><span class="gcc-jump__num">08</span><span class="gcc-jump__title">MIS</span></a>
+          <a class="gcc-jump__card" href="#section-03"><span class="gcc-jump__num">09</span><span class="gcc-jump__title">Ops Leadership</span></a>
+          <a class="gcc-jump__card" href="index.html"><span class="gcc-jump__num">←</span><span class="gcc-jump__title">Company Overview</span></a>
+        </nav>
+<div class="section-head">
+          <span class="section-num">04</span>
+          <h2>Trilogy BPO Contact Centres</h2>
+        </div>
+        <div class="section-body">
+          <div class="covers-box" id="bpo-cc-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#bpo-cc-intro">Accelerated CX</a></td></tr>
+                  <tr><td>2</td><td><a href="#bpo-cc-coverage">Geographies, verticals &amp; functions</a></td></tr>
+                  <tr><td>3</td><td><a href="#bpo-cc-digital">Digital contact centres</a></td></tr>
+                  <tr><td>4</td><td><a href="#bpo-cc-ai-model">Why AI-enabled BPO beats traditional outsourcing</a></td></tr>
+                  <tr><td>5</td><td><a href="#bpo-cc-track">Proven track record</a></td></tr>
+                  <tr><td>6</td><td><a href="#bpo-cc-achievements">Our achievements</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tagline-block" id="bpo-cc-intro"><p>Trilogy BPO: Accelerated CX. Decades of expertise, ready to scale.</p></div>
+          <div class="prose">
+            <p>High-performance contact centre operations in South Africa — just add humans. With over 25 years of combined experience, our leadership team has deep expertise supporting SA, UK and USA markets while helping prominent global brands successfully establish operations in South Africa.</p>
+          </div>
+
+          <h3 id="bpo-cc-coverage">Geographies, verticals &amp; functions</h3>
+          <div class="pillars pillars--3">
+            <div class="pillar">
+              <h4>Geographies Covered</h4>
+              <p>Over 25 years supporting predominantly UK and USA markets, helping prominent brands land in South Africa. Seamless delivery across time zones with native English-speaking talent.</p>
+            </div>
+            <div class="pillar">
+              <h4>Verticals Covered</h4>
+              <p>Intimate knowledge across telecommunications, utilities, insurance, retail, healthcare, technology and e-commerce — including brands such as Thames Water, British Gas, Vodafone, John Lewis, Aldi, KFC and Virgin.</p>
+            </div>
+            <div class="pillar">
+              <h4>Functions Covered</h4>
+              <p>Customer service &amp; IT support, chat commerce &amp; digital engagement, back-office administration, digital &amp; AI enablement, and automation &amp; RPA implementation.</p>
+            </div>
+          </div>
+
+          <h3 id="bpo-cc-digital">Digital contact centres</h3>
+          <div class="prose">
+            <p>We provide state-of-the-art digital solutions, deployed and ready, in a world-class contact centre environment — so you can service, sell, retain and collect on a fully automated AI/ML predictive and engagement platform, with a human agent in the loop.</p>
+          </div>
+          <div class="pillars pillars--3">
+            <div class="pillar"><h4>Data &amp; AI Driven Automation</h4><p>Predict customer needs, optimise routing and automate routine interactions while protecting service quality.</p></div>
+            <div class="pillar"><h4>Human, Digital &amp; AI Orchestration</h4><p>Blend human expertise with digital channels and AI so every interaction gets the right outcome.</p></div>
+            <div class="pillar"><h4>AI Incubator &amp; Test Kitchen</h4><p>An innovation lab that develops and proves new CX solutions before they reach live operations.</p></div>
+            <div class="pillar"><h4>Award-Winning Excellence</h4><p>A globally recognised team delivering through innovation and unwavering quality.</p></div>
+            <div class="pillar"><h4>Boutique Service, High Care</h4><p>Personalised attention with enterprise capability — experiences that exceed expectations.</p></div>
+            <div class="pillar"><h4>Industry Expertise</h4><p>Deep knowledge in telecoms, retail, motor and utilities means we understand your challenges from day one.</p></div>
+          </div>
+
+          <h3 id="bpo-cc-ai-model">Why AI-enabled BPO beats traditional outsourcing</h3>
+          <div class="pillars pillars--2">
+            <div class="pillar">
+              <h4>The problem with “old-school” BPO</h4>
+              <ul class="list-check">
+                <li>Labour-only scaling increases cost linearly.</li>
+                <li>Channel shift and automation are often bolt-ons.</li>
+                <li>AI projects fail when CX teams are removed from operations.</li>
+              </ul>
+            </div>
+            <div class="pillar">
+              <h4>Trilogy’s operating model</h4>
+              <ul class="list-check">
+                <li><strong>Human-in-the-loop AI</strong> — agents supervise, override and handle exceptions.</li>
+                <li><strong>Digital-first CX</strong> — deflects demand before it hits expensive voice queues.</li>
+                <li><strong>Automation inside operations</strong>, not beside them.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout">AI and automation can reduce contact-centre operating costs by 20–30% when embedded into workflows. Source: McKinsey — “Next Best Experience”. AI works only when it’s operationalised — BPO is the fastest way to do that safely.</div>
+
+          <h3 id="bpo-cc-track">Proven track record with world-class brands</h3>
+          <div class="prose">
+            <p>Trilogy’s leadership has built and run over 40 contact centres for some of the world’s best-known brands. We were the first company in South Africa that a UK brand chose to partner with for outsourcing — and the second UK brand to outsource to South Africa also selected the Trilogy team and has remained and grown in-country.</p>
+            <p>That pioneering experience gives unmatched insight into offshore CX delivery, with deep vertical playbooks across telecommunications, utilities, retail, fast food, insurance and technology.</p>
+          </div>
+
+          <h3 id="bpo-cc-achievements">Our achievements</h3>
+          <div class="stats stats--4 stats--achieve">
+            <div class="stat">
+              <div class="stat__value">45K</div>
+              <div class="stat__label">Jobs Created</div>
+              <p class="stat__note">45,000 jobs created over 20 years — a lasting contribution to South Africa’s economy and communities.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">20</div>
+              <div class="stat__label">Years of Experience</div>
+              <p class="stat__note">Two decades of delivery across industries and geographies.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">8</div>
+              <div class="stat__label">Years in AI/ML</div>
+              <p class="stat__note">Eight years building AI/ML platforms, analytics and digital automation.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">36</div>
+              <div class="stat__label">Blue Chip Centres Built</div>
+              <p class="stat__note">36 contact centres launched for blue-chip companies in South Africa.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section class="proposal-page" id="section-06">
+        <div class="section-head">
+          <span class="section-num">05</span>
+          <h2>Trilogy GCC</h2>
+        </div>
+        <div class="section-body">
+<div class="tagline-block"><p>Own Your Offshore Operation — Offshoring Without the BPO Tax.</p></div><div class="prose"><p>For organisations seeking maximum control and long-term cost optimisation, building your own capability centre in South Africa represents the ultimate strategic move. With Trilogy's DBIT methodology, you can establish a fully operational centre with confidence, backed by our decades of local-market expertise.</p><p>Global Capability Centres provide 20–30% cost savings compared to traditional outsourcing while giving you complete ownership and control over operations, technology choices and strategic direction. We handle the complexity of setup, compliance and local regulations so you can focus on growing your business.</p></div>
+          <div class="covers-box" id="gcc-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#dbit-how">How DBIT works</a></td></tr>
+                  <tr><td>2</td><td><a href="#dbit-turnkey">Turnkey build &amp; staffing</a></td></tr>
+                  <tr><td>3</td><td><a href="#dbit-experience">Team + experience</a></td></tr>
+                  <tr><td>4</td><td><a href="#dbit-roadmap">Compounding savings</a></td></tr>
+                  <tr><td>5</td><td><a href="#dbit-cases">Case studies</a></td></tr>
+                  <tr><td>6</td><td><a href="#dbit-commercials">Commercial models</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <h3>The Challenge — Traditional BPO Savings Stop at Labour Arbitrage</h3><div class="prose"><p>The traditional BPO model contains a structural flaw: providers earn margin based on headcount. Every agent represents recurring revenue, so when automation reduces staff requirements it directly reduces the provider's income. This creates a powerful disincentive to innovate — BPOs are economically motivated to maintain, not reduce, your agent count.</p><p>A further barrier lies between the company's in-house IT systems and security protocols and a BPO trying to access those systems — historically a blocker to RPA, innovation and technology integration. Migrating your offshore BPO operation to an offshore captive unlocks this further cost-reduction opportunity and removes the barriers to innovation.</p></div><div class="callout">Bottom line: if a supplier makes less money when you automate, they will never automate fast enough.</div><h3>Our Solution — Flipping the Incentive Structure</h3><div class="prose"><p>Trilogy enables you to own your offshore operation outright. This isn't traditional outsourcing — it's a structured pathway to building and controlling your own Global Capability Centre in South Africa, with aligned incentives from day one.</p></div><div class="pillars pillars--2 gcc-cards pillars--spotlight pillars--spotlight-navy" data-animate="pillar-spotlight"><div class="pillar"><h4>You Employ the Staff</h4><p>Your employees work for your entity, following your culture, processes and standards — complete operational control without vendor intermediation.</p></div><div class="pillar"><h4>100% Open-Book Costs</h4><p>Full transparency into every operating expense. No hidden markups, no black-box pricing — you see exactly where every rand is spent.</p></div><div class="pillar"><h4>Fixed Management Fee</h4><p>Our compensation is decoupled from headcount. We earn the same whether you run 100 agents or 50 — so we are incentivised to help you optimise.</p></div><div class="pillar"><h4>Savings Accrue to You</h4><p>Every efficiency improvement, automation win and headcount reduction flows directly to your bottom line, not a vendor’s margin.</p></div></div><div class="callout">This is offshoring without the BPO tax — you capture 100% of the value creation.</div><h3>The DBIT Methodology — Design, Build, Innovate &amp; Transfer</h3>
+<div class="dbit-flow" data-animate="dbit-flow">
+  <div class="dbit-flow__rail" aria-hidden="true">
+    <svg class="dbit-flow__svg" viewBox="0 0 1000 28" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="dbitArrowGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#61d779"></stop>
+          <stop offset="50%" stop-color="#d5ec67"></stop>
+          <stop offset="100%" stop-color="#61d779"></stop>
+        </linearGradient>
+      </defs>
+      <line class="dbit-flow__line" x1="12" y1="14" x2="948" y2="14" stroke="url(#dbitArrowGrad)"></line>
+      <polygon class="dbit-flow__head" points="948,5 996,14 948,23"></polygon>
+    </svg>
+    <span class="dbit-flow__pulse"></span>
+  </div>
+  <div class="columns columns--4"><div class="col-card"><div class="col-card__head">Design</div><div class="col-card__body">We architect your operating model, technology stack and organisational structure around your specific service-delivery requirements and growth trajectory.</div></div><div class="col-card"><div class="col-card__head">Build</div><div class="col-card__body">We stand up the full operation — recruitment, training, facilities, technology implementation, compliance and governance frameworks.</div></div><div class="col-card"><div class="col-card__head">Innovate</div><div class="col-card__body">We actively reduce required headcount through digital deflection, intelligent routing, automation and AI-assisted resolution — because we are not paid on heads.</div></div><div class="col-card"><div class="col-card__head">Transfer</div><div class="col-card__body">We transition full operational ownership to your team when you are ready, with ongoing support as needed.</div></div></div>
+</div>
+
+<h3 id="dbit-how">How DBIT Works — A Phased, Holistic Build</h3>
+<div class="prose">
+  <p>The success of a GCC migration depends on proper planning and implementation of a holistic project — not a facilities fit-out on its own. DBIT covers every layer of the operation:</p>
+</div>
+<div class="pillars pillars--3">
+  <div class="pillar"><h4>Strategic &amp; Operational Objectives</h4><p>Business case, migration strategy, project plan, deliverables and a risk matrix with mitigation from day one.</p></div>
+  <div class="pillar"><h4>People, Culture &amp; Brand</h4><p>HR and people plan (including Section 197 where required), recruitment, training, and your culture transferred into the South African centre.</p></div>
+  <div class="pillar"><h4>Management Practices</h4><p>Management processes, practices and systems, plus MI/BI so the captive is measurable from go-live.</p></div>
+  <div class="pillar"><h4>Process Optimisation &amp; Innovation</h4><p>Process mapping, design and optimisation — then digital and autonomous innovation once the operation is stable.</p></div>
+  <div class="pillar"><h4>Platform &amp; Facilities</h4><p>Site build-out, connectivity and a fully kitted floor, delivered to your design specification and branding.</p></div>
+  <div class="pillar"><h4>Technology &amp; Innovation</h4><p>Systems integration, data security, disaster recovery, and global plus local best-practice baked into the stack.</p></div>
+</div>
+
+<h3 id="dbit-design">Design Phase</h3>
+<div class="prose">
+  <p>We complete an exhaustive migration plan before anything is stood up — so localisation risk is designed out, not discovered at go-live.</p>
+</div>
+<div class="two-col dbit-split">
+  <div>
+    <h4>The plan includes</h4>
+    <ul class="list-check">
+      <li>Comprehensive business case</li>
+      <li>Due diligence and requirements specification</li>
+      <li>Migration strategy and plan objectives</li>
+      <li>Project plan and deliverables</li>
+      <li>Risk matrix and mitigation plan</li>
+      <li>HR &amp; people plan (Section 197)</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Functional coverage</h4>
+    <ul class="list-check">
+      <li>Process mapping, design and optimisation</li>
+      <li>Technology, connectivity and data security</li>
+      <li>Systems and process integration</li>
+      <li>Facilities, recruitment and training</li>
+      <li>Management information and business intelligence</li>
+      <li>Disaster recovery and best-practice integration</li>
+    </ul>
+  </div>
+</div>
+
+<h3 id="dbit-build">Build &amp; Operate</h3>
+<div class="prose">
+  <p>This phase migrates a BPO operation to a captive — People, Process, Technology and Facilities together. Trilogy supports the captive management team with local know-how, experience, project management and change management through go-live and the operate period that follows.</p>
+</div>
+<div class="pillars pillars--2">
+  <div class="pillar"><h4>Design &amp; Build for Purpose</h4><p>The operation is built to the design specification and branding — not a generic BPO floor with your logo added later.</p></div>
+  <div class="pillar"><h4>OPEX vs CAPEX</h4><p>No CAPEX is required for the build-out. Trilogy offers a fully kitted operation to spec on a monthly OPEX commercial model, or a CAPEX path if you want to own the infrastructure.</p></div>
+  <div class="pillar"><h4>Vendor Management</h4><p>Tried-and-tested vendor ecosystem. We manage quality and budgets — vendor negotiation is how cost and quality stay in balance.</p></div>
+  <div class="pillar"><h4>Project Management</h4><p>Experienced project management to an on-time go-live. When so many workstreams have to land on one date, this function is critical.</p></div>
+</div>
+
+<h3 id="dbit-innovate">Innovate &amp; Transfer</h3>
+<div class="prose">
+  <p>Once SLAs, KPIs and quality metrics are stable, innovation starts. Trilogy helps the company innovate against its strategic objectives — an agile process that aligns internal teams to the plans and projects in this phase. Innovation covers process, technology, people and customer opportunities. Trilogy CX acts as instigator, collaborator and manager, helping internal teams Design, Configure, Deploy, Test and Improve.</p>
+  <p>In Transfer, operations, technology, facilities, people, management and knowledge move to the company — with project and change management, and the professional services needed for a clean handover of the people required.</p>
+</div>
+<div class="callout">Who DBIT is for: in-house operations that want to maximise cost without paying outsourced rates; already-outsourced operations at maturity that are ready to own the centre; and organisations that want the extra savings of digital and autonomous customer service.</div>
+
+<div class="pillars pillars--3"><div class="pillar"><h4>Same Customers</h4><p>Your brand, your customer relationships, your service standards.</p></div><div class="pillar"><h4>Same SLAs</h4><p>Meeting or exceeding your current service-level agreements.</p></div><div class="pillar"><h4>Better Economics</h4><p>Fewer people, lower cost, full control.</p></div></div><h3>The Benefits of DBIT</h3><div class="prose"><p>Building your own capability centre through DBIT delivers advantages across multiple dimensions — beyond cost savings, you gain strategic control, operational flexibility and the freedom to innovate without constraints.</p></div><div class="dials" data-animate="ai-savings"><div class="dial">
+  <div class="dial__ring" style="--pct:0%" data-pct="50"><span class="dial__value">0%</span></div>
+  <div><h4>Cheaper Than Onshoring</h4><p>Achieve 50–60% cost savings compared to maintaining operations in high-cost markets while accessing the same quality talent and capabilities.</p></div>
+</div><div class="dial">
+  <div class="dial__ring" style="--pct:0%" data-pct="35"><span class="dial__value">0%</span></div>
+  <div><h4>Cheaper Than Outsourcing</h4><p>Global Capability Centres provide 20–30% additional savings compared to traditional BPO outsourcing by eliminating vendor margins and overhead.</p></div>
+</div><div class="dial">
+  <div class="dial__ring" style="--pct:0%" data-pct="40"><span class="dial__value">0%</span></div>
+  <div><h4>Further Savings Through Deflection</h4><p>Implement aggressive automation, digital deflection and AI strategies without restrictions, driving an additional 15–20% cost reduction over time.</p></div>
+</div><div class="dial">
+  <div class="dial__ring" style="--pct:0%" data-pct="100"><span class="dial__value">0%</span></div>
+  <div><h4>More Control</h4><p>Maintain complete ownership and control over operations, technology decisions, data security and strategic direction — critical for long-term competitive advantage.</p></div>
+</div></div><h3 id="dbit-roadmap">Incubator / DBIT Roadmap</h3>
+<div class="prose">
+  <p>Evolve your model as you grow — from an outsourced operation to your own contact centre, with management control and risk mitigation at every step.</p>
+</div>
+
+<div class="gcc-savings" data-animate="gcc-savings" data-gcc-from="100" data-gcc-to="25" data-gcc-pill-template="{v}% remaining cost" aria-label="Compounding cost reduction chart">
+  <div class="gcc-savings__eyebrow">DBIT evolution</div>
+  <h4 class="gcc-savings__title">Compounding savings on the path to a GCC.</h4>
+  <p class="gcc-savings__lead">Start at 100% on-shore cost, then step the cost base down.</p>
+
+  <div class="gcc-savings__layout">
+    <div class="gcc-savings__summary">
+      <div class="gcc-savings__summary-label">Remaining cost</div>
+      <div class="gcc-savings__summary-value" data-gcc-total>100<span>%</span></div>
+      <div class="gcc-savings__pill" data-gcc-pill>100% remaining cost</div>
+      <p class="gcc-savings__summary-note">In-house / on-shore starts at 100%. Outsourcing to SA halves the cost. A GCC takes a further 30% of that remainder. Innovation through Trilogy Digital &amp; Ai then takes a further ~29% of the remaining 35% — down to 25% of the original cost base.</p>
+    </div>
+
+    <div class="gcc-savings__chart-wrap">
+      <svg class="gcc-savings__svg" viewBox="0 0 318 236" width="100%" height="auto" role="img" aria-label="Animated chart of remaining cost falling from 100 percent to 25 percent">
+        <defs>
+          <linearGradient id="gccArea" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#0E7C46" stop-opacity="0"></stop>
+            <stop offset="100%" stop-color="#0E7C46" stop-opacity="0.18"></stop>
+          </linearGradient>
+          <linearGradient id="gccBar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a334d"></stop>
+            <stop offset="100%" stop-color="#0E1B2A"></stop>
+          </linearGradient>
+        </defs>
+        <g class="gcc-savings__grid" aria-hidden="true">
+          <g><line x1="20" x2="298" y1="220" y2="220"></line><text x="8" y="223">0</text></g>
+          <g><line x1="20" x2="298" y1="171" y2="171"></line><text x="8" y="174">25</text></g>
+          <g><line x1="20" x2="298" y1="122" y2="122"></line><text x="8" y="125">50</text></g>
+          <g><line x1="20" x2="298" y1="73" y2="73"></line><text x="8" y="76">75</text></g>
+          <g><line x1="20" x2="298" y1="24" y2="24"></line><text x="8" y="27">100</text></g>
+        </g>
+        <path class="gcc-savings__area" d="M 54 220 L 54 24 L 124 122 L 194 151.4 L 264 171 L 264 220 Z" fill="url(#gccArea)"></path>
+        <path class="gcc-savings__line" d="M 54 24 L 124 122 L 194 151.4 L 264 171" fill="none" pathLength="1"></path>
+
+        <!-- Starting Point: 100% remaining cost -->
+        <g class="gcc-savings__col" data-step="0">
+          <rect class="gcc-savings__bar" x="28" y="220" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="24" data-h="196"></rect>
+          <circle class="gcc-savings__dot" cx="54" cy="24" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="54" y="14" text-anchor="middle">100%</text>
+        </g>
+
+        <!-- Step 1: 50% remaining after 50% SA outsourcing discount -->
+        <g class="gcc-savings__col" data-step="1">
+          <rect class="gcc-savings__bar" x="98" y="220" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="122" data-h="98"></rect>
+          <circle class="gcc-savings__dot" cx="124" cy="122" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="124" y="110" text-anchor="middle">50%</text>
+        </g>
+
+        <!-- Step 2: 35% remaining after 30% of the 50% -->
+        <g class="gcc-savings__col" data-step="2">
+          <rect class="gcc-savings__bar" x="168" y="220" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="151.4" data-h="68.6"></rect>
+          <circle class="gcc-savings__dot" cx="194" cy="151.4" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="194" y="139.4" text-anchor="middle">35%</text>
+        </g>
+
+        <!-- Step 3: 25% remaining after a further ~29% of the 35% -->
+        <g class="gcc-savings__col" data-step="3">
+          <rect class="gcc-savings__bar" x="238" y="220" width="52" height="0" rx="6" fill="url(#gccBar)" data-y="171" data-h="49"></rect>
+          <circle class="gcc-savings__dot" cx="264" cy="171" r="0" data-r="5.5"></circle>
+          <text class="gcc-savings__pct" x="264" y="159" text-anchor="middle">25%</text>
+        </g>
+      </svg>
+
+      <div class="gcc-savings__steps">
+        <div class="gcc-savings__step" data-step="0">
+          <div class="gcc-savings__step-num">Starting Point</div>
+          <div class="gcc-savings__step-name">In-house / On-shore</div>
+          <div class="gcc-savings__step-desc">100% of cost</div>
+        </div>
+        <div class="gcc-savings__step" data-step="1">
+          <div class="gcc-savings__step-num">Step 1</div>
+          <div class="gcc-savings__step-name">Outsourcing to SA</div>
+          <div class="gcc-savings__step-desc">50% of cost remaining</div>
+          <div class="gcc-savings__step-pill">50% discount</div>
+        </div>
+        <div class="gcc-savings__step" data-step="2">
+          <div class="gcc-savings__step-num">Step 2</div>
+          <div class="gcc-savings__step-name">GCC</div>
+          <div class="gcc-savings__step-desc">35% of cost remaining</div>
+          <div class="gcc-savings__step-pill">Further 30% of the 50%</div>
+        </div>
+        <div class="gcc-savings__step" data-step="3">
+          <div class="gcc-savings__step-num">Step 3</div>
+          <div class="gcc-savings__step-name">Innovation through Trilogy Digital &amp; Ai</div>
+          <div class="gcc-savings__step-desc">25% of cost remaining</div>
+          <div class="gcc-savings__step-pill">Further ~29% of the 35%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="prose">
+  <p>Each stage drives cost down from a 100% in-house / on-shore base: Outsourcing to SA halves the cost; a GCC takes a further 30% of that remainder; Innovation through Trilogy Digital &amp; Ai then takes a further ~29% of the remaining 35% — landing at 25% of original cost.</p>
+</div>
+<h3>Proven Results — Quantified Outcomes Over 36 Months</h3><div class="prose"><p>Our clients typically experience a compounding effect across three value drivers. These aren't projections — they are based on realised results across our existing client base operating in South Africa.</p></div><div class="stats stats--3"><div class="stat"><div class="stat__value">20–30%</div><div class="stat__label">Margin removal savings — immediate reduction versus offshore BPO by eliminating vendor markup.</div></div><div class="stat"><div class="stat__value">15–20%</div><div class="stat__label">Digital &amp; AI deflection — efficiency gains from automation, self-service and AI resolution.</div></div><div class="stat"><div class="stat__value">30–50%</div><div class="stat__label">Total cost reduction — combined impact over 36 months as automation matures and scales.</div></div></div>
+
+<h3 id="dbit-turnkey">Turnkey Build</h3>
+<div class="prose">
+  <p>Trilogy stands up the site and the technology stack as a single programme — construction through to telephony — so the captive is ready to operate, not merely occupied.</p>
+</div>
+<div class="columns columns--2">
+  <div class="col-card">
+    <div class="col-card__head">Site build-out</div>
+    <div class="col-card__body">
+      <ul class="list-check">
+        <li>Construction, electrical, fire &amp; HVAC</li>
+        <li>Floors, furniture &amp; fittings, joinery</li>
+        <li>Signage, windows and acoustics</li>
+        <li>Facilities contingency and professional services</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-card">
+    <div class="col-card__head">IT build-out</div>
+    <div class="col-card__body">
+      <ul class="list-check">
+        <li>Access control, AV and CCTV security</li>
+        <li>Networking, LAN, switches and connectivity</li>
+        <li>Computers, laptops, equipment and telephony</li>
+        <li>IT professional services and contingency</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h3 id="dbit-staffing">Turnkey Staffing</h3>
+<div class="prose">
+  <p>We staff the senior in-country team, operations layer and business services so the centre can run — then transfer that capability with the operation.</p>
+</div>
+<div class="columns dbit-staffing">
+  <div class="col-card">
+    <div class="col-card__head">Exec staffing</div>
+    <div class="col-card__body">Country Executive, Managing Director, Transition Manager, HR Director and IT Director.</div>
+  </div>
+  <div class="col-card">
+    <div class="col-card__head">Operations staffing</div>
+    <div class="col-card__body">Senior Operations Manager, Ops Manager, Team Leaders, Quality Auditors, HR Admins, IT Support, MIS and agents.</div>
+  </div>
+  <div class="col-card">
+    <div class="col-card__head">Business &amp; facilities</div>
+    <div class="col-card__body">Business registration &amp; legal, finance, project and business management, plus facilities usage, equipment, personnel, security, cleaning, connectivity, rental and utilities.</div>
+  </div>
+</div>
+
+<h3 id="dbit-experience">Team + Experience</h3>
+<div class="prose">
+  <p>Trilogy is tenured BPO executives and managers who have built more than 30 contact centres over 25 years. The most recent engagement helped a global BPO build 1,000 seats over 24 months, with the first 100 seats live in six weeks.</p>
+  <p>We know the local business environment, socio-economic conditions, laws and compliance, vendor ecosystem and cost parameters. That is how a GCC is established accurately and cost-effectively — people, facilities, process and technology together.</p>
+</div>
+<div class="callout">“We know where the pitfalls and the golden nuggets are by now.” We mitigate your localisation risks.</div>
+<div class="prose">
+  <p>The same management team built three BPO companies that were sold to international groups:</p>
+</div>
+<div class="pillars pillars--3">
+  <div class="pillar">
+    <h4>CCN</h4>
+    <p>100 → 850 seats in 3 years. 15% EBITDA. Differentiation: VIP service at a higher price for higher quality. Brands included Virgin Media, British Gas, Mercedes-Benz, BMW, GM and Southern Sun.</p>
+  </div>
+  <div class="pillar">
+    <h4>Aegis South Africa</h4>
+    <p>Started with 4 people; grew to 2,000 seats in 5 years. 15% EBITDA. Differentiation: SMART people and SMART technology. Brands included AIG, the National Lottery, Department of Home Affairs and Telkom Mobile.</p>
+  </div>
+  <div class="pillar">
+    <h4>Digital Tribe / Codified</h4>
+    <p>Started in 2021 with 3 people; grew to 1,000 seats in 3 years. Differentiation: digital and autonomous platforms. Brands included Ascensos, ALDI and JD Sports. Codified is a BOT pioneer in SA, an AWS Global partner and one of two Infobip development partners globally.</p>
+  </div>
+</div>
+
+<h3 id="dbit-cases">Case Studies</h3>
+<div class="prose">
+  <p>Two DBIT programmes that show the model at scale — Aegis (now Startek) and Ascensos in Cape Town.</p>
+</div>
+
+<article class="dbit-case" id="case-aegis">
+  <h4>Case Study — Aegis South Africa</h4>
+  <figure class="figure dbit-case-figure">
+    <div class="figure__media">
+      <img src="assets/dbit-case-aegis.png" alt="Trilogy Aegis DBIT case study: global BPO landing in South Africa, 2,500 seats in five years, still operating as Startek" loading="lazy">
+    </div>
+    <figcaption>Aegis DBIT — design, build and operate in two South African locations, then a lasting in-country operation.</figcaption>
+  </figure>
+  <div class="prose">
+    <p>A global BPO needed a team to land in South Africa. Trilogy designed, built and operated Aegis South Africa in two geographic locations, ran the contact centre for three years, and grew the SA business by 2,500 seats.</p>
+  </div>
+  <ul class="list-check">
+    <li>Grew to 2,500 seats within 5 years, with EBITDA of over 15%.</li>
+    <li>Differentiation: SMART people and SMART technology.</li>
+    <li>Brands included British Gas, Virgin Mobile, AIG, the National Lottery, Department of Home Affairs and Telkom Mobile.</li>
+    <li>The operation continues in Africa, rebranded as Startek, still retaining key staff Trilogy brought in to manage the business.</li>
+  </ul>
+</article>
+
+<article class="dbit-case" id="case-ascensos">
+  <h4>Case Study — Ascensos</h4>
+  <figure class="figure dbit-case-figure">
+    <div class="figure__media">
+      <img src="assets/dbit-case-ascensos.png" alt="Trilogy Ascensos DBIT case study: Cape Town capability centre, first 100 FTEs live in six weeks, 1,500 seats across four locations" loading="lazy">
+    </div>
+    <figcaption>Ascensos DBIT — Cape Town capability centre, first 100 FTEs live in six weeks, then a four-site scale-up.</figcaption>
+  </figure>
+  <div class="prose">
+    <p>Trilogy’s DBIT team assisted Digital Tribe and Ascensos to establish a capability centre in Cape Town, with the first 100 FTEs going live within six weeks. The team designed and built a centre of excellence, oversaw and ran the operation for two to four years, and handed over a world-class operation to the incumbent.</p>
+  </div>
+  <ul class="list-check">
+    <li>Built 1,500 seats over 3 years across 4 locations.</li>
+    <li>Delivered over $6 million in refunds from structuring and administering government incentives.</li>
+    <li>Built a leadership team that remains in place and runs Ascensos South Africa.</li>
+    <li>Won multiple contact-centre performance awards, every client contract tendered for, and nationwide recognition as a top place to work.</li>
+    <li>Stood up incentive schemes that reduced the cost of operating in SA, and an innovation platform to reduce voice dependency.</li>
+  </ul>
+</article>
+
+<h3 id="dbit-commercials">Commercial Models</h3>
+<div class="prose">
+  <p>Trilogy provides DBIT on the commercial model that fits the client — always with a path to ownership, not a locked-in BPO tax.</p>
+</div>
+<div class="pillars pillars--3">
+  <div class="pillar">
+    <h4>Open-book build + management fee</h4>
+    <p>Detailed open-book cost and budget with full transparency, plus a management fee. You see the build and the run-rate.</p>
+  </div>
+  <div class="pillar">
+    <h4>Cost per productive hour</h4>
+    <p>All costs rolled into a per-productive-hour rate. If you are a BPO taking the centre to market, you add your own margin.</p>
+  </div>
+  <div class="pillar">
+    <h4>Facility managed services (OPEX)</h4>
+    <p>Full facility managed services as an OPEX model. Trilogy provides the CAPEX for the build so you are not funding the fit-out up front.</p>
+  </div>
+</div>
+<div class="callout">Trilogy will assist you to apply and administer DTIC job-creation grants — circa $7,500 per job created — from application through to payment.</div>
+<ul class="list-check">
+  <li>CAPEX model — build owned infrastructure for long-term strategic control.</li>
+  <li>OPEX model — minimise upfront investment with operational-expense treatment.</li>
+  <li>Government incentives — leverage available job-creation grants and incentives per FTE.</li>
+</ul>
+
+<h3>Risk Mitigation</h3>
+<div class="prose"><p>South Africa offers political stability, a legal framework aligned with Western standards, same-day time-zone overlap with European markets, and a mature BPO talent ecosystem with strong English proficiency. DBIT is how those advantages are converted into a live captive without absorbing localisation risk yourself.</p></div>
+        </div>
+      </section>
+<section class="proposal-page" id="section-08">
+        <div class="section-head">
+          <span class="section-num">06</span>
+          <h2>Technology, AI &amp; Automation Capability</h2>
+        </div>
+        <div class="section-body">
+          <div class="covers-box" id="tech-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#tech-introduction">Introduction</a></td></tr>
+                  <tr><td>2</td><td><a href="#technology-stack">Technology Stack</a></td></tr>
+                  <tr><td>3</td><td><a href="#ai-enabled-platforms">AI-Enabled Platforms</a></td></tr>
+                  <tr><td>4</td><td><a href="#orchestration-layer">Orchestration Layer</a></td></tr>
+                  <tr><td>5</td><td><a href="#trilogy-ai">Trilogy Ai</a></td></tr>
+                  <tr><td>6</td><td><a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
+                  <tr><td>7</td><td><a href="#tech-crm-integration">CRM Integration</a></td></tr>
+                  <tr><td>8</td><td><a href="#tech-hosting-resilience">Hosting &amp; Resilience</a></td></tr>
+                  <tr><td>9</td><td><a href="#tech-cybersecurity">Cybersecurity &amp; INFOSEC</a></td></tr>
+                  <tr><td>10</td><td><a href="#tech-automation-levels">Typical Automation Levels</a></td></tr>
+                  <tr><td>11</td><td><a href="#tech-platform-demo">Platform Demo</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+<h3 id="tech-introduction">Introduction</h3>
+<div class="prose"><p>Trilogy's mission statement is to provide Human-Led, AI-enhanced solutions. This means that while we have spent over 8 years developing AI and digital automation solutions, our primary focus remains the people in our operation and how we assist them to deliver better service to their customers. Our AI solutions are geared specifically to enhancing the agent's ability to support their customers, and our systems provide support for Voice, Email, WhatsApp and almost all social media and RCS platforms.</p></div>
+
+<h3 id="technology-stack">Technology Stack</h3>
+<figure class="figure figure--carom">
+  <div class="figure__media figure__media--contain"><img src="../trilogydigital/assets/technology-stack.png?v=1" alt="Technology stack — Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine, with Genii analytics and development partners." loading="lazy"></div>
+  <figcaption>Figure — Technology Stack: Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine</figcaption>
+</figure>
+
+<div class="prose"><p>Trilogy has two approaches to technology. <strong>Approach 1</strong> — deploy our fully owned and managed platform, providing the end-to-end technology solution for our customers on our QContact platform. <strong>Approach 2</strong> — operate as a technology-agnostic, client-based partner, deploying and managing within the client's own stack.</p><p>QContact is a cloud-based omnichannel customer communications platform that unifies calls, emails, WhatsApp, live chat and social media into a single interface. Founded in 2017, it provides built-in CRM functionality, case management and communication AI tools, omnichannel inbox, Communication AI (call transcriptions, conversation summaries and sentiment analysis), native WhatsApp integration and workflow automation.</p></div>
+
+<h3 id="ai-enabled-platforms">AI-Enabled Platforms</h3>
+<div class="ai-platforms" aria-label="Trilogy AI platform suite">
+  <article class="ai-platform ai-platform--voice">
+    <h4>guruvoice.ai</h4>
+    <p>Fully automated AI voice platform for inbound service and proactive outbound (services, sales, collections).</p>
+  </article>
+  <article class="ai-platform ai-platform--assist">
+    <h4>Agent assist</h4>
+    <p>Live AI-generated response suggestions, knowledge-base access and process guidance on-screen during every contact.</p>
+  </article>
+  <article class="ai-platform ai-platform--acwa">
+    <h4>acwa.ai</h4>
+    <p>After-Call Work Assistant — automates callbacks, CRM updates, document dispatch and logistics notifications.</p>
+  </article>
+  <article class="ai-platform ai-platform--collect">
+    <h4>collect.ai</h4>
+    <p>Digital &amp; autonomous collections — AI-driven segmentation, predictive analytics and automated recovery communication.</p>
+  </article>
+  <article class="ai-platform ai-platform--anychat">
+    <h4>anychat.ai</h4>
+    <p>Real-time language translation enabling any agent to service any customer regardless of language.</p>
+  </article>
+</div>
+
+<h3 id="orchestration-layer">Orchestration Layer</h3>
+<div class="prose"><p>People, technology, process and AI/ML analytics work as one continuous system — orchestrated for voice, digital and automation so CX outcomes compound rather than fragment.</p></div>
+<div class="orch" aria-label="Orchestration layer">
+  <div class="orch__quad orch__quad--people">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+    <h4>People</h4>
+    <p>Digital agents, management and shared services as an outsourced operation.</p>
+  </div>
+  <div class="orch__quad orch__quad--tech">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+    <h4>Technology</h4>
+    <p>Leverage the technology stack to provide omnichannel customer engagement.</p>
+  </div>
+  <div class="orch__quad orch__quad--process">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="16" width="6" height="4" rx="1"/><rect x="16" y="16" width="6" height="4" rx="1"/><path d="M12 6v4M12 10H5v6M12 10h7v6"/></svg></span>
+    <h4>Process</h4>
+    <p>WhatsApp customer engagement, messaging and digital campaigns.</p>
+  </div>
+  <div class="orch__quad orch__quad--aiml">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>
+    <h4>AI / ML Analytics</h4>
+    <p>Customer interaction, behavioural science and next-best-action recommender platform.</p>
+  </div>
+  <div class="orch__hub">
+    <strong>Orchestration</strong>
+    <span>Voice, digital &amp; automation orchestration for effective CX</span>
+  </div>
+</div>
+
+<h3 id="trilogy-ai">Trilogy Ai</h3>
+<div class="prose"><p><strong>Human empathy — AI accuracy.</strong> Trilogy Ai is our agentic AI capability for Autonomous Customer Engagement (ACE): fully automated platforms for sales, service, marketing, collections and retention — with or without an agent in the loop.</p></div>
+<div class="pillars pillars--2">
+  <div class="pillar"><h4>Fully automated</h4><p>Automated customer engagement platforms for sales, service, marketing, collections and retentions.</p></div>
+  <div class="pillar"><h4>Award-winning industry partner</h4><p>Developed with South Africa’s leading machine-learning partner — production-proven, not a lab demo.</p></div>
+  <div class="pillar"><h4>Proven benefits</h4><p>Deployed for customers already seeing returns of over 500% improvement in targeted business models.</p></div>
+  <div class="pillar"><h4>Agentless when it fits</h4><p>ACE runs with or without an agent in the loop — the only fully autonomous path when the use case allows it.</p></div>
+</div>
+<div class="callout">“We are advancing toward a world where 100 percent of customer interactions will involve AI in some form… transitioning from legacy chatbots to advanced AI agents.” — Zendesk CEO / 2026 CX Trends Report</div>
+
+<h4>The AI proposition — Autonomous CX</h4>
+<div class="pillars pillars--3">
+  <div class="pillar"><h4>Agentic AI</h4><p>Deploy AI agents that plan and execute multi-step workflows — beyond Q&amp;A to actual problem resolution.</p></div>
+  <div class="pillar"><h4>24/7 intelligent service</h4><p>Instant, high-quality support across digital channels without the overhead of around-the-clock human staffing.</p></div>
+  <div class="pillar"><h4>Predictive engagement</h4><p>Anticipate needs and intent before customers express them — reactive support becomes proactive service.</p></div>
+</div>
+
+<h4>Where Trilogy applies AI</h4>
+<div class="prose"><p>Our AI doesn’t replace your best people; it makes them 10× more effective.</p></div>
+<div class="pillars pillars--3">
+  <div class="pillar"><h4>Customer-facing automation</h4><p>Conversational AI for containment, triage and self-service; smart routing and intent detection before human handoff; 24/7 availability without 24/7 staffing.</p></div>
+  <div class="pillar"><h4>Agent augmentation</h4><p>Real-time agent assist and response guidance; knowledge retrieval and summarisation; automated after-call work and case notes.</p></div>
+  <div class="pillar"><h4>Back-office &amp; operations</h4><p>Ticket classification and prioritisation; QA automation and sentiment analysis; forecasting, demand shaping and performance insight.</p></div>
+</div>
+<div class="callout">“The biggest near-term value of AI in contact centres comes from augmenting agents, not replacing them.” — McKinsey</div>
+
+<h4>Human-in-the-loop — the hybrid advantage</h4>
+<div class="lifecycle">
+  <div class="life-step"><div class="life-step__num">01</div><h4>Sentiment &amp; empathy</h4><p>AI monitors 100% of conversations for emotional cues, flagging complex or high-tension cases for immediate human intervention.</p></div>
+  <div class="life-step"><div class="life-step__num">02</div><h4>Real-time agent assist</h4><p>AI “listens” to live calls and feeds agents the correct scripts, knowledge articles and compliance disclosures in real time.</p></div>
+  <div class="life-step"><div class="life-step__num">03</div><h4>Continuous learning loop</h4><p>Every human resolution for a complex query is logged and fed back into the AI, making the system smarter with every interaction.</p></div>
+  <div class="life-step"><div class="life-step__num">04</div><h4>The safety net</h4><p>Mandatory Human Override protocols — AI never makes final decisions on sensitive matters without human validation.</p></div>
+</div>
+<div class="prose"><p>By automating 70–80% of repetitive, low-value queries, we free human experts for high-value interactions where empathy and complex problem-solving are non-negotiable.</p></div>
+
+<h4>Why most AI CX projects fail — and why Trilogy’s don’t</h4>
+<div class="pillars pillars--2">
+  <div class="pillar"><h4>Why AI initiatives fail</h4><p>Built without operational ownership · disconnected from live CX workflows · no governance, escalation or human override · over-promised ROI · data privacy gaps · legacy integration challenges.</p></div>
+  <div class="pillar"><h4>Why Trilogy succeeds</h4><p>AI deployed inside BPO and GCC operations · real agents, real customers, real constraints · continuous optimisation · outcome-aligned commercials · GDPR/POPIA-compliant SLMs · leading South African integration partners.</p></div>
+</div>
+<div class="callout">AI-enabled CX operations can reduce cost-to-serve by 20–30% when embedded correctly. Source: McKinsey</div>
+
+<h3 id="potential-ai-savings">Potential AI Savings</h3>
+<div class="prose"><p>Independent industry benchmarks reinforce the impact of a human-led, AI-enabled model. The following are representative outcomes achievable across an asynchronous customer operation like yours.</p></div>
+<div class="ai-savings" data-animate="ai-savings" aria-label="Potential AI savings">
+  <div class="ai-savings__dials">
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="27"><span class="dial__value">0%</span></div>
+      <div><h4>AHT Reduction</h4><p>Organisations using AI report up to a 27% reduction in Average Handle Time.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="20"><span class="dial__value">0%</span></div>
+      <div><h4>Revenue Optimisation</h4><p>AI-led outreach outperforms traditional methods by 20% in sales and collections.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="35"><span class="dial__value">0%</span></div>
+      <div><h4>Customer Satisfaction</h4><p>Businesses using AI-driven sentiment analysis report a 35% increase in CSAT.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="90"><span class="dial__value">0%</span></div>
+      <div><h4>At-Risk Identification</h4><p>AI identifies at-risk customers with 90% accuracy for proactive intervention.</p></div>
+    </div>
+  </div>
+  <div class="ai-savings__split">
+    <div>
+      <h4>Quality &amp; Compliance</h4>
+      <p>Achieve <strong>100% Quality Assurance (QA)</strong> coverage by using AI to audit every single conversation for legal compliance and brand standards.</p>
+    </div>
+    <div>
+      <h4>The Churn Defence</h4>
+      <p>Companies using AI-driven sentiment analysis can increase long-term customer lifetime value (LTV) by <strong>15–20%</strong> through proactive intervention.</p>
+    </div>
+  </div>
+  <div class="ai-savings__quote">
+    <p>“95% of decision-makers already using AI report immediate cost and time savings… while AI-powered predictive analytics can drive a 25% increase in recovery rates for outbound functions.”</p>
+    <cite>— Salesforce / NobelBiz (2025/2026). Source: Salesforce: What is an AI Contact Center?</cite>
+  </div>
+</div>
+
+<h4>Additional Trilogy Ai point solutions</h4>
+<div class="ai-platforms ai-platforms--extra" aria-label="Additional Trilogy Ai solutions">
+  <article class="ai-platform ai-platform--click">
+    <h4>click2cash.ai</h4>
+    <p>Meta marketing &amp; sales platform that converts Facebook advertisements and “likes” directly into sales.</p>
+  </article>
+  <article class="ai-platform ai-platform--hr">
+    <h4>hr.ai</h4>
+    <p>Intelligent recruitment &amp; onboarding — excite, inform and screen at scale with automated hiring workflows.</p>
+  </article>
+</div>
+
+<h3 id="tech-crm-integration">CRM Integration</h3><div class="prose"><p>We have active integration experience with Microsoft Dynamics 365, HubSpot, Salesforce Service Cloud and Zendesk, with standard deployment timelines of 3–4 weeks via pre-built connectors. Custom REST/SOAP integration is available for legacy or bespoke systems. Integration delivery is supported by our partners IQX (South Africa) and BBD (UK, 800+ engineers, 47 years in business).</p></div><h3 id="tech-hosting-resilience">Hosting &amp; Resilience</h3><div class="prose"><p>Our environment is cloud-hosted (Microsoft Azure where applicable), with data residency options aligned to the client's regulatory jurisdiction. Standard resilience features include multiple fibre providers per site with automatic failover, secondary radio/LTE, N+1 generator and UPS power, and biometric physical access control.</p></div><h3 id="tech-cybersecurity">Cybersecurity &amp; INFOSEC</h3><ul class="list-check"><li>ISO 27001-certified information security framework.</li><li>Cyber Essentials+ aligned controls.</li><li>Dual firewall perimeters, strict IP-allowlisting, and email threat protection.</li><li>Quarterly INFOSEC audits and annual penetration testing across all sites.</li><li>PCI DSS compliance for all payment-card data handling.</li></ul><h3 id="tech-automation-levels">Typical Automation Levels</h3><ul class="list-check"><li>Voice/IVR self-service containment: 15–25% on eligible programmes.</li><li>Email auto-response: 20–40% of inbound volumes on eligible programmes.</li><li>Back-office RPA: up to 50% reduction in processing labour per unit.</li></ul><div class="callout">Illustrative ROI: a live retail programme delivered R1M+ monthly revenue uplift from WhatsApp conversational AI with zero incremental headcount; a digital collections transformation reduced headcount by 45% while improving performance.</div><h3 id="tech-platform-demo">Platform Demo</h3><div class="prose"><p>A live example of human-led, AI-enabled service: the assistant resolves a billing query end-to-end while a human agent reviews and approves each action — resolved in seconds with a perfect CSAT score.</p></div><div class="demo">
+  <div class="demo__head">
+    <div><strong>Platform Demo</strong><div class="muted" style="color:rgba(255,255,255,.6);font-size:.8rem;margin-top:.2rem">Live conversation · #4821</div></div>
+    <div class="demo__metrics">
+      <span>Resolved in <strong>38s</strong></span>
+      <span>CSAT <strong>5.0 ★</strong></span>
+      <span>Human touch <strong>1 tap</strong></span>
+    </div>
+  </div>
+  <div class="demo__body">
+    <div class="chat chat--user"><small>Customer</small>Hi — my last bill looks higher than usual. Can you check what changed?</div>
+    <div class="chat chat--bot"><small>AI Assistant</small>Of course. I’ve pulled your account. Usage rose 18% in the evening peak window. Would you like a breakdown, a payment plan, or both?</div>
+    <div class="chat chat--user"><small>Customer</small>Both please — and can someone confirm the plan is fair?</div>
+    <div class="chat chat--human"><small>Human agent · approve</small>Approved. Plan applied and confirmation emailed. Customer thanked for the clear explanation.</div>
+    <div class="chat chat--bot"><small>AI Assistant</small>Done — I’ve applied a tailored payment plan and sent a summary. Is there anything else I can help with today?</div>
+  </div>
+</div>
+        </div>
+      </section>
+<section class="proposal-page" id="section-07">
+        <div class="section-head">
+          <span class="section-num">07</span>
+          <h2>Trilogy Test Kitchen</h2>
+        </div>
+        <div class="section-body">
+<div class="tagline-block tagline-block--compact"><p>Pilot AI, automation and emerging digital tech — safely, swiftly, without disrupting live operations.</p></div><figure class="figure">
+  <div class="figure__media"><img src="../trilogydigital/assets/leadership-meeting.jpg" alt="Piloting AI and automation with people in the loop — reviewing outcomes before they touch live operations." loading="lazy"></div>
+  <figcaption>Piloting AI and automation with people in the loop — reviewing outcomes before they touch live operations.</figcaption>
+</figure><div class="prose"><p>Our Digital and Autonomous Test Kitchen is an innovation framework that lets clients design, test, improve and scale AI and automation initiatives inside a controlled, operationally realistic environment. It is deliberately not a lab, not a proof-of-concept and not a vendor demo — it is operational by design, so what you validate is what you can actually deploy.</p><p>The Test Kitchen exists to fix the single biggest failure point in enterprise AI: the gap between a promising pilot and real, measurable business value. We find real automation opportunities, quantify real deflection, and deploy only what works.</p></div><h3>Why Most Innovation Efforts Stall</h3><div class="pillars pillars--2"><div class="pillar"><h4>Only 30% of AI projects scale</h4><p>Gartner finds just 30% of AI projects make it past the pilot stage to deliver real business value.</p></div><div class="pillar"><h4>Outcomes rarely get linked to value</h4><p>McKinsey notes that organisations which fail to link AI initiatives to measurable business outcomes struggle to scale them.</p></div></div><div class="callout">Most “innovation labs” test fake data, sit outside operations, and never reach production. The Test Kitchen is built to do the opposite.</div><h3>The Trilogy Test Kitchen Difference</h3><div class="prose"><p>The Test Kitchen is operational by design. It combines proprietary tooling with human-in-the-loop governance from day one, so opportunities are grounded in real customer interactions rather than opinion or theory.</p></div><div class="pillars pillars--3"><div class="pillar"><h4>Trilogy Discover</h4><p>An LLM-based learning bot that shadows your operation and analyses real customer interactions to surface friction points and automation opportunities.</p></div><div class="pillar"><h4>Genii Analytics</h4><p>Deep root-cause analytics across voice, chat, digital and back-office — pinpointing the 20% of processes driving 80% of your costs.</p></div><div class="pillar"><h4>Human-in-the-Loop Governance</h4><p>Agent- and expert-in-the-loop oversight from day one keeps AI behaviour safe, compliant and quality-assured throughout every phase.</p></div></div><h3 id="test-kitchen-approach">Trilogy Digital Test Kitchen</h3>
+<div class="prose">
+  <p>One of our key differentiators is our Test Kitchen. Our Digital and Autonomous Test Kitchen allows our clients to pilot new AI and digital technology, automated processes and other initiatives without disrupting current operations.</p>
+</div>
+
+<figure class="tk-cycle-figure">
+  <div class="tk-cycle" aria-label="Test Kitchen continuous cycle">
+    <div class="tk-cycle__arm tk-cycle__arm--design">
+      <span class="tk-cycle__arm-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      </span>
+      <span>Design →</span>
+    </div>
+    <div class="tk-cycle__arm tk-cycle__arm--test">
+      <span class="tk-cycle__arm-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6"/><path d="M10 3v6l-5.5 9.2A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.8L14 9V3"/><path d="M8.5 14h7"/></svg>
+      </span>
+      <span>↓ Test</span>
+    </div>
+    <div class="tk-cycle__arm tk-cycle__arm--improve">
+      <span class="tk-cycle__arm-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg>
+      </span>
+      <span>← Improve</span>
+    </div>
+    <div class="tk-cycle__arm tk-cycle__arm--deploy">
+      <span class="tk-cycle__arm-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15c1.5-3 4-6 7-7l7-3-3 7c-1 3-4 5.5-7 7l-4-4Z"/><path d="m9 15-4 4"/></svg>
+      </span>
+      <span>↑ Deploy &amp; Scale</span>
+    </div>
+    <div class="tk-cycle__hub">
+      <div class="tk-cycle__hub-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg>
+      </div>
+      <div class="tk-cycle__hub-title">Test Kitchen</div>
+      <p>Pilot new AI, automation and process without disrupting live operations.</p>
+    </div>
+  </div>
+  <p class="tk-cycle__note"><strong>A continuous cycle,</strong> learnings from Deploy &amp; Scale feed straight back into Design, so every initiative compounds without disrupting live service.</p>
+  <figcaption>Figure — Test Kitchen Approach: a continuous design, test, improve and scale cycle</figcaption>
+</figure>
+
+<div class="tk-phases" aria-label="Test Kitchen phases">
+  <article class="tk-phase tk-phase--design">
+    <header class="tk-phase__head">
+      <span class="tk-phase__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+      <h4>Design</h4>
+    </header>
+    <ul>
+      <li><strong>Strategic Discovery:</strong> Map current-state operations and customer journeys to identify high-impact opportunities, friction points, and cost drivers.</li>
+      <li><strong>Robust Solution Architecture:</strong> Select optimal AI models and design scalable, agent-in-the-loop solutions with built-in security, compliance, and governance.</li>
+      <li><strong>Defined Outcomes &amp; Metrics:</strong> Establish clear business goals, specific success metrics (e.g. CSAT, resolution time), and fail-safe risk boundaries from day one.</li>
+    </ul>
+  </article>
+
+  <article class="tk-phase tk-phase--test">
+    <header class="tk-phase__head">
+      <span class="tk-phase__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6"/><path d="M10 3v6l-5.5 9.2A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.8L14 9V3"/><path d="M8.5 14h7"/></svg></span>
+      <h4>Test</h4>
+    </header>
+    <ul>
+      <li><strong>Controlled Piloting &amp; Testing:</strong> Deploy new digital and AI capabilities into a controlled sandbox to run A/B tests and pilots using real-world scenarios, representative volumes, and defined user cohorts.</li>
+      <li><strong>Real-Time Measurement:</strong> Continuously track system behaviour and evaluate accuracy, customer experience, and conversion in real time to quickly spot bugs, latency, or AI hallucinations.</li>
+      <li><strong>Oversight &amp; Risk Validation:</strong> Maintain human oversight to ensure safe AI behaviour and compliance, exposing risks and validating value before any full production rollout.</li>
+    </ul>
+  </article>
+
+  <article class="tk-phase tk-phase--improve">
+    <header class="tk-phase__head">
+      <span class="tk-phase__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg></span>
+      <h4>Improve</h4>
+    </header>
+    <ul>
+      <li><strong>Performance Analysis &amp; Iteration:</strong> Analyse pilot performance against success metrics and refine AI models, workflows, prompts, and business rules on live results, retraining algorithms and NLP to sharpen intent recognition.</li>
+      <li><strong>Feedback-Driven Improvement:</strong> Incorporate feedback from agents, customers, test users, and internal QA to improve usability, polish the interface, and deliver better outcomes.</li>
+      <li><strong>Optimisation &amp; Scale Readiness:</strong> Address failure points, edge cases, and operational constraints early, streamlining logic flows to accelerate resolution and strengthen resilience before scaling.</li>
+    </ul>
+  </article>
+
+  <article class="tk-phase tk-phase--deploy">
+    <header class="tk-phase__head">
+      <span class="tk-phase__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15c1.5-3 4-6 7-7l7-3-3 7c-1 3-4 5.5-7 7l-4-4Z"/><path d="m9 15-4 4"/></svg></span>
+      <h4>Deploy &amp; Scale</h4>
+    </header>
+    <ul>
+      <li><strong>Controlled Rollout &amp; Migration:</strong> Seamlessly migrate finalised solutions into live operations, gradually expanding automation to wider customer segments, regions, and business lines by ramping volumes in a controlled way.</li>
+      <li><strong>Operational Enablement:</strong> Empower operational teams to handle the transition with dedicated change management and governance frameworks.</li>
+      <li><strong>Continuous Monitoring &amp; Scaling:</strong> Establish long-term performance tracking to ensure stability and monitor risk as volumes grow, so proven capability can confidently scale across new journeys and use cases.</li>
+    </ul>
+  </article>
+</div>
+
+<h3 id="tk-outcomes">Measurable Outcomes Delivered Through Technology</h3>
+<div class="tk-outcomes">
+  <div class="tk-outcome">
+    <div class="tk-outcome__value">R1M+/mo</div>
+    <div class="tk-outcome__label">Revenue uplift from WhatsApp AI, zero added headcount</div>
+  </div>
+  <div class="tk-outcome">
+    <div class="tk-outcome__value">45%</div>
+    <div class="tk-outcome__label">Headcount reduction via digital collections, performance up</div>
+  </div>
+  <div class="tk-outcome">
+    <div class="tk-outcome__value">20–40%</div>
+    <div class="tk-outcome__label">Inbound email deflected / auto-drafted</div>
+  </div>
+  <div class="tk-outcome">
+    <div class="tk-outcome__value">Up to 50%</div>
+    <div class="tk-outcome__label">Back-office processing labour reduction (RPA)</div>
+  </div>
+</div>
+<h3>Risk Mitigation by Design</h3><div class="prose"><p>The Test Kitchen lets you test new AI workflows and digital technologies in a safe, parallel environment without disrupting live operations. You fail fast in isolation, learn quickly, and scale only what is proven — no over-promising, just validated outcomes.</p></div><div class="pillars pillars--2"><div class="pillar"><h4>The Sandbox Model</h4><p>A controlled environment where AI agents and automated processes are piloted using real-world scenarios and representative data volumes.</p></div><div class="pillar"><h4>Proof of Value</h4><p>Demonstrating success in initial phases builds confidence and buy-in, justifying further investment and broader adoption.</p></div><div class="pillar"><h4>Controlled Transformation</h4><p>Each phase receives tailored support and lessons learned are applied forward, so every subsequent rollout is stronger.</p></div><div class="pillar"><h4>Flexible &amp; Continuous</h4><p>Feedback from each phase informs the next, allowing strategy and tactics to adjust as the programme progresses.</p></div></div><div class="callout">In 2026, AI success will hinge less on model sophistication and more on workflow design — those who turn QA insights into immediate, practised action will define the future of CX. Source: SymTrain / McKinsey (2026).</div>
+        </div>
+      </section>
+<section class="proposal-page" id="section-10">
+        <div class="section-head">
+          <span class="section-num">08</span>
+          <h2>Management Information Systems (MIS)</h2>
+        </div>
+        <div class="section-body">
+<div class="prose"><p>Our reporting infrastructure provides real-time configurable dashboards mapping all contracted KPIs: automated daily performance summaries; weekly reporting packs covering FCR, CSAT, AHT, ASA and volume by channel; and formal Monthly Business Review (MBR) packs with root cause and trend analysis. Secure API data exports are available for clients who want to pull performance data directly into their own BI environment (including Power BI).</p></div><h3>Analytics Capabilities</h3><ul class="list-check"><li>AI-enabled transcription across up to 100% of voice interactions — distress flagging, keyword compliance tracking and real-time sentiment scoring.</li><li>Predictive churn modelling identifying at-risk customers during active contacts.</li><li>Genii Analytics independent deep-dive root-cause analysis, mapping intent distribution and producing prioritised improvement recommendations.</li></ul><h3>Trilogy BPO MI Reporting Framework</h3><div class="table-wrap"><table class="mi-framework-table"><thead><tr><th>Frequency</th><th>Purpose</th><th>Delivery</th></tr></thead><tbody><tr><td>Real-time</td><td>Monitor digital queues, backlog and SLA as they happen</td><td>Live dashboard</td></tr><tr><td>Daily</td><td>Review prior-day volume, CX, productivity, quality &amp; workforce</td><td>Daily MI report</td></tr><tr><td>Weekly</td><td>Trends, root cause and actions taken</td><td>Weekly Business Review</td></tr><tr><td>Monthly</td><td>Strategic scorecard incl. continuous-improvement tracking</td><td>Monthly Business Review</td></tr><tr><td>Quarterly</td><td>Roadmap, innovation and executive alignment</td><td>Quarterly Business Review</td></tr></tbody></table></div><h3>Real-Time (Live) Dashboard</h3><div class="prose"><p>A live dashboard provides visibility into current operational performance across voice and digital channels as it happens.</p></div>
+<figure class="mis-dash-figure">
+  <div class="mis-dash" aria-label="Example real-time KPI dashboard">
+    <div class="mis-dash__section">
+      <div class="mis-dash__section-title">Speed of initial reply — weekly</div>
+      <div class="mis-dash__grid">
+        <article class="mis-kpi mis-kpi--miss">
+          <div class="mis-kpi__top">
+            <span class="mis-kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.32 1.54.55 2.35.68A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span class="mis-kpi__badge">Weekly · Not met</span>
+          </div>
+          <div class="mis-kpi__label">Voice</div>
+          <div class="mis-kpi__value">70.6%</div>
+          <div class="mis-kpi__target">Target: ≥80% within 15s</div>
+          <div class="mis-kpi__detail">12 of 17 answered calls within target</div>
+        </article>
+        <article class="mis-kpi mis-kpi--met">
+          <div class="mis-kpi__top">
+            <span class="mis-kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="16" cy="10" r="1" fill="currentColor"/></svg></span>
+            <span class="mis-kpi__badge">Weekly · Met</span>
+          </div>
+          <div class="mis-kpi__label">WhatsApp</div>
+          <div class="mis-kpi__value">100%</div>
+          <div class="mis-kpi__target">Target: ≥80% within 15 minutes</div>
+          <div class="mis-kpi__detail">30 of 30 replied conversations within target</div>
+        </article>
+        <article class="mis-kpi mis-kpi--met">
+          <div class="mis-kpi__top">
+            <span class="mis-kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></span>
+            <span class="mis-kpi__badge">Weekly · Met</span>
+          </div>
+          <div class="mis-kpi__label">Email</div>
+          <div class="mis-kpi__value">83.9%</div>
+          <div class="mis-kpi__target">Target: ≥80% within 1 hour</div>
+          <div class="mis-kpi__detail">187 of 223 replied emails within target (431 total assigned to an agent)</div>
+        </article>
+      </div>
+    </div>
+    <div class="mis-dash__section">
+      <div class="mis-dash__section-title">Handling time &amp; resolution</div>
+      <div class="mis-dash__grid">
+        <article class="mis-kpi mis-kpi--met">
+          <div class="mis-kpi__top">
+            <span class="mis-kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span class="mis-kpi__badge">Weekly · Met</span>
+          </div>
+          <div class="mis-kpi__label">AHT — Voice (General)</div>
+          <div class="mis-kpi__value">3m 44s</div>
+          <div class="mis-kpi__target">Target: ≤4 min average</div>
+          <div class="mis-kpi__detail">64.7% of 17 calls within 4 min</div>
+        </article>
+        <article class="mis-kpi mis-kpi--miss">
+          <div class="mis-kpi__top">
+            <span class="mis-kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m8 12 3 3 5-6"/></svg></span>
+            <span class="mis-kpi__badge">Weekly · Not met</span>
+          </div>
+          <div class="mis-kpi__label">First Contact Resolution</div>
+          <div class="mis-kpi__value">32.6%</div>
+          <div class="mis-kpi__target">Target: ≥80%</div>
+          <div class="mis-kpi__detail">71 of 218 contacts resolved without repeat</div>
+        </article>
+        <article class="mis-kpi mis-kpi--met">
+          <div class="mis-kpi__top">
+            <span class="mis-kpi__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 21l1.1-6.5L2.6 9.8l6.5-.9L12 3z"/></svg></span>
+            <span class="mis-kpi__badge">Monthly · Met</span>
+          </div>
+          <div class="mis-kpi__label">CSAT</div>
+          <div class="mis-kpi__value">4.6</div>
+          <div class="mis-kpi__target">Target: ≥4.2 / 5.0</div>
+          <div class="mis-kpi__detail">Based on 11 survey responses</div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <figcaption>Figure — Example real-time (live) KPI dashboard across voice, WhatsApp and email</figcaption>
+</figure>
+<div class="pillars pillars--2"><div class="pillar"><h4>Operational Metrics</h4><p>Calls Offered, Answered, Waiting and Abandoned; Service Level; ASA; AHT; Occupancy; Agents Logged In / Available / on Calls / in ACW; Shrinkage; Queue Status; current SLA achievement.</p></div><div class="pillar"><h4>Digital Channels</h4><p>Emails Received and Pending; average email response time; WhatsApp queue; chat queue; backlog status.</p></div></div><h3>Daily MI Reporting</h3><div class="prose"><p>Daily reports summarise the previous day's operational performance across five dimensions.</p></div><div class="pillars pillars--3"><div class="pillar"><h4>Customer Contact Volume</h4><p>Total calls, inbound vs outbound, emails, WhatsApp and chats.</p></div><div class="pillar"><h4>Customer Experience</h4><p>Service Level, ASA, CSAT, First Contact Resolution and abandonment rate.</p></div><div class="pillar"><h4>Productivity</h4><p>AHT, ACW, occupancy, utilisation, adherence and attendance.</p></div><div class="pillar"><h4>Quality</h4><p>QA scores, calibration results, compliance, customer compliments and complaints.</p></div><div class="pillar"><h4>Workforce</h4><p>Sick leave, absenteeism, overtime, attrition and headcount.</p></div></div><h3>Weekly MI Reporting</h3><div class="prose"><p>Weekly reporting focuses on trends rather than daily numbers, with narrative commentary on what is improving, what is declining, the actions implemented, and expected improvements for the week ahead.</p></div><ul class="list-check"><li>Trend views — SLA, volume, productivity, quality and customer-satisfaction trends.</li><li>Complaints and root-cause analysis, plus top customer-contact reasons and escalations.</li><li>Agent and Team Leader performance ranking.</li><li>Workforce-planning accuracy against forecast.</li></ul><h3>Monthly Business Review (MBR)</h3><div class="prose"><p>The Monthly Business Review focuses on strategic performance across the full scorecard.</p></div><div class="pillars pillars--2"><div class="pillar"><h4>Executive Summary</h4><p>Overall business health, key successes, major risks and executive recommendations.</p></div><div class="pillar"><h4>Customer Experience</h4><p>CSAT, NPS, complaints, compliments, repeat contacts and First Contact Resolution.</p></div><div class="pillar"><h4>Operational Performance</h4><p>SLA achievement, AHT, ASA, occupancy, utilisation, productivity and shrinkage.</p></div><div class="pillar"><h4>Quality</h4><p>QA scores, compliance, coaching sessions, knowledge gaps and calibration results.</p></div><div class="pillar"><h4>Workforce</h4><p>Attrition, attendance, recruitment, training, coaching and employee engagement.</p></div><div class="pillar"><h4>Financial</h4><p>Cost per contact, cost per resolution, overtime cost and productivity savings.</p></div><div class="pillar"><h4>Continuous Improvement</h4><p>Improvement initiatives completed, automation opportunities, process and technology enhancements.</p></div></div><h3>Our Reporting Principles</h3><ul class="list-check"><li>Accuracy — reports are based on validated data from telephony, CRM, WFM, QA and digital platforms.</li><li>Consistency — standard KPI definitions and report formats across all clients.</li><li>Timeliness — reports delivered according to agreed service schedules.</li><li>Action-oriented — every report includes insights, root causes and recommended actions, not just metrics.</li><li>Transparency — successes, risks and improvement opportunities are communicated clearly.</li><li>Automation — data extraction and dashboard updates are automated wherever possible.</li><li>Security — all reports comply with data-privacy requirements and client confidentiality standards.</li></ul>
+<h3 id="ai-insights-under-the-hood">AI Insights under the Hood</h3>
+<div class="prose">
+  <p>Behind the live scorecards sits an AI conversation-intelligence layer. Operators can ask plain-English questions of the full interaction set, while automatic sentiment scoring and CSAT distribution surface where experience is strong — and where friction is concentrating — without waiting for a monthly pack.</p>
+</div>
+<figure class="mis-ai-figure">
+  <div class="mis-ai" aria-label="AI insights conversation intelligence dashboard">
+    <div class="mis-ai__ask">
+      <div class="mis-ai__ask-title">Ask about your conversations</div>
+      <div class="mis-ai__ask-row">
+        <div class="mis-ai__input">e.g. What are the top 5 reasons customers are contacting us this month?</div>
+        <button type="button" class="mis-ai__ask-btn" tabindex="-1" aria-hidden="true">Ask</button>
+      </div>
+      <div class="mis-ai__chips">
+        <span>Top 5 contact reasons</span>
+        <span>Why are people unhappy?</span>
+        <span>Recurring product issues</span>
+        <span>Cancellation handling</span>
+      </div>
+    </div>
+    <div class="mis-ai__stats">
+      <article class="mis-ai__stat">
+        <div class="mis-ai__stat-label">Unique customers</div>
+        <div class="mis-ai__stat-value">610</div>
+        <div class="mis-ai__stat-meta">across 4,831 conversations</div>
+      </article>
+      <article class="mis-ai__stat">
+        <div class="mis-ai__stat-label">Sentiment balance</div>
+        <div class="mis-ai__stat-value mis-ai__stat-value--row">
+          <span class="mis-ai__donut" aria-hidden="true"></span>
+          <span>76% positive</span>
+        </div>
+        <div class="mis-ai__stat-meta">24% negative · excludes 4,123 neutral</div>
+      </article>
+      <article class="mis-ai__stat">
+        <div class="mis-ai__stat-label">Average CSAT</div>
+        <div class="mis-ai__stat-value mis-ai__stat-value--green">4.4</div>
+        <div class="mis-ai__stat-meta">50 survey responses</div>
+      </article>
+      <article class="mis-ai__stat">
+        <div class="mis-ai__stat-label">Period</div>
+        <div class="mis-ai__stat-value mis-ai__stat-value--sm">2026-06-01 – 2026-08-17</div>
+        <div class="mis-ai__stat-meta">Selected reporting window</div>
+      </article>
+    </div>
+    <div class="mis-ai__split-title">Sentiment &amp; satisfaction</div>
+    <div class="mis-ai__split">
+      <article class="mis-ai__panel">
+        <h4>AI sentiment</h4>
+        <p>Every conversation with an AI summary, scored automatically.</p>
+        <div class="mis-ai__stack" aria-hidden="true">
+          <span class="mis-ai__stack-neg" style="width:3%"></span>
+          <span class="mis-ai__stack-neu" style="width:85%"></span>
+          <span class="mis-ai__stack-pos" style="width:11%"></span>
+        </div>
+        <div class="mis-ai__legend">
+          <span class="is-neg">Negative 167 (3%)</span>
+          <span class="is-neu">Neutral 4,123 (85%)</span>
+          <span class="is-pos">Positive 541 (11%)</span>
+        </div>
+      </article>
+      <article class="mis-ai__panel">
+        <h4>CSAT</h4>
+        <p>Real customer ratings — completed surveys only.</p>
+        <div class="mis-ai__stars">
+          <div class="mis-ai__star-row"><span>5</span><div class="mis-ai__bar"><i style="width:84%"></i></div><strong>42</strong></div>
+          <div class="mis-ai__star-row"><span>4</span><div class="mis-ai__bar"><i style="width:0%"></i></div><strong>0</strong></div>
+          <div class="mis-ai__star-row"><span>3</span><div class="mis-ai__bar"><i style="width:0%"></i></div><strong>0</strong></div>
+          <div class="mis-ai__star-row"><span>2</span><div class="mis-ai__bar"><i style="width:0%"></i></div><strong>0</strong></div>
+          <div class="mis-ai__star-row"><span>1</span><div class="mis-ai__bar"><i style="width:16%"></i></div><strong>8</strong></div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <figcaption>Figure — AI Insights under the Hood: ask-your-data queries, sentiment scoring and CSAT distribution</figcaption>
+</figure>
+<div class="callout">This MI approach positions Trilogy as a strategic outsourcing partner — providing operational transparency, supporting data-driven decisions, and enabling continuous service improvement through meaningful reporting and actionable insights.</div>
+        </div>
+      </section>
+<section class="proposal-page" id="section-03">
+        <div class="section-head">
+          <span class="section-num">09</span>
+          <h2 id="operational-leadership">Operational Leadership &amp; Delivery</h2>
+        </div>
+        <div class="section-body">
+          <div class="covers-box" id="ops-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#ops-leadership-model">Operational leadership model</a></td></tr>
+                  <tr><td>2</td><td><a href="#our-people-workforce">Our People &amp; Workforce</a></td></tr>
+                  <tr><td>3</td><td><a href="#the-trilogy-employee-lifecycle">The Trilogy Employee Lifecycle</a></td></tr>
+                  <tr><td>4</td><td><a href="#trilogy-s-recruitment-process">Trilogy&#x27;s Recruitment Process</a></td></tr>
+                  <tr><td>5</td><td><a href="#recruitment-lifecycle-application-to-onboarding">Recruitment Lifecycle — Application to Onboarding</a></td></tr>
+                  <tr><td>6</td><td><a href="#agent-profile">Agent Profile</a></td></tr>
+                  <tr><td>7</td><td><a href="#training-management-structure">Training Management Structure</a></td></tr>
+                  <tr><td>8</td><td><a href="#uk-cultural-immersion">UK Cultural Immersion</a></td></tr>
+                  <tr><td>9</td><td><a href="#tenure-attrition">Tenure &amp; Attrition</a></td></tr>
+                  <tr><td>10</td><td><a href="#attraction-retention">Attraction &amp; Retention</a></td></tr>
+                  <tr><td>11</td><td><a href="#trilogy-leadership-pathway">Trilogy Leadership Pathway</a></td></tr>
+                  <tr><td>12</td><td><a href="#employee-value-proposition-our-people-our-promise">Employee Value Proposition — Our People. Our Promise.</a></td></tr>
+                  <tr><td>13</td><td><a href="#employee-wellbeing-a-differentiator">Employee Wellbeing — A Differentiator</a></td></tr>
+                  <tr><td>14</td><td><a href="#soul-impact-offering">Soul Impact Offering</a></td></tr>
+                  <tr><td>15</td><td><a href="#our-culture-craft">Our Culture — CRAFT</a></td></tr>
+                  <tr><td>16</td><td><a href="#adapting-to-your-culture">Adapting to Your Culture</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="prose" id="ops-leadership-model">
+            <p>The operations will be managed from our Pinelands site in Cape Town. Trilogy will deploy the exact same operational structure as your current operations. We are however recommending the addition of a dedicated product specialist/trainer to the team to support ongoing product, process and system training, along with any new-hire and ramp training requirements.</p>
+            <p>Tanya Phillips, our COO, will be the executive lead, supported by Vancyon van Zyl, who is Director of Transitions and Operations, and Rudi Jansen, our Chief People Officer. The dedicated Operations Manager will own the day-to-day performance, and a Key Account Manager will be responsible for owning the strategic, commercial relationship and roadmap. Key Account management will be provided by a UK-based senior Account Manager. The CEO and COO participate directly in your monthly and quarterly business reviews and will participate in your strategy sessions as and when required.</p>
+            <p>Your team will have direct contact both for any discussions or escalations.</p>
+          </div>
+
+          <h3 id="our-people-workforce">Our People &amp; Workforce</h3>
+          <div class="tagline-block"><p>Our people are our differentiator.</p></div>
+<figure class="evp-promise-figure">
+  <div class="evp-promise" aria-label="Our People · Our Promise — Employee Value Proposition">
+    <div class="evp-promise__intro">
+      <h4 class="evp-promise__title"><span class="evp-promise__title-strong">Our People</span> <span class="evp-promise__title-soft">· Our Promise</span></h4>
+      <p class="evp-promise__belief">At Trilogy BPO, our Employee Value Proposition is built on one unshakeable belief: When people thrive, business follows.</p>
+      <div class="evp-promise__photos" aria-hidden="true">
+        <div class="evp-promise__photo evp-promise__photo--team">
+          <img src="../trilogydigital/assets/team/people-floor/team.png" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--nate">
+          <img src="../trilogydigital/assets/team/people-floor/nate.png" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--day">
+          <img src="../trilogydigital/assets/team/people-floor/day.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--viview">
+          <img src="../trilogydigital/assets/team/people-floor/viview.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--floor">
+          <img src="../trilogydigital/assets/team/people-floor/floor.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--recruit">
+          <img src="../trilogydigital/assets/team/people-floor/recruit.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--office">
+          <img src="../trilogydigital/assets/team/people-floor/office.jpg" alt="" loading="lazy">
+        </div>
+        <div class="evp-promise__photo evp-promise__photo--training">
+          <img src="../trilogydigital/assets/team/people-floor/training.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <div class="evp-promise__pillars">
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6.5-4.1-6.5-8.8A3.7 3.7 0 0 1 12 9.2a3.7 3.7 0 0 1 6.5 3c0 4.7-6.5 8.8-6.5 8.8Z"/><circle cx="12" cy="10.2" r="2.1"/></svg>
+        </div>
+        <h5>Wellbeing Support</h5>
+        <p>On-site counsellors and a culture that genuinely supports mental and physical health.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="7" r="2.2"/><circle cx="17.5" cy="7" r="2.2"/><circle cx="12" cy="17" r="2.2"/><path d="M8.2 8.6 10.4 15.2M15.8 8.6 13.6 15.2M8.7 7h6.6"/></svg>
+        </div>
+        <h5>Unapologetically Inclusive</h5>
+        <p>DE&amp;I isn’t a policy — it’s who we are. Every voice belongs here.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.2v9.6M14.4 9.1c-.5-.8-1.3-1.2-2.4-1.2-1.6 0-2.7 1-2.7 2.3s1.1 2.2 2.8 2.6c1.6.4 2.7 1.1 2.7 2.5s-1.2 2.4-2.9 2.4c-1.2 0-2.1-.5-2.6-1.3"/></svg>
+        </div>
+        <h5>Competitive Salary</h5>
+        <p>Market-aligned compensation that recognises and rewards the value you bring.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20.4s-6.8-4.2-6.8-9.1A3.9 3.9 0 0 1 12 8.1a3.9 3.9 0 0 1 6.8 3.2c0 4.9-6.8 9.1-6.8 9.1Z"/></svg>
+        </div>
+        <h5>Meaningful Benefits</h5>
+        <p>Relevant, real-world benefits designed around the lives of our people.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16.5 9.2 11l3.3 3.2L20 7.5"/><path d="M14.5 7.5H20V13"/></svg>
+        </div>
+        <h5>Leadership Development</h5>
+        <p>We invest in growing leaders at every level, from first-time managers to executives.</p>
+      </article>
+      <article class="evp-promise__item">
+        <div class="evp-promise__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3.8 2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 9l5-.7L12 3.8Z"/></svg>
+        </div>
+        <h5>Reward &amp; Recognition</h5>
+        <p>Celebrating contributions — big and small — because people deserve to feel seen.</p>
+      </article>
+    </div>
+  </div>
+  <figcaption>Our People · Our Promise — when people thrive, business follows.</figcaption>
+</figure>
+<div class="prose"><p>At Trilogy, how we attract, source, onboard and retain talent is our secret sauce. Our people processes are built to support the full employee lifecycle — from candidate to top performer — with our culture and our approach to Diversity, Equity & Inclusion embraced at every stage rather than bolted on as a standalone policy.</p></div><h4 id="the-trilogy-employee-lifecycle">The Trilogy Employee Lifecycle</h4><div class="lifecycle"><div class="life-step"><div class="life-step__num">1</div><h4>Attract</h4><p>Campaign-driven, mobile-first sourcing with unique links and QR codes per line of business.</p></div><div class="life-step"><div class="life-step__num">2</div><h4>Recruit</h4><p>AI-enhanced behavioural and CEFR language assessment; automated, bias-reduced shortlisting.</p></div><div class="life-step"><div class="life-step__num">3</div><h4>Onboard</h4><p>Zero re-keying handover into a single digital employee file; pre-boarding to 90-day journey.</p></div><div class="life-step"><div class="life-step__num">4</div><h4>Train</h4><p>Role-specific LMS pathways with randomised assessments and operational-readiness sign-off.</p></div><div class="life-step"><div class="life-step__num">5</div><h4>Develop</h4><p>Continuous, data-led development and a clear path from advisor to team leader and beyond.</p></div><div class="life-step"><div class="life-step__num">6</div><h4>Perform</h4><p>Coaching cadence and QA-driven refreshers keep capability ahead of account demands.</p></div><div class="life-step"><div class="life-step__num">7</div><h4>Improve</h4><p>Quality insights, assessment results and performance trends shape what we train, and when.</p></div><div class="life-step"><div class="life-step__num">8</div><h4>Offboard</h4><p>Structured exit process, insight loop and alumni/rehire approach that feeds retention.</p></div></div><h4 id="trilogy-s-recruitment-process">Trilogy's Recruitment Process</h4>
+<div class="process-flow process-flow--horizontal" aria-label="Trilogy recruitment process">
+  <div class="process-flow__step">
+    <div class="process-flow__num">1</div>
+    <div class="process-flow__body">
+      <h5>Plan &amp; Source</h5>
+      <p>Skills needs analysis &amp; job profile; customized recruitment plan; talent sourcing via partners, advertising, referrals, WOLC and campaigns.</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">→</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">2</div>
+    <div class="process-flow__body">
+      <h5>Assess &amp; Select</h5>
+      <p>Assessment &amp; selection; screening; competency-based interviews; outcomes-based assessments.</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">→</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">3</div>
+    <div class="process-flow__body">
+      <h5>Verify &amp; Hire</h5>
+      <p>Reference &amp; integrity checks; shortlist &amp; compliance report; client acceptance interviews; hiring.</p>
+    </div>
+  </div>
+</div>
+<h4 id="recruitment-lifecycle-application-to-onboarding">Recruitment Lifecycle — Application to Onboarding</h4>
+<div class="recruit-split">
+  <figure class="recruit-split__media">
+    <img src="../trilogydigital/assets/v4-images/v4-15.jpg" alt="From application to onboarding — a single automated recruitment pipeline." loading="lazy">
+  </figure>
+  <div class="recruit-split__copy prose">
+    <p>Our recruitment engine runs as a single automated pipeline — from first application to Day 1 handover — with POPIA-compliant consent, automated assessment and zero re-keying into the digital employee file. Every step is communicated to candidates via email and WhatsApp in parallel.</p>
+  </div>
+</div>
+<div class="process-flow process-flow--vertical" aria-label="Recruitment lifecycle from application to onboarding">
+  <div class="process-flow__step">
+    <div class="process-flow__num">1</div>
+    <div class="process-flow__body">
+      <h5>Job Posting &amp; Application</h5>
+      <p>Campaign-specific link/QR code; mobile application, ID/CV/selfie upload, POPIA consent captured</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">2</div>
+    <div class="process-flow__body">
+      <h5>Candidate Profile &amp; Compliance Data</h5>
+      <p>Personal details and Employment Equity data captured and auto-classified for reporting</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">3</div>
+    <div class="process-flow__body">
+      <h5>Automated Assessment &amp; Screening</h5>
+      <p>Role-specific, objective online assessment triggered automatically; results scored and shortlisted against role thresholds</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">4</div>
+    <div class="process-flow__body">
+      <h5>Shortlist Review &amp; Interview</h5>
+      <p>Recruiter reviews ranked shortlist; candidate self-books a face-to-face interview; joint HR + Operations decision</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">5</div>
+    <div class="process-flow__body">
+      <h5>Pre-Employment Checks &amp; Documentation</h5>
+      <p>Background verification triggered on verbal offer; banking, tax and next-of-kin details completed via secure portal</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">6</div>
+    <div class="process-flow__body">
+      <h5>Digital Employee File &amp; Contract</h5>
+      <p>All data consolidated into one digital record; contract and offer letter auto-populated and e-signed</p>
+    </div>
+  </div>
+  <div class="process-flow__arrow" aria-hidden="true">↓</div>
+  <div class="process-flow__step">
+    <div class="process-flow__num">7</div>
+    <div class="process-flow__body">
+      <h5>Onboarding Handover</h5>
+      <p>Approved employee file pushed automatically to onboarding — zero re-keying, candidate welcomed with start date confirmed</p>
+    </div>
+  </div>
+  <div class="process-flow__footer">
+    <strong>Every step communicated via Email + WhatsApp, in parallel.</strong>
+    <span>Built for compliance with POPIA · BCEA · Employment Equity Act — full audit trail throughout.</span>
+  </div>
+</div>
+<h4 id="agent-profile">Agent Profile</h4><div class="prose"><p>The typical Trilogy Digital UK-facing agent is an English-first South African professional aged 22–35 — digitally native, highly empathetic, and culturally attuned to UK consumer expectations before a single day of induction. Educational backgrounds span NSC (Matric) through to tertiary degrees, typically with 1–3 years of prior customer-facing experience.</p></div><h4 id="training-management-structure">Training Management Structure</h4><div class="prose"><p>Training runs as a continuous, SAQA/NQF-aligned cycle — strategic planning, coaching and gap analysis, curriculum development, workshop/OJT/coaching and verification — underpinned by quality and performance management.</p></div>
+<figure class="train-cycle-figure">
+  <div class="train-cycle" aria-label="Training management continuous cycle">
+    <svg class="train-cycle__svg" viewBox="0 0 920 400" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <filter id="trainSoft" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#13202e" flood-opacity="0.22"/>
+        </filter>
+        <filter id="trainOrbGlow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <path id="trainLoopPath" class="train-cycle__track" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#61d779" stroke-width="10" stroke-linejoin="round"/>
+      <path class="train-cycle__flow" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#d5ec67" stroke-width="4" stroke-linecap="round" stroke-dasharray="18 26"/>
+      <g class="train-cycle__orb" filter="url(#trainOrbGlow)">
+        <circle r="13" fill="#d5ec67" opacity="0.95"/>
+        <circle r="6" fill="#fff" opacity="0.92"/>
+        <animateMotion dur="8s" repeatCount="indefinite" calcMode="linear">
+          <mpath href="#trainLoopPath" xlink:href="#trainLoopPath"/>
+        </animateMotion>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="30" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="64" cy="81" r="18" fill="#d5ec67"/>
+        <text x="64" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">1</text>
+        <text x="168" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Strategic</text>
+        <text x="168" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Planning</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="330" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="364" cy="81" r="18" fill="#d5ec67"/>
+        <text x="364" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">2</text>
+        <text x="468" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Coaching &amp; Gap</text>
+        <text x="468" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Analysis</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="630" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="664" cy="81" r="18" fill="#d5ec67"/>
+        <text x="664" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">3</text>
+        <text x="768" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Curriculum</text>
+        <text x="768" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Development</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="630" y="274" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="664" cy="319" r="18" fill="#d5ec67"/>
+        <text x="664" y="325" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">4</text>
+        <text x="768" y="314" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Poppins, Inter, sans-serif">Workshop / OJT</text>
+        <text x="768" y="334" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Coaching</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="30" y="274" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="64" cy="319" r="18" fill="#d5ec67"/>
+        <text x="64" y="325" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">5</text>
+        <text x="168" y="324" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Verification</text>
+      </g>
+      <g filter="url(#trainSoft)">
+        <rect x="318" y="158" width="284" height="84" rx="16" fill="#13202e" stroke="#d5ec67" stroke-width="3"/>
+        <text x="460" y="192" text-anchor="middle" fill="#d5ec67" font-size="16" font-weight="700" letter-spacing="0.12em" font-family="Poppins, Inter, sans-serif">TRAINING CYCLE</text>
+        <text x="460" y="216" text-anchor="middle" fill="#fff" font-size="12" font-weight="500" font-family="Inter, sans-serif">SAQA / NQF aligned · continuous improvement</text>
+      </g>
+    </svg>
+    <ol class="train-cycle__blocks">
+      <li class="train-cycle__block"><span class="train-cycle__num">1</span><span class="train-cycle__label">Strategic Planning</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">2</span><span class="train-cycle__label">Coaching &amp; Gap Analysis</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">3</span><span class="train-cycle__label">Curriculum Development</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">4</span><span class="train-cycle__label">Workshop / OJT / Coaching</span></li>
+      <li class="train-cycle__block"><span class="train-cycle__num">5</span><span class="train-cycle__label">Verification</span></li>
+    </ol>
+    <p class="train-cycle__loopback" aria-hidden="true">Loops back to Strategic Planning</p>
+  </div>
+  <p class="train-cycle__note"><strong>A continuous cycle</strong> — verification insights feed straight back into strategic planning, so every cohort sharpens the next.</p>
+  <figcaption>Figure — Training Management Structure: a continuous five-stage training cycle</figcaption>
+</figure>
+<h4 id="uk-cultural-immersion">UK Cultural Immersion</h4><div class="prose"><p>Every agent deployed on a UK mandate completes a UK Cultural Immersion programme before going live, covering UK consumer psychology, regional geography and idioms, brand-specific tone of voice, the UK seasonal/holiday calendar, and the regulatory environment relevant to the programme (e.g. Ofwat, Ofgem, FCA, Ofcom, Consumer Rights Act).</p></div><h4 id="tenure-attrition">Tenure &amp; Attrition</h4><div class="table-wrap"><table><thead><tr><th>Role</th><th>Typical tenure</th></tr></thead><tbody><tr><td>Customer Service Agent</td><td>18–30 months — above sector average</td></tr><tr><td>Senior / Specialist Agent</td><td>24–36 months, with funded external qualifications</td></tr><tr><td>Team Leader</td><td>3+ years; &gt;60% promoted internally</td></tr><tr><td>Quality Analyst</td><td>2–4 years, typically developed internally</td></tr></tbody></table></div><div class="prose"><p>Industry average monthly attrition sits between 9–12%; our team has maintained 3–4% monthly attrition. Full attrition data by site and role is provided under NDA at RFP stage.</p></div><h4 id="attraction-retention">Attraction &amp; Retention</h4><ul class="list-check"><li>Leadership Development — internal NQF5-aligned qualifications, unique to the market.</li><li>Blended recruitment — Maharishi Institute graduate pipeline, specialist agencies using our Corporate Behaviours psychometric framework, referrals, and CapeBPO government hiring partnerships.</li><li>Compensation — entry-level pay 15–20% above BPO sector minimums, medical aid contributions, quarterly bonuses, and an Employee Assistance Programme (EAP).</li></ul><h4 id="trilogy-leadership-pathway">Trilogy Leadership Pathway</h4><div class="prose"><p>We grow leaders at every level through a staged programme matched to leadership level — from Emerging Leaders (the inner game of leadership), to Leading Others (the bridge to leadership), to Leading of Leaders (strategic leadership at scale).</p></div><div class="callout">A staged leadership programme, matched to each leadership level.</div><h4 id="employee-value-proposition-our-people-our-promise">Employee Value Proposition — Our People. Our Promise.</h4><div class="prose"><p>Our EVP rests on a simple idea: look after our people, and strong performance follows. It runs through six pillars across the employee lifecycle.</p></div><div class="pillars pillars--3"><div class="pillar"><h4>Competitive Salary</h4><p>Market-benchmarked pay per role and line of business, plus monthly performance bonuses.</p></div><div class="pillar"><h4>Meaningful Benefits</h4><p>Medical insurance, transport and meal allowances, funeral/life cover and staff discounts.</p></div><div class="pillar"><h4>Wellbeing Support</h4><p>On-site counsellors and a culture that genuinely supports mental and physical health.</p></div><div class="pillar"><h4>Unapologetically Inclusive</h4><p>DE&amp;I woven through how we lead, our policies and our culture — every voice belongs here.</p></div><div class="pillar"><h4>Leadership Development</h4><p>We grow leaders at every level via Trilogy’s structured leadership pathway.</p></div><div class="pillar"><h4>Reward &amp; Recognition</h4><p>Monthly recognition, spot bonuses, fun days, lunches and team building.</p></div></div><h4 id="employee-wellbeing-a-differentiator">Employee Wellbeing — A Differentiator</h4><figure class="figure">
+  <div class="figure__media"><img src="../trilogydigital/assets/wellbeing.jpg" alt="Confidential, onsite, trauma-informed support — embedded from Day 1 via Soul Impact." loading="lazy"></div>
+  <figcaption>Confidential, onsite, trauma-informed support — embedded from Day 1 via Soul Impact.</figcaption>
+</figure><div class="prose"><p>Wellbeing is not an add-on — it is embedded into how we run operations. We partner with Soul Impact, a specialist provider of onsite, trauma-informed mental health support built for the contact centre industry, giving every employee direct, confidential access to professional counselling as part of their working life.</p><p>LifeLine-accredited trauma counsellors deliver crisis counselling, impact counselling and coaching in confidential 50-minute sessions — onsite or virtual, booked via a simple QR code. A wellbeing session is embedded into induction, so every new starter knows the support exists from Day 1.</p><p>Data-led, trauma-informed wellbeing support for South African companies — onsite Impact Counselling &amp; Leadership Resilience Training that turns real-time wellbeing data into preventative care.</p></div>
+<h4 id="soul-impact-offering">Soul Impact Offering</h4>
+<span class="badge badge--navy">Tailored to the CX industry</span>
+<div class="prose"><p>Trauma-informed support for maximum impact in a limited timeframe — onsite, embedded and part of your company culture.</p></div>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Offering</th><th>What it delivers</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Crisis Counselling</td><td>Immediate, confidential trauma-informed support when people need it most.</td></tr>
+      <tr><td>Impact Counselling</td><td>Focused counselling for maximum impact in a limited timeframe — onsite or virtual, booked via QR.</td></tr>
+      <tr><td>Coaching</td><td>Practical coaching that builds resilience and performance alongside counselling support.</td></tr>
+      <tr><td>Leadership Resilience Training</td><td>Equips leaders to read wellbeing signals early and turn real-time data into preventative care.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Step</th><th>How it works</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Onsite Wellbeing Team &amp; QR booking triages employees</td></tr>
+      <tr><td>2</td><td>Counsellors deliver Impact Counselling onsite or virtually</td></tr>
+      <tr><td>3</td><td>Monthly feedback data reveals trends</td></tr>
+      <tr><td>4</td><td>Specialist referral network &amp; induction embedding</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="prose"><p>#VibeCheck — every week we run an anonymous employee-satisfaction pulse. Each person rates their week across five mood measures, from “Tough” to “Unreal,” and can add their own words. It gives us an honest, ongoing read on morale — and a steady signal of what we are getting right and what we can do better.</p></div><div class="two-col"><figure class="figure">
+  <div class="figure__media"><img src="../trilogydigital/assets/v4-images/v4-22.png" alt="#VibeCheck — weekly mood trend and score breakdown." loading="lazy"></div>
+  <figcaption>#VibeCheck — weekly mood trend and score breakdown.</figcaption>
+</figure><figure class="figure">
+  <div class="figure__media"><img src="../trilogydigital/assets/v4-images/v4-23.png" alt="#VibeCheck — scores by campaign, with weekly highs and lows." loading="lazy"></div>
+  <figcaption>#VibeCheck — scores by campaign, with weekly highs and lows.</figcaption>
+</figure></div><h4 id="our-culture-craft">Our Culture — CRAFT</h4><div class="prose"><p>Culture is the difference between a documented procedure and a team that actually lives it. At Trilogy, every person matters and every voice counts — we lead with respect, care and empathy. Everything we stand for is captured in a single word: CRAFT.</p></div><div class="craft"><div class="craft-item"><div class="craft-item__letter">C</div><h4>Customer Obsession</h4><p>Our clients come first. We anticipate their needs and exceed expectations, every time.</p></div><div class="craft-item"><div class="craft-item__letter">R</div><h4>Relentless Excellence</h4><p>Good enough is never the goal. We deliver the best, every time.</p></div><div class="craft-item"><div class="craft-item__letter">A</div><h4>And Collectiveness</h4><p>We win together. There is no “my success” — only ours.</p></div><div class="craft-item"><div class="craft-item__letter">F</div><h4>Fun</h4><p>We take the work seriously. Not ourselves.</p></div><div class="craft-item"><div class="craft-item__letter">T</div><h4>Trust</h4><p>We do what we say. We show up. Trust is earned here.</p></div></div><h4 id="adapting-to-your-culture">Adapting to Your Culture</h4><div class="pillars pillars--2"><div class="pillar"><h4>Brand Induction</h4><p>Your brand values, tone and ways of working embedded into induction from Day 1.</p></div><div class="pillar"><h4>Culture Calibration</h4><p>Calibration sessions with your leadership to align on culture, standards and expectations.</p></div><div class="pillar"><h4>Recognition &amp; Site Branding</h4><p>Co-branded recognition programmes and your branding visible across the site.</p></div><div class="pillar"><h4>Brand Ambassadors</h4><p>Nominated champions who carry and reinforce your brand across every team.</p></div></div>
+        </div>
+      </section>
+<section class="proposal-page" id="section-11">
+        <div class="section-head">
+          <span class="section-num">10</span>
+          <h2>Forecasting &amp; Demand Management</h2>
+        </div>
+        <div class="section-body">
+<h3 id="wfm-methodology">WFM Methodology</h3>
+<figure class="wfm-method-figure">
+  <div class="wfm-method" aria-label="WFM methodology continuous improvement cycle">
+    <div class="wfm-method__loop" aria-hidden="true"><span>Continuous feedback into next plan</span></div>
+    <div class="wfm-method__grid">
+      <article class="wfm-div">
+        <div class="wfm-div__head">Division One</div>
+        <div class="wfm-div__body">Workforce Planning and Scheduling</div>
+        <div class="wfm-div__role">Scheduling Analyst</div>
+        <div class="wfm-div__action">Generates Plan</div>
+      </article>
+      <article class="wfm-div">
+        <div class="wfm-div__head">Division Two</div>
+        <div class="wfm-div__body">Intraday Queue Management and Break Management</div>
+        <div class="wfm-div__role">Intraday Analyst</div>
+        <div class="wfm-div__action">Monitors Plan</div>
+      </article>
+      <article class="wfm-div">
+        <div class="wfm-div__head">Division Three</div>
+        <div class="wfm-div__body">Reporting and Database Management</div>
+        <div class="wfm-div__role">Reporting Analyst</div>
+        <div class="wfm-div__action">Reports Plan</div>
+      </article>
+    </div>
+    <div class="wfm-method__arrows" aria-hidden="true">
+      <span></span><span></span>
+    </div>
+  </div>
+  <figcaption>Figure 1 — WFM Methodology</figcaption>
+</figure>
+<div class="prose">
+  <p>Our approach is designed around a continuous improvement cycle: Workforce Management drafts and generates the plan for future weeks; Intraday (Real-Time Management) monitors the plan and ensures adherence; Reporting (Project Analysts) generate reports on historical plans and send them to the Workforce Planning team; and Workforce Planning analyses the data and reports, feeding adjustments back to future plans where required.</p>
+</div>
+<div class="pillars pillars--3">
+  <div class="pillar">
+    <h4>Workforce Management / Scheduling Analysts</h4>
+    <p>Capacity planning, weekly forecasts and rosters, configuring contractual KPIs before generating staffing plans and models, and updating all planned exceptions.</p>
+  </div>
+  <div class="pillar">
+    <h4>Intraday Analysts (Real-Time Management)</h4>
+    <p>Real-time queue monitoring, managing scheduled breaks, modifying break plans for exceptions (absenteeism, over-forecast volumes, meetings), half-hourly staffing checks, KPI threshold monitoring and deviation alerts, and real-time exception entry (sick, vacation, tardiness).</p>
+  </div>
+  <div class="pillar">
+    <h4>Reporting Analyst (Project Analyst)</h4>
+    <p>All internal and client reports, database setup for client and internal tools, user ID and access configuration, daily/weekly/monthly switch data to finance, and agent performance reporting daily / weekly / monthly / quarterly.</p>
+  </div>
+</div>
+<div class="prose">
+  <p>Dynamic, accurate resource planning requires a combination of accurate data sets, intuitive forecasting and resourcing tools, and human experience. We leverage both traditional and AI-driven resourcing models: Calabrio as our WFM and shrinkage-management application for more stable data sets, and Julius.ai, a GenAI scheduling platform, for more dynamic, flexible resource planning across multiple data sets, including agile “what-if” scenarios for more accurate planning.</p>
+</div>
+<h3>System Advantages &amp; Scalability</h3><ul class="list-check"><li>During the Design phase of our DBIT model, clients select the best-fit tool for their environment — we present the options and recommend the right combination.</li><li>Calabrio integrates into common payroll systems, significantly reducing the dependency and manual effort associated with pay runs.</li><li>Highly scalable and built for multi-channel environments — voice, online shopping, social media and rapid-delivery services.</li><li>Combining Calabrio with Julius.ai unlocks every data point across the omnichannel platform, learning arrival patterns by date and time to sharpen forecasts over time.</li></ul><h3>Accuracy Examples</h3><div class="prose"><p>The models below were produced in Julius.ai using real on-demand grocery volumes — a worked example of how we map arrival patterns and translate them into precise staffing requirements down to the hour.</p></div><figure class="figure">
+  <div class="figure__media"><img src="../trilogydigital/assets/wfm/call-arrival-patterns.png" alt="Call arrival patterns mapped — daily offered-call volume across the year, exposing seasonal peaks and campaign-driven spikes." loading="lazy"></div>
+  <figcaption>Call arrival patterns mapped — daily offered-call volume across the year, exposing seasonal peaks and campaign-driven spikes.</figcaption>
+</figure><div class="two-col"><figure class="figure">
+  <div class="figure__media"><img src="../trilogydigital/assets/wfm/month-max-agents.png" alt="Month-on-month maximum agents — peak resourcing requirement per month." loading="lazy"></div>
+  <figcaption>Month-on-month maximum agents — peak resourcing requirement per month.</figcaption>
+</figure><figure class="figure">
+  <div class="figure__media"><img src="../trilogydigital/assets/wfm/intraday-forecasting-model.png" alt="Intraday forecasting model — hourly required agents on a peak day." loading="lazy"></div>
+  <figcaption>Intraday forecasting model — hourly required agents on a peak day.</figcaption>
+</figure></div><div class="callout">The result is resource planning that flexes with demand — accurate weekly rosters, disciplined intraday management and a data-driven feedback loop that continuously improves forecast accuracy.</div>
+        </div>
+      </section>
+<section class="proposal-page" id="section-12">
+        <div class="section-head">
+          <span class="section-num">11</span>
+          <h2>Quality &amp; Analytics</h2>
+        </div>
+        <div class="section-body">
+<div class="prose"><p>Trilogy operates QA as a 360° approach. We focus first and foremost on downstream (agent-controllable) insights, where an agent can improve, where the operation can improve, and, most importantly, the segmentation of initiatives into quick wins and long-term plans, so we can implement meaningful “low-hanging fruit” improvements alongside strategic initiatives across the tenure of the contract. Our analytics engine also surfaces upstream (non-agent-controllable) insights, giving you valuable information to manage your supply chain and internal operations more effectively.</p><p>Our QA runs on two parallel tracks. Automated QA (via Genii) evaluates up to 100% of interactions for sentiment, compliance and distress flags, replacing the traditional 1% manual sample. Human-led QA then evaluates a structured sample against a multi-dimension scorecard, with weekly and monthly calibration consistently achieving &gt;85% evaluator agreement. Genii's II-QA scorecard is fully customisable to your KPIs and separates what an agent controls from what your business needs to fix.</p></div>
+
+<figure class="figure figure--qa">
+  <div class="figure__media figure__media--contain"><img src="../trilogydigital/assets/qa-continuous-cycle.jpg?v=no-titlebar-1" alt="Continuous quality cycle — Assess, Performance Gaps, Coaching and Review around QA Analytics." loading="lazy"></div>
+  <figcaption>Figure — Continuous Quality Cycle</figcaption>
+</figure>
+<figure class="qa-metrics-figure">
+  <div class="qa-metrics" aria-label="Five lowest performing metrics">
+    <div class="qa-metrics__head">5 Lowest Performing Metrics</div>
+    <ol class="qa-metrics__list">
+      <li class="qa-metrics__row qa-metrics__row--1"><span class="qa-metrics__num">1</span><div><p class="qa-metrics__title">Issue Resolution Failure ~62%</p><p class="qa-metrics__desc">Identifies reasons for Non-Resolution (nFCR).</p></div></li>
+      <li class="qa-metrics__row qa-metrics__row--2"><span class="qa-metrics__num">2</span><div><p class="qa-metrics__title">Repeat Occurred ~11%</p><p class="qa-metrics__desc">Identifies reasons for Repeat Interactions.</p></div></li>
+      <li class="qa-metrics__row qa-metrics__row--3"><span class="qa-metrics__num">3</span><div><p class="qa-metrics__title">Expression of Dissatisfaction ~10%</p><p class="qa-metrics__desc">Identifies reasons for customer dissatisfaction.</p></div></li>
+      <li class="qa-metrics__row qa-metrics__row--4"><span class="qa-metrics__num">4</span><div><p class="qa-metrics__title">Repeat may Occur ~10%</p><p class="qa-metrics__desc">Identifies instances where a repeat call may occur.</p></div></li>
+      <li class="qa-metrics__row qa-metrics__row--5"><span class="qa-metrics__num">5</span><div><p class="qa-metrics__title">Advisor Conduct &amp; Behaviour Issue ~7%</p><p class="qa-metrics__desc">Identifies instances of Advisor Conduct &amp; Behavioural Issues.</p></div></li>
+    </ol>
+  </div>
+  <figcaption>Figure — Lowest Performing Metrics</figcaption>
+</figure>
+<figure class="figure figure--qa">
+  <div class="figure__media figure__media--contain"><img src="../trilogydigital/assets/qa-root-cause-analytics.jpg" alt="Deep root cause analytics table by contact reason with FCR, AHT, repeats, hold, transfer and CSAT." loading="lazy"></div>
+  <figcaption>Figure — Deep Root Cause Analytics</figcaption>
+</figure>
+
+<h3 id="workflow-automation-capabilities">Workflow Automation Capabilities</h3>
+<div class="prose"><p>Trilogy has spent the past 2 years working with some well-known brands in the Medical, FMCG and Wellness fields and has developed solutions which have all had a positive impact on their customers. After transfer and stabilisation, we believe that we can assist with the following:</p></div>
+<div class="workflow-callouts" aria-label="Workflow automation capability callouts">
+  <article class="workflow-callout workflow-callout--email">
+    <div class="workflow-callout__value">20–40%</div>
+    <h4>Email auto-response</h4>
+    <p>Of inbound email volumes deflected or auto-drafted on eligible programmes.</p>
+  </article>
+  <article class="workflow-callout workflow-callout--rpa">
+    <div class="workflow-callout__value">Up to 50%</div>
+    <h4>Back-office RPA</h4>
+    <p>Reduction in processing labour per unit on structured workflows — ideal for your back-office expansion opportunity.</p>
+  </article>
+  <article class="workflow-callout workflow-callout--acwa">
+    <div class="workflow-callout__value">acwa.ai</div>
+    <h4>After-contact automation</h4>
+    <p>Handles CRM updates, confirmations and voucher/document dispatch automatically.</p>
+  </article>
+  <article class="workflow-callout workflow-callout--voice">
+    <div class="workflow-callout__value">15–25%</div>
+    <h4>Voice / IVR containment</h4>
+    <p>On eligible programmes — available if voice is ever added.</p>
+  </article>
+</div>
+
+<h3>II-QA Scoring Methodology</h3><div class="prose"><p>Unlike the standard two-tier weighted scorecard used by most contact centres, Genii's II-QA (Interaction Intelligence – Quality Assurance) is a fully customisable, multi-tier scorecard built around your KPIs — scoring both agent behaviour and business-level limitations. Scores are calculated as Applied Weight ÷ Applicable Weight × 100, with N/A answers excluded from the denominator so results reflect real, controllable performance.</p></div><div class="table-wrap"><table><thead><tr><th>Element</th><th>Approach</th></tr></thead><tbody><tr><td>Scorecard model</td><td>Blank, fully customisable campaign built from your KPIs — multiple sections, multiple output-metric questions</td></tr><tr><td>Assessment / pass target</td><td>Recommended 80% assessment target and 80% pass target, tuned per programme</td></tr><tr><td>Scoring failures</td><td>Agent-controllable fail scores 0; non-controllable business fail scores 0 but does not affect the agent</td></tr><tr><td>Calibration</td><td>Quality-Manager-run gauge assessments on live calls (zero agent impact); high-variance assessors flagged</td></tr></tbody></table></div><h3>Genii Analytics — Interaction Intelligence</h3><div class="prose"><p>Our analytics partner Genii moves quality beyond traditional QA toward true Interaction Intelligence — turning contact-centre data from a cost centre into a strategic asset. Where most tools tell you what happened, Genii tells you why it happened, which agent behaviours are driving it, and exactly what to do next. Their models carry a home-field advantage in the South African BPO market, tuned for local accents, cultural nuance and high-empathy service.</p></div><div class="pillars pillars--3"><div class="pillar"><h4>Gen-Core — Digitise QA</h4><p>Digitises 100% of interactions, replacing 1% manual sampling with full-coverage automated scoring so every agent can be developed on real, complete data.</p></div><div class="pillar"><h4>Gen-Ai Connect — Behavioural Insight</h4><p>Layers behavioural science on top of the data — root-cause analysis, micro-friction tracking and linguistic DNA mapping of top-performer behaviours.</p></div><div class="pillar"><h4>Gen-Ai Ultra — Commercial Outcomes</h4><p>Correlates interactions to commercial outcomes — predicting churn risk and prescribing the exact retention, sales or resolution action to protect margin.</p></div></div><h3>The Four Layers of Interaction Intelligence</h3><ul class="list-check"><li>Descriptive — what happened: interaction summaries and metrics across 100% of contacts.</li><li>Diagnostic — why it happened: root-cause and trend analysis behind the numbers.</li><li>Predictive — what happens next: forecasting churn, buying signals and repeat demand before they surface.</li><li>Prescriptive — what to do about it: recommending the specific action or coaching path to change the outcome.</li></ul><div class="callout">Most tools stop at the first one or two layers. Genii operates across all four — turning raw interaction data into prescriptive, revenue-driving action.</div><h3>Proving Value Fast — The Discover Audit</h3><ul class="list-check"><li>Insights-as-a-Service — a Discover report in weeks, not the 6–12 months typical of enterprise platforms, proving ROI before any large commitment.</li><li>Four pain points solved — service (process friction and repeat demand), sales (buying signals and lead leakage), retention (early churn signals), and collections (commitment-integrity analysis) — all within compliance guardrails.</li><li>Human-in-the-loop Academy — upskills Quality Assessors into Interaction Intelligence Analysts, so insights are genuinely acted upon rather than shelved.</li></ul><div class="callout">Where AI stops, Genii continues — not just signals, but solutions. Combining deep contextual analysis with operational expertise, every interaction becomes one of your most valuable assets: “we help you read between the lines to drive ROI.”</div><h3 id="continuous-improvement">Continuous Improvement</h3>
+<div class="prose">
+  <p>Trilogy is leveraging the Genii Analytics platform, combined with our MIS platform, to identify improvement opportunities on a continuous cycle. It covers 100% of all interactions. The platform, once configured, provides insights on the four quadrants, impacting Customer Experience and Business Performance: Agent Performance, Operations Performance, Business Performance and Customer Experience.</p>
+  <p>Continuous improvement loop — Design, Operate, Deploy and Improve around an Analytics &amp; Insights hub — driving People Performance, Operational Performance, Business Performance and Customer CX.</p>
+</div>
+<figure class="ci-loop-figure">
+  <div class="ci-loop" aria-label="Continuous improvement infinity loop">
+    <svg class="ci-loop__svg" viewBox="0 0 720 360" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+        <filter id="ciSoft" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#13202e" flood-opacity="0.22"/>
+        </filter>
+        <filter id="ciOrbGlow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <!-- True infinity / lemniscate stroke -->
+      <path id="ciInfinityPath" d="M120 180
+               C120 70 250 70 360 180
+               C470 290 600 290 600 180
+               C600 70 470 70 360 180
+               C250 290 120 290 120 180 Z"
+            fill="none" stroke="#61d779" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Flowing orb rides the green loop (under hub + labels) -->
+      <g class="ci-loop__orb" filter="url(#ciOrbGlow)">
+        <circle r="16" fill="#d5ec67" opacity="0.95"/>
+        <circle r="7" fill="#fff" opacity="0.9"/>
+        <animateMotion dur="7s" repeatCount="indefinite" calcMode="linear">
+          <mpath href="#ciInfinityPath" xlink:href="#ciInfinityPath"/>
+        </animateMotion>
+      </g>
+      <!-- Navy hub sits on the crossing -->
+      <g filter="url(#ciSoft)">
+        <circle cx="360" cy="180" r="72" fill="#13202e"/>
+        <circle cx="360" cy="180" r="80" fill="none" stroke="#d5ec67" stroke-width="8" opacity="0.55"/>
+        <text x="360" y="170" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="0.06em">ANALYTICS &amp;</text>
+        <text x="360" y="192" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="0.06em">INSIGHTS</text>
+      </g>
+      <!-- Corner labels anchored to each lobe -->
+      <g font-size="13" font-weight="800" letter-spacing="0.08em">
+        <rect x="148" y="78" width="86" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="191" y="98" text-anchor="middle" fill="#fff">DESIGN</text>
+        <rect x="486" y="78" width="96" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="534" y="98" text-anchor="middle" fill="#fff">OPERATE</text>
+        <rect x="486" y="252" width="90" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="531" y="272" text-anchor="middle" fill="#fff">DEPLOY</text>
+        <rect x="142" y="252" width="98" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <text x="191" y="272" text-anchor="middle" fill="#fff">IMPROVE</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption>Figure 2 — Continuous Improvement</figcaption>
+</figure>
+
+<h3 id="continuous-improvement-initiatives">Continuous Improvement Initiatives</h3>
+<figure class="genii-intel-figure">
+  <div class="genii-intel" aria-label="Genii Analytics Solution — four intelligence dimensions">
+    <div class="genii-intel__brand"><span class="genii-intel__logo">genii</span><div><strong>Interaction Analytics Intelligence</strong><p>One platform. Four intelligence dimensions.</p></div></div>
+    <div class="genii-intel__hub">Interaction Analytics</div>
+    <article class="genii-intel__card genii-intel__card--customer">
+      <h4>Customer Intelligence</h4>
+      <ul><li>Churn Risk</li><li>Brand Conflict Points</li><li>Frustrations</li><li>Sentiment</li><li>Experience</li><li>Effort</li></ul>
+    </article>
+    <article class="genii-intel__card genii-intel__card--agent">
+      <h4>Agent Intelligence &amp; QA</h4>
+      <ul><li>Agent Auto QA</li><li>Behaviours</li><li>Performance</li><li>Effectiveness</li><li>Compliance</li></ul>
+    </article>
+    <article class="genii-intel__card genii-intel__card--business">
+      <h4>Business Intelligence</h4>
+      <ul><li>Issues Impacting Customers</li><li>Contact Reasons</li><li>Supply Chain Issues</li><li>Product Issues</li><li>Pricing Issues</li></ul>
+    </article>
+    <article class="genii-intel__card genii-intel__card--ops">
+      <h4>Operational Intelligence</h4>
+      <ul><li>Ops Performance</li><li>FCR / nFCR</li><li>Repeats</li><li>AHT</li><li>Compliance</li></ul>
+    </article>
+    <p class="genii-intel__foot">Powered by Genii Analytics · AI-Driven Contact Centre Intelligence</p>
+  </div>
+  <figcaption>Figure 3 — Genii Analytics Solution</figcaption>
+</figure>
+<div class="prose">
+  <p>Continuous improvement is structured around four pillars, each directly applicable to a digital-first, asynchronous voucher operation. Improvement is data-led and time-boxed, Voice of Customer signals are operationalised within 48 hours rather than waiting for a monthly report.</p>
+</div>
+<ul class="list-check">
+  <li><strong>First Contact / First Response Resolution</strong> — deep root-cause analytics identify repeat-contact drivers and digital deflection opportunities across email, WhatsApp and social.</li>
+  <li><strong>CSAT / Sentiment</strong> — AI sentiment analysis across interactions with integrated Voice of Customer loops operationalised within 48 hours.</li>
+  <li><strong>Agent performance improvements</strong> — automated QA on all interactions highlights areas for improvement for every agent.</li>
+  <li><strong>Operational improvement</strong> — daily briefs, weekly coaching huddles and monthly MBR action tracking driven by live data, not lagging reports; leverages data to spot opportunities for ongoing agent development and improvement in operational metrics.</li>
+  <li><strong>Technological improvement</strong> — the Test Kitchen designs, tests and deploys new automation in a sandbox without disrupting your live service.</li>
+  <li><strong>Real-time AI insights at the touch of a button</strong> — our hr.guru, included in our QContact suite, mines real-time insights and turns queries into meaningful outcomes, enabling team leaders to identify root-cause DSAT drivers and change behaviour on the fly.</li>
+</ul>
+
+<h3 id="customer-experience-programmes">Customer Experience Programmes</h3>
+<div class="prose">
+  <p>Our CX programmes combine full-coverage quality intelligence with behavioural coaching. Through our partner Genii we digitise up to 100% of interactions, map the “linguistic DNA” of top performers, and coach the wider team toward those behaviours, turning quality from a 1% sampling exercise into a genuine CX-improvement engine. For your asynchronous channels this is particularly powerful, because tone, accuracy and completeness of written responses are the primary CX levers.</p>
+</div>
+
+<h3 id="operational-insight-reporting">Operational Insight &amp; Reporting Frameworks</h3>
+<figure class="figure figure--ops-delivery">
+  <div class="figure__media figure__media--contain">
+    <img src="../trilogydigital/assets/ops-delivery-model.png?v=2" alt="Operations / Continuous Improvement Delivery Model — Continuous Improvement, Recruitment, Training, Coaching, Operations (MIS &amp; Analytics), Deployment / Transition, and QA." loading="lazy">
+  </div>
+  <figcaption>Figure 4 — Operations / Continuous Improvement Delivery Model</figcaption>
+</figure>
+<div class="prose">
+  <p>Our MI framework spans real-time dashboards through to Quarterly Business Reviews, with every report designed to be action-oriented, insights, root causes and recommended actions, not just metrics. Digital-specific views (emails received and pending, average response time, WhatsApp and chat queues, and backlog status) are available digitally. Secure API exports let your team pull performance directly into your own BI environment, including Power BI.</p>
+</div>
+<div class="table-wrap">
+  <table class="mi-framework-table">
+    <thead>
+      <tr><th>Frequency</th><th>Purpose</th><th>Delivery</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Real-time</td><td>Monitor digital queues, backlog and SLA as they happen</td><td>Live dashboard</td></tr>
+      <tr><td>Daily</td><td>Review prior-day volume, CX, productivity, quality &amp; workforce</td><td>Daily MI report</td></tr>
+      <tr><td>Weekly</td><td>Trends, root cause and actions taken</td><td>Weekly Business Review</td></tr>
+      <tr><td>Monthly</td><td>Strategic scorecard incl. continuous-improvement tracking</td><td>Monthly Business Review</td></tr>
+      <tr><td>Quarterly</td><td>Roadmap, innovation and executive alignment</td><td>Quarterly Business Review</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+      </section>
+<section class="proposal-page" id="section-13">
+        <div class="section-head">
+          <span class="section-num">12</span>
+          <h2>Compliance, Ethics &amp; Risk</h2>
+        </div>
+        <div class="section-body">
+<h3>Accreditations</h3><div class="prose"><p>Trilogy Digital operates within a certified compliance framework spanning information security, quality management and payment-card data handling, alongside active membership of South Africa's principal BPO industry bodies.</p></div><div class="pillars pillars--4"><div class="pillar"><h4>ISO 27001</h4><p>Information Security Management</p></div><div class="pillar"><h4>ISO 9001</h4><p>Quality Management Systems</p></div><div class="pillar"><h4>Cyber Essentials+</h4><p>Aligned cybersecurity controls</p></div><div class="pillar"><h4>PCI DSS</h4><p>Payment Card Industry Data Security Standard</p></div><div class="pillar"><h4>BPESA</h4><p>Business Process Enabling South Africa (member)</p></div><div class="pillar"><h4>CapeBPO</h4><p>Cape Town BPO industry body (member &amp; award recipient)</p></div><div class="pillar"><h4>GBPO</h4><p>Global BPO association (member)</p></div><div class="pillar"><h4>CCMG</h4><p>Contact Centre Management Group (multi-year award winner)</p></div></div><h3>Data Protection &amp; Residency</h3><div class="prose"><p>We operate under GDPR and, for South African operations, POPIA — structurally aligned frameworks. UK client data can be hosted exclusively within the client's nominated regional cloud infrastructure, and never transits outside agreed jurisdictions without a documented legal basis and explicit client consent. A standard Data Processing Agreement (DPA), aligned to ICO Model Clauses where relevant, is executed before any data processing begins. We maintain a Data Processing Register and a nominated Data Protection Officer.</p></div><h3>Cross-Border Data Transfers</h3><div class="prose"><p>Where operational personnel outside the client's home jurisdiction require access to client data, transfers are governed by the relevant legal mechanism (e.g. UK GDPR Chapter V Standard Contractual Clauses). We maintain Transfer Risk Assessments, reviewed annually, with data minimisation, access controls, IP-allowlisting and audit logging applied throughout.</p></div><h3>Business Ethics &amp; Anti-Corruption</h3><ul class="list-check"><li>Documented Business Ethics policy covering compliance with applicable law and a zero-tolerance position on corruption, bribery, fraud and extortion.</li><li>Mandatory anti-corruption and ethical-conduct training cadence (onboarding plus annual refresher).</li><li>Confidential reporting channel for ethics concerns.</li></ul>
+        </div>
+      </section>
+<section class="proposal-page" id="section-14">
+        <div class="section-head">
+          <span class="section-num">13</span>
+          <h2>Safety &amp; Security</h2>
+        </div>
+        <div class="section-body">
+<h3>Security Governance</h3><ul class="list-check"><li>Documented security policy committing to the highest security standards, signed and endorsed by an accountable director.</li><li>Named Security Official — vetted and background-checked — with organisation-wide accountability for security posture.</li><li>Security responsibilities embedded in role profiles, with a RACI matrix defining who is Responsible, Accountable, Consulted and Informed.</li><li>Security policy and standards reviewed at least annually and kept current with applicable legislation (POPIA, GDPR, Cybercrimes Act).</li></ul><h3>Physical &amp; Site Security</h3><ul class="list-check"><li>24/7 on-site security personnel with monitored access points and regular patrols.</li><li>Biometric or badge-based access control, with restricted zones for sensitive operations.</li><li>CCTV surveillance across entrances, exits and workspaces, with recorded footage retention.</li><li>Formal visitor management — sign-in, ID checks, escorted access.</li><li>Secure, access-controlled server/IT rooms with environmental and fire monitoring.</li><li>Workstation security — privacy screens, timed auto-lock, and restrictions on portable media devices.</li></ul><h3>Personnel Security</h3><ul class="list-check"><li>Pre-employment vetting for all prospective employees, with ongoing personnel security management.</li><li>Confidentiality and non-disclosure clauses embedded in all employment contracts.</li><li>Immediate access revocation and asset recovery on staff exit, via a documented offboarding checklist.</li><li>Insider-threat controls: role-based least-privilege access, MFA on critical systems, and logged/audited user activity.</li></ul><h3>Incident &amp; Investigation Management</h3><ul class="list-check"><li>Documented process for staff to openly report security and safety concerns, with defined escalation ownership.</li><li>Formal incident/accident investigation including root-cause analysis and a defined remediation timeline.</li><li>Security recommendations tracked to closure and reviewed under a continuous-improvement programme.</li><li>Results of internal/external security audits shared with relevant stakeholders and senior management.</li></ul><h3>Health, Safety &amp; Risk Management</h3><ul class="list-check"><li>Documented Safety Management System with a nominated accountable manager for oversight.</li><li>Regular H&amp;S training — delivered at induction and refreshed annually.</li><li>Formal procedure for reporting and documenting incidents/injuries, with visibility to senior management.</li><li>Corporate risk register maintained with a named owner, reviewed on a defined cadence.</li><li>Operational risk assessments covering site-specific hazards (WFH ergonomics/connectivity/data security; server-room fire and access risk; evacuation and emergency procedures).</li></ul>
+        </div>
+      </section>
+<section class="proposal-page" id="section-16">
+        <div class="section-head">
+          <span class="section-num">14</span>
+          <h2>Transition &amp; Implementation Methodology</h2>
+        </div>
+        <div class="section-body">
+<div class="callout">Customise this section for each opportunity</div><h3>Scope of Services</h3><div class="prose"><p>Based on our understanding of [Client Name]'s requirements, we propose to deliver the following services. Edit these deliverables to match the specific engagement.</p></div><ul class="list-check"><li>Inbound customer service across voice, WhatsApp, live chat and email.</li><li>Complaints handling with root-cause reporting.</li><li>Back-office processing and RPA automation of eligible workflows.</li><li>Dedicated quality assurance, coaching and monthly performance reviews.</li></ul><h3>Transition &amp; Implementation</h3><div class="prose"><p>Our standard framework delivers a fully operational programme within 12–16 weeks across four phases. Accelerated 8–10 week implementations are achievable where the client provides comprehensive runbooks and dedicated SME access from week one.</p></div><div class="table-wrap"><table><thead><tr><th>Phase</th><th>Weeks</th><th>Key activities</th></tr></thead><tbody><tr><td>Discovery</td><td>1–3</td><td>Process mapping, integration assessment</td></tr><tr><td>Build</td><td>4–7</td><td>Technology configuration, training material development, recruitment</td></tr><tr><td>Training</td><td>8–11</td><td>Induction, product/culture/brand, nesting, QA calibration with 100% human evaluation</td></tr><tr><td>Ramp</td><td>12–16</td><td>Phased volume transfer, dual-running with incumbent, KPI parity validation</td></tr></tbody></table></div><h3>Client Pre-Requisites &amp; Support Needed</h3><ul class="list-check"><li>Nominated client stakeholders per workstream (training, systems, legal, operational, IT, brand) and participation in an initial joint mobilisation workshop.</li><li>Access to brand, product and policy assets — tone-of-voice guidelines, process documentation, existing training content, scripts, FAQs and knowledge-base articles.</li><li>Systems and technology access — vendor onboarding, user licences/credentials for CRM/telephony/ticketing systems, and any required VPN/SSO enablement.</li><li>Sign-off on SLAs, KPIs and compliance metrics before go-live.</li><li>Volume forecasting inputs — staffing curves, peak/seasonal expectations and shrinkage assumptions.</li></ul><h3>Governance &amp; Meeting Cadence</h3><div class="table-wrap table-wrap--stack"><table class="governance-cadence"><thead><tr><th>Frequency</th><th>Phase</th><th>Meeting type</th><th>Focus</th></tr></thead><tbody><tr><td data-label="Frequency">Daily</td><td data-label="Phase">Implementation</td><td data-label="Meeting type">Stand-up</td><td data-label="Focus">Progress updates, blockers, resource alignment</td></tr><tr><td data-label="Frequency">Weekly</td><td data-label="Phase">Implementation</td><td data-label="Meeting type">Steering Committee</td><td data-label="Focus">Milestone tracking, risk/budget/timeline updates, escalations</td></tr><tr><td data-label="Frequency">Weekly</td><td data-label="Phase">BAU</td><td data-label="Meeting type">Operational sync</td><td data-label="Focus">Tactical performance review, immediate issue resolution</td></tr><tr><td data-label="Frequency">Monthly</td><td data-label="Phase">BAU</td><td data-label="Meeting type">Monthly Business Review (MBR)</td><td data-label="Focus">KPI performance, root cause, trend analysis, action tracking</td></tr><tr><td data-label="Frequency">Quarterly</td><td data-label="Phase">BAU</td><td data-label="Meeting type">Quarterly Business Review (QBR)</td><td data-label="Focus">Strategic review, innovation roadmap, executive alignment</td></tr></tbody></table></div><h3>Knowledge Transfer Methodology</h3><ul class="list-check"><li>Documentation-first protocol — no agent enters live training until every workflow, exception path and escalation trigger is mapped into a client-signed-off playbook.</li><li>Dedicated Knowledge Transfer Leads on both sides, responsible for chapter-by-chapter sign-off before training commences.</li><li>SME access as a contractual obligation — client SME availability during Knowledge Transfer is written into the implementation contract.</li><li>Dual-running validation — identical contacts run in parallel with the incumbent until 90%+ KPI parity is reached before volume moves.</li><li>Test Kitchen integration — innovation pilots run in parallel with BAU from go-live, where applicable.</li></ul><h3>Top Transition Risks &amp; Mitigations</h3><div class="table-wrap"><table><thead><tr><th>Risk</th><th>Mitigation</th></tr></thead><tbody><tr><td>Project management gaps</td><td>Robust Project Management Charter developed jointly and approved by the client</td></tr><tr><td>Insufficient transition resourcing</td><td>Dedicated transition team with 15+ UK transitions; client commits a named counterpart team</td></tr><tr><td>Scope creep</td><td>Detailed, signed Statement of Work (SOW) before project commencement</td></tr><tr><td>Knowledge transfer failure</td><td>Documentation-first protocol and dedicated KT Leads with formal sign-off authority</td></tr><tr><td>Incumbent non-cooperation</td><td>Teaming agreements and collaborative transition governance</td></tr><tr><td>Technology integration delays</td><td>Mandatory Week 1 integration pre-assessment; bridge platform if client-side integrations stall</td></tr><tr><td>Recruitment quality / timing</td><td>Over-recruit 15–20% above target FTE from a pre-assessed bench pipeline</td></tr><tr><td>Quality dips during ramp</td><td>100% human-evaluated QA during nesting; Auto QA flags risk interactions in real time</td></tr></tbody></table></div>
+        </div>
+      </section>
+<section class="proposal-page" id="section-18">
+        <div class="section-head">
+          <span class="section-num">15</span>
+          <h2>Case Studies &amp; References</h2>
+        </div>
+        <div class="section-body">
+<div class="case-cards">
+  <article class="case-card">
+    <div class="case-card__top"><div class="eyebrow">Retail / E-commerce</div><h4>WhatsApp AI Sales Transformation</h4></div>
+    <div class="case-card__body">
+      <p>Deployed a Facebook-to-WhatsApp conversational AI executing full checkout and payment processing 24/7 without human intervention.</p>
+      <div class="outcome"><strong>Outcome</strong>R1,000,000+ monthly revenue uplift; 91% WhatsApp adoption; zero incremental headcount.</div>
+    </div>
+  </article>
+  <article class="case-card">
+    <div class="case-card__top"><div class="eyebrow">Financial Services</div><h4>Digital Collections Transformation</h4></div>
+    <div class="case-card__body">
+      <p>Redesigned a collections operation using digital-first and autonomous communication platforms.</p>
+      <div class="outcome"><strong>Outcome</strong>Headcount reduced from 108 to 60 agents (45% reduction) while collections performance increased.</div>
+    </div>
+  </article>
+  <article class="case-card">
+    <div class="case-card__top"><div class="eyebrow">Broadband / Telecoms</div><h4>Telecoms Customer Support Scalability</h4></div>
+    <div class="case-card__body">
+      <p>Built a 24/7 multichannel support network supporting rapid subscriber expansion past 1,000,000+ users.</p>
+      <div class="outcome"><strong>Outcome</strong>Zero SLA breaches throughout the growth phase; unified voice and WhatsApp triage; scalability without proportional cost growth.</div>
+    </div>
+  </article>
+</div><div class="callout">Client references are available subject to mutual NDA execution, drawn from UK Utilities, UK Telecoms and UK Retail/E-commerce relationships. We will not approach any reference without prior consultation and agreement with that client.</div>
+        </div>
+      </section>
+
+    <div class="footer-note">Trilogy Digital — A Trilogy Group Company · Commercial-in-confidence</div>
+  </div>
+</main>
+<nav class="jump-nav" aria-label="Page shortcuts">
+  <a href="index.html">← Overview</a>
+  <a href="#section-bpo-cc">BPO</a>
+  <a href="#section-06">GCC</a>
+  <a href="#section-08">Tech</a>
+  <a href="#section-03">Ops</a>
+  <a href="#top">Top</a>
+</nav>
+
+<aside class="cta-dock" aria-label="Contact Trilogy">
+  <nav class="cta-dock__inner">
+    <a class="cta-dock__btn" href="https://trilogybpo.com" target="_blank" rel="noopener noreferrer" aria-label="Visit trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.8 4 6 4 9s-1.4 6.2-4 9c-2.6-2.8-4-6-4-9s1.4-6.2 4-9Z"/></svg>
+      <span class="cta-dock__full">Visit our Site</span>
+      <span class="cta-dock__short">Visit</span>
+    </a>
+    <a class="cta-dock__btn cta-dock__btn--whatsapp" href="https://wa.me/27719691163?text=hi" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Trilogy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.55 2 2.06 6.48 2.06 12c0 1.76.46 3.48 1.34 5L2 22l5.16-1.35A9.93 9.93 0 0 0 12.04 22c5.5 0 9.97-4.48 9.97-10 0-2.67-1.04-5.18-2.96-7.09Zm-7.01 15.36c-1.52 0-3.01-.41-4.31-1.17l-.31-.18-3.06.8.82-2.98-.2-.33a8.2 8.2 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.83c.02 4.54-3.68 8.26-8.17 8.26Zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74 1.76.76 2.12.82 2.87.69.44-.08 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
+      <span class="cta-dock__full">WhatsApp us</span>
+      <span class="cta-dock__short">WhatsApp</span>
+    </a>
+    <a class="cta-dock__btn" href="mailto:sales@trilogybpo.com" aria-label="Email sales@trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+      <span class="cta-dock__full">Email Us</span>
+      <span class="cta-dock__short">Email</span>
+    </a>
+    <a class="cta-dock__btn" href="tel:+447458158591" aria-label="Call +44 7458 158591">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.8c.4-.4 1-.5 1.5-.3l2.1.8c.6.2 1 .8 1 1.4v2.1c0 .4-.2.8-.5 1.1l-1.2 1.2a12.4 12.4 0 0 0 5.3 5.3l1.2-1.2c.3-.3.7-.5 1.1-.5h2.1c.6 0 1.2.4 1.4 1l.8 2.1c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.5.5-1.2.7-1.9.6C12.3 20.8 3.2 11.7 3.6 5.1c0-.7.2-1.4.7-1.9Z"/></svg>
+      <span class="cta-dock__full">Call Us</span>
+      <span class="cta-dock__short">Call</span>
+    </a>
+  </nav>
+</aside>
+<script src="../trilogydigital/script.js?v=companyoverview-1"></script>
+<script>
+  (function () {
+    var pages = document.querySelectorAll(".proposal-page");
+    var isNarrow = window.matchMedia("(max-width: 720px)").matches;
+    if (isNarrow || !("IntersectionObserver" in window)) {
+      pages.forEach(function (el) { el.classList.add("is-visible"); });
+      document.querySelectorAll(".reveal-item").forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0, rootMargin: "80px 0px 80px 0px" });
+      pages.forEach(function (el) {
+        var nearTop = el.getBoundingClientRect().top < window.innerHeight * 0.92;
+        var tallerThanViewport = el.offsetHeight > window.innerHeight;
+        if (nearTop || tallerThanViewport) {
+          el.classList.add("is-visible");
+        } else {
+          io.observe(el);
+        }
+      });
+    }
+    var nav = document.querySelector(".page-nav");
+    var toggle = document.querySelector("[data-nav-toggle]");
+    if (nav && toggle) {
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+    var motionBlocks = document.querySelectorAll("[data-animate='dbit-flow'], [data-animate='gcc-cards'], [data-animate='pillar-spotlight']");
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!motionBlocks.length) return;
+    var reveal = function (el) { el.classList.add("is-inview"); };
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      motionBlocks.forEach(reveal);
+    } else {
+      var motionIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          reveal(entry.target);
+          motionIo.unobserve(entry.target);
+        });
+      }, { threshold: 0.28, rootMargin: "0px 0px -8% 0px" });
+      motionBlocks.forEach(function (el) { motionIo.observe(el); });
+    }
+  })();
+</script>
+<script src="../presentations/_shared/gate.js?v=2" data-storage-key="trilogyCompanyOverviewUnlock" data-hash="1e602740ceb46223485e29e830c741cf9cc8530886bcaa7bf77cd8293e6a81a6"></script>
+</body>
+</html>

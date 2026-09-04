@@ -1,7 +1,37 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-03T09:00:00.000Z",
+  "updatedAt": "2026-09-04T09:42:19.000Z",
   "items": [
+    {
+      "slug": "companyoverview",
+      "title": "Trilogy Digital Company Overview",
+      "client": "Trilogy Digital",
+      "sourceType": "scrolling webpage",
+      "date": "2026-09-04",
+      "url": "https://proposal.trilogybpo.com/companyoverview/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#61d779"
+      }
+    },
+    {
+      "slug": "companyoverview/operations",
+      "title": "Trilogy Digital Operational Overview",
+      "client": "Trilogy Digital",
+      "sourceType": "scrolling webpage",
+      "date": "2026-09-04",
+      "url": "https://proposal.trilogybpo.com/companyoverview/operations.html",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#61d779"
+      }
+    },
     {
       "slug": "gcc",
       "title": "Global Capability Centre Overview",
@@ -19,8 +49,8 @@
     },
     {
       "slug": "voila/presentation",
-      "title": "Ai Demand Generation - Human Empathy Selling — slide deck",
-      "client": "Trilogy Voilà",
+      "title": "Ai Demand Generation - Human Empathy Selling \u2014 slide deck",
+      "client": "Trilogy Voil\u00e0",
       "sourceType": "PowerPoint-style deck",
       "date": "2026-09-01",
       "url": "https://proposal.trilogybpo.com/presentations/voila/presentation/",
@@ -34,8 +64,8 @@
     },
     {
       "slug": "voila/web",
-      "title": "Ai Demand Generation - Human Empathy Selling — webpage",
-      "client": "Trilogy Voilà",
+      "title": "Ai Demand Generation - Human Empathy Selling \u2014 webpage",
+      "client": "Trilogy Voil\u00e0",
       "sourceType": "scrolling webpage",
       "date": "2026-09-01",
       "url": "https://proposal.trilogybpo.com/presentations/voila/web/",
@@ -64,7 +94,7 @@
     },
     {
       "slug": "ventrica/proposal",
-      "title": "Managed Office Space — Two-Year Agreement",
+      "title": "Managed Office Space \u2014 Two-Year Agreement",
       "client": "Ventrica",
       "sourceType": "PDF proposal",
       "date": "2026-08-26",
