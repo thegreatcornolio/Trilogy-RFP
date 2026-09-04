@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-04T11:30:00.000Z",
+  "updatedAt": "2026-09-04T12:30:00.000Z",
   "items": [
     {
       "slug": "companyoverview",
@@ -135,6 +135,21 @@
         "secondary": "#2f9e4a",
         "navy": "#13202e",
         "sourceBrand": "#50a845"
+      }
+    },
+    {
+      "slug": "represent/Web",
+      "title": "Pro Forma Proposal",
+      "client": "Represent",
+      "sourceType": "scrolling webpage",
+      "date": "2026-09-04",
+      "url": "https://proposal.trilogybpo.com/presentations/represent/Web/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#111111"
       }
     },
     {
