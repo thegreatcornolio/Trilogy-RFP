@@ -557,19 +557,34 @@
       line-height: 1.7;
       padding-left: 1.4rem;
     }
-    .retail-names {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.5rem 1.75rem;
-      margin: 0.35rem 0 0;
+    .retail-ops-table {
+      margin: 0.15rem 0 0.35rem;
     }
-    .retail-names li {
-      font-size: 1.02rem;
-      line-height: 1.5;
+    .retail-ops-table table {
+      width: 100%;
+    }
+    .retail-ops-table th {
+      text-align: left;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.75rem;
+      background: #13202e;
+      color: #d5ec67;
+    }
+    .retail-ops-table td {
+      padding: 0.55rem 0.75rem;
+      font-size: 0.98rem;
+      line-height: 1.4;
     }
     @media (max-width: 720px) {
-      .retail-names {
-        grid-template-columns: 1fr;
+      .retail-ops-table td {
+        display: block;
+        border-bottom: 0;
+      }
+      .retail-ops-table tr {
+        display: block;
+        border-bottom: 1px solid var(--border, #d5dbe3);
       }
     }
 
@@ -958,7 +973,7 @@
       </div>
       <div class="section-body">
         <div class="prose doc-note">
-          <p>This is NOT A PROPOSAL. This Pro-Forma Proposal is a <strong>competitive, like-for-like</strong> view of what Trilogy would charge to take on customer-support work for Hush, based on around 5 FTE. Once we have a FULL understanding of your current volumes, SLAs, systems and specifications, Trilogy can issue a formal proposal.</p>
+          <p>This is NOT A PROPOSAL. This Pro-Forma Proposal is a <strong>competitive, like-for-like</strong> view of what Trilogy would charge to take on customer-support work for Hush, based on around 5 FTE currently based in the UK. Once we have a FULL understanding of your current volumes, SLAs, systems and specifications, Trilogy can issue a formal proposal.</p>
           <p>Please also see who Trilogy Digital is, our retail sector experience, and our capability. We hope this gives you the initial information to compare us with your incumbent and to prepare your business case. We have kept this overview short, as a discussion document only. The full operational detail sits one click away.</p>
           <p>We thank you for taking the time to review this. Cape Town has been one of the top three global outsourcing destinations for the past five years — we would love you to come and visit, and to show you the floor that would serve Hush.</p>
           <p>Regards,</p>
@@ -976,7 +991,7 @@
         <div class="prose">
           <p>We understand Hush to be a London-based women's fashion and lifestyle brand, founded in 2003 by Mandy Watkins, and known for its laid-back, contemporary style and a loyal, content-led community of customers. Hush trades primarily online, alongside concessions in around 37 John Lewis stores, and is backed by private equity firm True — the same investor behind Represent, giving Trilogy a natural point of credibility across both relationships.</p>
           <p>We understand Hush has been navigating a tougher trading environment recently, with a deliberate shift toward full-price trading and margin discipline as the wider UK premium womenswear market has softened. We've seen revenue drops over recent years alongside this shift, and along with this, an unfortunate loss of customer sentiment too — something we know can be particularly sensitive for a brand built on such a loyal, community-led following. We understand this is clearly something your team is already conscious of and actively working to address.</p>
-          <p>We know that service pressure like this can be hugely damaging to the long-term success of a brand such as yours, and our focus would be on ensuring we're able to deliver the best possible customer service, alongside the clearest insight into what's actually causing the pressure in the first place. We'd want to work collectively with your team to improve the customer experience and protect what we see as a wonderful, community-driven brand. Given the current scale of the requirement, around 5 FTE, we see this as a contained, low-risk way to demonstrate that impact quickly and build a longer-term partnership from there.</p>
+          <p>We know that service pressure like this can be hugely damaging to the long-term success of a brand such as yours, and our focus would be on ensuring we're able to deliver the best possible customer service, alongside the clearest insight into what's actually causing the pressure in the first place. We'd want to work collectively with your team to improve the customer experience and protect what we see as a wonderful, community-driven brand. Given the current scale of the requirement, around 5 FTE currently based in the UK, we see this as a contained, low-risk way to demonstrate that impact quickly and build a longer-term partnership from there.</p>
           <p>We also want to be clear about the kind of partner we'd be.</p>
           <ul class="list-check">
             <li><strong>Firstly,</strong> Trilogy is a boutique BPO, not a generalist call centre operator — we focus deliberately on high-value brands whose customers expect a genuinely considered standard of service, and every part of our operation is built around that rather than shared across blended sales, collections, or lower-value workstreams.</li>
@@ -984,21 +999,36 @@
           </ul>
           <p>On your three priorities:</p>
           <ul class="list-check">
-            <li><strong>First,</strong> on South Africa versus Mauritius, the same structural case applies here as elsewhere in your pipeline — Mauritius's small talent pool and finance/back-office BPO heritage compares unfavourably to South Africa's much larger, retail-experienced workforce and closer GMT+2 alignment with UK working hours, which matters for a brand needing to flex support quickly around seasonal and sale peaks.</li>
-            <li><strong>Second,</strong> on commercials, South Africa's multilingual capability, spanning English, Afrikaans, German, Dutch, and French, alongside a favourable time zone, is consistently the reason international buyers choose it over lower-cost but narrower alternatives, and positions Trilogy well if Hush pursues international expansion.</li>
-            <li><strong>Third,</strong> on relevant experience, Trilogy's retail portfolio speaks directly to Hush's situation: our work with John Lewis &amp; Partners is especially relevant given Hush's own concession relationship with the retailer, and our broader experience across Iceland, Aldi, JD Sports, Ann Summers, Wickes, DFS, HomeChoice, and Space NK demonstrates a proven ability to bring order, consistency, and quality back into returns-heavy, service-sensitive retail operations.</li>
+            <li><strong>First,</strong> on South Africa versus keeping the team in the UK, the case is a straightforward one. South Africa offers a genuinely high degree of cultural alignment with the UK — shared language, shared retail sensibilities, and a large resident British community, including a significant number of UK nationals living and working in Cape Town, which means the accent, tone, and customer understanding your customers are used to translate naturally. Commercially, a South African-based solution typically costs 50% or more less than an equivalent in-house or outsourced UK operation, without requiring any compromise on the standard of service delivered.</li>
+            <li><strong>Second,</strong> on relevant experience, Trilogy's retail portfolio speaks directly to Hush's situation: our work with John Lewis &amp; Partners is especially relevant given Hush's own concession relationship with the retailer, and our broader experience demonstrates a proven ability to bring order, consistency, and quality back into returns-heavy, service-sensitive retail operations.</li>
+            <li><strong>Third,</strong> and most importantly, we want to be clear that this isn't about outsourcing as “mess for less.” It's a genuine opportunity to have your operation managed to the same standards you already demand internally, by a partner formally bound through commercial agreement to deliver world-class service — with accountability built in, not assumed.</li>
           </ul>
-          <ul class="list-check retail-names">
-            <li>John Lewis &amp; Partners</li>
-            <li>Iceland</li>
-            <li>Aldi</li>
-            <li>JD Sports</li>
-            <li>Ann Summers</li>
-            <li>Wickes</li>
-            <li>DFS</li>
-            <li>HomeChoice</li>
-            <li>Space NK</li>
-          </ul>
+          <div class="table-wrap retail-ops-table">
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="3">Retail operations we have run</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Lewis &amp; Partners</td>
+                  <td>Iceland</td>
+                  <td>Aldi</td>
+                </tr>
+                <tr>
+                  <td>JD Sports</td>
+                  <td>Ann Summers</td>
+                  <td>Wickes</td>
+                </tr>
+                <tr>
+                  <td>DFS</td>
+                  <td>HomeChoice</td>
+                  <td>Space NK</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
@@ -1561,17 +1591,32 @@
           <p>Hush is a True-backed women's fashion and lifestyle brand, alongside Represent in the same investor pipeline. The differentiator is that we already run retail and e-commerce contact-centre work at scale — including John Lewis, peak trading, returns, and multichannel voice / WhatsApp / email / chat.</p>
           <p>UK retail programmes we have delivered for include:</p>
         </div>
-        <ul class="list-check retail-names">
-          <li>John Lewis &amp; Partners</li>
-          <li>Iceland</li>
-          <li>Aldi</li>
-          <li>JD Sports</li>
-          <li>Ann Summers</li>
-          <li>Wickes</li>
-          <li>DFS</li>
-          <li>HomeChoice</li>
-          <li>Space NK</li>
-        </ul>
+        <div class="table-wrap retail-ops-table">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3">Retail operations we have run</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Lewis &amp; Partners</td>
+                <td>Iceland</td>
+                <td>Aldi</td>
+              </tr>
+              <tr>
+                <td>JD Sports</td>
+                <td>Ann Summers</td>
+                <td>Wickes</td>
+              </tr>
+              <tr>
+                <td>DFS</td>
+                <td>HomeChoice</td>
+                <td>Space NK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
