@@ -6,3 +6,5 @@ Password-gated overview site.
 - **Page 2:** [/companyoverview/operations.html](https://proposal.trilogybpo.com/companyoverview/operations.html) — BPO Contact Centres, GCC, Technology, Test Kitchen, MIS, Ops Leadership, Forecasting, Quality, Compliance, Safety, Transition, Case Studies
 
 Password: `companyoverview` (session shared across both pages).
+
+Shell styles (mobile nav, section jump cards, CTA dock, GCC/DBIT motion) live in `co-shell.css`.
