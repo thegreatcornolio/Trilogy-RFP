@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.proposal-locked,html.proposal-locked body{overflow:hidden}html.proposal-locked body>*:not(#proposal-gate){visibility:hidden!important}</style>
+  <script>try{if(sessionStorage.getItem("trilogyPresentationsUnlock")!=="1243e7b60989608203a3598a5e452d346fc931dded6e82ee3b18c1877b2d3581")document.documentElement.classList.add("proposal-locked")}catch(e){document.documentElement.classList.add("proposal-locked")}</script>
+  <link rel="stylesheet" href="../../../_shared/gate.css?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Reassured — Company Detail — Trilogy Digital</title>
+  <meta name="description" content="Company detail for the Reassured Pro Forma Proposal — how Trilogy delivers">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../trilogydigital/styles.css?v=jump-nav-1">
+  <script>document.documentElement.classList.add("js-reveal");</script>
+  <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
+  <style>
+    .cover__brand { align-items: center !important; text-align: center !important; }
+.covers-box__head { display: block !important; width: 100% !important; box-sizing: border-box; }
+  </style>
+  <style id="rfp-client-theme">
+    :root {
+      --brand-green: #61d779 !important;
+      --brand-lime: #d5ec67 !important;
+    }
+    .cover__client-logo {
+      display: block;
+      max-height: 4.4rem;
+      width: auto;
+      max-width: min(22rem, 86vw);
+      object-fit: contain;
+      background: #fff;
+      border-radius: 0.45rem;
+      padding: 0.5rem 0.85rem;
+      margin: 0.45rem auto 0.15rem;
+    }
+    .meta-label, .cover__tagline { color: #2f9e4a !important; }
+    .badge {
+      border-color: color-mix(in srgb, #61d779 55%, transparent) !important;
+      color: #d5ec67 !important;
+      box-shadow: inset 3px 0 0 #2f9e4a;
+    }
+    .section-num, .covers-table td:first-child { color: #61d779 !important; }
+
+    /* Brands marquee — two equal groups so -50% loops cleanly; no lazy-load. */
+    .brand-marquee {
+      margin: 0.35rem 0 0;
+    }
+    .brand-marquee__viewport {
+      overflow: hidden;
+      min-height: 4.35rem;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .brand-marquee__track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      gap: 0 !important;
+      animation: reassured-brand-marquee 70s linear infinite;
+      will-change: transform;
+    }
+    .brand-marquee__group {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      padding-inline-end: 1.75rem;
+      flex: 0 0 auto;
+    }
+    .brand-marquee__item {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.35rem;
+      padding: 0 0.35rem;
+    }
+    .brand-marquee__item img {
+      height: 40px;
+      width: auto;
+      max-width: 132px;
+      object-fit: contain;
+      filter: grayscale(1);
+      opacity: 0.9;
+    }
+    .brand-marquee__item--large img {
+      height: 56px;
+      max-width: 148px;
+    }
+    .brand-marquee:hover .brand-marquee__track {
+      animation-play-state: paused;
+    }
+    @keyframes reassured-brand-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .brand-marquee__track {
+        animation: none;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+      }
+      .brand-marquee__group {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-inline-end: 0;
+      }
+      .brand-marquee__group[aria-hidden="true"] { display: none; }
+      .brand-marquee__viewport {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+    }
+
+    html.js-reveal .proposal-page {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    html.js-reveal .proposal-page.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    /* Tall sections (Company Overview) never reach the IO threshold on a phone,
+       so they stayed opacity:0 — a huge blank scroll. Always show on mobile. */
+    @media (max-width: 720px) {
+      html.js-reveal .proposal-page {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .reveal-item {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .awards-timeline {
+        --line-progress: 100%;
+      }
+    }
+
+    .page-nav {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      .cover {
+        padding: 2rem 1.15rem 2.25rem !important;
+      }
+      .cover__body {
+        margin-top: 2.4rem !important;
+      }
+      .cover h1 {
+        font-size: 1.85rem !important;
+      }
+      .proposal-page {
+        padding: 1.75rem 1.15rem !important;
+      }
+      .page-nav {
+        display: block;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: #13202e;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+      }
+      .page-nav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.7rem 1rem;
+      }
+      .page-nav__brand {
+        height: 28px;
+        width: auto;
+        max-width: 9.5rem;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 0.3rem;
+        padding: 0.2rem 0.4rem;
+      }
+      .page-nav button {
+        appearance: none;
+        border: 1px solid rgba(213,236,103,0.45);
+        background: transparent;
+        color: #d5ec67;
+        font: 700 0.68rem/1 Inter, sans-serif;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.75rem;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+      .page-nav__links {
+        display: none;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 0 1rem 0.9rem;
+      }
+      .page-nav.is-open .page-nav__links { display: flex; }
+      .page-nav__links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.92rem;
+        padding: 0.35rem 0;
+      }
+      .proposal-shell,
+      .main {
+        overflow-x: hidden;
+        max-width: 100%;
+      }
+      .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
+      }
+    }
+
+    /* Stack commercial tables as cards so they fit a phone width. */
+    @media (max-width: 860px) {
+      .seat-pricing .table-wrap,
+      .seat-example .table-wrap {
+        overflow: visible;
+        border: 0;
+        background: transparent;
+      }
+      .seat-pricing table,
+      .seat-example table {
+        display: grid;
+        gap: 0.75rem;
+        width: 100%;
+        border: 0;
+      }
+      .seat-pricing thead,
+      .seat-example thead {
+        display: none;
+      }
+      .seat-pricing tbody,
+      .seat-example tbody,
+      .seat-example tfoot {
+        display: contents;
+      }
+      .seat-pricing tbody tr,
+      .seat-example tbody tr,
+      .seat-example tfoot tr {
+        display: grid;
+        border: 1px solid rgba(19, 32, 46, 0.14);
+        border-radius: 0.65rem;
+        overflow: hidden;
+        background: #fff;
+      }
+      .seat-pricing td,
+      .seat-example td {
+        display: grid;
+        grid-template-columns: 6.6rem minmax(0, 1fr);
+        align-items: start;
+        gap: 0.55rem;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.6rem 0.8rem;
+        border: 0;
+        border-top: 1px solid rgba(19, 32, 46, 0.08);
+        white-space: normal !important;
+        text-align: left !important;
+        background: #fff !important;
+        font-variant-numeric: tabular-nums;
+      }
+      .seat-pricing td::before,
+      .seat-example td::before {
+        content: attr(data-label);
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(19, 32, 46, 0.52);
+        line-height: 1.3;
+        padding-top: 0.12rem;
+      }
+      .seat-pricing tbody td:first-child,
+      .seat-example tbody td:first-child {
+        grid-template-columns: 1fr;
+        border-top: 0;
+        background: #13202e !important;
+        color: #fff !important;
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+      .seat-pricing tbody td:first-child::before,
+      .seat-example tbody td:first-child::before {
+        display: none;
+      }
+      .seat-example tfoot td[colspan] {
+        display: none;
+      }
+      .seat-example tfoot td:last-child {
+        grid-template-columns: 1fr auto;
+        border-top: 0;
+        background: #13202e !important;
+        color: #d5ec67 !important;
+        font-weight: 700;
+      }
+      .seat-example tfoot td:last-child::before {
+        color: #fff;
+      }
+    }
+
+    .doc-note {
+      margin: 0;
+    }
+    .doc-note p {
+      margin: 0 0 0.9rem;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .doc-note p:last-child { margin-bottom: 0; }
+    .doc-note p.doc-note__name {
+      margin: 0.15rem 0 0;
+    }
+    .doc-note p.doc-note__role {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* One Team, 20 Years — two rails, companies above / UK clients below */
+    .ot-timeline {
+      margin: 0.85rem 0 1.35rem;
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      padding: 1.35rem 1.15rem 1.55rem;
+      overflow: visible;
+    }
+    .ot-timeline__head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: flex-start;
+      margin-bottom: 0.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .ot-timeline__title {
+      margin: 0 0 0.35rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #61d779;
+    }
+    .ot-timeline__sub {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.88);
+      max-width: 22rem;
+    }
+    .ot-timeline__exco {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem 1.4rem;
+      font-size: 0.92rem;
+    }
+    .ot-timeline__exco span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d5ec67;
+      margin-bottom: 0.12rem;
+    }
+    .ot-timeline__band {
+      display: grid;
+      grid-template-columns: 4.7rem minmax(0, 1fr);
+      grid-template-rows: auto 1.6rem auto;
+      column-gap: 0.55rem;
+      margin-top: 1.15rem;
+    }
+    .ot-timeline__band + .ot-timeline__band {
+      margin-top: 1.65rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .ot-axis {
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+    }
+    .ot-axis__co,
+    .ot-axis__uk {
+      margin: 0;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #61d779;
+      line-height: 1.2;
+    }
+    .ot-axis__co { grid-row: 1; align-self: end; padding-bottom: 0.45rem; }
+    .ot-axis__uk { grid-row: 3; align-self: start; padding-top: 0.5rem; }
+    .ot-timeline__track {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+      position: relative;
+    }
+    .ot-timeline__rail {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      gap: 0 0.85rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .ot-timeline__rail--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ot-timeline__rail--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ot-node {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .ot-node__company {
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-align: center;
+      padding-bottom: 0.4rem;
+      min-height: 7.2rem;
+    }
+    .ot-node__spine {
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .ot-node__spine::before {
+      content: "";
+      position: absolute;
+      left: calc(-50% - 0.43rem);
+      right: calc(-50% - 0.43rem);
+      height: 4px;
+      background: #61d779;
+      z-index: 0;
+    }
+    .ot-timeline__rail li:first-child .ot-node__spine::before { left: 50%; }
+    .ot-timeline__rail li:last-child .ot-node__spine::before { right: 50%; }
+    .ot-node__clients {
+      grid-row: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+      margin: 0;
+      padding: 0.55rem 0 0;
+      list-style: none;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.9);
+    }
+    .ot-node__note {
+      display: inline-block;
+      margin: 0 auto 0.4rem;
+      padding: 0.22rem 0.45rem;
+      border: 1px solid rgba(97, 215, 121, 0.55);
+      border-radius: 0.35rem;
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: rgba(255,255,255,0.78);
+      max-width: 100%;
+    }
+    .ot-node__co {
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+    .ot-node__co.is-now { color: #d5ec67; }
+    .ot-node__dates {
+      margin-top: 0.18rem;
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.62);
+    }
+    .ot-node__dot {
+      position: relative;
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #13202e;
+      box-shadow: 0 0 0 5px #61d779;
+    }
+    .seat-pricing h3,
+    .seat-example h3,
+    .seat-includes h3,
+    .seat-notes h3 {
+      margin: 1.15rem 0 0.55rem;
+    }
+    .seat-pricing .table-wrap table td:nth-child(4),
+    .seat-pricing .table-wrap table td:nth-child(5),
+    .seat-pricing .table-wrap table th:nth-child(4),
+    .seat-pricing .table-wrap table th:nth-child(5),
+    .seat-example .table-wrap table td:nth-child(n+2),
+    .seat-example .table-wrap table th:nth-child(n+2) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .seat-example__lede {
+      margin: 0 0 0.7rem;
+      color: rgba(19, 32, 46, 0.72);
+    }
+
+    .seat-example .seat-example__band td {
+      background: rgba(19, 32, 46, 0.06);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(19, 32, 46, 0.72);
+      padding: 0.45rem 1rem;
+    }
+    @media (max-width: 860px) {
+      .seat-example tr.seat-example__band {
+        border: 0;
+        background: transparent;
+        border-radius: 0;
+      }
+      .seat-example tr.seat-example__band td {
+        display: block;
+        grid-template-columns: 1fr;
+        border: 0;
+        background: transparent !important;
+        padding: 0.35rem 0.15rem 0;
+        font-size: 0.68rem;
+      }
+      .seat-example tr.seat-example__band td::before {
+        display: none;
+      }
+    }
+    .seat-example .table-wrap table tfoot td {
+      font-weight: 700;
+      border-top: 2px solid rgba(19, 32, 46, 0.18);
+    }
+    .seat-notes ol {
+      margin: 0.35rem 0 0;
+      padding-left: 1.2rem;
+    }
+    .seat-notes li { margin: 0.28rem 0; }
+    @media (max-width: 860px) {
+      .ot-timeline__head { flex-direction: column; }
+      .ot-timeline__exco { width: 100%; }
+      .ot-timeline__band,
+      .ot-axis,
+      .ot-timeline__track,
+      .ot-timeline__rail,
+      .ot-node {
+        display: block;
+      }
+      .ot-timeline__band {
+        grid-template-columns: 1fr;
+      }
+      .ot-axis { display: none; }
+      .ot-node__spine::before { display: none; }
+      .ot-timeline__rail--4,
+      .ot-timeline__rail--3 {
+        display: block;
+      }
+      .ot-node {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        grid-template-rows: auto auto;
+        gap: 0 0.75rem;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .ot-node__company {
+        grid-row: 1;
+        grid-column: 2;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 0;
+        min-height: 0;
+      }
+      .ot-node__spine {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+        align-items: flex-start;
+        padding-top: 0.45rem;
+      }
+      .ot-node__clients {
+        grid-row: 2;
+        grid-column: 2;
+        text-align: left;
+        padding: 0.4rem 0 0;
+        font-size: 1rem;
+      }
+      .ot-node__co { font-size: 1.12rem; }
+      .ot-node__note { margin: 0 0 0.35rem; }
+    }
+
+    .detail-cta {
+      margin: 0.25rem 0 0;
+      padding: 1.4rem 1.45rem 1.5rem;
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      border: 1px solid rgba(97, 215, 121, 0.45);
+    }
+    .detail-cta h3 {
+      margin: 0 0 0.55rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #d5ec67;
+    }
+    .detail-cta p {
+      margin: 0 0 1.1rem;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.9);
+    }
+    .detail-cta__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.72rem 1.2rem;
+      border-radius: 999px;
+      background: #61d779;
+      color: #13202e !important;
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none !important;
+      box-shadow: 0 8px 18px rgba(19, 32, 46, 0.18);
+    }
+    .detail-cta__btn:hover,
+    .detail-cta__btn:focus-visible {
+      background: #d5ec67;
+    }
+  </style>
+  <style id="cta-dock">
+    body {
+      padding-bottom: 5.75rem;
+    }
+
+    .cta-dock {
+      position: fixed;
+      z-index: 60;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      padding: 0 0.85rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
+      pointer-events: none;
+    }
+
+    .cta-dock__inner {
+      pointer-events: auto;
+      display: flex;
+      align-items: stretch;
+      gap: 0.4rem;
+      width: min(52rem, 100%);
+      padding: 0.4rem;
+      border-radius: 999px;
+      background: rgba(19, 32, 46, 0.94);
+      border: 1px solid rgba(213, 236, 103, 0.32);
+      box-shadow:
+        0 16px 40px rgba(8, 14, 22, 0.38),
+        0 0 0 1px rgba(97, 215, 121, 0.08) inset;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      animation: cta-dock-in 0.7s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .cta-dock__btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 2.75rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font: 600 0.78rem/1.1 Inter, sans-serif;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      background: transparent;
+      border: 1px solid transparent;
+      opacity: 0;
+      animation: cta-btn-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .cta-dock__btn:nth-child(1) { animation-delay: 0.45s; }
+    .cta-dock__btn:nth-child(2) { animation-delay: 0.55s; }
+    .cta-dock__btn:nth-child(3) { animation-delay: 0.65s; }
+    .cta-dock__btn:nth-child(4) { animation-delay: 0.75s; }
+
+    .cta-dock__btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background: rgba(97, 215, 121, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      animation: cta-btn-glow 8s ease-in-out infinite;
+    }
+
+    .cta-dock__btn:nth-child(1)::after { animation-delay: 2.1s; }
+    .cta-dock__btn:nth-child(2)::after { animation-delay: 4.1s; }
+    .cta-dock__btn:nth-child(3)::after { animation-delay: 6.1s; }
+    .cta-dock__btn:nth-child(4)::after { animation-delay: 8.1s; }
+
+    .cta-dock__btn svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .cta-dock__btn--whatsapp svg {
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .cta-dock__short { display: none; }
+
+    .cta-dock__btn:hover,
+    .cta-dock__btn:focus-visible {
+      background: #61d779;
+      color: #13202e;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .cta-dock__btn:hover::after,
+    .cta-dock__btn:focus-visible::after {
+      opacity: 0;
+      animation: none;
+    }
+
+    .cta-dock__btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(213, 236, 103, 0.65);
+    }
+
+    @keyframes cta-dock-in {
+      from { opacity: 0; transform: translateY(1.8rem) scale(0.96); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes cta-btn-in {
+      from { opacity: 0; transform: translateY(0.55rem); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes cta-btn-glow {
+      0%, 18%, 100% { opacity: 0; }
+      8%, 12% { opacity: 1; }
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding-bottom: 6.4rem;
+      }
+      .cta-dock__inner {
+        border-radius: 1.15rem;
+        gap: 0.28rem;
+        padding: 0.35rem;
+      }
+      .cta-dock__btn {
+        flex-direction: column;
+        gap: 0.28rem;
+        min-height: 3.55rem;
+        padding: 0.45rem 0.2rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: normal;
+        text-align: center;
+        border-radius: 0.85rem;
+      }
+      .cta-dock__full { display: none; }
+      .cta-dock__short { display: block; }
+      .cta-dock__btn svg {
+        width: 1.15rem;
+        height: 1.15rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta-dock__inner,
+      .cta-dock__btn,
+      .cta-dock__btn::after {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+      .cta-dock__btn::after { opacity: 0; }
+    }
+
+    @media print {
+      .cta-dock { display: none !important; }
+      body { padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body id="top">
+<nav class="page-nav" aria-label="Page sections">
+  <div class="page-nav__inner">
+    <img class="page-nav__brand" src="../reassured-logo.svg" alt="Reassured">
+    <button type="button" data-nav-toggle aria-expanded="false" aria-controls="lf-nav-links">Menu</button>
+  </div>
+  <div class="page-nav__links" id="lf-nav-links">
+    <a href="../">Back to main</a>
+    <a href="#doc-contents">This section covers</a>
+    <a href="#section-04">Value Proposition</a>
+    <a href="#why-sa">Why South Africa / Cape Town</a>
+    <a href="#section-08">Technology &amp; AI</a>
+    <a href="#ai-sales-enablement">Ai Sales Enablement</a>
+    <a href="#top">Back to top</a>
+  </div>
+</nav>
+<main class="main">
+  <div class="proposal-shell">
+        <section class="proposal-page" id="document-contents">
+      <div class="section-body">
+        <div class="covers-box" id="doc-contents">
+          <div class="covers-box__head">This section covers</div>
+          <div class="table-wrap covers-table-wrap">
+            <table class="covers-table">
+              <tbody>
+                <tr><td>1</td><td><a href="#section-04">Our Value Proposition &amp; Differentiators</a></td></tr>
+                <tr><td>2</td><td><a href="#why-sa">Why South Africa / Why Cape Town</a></td></tr>
+                <tr><td>3</td><td><a href="#section-08">Technology, AI &amp; Automation Capability</a></td></tr>
+                <tr><td>4</td><td><a href="#ai-sales-enablement">Ai Sales Enablement</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="proposal-page" id="section-04">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>Our Value Proposition &amp; Differentiators</h2>
+      </div>
+      <div class="section-body">
+<div class="covers-box" id="value-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#value-overview">Value proposition overview</a></td></tr>
+                  <tr><td>2</td><td><a href="#secret-sauce">Our Secret Sauce</a></td></tr>
+                  <tr><td>3</td><td><a href="#our-achievements">Our Achievements</a></td></tr>
+                  <tr><td>4</td><td><a href="#local-competitors">How We Differ From Local Competitors</a></td></tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+
+          <figure class="figure figure--video figure--tagline-overlay">
+            <div class="figure__media">
+              <video src="../../../../trilogydigital/assets/video/hero.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Trilogy customer experience in action"></video>
+              <div class="video-tagline">
+                <p>Human Empathy, with AI Efficiency.</p>
+              </div>
+            </div>
+          </figure>
+
+          <div class="prose" id="value-overview">
+            <p>We are a premium (boutique) customer service, back-office and tech-support BPO partner — enterprise-ready and AI-enabled. We are not a commodity offshore provider. We are a high-quality, owner-led, high-touch delivery partner that competes on quality first and cost second, with the scale, technology depth and client portfolio to prove it.</p>
+            <p>In practical terms: 40–60% below UK onshore delivery costs; higher CSAT than comparable offshore markets; an active AI toolset deployed in production (not in planning); and a leadership team with 25+ years of UK-market experience who are personally accountable for every programme.</p>
+          </div>
+
+          <h3 id="secret-sauce">Our Secret Sauce</h3>
+          <div class="sauce-table-wrap">
+            <table class="sauce-table">
+              <thead>
+                <tr><th>Differentiator</th><th>What it means for you</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Proprietary AI built in-house</strong></td>
+                  <td>We do not white-label third-party AI; our platform represents 8 years of in-house AI/ML development.</td>
+                </tr>
+                <tr>
+                  <td><strong>“Test Kitchen” model</strong></td>
+                  <td>A dedicated innovation hub that designs, tests and deploys new AI and digital capabilities in a sandbox without disrupting BAU operations.</td>
+                </tr>
+                <tr>
+                  <td><strong>Outcome-aligned commercial models</strong></td>
+                  <td>Including our Value Creation Model (VCM), which ties commercial success to client outcomes, retention and CX uplift.</td>
+                </tr>
+                <tr>
+                  <td><strong>Agnostic technology approach</strong></td>
+                  <td>We are equally comfortable operating within client-owned platforms or deploying our own; we do not force platform migration.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="our-achievements">Our Achievements</h3>
+          <div class="prose">
+            <p>Two decades of consistent excellence in the BPO industry has positioned Trilogy as a trusted partner for global brands. Our track record speaks to our ability to deliver results at scale while maintaining the highest standards of quality and innovation.</p>
+          </div>
+          <div class="stats stats--4 stats--achieve">
+            <div class="stat">
+              <div class="stat__value">45K</div>
+              <div class="stat__label">Jobs Created</div>
+              <p class="stat__note">Our team has created 45,000 jobs over the past 20 years, making a significant positive impact on South Africa’s economy and communities.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">20</div>
+              <div class="stat__label">Years of Experience</div>
+              <p class="stat__note">Two decades of proven track record in providing exceptional value to our customers across multiple industries and geographies.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">8</div>
+              <div class="stat__label">Years in AI/ML</div>
+              <p class="stat__note">Eight years of experience developing AI and Machine Learning platforms, analytics solutions, and digital automation tools.</p>
+            </div>
+            <div class="stat">
+              <div class="stat__value">36</div>
+              <div class="stat__label">Blue Chip Centres Built</div>
+              <p class="stat__note">Successfully built and launched 36 contact centres for blue chip companies in South Africa over 20 years.</p>
+            </div>
+          </div>
+
+          <h3 id="local-competitors">How We Differ From Local Competitors</h3>
+          <div class="prose">
+            <p>Our largest local competitors include Merchants, Concentrix, Teleperformance SA and Sigma Connected. Trilogy Digital is differentiated on four structural grounds:</p>
+          </div>
+          <ul class="list-check">
+            <li><strong>Dedicated UK-client focus</strong> versus their multi-geography generalism.</li>
+            <li><strong>Owner-led model</strong> versus large corporate cultures and red tape — owners and CEO/COO participate directly in MBRs/QBRs.</li>
+            <li><strong>Proprietary in-house AI suite</strong> versus third-party vendor dependency.</li>
+            <li><strong>Outcome-aligned, entrepreneurial commercial models</strong> versus traditional seat-based billing.</li>
+          </ul>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="why-sa">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Why South Africa / Why Cape Town</h2>
+      </div>
+      <div class="section-body">
+
+
+          <h4 class="vp-subhead" id="why-south-africa-vp">Why South Africa?</h4>
+          <div class="prose">
+            <p>South Africa has consistently been ranked the second most attractive Business Process Outsourcing location globally, after consecutive years of high performance. Source: McKinsey.</p>
+          </div>
+
+          <div class="location-banner" aria-label="Cape Town location advantages">
+            <div class="location-banner__media" aria-hidden="true">
+              <img src="../../../../trilogydigital/assets/location/cape-town.jpg" alt="" loading="lazy">
+              <video autoplay muted loop playsinline preload="metadata" poster="../../../../trilogydigital/assets/location/cape-town.jpg">
+                <source src="../../../../trilogydigital/assets/location/cape-town-scroll.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="location-banner__content">
+              <div class="location-callouts location-callouts--primary">
+                <article class="location-callout location-callout--accent">
+                  <div class="location-callout__stat">60%</div>
+                  <h5>Cost efficiency meets quality</h5>
+                  <p>Up to 60% lower operational costs than UK and USA markets, substantial wage arbitrage without compromising quality.</p>
+                </article>
+                <article class="location-callout">
+                  <div class="location-callout__stat location-callout__stat--green">#1</div>
+                  <h5>Cape Town: the premium hub</h5>
+                  <p>The leading BPO destination, with rapid growth, exceptional infrastructure and the largest skilled talent pool in the region.</p>
+                </article>
+              </div>
+              <div class="location-callouts location-callouts--secondary">
+                <article class="location-callout">
+                  <h5>Industry recognition</h5>
+                  <p>Ranked a top-three global BPO destination for three consecutive years by leading industry analysts.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Time-zone synergy</h5>
+                  <p>GMT+2 alignment, a 1 to 2 hour difference with the UK and extended USA coverage.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Quality talent pool</h5>
+                  <p>A young, educated and highly professional workforce ready to deliver exceptional customer experiences.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Language &amp; cultural excellence</h5>
+                  <p>Over 95% workforce proficiency in English with neutral accents that resonate with Western consumers.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="vp-subhead" id="why-cape-town-vp">Why Cape Town</h4>
+          <div class="prose">
+            <p>South Africa — and Cape Town in particular — is one of the world's premier destinations for UK-facing customer experience delivery. It combines deep English-language and UK cultural alignment, a mature BPO ecosystem, favourable time zones and compelling cost advantages, all without the quality trade-offs associated with other offshore markets.</p>
+          </div>
+          <h4 class="vp-subhead">Why the Location Wins</h4>
+          <ul class="list-check">
+            <li><strong>BPO ecosystem leadership</strong> — Cape Town has led South Africa’s BPO export performance for nine consecutive years, drawing on a 67,000-strong regional BPO workforce with established English-language and UK-cultural alignment.</li>
+            <li><strong>Operational readiness</strong> — sites are live today; no site setup phase, landlord negotiation or infrastructure lead time.</li>
+            <li><strong>ESG alignment</strong> — our flagship site holds a 5-Star Green Energy rating from the Green Building Council South Africa (GBCSA).</li>
+            <li><strong>Premium infrastructure</strong> — multi-redundant fibre, N+1 generator and UPS power resilience, and biometric access control.</li>
+            <li><strong>Multi-site resilience</strong> — the network spans Cape Town and Johannesburg, eliminating single geographic points of failure and enabling live volume routing between sites.</li>
+            <li><strong>Time-zone synergy</strong> — GMT+2 offers just a 1–2 hour difference with the UK and extended coverage for USA programmes.</li>
+          </ul>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="section-08">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Technology, AI &amp; Automation Capability</h2>
+      </div>
+      <div class="section-body">
+<div class="covers-box" id="tech-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#tech-introduction">Introduction</a></td></tr>
+                  <tr><td>2</td><td><a href="#technology-stack">Technology Stack</a></td></tr>
+                  <tr><td>3</td><td><a href="#ai-enabled-platforms">AI-Enabled Platforms</a></td></tr>
+                  <tr><td>4</td><td><a href="#orchestration-layer">Orchestration Layer</a></td></tr>
+                  <tr><td>5</td><td><a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
+                  </tbody>
+              </table>
+            </div>
+          </div>
+<h3 id="tech-introduction">Introduction</h3>
+<div class="prose"><p>Trilogy's mission statement is to provide Human-Led, AI-enhanced solutions. This means that while we have spent over 8 years developing AI and digital automation solutions, our primary focus remains the people in our operation and how we assist them to deliver better service to their customers. Our AI solutions are geared specifically to enhancing the agent's ability to support their customers, and our systems provide support for Voice, Email, WhatsApp and almost all social media and RCS platforms.</p></div>
+
+<h3 id="technology-stack">Technology Stack</h3>
+<figure class="figure figure--carom">
+  <div class="figure__media figure__media--contain"><img src="../../../../trilogydigital/assets/technology-stack.png?v=1" alt="Technology stack — Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine, with Genii analytics and development partners." loading="lazy"></div>
+  <figcaption>Figure — Technology Stack: Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine</figcaption>
+</figure>
+
+<div class="prose"><p>Trilogy has two approaches to technology. <strong>Approach 1</strong> — deploy our fully owned and managed platform, providing the end-to-end technology solution for our customers on our QContact platform. <strong>Approach 2</strong> — operate as a technology-agnostic, client-based partner, deploying and managing within the client's own stack.</p><p>QContact is a cloud-based omnichannel customer communications platform that unifies calls, emails, WhatsApp, live chat and social media into a single interface. Founded in 2017, it provides built-in CRM functionality, case management and communication AI tools, omnichannel inbox, Communication AI (call transcriptions, conversation summaries and sentiment analysis), native WhatsApp integration and workflow automation.</p></div>
+
+<h3 id="ai-enabled-platforms">AI-Enabled Platforms</h3>
+<div class="ai-platforms" aria-label="Trilogy AI platform suite">
+  <article class="ai-platform ai-platform--voice">
+    <h4>guruvoice.ai</h4>
+    <p>Fully automated AI voice platform for inbound service and proactive outbound (services, sales, collections).</p>
+  </article>
+  <article class="ai-platform ai-platform--assist">
+    <h4>Agent assist</h4>
+    <p>Live AI-generated response suggestions, knowledge-base access and process guidance on-screen during every contact.</p>
+  </article>
+  <article class="ai-platform ai-platform--acwa">
+    <h4>acwa.ai</h4>
+    <p>After-Call Work Assistant — automates callbacks, CRM updates, document dispatch and logistics notifications.</p>
+  </article>
+  <article class="ai-platform ai-platform--collect">
+    <h4>collect.ai</h4>
+    <p>Digital &amp; autonomous collections — AI-driven segmentation, predictive analytics and automated recovery communication.</p>
+  </article>
+  <article class="ai-platform ai-platform--anychat">
+    <h4>anychat.ai</h4>
+    <p>Real-time language translation enabling any agent to service any customer regardless of language.</p>
+  </article>
+</div>
+
+<h3 id="orchestration-layer">Orchestration Layer</h3>
+<div class="prose"><p>People, technology, process and AI/ML analytics work as one continuous system — orchestrated for voice, digital and automation so CX outcomes compound rather than fragment.</p></div>
+<div class="orch" aria-label="Orchestration layer">
+  <div class="orch__quad orch__quad--people">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+    <h4>People</h4>
+    <p>Digital agents, management and shared services as an outsourced operation.</p>
+  </div>
+  <div class="orch__quad orch__quad--tech">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
+    <h4>Technology</h4>
+    <p>Leverage the technology stack to provide omnichannel customer engagement.</p>
+  </div>
+  <div class="orch__quad orch__quad--process">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="16" width="6" height="4" rx="1"/><rect x="16" y="16" width="6" height="4" rx="1"/><path d="M12 6v4M12 10H5v6M12 10h7v6"/></svg></span>
+    <h4>Process</h4>
+    <p>WhatsApp customer engagement, messaging and digital campaigns.</p>
+  </div>
+  <div class="orch__quad orch__quad--aiml">
+    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>
+    <h4>AI / ML Analytics</h4>
+    <p>Customer interaction, behavioural science and next-best-action recommender platform.</p>
+  </div>
+  <div class="orch__hub">
+    <strong>Orchestration</strong>
+    <span>Voice, digital &amp; automation orchestration for effective CX</span>
+  </div>
+</div>
+
+<h3 id="potential-ai-savings">Potential AI Savings</h3>
+<div class="prose"><p>Independent industry benchmarks reinforce the impact of a human-led, AI-enabled model. The following are representative outcomes achievable across an asynchronous customer operation like yours.</p></div>
+<div class="ai-savings" data-animate="ai-savings" aria-label="Potential AI savings">
+  <div class="ai-savings__dials">
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="27"><span class="dial__value">0%</span></div>
+      <div><h4>AHT Reduction</h4><p>Organisations using AI report up to a 27% reduction in Average Handle Time.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="20"><span class="dial__value">0%</span></div>
+      <div><h4>Revenue Optimisation</h4><p>AI-led outreach outperforms traditional methods by 20% in sales and collections.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="35"><span class="dial__value">0%</span></div>
+      <div><h4>Customer Satisfaction</h4><p>Businesses using AI-driven sentiment analysis report a 35% increase in CSAT.</p></div>
+    </div>
+    <div class="dial">
+      <div class="dial__ring" style="--pct:0%" data-pct="90"><span class="dial__value">0%</span></div>
+      <div><h4>At-Risk Identification</h4><p>AI identifies at-risk customers with 90% accuracy for proactive intervention.</p></div>
+    </div>
+  </div>
+  <div class="ai-savings__split">
+    <div>
+      <h4>Quality &amp; Compliance</h4>
+      <p>Achieve <strong>100% Quality Assurance (QA)</strong> coverage by using AI to audit every single conversation for legal compliance and brand standards.</p>
+    </div>
+    <div>
+      <h4>The Churn Defence</h4>
+      <p>Companies using AI-driven sentiment analysis can increase long-term customer lifetime value (LTV) by <strong>15–20%</strong> through proactive intervention.</p>
+    </div>
+  </div>
+  <div class="ai-savings__quote">
+    <p>“95% of decision-makers already using AI report immediate cost and time savings… while AI-powered predictive analytics can drive a 25% increase in recovery rates for outbound functions.”</p>
+    <cite>— Salesforce / NobelBiz (2025/2026). Source: Salesforce: What is an AI Contact Center?</cite>
+  </div>
+</div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="ai-sales-enablement">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>Ai Sales Enablement</h2>
+      </div>
+      <div class="section-body">
+
+          <div class="covers-box" id="ai-sales-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#ai-sales-partner">Exclusive South Africa Partnership</a></td></tr>
+                  <tr><td>2</td><td><a href="#ai-sales-challenge">The Challenge — Cold Outbound Is Breaking</a></td></tr>
+                  <tr><td>3</td><td><a href="#ai-sales-approach">Our Approach — Intent-Based Lead Generation</a></td></tr>
+                  <tr><td>4</td><td><a href="#ai-sales-acquisition">01 · Acquisition</a></td></tr>
+                  <tr><td>5</td><td><a href="#ai-sales-qualification">02 · Qualification</a></td></tr>
+                  <tr><td>6</td><td><a href="#ai-sales-connection">03 · Connection</a></td></tr>
+                  <tr><td>7</td><td><a href="#ai-sales-optimisation">04 · Optimisation</a></td></tr>
+                  <tr><td>8</td><td><a href="#ai-sales-why-trilogy">Why Trilogy + Visibilitie</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="callout" id="ai-sales-partner"><strong>Exclusive South Africa partner.</strong> Trilogy is Visibilitie’s only partner in South Africa. Together we bring Visibilitie’s AI-powered, intent-based sales acquisition model into local delivery — with Trilogy’s call-centre operations expertise behind conversion, coaching and scale.</div>
+
+          <h3 id="ai-sales-challenge">The Challenge — Cold Outbound Is Breaking</h3>
+          <div class="prose">
+            <p>Traditional cold calling and abusive outbound canvassing are under pressure everywhere — commercially and regulatorily. Contact rates fall, brand risk rises, and sales teams burn capacity on low-intent lists. The shift clients need is clear: stop chasing cold contacts and start speaking to people who have already asked to be called.</p>
+            <p>Visibilitie was built for that pivot. Their platform replaces cold outreach with consented, intent-based leads — prospects who discover an offer on social video, engage with an AI conversation, and explicitly request a callback.</p>
+          </div>
+
+          <h3 id="ai-sales-approach">Our Approach — Intent-Based Lead Generation</h3>
+          <div class="prose">
+            <p>Through Trilogy’s exclusive South Africa partnership with Visibilitie, we deliver an end-to-end AI Sales Enablement model: attract at scale with AI avatars, qualify with explicit consent, push hot leads into your CRM in real time, then improve continuously against market benchmarks.</p>
+          </div>
+          <div class="stats stats--4">
+            <div class="stat"><div class="stat__value">1,000+</div><div class="stat__label">AI avatars generating offer content 24/7</div></div>
+            <div class="stat"><div class="stat__value">6</div><div class="stat__label">Platforms — Meta, TikTok, YouTube, Spotify, Snapchat &amp; more</div></div>
+            <div class="stat"><div class="stat__value">&lt;300ms</div><div class="stat__label">Real-time lead delivery into CRM via Synapse™</div></div>
+            <div class="stat"><div class="stat__value">100%</div><div class="stat__label">Consented, opt-in, auditable intent leads</div></div>
+          </div>
+
+          <h3 id="ai-sales-acquisition">01 · Acquisition — AI Avatars That Attract Prospects</h3>
+          <div class="prose">
+            <p>A network of 1,000+ AI avatars publishes continuously across Facebook, Instagram, TikTok, YouTube, Spotify and Snapchat. They communicate your offers around the clock, capturing attention where audiences already spend time and generating inbound interest at scale.</p>
+          </div>
+          <figure class="figure ai-avatars-figure">
+            <div class="ai-avatars" aria-label="AI avatars with live social reactions">
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-01.png" alt="AI avatar — professional in office" loading="lazy" width="133" height="246">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:60%;animation-delay:0s;animation-duration:3s" aria-hidden="true">❤️</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:20%;animation-delay:1.8s;animation-duration:3.5s" aria-hidden="true">💬</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-02.png" alt="AI avatar — creator in bright interior" loading="lazy" width="134" height="241">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:30%;animation-delay:1.2s;animation-duration:2.8s" aria-hidden="true">🔥</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:55%;animation-delay:0.3s;animation-duration:2.9s" aria-hidden="true">🙌</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-03.png" alt="AI avatar — traveller on a train" loading="lazy" width="136" height="248">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:70%;animation-delay:2.1s;animation-duration:3.2s" aria-hidden="true">👍</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:40%;animation-delay:1.5s;animation-duration:3.1s" aria-hidden="true">💯</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-04.png" alt="AI avatar — specialist in studio" loading="lazy" width="133" height="242">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:45%;animation-delay:0.6s;animation-duration:2.5s" aria-hidden="true">😍</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:65%;animation-delay:2.4s;animation-duration:2.7s" aria-hidden="true">⭐</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-05.png" alt="AI avatar — logistics creator" loading="lazy" width="135" height="241">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:20%;animation-delay:1.8s;animation-duration:3.5s" aria-hidden="true">💬</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:35%;animation-delay:0.9s;animation-duration:3.3s" aria-hidden="true">🎯</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-06.png" alt="AI avatar — outdoor retail setting" loading="lazy" width="135" height="240">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:55%;animation-delay:0.3s;animation-duration:2.9s" aria-hidden="true">🙌</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:50%;animation-delay:1.7s;animation-duration:2.6s" aria-hidden="true">👏</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-07.png" alt="AI avatar — lifestyle creator outdoors" loading="lazy" width="135" height="244">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:40%;animation-delay:1.5s;animation-duration:3.1s" aria-hidden="true">💯</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:60%;animation-delay:0s;animation-duration:3s" aria-hidden="true">❤️</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-08.png" alt="AI avatar — home creator in kitchen" loading="lazy" width="135" height="248">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:65%;animation-delay:2.4s;animation-duration:2.7s" aria-hidden="true">⭐</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:30%;animation-delay:1.2s;animation-duration:2.8s" aria-hidden="true">🔥</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-09.png" alt="AI avatar — home setting" loading="lazy" width="130" height="241">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:35%;animation-delay:0.9s;animation-duration:3.3s" aria-hidden="true">🎯</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:70%;animation-delay:2.1s;animation-duration:3.2s" aria-hidden="true">👍</span>
+              </div>
+              <div class="ai-avatar">
+                <img src="../../../../trilogydigital/assets/ai-sales/avatar-10.png" alt="AI avatar — trades workshop" loading="lazy" width="137" height="246">
+                <span class="ai-avatar__fade" aria-hidden="true"></span>
+                <span class="ai-avatar-reaction" style="left:50%;animation-delay:1.7s;animation-duration:2.6s" aria-hidden="true">👏</span>
+                <span class="ai-avatar-reaction ai-avatar-reaction--sm" style="left:45%;animation-delay:0.6s;animation-duration:2.5s" aria-hidden="true">😍</span>
+              </div>
+            </div>
+            <figcaption>AI avatars publish continuously on social — likes, claps, stars and reactions float in as audiences engage.</figcaption>
+          </figure>
+          <ul class="list-check">
+            <li><strong>50+ videos / week</strong> — continuous creative production for social video formats.</li>
+            <li><strong>Multi-platform reach</strong> — Meta, TikTok, YouTube, Spotify and Snapchat covered in one motion.</li>
+            <li><strong>Always-on acquisition</strong> — offers communicated 24/7 without proportional headcount growth.</li>
+            <li><strong>High-volume funnel</strong> — designed to feed commercial teams with a steady flow of new prospects.</li>
+          </ul>
+
+          <h3 id="ai-sales-qualification">02 · Qualification — The Prospect Asks for Your Call</h3>
+          <div class="prose">
+            <p>Prospects interact with a conversational chatbot, explore the offer, then complete a secure callback form with <strong>explicit consent</strong>. They know they will be called. The result is an intent-based lead — not a scraped cold contact.</p>
+          </div>
+          <div class="pillars pillars--2 pillars--spotlight pillars--spotlight-navy" data-animate="pillar-spotlight">
+            <div class="pillar"><h4>Explicit consent</h4><p>Opt-in is captured and verified before any outbound contact is scheduled.</p></div>
+            <div class="pillar"><h4>GDPR-aligned capture</h4><p>Data collection and callback requests are designed for privacy-compliant processing.</p></div>
+            <div class="pillar"><h4>Intent-based leads</h4><p>Only prospects who request a conversation enter the sales queue.</p></div>
+            <div class="pillar"><h4>Fake-lead filtering</h4><p>Qualification reduces wasted dialler time and protects agent productivity.</p></div>
+          </div>
+
+          <h3 id="ai-sales-connection">03 · Connection — Synapse™ Into Your CRM</h3>
+          <div class="prose">
+            <p><strong>Synapse™</strong> pushes each qualified lead into your CRM in real time (Salesforce, HubSpot and equivalent platforms) and can pull statuses back to close the loop. No manual list uploads. No stale spreadsheets.</p>
+          </div>
+          <ul class="list-check">
+            <li><strong>Real-time API delivery</strong> — leads land while intent is still hot.</li>
+            <li><strong>Sub-second routing</strong> — Visibilitie cites delivery under 300ms into connected CRMs.</li>
+            <li><strong>Bidirectional sync</strong> — lead push and status pull for continuous optimisation.</li>
+            <li><strong>Plug-and-play integration</strong> — designed for rapid commercial onboarding.</li>
+          </ul>
+
+          <h3 id="ai-sales-optimisation">04 · Optimisation — Performance Versus Market</h3>
+          <div class="prose">
+            <p>An AI-augmented performance dashboard tracks volume, reachability and conversion — with market benchmarks so teams can see what “good” looks like and act on it. Continuous improvement is built into the loop: the system learns from outcomes and improves acquisition and conversion over time.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Signal</th><th>What you see</th><th>Why it matters</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Lead volume</td><td>Daily / period volume with trend</td><td>Protects commercial capacity planning</td></tr>
+                <tr><td>Reachability</td><td>Contactability versus market benchmark</td><td>Shows whether intent leads are live and callable</td></tr>
+                <tr><td>Conversion</td><td>Sales conversion with comparative lift</td><td>Links acquisition quality to revenue outcomes</td></tr>
+                <tr><td>Continuous loop</td><td>Status feedback into Synapse™</td><td>Improves targeting and creative based on real sales results</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout">Illustrative Visibilitie performance framing from live market reporting includes stronger reachability and conversion versus cold-market baselines. Exact programme KPIs are agreed per sector and volume commitment.</div>
+
+          <h3 id="ai-sales-why-trilogy">Why Trilogy + Visibilitie</h3>
+          <div class="prose">
+            <p>Visibilitie is more than a lead vendor — and Trilogy is more than a fulfilment partner. Combined, we cover the full journey from digital attraction to converted sale on the floor.</p>
+          </div>
+          <div class="pillars pillars--3 pillars--spotlight pillars--spotlight-green" data-animate="pillar-spotlight">
+            <div class="pillar"><h4>Exclusive SA partnership</h4><p>Trilogy is Visibilitie’s only South Africa partner — local accountability with European AI acquisition technology.</p></div>
+            <div class="pillar"><h4>Call-centre operators</h4><p>We run live operations. We understand supervisor reality, dialler constraints, scripts, coaching and conversion KPIs.</p></div>
+            <div class="pillar"><h4>Cold → hot transition</h4><p>We help sales organisations move from cold outbound to intent leads without breaking volume or revenue mid-shift.</p></div>
+            <div class="pillar"><h4>Floor readiness</h4><p>Scripts, workflows and coaching adapted for callback conversion — not classic cold-call behaviours.</p></div>
+            <div class="pillar"><h4>Training &amp; coaching</h4><p>Team leaders and agents are trained to handle warm, consented conversations that convert faster.</p></div>
+            <div class="pillar"><h4>Transparent partnership</h4><p>Shared dashboards, real-time reporting and weekly performance reviews — growth built together.</p></div>
+          </div>
+
+          <div class="prose">
+            <p>Trusted Visibilitie reference brands in Europe include names such as MetLife, TotalEnergies, April, ADM Value, Meilleurtaux and Groupe Magnolia. South African programmes are structured through Trilogy as the exclusive local partner.</p>
+          </div>
+          <div class="ai-sales-logos" aria-label="Visibilitie European reference brands">
+            <div class="ai-sales-logos__item"><img src="../../../../trilogydigital/assets/ai-sales/logos/metlife.png" alt="MetLife" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../../trilogydigital/assets/ai-sales/logos/totalenergies.png" alt="TotalEnergies" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../../trilogydigital/assets/ai-sales/logos/april.png" alt="April" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../../trilogydigital/assets/ai-sales/logos/admvalue.png" alt="ADM Value" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../../trilogydigital/assets/ai-sales/logos/meilleurtaux.png" alt="Meilleurtaux" loading="lazy" width="620" height="353"></div>
+            <div class="ai-sales-logos__item"><img src="../../../../trilogydigital/assets/ai-sales/logos/magnolia.png" alt="Groupe Magnolia" loading="lazy" width="620" height="353"></div>
+          </div>
+          <div class="callout">Commercial model is typically CPL (cost per lead) / volume-based, scoped by sector and daily lead commitment. Trilogy will confirm commercial terms for Reassured after discovery on target offers, geographies, volumes and CRM stack.</div>
+      </div>
+    </section>
+
+    </div>
+</main>
+<nav class="jump-nav" aria-label="Page shortcuts">
+  <a class="jump-nav__main" href="../">Back to main</a>
+  <a href="#top">Back to top</a>
+</nav>
+<aside class="cta-dock" aria-label="Contact Trilogy">
+  <nav class="cta-dock__inner">
+    <a class="cta-dock__btn" href="https://trilogybpo.com" target="_blank" rel="noopener noreferrer" aria-label="Visit trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.8 4 6 4 9s-1.4 6.2-4 9c-2.6-2.8-4-6-4-9s1.4-6.2 4-9Z"/></svg>
+      <span class="cta-dock__full">Visit our Site</span>
+      <span class="cta-dock__short">Visit</span>
+    </a>
+    <a class="cta-dock__btn cta-dock__btn--whatsapp" href="https://wa.me/27719691163?text=hi" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Trilogy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.55 2 2.06 6.48 2.06 12c0 1.76.46 3.48 1.34 5L2 22l5.16-1.35A9.93 9.93 0 0 0 12.04 22c5.5 0 9.97-4.48 9.97-10 0-2.67-1.04-5.18-2.96-7.09Zm-7.01 15.36c-1.52 0-3.01-.41-4.31-1.17l-.31-.18-3.06.8.82-2.98-.2-.33a8.2 8.2 0 0 1-1.26-4.41c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.83c.02 4.54-3.68 8.26-8.17 8.26Zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74 1.76.76 2.12.82 2.87.69.44-.08 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
+      <span class="cta-dock__full">WhatsApp us</span>
+      <span class="cta-dock__short">WhatsApp</span>
+    </a>
+    <a class="cta-dock__btn" href="mailto:sales@trilogybpo.com" aria-label="Email sales@trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+      <span class="cta-dock__full">Email Us</span>
+      <span class="cta-dock__short">Email</span>
+    </a>
+    <a class="cta-dock__btn" href="tel:+447458158591" aria-label="Call +44 7458 158591">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.8c.4-.4 1-.5 1.5-.3l2.1.8c.6.2 1 .8 1 1.4v2.1c0 .4-.2.8-.5 1.1l-1.2 1.2a12.4 12.4 0 0 0 5.3 5.3l1.2-1.2c.3-.3.7-.5 1.1-.5h2.1c.6 0 1.2.4 1.4 1l.8 2.1c.2.5.1 1.1-.3 1.5l-1.4 1.4c-.5.5-1.2.7-1.9.6C12.3 20.8 3.2 11.7 3.6 5.1c0-.7.2-1.4.7-1.9Z"/></svg>
+      <span class="cta-dock__full">Call Us</span>
+      <span class="cta-dock__short">Call</span>
+    </a>
+  </nav>
+</aside>
+<script src="../../../../trilogydigital/script.js"></script>
+<script>
+  (function () {
+    var pages = document.querySelectorAll(".proposal-page");
+    var isNarrow = window.matchMedia("(max-width: 720px)").matches;
+    if (isNarrow || !("IntersectionObserver" in window)) {
+      pages.forEach(function (el) { el.classList.add("is-visible"); });
+      document.querySelectorAll(".reveal-item").forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0, rootMargin: "80px 0px 80px 0px" });
+      pages.forEach(function (el) {
+        var nearTop = el.getBoundingClientRect().top < window.innerHeight * 0.92;
+        var tallerThanViewport = el.offsetHeight > window.innerHeight;
+        if (nearTop || tallerThanViewport) {
+          el.classList.add("is-visible");
+        } else {
+          io.observe(el);
+        }
+      });
+    }
+
+    var nav = document.querySelector(".page-nav");
+    var toggle = document.querySelector("[data-nav-toggle]");
+    if (nav && toggle) {
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  })();
+</script>
+<script src="../../../_shared/gate.js?v=1"></script>
+</body>
+</html>

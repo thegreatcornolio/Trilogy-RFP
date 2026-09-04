@@ -583,6 +583,46 @@
       .ot-node__co { font-size: 1.12rem; }
       .ot-node__note { margin: 0 0 0.35rem; }
     }
+
+    .detail-cta {
+      margin: 0.25rem 0 0;
+      padding: 1.4rem 1.45rem 1.5rem;
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      border: 1px solid rgba(97, 215, 121, 0.45);
+    }
+    .detail-cta h3 {
+      margin: 0 0 0.55rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #d5ec67;
+    }
+    .detail-cta p {
+      margin: 0 0 1.1rem;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.9);
+    }
+    .detail-cta__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.72rem 1.2rem;
+      border-radius: 999px;
+      background: #61d779;
+      color: #13202e !important;
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none !important;
+      box-shadow: 0 8px 18px rgba(19, 32, 46, 0.18);
+    }
+    .detail-cta__btn:hover,
+    .detail-cta__btn:focus-visible {
+      background: #d5ec67;
+    }
   </style>
   <style id="cta-dock">
     body {
@@ -770,13 +810,10 @@
   </div>
   <div class="page-nav__links" id="lf-nav-links">
     <a href="#cover">Cover</a>
-    <a href="#introduction">Introduction</a>
-    <a href="#document-contents">Contents</a>
+    <a href="#introduction">Cover letter</a>
     <a href="#section-02">Company Overview</a>
-    <a href="#section-04">Value Proposition</a>
-    <a href="#why-sa">Why South Africa / Cape Town</a>
-    <a href="#section-08">Technology &amp; AI</a>
     <a href="#commercial">Commercial</a>
+    <a href="#company-detail">Operational Information</a>
     <a href="#top">Back to top</a>
   </div>
 </nav>
@@ -806,29 +843,6 @@
         <div><div class="meta-label">Contact</div><div class="meta-value">keanu@trilogybpo.com</div></div>
       </div>
       <p class="cover__disclaimer">This document is commercial-in-confidence and prepared exclusively for the recipient named above. It may not be reproduced or disclosed to third parties without the written consent of Trilogy Digital (Pty) Ltd.</p>
-    </section>
-
-    <section class="proposal-page" id="document-contents">
-      <div class="section-head">
-        <h2>Document Contents</h2>
-      </div>
-      <div class="section-body">
-        <div class="covers-box" id="doc-contents">
-          <div class="covers-box__head">Document contents</div>
-          <div class="table-wrap covers-table-wrap">
-            <table class="covers-table">
-              <tbody>
-                <tr><td>1</td><td><a href="#introduction">Introduction</a></td></tr>
-                <tr><td>2</td><td><a href="#section-02">Company Overview</a></td></tr>
-                <tr><td>3</td><td><a href="#section-04">Our Value Proposition &amp; Differentiators</a></td></tr>
-                <tr><td>4</td><td><a href="#why-sa">Why South Africa / Why Cape Town</a></td></tr>
-                <tr><td>5</td><td><a href="#section-08">Technology, AI &amp; Automation Capability</a></td></tr>
-                <tr><td>6</td><td><a href="#commercial">Commercial</a></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="proposal-page" id="introduction">
@@ -1395,378 +1409,9 @@
       </div>
     </section>
 
-    <section class="proposal-page" id="section-04">
-      <div class="section-head">
-        <span class="section-num">02</span>
-        <h2>Our Value Proposition &amp; Differentiators</h2>
-      </div>
-      <div class="section-body">
-<div class="covers-box" id="value-covers">
-            <div class="covers-box__head">This section covers</div>
-            <div class="table-wrap covers-table-wrap">
-              <table class="covers-table">
-                <tbody>
-                  <tr><td>1</td><td><a href="#value-overview">Value proposition overview</a></td></tr>
-                  <tr><td>2</td><td><a href="#secret-sauce">Our Secret Sauce</a></td></tr>
-                  <tr><td>3</td><td><a href="#our-achievements">Our Achievements</a></td></tr>
-                  <tr><td>4</td><td><a href="#local-competitors">How We Differ From Local Competitors</a></td></tr>
-                  </tbody>
-              </table>
-            </div>
-          </div>
-
-          <figure class="figure figure--video figure--tagline-overlay">
-            <div class="figure__media">
-              <video src="../../../trilogydigital/assets/video/hero.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Trilogy customer experience in action"></video>
-              <div class="video-tagline">
-                <p>Human Empathy, with AI Efficiency.</p>
-              </div>
-            </div>
-          </figure>
-
-          <div class="prose" id="value-overview">
-            <p>We are a premium (boutique) customer service, back-office and tech-support BPO partner — enterprise-ready and AI-enabled. We are not a commodity offshore provider. We are a high-quality, owner-led, high-touch delivery partner that competes on quality first and cost second, with the scale, technology depth and client portfolio to prove it.</p>
-            <p>In practical terms: 40–60% below UK onshore delivery costs; higher CSAT than comparable offshore markets; an active AI toolset deployed in production (not in planning); and a leadership team with 25+ years of UK-market experience who are personally accountable for every programme.</p>
-          </div>
-
-          <h3 id="secret-sauce">Our Secret Sauce</h3>
-          <div class="sauce-table-wrap">
-            <table class="sauce-table">
-              <thead>
-                <tr><th>Differentiator</th><th>What it means for you</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Proprietary AI built in-house</strong></td>
-                  <td>We do not white-label third-party AI; our platform represents 8 years of in-house AI/ML development.</td>
-                </tr>
-                <tr>
-                  <td><strong>“Test Kitchen” model</strong></td>
-                  <td>A dedicated innovation hub that designs, tests and deploys new AI and digital capabilities in a sandbox without disrupting BAU operations.</td>
-                </tr>
-                <tr>
-                  <td><strong>Outcome-aligned commercial models</strong></td>
-                  <td>Including our Value Creation Model (VCM), which ties commercial success to client outcomes, retention and CX uplift.</td>
-                </tr>
-                <tr>
-                  <td><strong>Agnostic technology approach</strong></td>
-                  <td>We are equally comfortable operating within client-owned platforms or deploying our own; we do not force platform migration.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 id="our-achievements">Our Achievements</h3>
-          <div class="prose">
-            <p>Two decades of consistent excellence in the BPO industry has positioned Trilogy as a trusted partner for global brands. Our track record speaks to our ability to deliver results at scale while maintaining the highest standards of quality and innovation.</p>
-          </div>
-          <div class="stats stats--4 stats--achieve">
-            <div class="stat">
-              <div class="stat__value">45K</div>
-              <div class="stat__label">Jobs Created</div>
-              <p class="stat__note">Our team has created 45,000 jobs over the past 20 years, making a significant positive impact on South Africa’s economy and communities.</p>
-            </div>
-            <div class="stat">
-              <div class="stat__value">20</div>
-              <div class="stat__label">Years of Experience</div>
-              <p class="stat__note">Two decades of proven track record in providing exceptional value to our customers across multiple industries and geographies.</p>
-            </div>
-            <div class="stat">
-              <div class="stat__value">8</div>
-              <div class="stat__label">Years in AI/ML</div>
-              <p class="stat__note">Eight years of experience developing AI and Machine Learning platforms, analytics solutions, and digital automation tools.</p>
-            </div>
-            <div class="stat">
-              <div class="stat__value">36</div>
-              <div class="stat__label">Blue Chip Centres Built</div>
-              <p class="stat__note">Successfully built and launched 36 contact centres for blue chip companies in South Africa over 20 years.</p>
-            </div>
-          </div>
-
-          <h3 id="local-competitors">How We Differ From Local Competitors</h3>
-          <div class="prose">
-            <p>Our largest local competitors include Merchants, Concentrix, Teleperformance SA and Sigma Connected. Trilogy Digital is differentiated on four structural grounds:</p>
-          </div>
-          <ul class="list-check">
-            <li><strong>Dedicated UK-client focus</strong> versus their multi-geography generalism.</li>
-            <li><strong>Owner-led model</strong> versus large corporate cultures and red tape — owners and CEO/COO participate directly in MBRs/QBRs.</li>
-            <li><strong>Proprietary in-house AI suite</strong> versus third-party vendor dependency.</li>
-            <li><strong>Outcome-aligned, entrepreneurial commercial models</strong> versus traditional seat-based billing.</li>
-          </ul>
-      </div>
-    </section>
-
-    <section class="proposal-page" id="why-sa">
-      <div class="section-head">
-        <span class="section-num">03</span>
-        <h2>Why South Africa / Why Cape Town</h2>
-      </div>
-      <div class="section-body">
-          <div class="covers-box" id="location-covers">
-            <div class="covers-box__head">This section covers</div>
-            <div class="table-wrap covers-table-wrap">
-              <table class="covers-table">
-                <tbody>
-                  <tr><td>1</td><td><a href="#why-south-africa-vp">Why South Africa</a></td></tr>
-                  <tr><td>2</td><td><a href="#why-cape-town-vp">Why Cape Town</a></td></tr>
-                  <tr><td>3</td><td><a href="#why-location-wins">Why the Location Wins</a></td></tr>
-                  <tr><td>4</td><td><a href="#cape-town-sights">Sights in and around Cape Town</a></td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <h3 id="why-south-africa-vp">Why South Africa?</h3>
-          <div class="prose">
-            <p>South Africa has consistently been ranked the second most attractive Business Process Outsourcing location globally, after consecutive years of high performance. Source: McKinsey.</p>
-          </div>
-
-          <div class="location-banner" aria-label="Cape Town location advantages">
-            <div class="location-banner__media" aria-hidden="true">
-              <img src="../../../trilogydigital/assets/location/cape-town.jpg" alt="" loading="lazy">
-              <video autoplay muted loop playsinline preload="metadata" poster="../../../trilogydigital/assets/location/cape-town.jpg">
-                <source src="../../../trilogydigital/assets/location/cape-town-scroll.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="location-banner__content">
-              <div class="location-callouts location-callouts--primary">
-                <article class="location-callout location-callout--accent">
-                  <div class="location-callout__stat">60%</div>
-                  <h5>Cost efficiency meets quality</h5>
-                  <p>Up to 60% lower operational costs than UK and USA markets, substantial wage arbitrage without compromising quality.</p>
-                </article>
-                <article class="location-callout">
-                  <div class="location-callout__stat location-callout__stat--green">#1</div>
-                  <h5>Cape Town: the premium hub</h5>
-                  <p>The leading BPO destination, with rapid growth, exceptional infrastructure and the largest skilled talent pool in the region.</p>
-                </article>
-              </div>
-              <div class="location-callouts location-callouts--secondary">
-                <article class="location-callout">
-                  <h5>Industry recognition</h5>
-                  <p>Ranked a top-three global BPO destination for three consecutive years by leading industry analysts.</p>
-                </article>
-                <article class="location-callout">
-                  <h5>Time-zone synergy</h5>
-                  <p>GMT+2 alignment, a 1 to 2 hour difference with the UK and extended USA coverage.</p>
-                </article>
-                <article class="location-callout">
-                  <h5>Quality talent pool</h5>
-                  <p>A young, educated and highly professional workforce ready to deliver exceptional customer experiences.</p>
-                </article>
-                <article class="location-callout">
-                  <h5>Language &amp; cultural excellence</h5>
-                  <p>Over 95% workforce proficiency in English with neutral accents that resonate with Western consumers.</p>
-                </article>
-              </div>
-            </div>
-          </div>
-
-          <h3 id="why-cape-town-vp">Why Cape Town</h3>
-          <div class="prose">
-            <p>South Africa — and Cape Town in particular — is one of the world's premier destinations for UK-facing customer experience delivery. It combines deep English-language and UK cultural alignment, a mature BPO ecosystem, favourable time zones and compelling cost advantages, all without the quality trade-offs associated with other offshore markets.</p>
-          </div>
-          <h3 id="why-location-wins">Why the Location Wins</h3>
-          <ul class="list-check">
-            <li><strong>BPO ecosystem leadership</strong> — Cape Town has led South Africa’s BPO export performance for nine consecutive years, drawing on a 67,000-strong regional BPO workforce with established English-language and UK-cultural alignment.</li>
-            <li><strong>Operational readiness</strong> — sites are live today; no site setup phase, landlord negotiation or infrastructure lead time.</li>
-            <li><strong>ESG alignment</strong> — our flagship site holds a 5-Star Green Energy rating from the Green Building Council South Africa (GBCSA).</li>
-            <li><strong>Premium infrastructure</strong> — multi-redundant fibre, N+1 generator and UPS power resilience, and biometric access control.</li>
-            <li><strong>Multi-site resilience</strong> — the network spans Cape Town and Johannesburg, eliminating single geographic points of failure and enabling live volume routing between sites.</li>
-            <li><strong>Time-zone synergy</strong> — GMT+2 offers just a 1–2 hour difference with the UK and extended coverage for USA programmes.</li>
-          </ul>
-
-          <h3 id="cape-town-sights">Sights in and around Cape Town</h3>
-          <div class="prose">
-            <p>Cape Town’s lifestyle and natural beauty are a genuine magnet for talent — Table Mountain, the Atlantic seaboard, the Winelands and the Cape Peninsula all sit within easy reach of our sites.</p>
-          </div>
-          <figure class="cape-sights-figure" id="cape-sights-collage">
-            <div class="cape-sights-collage" aria-label="Sights in and around Cape Town photo collage">
-              <div class="cape-sights-collage__tile cape-sights-collage__tile--hero">
-                <img src="../../../trilogydigital/assets/location/cape-sights/iStock_000002459094_Medium.jpg" alt="Cape Town harbour with Table Mountain beyond" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile cape-sights-collage__tile--tall">
-                <img src="../../../trilogydigital/assets/location/cape-sights/sunset.jpeg" alt="Sunset over Hout Bay with proteas in the foreground" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/Cape-Point-Cape-Town-2.jpg" alt="Cape Point coastal path and ocean cliffs" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile cape-sights-collage__tile--wide">
-                <img src="../../../trilogydigital/assets/location/cape-sights/capetown.jpeg" alt="Aerial view of Cape Town Stadium, marina and Table Mountain" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/1592007850677.jpeg" alt="Colourful beach huts at St James near Muizenberg" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile cape-sights-collage__tile--tall">
-                <img src="../../../trilogydigital/assets/location/cape-sights/FDD85C34-8107-4CC2-9C44-B06A743988C8-1-scaled.jpeg" alt="Chocolate croissant outside Tamboers Winkel" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile cape-sights-collage__tile--wide">
-                <img src="../../../trilogydigital/assets/location/cape-sights/WorkingAtRestaurant_KL_20230628_62.jpg" alt="Rooftop dining with Table Mountain in the background" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/a-18-pexels-tembela-bohle-920038-16830259865634-1024x683.webp" alt="Hiker overlooking Lion's Head and the Atlantic coastline" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/ba1dc7eff7837b3ce3a277e68eed15323cde0392%3Dw700.webp" alt="V&amp;A Waterfront marina with Table Mountain behind" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/cape-town-coworking.jpg" alt="Aerial view of Sea Point promenade and Atlantic seaboard" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile cape-sights-collage__tile--tall">
-                <img src="../../../trilogydigital/assets/location/cape-sights/eating.jpeg" alt="Sunset cruise dining with Table Mountain on the horizon" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/Upload.jpeg" alt="Gourmet Cape Town dining spread with seafood and wine" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/images.jpeg" alt="Table Mountain at golden hour from across the bay" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/eat.jpeg" alt="Artisan bakery stall at a Cape Town market" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/bunny.jpeg" alt="Bunny chow — classic South African street food" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/Workshop17_Coworking_Space.jpg" alt="Workspace with floor-to-ceiling Table Mountain views" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/Coworking_Roamwork.jpg" alt="Modern Cape Town coworking and breakout space" loading="lazy">
-              </div>
-              <div class="cape-sights-collage__tile">
-                <img src="../../../trilogydigital/assets/location/cape-sights/best-coworking-spaces-cape-town-remote-workers.png.webp" alt="Cape Town coworking lifestyle" loading="lazy">
-              </div>
-            </div>
-            <figcaption>Sights in and around Cape Town — lifestyle that attracts and retains talent.</figcaption>
-          </figure>
-      
-
-    <section class="proposal-page" id="section-08">
-      <div class="section-head">
-        <span class="section-num">04</span>
-        <h2>Technology, AI &amp; Automation Capability</h2>
-      </div>
-      <div class="section-body">
-<div class="covers-box" id="tech-covers">
-            <div class="covers-box__head">This section covers</div>
-            <div class="table-wrap covers-table-wrap">
-              <table class="covers-table">
-                <tbody>
-                  <tr><td>1</td><td><a href="#tech-introduction">Introduction</a></td></tr>
-                  <tr><td>2</td><td><a href="#technology-stack">Technology Stack</a></td></tr>
-                  <tr><td>3</td><td><a href="#ai-enabled-platforms">AI-Enabled Platforms</a></td></tr>
-                  <tr><td>4</td><td><a href="#orchestration-layer">Orchestration Layer</a></td></tr>
-                  <tr><td>5</td><td><a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
-                  </tbody>
-              </table>
-            </div>
-          </div>
-<h3 id="tech-introduction">Introduction</h3>
-<div class="prose"><p>Trilogy's mission statement is to provide Human-Led, AI-enhanced solutions. This means that while we have spent over 8 years developing AI and digital automation solutions, our primary focus remains the people in our operation and how we assist them to deliver better service to their customers. Our AI solutions are geared specifically to enhancing the agent's ability to support their customers, and our systems provide support for Voice, Email, WhatsApp and almost all social media and RCS platforms.</p></div>
-
-<h3 id="technology-stack">Technology Stack</h3>
-<figure class="figure figure--carom">
-  <div class="figure__media figure__media--contain"><img src="../../../trilogydigital/assets/technology-stack.png?v=1" alt="Technology stack — Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine, with Genii analytics and development partners." loading="lazy"></div>
-  <figcaption>Figure — Technology Stack: Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine</figcaption>
-</figure>
-
-<div class="prose"><p>Trilogy has two approaches to technology. <strong>Approach 1</strong> — deploy our fully owned and managed platform, providing the end-to-end technology solution for our customers on our QContact platform. <strong>Approach 2</strong> — operate as a technology-agnostic, client-based partner, deploying and managing within the client's own stack.</p><p>QContact is a cloud-based omnichannel customer communications platform that unifies calls, emails, WhatsApp, live chat and social media into a single interface. Founded in 2017, it provides built-in CRM functionality, case management and communication AI tools, omnichannel inbox, Communication AI (call transcriptions, conversation summaries and sentiment analysis), native WhatsApp integration and workflow automation.</p></div>
-
-<h3 id="ai-enabled-platforms">AI-Enabled Platforms</h3>
-<div class="ai-platforms" aria-label="Trilogy AI platform suite">
-  <article class="ai-platform ai-platform--voice">
-    <h4>guruvoice.ai</h4>
-    <p>Fully automated AI voice platform for inbound service and proactive outbound (services, sales, collections).</p>
-  </article>
-  <article class="ai-platform ai-platform--assist">
-    <h4>Agent assist</h4>
-    <p>Live AI-generated response suggestions, knowledge-base access and process guidance on-screen during every contact.</p>
-  </article>
-  <article class="ai-platform ai-platform--acwa">
-    <h4>acwa.ai</h4>
-    <p>After-Call Work Assistant — automates callbacks, CRM updates, document dispatch and logistics notifications.</p>
-  </article>
-  <article class="ai-platform ai-platform--collect">
-    <h4>collect.ai</h4>
-    <p>Digital &amp; autonomous collections — AI-driven segmentation, predictive analytics and automated recovery communication.</p>
-  </article>
-  <article class="ai-platform ai-platform--anychat">
-    <h4>anychat.ai</h4>
-    <p>Real-time language translation enabling any agent to service any customer regardless of language.</p>
-  </article>
-</div>
-
-<h3 id="orchestration-layer">Orchestration Layer</h3>
-<div class="prose"><p>People, technology, process and AI/ML analytics work as one continuous system — orchestrated for voice, digital and automation so CX outcomes compound rather than fragment.</p></div>
-<div class="orch" aria-label="Orchestration layer">
-  <div class="orch__quad orch__quad--people">
-    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-    <h4>People</h4>
-    <p>Digital agents, management and shared services as an outsourced operation.</p>
-  </div>
-  <div class="orch__quad orch__quad--tech">
-    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></span>
-    <h4>Technology</h4>
-    <p>Leverage the technology stack to provide omnichannel customer engagement.</p>
-  </div>
-  <div class="orch__quad orch__quad--process">
-    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><rect x="2" y="16" width="6" height="4" rx="1"/><rect x="16" y="16" width="6" height="4" rx="1"/><path d="M12 6v4M12 10H5v6M12 10h7v6"/></svg></span>
-    <h4>Process</h4>
-    <p>WhatsApp customer engagement, messaging and digital campaigns.</p>
-  </div>
-  <div class="orch__quad orch__quad--aiml">
-    <span class="orch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M12 16V8"/><path d="M16 16v-3"/></svg></span>
-    <h4>AI / ML Analytics</h4>
-    <p>Customer interaction, behavioural science and next-best-action recommender platform.</p>
-  </div>
-  <div class="orch__hub">
-    <strong>Orchestration</strong>
-    <span>Voice, digital &amp; automation orchestration for effective CX</span>
-  </div>
-</div>
-
-<h3 id="potential-ai-savings">Potential AI Savings</h3>
-<div class="prose"><p>Independent industry benchmarks reinforce the impact of a human-led, AI-enabled model. The following are representative outcomes achievable across an asynchronous customer operation like yours.</p></div>
-<div class="ai-savings" data-animate="ai-savings" aria-label="Potential AI savings">
-  <div class="ai-savings__dials">
-    <div class="dial">
-      <div class="dial__ring" style="--pct:0%" data-pct="27"><span class="dial__value">0%</span></div>
-      <div><h4>AHT Reduction</h4><p>Organisations using AI report up to a 27% reduction in Average Handle Time.</p></div>
-    </div>
-    <div class="dial">
-      <div class="dial__ring" style="--pct:0%" data-pct="20"><span class="dial__value">0%</span></div>
-      <div><h4>Revenue Optimisation</h4><p>AI-led outreach outperforms traditional methods by 20% in sales and collections.</p></div>
-    </div>
-    <div class="dial">
-      <div class="dial__ring" style="--pct:0%" data-pct="35"><span class="dial__value">0%</span></div>
-      <div><h4>Customer Satisfaction</h4><p>Businesses using AI-driven sentiment analysis report a 35% increase in CSAT.</p></div>
-    </div>
-    <div class="dial">
-      <div class="dial__ring" style="--pct:0%" data-pct="90"><span class="dial__value">0%</span></div>
-      <div><h4>At-Risk Identification</h4><p>AI identifies at-risk customers with 90% accuracy for proactive intervention.</p></div>
-    </div>
-  </div>
-  <div class="ai-savings__split">
-    <div>
-      <h4>Quality &amp; Compliance</h4>
-      <p>Achieve <strong>100% Quality Assurance (QA)</strong> coverage by using AI to audit every single conversation for legal compliance and brand standards.</p>
-    </div>
-    <div>
-      <h4>The Churn Defence</h4>
-      <p>Companies using AI-driven sentiment analysis can increase long-term customer lifetime value (LTV) by <strong>15–20%</strong> through proactive intervention.</p>
-    </div>
-  </div>
-  <div class="ai-savings__quote">
-    <p>“95% of decision-makers already using AI report immediate cost and time savings… while AI-powered predictive analytics can drive a 25% increase in recovery rates for outbound functions.”</p>
-    <cite>— Salesforce / NobelBiz (2025/2026). Source: Salesforce: What is an AI Contact Center?</cite>
-  </div>
-</div>
-      </div>
-    </section>
-
     <section class="proposal-page" id="commercial">
       <div class="section-head">
-        <span class="section-num">05</span>
+        <span class="section-num">02</span>
         <h2>Commercial</h2>
       </div>
       <div class="section-body">
@@ -1919,7 +1564,21 @@
         </ul>
       </div>
     </section>
-  </div>
+      <section class="proposal-page" id="company-detail">
+      <div class="section-head">
+        <h2>Operational Information</h2>
+      </div>
+      <div class="section-body">
+        <div class="detail-cta">
+          <h3>How we deliver</h3>
+          <p>Only Company Overview and the Indicative Commercials are on this page to make it a quick read.</p>
+          <p>If you click on the button below, you can view our Value Proposition, Why South Africa / Cape Town and our Technology.</p>
+          <a class="detail-cta__btn" href="companydetail/">Open Operational Information</a>
+        </div>
+      </div>
+    </section>
+
+</div>
 </main>
 <nav class="jump-nav" aria-label="Page shortcuts">
   <a href="#top">Back to top</a>
