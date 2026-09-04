@@ -542,28 +542,72 @@
     }
     .seat-notes li { margin: 0.28rem 0; }
 
+    .exec-summary .prose {
+      gap: 1.05rem;
+    }
+    .exec-summary .prose p {
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
     .sector-case {
-      margin: 0 0 1.65rem;
+      display: grid;
+      grid-template-columns: minmax(13.5rem, 22.5rem) minmax(0, 1fr);
+      grid-template-areas: "media body";
+      gap: 1.05rem 1.4rem;
+      align-items: start;
+      margin: 0 0 1.15rem;
+      padding: 0.95rem;
+      border: 1px solid var(--border, #d5dbe3);
+      border-radius: 0.85rem;
+      background: #fff;
     }
     .sector-case:last-child {
       margin-bottom: 0;
     }
+    .sector-case--flip {
+      grid-template-columns: minmax(0, 1fr) minmax(13.5rem, 22.5rem);
+      grid-template-areas: "body media";
+    }
     .sector-case__media {
-      margin: 0 0 0.85rem;
+      grid-area: media;
+      margin: 0;
       overflow: hidden;
-      border-radius: 0.75rem;
+      border-radius: 0.65rem;
       border: 1px solid var(--border, #d5dbe3);
-      background: #fff;
+      background: #f4f6f8;
     }
     .sector-case__media img {
       display: block;
       width: 100%;
       height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center;
+    }
+    .sector-case__body {
+      grid-area: body;
+      min-width: 0;
+    }
+    .sector-case__body h3 {
+      margin: 0 0 0.55rem;
     }
     .sector-case .list-check {
-      margin-top: 0.45rem;
+      margin-top: 0.55rem;
     }
     @media (max-width: 860px) {
+      .sector-case,
+      .sector-case--flip {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "media"
+          "body";
+        padding: 0.75rem;
+      }
+      .sector-case__media img {
+        aspect-ratio: 16 / 9;
+        max-height: 11.5rem;
+      }
       .ot-timeline__head { flex-direction: column; }
       .ot-timeline__exco { width: 100%; }
       .ot-timeline__band,
@@ -848,6 +892,7 @@
   <div class="page-nav__links" id="cf-nav-links">
     <a href="#cover">Cover</a>
     <a href="#introduction">Cover letter</a>
+    <a href="#executive-summary">Executive Summary</a>
     <a href="#section-02">Company Overview</a>
     <a href="#sector-experience">Sector Experience</a>
     <a href="#commercial">Commercial</a>
@@ -895,6 +940,21 @@
           <p>Regards,</p>
           <p class="doc-note__name">Kobus van der Westhuizen</p>
           <p class="doc-note__role"><strong>CEO and Founder</strong></p>
+        </div>
+      </div>
+    </section>
+
+<section class="proposal-page exec-summary" id="executive-summary">
+      <div class="section-head">
+        <h2>Executive Summary</h2>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>We understand Community Fibre to be a fast-growing, London-based full-fibre operator, now serving roughly 450,000 customers across 1.4 million homes passed in all 33 boroughs. 2025 was a landmark year: revenue grew 48% year-on-year to £113m, and adjusted EBITDA grew 530% to £50m in your first profitable year — a strong foundation as you scale further through new wholesale partnerships, including the recently launched VodafoneThree deal and more reportedly in the pipeline. Throughout this growth, you've maintained a notably lean operating model, with OpEx down 12% year-on-year even as your customer base expanded rapidly — cost discipline is clearly embedded in how the business runs.</p>
+          <p>What stands out most, though, is that customer experience appears to be a genuine differentiator for Community Fibre rather than an afterthought. Your Trustpilot rating of 4.6–4.7 stars across more than 90,000 reviews is among the highest in UK broadband, comfortably ahead of incumbents like Virgin Media and Sky, and your own leadership has publicly credited strong customer service as a direct driver of your financial results. Customers consistently single out your installation engineers and phone support teams for being professional, patient, and low-pressure — a reputation that is clearly hard-won and worth protecting as you grow.</p>
+          <p>At the same time, our research surfaced a few recurring pressure points as the business scales. Customers have flagged inconsistent handling of escalations, with some describing missed callbacks or being asked to repeat information already on file. Support capacity appears to come under strain during surge events — during the February 2025 outage affecting over 15,000 customers, phone wait times reportedly exceeded 60 minutes and email response times stretched past 72 hours. Several reviews also describe the cancellation journey as considerably more difficult than the sign-up experience, and your AI live chat has drawn direct criticism in a number of reviews. We also note that current support hours (8am–9pm weekdays) sit below the 24/7 standard offered by some larger competitors, which may become more pressing as your B2B and wholesale volumes grow.</p>
+          <p>We also understand that Community Fibre already outsources a portion of customer support — approximately 50 FTE — to a South African partner, so this is a business that has already validated the offshore model rather than one we need to convince of its merits. Our conversation, then, isn't about whether to outsource, but about how to raise consistency, resilience, and outcomes as your volumes continue to climb.</p>
+          <p>This is where we believe Trilogy brings a genuinely different proposition, built around three things. First, Trilogy is a boutique customer service specialist — we do not run blended inbound/outbound sales or collections operations alongside support, as many generalist BPOs do. Customer service is our only focus, which means every process, hire, and quality framework is built around service outcomes rather than shared across competing commercial priorities. Second, our AI and digital channel capability is built specifically to support high-volume, high-pressure moments like your February 2025 outage — proactive digital communication (SMS, app, chat, status pages) that gets ahead of customers before they need to call, reducing exactly the kind of wait-time spikes that damage trust during a crisis. Third, through Trilogy Digital we bring genuine, niche telco operating experience rather than generalist BPO knowledge — our team has supported operators including MWEB, Vumatel, Telkom, Vodafone, Vodacom, and MTN, giving us a real understanding of fibre and mobile customer journeys, fault handling, and the escalation patterns unique to connectivity providers. We believe this combination — specialist focus, digital-first surge resilience, and telco-native experience — makes Trilogy well placed to protect and strengthen the customer experience reputation Community Fibre has built, not just add capacity to it.</p>
         </div>
       </div>
     </section>
@@ -1459,49 +1519,55 @@
         </div>
 
         <article class="sector-case" id="case-vuma">
-          <h3>Vuma FNO — Supporting 1 million customers</h3>
           <figure class="sector-case__media">
             <img src="assets/case-vuma.jpg" alt="Trilogy team celebrating Vuma passing one million subscribers" loading="lazy">
           </figure>
-          <div class="prose">
-            <p>As Vuma’s subscriber base expanded through 2025 and early 2026, demand for responsive 24/7 support intensified — from residential users and from ISPs that resell Vuma’s network. Crossing one million subscribers raised the stakes for reliability.</p>
-            <p><strong>The challenge.</strong> High-volume inbound across voice, email and WhatsApp. Complex technical troubleshooting for broadband installation, activations, connectivity and outages. Real-time escalation for business and enterprise partners. Consistent SLA fulfilment in peak traffic and network-expansion phases.</p>
-            <p><strong>The solution.</strong> A 24/7, scalable, multichannel service desk centred on customer experience:</p>
+          <div class="sector-case__body">
+            <h3>Vuma FNO — Supporting 1 million customers</h3>
+            <div class="prose">
+              <p>As Vuma’s subscriber base expanded through 2025 and early 2026, demand for responsive 24/7 support intensified — from residential users and from ISPs that resell Vuma’s network. Crossing one million subscribers raised the stakes for reliability.</p>
+              <p><strong>The challenge.</strong> High-volume inbound across voice, email and WhatsApp. Complex technical troubleshooting for broadband installation, activations, connectivity and outages. Real-time escalation for business and enterprise partners. Consistent SLA fulfilment in peak traffic and network-expansion phases.</p>
+              <p><strong>The solution.</strong> A 24/7, scalable, multichannel service desk centred on customer experience:</p>
+            </div>
+            <ul class="list-check">
+              <li>Voice — assisted calls with trained broadband support specialists.</li>
+              <li>WhatsApp — real-time problem-solving.</li>
+              <li>Email triage — structured escalation and tracking for complex tickets.</li>
+              <li>Shared knowledge bases and workflows so every channel feels like one operation.</li>
+            </ul>
           </div>
-          <ul class="list-check">
-            <li>Voice — assisted calls with trained broadband support specialists.</li>
-            <li>WhatsApp — real-time problem-solving.</li>
-            <li>Email triage — structured escalation and tracking for complex tickets.</li>
-            <li>Shared knowledge bases and workflows so every channel feels like one operation.</li>
-          </ul>
         </article>
 
-        <article class="sector-case" id="case-webafrica">
-          <h3>Webafrica — On-demand billing support at scale</h3>
+        <article class="sector-case sector-case--flip" id="case-webafrica">
           <figure class="sector-case__media">
             <img src="assets/case-webafrica.jpg" alt="Webafrica fibre and LTE billing support" loading="lazy">
           </figure>
-          <div class="prose">
-            <p>Billing runs for a national ISP bring heightened customer anxiety, contact spikes, and zero tolerance for error. Webafrica needed a partner that could scale billing-skilled chat agents on demand, cover VR, debit orders, suspensions and premium extractions, run extended staggered hours, and flex capacity day by day.</p>
-            <p><strong>What we deployed.</strong> A fully managed, on-demand chat workforce purpose-built for billing: 120 billing-trained chat agents, real-time workforce planning, centralised QA and live performance monitoring, aligned to Webafrica’s billing cycles and systems — covering Unlimited Fibre (up to 1 Gbps) and plug-and-play LTE.</p>
-            <p><strong>Operational impact.</strong> CSAT held through peak billing stress. Fewer billing escalations and repeats. Faster response on payment failures and suspensions. Accurate, compliant billing communication at scale — with zero disruption to Webafrica’s core teams.</p>
+          <div class="sector-case__body">
+            <h3>Webafrica — On-demand billing support at scale</h3>
+            <div class="prose">
+              <p>Billing runs for a national ISP bring heightened customer anxiety, contact spikes, and zero tolerance for error. Webafrica needed a partner that could scale billing-skilled chat agents on demand, cover VR, debit orders, suspensions and premium extractions, run extended staggered hours, and flex capacity day by day.</p>
+              <p><strong>What we deployed.</strong> A fully managed, on-demand chat workforce purpose-built for billing: 120 billing-trained chat agents, real-time workforce planning, centralised QA and live performance monitoring, aligned to Webafrica’s billing cycles and systems — covering Unlimited Fibre (up to 1 Gbps) and plug-and-play LTE.</p>
+              <p><strong>Operational impact.</strong> CSAT held through peak billing stress. Fewer billing escalations and repeats. Faster response on payment failures and suspensions. Accurate, compliant billing communication at scale — with zero disruption to Webafrica’s core teams.</p>
+            </div>
           </div>
         </article>
 
         <article class="sector-case" id="case-homechoice">
-          <h3>HomeChoice — Facebook to WhatsApp sales</h3>
           <figure class="sector-case__media">
             <img src="assets/case-homechoice.jpg" alt="HomeChoice Facebook to WhatsApp sales case study" loading="lazy">
           </figure>
-          <div class="prose">
-            <p>Adjacent to telco, the same digital stack that fibre brands use for acquisition. HomeChoice could not close Facebook adverts in real time — conversions were stuck to working hours and human intervention.</p>
-            <p>Trilogy connected Facebook prospects into WhatsApp so buying could continue after hours: capture, click-to-order or live assist, opt-in and order confirmation in-chat, delivery status, CSAT, then upsell.</p>
+          <div class="sector-case__body">
+            <h3>HomeChoice — Facebook to WhatsApp sales</h3>
+            <div class="prose">
+              <p>Adjacent to telco, the same digital stack that fibre brands use for acquisition. HomeChoice could not close Facebook adverts in real time — conversions were stuck to working hours and human intervention.</p>
+              <p>Trilogy connected Facebook prospects into WhatsApp so buying could continue after hours: capture, click-to-order or live assist, opt-in and order confirmation in-chat, delivery status, CSAT, then upsell.</p>
+            </div>
+            <ul class="list-check">
+              <li>Revenue up by over R1,000,000 per month.</li>
+              <li>91% WhatsApp adoption and a 50% increase in customer compliments.</li>
+              <li>Improved CSAT without a matching headcount increase.</li>
+            </ul>
           </div>
-          <ul class="list-check">
-            <li>Revenue up by over R1,000,000 per month.</li>
-            <li>91% WhatsApp adoption and a 50% increase in customer compliments.</li>
-            <li>Improved CSAT without a matching headcount increase.</li>
-          </ul>
         </article>
       </div>
     </section>
@@ -1669,7 +1735,7 @@
       <div class="section-body">
         <div class="detail-cta">
           <h3>How we deliver</h3>
-          <p>Company Overview, Sector Experience and the Indicative Commercials are on this page to make it a quick read.</p>
+          <p>The Executive Summary, Company Overview, Sector Experience and the Indicative Commercials are on this page to make it a quick read.</p>
           <p>If you click on the button below, you can view our Value Proposition, Why South Africa / Cape Town, Operational Leadership &amp; Delivery, Quality &amp; Analytics, Our Transition Methodology, further Case Studies and our Technology.</p>
           <a class="detail-cta__btn" href="companydetail/">Open Operational Information</a>
         </div>
