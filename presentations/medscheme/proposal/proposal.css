@@ -424,9 +424,8 @@ a { color: inherit; }
 .table-wrap {
   border: 1px solid var(--line);
   border-radius: 0.55rem;
-  overflow-x: auto;
+  overflow: hidden;
   margin: 2mm 0 3.5mm;
-  -webkit-overflow-scrolling: touch;
 }
 
 table.data {
@@ -436,21 +435,22 @@ table.data {
 }
 
 .data--months {
-  min-width: 920px;
-  font-size: 7.2pt;
+  min-width: 0;
+  width: 100%;
+  font-size: 7.4pt;
+  table-layout: fixed;
 }
 
 .data--months th,
 .data--months td {
-  padding: 1.8mm 1.6mm;
+  padding: 1.8mm 1.2mm;
 }
 
 .data--months th:first-child,
 .data--months td:first-child {
-  min-width: 11rem;
-  position: sticky;
-  left: 0;
-  z-index: 1;
+  width: 28%;
+  min-width: 0;
+  position: static;
   background: inherit;
 }
 
@@ -458,16 +458,9 @@ table.data {
   background: var(--navy);
 }
 
-.data--months tbody tr:nth-child(even) td:first-child {
-  background: #f3f6f9;
-}
-
-.data--months tbody tr:nth-child(odd) td:first-child {
-  background: #fff;
-}
-
-.data--months .total td:first-child {
-  background: rgba(97, 215, 121, 0.18);
+.data--months .num {
+  white-space: nowrap;
+  font-size: 7.1pt;
 }
 
 .data th {
@@ -553,10 +546,9 @@ table.data {
 
 .note-list li {
   counter-increment: notes;
-  display: grid;
-  grid-template-columns: 14mm 1fr;
+  display: flex;
   gap: 4mm;
-  align-items: start;
+  align-items: flex-start;
   border: 1px solid var(--line);
   border-radius: 0.7rem;
   padding: 5.5mm 6mm;
@@ -568,12 +560,23 @@ table.data {
 
 .note-list li::before {
   content: counter(notes, decimal-leading-zero);
+  flex: 0 0 14mm;
   font-family: var(--display);
   font-weight: 700;
   font-size: 14pt;
   color: var(--green);
   line-height: 1.15;
   letter-spacing: 0.02em;
+}
+
+.note-list li > span {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.note-list li strong {
+  font-weight: 700;
+  color: inherit;
 }
 
 .pillars {
