@@ -862,19 +862,19 @@ def build():
     )
     add_table(
         doc,
-        ["Line", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "Year 1"],
+        ["Line", "M1", "M2", "M3", "M4", "M5", "M6", "M7–9", "M10–12", "Year 1"],
         [
-            ["Initiation & market positioning (Months 1–3)", "$15,000", "$15,000", "$15,000", "—", "—", "—", "—", "—", "—", "—", "—", "—", "$45,000"],
-            ["Market engagement & sales (Months 4–12)", "—", "—", "—", "$10,000", "$10,000", "$10,000", "$10,000", "$10,000", "$10,000", "—", "—", "—", "$60,000"],
-            ["Travel, expenses & marketing", "Pass-through at cost (not in this fee)", "—", "—", "—", "—", "—", "—", "—", "—", "—", "—", "—", "$0"],
-            ["Trilogy lead-gen team (Cape Town, Months 1–12)", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$60,000"],
-            ["Total professional fees (USD)", "$20,000", "$20,000", "$20,000", "$15,000", "$15,000", "$15,000", "$15,000", "$15,000", "$15,000", "$5,000", "$5,000", "$5,000", "$165,000"],
+            ["Initiation & market positioning (Months 1–3)", "$15,000", "$15,000", "$15,000", "—", "—", "—", "—", "—", "$45,000"],
+            ["Market engagement & sales (Months 4–9)", "—", "—", "—", "$10,000", "$10,000", "$10,000", "$10,000", "$0", "$60,000"],
+            ["Travel, expenses & marketing", "Pass-through at cost (not in this fee)", "—", "—", "—", "—", "—", "—", "—", "$0"],
+            ["Trilogy lead-gen team (Cape Town, Months 1–12)", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$60,000"],
+            ["Total professional fees (USD)", "$20,000", "$20,000", "$20,000", "$15,000", "$15,000", "$15,000", "$15,000", "$5,000", "$165,000"],
         ],
         highlight_last=True,
     )
     add_para(
         doc,
-        "Year 1 path: Months 1–3 at $20,000 per month; Months 4–9 at $15,000 per month ($10,000 market engagement + $5,000 lead gen); Months 10–12 at $5,000 per month (lead gen only). Annual total $45,000 + $60,000 + $60,000 = USD 165,000.",
+        "Year 1 path: Months 1–3 at $20,000 per month; Months 4–9 at $15,000 per month ($10,000 market engagement + $5,000 lead gen); Months 10–12 at $5,000 per month (lead gen only). M7–9 and M10–12 columns show the monthly fee for each month in that band. Annual total $45,000 + $60,000 + $60,000 = USD 165,000.",
         align="justify",
         size=10,
         color=MUTED,
