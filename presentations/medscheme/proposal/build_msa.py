@@ -769,7 +769,7 @@ def build():
     heading(doc, "1.2  Term of this Addendum", 2)
     add_para(
         doc,
-        "Twelve (12) months from the Effective Date. Months 1–3 are the initiation and market-positioning phase (the project plan below). Months 4–12 are market engagement and sales, at the fees in clause 1.6.",
+        "Twelve (12) months from the Effective Date. Months 1–3 are the initiation and market-positioning phase (the project plan below). Months 4–9 are market engagement and sales; Months 10–12 continue with the Cape Town lead-generation team, at the fees in clause 1.6.",
         align="justify",
     )
 
@@ -857,31 +857,31 @@ def build():
     heading(doc, "1.6  Professional fees (USD)", 2)
     add_para(
         doc,
-        "Year-1 professional fees. Months 4–12 continue at the Month 4–6 run-rate. All amounts exclude VAT.",
+        "Year-1 professional fees. Market engagement & sales applies in Months 4–9; Months 10–12 continue with the Cape Town lead-generation team only. All amounts exclude VAT.",
         align="justify",
     )
     add_table(
         doc,
-        ["Line", "M1", "M2", "M3", "M4", "M5", "M6", "Year 1"],
+        ["Line", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "Year 1"],
         [
-            ["Initiation & market positioning (Months 1–3)", "$15,000", "$15,000", "$15,000", "—", "—", "—", "$45,000"],
-            ["Market engagement & sales (Months 4–12)", "—", "—", "—", "$10,000", "$10,000", "$10,000", "$90,000"],
-            ["Travel, expenses & marketing", "Pass-through at cost (not in this fee)", "—", "—", "—", "—", "—", "$0 in this fee"],
-            ["Trilogy lead-gen team (Cape Town, Months 1–12)", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$60,000"],
-            ["Total professional fees (USD)", "$20,000", "$20,000", "$20,000", "$15,000", "$15,000", "$15,000", "$195,000"],
+            ["Initiation & market positioning (Months 1–3)", "$15,000", "$15,000", "$15,000", "—", "—", "—", "—", "—", "—", "—", "—", "—", "$45,000"],
+            ["Market engagement & sales (Months 4–12)", "—", "—", "—", "$10,000", "$10,000", "$10,000", "$10,000", "$10,000", "$10,000", "—", "—", "—", "$60,000"],
+            ["Travel, expenses & marketing", "Pass-through at cost (not in this fee)", "—", "—", "—", "—", "—", "—", "—", "—", "—", "—", "—", "$0"],
+            ["Trilogy lead-gen team (Cape Town, Months 1–12)", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$5,000", "$60,000"],
+            ["Total professional fees (USD)", "$20,000", "$20,000", "$20,000", "$15,000", "$15,000", "$15,000", "$15,000", "$15,000", "$15,000", "$5,000", "$5,000", "$5,000", "$165,000"],
         ],
         highlight_last=True,
     )
     add_para(
         doc,
-        "Year 1 path: Months 1–3 at $20,000 per month; Months 4–12 at $15,000 per month ($10,000 market engagement + $5,000 lead gen). Annual total $45,000 + $90,000 + $60,000 = USD 195,000. Months 7–12 are billed at the same $15,000 monthly run-rate as Months 4–6.",
+        "Year 1 path: Months 1–3 at $20,000 per month; Months 4–9 at $15,000 per month ($10,000 market engagement + $5,000 lead gen); Months 10–12 at $5,000 per month (lead gen only). Annual total $45,000 + $60,000 + $60,000 = USD 165,000.",
         align="justify",
         size=10,
         color=MUTED,
     )
     add_para(
         doc,
-        "Indicative ZAR (not payable): at USD × 18, Year 1 is approximately R3,510,000. The Client pays this Addendum in USD unless a ZAR billing arrangement is separately agreed.",
+        "ZAR equivalent (illustrative, not payable): at a fixed planning rate of 18 ZAR to 1 USD, Year 1 is R2,970,000. The Client pays this Addendum in USD unless a ZAR billing arrangement is separately agreed. The 18:1 rate is for proposal planning only and is not a guaranteed or invoicing FX rate.",
         align="justify",
         size=10,
         color=MUTED,

@@ -424,14 +424,50 @@ a { color: inherit; }
 .table-wrap {
   border: 1px solid var(--line);
   border-radius: 0.55rem;
-  overflow: hidden;
+  overflow-x: auto;
   margin: 2mm 0 3.5mm;
+  -webkit-overflow-scrolling: touch;
 }
 
 table.data {
   width: 100%;
   border-collapse: collapse;
   font-size: 8.4pt;
+}
+
+.data--months {
+  min-width: 920px;
+  font-size: 7.2pt;
+}
+
+.data--months th,
+.data--months td {
+  padding: 1.8mm 1.6mm;
+}
+
+.data--months th:first-child,
+.data--months td:first-child {
+  min-width: 11rem;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: inherit;
+}
+
+.data--months thead th:first-child {
+  background: var(--navy);
+}
+
+.data--months tbody tr:nth-child(even) td:first-child {
+  background: #f3f6f9;
+}
+
+.data--months tbody tr:nth-child(odd) td:first-child {
+  background: #fff;
+}
+
+.data--months .total td:first-child {
+  background: rgba(97, 215, 121, 0.18);
 }
 
 .data th {
