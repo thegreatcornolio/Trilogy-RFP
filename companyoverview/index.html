@@ -22,12 +22,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-5">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-5">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-6">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-6">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
-    .cover__brand { align-items: stretch !important; text-align: left !important; }
     .cover__brand-line { display: block; }
     .meta-grid--2 { grid-template-columns: 1fr; }
     @media (min-width: 640px) {
@@ -40,117 +39,157 @@
     }
     html.js-reveal .proposal-page.is-visible { opacity: 1; transform: none; }
 
-    /* Cover hero — logo → brand → intro → full-bleed video */
-    .cover.co-cover-hero {
-      padding: 1.25rem 1.25rem 2rem;
-    }
-    @media (min-width: 640px) {
-      .cover.co-cover-hero {
-        padding: 1.6rem 2rem 2.5rem;
-      }
-    }
-    .cover.co-cover-hero .cover__brand {
-      align-items: flex-start !important;
-      text-align: left !important;
-      padding-top: 0;
-      gap: 0.2rem;
-      margin-bottom: 1rem;
-    }
-    .cover.co-cover-hero .cover__logo {
-      position: static !important;
-      top: auto !important;
-      left: auto !important;
-      width: min(12.5rem, 52vw);
-      max-height: none;
-      height: auto;
-      object-fit: contain;
-      object-position: left center;
-      margin: 0 0 0.55rem;
-      border-radius: 0;
-    }
-    @media (min-width: 640px) {
-      .cover.co-cover-hero .cover__logo {
-        width: min(15rem, 30vw);
-      }
-    }
-    .cover.co-cover-hero .cover__brand-name {
-      font-size: clamp(1.85rem, 4.2vw, 2.75rem);
-      line-height: 1.1;
-    }
-    .cover.co-cover-hero .cover__brand-line {
-      font-size: clamp(0.78rem, 1.4vw, 0.95rem);
-      letter-spacing: 0.16em;
-    }
-    .co-hero {
-      display: block;
-      margin: 0 0 1rem;
-    }
-    .co-hero__copy h1 {
-      margin: 0 0 0.85rem;
-      font-family: Poppins, Inter, sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.85rem, 4.2vw, 2.85rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      color: #fff;
-    }
-    .co-hero__copy h1 .co-hero__accent {
-      color: #61d779;
-    }
-    .cover.co-cover-hero .cover__intro {
-      margin: 0 0 1.15rem;
+    /* Full-viewport page chrome so the hero can go edge-to-edge */
+    body.proposal-doc .main {
       max-width: none !important;
       width: 100%;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: clamp(0.98rem, 1.5vw, 1.08rem);
-      line-height: 1.6;
+      margin: 0;
+      padding: 0 !important;
     }
-    /* Full-bleed video across the cover card */
-    .co-hero__media {
-      position: relative;
-      display: block;
-      width: calc(100% + 2.5rem);
-      max-width: none;
-      margin: 0 -1.25rem 1.15rem;
+    body.proposal-doc .proposal-shell {
       border-radius: 0;
-      overflow: hidden;
-      border: none;
-      border-top: 1px solid rgba(97, 215, 121, 0.28);
-      border-bottom: 1px solid rgba(97, 215, 121, 0.28);
-      background: #0b121a;
+      outline: none;
       box-shadow: none;
-      aspect-ratio: 16 / 9;
-      min-height: min(52vh, 22rem);
-      max-height: none;
+      overflow: visible;
     }
-    @media (min-width: 640px) {
-      .co-hero__media {
-        width: calc(100% + 4rem);
-        margin-left: -2rem;
-        margin-right: -2rem;
-        min-height: min(62vh, 34rem);
-      }
+    body.proposal-doc .proposal-page {
+      max-width: min(72.5rem, calc(100vw - 2rem));
+      margin-left: auto;
+      margin-right: auto;
     }
-    @media (min-width: 1100px) {
-      .co-hero__media {
-        min-height: min(68vh, 40rem);
-      }
+
+    /* Full-screen video hero with text overlay */
+    .cover.co-cover-hero {
+      position: relative;
+      padding: 0 !important;
+      background: #0b121a;
+      overflow: hidden;
     }
-    .co-hero__media video,
-    .co-hero__media img {
-      display: block;
+    .cover.co-cover-hero .cover__bars { display: none; }
+
+    .co-fs {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      background: #0b121a;
+    }
+    .co-fs__video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      filter: none;
+      pointer-events: none;
     }
-    .cover.co-cover-hero .cover__body {
+    .co-fs__scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(8, 14, 22, 0.72) 0%, rgba(8, 14, 22, 0.38) 42%, rgba(8, 14, 22, 0.78) 100%);
+      pointer-events: none;
+    }
+    .co-fs__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+      padding: clamp(1.15rem, 3.5vw, 2.5rem) clamp(1.15rem, 4vw, 3rem);
+      box-sizing: border-box;
+    }
+    .co-fs__logo {
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
+      display: block;
+      width: min(12rem, 48vw) !important;
+      max-height: none !important;
+      height: auto;
+      margin: 0;
+      border-radius: 0 !important;
+      object-fit: contain;
+      object-position: left center;
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.35));
+    }
+    @media (min-width: 640px) {
+      .co-fs__logo { width: min(15rem, 28vw) !important; }
+    }
+    .co-fs__mid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0;
+      max-width: 52rem;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .co-fs__mid .cover__brand-name {
+      display: block;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: clamp(2.35rem, 6.5vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: #fff;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+    }
+    .co-fs__mid .cover__brand-line {
+      display: block;
+      font-size: clamp(0.78rem, 1.5vw, 1.05rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.72);
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+      margin: 0.15rem 0 0.85rem;
+    }
+    .co-fs__mid h1 {
+      margin: 0;
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.35rem, 3.2vw, 2.15rem);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: #fff;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+    }
+    .co-fs__mid h1 .co-hero__accent { color: #61d779; }
+    .co-fs__inner .cover__intro {
+      margin: 0;
+      max-width: none !important;
+      width: 100%;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: clamp(0.95rem, 1.45vw, 1.08rem);
+      line-height: 1.6;
+      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+    }
+    .co-fs__meta {
+      position: relative;
+      z-index: 2;
+      background: #13202e;
+      color: #fff;
+      padding: 1.5rem clamp(1.15rem, 4vw, 3rem) 2rem;
+    }
+    .co-fs__meta .cover__body {
       margin-top: 0;
       max-width: none;
       width: 100%;
     }
-    .cover.co-cover-hero .cover__body h2 {
+    .co-fs__meta .cover__body h2 {
       margin: 0 0 0.3rem;
       font-family: Poppins, Inter, sans-serif;
       font-size: clamp(1.35rem, 2.6vw, 1.85rem);
@@ -158,15 +197,15 @@
       color: #fff;
       letter-spacing: -0.01em;
     }
-    .cover.co-cover-hero .cover__tagline {
-      margin-top: 0.35rem;
-    }
-    .cover.co-cover-hero .meta-grid {
-      margin-top: 1.25rem;
-    }
-    .cover.co-cover-hero .cover__disclaimer {
+    .co-fs__meta .cover__tagline { margin-top: 0.35rem; }
+    .co-fs__meta .meta-grid { margin-top: 1.25rem; }
+    .co-fs__meta .cover__disclaimer {
       margin-top: 1.5rem;
       max-width: none;
+    }
+    @media (max-width: 720px) {
+      .cover.co-cover-hero { padding: 0 !important; }
+      .co-fs__meta .cover__body { margin-top: 0 !important; }
     }
     .brand-marquee { margin: 0.35rem 0 0.85rem; }
     .brand-marquee__viewport {
@@ -329,39 +368,40 @@
   <div class="proposal-shell">
 
     <section class="cover co-cover-hero" id="cover">
-      <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="cover__brand">
-        <img class="cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
-        <span class="cover__brand-name">Trilogy Digital</span>
-        <span class="cover__brand-line">A Trilogy Group Company</span>
-      </div>
-      <div class="co-hero">
-        <div class="co-hero__copy">
-          <h1>Make Customer Engagement <span class="co-hero__accent">Simple.</span></h1>
+      <div class="co-fs">
+        <video
+          class="co-fs__video"
+          src="assets/video/hero.mp4"
+          poster="assets/video/hero-poster.jpg"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-label="Trilogy animated hero — customer engagement"
+        ></video>
+        <div class="co-fs__scrim" aria-hidden="true"></div>
+        <div class="co-fs__inner">
+          <img class="co-fs__logo cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
+          <div class="co-fs__mid">
+            <span class="cover__brand-name">Trilogy Digital</span>
+            <span class="cover__brand-line">A Trilogy Group Company</span>
+            <h1>Make Customer Engagement <span class="co-hero__accent">Simple.</span></h1>
+          </div>
+          <p class="cover__intro">Transform your customer experience with Trilogy's comprehensive solutions spanning traditional voice services, cutting-edge digital engagement, and AI-powered automation—all designed to meet the evolving demands of today's digital-first consumers.</p>
         </div>
-        <p class="cover__intro">Transform your customer experience with Trilogy's comprehensive solutions spanning traditional voice services, cutting-edge digital engagement, and AI-powered automation—all designed to meet the evolving demands of today's digital-first consumers.</p>
-        <figure class="co-hero__media">
-          <video
-            src="assets/video/hero.mp4"
-            poster="assets/video/hero-poster.jpg"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            aria-label="Trilogy animated hero — customer engagement"
-          ></video>
-        </figure>
       </div>
-      <div class="cover__body">
-        <h2>Trilogy Corporate Overview</h2>
-        <p class="cover__tagline">Human Led · Ai-enabled</p>
+      <div class="co-fs__meta">
+        <div class="cover__body">
+          <h2>Trilogy Corporate Overview</h2>
+          <p class="cover__tagline">Human Led · Ai-enabled</p>
+        </div>
+        <div class="meta-grid meta-grid--2">
+          <div><div class="meta-label">Version</div><div class="meta-value">Short · May 2026 update</div></div>
+          <div><div class="meta-label">Contact</div><div class="meta-value"><a href="mailto:sales@trilogybpo.com">sales@trilogybpo.com</a></div></div>
+        </div>
+        <p class="cover__disclaimer">Commercial-in-confidence. For sales sharing with prospects and partners. Not a formal proposal.</p>
       </div>
-      <div class="meta-grid meta-grid--2">
-        <div><div class="meta-label">Version</div><div class="meta-value">Short · May 2026 update</div></div>
-        <div><div class="meta-label">Contact</div><div class="meta-value"><a href="mailto:sales@trilogybpo.com">sales@trilogybpo.com</a></div></div>
-      </div>
-      <p class="cover__disclaimer">Commercial-in-confidence. For sales sharing with prospects and partners. Not a formal proposal.</p>
     </section>
 
     <section class="proposal-page" id="who">
