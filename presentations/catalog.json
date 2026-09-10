@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-04T12:46:00.000Z",
+  "updatedAt": "2026-09-10T09:30:00.000Z",
   "items": [
     {
       "slug": "companyoverview",
-      "title": "Trilogy Digital Company Overview",
+      "title": "Trilogy Corporate Overview",
       "client": "Trilogy Digital",
-      "sourceType": "scrolling webpage",
-      "date": "2026-09-04",
+      "sourceType": "company overview",
+      "date": "2026-09-10",
       "url": "https://proposal.trilogybpo.com/companyoverview/",
       "blend": {
         "primary": "#61d779",
@@ -22,7 +22,7 @@
       "title": "Trilogy Digital Operational Overview",
       "client": "Trilogy Digital",
       "sourceType": "scrolling webpage",
-      "date": "2026-09-04",
+      "date": "2026-09-10",
       "url": "https://proposal.trilogybpo.com/companyoverview/operations.html",
       "blend": {
         "primary": "#61d779",

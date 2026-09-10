@@ -1,10 +1,10 @@
-# Trilogy Digital Company Overview
+# Trilogy Corporate Overview
 
-Password-gated overview site.
+Short, sales-ready company overview (not a proposal).
 
-- **Page 1:** [/companyoverview/](https://proposal.trilogybpo.com/companyoverview/) — Company Overview, Why Cape Town / Why South Africa, Service Offerings
-- **Page 2:** [/companyoverview/operations.html](https://proposal.trilogybpo.com/companyoverview/operations.html) — BPO Contact Centres, GCC, Technology, Test Kitchen, MIS, Ops Leadership, Forecasting, Quality, Compliance, Safety, Transition, Case Studies
+- **Landing:** [/companyoverview/](https://proposal.trilogybpo.com/companyoverview/) — who we are, offerings, why SA, leadership, solutions, case studies
+- **Optional depth:** [/companyoverview/operations.html](https://proposal.trilogybpo.com/companyoverview/operations.html) — operational detail
 
-Password: `companyoverview` (session shared across both pages).
+Password: `companyoverview` (shared session across both pages).
 
-Shell styles (mobile nav, section jump cards, CTA dock, GCC/DBIT motion) live in `co-shell.css`.
+Source blend: existing Trilogy Digital overview content + *Trilogy Corporate Overview SHORT May 2026* PDF (`assets/Trilogy_Corporate_Overview_SHORT_May_2026.pdf`).
