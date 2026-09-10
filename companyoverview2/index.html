@@ -23,8 +23,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="../trilogydigital/styles.css?v=companyoverview2-5" rel="stylesheet"/>
-<link href="co-shell.css?v=companyoverview2-5" rel="stylesheet"/>
+<link href="../trilogydigital/styles.css?v=companyoverview2-7" rel="stylesheet"/>
+<link href="co-shell.css?v=companyoverview2-7" rel="stylesheet"/>
 <script>document.documentElement.classList.add("js-reveal");</script>
 <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
 <style>
@@ -212,34 +212,46 @@
         min-height: calc(100svh - 3.35rem);
         min-height: calc(100dvh - 3.35rem);
       }
-      .co-fs__inner {
-        padding: 0.85rem 1rem 1.15rem;
-        gap: 0.65rem;
+      /* Darker scrim so white hero copy stays readable over the video */
+      .co-fs__scrim {
+        background:
+          linear-gradient(180deg, rgba(8, 14, 22, 0.82) 0%, rgba(8, 14, 22, 0.62) 45%, rgba(8, 14, 22, 0.88) 100%);
       }
+      .co-fs__inner {
+        padding: 1rem 1.1rem 1.35rem;
+        gap: 0.85rem;
+      }
+      /* Sticky page-nav already shows Trilogy — drop duplicate logo for breathing room */
       .co-fs__logo {
-        width: min(9.5rem, 46vw) !important;
+        display: none !important;
       }
       .co-fs__mid {
         justify-content: center;
-        padding-top: 0;
+        padding-top: 0.35rem;
         max-width: 100%;
+        gap: 0.35rem;
       }
       .co-fs__mid .cover__brand-name {
-        font-size: clamp(1.7rem, 8.5vw, 2.25rem);
+        font-size: clamp(1.85rem, 9vw, 2.35rem);
+        text-shadow: 0 2px 22px rgba(0, 0, 0, 0.65);
       }
       .co-fs__mid .cover__brand-line {
-        font-size: 0.72rem;
-        letter-spacing: 0.12em;
-        margin-bottom: 0.55rem;
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        margin: 0.1rem 0 0.65rem;
+        color: rgba(255, 255, 255, 0.82);
       }
       .co-fs__mid h1 {
-        font-size: 1.2rem;
-        line-height: 1.2;
+        font-size: clamp(1.15rem, 5.2vw, 1.4rem) !important;
+        line-height: 1.25;
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
       }
       .co-fs__mid .cover__intro {
-        margin-top: 0.7rem;
-        font-size: 0.9rem;
-        line-height: 1.45;
+        margin-top: 0.75rem;
+        font-size: 0.92rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
       }
       .co-fs__meta {
         padding: 1.15rem 1rem 1.35rem;
@@ -1030,7 +1042,7 @@
 </a>
 </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview2-5"></script>
+<script src="../trilogydigital/script.js?v=companyoverview2-7"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");

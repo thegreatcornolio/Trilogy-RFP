@@ -10,13 +10,13 @@
         opacity: 1 !important;
         transform: none !important;
       }
-      .cover {
+      .cover:not(.co-cover-hero) {
         padding: 2rem 1.15rem 2.25rem !important;
       }
-      .cover__body {
+      .cover:not(.co-cover-hero) .cover__body {
         margin-top: 2.4rem !important;
       }
-      .cover h1 {
+      .cover:not(.co-cover-hero) h1 {
         font-size: 1.85rem !important;
       }
       .proposal-page {

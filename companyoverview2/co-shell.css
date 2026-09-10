@@ -10,13 +10,14 @@
         opacity: 1 !important;
         transform: none !important;
       }
-      .cover {
+      /* Generic cover padding — skip video hero (handled by .co-fs rules) */
+      .cover:not(.co-cover-hero) {
         padding: 2rem 1.15rem 2.25rem !important;
       }
-      .cover__body {
+      .cover:not(.co-cover-hero) .cover__body {
         margin-top: 2.4rem !important;
       }
-      .cover h1 {
+      .cover:not(.co-cover-hero) h1 {
         font-size: 1.85rem !important;
       }
       .proposal-page {
@@ -82,7 +83,7 @@
         display: none !important;
       }
       body.proposal-doc {
-        padding-bottom: 7.25rem;
+        padding-bottom: calc(7.25rem + env(safe-area-inset-bottom, 0px));
         overflow-x: hidden;
       }
       .brand-marquee,
@@ -131,6 +132,24 @@
       }
       .team-roster__grid--5 {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 0.75rem;
+      }
+      .team-card {
+        min-width: 0;
+      }
+      .team-card__name-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 0.25rem 0.35rem;
+      }
+      .team-card__name-row h4 {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        font-size: 0.72rem;
+      }
+      .team-card__linkedin {
+        margin-top: 0.1rem;
       }
       .awards-panel,
       .awards-timeline,
@@ -545,7 +564,10 @@ body.proposal-doc {
 
 @media (max-width: 720px) {
   body.proposal-doc {
-    padding-bottom: 6.4rem;
+    padding-bottom: calc(7.25rem + env(safe-area-inset-bottom, 0px));
+  }
+  .cta-dock {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   .cta-dock__inner {
     border-radius: 1.15rem;
