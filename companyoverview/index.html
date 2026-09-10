@@ -22,8 +22,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-2">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-2">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-3">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-3">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -40,27 +40,48 @@
     }
     html.js-reveal .proposal-page.is-visible { opacity: 1; transform: none; }
 
-    /* Cover hero — Make Customer Engagement Simple + handshake */
+    /* Cover hero — brand + Make Customer Engagement Simple + handshake */
     .cover.co-cover-hero {
-      padding-top: 4.5rem;
+      padding-top: 1.1rem;
+    }
+    .cover.co-cover-hero .cover__brand {
+      align-items: flex-start !important;
+      text-align: left !important;
+      padding-top: 0.35rem;
+      gap: 0.25rem;
+      margin-bottom: 0.85rem;
+    }
+    .cover.co-cover-hero .cover__logo {
+      position: static;
+      width: min(11.5rem, 48vw);
+      max-height: 2.5rem;
+      object-fit: contain;
+      object-position: left center;
+      margin: 0 0 0.35rem;
+    }
+    @media (min-width: 640px) {
+      .cover.co-cover-hero .cover__logo {
+        width: min(13.5rem, 28vw);
+        max-height: 2.85rem;
+      }
     }
     .co-hero {
       display: grid;
-      gap: 1.25rem;
+      gap: 1rem;
       align-items: center;
-      margin: 0.5rem 0 0.35rem;
+      margin: 0 0 0.85rem;
     }
     @media (min-width: 860px) {
       .co-hero {
-        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
-        gap: 1.5rem;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+        gap: 1.35rem;
       }
     }
     .co-hero__copy h1 {
       margin: 0;
       font-family: Poppins, Inter, sans-serif;
       font-weight: 700;
-      font-size: clamp(2rem, 4.8vw, 3.15rem);
+      font-size: clamp(1.85rem, 4.2vw, 2.85rem);
       line-height: 1.08;
       letter-spacing: -0.02em;
       color: #fff;
@@ -72,23 +93,29 @@
       margin: 0;
       border-radius: 0.85rem;
       overflow: hidden;
-      border: 1px solid rgba(97, 215, 121, 0.28);
-      background: #0b121a;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(97, 215, 121, 0.35);
+      background: #1a2430;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
     }
     .co-hero__media img {
       display: block;
       width: 100%;
       height: auto;
-      aspect-ratio: 1 / 0.92;
+      max-height: 15.5rem;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
-      object-position: center;
+      object-position: center 40%;
+      filter: brightness(1.08) contrast(1.04) saturate(1.05);
+    }
+    @media (min-width: 860px) {
+      .co-hero__media img { max-height: 17rem; }
     }
     .cover.co-cover-hero .cover__body {
-      margin-top: 0.35rem;
+      margin-top: 0;
+      width: 100%;
     }
     .cover.co-cover-hero .cover__body h2 {
-      margin: 0 0 0.35rem;
+      margin: 0 0 0.3rem;
       font-family: Poppins, Inter, sans-serif;
       font-size: clamp(1.35rem, 2.6vw, 1.85rem);
       font-weight: 700;
@@ -96,11 +123,15 @@
       letter-spacing: -0.01em;
     }
     .cover.co-cover-hero .cover__intro {
-      margin: 0.65rem 0 0;
-      max-width: 44rem;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: 0.98rem;
+      margin: 0.55rem 0 0;
+      max-width: none;
+      width: 100%;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.02rem;
       line-height: 1.55;
+    }
+    .cover.co-cover-hero .meta-grid {
+      margin-top: 1rem;
     }
     .brand-marquee { margin: 0.35rem 0 0.85rem; }
     .brand-marquee__viewport {
@@ -264,13 +295,17 @@
 
     <section class="cover co-cover-hero" id="cover">
       <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
-      <img class="cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
+      <div class="cover__brand">
+        <span class="cover__brand-name">Trilogy Digital</span>
+        <span class="cover__brand-line">A Trilogy Group Company</span>
+        <img class="cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
+      </div>
       <div class="co-hero">
         <div class="co-hero__copy">
           <h1>Make Customer Engagement <span class="co-hero__accent">Simple.</span></h1>
         </div>
         <figure class="co-hero__media">
-          <img src="assets/human-ai-handshake.png" alt="Human and AI shaking hands — human-led, AI-enabled partnership" width="1071" height="927">
+          <img src="assets/human-ai-handshake.png?v=2" alt="Human and AI shaking hands — human-led, AI-enabled partnership" width="1071" height="927">
         </figure>
       </div>
       <div class="cover__body">
