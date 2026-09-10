@@ -22,8 +22,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-12">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-12">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-13">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-13">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -366,6 +366,323 @@
     @media (min-width: 720px) {
       .team-roster__grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
+
+    /* One Team / Management Journey timeline */
+    .ot-timeline {
+      margin: 0.85rem 0 1.35rem;
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      padding: 1.35rem 1.15rem 1.55rem;
+      overflow: visible;
+    }
+    .ot-timeline__head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.25rem;
+      align-items: flex-start;
+      margin-bottom: 0.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .ot-timeline__title {
+      margin: 0 0 0.35rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #61d779;
+    }
+    .ot-timeline__sub {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.88);
+      max-width: 22rem;
+    }
+    .ot-timeline__exco {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem 1.4rem;
+      font-size: 0.92rem;
+    }
+    .ot-timeline__exco span {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d5ec67;
+      margin-bottom: 0.12rem;
+    }
+    .ot-timeline__band {
+      display: grid;
+      grid-template-columns: 4.7rem minmax(0, 1fr);
+      grid-template-rows: auto 1.6rem auto;
+      column-gap: 0.55rem;
+      margin-top: 1.15rem;
+    }
+    .ot-timeline__band + .ot-timeline__band {
+      margin-top: 1.65rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .ot-axis {
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+    }
+    .ot-axis__co,
+    .ot-axis__uk {
+      margin: 0;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #61d779;
+      line-height: 1.2;
+    }
+    .ot-axis__co { grid-row: 1; align-self: end; padding-bottom: 0.45rem; }
+    .ot-axis__uk { grid-row: 3; align-self: start; padding-top: 0.5rem; }
+    .ot-timeline__track {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      display: grid;
+      grid-template-rows: subgrid;
+      position: relative;
+    }
+    .ot-timeline__rail {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      gap: 0 0.85rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .ot-timeline__rail--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .ot-timeline__rail--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ot-node {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / span 3;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .ot-node__company {
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      text-align: center;
+      padding-bottom: 0.4rem;
+      min-height: 7.2rem;
+    }
+    .ot-node__spine {
+      grid-row: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .ot-node__spine::before {
+      content: "";
+      position: absolute;
+      left: calc(-50% - 0.43rem);
+      right: calc(-50% - 0.43rem);
+      height: 4px;
+      background: #61d779;
+      z-index: 0;
+    }
+    .ot-timeline__rail li:first-child .ot-node__spine::before { left: 50%; }
+    .ot-timeline__rail li:last-child .ot-node__spine::before { right: 50%; }
+    .ot-node__clients {
+      grid-row: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: center;
+      margin: 0;
+      padding: 0.55rem 0 0;
+      list-style: none;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.9);
+    }
+    .ot-node__note {
+      display: inline-block;
+      margin: 0 auto 0.4rem;
+      padding: 0.22rem 0.45rem;
+      border: 1px solid rgba(97, 215, 121, 0.55);
+      border-radius: 0.35rem;
+      font-size: 0.72rem;
+      line-height: 1.3;
+      color: rgba(255,255,255,0.78);
+      max-width: 100%;
+    }
+    .ot-node__co {
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      color: #fff;
+    }
+    .ot-node__co.is-now { color: #d5ec67; }
+    .ot-node__dates {
+      margin-top: 0.18rem;
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.62);
+    }
+    .ot-node__dot {
+      position: relative;
+      z-index: 1;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #13202e;
+      box-shadow: 0 0 0 5px #61d779;
+    }
+    @media (max-width: 860px) {
+      .ot-timeline__head { flex-direction: column; }
+      .ot-timeline__exco { width: 100%; }
+      .ot-timeline__band,
+      .ot-axis,
+      .ot-timeline__track,
+      .ot-timeline__rail,
+      .ot-node { display: block; }
+      .ot-timeline__band { grid-template-columns: 1fr; }
+      .ot-axis { display: none; }
+      .ot-node__spine::before { display: none; }
+      .ot-timeline__rail--4,
+      .ot-timeline__rail--3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+      .ot-node__company { min-height: 0; padding-bottom: 0.2rem; }
+    }
+
+    /* How we operate — graphic cards + moving colour blocks */
+    .co-ops-grid {
+      display: grid;
+      gap: 0.9rem;
+      margin: 0.35rem 0 0.85rem;
+    }
+    @media (min-width: 900px) {
+      .co-ops-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .co-ops-card {
+      --ops-a: #61d779;
+      --ops-b: #d5ec67;
+      --ops-c: #5bc0eb;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #d5dbe3;
+      border-radius: 0.85rem;
+      background: #fff;
+      padding: 0 0 1.05rem;
+      box-shadow: 0 10px 22px rgba(19,32,46,0.06);
+    }
+    .co-ops-card--geo { --ops-a: #61d779; --ops-b: #2f9e4a; --ops-c: #d5ec67; }
+    .co-ops-card--vert { --ops-a: #d5ec67; --ops-b: #61d779; --ops-c: #5bc0eb; }
+    .co-ops-card--func { --ops-a: #5bc0eb; --ops-b: #61d779; --ops-c: #d5ec67; }
+    .co-ops-card__visual {
+      position: relative;
+      height: 7.5rem;
+      margin-bottom: 0.85rem;
+      background: linear-gradient(145deg, #13202e 0%, #1a2d3f 55%, #243447 100%);
+      overflow: hidden;
+    }
+    .co-ops-blocks {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .co-ops-block {
+      position: absolute;
+      border-radius: 0.45rem;
+      opacity: 0.88;
+      animation: co-ops-float 7.5s ease-in-out infinite;
+      animation-delay: calc(var(--i) * -1.1s);
+      will-change: transform;
+    }
+    .co-ops-blocks--geo .co-ops-block:nth-child(1) { width: 3.2rem; height: 2rem; left: 8%; top: 18%; background: var(--ops-a); }
+    .co-ops-blocks--geo .co-ops-block:nth-child(2) { width: 2.1rem; height: 2.1rem; left: 38%; top: 42%; background: var(--ops-b); border-radius: 999px; }
+    .co-ops-blocks--geo .co-ops-block:nth-child(3) { width: 4rem; height: 1.35rem; right: 10%; top: 22%; background: var(--ops-c); }
+    .co-ops-blocks--geo .co-ops-block:nth-child(4) { width: 1.6rem; height: 3rem; left: 22%; bottom: 12%; background: rgba(97,215,121,.45); }
+    .co-ops-blocks--geo .co-ops-block:nth-child(5) { width: 2.6rem; height: 1.1rem; right: 24%; bottom: 18%; background: rgba(213,236,103,.55); }
+    .co-ops-blocks--geo .co-ops-block:nth-child(6) { width: 1.8rem; height: 1.8rem; right: 12%; top: 48%; background: rgba(91,192,235,.5); border-radius: 0.35rem; }
+
+    .co-ops-blocks--vert .co-ops-block:nth-child(1) { width: 1.35rem; height: 3.4rem; left: 14%; bottom: 12%; background: var(--ops-a); animation-name: co-ops-rise; }
+    .co-ops-blocks--vert .co-ops-block:nth-child(2) { width: 1.35rem; height: 4.2rem; left: 30%; bottom: 12%; background: var(--ops-b); animation-name: co-ops-rise; }
+    .co-ops-blocks--vert .co-ops-block:nth-child(3) { width: 1.35rem; height: 2.6rem; left: 46%; bottom: 12%; background: var(--ops-c); animation-name: co-ops-rise; }
+    .co-ops-blocks--vert .co-ops-block:nth-child(4) { width: 1.35rem; height: 3.8rem; left: 62%; bottom: 12%; background: rgba(97,215,121,.55); animation-name: co-ops-rise; }
+    .co-ops-blocks--vert .co-ops-block:nth-child(5) { width: 1.35rem; height: 5rem; left: 78%; bottom: 12%; background: rgba(213,236,103,.7); animation-name: co-ops-rise; }
+    .co-ops-blocks--vert .co-ops-block:nth-child(6) { width: 2.2rem; height: 0.7rem; left: 12%; top: 16%; background: rgba(91,192,235,.55); }
+
+    .co-ops-blocks--func .co-ops-block:nth-child(1) { width: 2.4rem; height: 2.4rem; left: 12%; top: 18%; background: var(--ops-a); border-radius: 0.55rem; }
+    .co-ops-blocks--func .co-ops-block:nth-child(2) { width: 3.1rem; height: 1.4rem; left: 42%; top: 22%; background: var(--ops-b); }
+    .co-ops-blocks--func .co-ops-block:nth-child(3) { width: 1.8rem; height: 1.8rem; right: 14%; top: 16%; background: var(--ops-c); border-radius: 999px; }
+    .co-ops-blocks--func .co-ops-block:nth-child(4) { width: 2.8rem; height: 1.2rem; left: 18%; bottom: 16%; background: rgba(213,236,103,.6); }
+    .co-ops-blocks--func .co-ops-block:nth-child(5) { width: 2rem; height: 2rem; left: 48%; bottom: 14%; background: rgba(97,215,121,.5); border-radius: 0.4rem; }
+    .co-ops-blocks--func .co-ops-block:nth-child(6) { width: 3.4rem; height: 1.15rem; right: 12%; bottom: 20%; background: rgba(91,192,235,.55); }
+
+    .co-ops-icon {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,.35));
+    }
+    .co-ops-icon svg { width: 3.25rem; height: 3.25rem; }
+    .co-ops-card h4 {
+      margin: 0 1.05rem 0.35rem;
+      font-size: 1.08rem;
+      color: #13202e;
+    }
+    .co-ops-card p {
+      margin: 0 1.05rem 0.7rem;
+      color: #4a5563;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .co-ops-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      list-style: none;
+      margin: 0 1.05rem;
+      padding: 0;
+    }
+    .co-ops-tags li {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #13202e;
+      background: #eff2f6;
+      border-radius: 999px;
+      padding: 0.28rem 0.55rem;
+    }
+    .co-ops-card--geo .co-ops-tags li { background: rgba(97,215,121,.18); color: #1f6b34; }
+    .co-ops-card--vert .co-ops-tags li { background: rgba(213,236,103,.28); color: #5d6b12; }
+    .co-ops-card--func .co-ops-tags li { background: rgba(91,192,235,.2); color: #1a6f91; }
+
+    @keyframes co-ops-float {
+      0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      33% { transform: translate3d(10px, -12px, 0) rotate(4deg); }
+      66% { transform: translate3d(-8px, 8px, 0) rotate(-3deg); }
+    }
+    @keyframes co-ops-rise {
+      0%, 100% { transform: translateY(0) scaleY(1); transform-origin: bottom center; }
+      50% { transform: translateY(-10px) scaleY(1.08); transform-origin: bottom center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .co-ops-block { animation: none !important; }
+    }
+
   </style>
 </head>
 <body class="proposal-doc" id="top">
@@ -442,7 +759,8 @@
                   <tr><td>3</td><td><a href="#awards-certifications-memberships">Our Awards, Certifications &amp; Memberships</a></td></tr>
                   <tr><td>4</td><td><a href="#sa-footprint">South African Footprint</a></td></tr>
                   <tr><td>5</td><td><a href="#uk-us-experience">Relevant UK &amp; US Client Experience</a></td></tr>
-                  <tr><td>6</td><td><a href="#leadership-brands">Brands Our Leadership Has Delivered For</a></td></tr>
+                  <tr><td>6</td><td><a href="#management-journey">Management Journey &amp; UK Client Experience</a></td></tr>
+                  <tr><td>7</td><td><a href="#leadership-brands">Brands Our Leadership Has Delivered For</a></td></tr>
                 </tbody>
               </table>
             </div>
@@ -827,6 +1145,140 @@
           
       
 
+<h3 id="management-journey">Management Journey &amp; UK Client Experience</h3>
+          <figure class="ot-timeline" aria-label="One Team, 20 Years — Management Journey and UK Client Experience">
+            <div class="ot-timeline__head">
+              <div>
+                <p class="ot-timeline__title">One Team, 20 Years</p>
+                <p class="ot-timeline__sub">Same founders / EXCO team have worked together across all these companies.</p>
+              </div>
+              <ul class="ot-timeline__exco">
+                <li><span>CEO</span> Kobus van der Westhuizen</li>
+                <li><span>COO</span> Tanya Phillips</li>
+                <li><span>CTO</span> Craig Shalekoff</li>
+                <li><span>Head of Transitions</span> Vancyon Van Zyl</li>
+              </ul>
+            </div>
+
+            <div class="ot-timeline__band">
+              <div class="ot-axis" aria-hidden="true">
+                <p class="ot-axis__co">Companies</p>
+                <p class="ot-axis__uk">UK Clients</p>
+              </div>
+              <div class="ot-timeline__track">
+                <ol class="ot-timeline__rail ot-timeline__rail--4">
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">CCN</div>
+                      <div class="ot-node__dates">2005 – 2008</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Virgin Mobile</li>
+                      <li>Virgin Media</li>
+                      <li>Centrica</li>
+                      <li>British Gas</li>
+                      <li>Dynarod</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__note">Aegis acquires CCN</div>
+                      <div class="ot-node__co">Aegis</div>
+                      <div class="ot-node__dates">2008 – 2013</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Aegis / Startek (GCC)</li>
+                      <li>SA Tourism (Europe)</li>
+                      <li>Lexis Nexis</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">Genii Ai</div>
+                      <div class="ot-node__dates">2013 – 2021</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>—</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">Digital Tribe</div>
+                      <div class="ot-node__dates">2021 – 2023</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Ascensos (GCC)</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div class="ot-timeline__band">
+              <div class="ot-axis" aria-hidden="true">
+                <p class="ot-axis__co">Companies</p>
+                <p class="ot-axis__uk">UK Clients</p>
+              </div>
+              <div class="ot-timeline__track">
+                <ol class="ot-timeline__rail ot-timeline__rail--3" start="5">
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__note">Ascensos acquires Digital Tribe</div>
+                      <div class="ot-node__co">Ascensos</div>
+                      <div class="ot-node__dates">2023 – 2025</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>John Lewis</li>
+                      <li>WeWork</li>
+                      <li>Iceland</li>
+                      <li>JD Sports</li>
+                      <li>Aldi</li>
+                      <li>Virgin ED</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__co">Trilogy BPO</div>
+                      <div class="ot-node__dates">2025 – Now</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>Ventrica (GCC)</li>
+                      <li>Burger King</li>
+                    </ul>
+                  </li>
+                  <li class="ot-node">
+                    <div class="ot-node__company">
+                      <div class="ot-node__note">Trilogy DSG JV</div>
+                      <div class="ot-node__co is-now">Trilogy Digital</div>
+                      <div class="ot-node__dates">April 2026</div>
+                    </div>
+                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
+                    <ul class="ot-node__clients">
+                      <li>NAD Clinic</li>
+                      <li>Multichoice</li>
+                      <li>MTN</li>
+                      <li>Telkom</li>
+                      <li>Afrihost</li>
+                      <li>Vodacom</li>
+                      <li>KFC</li>
+                      <li>PEP Stores</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </figure>
+          <div class="prose">
+            <p>We feel confident that together we can transition the existing operation effectively, minimise risk and craft a long-term delivery strategy focused on elevating your customer experience, leveraging AI where appropriate, and building a partnership that creates true bi-directional value for both parties.</p>
+          </div>
+
+
           <h3 id="leadership-brands">Brands Our Leadership Has Delivered For</h3>
           <p class="brand-callout">25 years behind the world&#x27;s brands.</p>
           <div class="prose">
@@ -1017,19 +1469,67 @@
         <h2>How we operate</h2>
       </div>
       <div class="section-body">
-        <div class="pillars pillars--3">
-          <div class="pillar">
+        <div class="co-ops-grid" aria-label="How we operate">
+          <article class="co-ops-card co-ops-card--geo">
+            <div class="co-ops-card__visual" aria-hidden="true">
+              <div class="co-ops-blocks co-ops-blocks--geo">
+                <span class="co-ops-block" style="--i:0"></span>
+                <span class="co-ops-block" style="--i:1"></span>
+                <span class="co-ops-block" style="--i:2"></span>
+                <span class="co-ops-block" style="--i:3"></span>
+                <span class="co-ops-block" style="--i:4"></span>
+                <span class="co-ops-block" style="--i:5"></span>
+              </div>
+              <div class="co-ops-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2.5"/><ellipse cx="32" cy="32" rx="10" ry="22" stroke="currentColor" stroke-width="2"/><path d="M10 32h44M14 22h36M14 42h36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+            </div>
             <h4>Geographies</h4>
             <p>25+ years supporting UK and USA brands landing in South Africa — native English talent across time zones.</p>
-          </div>
-          <div class="pillar">
+            <ul class="co-ops-tags">
+              <li>UK</li><li>USA</li><li>South Africa</li><li>GMT+2</li>
+            </ul>
+          </article>
+          <article class="co-ops-card co-ops-card--vert">
+            <div class="co-ops-card__visual" aria-hidden="true">
+              <div class="co-ops-blocks co-ops-blocks--vert">
+                <span class="co-ops-block" style="--i:0"></span>
+                <span class="co-ops-block" style="--i:1"></span>
+                <span class="co-ops-block" style="--i:2"></span>
+                <span class="co-ops-block" style="--i:3"></span>
+                <span class="co-ops-block" style="--i:4"></span>
+                <span class="co-ops-block" style="--i:5"></span>
+              </div>
+              <div class="co-ops-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="34" width="10" height="18" rx="2" fill="currentColor" opacity=".9"/><rect x="27" y="22" width="10" height="30" rx="2" fill="currentColor" opacity=".75"/><rect x="44" y="14" width="10" height="38" rx="2" fill="currentColor" opacity=".6"/><path d="M12 12h40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+              </div>
+            </div>
             <h4>Verticals</h4>
             <p>Telecoms, utilities, insurance, retail, healthcare, technology, e-commerce, automotive, travel &amp; hospitality.</p>
-          </div>
-          <div class="pillar">
+            <ul class="co-ops-tags">
+              <li>Telecoms</li><li>Retail</li><li>Insurance</li><li>Tech</li>
+            </ul>
+          </article>
+          <article class="co-ops-card co-ops-card--func">
+            <div class="co-ops-card__visual" aria-hidden="true">
+              <div class="co-ops-blocks co-ops-blocks--func">
+                <span class="co-ops-block" style="--i:0"></span>
+                <span class="co-ops-block" style="--i:1"></span>
+                <span class="co-ops-block" style="--i:2"></span>
+                <span class="co-ops-block" style="--i:3"></span>
+                <span class="co-ops-block" style="--i:4"></span>
+                <span class="co-ops-block" style="--i:5"></span>
+              </div>
+              <div class="co-ops-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 40c0-8 6-14 14-14s14 6 14 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="32" cy="22" r="7" stroke="currentColor" stroke-width="2.5"/><rect x="12" y="42" width="40" height="10" rx="5" stroke="currentColor" stroke-width="2.5"/><path d="M40 18l8-6M44 26l10 2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+              </div>
+            </div>
             <h4>Functions</h4>
             <p>Customer service &amp; IT support, chat commerce, back office, digital &amp; AI enablement, automation &amp; RPA.</p>
-          </div>
+            <ul class="co-ops-tags">
+              <li>CX</li><li>Digital</li><li>AI</li><li>Back office</li>
+            </ul>
+          </article>
         </div>
         <div class="callout">Boutique excellence meets enterprise scale — personalised attention with the muscle of a multi-site operator.</div>
         <div class="pillars pillars--3" style="margin-top:0.85rem">
@@ -1161,7 +1661,7 @@
     </a>
   </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview-short-10"></script>
+<script src="../trilogydigital/script.js?v=companyoverview-short-13"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
