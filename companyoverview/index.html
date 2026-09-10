@@ -22,8 +22,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-10">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-10">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-11">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-11">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -265,23 +265,18 @@
     }
     .co-offer-grid {
       display: grid;
-      gap: 0.85rem;
+      gap: 0.65rem 0.85rem;
       margin: 0.85rem 0 0.35rem;
       align-items: stretch;
     }
     @media (min-width: 900px) {
-      .co-offer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .co-offer-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: 1fr auto;
+      }
     }
-    .co-offer-col {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      gap: 0.65rem;
-      --offer-accent: #61d779;
-    }
-    .co-offer-col--bpo { --offer-accent: #61d779; }
-    .co-offer-col--gcc { --offer-accent: #d5ec67; }
-    .co-offer-col--ai { --offer-accent: #5bc0eb; }
     .co-offer-card {
+      --offer-accent: #61d779;
       border: 1px solid #d5dbe3;
       border-top: 3px solid var(--offer-accent);
       border-radius: 0.7rem;
@@ -289,7 +284,11 @@
       padding: 1rem 1.05rem 1.1rem;
       box-shadow: 0 8px 18px rgba(19,32,46,0.05);
       height: 100%;
+      box-sizing: border-box;
     }
+    .co-offer-card--bpo { --offer-accent: #61d779; }
+    .co-offer-card--gcc { --offer-accent: #d5ec67; }
+    .co-offer-card--ai { --offer-accent: #5bc0eb; }
     .co-offer-card h3 {
       margin: 0 0 0.35rem;
       font-size: 1.05rem;
@@ -303,24 +302,37 @@
       font-size: 0.68rem;
       margin-bottom: 0.35rem;
     }
-    .co-offer-col--gcc .co-offer-card .eyebrow {
+    .co-offer-card--gcc .eyebrow {
       color: #9fb52a; /* darker lime for readability on white */
     }
     .co-offer-card p { margin: 0; color: #4a5563; font-size: 0.92rem; }
-    .co-offer-col .co-savings__item {
+    .co-offer-grid > .co-savings__item {
+      --offer-accent: #61d779;
       background: #13202e;
       color: #fff;
       border-radius: 0.65rem;
       padding: 0.9rem 1rem;
       border-left: 4px solid var(--offer-accent);
+      box-sizing: border-box;
     }
-    .co-offer-col .co-savings__item strong {
+    .co-offer-grid > .co-savings__item--bpo { --offer-accent: #61d779; }
+    .co-offer-grid > .co-savings__item--gcc { --offer-accent: #d5ec67; }
+    .co-offer-grid > .co-savings__item--ai { --offer-accent: #5bc0eb; }
+    .co-offer-grid > .co-savings__item strong {
       display: block;
       color: var(--offer-accent);
       font-size: 1.15rem;
       margin-bottom: 0.25rem;
     }
-    .co-offer-col .co-savings__item span { font-size: 0.86rem; color: rgba(255,255,255,0.82); }
+    .co-offer-grid > .co-savings__item span { font-size: 0.86rem; color: rgba(255,255,255,0.82); }
+    @media (max-width: 899px) {
+      .co-offer-card--bpo { order: 1; }
+      .co-offer-grid > .co-savings__item--bpo { order: 2; }
+      .co-offer-card--gcc { order: 3; }
+      .co-offer-grid > .co-savings__item--gcc { order: 4; }
+      .co-offer-card--ai { order: 5; }
+      .co-offer-grid > .co-savings__item--ai { order: 6; }
+    }
     .co-loc-grid {
       display: grid;
       gap: 0.7rem;
@@ -830,30 +842,24 @@
       </div>
       <div class="section-body">
         <div class="co-offer-grid">
-          <div class="co-offer-col co-offer-col--bpo">
-            <article class="co-offer-card">
-              <div class="eyebrow">01 · Offshoring BPO</div>
-              <h3>Voice → Digital → Autonomous CX</h3>
-              <p>Outsource to Trilogy in South Africa. Modern platforms ready — just add humans. Voice, digital channels and AI automation to cut cost-to-serve without cutting experience.</p>
-            </article>
-            <div class="co-savings__item"><strong>40–60%</strong><span>Saving vs captive or outsourced UK call centres</span></div>
-          </div>
-          <div class="co-offer-col co-offer-col--gcc">
-            <article class="co-offer-card">
-              <div class="eyebrow">02 · GCC</div>
-              <h3>Design, Build, Innovate &amp; Transfer</h3>
-              <p>Stand up your own capability or contact centre in South Africa. Keep control, gain local expertise, and typically unlock a further 20–30% saving versus traditional SA outsourcing.</p>
-            </article>
-            <div class="co-savings__item"><strong>+20–30%</strong><span>Further saving via a GCC vs outsourced SA centres</span></div>
-          </div>
-          <div class="co-offer-col co-offer-col--ai">
-            <article class="co-offer-card">
-              <div class="eyebrow">03 · AI &amp; Digital</div>
-              <h3>Human-in-the-loop platforms</h3>
-              <p>Award-winning AI for service, sales, marketing and collections. Automation where it helps; people where it matters. No build overhead for the client.</p>
-            </article>
-            <div class="co-savings__item"><strong>More still</strong><span>Through digital and AI deflection</span></div>
-          </div>
+          <article class="co-offer-card co-offer-card--bpo">
+            <div class="eyebrow">01 · Offshoring BPO</div>
+            <h3>Voice → Digital → Autonomous CX</h3>
+            <p>Outsource to Trilogy in South Africa. Modern platforms ready — just add humans. Voice, digital channels and AI automation to cut cost-to-serve without cutting experience.</p>
+          </article>
+          <article class="co-offer-card co-offer-card--gcc">
+            <div class="eyebrow">02 · GCC</div>
+            <h3>Design, Build, Innovate &amp; Transfer</h3>
+            <p>Stand up your own capability or contact centre in South Africa. Keep control, gain local expertise, and typically unlock a further 20–30% saving versus traditional SA outsourcing.</p>
+          </article>
+          <article class="co-offer-card co-offer-card--ai">
+            <div class="eyebrow">03 · AI &amp; Digital</div>
+            <h3>Human-in-the-loop platforms</h3>
+            <p>Award-winning AI for service, sales, marketing and collections. Automation where it helps; people where it matters. No build overhead for the client.</p>
+          </article>
+          <div class="co-savings__item co-savings__item--bpo"><strong>40–60%</strong><span>Saving vs captive or outsourced UK call centres</span></div>
+          <div class="co-savings__item co-savings__item--gcc"><strong>+20–30%</strong><span>Further saving via a GCC vs outsourced SA centres</span></div>
+          <div class="co-savings__item co-savings__item--ai"><strong>More still</strong><span>Through digital and AI deflection</span></div>
         </div>
       </div>
     </section>
