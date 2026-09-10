@@ -24,14 +24,14 @@
         max-width: 100% !important;
         min-width: 0;
         box-sizing: border-box;
-        overflow-x: clip;
+        overflow-x: hidden;
       }
       .section-body,
       .proposal-shell,
       .main {
         max-width: 100%;
         min-width: 0;
-        overflow-x: clip;
+        overflow-x: hidden;
       }
       .page-nav {
         display: block;
@@ -112,11 +112,59 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
+      .stats,
+      .stats--4,
       .stats--banner {
+        display: grid !important;
         grid-template-columns: 1fr 1fr !important;
+        width: 100%;
+        max-width: 100%;
+      }
+      .stats > .stat {
+        min-width: 0;
+      }
+      /* Never let non-stat content sit in the stats grid */
+      .stats > :not(.stat) {
+        grid-column: 1 / -1;
+        width: 100%;
+        max-width: 100%;
       }
       .team-roster__grid--5 {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .awards-panel,
+      .awards-timeline,
+      .cred-grid,
+      .key-message,
+      .jv-diagram,
+      .team-roster,
+      .one-team-figure,
+      .brand-marquee {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .cred-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .cred-card__logos {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .awards-timeline__year {
+        min-width: 0;
+      }
+      .co-offer-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .co-ops-grid {
+        grid-template-columns: 1fr !important;
+      }
+      h3 {
+        overflow-wrap: anywhere;
+      }
+      .section-body > * {
+        min-width: 0;
+        max-width: 100%;
       }
     }
     @media (min-width: 900px) {
