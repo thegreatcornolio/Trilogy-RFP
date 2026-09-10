@@ -22,8 +22,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-9">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-9">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-10">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-10">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -267,16 +267,28 @@
       display: grid;
       gap: 0.85rem;
       margin: 0.85rem 0 0.35rem;
+      align-items: stretch;
     }
     @media (min-width: 900px) {
       .co-offer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
+    .co-offer-col {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 0.65rem;
+      --offer-accent: #61d779;
+    }
+    .co-offer-col--bpo { --offer-accent: #61d779; }
+    .co-offer-col--gcc { --offer-accent: #d5ec67; }
+    .co-offer-col--ai { --offer-accent: #5bc0eb; }
     .co-offer-card {
       border: 1px solid #d5dbe3;
+      border-top: 3px solid var(--offer-accent);
       border-radius: 0.7rem;
       background: #fff;
       padding: 1rem 1.05rem 1.1rem;
       box-shadow: 0 8px 18px rgba(19,32,46,0.05);
+      height: 100%;
     }
     .co-offer-card h3 {
       margin: 0 0 0.35rem;
@@ -284,35 +296,31 @@
       color: #13202e;
     }
     .co-offer-card .eyebrow {
-      color: #61d779;
+      color: var(--offer-accent);
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-size: 0.68rem;
       margin-bottom: 0.35rem;
     }
+    .co-offer-col--gcc .co-offer-card .eyebrow {
+      color: #9fb52a; /* darker lime for readability on white */
+    }
     .co-offer-card p { margin: 0; color: #4a5563; font-size: 0.92rem; }
-    .co-savings {
-      display: grid;
-      gap: 0.65rem;
-      margin: 0.9rem 0 0.2rem;
-    }
-    @media (min-width: 720px) {
-      .co-savings { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-    .co-savings__item {
+    .co-offer-col .co-savings__item {
       background: #13202e;
       color: #fff;
       border-radius: 0.65rem;
       padding: 0.9rem 1rem;
+      border-left: 4px solid var(--offer-accent);
     }
-    .co-savings__item strong {
+    .co-offer-col .co-savings__item strong {
       display: block;
-      color: #d5ec67;
+      color: var(--offer-accent);
       font-size: 1.15rem;
       margin-bottom: 0.25rem;
     }
-    .co-savings__item span { font-size: 0.86rem; color: rgba(255,255,255,0.82); }
+    .co-offer-col .co-savings__item span { font-size: 0.86rem; color: rgba(255,255,255,0.82); }
     .co-loc-grid {
       display: grid;
       gap: 0.7rem;
@@ -361,7 +369,7 @@
     <a href="#awards-certifications-memberships">Awards</a>
     <a href="#sa-footprint">Footprint</a>
     <a href="#offerings">Offerings</a>
-    <a href="#why-sa">Why South Africa</a>
+    <a href="#why-sa">Why SA / Cape Town</a>
     <a href="#cases">Case studies</a>
     <a href="operations.html">Operational detail</a>
   </div>
@@ -822,26 +830,30 @@
       </div>
       <div class="section-body">
         <div class="co-offer-grid">
-          <article class="co-offer-card">
-            <div class="eyebrow">01 · Offshoring BPO</div>
-            <h3>Voice → Digital → Autonomous CX</h3>
-            <p>Outsource to Trilogy in South Africa. Modern platforms ready — just add humans. Voice, digital channels and AI automation to cut cost-to-serve without cutting experience.</p>
-          </article>
-          <article class="co-offer-card">
-            <div class="eyebrow">02 · GCC</div>
-            <h3>Design, Build, Innovate &amp; Transfer</h3>
-            <p>Stand up your own capability or contact centre in South Africa. Keep control, gain local expertise, and typically unlock a further 20–30% saving versus traditional SA outsourcing.</p>
-          </article>
-          <article class="co-offer-card">
-            <div class="eyebrow">03 · AI &amp; Digital</div>
-            <h3>Human-in-the-loop platforms</h3>
-            <p>Award-winning AI for service, sales, marketing and collections. Automation where it helps; people where it matters. No build overhead for the client.</p>
-          </article>
-        </div>
-        <div class="co-savings">
-          <div class="co-savings__item"><strong>40–60%</strong><span>Saving vs captive or outsourced UK call centres</span></div>
-          <div class="co-savings__item"><strong>+20–30%</strong><span>Further saving via a GCC vs outsourced SA centres</span></div>
-          <div class="co-savings__item"><strong>More still</strong><span>Through digital and AI deflection</span></div>
+          <div class="co-offer-col co-offer-col--bpo">
+            <article class="co-offer-card">
+              <div class="eyebrow">01 · Offshoring BPO</div>
+              <h3>Voice → Digital → Autonomous CX</h3>
+              <p>Outsource to Trilogy in South Africa. Modern platforms ready — just add humans. Voice, digital channels and AI automation to cut cost-to-serve without cutting experience.</p>
+            </article>
+            <div class="co-savings__item"><strong>40–60%</strong><span>Saving vs captive or outsourced UK call centres</span></div>
+          </div>
+          <div class="co-offer-col co-offer-col--gcc">
+            <article class="co-offer-card">
+              <div class="eyebrow">02 · GCC</div>
+              <h3>Design, Build, Innovate &amp; Transfer</h3>
+              <p>Stand up your own capability or contact centre in South Africa. Keep control, gain local expertise, and typically unlock a further 20–30% saving versus traditional SA outsourcing.</p>
+            </article>
+            <div class="co-savings__item"><strong>+20–30%</strong><span>Further saving via a GCC vs outsourced SA centres</span></div>
+          </div>
+          <div class="co-offer-col co-offer-col--ai">
+            <article class="co-offer-card">
+              <div class="eyebrow">03 · AI &amp; Digital</div>
+              <h3>Human-in-the-loop platforms</h3>
+              <p>Award-winning AI for service, sales, marketing and collections. Automation where it helps; people where it matters. No build overhead for the client.</p>
+            </article>
+            <div class="co-savings__item"><strong>More still</strong><span>Through digital and AI deflection</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -849,26 +861,149 @@
     <section class="proposal-page" id="why-sa">
       <div class="section-head">
         <span class="section-num">03</span>
-        <h2>Why South Africa</h2>
+        <h2>Why South Africa / Why Cape Town</h2>
       </div>
       <div class="section-body">
-        <div class="prose">
-          <p>South Africa has consistently ranked the second most attractive BPO location globally (McKinsey). Cape Town is the premium hub — infrastructure, talent and UK cultural alignment.</p>
-        </div>
-        <div class="pillars pillars--3">
-          <div class="pillar"><h4>Cost + quality</h4><p>Up to 60% lower operating cost than UK/USA markets without compromising service standards.</p></div>
-          <div class="pillar"><h4>Time-zone synergy</h4><p>GMT+2 — 1–2 hours from the UK, with extended USA coverage.</p></div>
-          <div class="pillar"><h4>Language &amp; culture</h4><p>95%+ English proficiency with neutral accents that land well with Western customers.</p></div>
-          <div class="pillar"><h4>Talent</h4><p>Young, educated, professional workforce — Cape Town leads SA BPO export performance.</p></div>
-          <div class="pillar"><h4>Recognition</h4><p>Top-three global BPO destination for consecutive years by leading analysts.</p></div>
-          <div class="pillar"><h4>Full CX stack</h4><p>Voice, digital, technical support and advanced CX management under one roof.</p></div>
-        </div>
-<div class="co-loc-card"><strong>Century City</strong><span>Up to 300 seats</span></div>
-          <div class="co-loc-card"><strong>Newtown, Johannesburg</strong><span>Up to 400 seats</span></div>
-          <div class="co-loc-card"><strong>Rosebank, Johannesburg</strong><span>Up to 250 seats</span></div>
-        </div>
+<div class="covers-box" id="location-covers">
+            <div class="covers-box__head">This section covers</div>
+            <div class="table-wrap covers-table-wrap">
+              <table class="covers-table">
+                <tbody>
+                  <tr><td>1</td><td><a href="#why-south-africa-vp">Why South Africa</a></td></tr>
+                  <tr><td>2</td><td><a href="#why-cape-town-vp">Why Cape Town</a></td></tr>
+                  <tr><td>3</td><td><a href="#why-location-wins">Why the Location Wins</a></td></tr>
+                  <tr><td>4</td><td><a href="#cape-town-sights">Sights in and around Cape Town</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h3 id="why-south-africa-vp">Why South Africa?</h3>
+          <div class="prose">
+            <p>South Africa has consistently been ranked the second most attractive Business Process Outsourcing location globally, after consecutive years of high performance. Source: McKinsey.</p>
+          </div>
+
+          <div class="location-banner" aria-label="Cape Town location advantages">
+            <div class="location-banner__media" aria-hidden="true">
+              <img src="../trilogydigital/assets/location/cape-town.jpg" alt="" loading="lazy">
+              <video autoplay muted loop playsinline preload="metadata" poster="../trilogydigital/assets/location/cape-town.jpg">
+                <source src="../trilogydigital/assets/location/cape-town-scroll.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="location-banner__content">
+              <div class="location-callouts location-callouts--primary">
+                <article class="location-callout location-callout--accent">
+                  <div class="location-callout__stat">60%</div>
+                  <h5>Cost efficiency meets quality</h5>
+                  <p>Up to 60% lower operational costs than UK and USA markets, substantial wage arbitrage without compromising quality.</p>
+                </article>
+                <article class="location-callout">
+                  <div class="location-callout__stat location-callout__stat--green">#1</div>
+                  <h5>Cape Town: the premium hub</h5>
+                  <p>The leading BPO destination, with rapid growth, exceptional infrastructure and the largest skilled talent pool in the region.</p>
+                </article>
+              </div>
+              <div class="location-callouts location-callouts--secondary">
+                <article class="location-callout">
+                  <h5>Industry recognition</h5>
+                  <p>Ranked a top-three global BPO destination for three consecutive years by leading industry analysts.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Time-zone synergy</h5>
+                  <p>GMT+2 alignment, a 1 to 2 hour difference with the UK and extended USA coverage.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Quality talent pool</h5>
+                  <p>A young, educated and highly professional workforce ready to deliver exceptional customer experiences.</p>
+                </article>
+                <article class="location-callout">
+                  <h5>Language &amp; cultural excellence</h5>
+                  <p>Over 95% workforce proficiency in English with neutral accents that resonate with Western consumers.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <h3 id="why-cape-town-vp">Why Cape Town</h3>
+          <div class="prose">
+            <p>South Africa — and Cape Town in particular — is one of the world's premier destinations for UK-facing customer experience delivery. It combines deep English-language and UK cultural alignment, a mature BPO ecosystem, favourable time zones and compelling cost advantages, all without the quality trade-offs associated with other offshore markets.</p>
+          </div>
+          <h3 id="why-location-wins">Why the Location Wins</h3>
+          <ul class="list-check">
+            <li><strong>BPO ecosystem leadership</strong> — Cape Town has led South Africa’s BPO export performance for nine consecutive years, drawing on a 67,000-strong regional BPO workforce with established English-language and UK-cultural alignment.</li>
+            <li><strong>Operational readiness</strong> — sites are live today; no site setup phase, landlord negotiation or infrastructure lead time.</li>
+            <li><strong>ESG alignment</strong> — our flagship site holds a 5-Star Green Energy rating from the Green Building Council South Africa (GBCSA).</li>
+            <li><strong>Premium infrastructure</strong> — multi-redundant fibre, N+1 generator and UPS power resilience, and biometric access control.</li>
+            <li><strong>Multi-site resilience</strong> — the network spans Cape Town and Johannesburg, eliminating single geographic points of failure and enabling live volume routing between sites.</li>
+            <li><strong>Time-zone synergy</strong> — GMT+2 offers just a 1–2 hour difference with the UK and extended coverage for USA programmes.</li>
+          </ul>
+
+          <h3 id="cape-town-sights">Sights in and around Cape Town</h3>
+          <div class="prose">
+            <p>Cape Town’s lifestyle and natural beauty are a genuine magnet for talent — Table Mountain, the Atlantic seaboard, the Winelands and the Cape Peninsula all sit within easy reach of our sites.</p>
+          </div>
+          <figure class="cape-sights-figure" id="cape-sights-collage">
+            <div class="cape-sights-collage" aria-label="Sights in and around Cape Town photo collage">
+              <div class="cape-sights-collage__tile cape-sights-collage__tile--hero">
+                <img src="../trilogydigital/assets/location/cape-sights/iStock_000002459094_Medium.jpg" alt="Cape Town harbour with Table Mountain beyond" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile cape-sights-collage__tile--tall">
+                <img src="../trilogydigital/assets/location/cape-sights/sunset.jpeg" alt="Sunset over Hout Bay with proteas in the foreground" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/Cape-Point-Cape-Town-2.jpg" alt="Cape Point coastal path and ocean cliffs" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile cape-sights-collage__tile--wide">
+                <img src="../trilogydigital/assets/location/cape-sights/capetown.jpeg" alt="Aerial view of Cape Town Stadium, marina and Table Mountain" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/1592007850677.jpeg" alt="Colourful beach huts at St James near Muizenberg" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile cape-sights-collage__tile--tall">
+                <img src="../trilogydigital/assets/location/cape-sights/FDD85C34-8107-4CC2-9C44-B06A743988C8-1-scaled.jpeg" alt="Chocolate croissant outside Tamboers Winkel" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile cape-sights-collage__tile--wide">
+                <img src="../trilogydigital/assets/location/cape-sights/WorkingAtRestaurant_KL_20230628_62.jpg" alt="Rooftop dining with Table Mountain in the background" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/a-18-pexels-tembela-bohle-920038-16830259865634-1024x683.webp" alt="Hiker overlooking Lion's Head and the Atlantic coastline" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/va-waterfront-table-mountain.webp" alt="V&amp;A Waterfront marina with Table Mountain behind" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/cape-town-coworking.jpg" alt="Aerial view of Sea Point promenade and Atlantic seaboard" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile cape-sights-collage__tile--tall">
+                <img src="../trilogydigital/assets/location/cape-sights/eating.jpeg" alt="Sunset cruise dining with Table Mountain on the horizon" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/Upload.jpeg" alt="Gourmet Cape Town dining spread with seafood and wine" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/images.jpeg" alt="Table Mountain at golden hour from across the bay" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/eat.jpeg" alt="Artisan bakery stall at a Cape Town market" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/bunny.jpeg" alt="Bunny chow — classic South African street food" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/Workshop17_Coworking_Space.jpg" alt="Workspace with floor-to-ceiling Table Mountain views" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/Coworking_Roamwork.jpg" alt="Modern Cape Town coworking and breakout space" loading="lazy">
+              </div>
+              <div class="cape-sights-collage__tile">
+                <img src="../trilogydigital/assets/location/cape-sights/best-coworking-spaces-cape-town-remote-workers.png.webp" alt="Cape Town coworking lifestyle" loading="lazy">
+              </div>
+            </div>
+            <figcaption>Sights in and around Cape Town — lifestyle that attracts and retains talent.</figcaption>
+          </figure>
       </div>
     </section>
+
 
     <section class="proposal-page" id="operate">
       <div class="section-head">
@@ -1020,7 +1155,7 @@
     </a>
   </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview-short-9"></script>
+<script src="../trilogydigital/script.js?v=companyoverview-short-10"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
