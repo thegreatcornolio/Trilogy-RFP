@@ -22,8 +22,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-3">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-3">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-4">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-4">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -96,19 +96,21 @@
       border: 1px solid rgba(97, 215, 121, 0.35);
       background: #1a2430;
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+      position: relative;
+      aspect-ratio: 16 / 10;
+      max-height: 17rem;
     }
+    .co-hero__media video,
     .co-hero__media img {
       display: block;
       width: 100%;
-      height: auto;
-      max-height: 15.5rem;
-      aspect-ratio: 4 / 3;
+      height: 100%;
       object-fit: cover;
-      object-position: center 40%;
-      filter: brightness(1.08) contrast(1.04) saturate(1.05);
+      object-position: center right;
+      filter: none;
     }
     @media (min-width: 860px) {
-      .co-hero__media img { max-height: 17rem; }
+      .co-hero__media { max-height: 18.5rem; }
     }
     .cover.co-cover-hero .cover__body {
       margin-top: 0;
@@ -305,7 +307,16 @@
           <h1>Make Customer Engagement <span class="co-hero__accent">Simple.</span></h1>
         </div>
         <figure class="co-hero__media">
-          <img src="assets/human-ai-handshake.png?v=2" alt="Human and AI shaking hands — human-led, AI-enabled partnership" width="1071" height="927">
+          <video
+            src="assets/video/hero.mp4"
+            poster="assets/video/hero-poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Trilogy animated hero — customer engagement"
+          ></video>
         </figure>
       </div>
       <div class="cover__body">
@@ -638,7 +649,7 @@
     </a>
   </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview-short-3"></script>
+<script src="../trilogydigital/script.js?v=companyoverview-short-4"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
