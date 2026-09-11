@@ -37,7 +37,7 @@ Use the helper: [/companyoverview/share.html](https://proposal.trilogybpo.com/co
 ### We can detect automatically
 - **That they opened the link** (`open`) — even if they bounce at the password screen
 - **That they entered the password** (`unlock`)
-- **Whether they chose Light reading or More detailed** (`read_light` / `read_detailed`)
+- **Whether they chose Lite Reading or More detailed** (`read_light` / `read_detailed`)
 - **Rough engagement** (`engaged` after ~30 seconds on the page)
 - **When** (timestamp)
 - **Browser / device hints**: user agent, language, timezone, screen + viewport size
