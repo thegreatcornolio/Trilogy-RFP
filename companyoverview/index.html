@@ -16,16 +16,14 @@
     })();
   </script>
   <link rel="stylesheet" href="../presentations/_shared/gate.css?v=1">
-  <!-- Set content to your Cloudflare Worker / Power Automate URL when ready -->
-  <meta name="trilogy-ops-api" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Trilogy — Corporate Overview</title>
   <meta name="description" content="Short Trilogy corporate overview for sales sharing. Human Led · Ai-enabled.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-19">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-19">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-21">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-21">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -250,6 +248,62 @@
         margin: 0;
       }
     }
+
+    /* Reading depth choice */
+    .co-read-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.35rem;
+    }
+    .co-read-btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      font: 700 0.92rem/1.1 Poppins, Inter, sans-serif;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 1.25rem;
+      border-radius: 999px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+    .co-read-btn:hover { transform: translateY(-1px); filter: brightness(1.03); }
+    .co-read-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(255,255,255,0.35); }
+    .co-read-btn.is-active { box-shadow: 0 0 0 3px rgba(255,255,255,0.28); }
+    .co-read-btn--green {
+      background: #61d779;
+      color: #13202e;
+    }
+    .co-read-btn--yellow {
+      background: #d5ec67;
+      color: #13202e;
+    }
+    .co-read-panels {
+      width: 100%;
+    }
+    .co-read-panel--light {
+      background: #eff2f6;
+      min-height: 70vh;
+    }
+    .co-read-frame {
+      display: block;
+      width: 100%;
+      min-height: 85vh;
+      height: 85vh;
+      border: 0;
+      background: #eff2f6;
+    }
+    body.co-read-light .jump-nav,
+    body.co-read-light .page-nav { display: none !important; }
+    body:not(.co-read-detailed) .jump-nav { display: none !important; }
+    body:not(.co-read-detailed):not(.co-read-light) .page-nav { display: none !important; }
+    body.co-read-light .co-fs__meta { display: none; }
+    body.co-read-detailed .co-fs__meta { display: none; }
+    @media (max-width: 720px) {
+      .co-read-actions { gap: 0.55rem; margin-top: 1rem; }
+      .co-read-btn { width: 100%; text-align: center; font-size: 0.88rem; padding: 0.8rem 1rem; }
+      .co-read-frame { min-height: 80vh; height: 80vh; }
+    }
+
     .brand-marquee { margin: 0.35rem 0 0.85rem; }
     .brand-marquee__viewport {
       overflow: hidden;
@@ -393,18 +447,6 @@
     }
     .co-loc-card strong { display: block; color: #13202e; margin-bottom: 0.2rem; }
     .co-loc-card span { color: #5b6572; font-size: 0.88rem; }
-    .co-more {
-      margin-top: 1.25rem;
-      padding: 1rem 1.15rem;
-      border-radius: 0.75rem;
-      border: 1px solid rgba(97,215,121,0.4);
-      background: linear-gradient(135deg, #13202e 0%, #1a2d3f 100%);
-      color: #fff;
-    }
-    .co-more h3 { margin: 0 0 0.35rem; color: #fff; font-size: 1.05rem; }
-    .co-more p { margin: 0 0 0.7rem; color: rgba(255,255,255,0.82); }
-    .co-more a { color: #d5ec67; font-weight: 600; text-decoration: none; }
-    .co-more a:hover { color: #61d779; }
     .team-roster__grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     @media (min-width: 720px) {
       .team-roster__grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -589,6 +631,10 @@
             <span class="cover__brand-line">A Trilogy Group Company</span>
             <h1>Make Customer Engagement <span class="co-hero__accent">Simple.</span></h1>
             <p class="cover__intro">Transform your customer experience with Trilogy's comprehensive solutions spanning traditional voice services, cutting-edge digital engagement, and AI-powered automation—all designed to meet the evolving demands of today's digital-first consumers.</p>
+            <div class="co-read-actions" role="group" aria-label="Choose reading depth">
+              <button type="button" class="co-read-btn co-read-btn--green" data-read="light">Light reading</button>
+              <button type="button" class="co-read-btn co-read-btn--yellow" data-read="detailed">More detailed read</button>
+            </div>
           </div>
         </div>
       </div>
@@ -605,6 +651,17 @@
       </div>
     </section>
 
+    <div class="co-read-panels" id="co-read-panels">
+      <div class="co-read-panel co-read-panel--light" id="overview-light" hidden>
+        <iframe
+          class="co-read-frame"
+          id="overview-light-frame"
+          title="Trilogy corporate overview — light reading"
+          data-src="../companyoverview2/?embed=1"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="co-read-panel co-read-panel--detailed" id="overview-detailed" hidden>
     <section class="proposal-page" id="who">
       <div class="section-head">
         <span class="section-num">01</span>
@@ -1358,14 +1415,11 @@
             <li>WhatsApp <a href="https://wa.me/27719691163?text=hi" target="_blank" rel="noopener noreferrer">+27 71 969 1163</a></li>
           </ul>
         </div>
-        <div class="co-more">
-          <h3>Need operational depth?</h3>
-          <p>BPO contact centres, GCC, technology, MIS, quality, compliance, transition and more.</p>
-          <a href="#ops-access" data-ops-request>Open Operational Overview →</a>
-        </div>
       </div>
     </section>
 
+      </div>
+    </div>
     <div class="footer-note">Trilogy — A Trilogy Group Company · Commercial-in-confidence · Sales overview</div>
   </div>
 </main>
@@ -1399,7 +1453,7 @@
     </a>
   </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview-short-19"></script>
+<script src="../trilogydigital/script.js?v=companyoverview-short-21"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
@@ -1435,9 +1489,75 @@
     }
   })();
 </script>
-<link rel="stylesheet" href="ops-access/ops-access.css?v=1">
-<script src="ops-access/free-email-domains.js?v=1"></script>
-<script src="ops-access/ops-access.js?v=1"></script>
+
+<script>
+  (function () {
+    var OVERVIEW_HASH = "1e602740ceb46223485e29e830c741cf9cc8530886bcaa7bf77cd8293e6a81a6";
+    function syncEmbedAccess() {
+      try {
+        if (sessionStorage.getItem("trilogyCompanyOverviewUnlock") === OVERVIEW_HASH) {
+          sessionStorage.setItem("trilogyEmbedOverview", "1");
+        }
+      } catch (e) {}
+    }
+    syncEmbedAccess();
+    var embedTimer = window.setInterval(function () {
+      syncEmbedAccess();
+      try {
+        if (sessionStorage.getItem("trilogyEmbedOverview") === "1") window.clearInterval(embedTimer);
+      } catch (e) {}
+    }, 400);
+
+    var light = document.getElementById("overview-light");
+    var detailed = document.getElementById("overview-detailed");
+    var frame = document.getElementById("overview-light-frame") || document.querySelector(".co-read-frame");
+    var buttons = document.querySelectorAll("[data-read]");
+    if (!light || !detailed || !buttons.length) return;
+
+    function ensureLightFrame() {
+      if (!frame) return;
+      syncEmbedAccess();
+      var src = frame.getAttribute("data-src") || "../companyoverview2/?embed=1";
+      if (frame.dataset.loaded !== "1") {
+        frame.src = src;
+        frame.dataset.loaded = "1";
+        return;
+      }
+      // Reload if embed previously hit the gate before unlock flag was set
+      try {
+        var doc = frame.contentDocument;
+        if (doc && doc.documentElement && doc.documentElement.classList.contains("proposal-locked")) {
+          frame.contentWindow.location.replace(src);
+        }
+      } catch (e) {}
+    }
+
+    function setMode(mode) {
+      var isLight = mode === "light";
+      light.hidden = !isLight;
+      detailed.hidden = isLight;
+      document.body.classList.toggle("co-read-light", isLight);
+      document.body.classList.toggle("co-read-detailed", !isLight);
+      buttons.forEach(function (btn) {
+        btn.classList.toggle("is-active", btn.getAttribute("data-read") === mode);
+      });
+      if (isLight) ensureLightFrame();
+      var panels = document.getElementById("co-read-panels");
+      if (panels) panels.scrollIntoView({ behavior: "smooth", block: "start" });
+      try { history.replaceState(null, "", "#read-" + mode); } catch (e) {}
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        setMode(btn.getAttribute("data-read"));
+      });
+    });
+
+    var hash = (location.hash || "").replace(/^#/, "");
+    if (hash === "read-light") setMode("light");
+    else if (hash === "read-detailed") setMode("detailed");
+  })();
+</script>
 <script src="../presentations/_shared/gate.js?v=2" data-storage-key="trilogyCompanyOverviewUnlock" data-hash="1e602740ceb46223485e29e830c741cf9cc8530886bcaa7bf77cd8293e6a81a6"></script>
 </body>
 </html>

@@ -9,27 +9,55 @@
     (function () {
       var KEY = "trilogyCompanyOverview2Unlock";
       var HASH = "084cce43baf1da88673b6810b02aa622654f515e2ec92a580601d372e8fed6c9";
+      var embed = /(?:\?|&)embed=1(?:&|$)/.test(location.search);
+      if (embed) document.documentElement.classList.add("co-embed");
       try {
-        if (sessionStorage.getItem(KEY) !== HASH) document.documentElement.classList.add("proposal-locked");
+        var unlocked = sessionStorage.getItem(KEY) === HASH;
+        var parentUnlocked = sessionStorage.getItem("trilogyEmbedOverview") === "1";
+        if (embed && parentUnlocked) {
+          /* Parent /companyoverview already gated access */
+          return;
+        }
+        if (!unlocked) document.documentElement.classList.add("proposal-locked");
       } catch (e) {
-        document.documentElement.classList.add("proposal-locked");
+        if (!embed) document.documentElement.classList.add("proposal-locked");
       }
     })();
   </script>
 <link href="../presentations/_shared/gate.css?v=1" rel="stylesheet"/>
-<!-- Set content to your Power Automate / Worker URL when ready -->
-<meta content="" name="trilogy-ops-api"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Trilogy — Corporate Overview (Short)</title>
 <meta content="Short Trilogy corporate overview for sales sharing. Human Led · Ai-enabled." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="../trilogydigital/styles.css?v=companyoverview2-8" rel="stylesheet"/>
-<link href="co-shell.css?v=companyoverview2-8" rel="stylesheet"/>
+<link href="../trilogydigital/styles.css?v=companyoverview2-10" rel="stylesheet"/>
+<link href="co-shell.css?v=companyoverview2-10" rel="stylesheet"/>
 <script>document.documentElement.classList.add("js-reveal");</script>
 <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
 <style>
+
+    /* Embedded inside /companyoverview light-reading panel */
+    html.co-embed .page-nav,
+    html.co-embed .jump-nav,
+    html.co-embed .cta-dock,
+    html.co-embed .cover.co-cover-hero,
+    html.co-embed #proposal-gate,
+    html.co-embed .footer-note {
+      display: none !important;
+    }
+    html.co-embed body.proposal-doc {
+      padding-bottom: 0 !important;
+      background: #eff2f6;
+    }
+    html.co-embed body.proposal-doc .main {
+      padding-top: 0 !important;
+    }
+    html.co-embed .proposal-shell {
+      border-radius: 0;
+      box-shadow: none;
+    }
+
     .cover__brand-line { display: block; }
     .meta-grid--2 { grid-template-columns: 1fr; }
     @media (min-width: 640px) {
@@ -413,18 +441,6 @@
     }
     .co-loc-card strong { display: block; color: #13202e; margin-bottom: 0.2rem; }
     .co-loc-card span { color: #5b6572; font-size: 0.88rem; }
-    .co-more {
-      margin-top: 1.25rem;
-      padding: 1rem 1.15rem;
-      border-radius: 0.75rem;
-      border: 1px solid rgba(97,215,121,0.4);
-      background: linear-gradient(135deg, #13202e 0%, #1a2d3f 100%);
-      color: #fff;
-    }
-    .co-more h3 { margin: 0 0 0.35rem; color: #fff; font-size: 1.05rem; }
-    .co-more p { margin: 0 0 0.7rem; color: rgba(255,255,255,0.82); }
-    .co-more a { color: #d5ec67; font-weight: 600; text-decoration: none; }
-    .co-more a:hover { color: #61d779; }
     .team-roster__grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     @media (min-width: 720px) {
       .team-roster__grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -1004,11 +1020,6 @@
 <li>WhatsApp <a href="https://wa.me/27719691163?text=hi" rel="noopener noreferrer" target="_blank">+27 71 969 1163</a></li>
 </ul>
 </div>
-<div class="co-more">
-<h3>Need operational depth?</h3>
-<p>BPO contact centres, GCC, technology, MIS, quality, compliance, transition and more.</p>
-<a href="#ops-access" data-ops-request>Open Operational Overview →</a>
-</div>
 </div>
 </section>
 <div class="footer-note">Trilogy — A Trilogy Group Company · Commercial-in-confidence · Short sales overview</div>
@@ -1042,7 +1053,7 @@
 </a>
 </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview2-8"></script>
+<script src="../trilogydigital/script.js?v=companyoverview2-10"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
@@ -1078,10 +1089,18 @@
     }
   })();
 </script>
-<link rel="stylesheet" href="../companyoverview/ops-access/ops-access.css?v=1">
-<script src="../companyoverview/ops-access/free-email-domains.js?v=1"></script>
-<script src="../companyoverview/ops-access/ops-access.js?v=1"></script>
-<script>(function(){if(!window.TrilogyOpsAccess)return;var c=window.TrilogyOpsAccess.config;c.opsPath=new URL("../companyoverview/operations.html",location.href).href;c.verifyPath=new URL("../companyoverview/ops-verify.html",location.href).href;})();</script>
-<script data-hash="084cce43baf1da88673b6810b02aa622654f515e2ec92a580601d372e8fed6c9" data-storage-key="trilogyCompanyOverview2Unlock" src="../presentations/_shared/gate.js?v=2"></script>
+<script>
+  (function () {
+    var embed = /(?:\?|&)embed=1(?:&|$)/.test(location.search);
+    var parentUnlocked = false;
+    try { parentUnlocked = sessionStorage.getItem("trilogyEmbedOverview") === "1"; } catch (e) {}
+    if (embed && parentUnlocked) return;
+    var s = document.createElement("script");
+    s.src = "../presentations/_shared/gate.js?v=3";
+    s.setAttribute("data-storage-key", "trilogyCompanyOverview2Unlock");
+    s.setAttribute("data-hash", "084cce43baf1da88673b6810b02aa622654f515e2ec92a580601d372e8fed6c9");
+    document.body.appendChild(s);
+  })();
+</script>
 </body>
 </html>

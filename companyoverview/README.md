@@ -1,8 +1,10 @@
 # Trilogy Corporate Overview
 
-Sales-ready company overview (not a proposal).
+Sales-ready company overview for sharing with prospects.
 
 - **Landing:** [/companyoverview/](https://proposal.trilogybpo.com/companyoverview/) — password `companyoverview`
-- **Operational detail:** [/companyoverview/operations.html](https://proposal.trilogybpo.com/companyoverview/operations.html) — gated behind **corporate email verification** from the overview CTA (staff bypass password: `operations`)
+- After the hero intro, choose:
+  - **Light reading** (green) — short overview (`/companyoverview2` embed)
+  - **More detailed read** (yellow) — full company overview below
 
-Ops access setup: [`ops-access/README.md`](./ops-access/README.md)
+Password: `companyoverview`

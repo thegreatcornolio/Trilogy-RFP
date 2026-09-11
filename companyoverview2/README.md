@@ -1,6 +1,6 @@
 # Trilogy Corporate Overview (Short)
 
-Shorter sales overview for sharing.
+Shorter sales overview. Also embedded under **Light reading** on `/companyoverview/?`.
 
-- Landing: `/companyoverview2/` — password `companyoverview2`
-- Operational detail is requested via **Open Operational Overview →** (corporate email verification). See [`../companyoverview/ops-access/README.md`](../companyoverview/ops-access/README.md).
+- Standalone: `/companyoverview2/` — password `companyoverview2`
+- Embed: `/companyoverview2/?embed=1` (used inside the main overview light-reading panel)
