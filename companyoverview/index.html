@@ -24,8 +24,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-29">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-29">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-30">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-30">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -991,7 +991,7 @@
           class="co-read-frame"
           id="overview-light-frame"
           title="Trilogy corporate overview — light reading"
-          data-src="../companyoverview2/?embed=1"
+          data-src="../companyoverview2/?embed=1&v=17"
           loading="lazy"
         ></iframe>
       </div>
@@ -1923,7 +1923,7 @@
     </a>
   </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview-short-29"></script>
+<script src="../trilogydigital/script.js?v=companyoverview-short-30"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
@@ -1987,7 +1987,7 @@
     function ensureLightFrame() {
       if (!frame) return;
       syncEmbedAccess();
-      var src = frame.getAttribute("data-src") || "../companyoverview2/?embed=1";
+      var src = frame.getAttribute("data-src") || "../companyoverview2/?embed=1&v=17";
       if (frame.dataset.loaded !== "1") {
         frame.src = src;
         frame.dataset.loaded = "1";
