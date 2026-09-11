@@ -1,10 +1,21 @@
-# Trilogy Corporate Overview
+# Trilogy Company Overview
 
-Sales-ready company overview for sharing with prospects.
+One sales-ready overview for sharing with prospects.
 
-- **Landing:** [/companyoverview/](https://proposal.trilogybpo.com/companyoverview/) — password `companyoverview`
+- **Share this:** [https://proposal.trilogybpo.com/companyoverview/](https://proposal.trilogybpo.com/companyoverview/)
+- **Password:** `companyoverview`
 - After the hero intro, choose:
-  - **Light reading** (green) — short overview (`/companyoverview2` embed)
-  - **More detailed read** (yellow) — full company overview below
+  - **Light reading** (green) — short version
+  - **More detailed read** (yellow) — full version
 
-Password: `companyoverview`
+## Tracked links
+
+Build a unique link per prospect: [/companyoverview/share.html](https://proposal.trilogybpo.com/companyoverview/share.html)
+
+Example:
+
+```text
+https://proposal.trilogybpo.com/companyoverview/?s=acme&who=jane@acme.com&by=curtis
+```
+
+See [track/README.md](track/README.md) for what we capture and how to log opens to a Google Sheet.

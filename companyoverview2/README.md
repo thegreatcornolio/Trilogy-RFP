@@ -1,6 +1,6 @@
-# Trilogy Corporate Overview (Short)
+# Company Overview — short content (embed only)
 
-Shorter sales overview. Also embedded under **Light reading** on `/companyoverview/?`.
+This folder powers the **Light reading** panel inside `/companyoverview/`.
 
-- Standalone: `/companyoverview2/` — password `companyoverview2`
-- Embed: `/companyoverview2/?embed=1` (used inside the main overview light-reading panel)
+- Do **not** share `/companyoverview2/` directly — it redirects to `/companyoverview/`.
+- Embed URL used by the parent page: `/companyoverview2/?embed=1`

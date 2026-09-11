@@ -7,10 +7,15 @@
 <style>html.proposal-locked,html.proposal-locked body{overflow:hidden}html.proposal-locked body>*:not(#proposal-gate){visibility:hidden!important}</style>
 <script>
     (function () {
+      var embed = /(?:\?|&)embed=1(?:&|$)/.test(location.search);
+      if (!embed) {
+        // Single share destination: /companyoverview/
+        location.replace("../companyoverview/" + location.search + location.hash);
+        return;
+      }
       var KEY = "trilogyCompanyOverview2Unlock";
       var HASH = "084cce43baf1da88673b6810b02aa622654f515e2ec92a580601d372e8fed6c9";
-      var embed = /(?:\?|&)embed=1(?:&|$)/.test(location.search);
-      if (embed) document.documentElement.classList.add("co-embed");
+      document.documentElement.classList.add("co-embed");
       try {
         var unlocked = sessionStorage.getItem(KEY) === HASH;
         var parentUnlocked = sessionStorage.getItem("trilogyEmbedOverview") === "1";
@@ -20,19 +25,19 @@
         }
         if (!unlocked) document.documentElement.classList.add("proposal-locked");
       } catch (e) {
-        if (!embed) document.documentElement.classList.add("proposal-locked");
+        document.documentElement.classList.add("proposal-locked");
       }
     })();
   </script>
 <link href="../presentations/_shared/gate.css?v=1" rel="stylesheet"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<title>Trilogy — Corporate Overview (Short)</title>
-<meta content="Short Trilogy corporate overview for sales sharing. Human Led · Ai-enabled." name="description"/>
+<title>Trilogy — Company Overview (Light)</title>
+<meta content="Short Trilogy Company Overview content (embedded under Light reading)." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="../trilogydigital/styles.css?v=companyoverview2-10" rel="stylesheet"/>
-<link href="co-shell.css?v=companyoverview2-10" rel="stylesheet"/>
+<link href="../trilogydigital/styles.css?v=companyoverview2-11" rel="stylesheet"/>
+<link href="co-shell.css?v=companyoverview2-11" rel="stylesheet"/>
 <script>document.documentElement.classList.add("js-reveal");</script>
 <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
 <style>
@@ -1053,7 +1058,7 @@
 </a>
 </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview2-10"></script>
+<script src="../trilogydigital/script.js?v=companyoverview2-11"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
