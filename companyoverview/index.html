@@ -24,8 +24,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-28">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-28">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-29">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-29">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -548,8 +548,17 @@
     .ot-timeline__flow-line {
       flex: 1;
       height: 3px;
-      background: linear-gradient(90deg, rgba(97,215,121,0.15), #61d779, rgba(97,215,121,0.15));
       border-radius: 999px;
+      background: linear-gradient(
+        90deg,
+        rgba(97,215,121,0.08) 0%,
+        rgba(97,215,121,0.2) 25%,
+        #61d779 50%,
+        rgba(97,215,121,0.2) 75%,
+        rgba(97,215,121,0.08) 100%
+      );
+      background-size: 220% 100%;
+      animation: ot-flow-shimmer 2.4s linear infinite;
     }
     .ot-timeline__flow-badge {
       display: inline-flex;
@@ -565,11 +574,30 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       white-space: nowrap;
+      animation: ot-flow-pulse 2.2s ease-in-out infinite;
     }
     .ot-timeline__flow-badge svg {
       width: 1.05rem;
       height: 1.05rem;
       display: block;
+      animation: ot-flow-bounce 1.15s ease-in-out infinite;
+    }
+    @keyframes ot-flow-bounce {
+      0%, 100% { transform: translateY(-3px); opacity: 0.75; }
+      50% { transform: translateY(4px); opacity: 1; }
+    }
+    @keyframes ot-flow-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(97,215,121,0.0); border-color: rgba(97,215,121,0.45); }
+      50% { box-shadow: 0 0 0 6px rgba(97,215,121,0.12); border-color: rgba(97,215,121,0.85); }
+    }
+    @keyframes ot-flow-shimmer {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ot-timeline__flow-line,
+      .ot-timeline__flow-badge,
+      .ot-timeline__flow-badge svg { animation: none !important; }
     }
     .ot-axis {
       grid-row: 1 / span 3;
@@ -1895,7 +1923,7 @@
     </a>
   </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview-short-28"></script>
+<script src="../trilogydigital/script.js?v=companyoverview-short-29"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
