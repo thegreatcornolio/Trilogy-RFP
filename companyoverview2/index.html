@@ -36,8 +36,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="../trilogydigital/styles.css?v=companyoverview2-12" rel="stylesheet"/>
-<link href="co-shell.css?v=companyoverview2-12" rel="stylesheet"/>
+<link href="../trilogydigital/styles.css?v=companyoverview2-13" rel="stylesheet"/>
+<link href="co-shell.css?v=companyoverview2-13" rel="stylesheet"/>
 <script>document.documentElement.classList.add("js-reveal");</script>
 <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
 <style>
@@ -759,29 +759,76 @@
     @media (max-width: 860px) {
       .one-team-figure--graphic { display: none !important; }
       .one-team-figure--mobile { display: block !important; }
-      .ot-timeline__head { flex-direction: column; }
-      .ot-timeline__exco { width: 100%; }
+      .ot-timeline {
+        padding: 1.1rem 0.95rem 1.25rem;
+      }
+      .ot-timeline__head {
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .ot-timeline__exco {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+      }
       .ot-timeline__band,
-      .ot-axis,
       .ot-timeline__track,
       .ot-timeline__rail,
-      .ot-node { display: block; }
-      .ot-timeline__band { grid-template-columns: 1fr; }
-      .ot-axis { display: none; }
-      .ot-node__spine::before { display: none; }
       .ot-timeline__rail--4,
-      .ot-timeline__rail--3 { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-      .ot-node {
-        padding: 0.85rem 0.9rem;
-        border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 0.7rem;
-        background: rgba(255,255,255,0.03);
+      .ot-timeline__rail--3,
+      .ot-node,
+      .ot-node__company,
+      .ot-node__clients {
+        display: block !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        grid-row: auto !important;
+        grid-column: auto !important;
+        min-height: 0 !important;
       }
-      .ot-node__company { min-height: 0; padding-bottom: 0.35rem; text-align: left; }
-      .ot-node__spine { display: none; }
-      .ot-node__clients { text-align: left; padding-top: 0.35rem; font-size: 1rem; }
-      .ot-node__co { font-size: 1.2rem; }
-      .ot-node__note { margin: 0 0 0.4rem; }
+      .ot-axis,
+      .ot-node__spine {
+        display: none !important;
+      }
+      .ot-timeline__band {
+        margin-top: 1rem;
+      }
+      .ot-timeline__band + .ot-timeline__band {
+        margin-top: 1rem;
+        padding-top: 0;
+        border-top: 0;
+      }
+      .ot-timeline__rail--4,
+      .ot-timeline__rail--3 {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+      }
+      .ot-node {
+        padding: 0.9rem 0.95rem;
+        border: 1px solid rgba(255,255,255,0.14);
+        border-radius: 0.7rem;
+        background: rgba(255,255,255,0.04);
+      }
+      .ot-node__company {
+        text-align: left;
+        padding-bottom: 0.35rem;
+      }
+      .ot-node__note {
+        display: inline-block;
+        margin: 0 0 0.45rem;
+      }
+      .ot-node__co {
+        font-size: 1.15rem;
+      }
+      .ot-node__clients {
+        text-align: left;
+        padding-top: 0.25rem;
+        font-size: 0.98rem;
+      }
+      .ot-node__clients li {
+        padding: 0.1rem 0;
+      }
     }
     @media (min-width: 861px) {
       .one-team-figure--mobile { display: none !important; }
@@ -1396,7 +1443,7 @@
 </a>
 </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview2-12"></script>
+<script src="../trilogydigital/script.js?v=companyoverview2-13"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
