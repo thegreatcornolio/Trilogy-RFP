@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilogy — Build a tracked Company link</title>
+  <style>html.proposal-locked,html.proposal-locked body{overflow:hidden}html.proposal-locked body>*:not(#proposal-gate){visibility:hidden!important}</style>
+  <script>
+    (function () {
+      var KEY = "trilogyCompanyUnlock";
+      var HASH = "f168ccdd91548c5a8c871bd4b9b757c5e889a1672e774bddef4a2714759a7a8f";
+      try {
+        if (sessionStorage.getItem(KEY) !== HASH) document.documentElement.classList.add("proposal-locked");
+      } catch (e) {
+        document.documentElement.classList.add("proposal-locked");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../presentations/_shared/gate.css?v=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #eff2f6; color: #13202e; min-height: 100vh; }
+    .wrap { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem 3rem; }
+    .card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 10px 30px rgba(19,32,46,.08); border: 1px solid rgba(19,32,46,.06); }
+    h1 { font-family: Poppins, Inter, sans-serif; font-size: 1.35rem; margin: 0 0 .35rem; }
+    .lead { color: #5b6572; margin: 0 0 1.25rem; line-height: 1.45; }
+    label { display: block; font-size: .82rem; font-weight: 600; margin: .85rem 0 .35rem; }
+    input { width: 100%; padding: .7rem .8rem; border: 1px solid #cfd6de; border-radius: .55rem; font: inherit; }
+    input:focus { outline: 2px solid #61d779; border-color: transparent; }
+    .out { margin-top: 1.15rem; padding: .9rem 1rem; background: #13202e; color: #fff; border-radius: .75rem; word-break: break-all; font-size: .9rem; line-height: 1.4; }
+    .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .9rem; }
+    button, .btn { appearance: none; border: 0; cursor: pointer; font: 700 .9rem/1 Poppins, Inter, sans-serif; padding: .85rem 1.1rem; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; }
+    .btn-green { background: #61d779; color: #13202e; }
+    .btn-yellow { background: #d5ec67; color: #13202e; }
+    .note { margin-top: 1.25rem; font-size: .85rem; color: #5b6572; line-height: 1.45; }
+    .kicker { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: #61d779; font-weight: 700; margin-bottom: .35rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="kicker">Company Overview · Detailed</div>
+      <h1>Build a tracked share link</h1>
+      <p class="lead">Detailed-only overview for sales sharing. No Lite / Detailed choice — full content after password.</p>
+      <label for="s">Share / account id</label>
+      <input id="s" placeholder="acme or acme-jane" autocomplete="off">
+      <label for="who">Who you’re sending to</label>
+      <input id="who" placeholder="jane@acme.com" autocomplete="off">
+      <label for="by">Sent by (you)</label>
+      <input id="by" placeholder="curtis" autocomplete="off">
+      <div class="out" id="out">https://proposal.trilogybpo.com/company/</div>
+      <div class="actions">
+        <button type="button" class="btn-green" id="copy">Copy link</button>
+        <a class="btn-yellow btn" id="open" href="/company/" target="_blank" rel="noopener">Open link</a>
+      </div>
+      <p class="note">Password for recipients: <strong>company</strong></p>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var base = "https://proposal.trilogybpo.com/company/";
+      var s = document.getElementById("s");
+      var who = document.getElementById("who");
+      var by = document.getElementById("by");
+      var out = document.getElementById("out");
+      var open = document.getElementById("open");
+      var copy = document.getElementById("copy");
+      function build() {
+        var q = new URLSearchParams();
+        if (s.value.trim()) q.set("s", s.value.trim());
+        if (who.value.trim()) q.set("who", who.value.trim());
+        if (by.value.trim()) q.set("by", by.value.trim());
+        var url = base + (q.toString() ? "?" + q.toString() : "");
+        out.textContent = url;
+        open.href = url;
+        return url;
+      }
+      ["input", "change"].forEach(function (ev) {
+        [s, who, by].forEach(function (el) { el.addEventListener(ev, build); });
+      });
+      build();
+      copy.addEventListener("click", function () {
+        var url = build();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () {
+            copy.textContent = "Copied";
+            setTimeout(function () { copy.textContent = "Copy link"; }, 1200);
+          });
+        } else {
+          window.prompt("Copy this link", url);
+        }
+      });
+    })();
+  </script>
+  <script src="../presentations/_shared/gate.js?v=2" data-storage-key="trilogyCompanyUnlock" data-hash="f168ccdd91548c5a8c871bd4b9b757c5e889a1672e774bddef4a2714759a7a8f" data-title="Company Overview" data-subtitle="Build tracked detailed share links. Enter the company password."></script>
+</body>
+</html>
