@@ -24,8 +24,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-27">
-  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-27">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=companyoverview-short-28">
+  <link rel="stylesheet" href="co-shell.css?v=companyoverview-short-28">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -455,7 +455,7 @@
       .team-roster__grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
 
-    /* One Team graphic (desktop) + stacked timeline (mobile) */
+    /* One Team: HTML timeline on all sizes (PNG kept but hidden — desktop was too small) */
     .one-team-figure {
       margin: 0.75rem 0 1.15rem;
     }
@@ -470,30 +470,31 @@
       height: auto;
       display: block;
     }
-    .one-team-figure--mobile { display: none; }
+    .one-team-figure--graphic { display: none !important; }
+    .one-team-figure--mobile { display: block; }
 
-    /* One Team / Management Journey timeline (mobile-friendly) */
+    /* One Team / Management Journey timeline — larger 2-row desktop layout */
     .ot-timeline {
       margin: 0.85rem 0 1.35rem;
       background: #13202e;
       color: #fff;
-      border-radius: 0.85rem;
-      padding: 1.35rem 1.15rem 1.55rem;
+      border-radius: 1rem;
+      padding: 1.75rem 1.5rem 1.9rem;
       overflow: visible;
     }
     .ot-timeline__head {
       display: flex;
       justify-content: space-between;
-      gap: 1.25rem;
+      gap: 1.5rem;
       align-items: flex-start;
-      margin-bottom: 0.35rem;
-      padding-bottom: 1rem;
+      margin-bottom: 0.55rem;
+      padding-bottom: 1.15rem;
       border-bottom: 1px solid rgba(255,255,255,0.12);
     }
     .ot-timeline__title {
-      margin: 0 0 0.35rem;
+      margin: 0 0 0.4rem;
       font-family: Poppins, Inter, sans-serif;
-      font-size: 1.35rem;
+      font-size: clamp(1.55rem, 2.4vw, 1.9rem);
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
@@ -501,10 +502,10 @@
     }
     .ot-timeline__sub {
       margin: 0;
-      font-size: 0.98rem;
-      line-height: 1.45;
+      font-size: 1.08rem;
+      line-height: 1.5;
       color: rgba(255,255,255,0.88);
-      max-width: 22rem;
+      max-width: 28rem;
     }
     .ot-timeline__exco {
       margin: 0;
@@ -512,29 +513,63 @@
       list-style: none;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.55rem 1.4rem;
-      font-size: 0.92rem;
+      gap: 0.7rem 1.6rem;
+      font-size: 1.02rem;
     }
     .ot-timeline__exco span {
       display: block;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #d5ec67;
-      margin-bottom: 0.12rem;
+      margin-bottom: 0.15rem;
     }
     .ot-timeline__band {
       display: grid;
-      grid-template-columns: 4.7rem minmax(0, 1fr);
-      grid-template-rows: auto 1.6rem auto;
-      column-gap: 0.55rem;
-      margin-top: 1.15rem;
+      grid-template-columns: 5.2rem minmax(0, 1fr);
+      grid-template-rows: auto 1.85rem auto;
+      column-gap: 0.7rem;
+      margin-top: 0.35rem;
     }
     .ot-timeline__band + .ot-timeline__band {
-      margin-top: 1.65rem;
-      padding-top: 1.15rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 0.35rem;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .ot-timeline__flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      margin: 1.15rem 0 1.25rem;
+      padding: 0 5.2rem;
+    }
+    .ot-timeline__flow-line {
+      flex: 1;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(97,215,121,0.15), #61d779, rgba(97,215,121,0.15));
+      border-radius: 999px;
+    }
+    .ot-timeline__flow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(97,215,121,0.55);
+      background: rgba(97,215,121,0.12);
+      color: #d5ec67;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .ot-timeline__flow-badge svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      display: block;
     }
     .ot-axis {
       grid-row: 1 / span 3;
@@ -544,7 +579,7 @@
     .ot-axis__co,
     .ot-axis__uk {
       margin: 0;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -564,7 +599,7 @@
       display: grid;
       grid-template-rows: subgrid;
       grid-row: 1 / span 3;
-      gap: 0 0.85rem;
+      gap: 0 1rem;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -585,8 +620,8 @@
       flex-direction: column;
       justify-content: flex-end;
       text-align: center;
-      padding-bottom: 0.4rem;
-      min-height: 7.2rem;
+      padding-bottom: 0.5rem;
+      min-height: 8.4rem;
     }
     .ot-node__spine {
       grid-row: 2;
@@ -598,9 +633,9 @@
     .ot-node__spine::before {
       content: "";
       position: absolute;
-      left: calc(-50% - 0.43rem);
-      right: calc(-50% - 0.43rem);
-      height: 4px;
+      left: calc(-50% - 0.5rem);
+      right: calc(-50% - 0.5rem);
+      height: 5px;
       background: #61d779;
       z-index: 0;
     }
@@ -613,44 +648,44 @@
       justify-content: flex-start;
       text-align: center;
       margin: 0;
-      padding: 0.55rem 0 0;
+      padding: 0.65rem 0 0;
       list-style: none;
-      font-size: 0.95rem;
-      line-height: 1.4;
-      color: rgba(255,255,255,0.9);
+      font-size: 1.05rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
     }
     .ot-node__note {
       display: inline-block;
-      margin: 0 auto 0.4rem;
-      padding: 0.22rem 0.45rem;
+      margin: 0 auto 0.45rem;
+      padding: 0.28rem 0.55rem;
       border: 1px solid rgba(97, 215, 121, 0.55);
       border-radius: 0.35rem;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       line-height: 1.3;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,0.82);
       max-width: 100%;
     }
     .ot-node__co {
       font-family: Poppins, Inter, sans-serif;
       font-weight: 700;
-      font-size: 1.18rem;
+      font-size: 1.35rem;
       line-height: 1.2;
       color: #fff;
     }
     .ot-node__co.is-now { color: #d5ec67; }
     .ot-node__dates {
-      margin-top: 0.18rem;
-      font-size: 0.86rem;
-      color: rgba(255,255,255,0.62);
+      margin-top: 0.22rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
     }
     .ot-node__dot {
       position: relative;
       z-index: 1;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: #13202e;
-      box-shadow: 0 0 0 5px #61d779;
+      box-shadow: 0 0 0 6px #61d779;
     }
     @media (max-width: 860px) {
       .one-team-figure--graphic { display: none !important; }
@@ -662,11 +697,23 @@
         flex-direction: column;
         gap: 0.85rem;
       }
+      .ot-timeline__title {
+        font-size: 1.35rem;
+      }
+      .ot-timeline__sub {
+        font-size: 0.98rem;
+      }
       .ot-timeline__exco {
         width: 100%;
         grid-template-columns: 1fr;
         gap: 0.55rem;
+        font-size: 0.95rem;
       }
+      .ot-timeline__flow {
+        padding: 0;
+        margin: 0.85rem 0;
+      }
+      .ot-timeline__flow-line { display: none; }
       .ot-timeline__band,
       .ot-timeline__track,
       .ot-timeline__rail,
@@ -725,10 +772,6 @@
       .ot-node__clients li {
         padding: 0.1rem 0;
       }
-    }
-    @media (min-width: 861px) {
-      .one-team-figure--mobile { display: none !important; }
-      .one-team-figure--graphic { display: block; }
     }
 
     /* How we operate — graphic cards + moving colour blocks */
@@ -1404,6 +1447,15 @@
               </div>
             </div>
 
+            <div class="ot-timeline__flow" aria-hidden="true">
+              <span class="ot-timeline__flow-line"></span>
+              <span class="ot-timeline__flow-badge">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M7 12l5 6 5-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Continues
+              </span>
+              <span class="ot-timeline__flow-line"></span>
+            </div>
+
             <div class="ot-timeline__band">
               <div class="ot-axis" aria-hidden="true">
                 <p class="ot-axis__co">Companies</p>
@@ -1843,7 +1895,7 @@
     </a>
   </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview-short-27"></script>
+<script src="../trilogydigital/script.js?v=companyoverview-short-28"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
