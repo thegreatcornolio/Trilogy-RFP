@@ -5,7 +5,7 @@ One sales-ready overview for sharing with prospects.
 - **Share this:** [https://proposal.trilogybpo.com/companyoverview/](https://proposal.trilogybpo.com/companyoverview/)
 - **Password:** `companyoverview`
 - After the hero intro, choose:
-  - **Light reading** (green) — short version
+  - **Lite Reading** (green) — short version
   - **More detailed read** (yellow) — full version
 
 ## Tracked links
