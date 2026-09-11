@@ -1,0 +1,25 @@
+/* Blocklist of consumer / free mailbox providers — corporate domains only. */
+window.TRILOGY_FREE_EMAIL_DOMAINS = [
+  "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "yahoo.co.za",
+  "ymail.com", "rocketmail.com", "hotmail.com", "hotmail.co.uk", "hotmail.co.za",
+  "outlook.com", "outlook.co.za", "live.com", "live.co.uk", "msn.com",
+  "icloud.com", "me.com", "mac.com", "aol.com", "proton.me", "protonmail.com",
+  "pm.me", "zoho.com", "zohomail.com", "gmx.com", "gmx.net", "mail.com",
+  "email.com", "usa.com", "myself.com", "consultant.com", "technician.com",
+  "engineer.com", "doctor.com", "yandex.com", "yandex.ru", "mail.ru",
+  "inbox.com", "fastmail.com", "fastmail.fm", "tutanota.com", "tuta.io",
+  "hey.com", "duck.com", "hushmail.com", "mailfence.com", "runbox.com",
+  "posteo.de", "posteo.net", "mailbox.org", "disroot.org", "riseup.net",
+  "qq.com", "163.com", "126.com", "sina.com", "rediffmail.com",
+  "btinternet.com", "virginmedia.com", "sky.com", "ntlworld.com",
+  "comcast.net", "verizon.net", "att.net", "sbcglobal.net", "bellsouth.net",
+  "charter.net", "cox.net", "earthlink.net", "optonline.net", "shaw.ca",
+  "rogers.com", "sympatico.ca", "telus.net", "web.de", "t-online.de",
+  "freenet.de", "orange.fr", "wanadoo.fr", "laposte.net", "libero.it",
+  "virgilio.it", "alice.it", "seznam.cz", "wp.pl", "o2.pl", "interia.pl",
+  "naver.com", "daum.net", "hanmail.net", "tempmail.com", "temp-mail.org",
+  "guerrillamail.com", "mailinator.com", "10minutemail.com", "yopmail.com",
+  "trashmail.com", "sharklasers.com", "guerrillamail.info", "grr.la",
+  "discard.email", "mailnesia.com", "maildrop.cc", "getnada.com",
+  "emailondeck.com", "throwawaymail.com", "fakeinbox.com", "mailcatch.com"
+];

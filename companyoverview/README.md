@@ -1,10 +1,8 @@
 # Trilogy Corporate Overview
 
-Short, sales-ready company overview (not a proposal).
+Sales-ready company overview (not a proposal).
 
-- **Landing:** [/companyoverview/](https://proposal.trilogybpo.com/companyoverview/) — who we are, offerings, why SA, leadership, solutions, case studies
-- **Optional depth:** [/companyoverview/operations.html](https://proposal.trilogybpo.com/companyoverview/operations.html) — operational detail
+- **Landing:** [/companyoverview/](https://proposal.trilogybpo.com/companyoverview/) — password `companyoverview`
+- **Operational detail:** [/companyoverview/operations.html](https://proposal.trilogybpo.com/companyoverview/operations.html) — gated behind **corporate email verification** from the overview CTA (staff bypass password: `operations`)
 
-Password: `companyoverview` (shared session across both pages).
-
-Source blend: existing Trilogy Digital overview content + *Trilogy Corporate Overview SHORT May 2026* PDF (`assets/Trilogy_Corporate_Overview_SHORT_May_2026.pdf`).
+Ops access setup: [`ops-access/README.md`](./ops-access/README.md)

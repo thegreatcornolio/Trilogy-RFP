@@ -1,0 +1,15 @@
+name = "trilogy-ops-access"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# Optional KV for one-time token use tracking:
+# [[kv_namespaces]]
+# binding = "OPS_TOKENS"
+# id = "YOUR_KV_NAMESPACE_ID"
+
+# Set secrets with:
+#   npx wrangler secret put RESEND_API_KEY
+#   npx wrangler secret put TOKEN_SECRET
+#   npx wrangler secret put FROM_EMAIL
+#   npx wrangler secret put UNLOCK_HASH
+#   npx wrangler secret put NOTIFY_EMAIL

@@ -1,8 +1,6 @@
-# Trilogy Corporate Overview (Short) — `/companyoverview2`
+# Trilogy Corporate Overview (Short)
 
-Tightened sales-share version of `/companyoverview` (~half the depth).
+Shorter sales overview for sharing.
 
-- Live: `https://proposal.trilogybpo.com/companyoverview2/`
-- Password: `companyoverview2`
-- Reuses media from `/companyoverview/assets/`
-- Full operational detail: `/companyoverview/operations.html`
+- Landing: `/companyoverview2/` — password `companyoverview2`
+- Operational detail is requested via **Open Operational Overview →** (corporate email verification). See [`../companyoverview/ops-access/README.md`](../companyoverview/ops-access/README.md).

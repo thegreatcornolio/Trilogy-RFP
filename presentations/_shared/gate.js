@@ -39,6 +39,8 @@
 
   function renderGate() {
     if (document.getElementById("proposal-gate")) return;
+    var title = (script && script.getAttribute("data-title")) || "Enter password";
+    var subtitle = (script && script.getAttribute("data-subtitle")) || "This presentation is private. Enter the password to continue.";
     var wrap = document.createElement("div");
     wrap.id = "proposal-gate";
     wrap.setAttribute("role", "dialog");
@@ -48,8 +50,8 @@
       '<div class="proposal-gate__card">' +
         '<img class="proposal-gate__logo" alt="Trilogy" src="' + logoSrc() + '">' +
         '<p class="proposal-gate__kicker">Restricted</p>' +
-        '<h1 id="proposal-gate-title">Enter password</h1>' +
-        '<p>This presentation is private. Enter the password to continue.</p>' +
+        '<h1 id="proposal-gate-title"></h1>' +
+        '<p id="proposal-gate-subtitle"></p>' +
         '<form class="proposal-gate__form" id="proposal-gate-form">' +
           '<input type="password" name="password" autocomplete="current-password" placeholder="Password" required>' +
           '<button type="submit">Open</button>' +
@@ -57,6 +59,8 @@
         '<p class="proposal-gate__error" id="proposal-gate-error" role="alert"></p>' +
       "</div>";
     document.body.appendChild(wrap);
+    wrap.querySelector("#proposal-gate-title").textContent = title;
+    wrap.querySelector("#proposal-gate-subtitle").textContent = subtitle;
     var input = wrap.querySelector("input");
     if (input) input.focus();
     wrap.querySelector("form").addEventListener("submit", async function (event) {

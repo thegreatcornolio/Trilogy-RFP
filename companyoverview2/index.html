@@ -17,14 +17,16 @@
     })();
   </script>
 <link href="../presentations/_shared/gate.css?v=1" rel="stylesheet"/>
+<!-- Set content to your Power Automate / Worker URL when ready -->
+<meta content="" name="trilogy-ops-api"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
 <title>Trilogy — Corporate Overview (Short)</title>
 <meta content="Short Trilogy corporate overview for sales sharing. Human Led · Ai-enabled." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="../trilogydigital/styles.css?v=companyoverview2-7" rel="stylesheet"/>
-<link href="co-shell.css?v=companyoverview2-7" rel="stylesheet"/>
+<link href="../trilogydigital/styles.css?v=companyoverview2-8" rel="stylesheet"/>
+<link href="co-shell.css?v=companyoverview2-8" rel="stylesheet"/>
 <script>document.documentElement.classList.add("js-reveal");</script>
 <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
 <style>
@@ -567,7 +569,6 @@
 <a href="#why-sa">Why SA / Cape Town</a>
 <a href="#operate">How we operate</a>
 <a href="#cases">Case studies</a>
-<a href="../companyoverview/operations.html">Operational detail</a>
 </div>
 </nav>
 <main class="main">
@@ -1006,7 +1007,7 @@
 <div class="co-more">
 <h3>Need operational depth?</h3>
 <p>BPO contact centres, GCC, technology, MIS, quality, compliance, transition and more.</p>
-<a href="../companyoverview/operations.html">Open Operational Overview →</a>
+<a href="#ops-access" data-ops-request>Open Operational Overview →</a>
 </div>
 </div>
 </section>
@@ -1015,7 +1016,6 @@
 <nav aria-label="Page shortcuts" class="jump-nav">
 <a href="#offerings">Offerings</a>
 <a href="#cases">Cases</a>
-<a href="../companyoverview/operations.html">Ops →</a>
 <a href="#top">Top</a>
 </nav>
 <aside aria-label="Contact Trilogy" class="cta-dock">
@@ -1042,7 +1042,7 @@
 </a>
 </div>
 </aside>
-<script src="../trilogydigital/script.js?v=companyoverview2-7"></script>
+<script src="../trilogydigital/script.js?v=companyoverview2-8"></script>
 <script>
   (function () {
     var pages = document.querySelectorAll(".proposal-page");
@@ -1078,6 +1078,10 @@
     }
   })();
 </script>
+<link rel="stylesheet" href="../companyoverview/ops-access/ops-access.css?v=1">
+<script src="../companyoverview/ops-access/free-email-domains.js?v=1"></script>
+<script src="../companyoverview/ops-access/ops-access.js?v=1"></script>
+<script>(function(){if(!window.TrilogyOpsAccess)return;var c=window.TrilogyOpsAccess.config;c.opsPath=new URL("../companyoverview/operations.html",location.href).href;c.verifyPath=new URL("../companyoverview/ops-verify.html",location.href).href;})();</script>
 <script data-hash="084cce43baf1da88673b6810b02aa622654f515e2ec92a580601d372e8fed6c9" data-storage-key="trilogyCompanyOverview2Unlock" src="../presentations/_shared/gate.js?v=2"></script>
 </body>
 </html>
