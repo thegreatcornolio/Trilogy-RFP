@@ -305,15 +305,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (spotlightBlocks.length) {
     spotlightBlocks.forEach((block) => setSpotlightIndex(block, 0));
 
-    if (!reduceSpotlightMotion && "IntersectionObserver" in window) {
+    if (reduceSpotlightMotion || !("IntersectionObserver" in window)) {
+      spotlightBlocks.forEach((block) => {
+        block.classList.add("is-inview");
+        if (!reduceSpotlightMotion) startSpotlight(block);
+      });
+    } else {
       const spotlightIo = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) startSpotlight(entry.target);
-            else stopSpotlight(entry.target);
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-inview");
+              startSpotlight(entry.target);
+            } else {
+              stopSpotlight(entry.target);
+            }
           });
         },
-        { threshold: 0.35 }
+        { threshold: 0.25, rootMargin: "40px 0px" }
       );
       spotlightBlocks.forEach((block) => spotlightIo.observe(block));
     }
