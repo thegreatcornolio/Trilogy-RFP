@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sorted-2">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=sorted-2">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sorted-3">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=sorted-3">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -962,9 +962,21 @@
   </div>
 </aside>
 
-<script src="../trilogydigital/script.js?v=sorted-2"></script>
+<script src="../trilogydigital/script.js?v=sorted-3"></script>
 <script>
   (function () {
+    var heroVideo = document.querySelector(".sorted-hero__video");
+    if (heroVideo) {
+      var tryPlay = function () {
+        var p = heroVideo.play();
+        if (p && typeof p.catch === "function") p.catch(function () {});
+      };
+      tryPlay();
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) tryPlay();
+      });
+    }
+
     var pages = document.querySelectorAll(".proposal-page");
     if ("IntersectionObserver" in window) {
       var io = new IntersectionObserver(function (entries) {
