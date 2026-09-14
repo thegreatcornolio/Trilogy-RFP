@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <style>html.proposal-locked,html.proposal-locked body{overflow:hidden}html.proposal-locked body>*:not(#proposal-gate){visibility:hidden!important}</style>
+  <script>
+    (function () {
+      var KEY = "trilogySortedUnlock";
+      var HASH = "db8cf3338c29849e56bf0b0c9aa8eeaa1a87d168f31979fd533e2ad9cd45a103";
+      try {
+        if (sessionStorage.getItem(KEY) !== HASH) document.documentElement.classList.add("proposal-locked");
+      } catch (e) {
+        document.documentElement.classList.add("proposal-locked");
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="../presentations/_shared/gate.css?v=1">
+  <meta name="trilogy-track-api" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Trilogy — SORTED.AI</title>
+  <meta name="description" content="Trilogy SORTED.AI — real-time customer intelligence platform for CX, sales, retention and marketing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sorted-1">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=sorted-1">
+  <script>document.documentElement.classList.add("js-reveal");</script>
+  <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
+  <style>
+    body.proposal-doc .main {
+      max-width: none !important;
+      width: 100%;
+      margin: 0;
+      padding: 0 !important;
+    }
+    body.proposal-doc .proposal-shell {
+      border-radius: 0;
+      outline: none;
+      box-shadow: none;
+      overflow: visible;
+    }
+    body.proposal-doc .proposal-page {
+      max-width: min(72.5rem, calc(100vw - 2rem));
+      margin-left: auto;
+      margin-right: auto;
+    }
+    html.js-reveal .proposal-page {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    html.js-reveal .proposal-page.is-visible { opacity: 1; transform: none; }
+
+    .sorted-hero {
+      position: relative;
+      min-height: min(88vh, 52rem);
+      background:
+        radial-gradient(ellipse 80% 60% at 85% 15%, rgba(97,215,121,0.22), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(213,236,103,0.14), transparent 50%),
+        linear-gradient(160deg, #0b121a 0%, #13202e 48%, #1a2d42 100%);
+      color: #fff;
+      overflow: hidden;
+      padding: clamp(1.4rem, 4vw, 2.75rem) clamp(1.15rem, 4vw, 3rem) clamp(2rem, 5vw, 3.5rem);
+      display: grid;
+      align-content: center;
+      gap: 1.25rem;
+    }
+    .sorted-hero__logo {
+      width: min(11rem, 46vw);
+      height: auto;
+      margin-bottom: 0.35rem;
+    }
+    .sorted-hero__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font: 700 0.78rem/1 Poppins, Inter, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #d5ec67;
+    }
+    .sorted-hero__kicker::before {
+      content: "";
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 999px;
+      background: #61d779;
+      box-shadow: 0 0 0 4px rgba(97,215,121,0.25);
+    }
+    .sorted-hero h1 {
+      margin: 0;
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+    }
+    .sorted-hero h1 span { color: #61d779; }
+    .sorted-hero__sub {
+      margin: 0;
+      max-width: 40rem;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      line-height: 1.5;
+      color: rgba(255,255,255,0.88);
+    }
+    .sorted-hero__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.35rem;
+    }
+    .sorted-hero__pills span {
+      display: inline-flex;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .benefit-grid {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr;
+      margin: 0.85rem 0 0.35rem;
+    }
+    @media (min-width: 720px) {
+      .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1040px) {
+      .benefit-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .benefit-card {
+      background: #fff;
+      border: 1px solid #d5dbe3;
+      border-radius: 0.9rem;
+      padding: 1rem 1.05rem 1.1rem;
+      box-shadow: 0 10px 22px rgba(19,32,46,0.05);
+    }
+    .benefit-card h4 {
+      margin: 0 0 0.35rem;
+      font-size: 1.02rem;
+      color: #13202e;
+    }
+    .benefit-card p {
+      margin: 0;
+      color: #5b6572;
+      font-size: 0.94rem;
+      line-height: 1.45;
+    }
+    .benefit-card__icon {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 0.55rem;
+      display: grid;
+      place-items: center;
+      margin-bottom: 0.65rem;
+      background: linear-gradient(135deg, rgba(97,215,121,0.25), rgba(213,236,103,0.35));
+      color: #1f6b34;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .value-strip {
+      display: grid;
+      gap: 0.65rem;
+      margin: 0.9rem 0 0.2rem;
+    }
+    @media (min-width: 900px) {
+      .value-strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .value-pill {
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.85rem;
+      padding: 1rem 1.05rem;
+      min-height: 5.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+    .value-pill strong {
+      color: #61d779;
+      font-size: 1.02rem;
+      font-family: Poppins, Inter, sans-serif;
+    }
+    .value-pill span {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+
+    /* Process flow diagram */
+    .sort-flow {
+      margin: 1rem 0 0.4rem;
+      padding: 1.15rem;
+      border-radius: 1rem;
+      background: #0f1a26;
+      color: #fff;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .sort-flow__title {
+      margin: 0 0 1rem;
+      font-family: Poppins, Inter, sans-serif;
+      font-size: 1.15rem;
+      color: #61d779;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .sort-pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 0.65rem;
+      min-width: 56rem;
+    }
+    .sort-pipeline__col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      flex: 0 0 10.5rem;
+    }
+    .sort-pipeline__col--wide {
+      flex: 1 1 16rem;
+      min-width: 16rem;
+    }
+    .sort-pipeline__split {
+      display: grid;
+      gap: 0.55rem;
+      grid-template-columns: 1fr 1fr;
+    }
+    .sf-node {
+      border-radius: 0.75rem;
+      padding: 0.85rem 0.9rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: #1a2d42;
+    }
+    .sf-node--channel { background: #243b55; padding: 0.55rem 0.7rem; font-size: 0.85rem; }
+    .sf-node--pipe { background: linear-gradient(135deg, #1f6b34, #2f9e4a); border-color: rgba(97,215,121,0.4); }
+    .sf-node--core {
+      background: linear-gradient(160deg, #61d779 0%, #2f9e4a 100%);
+      color: #13202e;
+      min-height: 5.5rem;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      box-shadow: 0 0 0 4px rgba(97,215,121,0.18);
+    }
+    .sf-node--out { background: #243b55; border-color: rgba(213,236,103,0.35); color: #d5ec67; }
+    .sf-node--llm {
+      background: #13202e;
+      border: 2px dashed rgba(97,215,121,0.55);
+      color: #61d779;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+    }
+    .sf-node--oval {
+      border-radius: 999px;
+      background: #1a2d42;
+      border-color: rgba(91,192,235,0.45);
+      color: #5bc0eb;
+      min-height: 3.6rem;
+      display: grid;
+      place-items: center;
+    }
+    .sf-node--list {
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      background: #1a2d42;
+    }
+    .sf-node--list strong {
+      display: block;
+      color: #d5ec67;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .sf-arrow {
+      align-self: center;
+      color: #61d779;
+      font-size: 1.45rem;
+      font-weight: 700;
+      opacity: 0.9;
+      flex: 0 0 auto;
+      padding: 0 0.15rem;
+    }
+    .sf-arrow--down {
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 0;
+    }
+    .sf-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      text-align: left;
+    }
+    .channels {
+      display: grid;
+      gap: 0.45rem;
+    }
+    @media (max-width: 720px) {
+      .sort-pipeline {
+        flex-direction: column;
+        min-width: 0;
+      }
+      .sort-pipeline__col,
+      .sort-pipeline__col--wide { flex: 1 1 auto; min-width: 0; }
+      .sf-arrow:not(.sf-arrow--down) {
+        transform: rotate(90deg);
+        align-self: center;
+      }
+      .sort-pipeline__split { grid-template-columns: 1fr; }
+    }
+
+    .callout-green {
+      margin: 1rem 0 0.35rem;
+      padding: 1rem 1.1rem;
+      border-radius: 0.85rem;
+      background: linear-gradient(135deg, rgba(97,215,121,0.16), rgba(213,236,103,0.14));
+      border: 1px solid rgba(97,215,121,0.35);
+      color: #13202e;
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
+
+    .stack-2 {
+      display: grid;
+      gap: 0.9rem;
+    }
+    @media (min-width: 860px) {
+      .stack-2 { grid-template-columns: 1.1fr 1fr; }
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #d5dbe3;
+      border-radius: 0.95rem;
+      padding: 1.15rem 1.2rem 1.25rem;
+      box-shadow: 0 10px 22px rgba(19,32,46,0.05);
+    }
+    .panel h4 { margin: 0 0 0.45rem; }
+    .panel p, .panel li { color: #5b6572; line-height: 1.45; }
+    .panel ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }
+
+    @media (max-width: 720px) {
+      .sort-flow { padding: 0.9rem; }
+      .sorted-hero { min-height: auto; padding-top: 1.5rem; padding-bottom: 2rem; }
+    }
+  </style>
+</head>
+<body class="proposal-doc" id="top">
+<nav class="page-nav" aria-label="Document sections">
+  <div class="page-nav__inner">
+    <span class="page-nav__brand">SORTED.AI</span>
+    <button type="button" data-nav-toggle aria-expanded="false" aria-controls="page-nav-links">Menu</button>
+  </div>
+  <div class="page-nav__links" id="page-nav-links">
+    <a href="#cover">Cover</a>
+    <a href="#opportunity">Opportunity</a>
+    <a href="#help">Where it helps</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#how">How it works</a>
+    <a href="#flow">Process flow</a>
+    <a href="#contact">Talk to us</a>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="proposal-shell">
+    <section class="sorted-hero" id="cover">
+      <img class="sorted-hero__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
+      <div class="sorted-hero__kicker">Trilogy Digital product</div>
+      <h1>SORTED<span>.AI</span></h1>
+      <p class="sorted-hero__sub">Real-time Customer Intelligence Platform — turn 100% of customer interactions into action across service, sales, retention and marketing.</p>
+      <div class="sorted-hero__pills" aria-label="Channels">
+        <span>Voice</span>
+        <span>Chat</span>
+        <span>Email</span>
+        <span>Web</span>
+        <span>Genii.AI powered</span>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="opportunity">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2>The opportunity</h2>
+      </div>
+      <div class="section-body">
+        <div class="callout-green">
+          Imagine having real-time customer intelligence at your fingertips — to improve overall CX across the full customer lifecycle with your brand.
+        </div>
+        <div class="prose">
+          <p>In most cases, B2C companies with large customer bases lack real-time, customer-led data to navigate needs, pain points, requirements and opportunities. That makes it harder to manage queries, sales and retentions effectively across the journey.</p>
+          <p><strong>SORTED.AI</strong> delivers real-time customer-led intelligence on <strong>100% of your customer interactions</strong> — so teams can act on what customers are actually saying, now.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="help">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Where SORTED.AI helps</h2>
+      </div>
+      <div class="section-body">
+        <div class="benefit-grid">
+          <article class="benefit-card">
+            <div class="benefit-card__icon">IT</div>
+            <h4>IT &amp; Innovation</h4>
+            <p>Identify customer-impacting areas ready for Digital &amp; AI process automation first. Surface query and conflict drivers that can be eliminated with process re-engineering or AI.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-card__icon">CX</div>
+            <h4>Customer Service</h4>
+            <p>Reduce queries across all channels. Enable proactive service and information. Spot dissatisfaction, poor sentiment and vulnerable customers before they churn.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-card__icon">Ops</div>
+            <h4>Business Enablement</h4>
+            <p>Find friction in sales onboarding, order management, billing, deliveries &amp; returns, logistics and supply chain — then fix what customers feel.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-card__icon">$</div>
+            <h4>Sales &amp; Retention</h4>
+            <p>Identify upsell and retention opportunities, and customers with a propensity to cancel or churn — while there is still time to act.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-card__icon">Mkt</div>
+            <h4>Marketing</h4>
+            <p>Understand reasons for poor sentiment around brand, products, pricing, service and sales — and improve messaging and ROI.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="benefits">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2>Benefits of customer intelligence</h2>
+      </div>
+      <div class="section-body">
+        <div class="value-strip">
+          <div class="value-pill"><strong>Reduce queries</strong><span>Cut avoidable contact across every channel</span></div>
+          <div class="value-pill"><strong>Upsell</strong><span>Spot genuine expansion moments in-conversation</span></div>
+          <div class="value-pill"><strong>Retain</strong><span>Protect vulnerable customers before they leave</span></div>
+          <div class="value-pill"><strong>Improve CX</strong><span>Lift experience and sentiment with evidence</span></div>
+        </div>
+        <div class="value-strip" style="margin-top:0.65rem">
+          <div class="value-pill"><strong>Marketing ROI</strong><span>Target what actually drives sentiment</span></div>
+          <div class="value-pill"><strong>Ops efficiency</strong><span>Lower cost-to-serve with clearer priorities</span></div>
+          <div class="value-pill"><strong>AI roadmap</strong><span>Build a CX automation roadmap from real demand</span></div>
+          <div class="value-pill"><strong>Near-time</strong><span>Analyse Voice, Email, Chat &amp; Web continuously</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="how">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2>How it works</h2>
+      </div>
+      <div class="section-body">
+        <div class="stack-2">
+          <article class="panel">
+            <h4>Intelligence dashboards</h4>
+            <p>Leveraging the Genii.AI platform, SORTED analyses all customer interaction channels (Voice, Email, Chat, Web) near-time to identify a pre-configured set of intelligence outputs for each client.</p>
+            <p>Outputs are displayed in dynamic dashboards for selected business managers and employees across business units.</p>
+          </article>
+          <article class="panel">
+            <h4>Automated NBA workflow</h4>
+            <p>A workflow engine actions outcomes from a pre-configured decision matrix — fully automated where data and workflow integration allow.</p>
+            <p>Where automation or integration is not yet available, the same process can run semi-automated so teams still get Next Best Actions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="flow">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2>Process flow</h2>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>From interaction to insight to action — SORTED.AI connects capture, transcription, analytics and Next Best Action workflows for both business units and customers.</p>
+        </div>
+        <div class="sort-flow" aria-label="SORTED.AI process flow diagram">
+          <p class="sort-flow__title">SORTED.AI · Customer intelligence flow</p>
+          <div class="sort-pipeline">
+            <div class="sort-pipeline__col">
+              <div class="sf-label">Capture</div>
+              <div class="sf-node sf-node--oval">Customer Interaction</div>
+              <div class="channels" aria-label="Inbound channels">
+                <div class="sf-node sf-node--channel">Voice Call</div>
+                <div class="sf-node sf-node--channel">Chat</div>
+                <div class="sf-node sf-node--channel">eMail / Web</div>
+              </div>
+            </div>
+            <div class="sf-arrow" aria-hidden="true">→</div>
+            <div class="sort-pipeline__col">
+              <div class="sf-label">Process</div>
+              <div class="sf-node sf-node--pipe">Recording</div>
+              <div class="sf-arrow sf-arrow--down" aria-hidden="true">↓</div>
+              <div class="sf-node sf-node--pipe">Transcription Engine</div>
+            </div>
+            <div class="sf-arrow" aria-hidden="true">→</div>
+            <div class="sort-pipeline__col">
+              <div class="sf-label">Analyse</div>
+              <div class="sf-node sf-node--core">Customer Analytics<br>Platform</div>
+              <div class="sf-arrow sf-arrow--down" aria-hidden="true">↕</div>
+              <div class="sf-node sf-node--llm">LLM</div>
+            </div>
+            <div class="sf-arrow" aria-hidden="true">→</div>
+            <div class="sort-pipeline__col sort-pipeline__col--wide">
+              <div class="sf-label">Act</div>
+              <div class="sf-node sf-node--out">Dashboards to Business Managers</div>
+              <div class="sf-node sf-node--out">Business NBA Notifications Workflow</div>
+              <div class="sf-node sf-node--out">Customer NBA Notifications Workflow</div>
+              <div class="sort-pipeline__split">
+                <div class="sf-node sf-node--list">
+                  <strong>Business Units</strong>
+                  Service · Sales · Retentions<br>Marketing · Billing · Logistics · Admin
+                </div>
+                <div class="sf-node sf-node--list">
+                  <strong>Customers</strong>
+                  Omni-channel notification &amp; feedback<br>Service · Sales · Retentions · Admin
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="sf-label" style="text-align:left;margin-top:0.85rem">Voice / Chat / Email / Web → Recording → Transcription → Analytics (+ LLM) → Dashboards &amp; Next Best Action workflows</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-page" id="contact">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2>Talk to us</h2>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Ready to put real-time customer intelligence in front of the teams that can act on it?</p>
+          <ul class="list-check">
+            <li>Email <a href="mailto:sales@trilogybpo.com">sales@trilogybpo.com</a></li>
+            <li>Web <a href="https://trilogybpo.com" target="_blank" rel="noopener noreferrer">trilogybpo.com</a></li>
+            <li>WhatsApp <a href="https://wa.me/27719691163?text=hi" target="_blank" rel="noopener noreferrer">+27 71 969 1163</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">Trilogy SORTED.AI · Commercial-in-confidence · Sales collateral</div>
+  </div>
+</main>
+
+<nav class="jump-nav" aria-label="Page shortcuts">
+  <a href="#help">Where it helps</a>
+  <a href="#flow">Flow</a>
+  <a href="#top">Top</a>
+</nav>
+
+<aside class="cta-dock" aria-label="Contact Trilogy">
+  <div class="cta-dock__inner">
+    <a class="cta-dock__btn" href="https://trilogybpo.com" target="_blank" rel="noopener noreferrer" aria-label="Visit trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.8 4 6 4 9s-1.4 6.2-4 9c-2.6-2.8-4-6-4-9s1.4-6.2 4-9Z"/></svg>
+      <span class="cta-dock__full">Visit our Site</span>
+      <span class="cta-dock__short">Visit</span>
+    </a>
+    <a class="cta-dock__btn cta-dock__btn--whatsapp" href="https://wa.me/27719691163?text=hi" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Trilogy">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.9-1.3A8.5 8.5 0 1 0 12 3Zm0 1.6a6.9 6.9 0 0 1 5.8 10.6l-.3.4.2 1.4-1.3-.3-.4.2A6.9 6.9 0 1 1 12 4.6Zm-2.5 3c.2 0 .4 0 .5.3l.7 1.7c.1.2 0 .4-.1.5l-.4.5c-.1.1-.1.3 0 .4.3.5.9 1.2 1.6 1.7.6.4 1.1.6 1.4.7.2.1.4 0 .5-.1l.6-.7c.1-.2.3-.2.5-.1l1.7.7c.2.1.3.2.3.5 0 .7-.5 2-1.5 2.1-.8.1-1.9 0-3.3-.7-1.6-.8-3-2.3-3.8-3.9-.7-1.4-.8-2.5-.7-3.3.1-1 1.3-1.6 2-1.6Z"/></svg>
+      <span class="cta-dock__full">WhatsApp us</span>
+      <span class="cta-dock__short">WhatsApp</span>
+    </a>
+    <a class="cta-dock__btn" href="mailto:sales@trilogybpo.com" aria-label="Email sales@trilogybpo.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m5 7.5 7 5 7-5"/></svg>
+      <span class="cta-dock__full">Email Us</span>
+      <span class="cta-dock__short">Email</span>
+    </a>
+    <a class="cta-dock__btn" href="tel:+447458158591" aria-label="Call +44 7458 158591">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 4.8c.4-.4 1-.5 1.5-.3l2 1c.5.2.8.7.8 1.2v2c0 .4-.2.8-.6 1l-1.2.6c.7 1.5 1.9 2.7 3.4 3.4l.6-1.2c.2-.4.6-.6 1-.6h2c.5 0 1 .3 1.2.8l1 2c.2.5.1 1.1-.3 1.5l-1.1 1.1c-.4.4-1 .6-1.5.5-3.7-.6-7.1-2.7-9.5-5.1S5.3 9.1 4.7 5.4c-.1-.5.1-1.1.5-1.5l1-1.1Z"/></svg>
+      <span class="cta-dock__full">Call Us</span>
+      <span class="cta-dock__short">Call</span>
+    </a>
+  </div>
+</aside>
+
+<script src="../trilogydigital/script.js?v=sorted-1"></script>
+<script>
+  (function () {
+    var pages = document.querySelectorAll(".proposal-page");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      pages.forEach(function (page) { io.observe(page); });
+    } else {
+      pages.forEach(function (page) { page.classList.add("is-visible"); });
+    }
+    var nav = document.querySelector(".page-nav");
+    var toggle = document.querySelector("[data-nav-toggle]");
+    if (nav && toggle) {
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      nav.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+  })();
+</script>
+<script src="../companyoverview/track/track.js?v=1"></script>
+<script src="../presentations/_shared/gate.js?v=2" data-storage-key="trilogySortedUnlock" data-hash="db8cf3338c29849e56bf0b0c9aa8eeaa1a87d168f31979fd533e2ad9cd45a103" data-title="SORTED.AI" data-subtitle="Real-time Customer Intelligence Platform. Enter the password to continue."></script>
+</body>
+</html>
