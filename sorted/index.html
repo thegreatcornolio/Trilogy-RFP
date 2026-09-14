@@ -55,16 +55,40 @@
     .sorted-hero {
       position: relative;
       min-height: min(88vh, 52rem);
-      background:
-        radial-gradient(ellipse 80% 60% at 85% 15%, rgba(97,215,121,0.22), transparent 55%),
-        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(213,236,103,0.14), transparent 50%),
-        linear-gradient(160deg, #0b121a 0%, #13202e 48%, #1a2d42 100%);
+      min-height: 100svh;
+      background: #0b121a;
       color: #fff;
       overflow: hidden;
       padding: clamp(1.4rem, 4vw, 2.75rem) clamp(1.15rem, 4vw, 3rem) clamp(2rem, 5vw, 3.5rem);
       display: grid;
       align-content: center;
       gap: 1.25rem;
+    }
+    .sorted-hero__video {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      pointer-events: none;
+    }
+    .sorted-hero__scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 80% 60% at 85% 15%, rgba(97,215,121,0.18), transparent 55%),
+        linear-gradient(180deg, rgba(8, 14, 22, 0.78) 0%, rgba(8, 14, 22, 0.45) 42%, rgba(8, 14, 22, 0.82) 100%);
+      pointer-events: none;
+    }
+    .sorted-hero__content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 1.25rem;
+      max-width: 46rem;
     }
     .sorted-hero__logo {
       width: min(11rem, 46vw);
@@ -96,6 +120,7 @@
       line-height: 1.05;
       letter-spacing: -0.03em;
       max-width: 16ch;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.45);
     }
     .sorted-hero h1 span { color: #61d779; }
     .sorted-hero__sub {
@@ -103,7 +128,8 @@
       max-width: 40rem;
       font-size: clamp(1.05rem, 2vw, 1.28rem);
       line-height: 1.5;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.92);
+      text-shadow: 0 1px 12px rgba(0,0,0,0.35);
     }
     .sorted-hero__pills {
       display: flex;
@@ -115,11 +141,12 @@
       display: inline-flex;
       padding: 0.45rem 0.85rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.16);
       font-size: 0.84rem;
       font-weight: 600;
       color: #fff;
+      backdrop-filter: blur(6px);
     }
 
     .help-blocks {
@@ -615,16 +642,30 @@
 <main class="main">
   <div class="proposal-shell">
     <section class="sorted-hero" id="cover">
-      <img class="sorted-hero__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
-      <div class="sorted-hero__kicker">Trilogy Digital product</div>
-      <h1>SORTED<span>.AI</span></h1>
-      <p class="sorted-hero__sub">Real-time Customer Intelligence Platform — turn 100% of customer interactions into action across service, sales, retention and marketing.</p>
-      <div class="sorted-hero__pills" aria-label="Channels">
-        <span>Voice</span>
-        <span>Chat</span>
-        <span>Email</span>
-        <span>Web</span>
-        <span>Genii.AI powered</span>
+      <video
+        class="sorted-hero__video"
+        src="../companyoverview/assets/video/hero.mp4"
+        poster="../companyoverview/assets/video/hero-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-label="Trilogy animated hero — customer engagement"
+      ></video>
+      <div class="sorted-hero__scrim" aria-hidden="true"></div>
+      <div class="sorted-hero__content">
+        <img class="sorted-hero__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
+        <div class="sorted-hero__kicker">Trilogy Digital product</div>
+        <h1>SORTED<span>.AI</span></h1>
+        <p class="sorted-hero__sub">Real-time Customer Intelligence Platform — turn 100% of customer interactions into action across service, sales, retention and marketing.</p>
+        <div class="sorted-hero__pills" aria-label="Channels">
+          <span>Voice</span>
+          <span>Chat</span>
+          <span>Email</span>
+          <span>Web</span>
+          <span>Genii.AI powered</span>
+        </div>
       </div>
     </section>
 
