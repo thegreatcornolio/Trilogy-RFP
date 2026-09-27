@@ -829,7 +829,15 @@
 
     @media (max-width: 720px) {
       .sort-flow { padding: 0.9rem; }
-      .sorted-hero { min-height: auto; padding-top: 1.5rem; padding-bottom: 2rem; }
+      .sorted-hero { padding-top: 1.5rem; padding-bottom: 2rem; }
+    }
+    @media (max-width: 980px) {
+      /* Fill the viewport below the sticky mobile top bar */
+      .sorted-hero {
+        min-height: calc(100vh - 3.5rem);
+        min-height: calc(100dvh - 3.5rem);
+        min-height: calc(100svh - 3.5rem);
+      }
     }
   </style>
 </head>
