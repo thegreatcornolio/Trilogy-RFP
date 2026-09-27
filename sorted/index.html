@@ -23,11 +23,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sorted-3">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=sorted-3">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sorted-4">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=sorted-4">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
+    /* App shell: left menu + right content */
+    body.proposal-doc {
+      background: #0b121a;
+    }
     body.proposal-doc .main {
       max-width: none !important;
       width: 100%;
@@ -39,9 +43,182 @@
       outline: none;
       box-shadow: none;
       overflow: visible;
+      max-width: none;
+      background: transparent;
+    }
+    .sorted-app {
+      display: grid;
+      grid-template-columns: 17.5rem minmax(0, 1fr);
+      min-height: 100vh;
+      min-height: 100svh;
+      background: #f4f6f8;
+    }
+    .sorted-side {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding: 1.35rem 1rem 1.25rem;
+      background: #0b121a;
+      color: #fff;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      z-index: 40;
+      overflow: auto;
+    }
+    .sorted-side__brand {
+      display: grid;
+      gap: 0.55rem;
+      padding: 0.15rem 0.55rem 0.85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sorted-side__logo {
+      width: min(8.5rem, 70%);
+      height: auto;
+    }
+    .sorted-side__product {
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .sorted-side__product span { color: #61d779; }
+    .sorted-side__tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(213,236,103,0.9);
+    }
+    .sorted-side__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.35rem 0;
+      flex: 1;
+    }
+    .sorted-side__nav a {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      padding: 0.7rem 0.75rem;
+      border-radius: 0.65rem;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      line-height: 1.25;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+    .sorted-side__nav a:hover,
+    .sorted-side__nav a:focus-visible {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      outline: none;
+    }
+    .sorted-side__nav a.is-active {
+      background: rgba(97,215,121,0.14);
+      color: #fff;
+      box-shadow: inset 3px 0 0 #61d779;
+    }
+    .sorted-side__num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #d5ec67;
+      min-width: 1.4rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .sorted-side__nav a.is-active .sorted-side__num { color: #61d779; }
+    .sorted-side__foot {
+      margin-top: auto;
+      padding: 0.85rem 0.55rem 0.15rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      gap: 0.45rem;
+    }
+    .sorted-side__foot a {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      text-decoration: none;
+    }
+    .sorted-side__foot a:hover { color: #61d779; }
+    .sorted-side__close {
+      display: none;
+      align-self: end;
+      background: rgba(255,255,255,0.08);
+      border: 0;
+      color: #fff;
+      border-radius: 0.5rem;
+      padding: 0.45rem 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .sorted-topbar {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: rgba(11,18,26,0.94);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sorted-topbar__brand {
+      font-family: Poppins, Inter, sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .sorted-topbar__brand span { color: #61d779; }
+    .sorted-topbar__btn {
+      background: rgba(97,215,121,0.18);
+      border: 1px solid rgba(97,215,121,0.35);
+      color: #fff;
+      border-radius: 0.55rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .sorted-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(8,14,22,0.55);
+      z-index: 35;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+    body.sorted-nav-open .sorted-backdrop {
+      display: block;
+    }
+    .sorted-content {
+      min-width: 0;
+      background: #f4f6f8;
+    }
+    .sorted-content .footer-note {
+      max-width: min(72.5rem, calc(100% - 2rem));
+      margin: 0 auto 2rem;
+      padding: 0 0.25rem 1.5rem;
+    }
+    html { scroll-behavior: smooth; }
+    .sorted-hero,
+    .proposal-page {
+      scroll-margin-top: 0.75rem;
     }
     body.proposal-doc .proposal-page {
-      max-width: min(72.5rem, calc(100vw - 2rem));
+      max-width: min(72.5rem, calc(100% - 2rem));
       margin-left: auto;
       margin-right: auto;
     }
@@ -52,10 +229,41 @@
     }
     html.js-reveal .proposal-page.is-visible { opacity: 1; transform: none; }
 
+    /* Hide legacy top nav / jump nav on this page */
+    body.proposal-doc > .page-nav,
+    body.proposal-doc > .jump-nav { display: none !important; }
+
+    @media (max-width: 980px) {
+      .sorted-app {
+        grid-template-columns: 1fr;
+      }
+      .sorted-topbar { display: flex; }
+      .sorted-side {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: min(19rem, 88vw);
+        transform: translateX(-105%);
+        transition: transform 0.28s ease;
+        box-shadow: 18px 0 40px rgba(0,0,0,0.35);
+      }
+      body.sorted-nav-open .sorted-side { transform: translateX(0); }
+      .sorted-side__close { display: inline-flex; }
+      body.proposal-doc .proposal-page {
+        max-width: min(72.5rem, calc(100vw - 1.5rem));
+      }
+      .sorted-hero,
+      .proposal-page {
+        scroll-margin-top: 4.25rem;
+      }
+    }
+
+    .sorted-hero, .proposal-page {
+      scroll-margin-top: 0.5rem;
+    }
     .sorted-hero {
       position: relative;
-      min-height: min(88vh, 52rem);
-      min-height: 100svh;
+      min-height: min(78vh, 42rem);
       background: #0b121a;
       color: #fff;
       overflow: hidden;
@@ -622,25 +830,35 @@
     }
   </style>
 </head>
-<body class="proposal-doc" id="top">
-<nav class="page-nav" aria-label="Document sections">
-  <div class="page-nav__inner">
-    <span class="page-nav__brand">SORTED.AI</span>
-    <button type="button" data-nav-toggle aria-expanded="false" aria-controls="page-nav-links">Menu</button>
-  </div>
-  <div class="page-nav__links" id="page-nav-links">
-    <a href="#cover">Cover</a>
-    <a href="#opportunity">Opportunity</a>
-    <a href="#help">Where it helps</a>
-    <a href="#benefits">Benefits</a>
-    <a href="#how">How it works</a>
-    <a href="#flow">Process flow</a>
-    <a href="#contact">Talk to us</a>
-  </div>
-</nav>
-
+<body class="proposal-doc sorted-layout" id="top">
 <main class="main">
-  <div class="proposal-shell">
+  <div class="proposal-shell sorted-app">
+    <aside class="sorted-side" id="sorted-side" aria-label="SORTED.AI sections">
+      <button type="button" class="sorted-side__close" data-nav-close>Close</button>
+      <div class="sorted-side__brand">
+        <img class="sorted-side__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
+        <div class="sorted-side__product">SORTED<span>.AI</span></div>
+        <div class="sorted-side__tag">Customer Intelligence</div>
+      </div>
+      <nav class="sorted-side__nav" id="sorted-side-nav">
+        <a href="#cover" data-section="cover"><span class="sorted-side__num">00</span> Overview</a>
+        <a href="#opportunity" data-section="opportunity"><span class="sorted-side__num">01</span> Opportunity</a>
+        <a href="#help" data-section="help"><span class="sorted-side__num">02</span> Where it helps</a>
+        <a href="#benefits" data-section="benefits"><span class="sorted-side__num">03</span> Benefits</a>
+        <a href="#how" data-section="how"><span class="sorted-side__num">04</span> How it works</a>
+        <a href="#flow" data-section="flow"><span class="sorted-side__num">05</span> Process flow</a>
+        <a href="#contact" data-section="contact"><span class="sorted-side__num">06</span> Talk to us</a>
+      </nav>
+      <div class="sorted-side__foot">
+        <a href="mailto:sales@trilogybpo.com">sales@trilogybpo.com</a>
+        <a href="https://trilogybpo.com" target="_blank" rel="noopener noreferrer">trilogybpo.com</a>
+      </div>
+    </aside>
+    <div class="sorted-content">
+      <div class="sorted-topbar">
+        <div class="sorted-topbar__brand">SORTED<span>.AI</span></div>
+        <button type="button" class="sorted-topbar__btn" data-nav-open aria-controls="sorted-side" aria-expanded="false">Menu</button>
+      </div>
     <section class="sorted-hero" id="cover">
       <video
         class="sorted-hero__video"
@@ -928,14 +1146,10 @@
     </section>
 
     <div class="footer-note">Trilogy SORTED.AI · Commercial-in-confidence · Sales collateral</div>
+    </div><!-- /.sorted-content -->
   </div>
 </main>
-
-<nav class="jump-nav" aria-label="Page shortcuts">
-  <a href="#help">Where it helps</a>
-  <a href="#flow">Flow</a>
-  <a href="#top">Top</a>
-</nav>
+<div class="sorted-backdrop" data-nav-close hidden></div>
 
 <aside class="cta-dock" aria-label="Contact Trilogy">
   <div class="cta-dock__inner">
@@ -962,7 +1176,7 @@
   </div>
 </aside>
 
-<script src="../trilogydigital/script.js?v=sorted-3"></script>
+<script src="../trilogydigital/script.js?v=sorted-4"></script>
 <script>
   (function () {
     var heroVideo = document.querySelector(".sorted-hero__video");
@@ -992,19 +1206,55 @@
       pages.forEach(function (page) { page.classList.add("is-visible"); });
     }
 
-    var nav = document.querySelector(".page-nav");
-    var toggle = document.querySelector("[data-nav-toggle]");
-    if (nav && toggle) {
-      toggle.addEventListener("click", function () {
-        var open = nav.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    var openBtn = document.querySelector("[data-nav-open]");
+    var closeEls = document.querySelectorAll("[data-nav-close]");
+    var backdrop = document.querySelector(".sorted-backdrop");
+    function setNavOpen(open) {
+      document.body.classList.toggle("sorted-nav-open", open);
+      if (openBtn) openBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (backdrop) {
+        if (open) backdrop.removeAttribute("hidden");
+        else backdrop.setAttribute("hidden", "");
+      }
+    }
+    if (openBtn) openBtn.addEventListener("click", function () { setNavOpen(true); });
+    closeEls.forEach(function (el) {
+      el.addEventListener("click", function () { setNavOpen(false); });
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setNavOpen(false);
+    });
+    document.querySelectorAll(".sorted-side__nav a").forEach(function (link) {
+      link.addEventListener("click", function () { setNavOpen(false); });
+    });
+
+    // Active section highlight
+    var sideLinks = Array.prototype.slice.call(document.querySelectorAll(".sorted-side__nav a[data-section]"));
+    var sectionIds = sideLinks.map(function (a) { return a.getAttribute("data-section"); });
+    var sections = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    function setActive(id) {
+      sideLinks.forEach(function (a) {
+        a.classList.toggle("is-active", a.getAttribute("data-section") === id);
       });
-      nav.querySelectorAll("a").forEach(function (link) {
-        link.addEventListener("click", function () {
-          nav.classList.remove("is-open");
-          toggle.setAttribute("aria-expanded", "false");
+    }
+    if (sections.length && "IntersectionObserver" in window) {
+      var ratios = {};
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          ratios[entry.target.id] = entry.isIntersecting ? entry.intersectionRatio : 0;
         });
-      });
+        var best = null;
+        var bestR = 0;
+        sectionIds.forEach(function (id) {
+          var r = ratios[id] || 0;
+          if (r > bestR) { bestR = r; best = id; }
+        });
+        if (best) setActive(best);
+      }, { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] });
+      sections.forEach(function (sec) { spy.observe(sec); });
+      setActive(sectionIds[0]);
+    } else if (sectionIds[0]) {
+      setActive(sectionIds[0]);
     }
 
     function animateCount(el, from, to, ms) {

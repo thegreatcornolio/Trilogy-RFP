@@ -5,6 +5,8 @@ Sales collateral for the real-time Customer Intelligence Platform.
 - **URL:** https://proposal.trilogybpo.com/sorted/
 - **Password:** `sorted`
 
+Layout: left section menu + right content (drawer menu on mobile).
+
 Built from:
 - Trilogy SORT AI - Customer Intel Platform.docx
 - SORT.AI Diagram.pptx
