@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-8">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-8">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-9">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-9">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -316,7 +316,7 @@
     .cx-offer-more li::marker { color: #61d779; }
 
 
-    /* Show section nav on desktop (co-shell hides it) */
+    /* Clean sticky section nav — no brand, no cutoff */
     body.trilogy-cx .page-nav {
       display: block;
       position: sticky;
@@ -325,43 +325,69 @@
       background: #13202e;
       border-bottom: 1px solid rgba(255,255,255,0.12);
     }
+    body.trilogy-cx .page-nav__brand { display: none !important; }
+    body.trilogy-cx .page-nav button { display: none; }
     body.trilogy-cx .page-nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      display: block;
       max-width: min(72.5rem, calc(100vw - 2rem));
       margin: 0 auto;
-      padding: 0.75rem 0;
+      padding: 0.65rem 1rem;
+      box-sizing: border-box;
     }
-    body.trilogy-cx .page-nav__brand {
-      color: #fff;
-      font: 700 0.95rem/1.1 Poppins, Inter, sans-serif;
-    }
-    body.trilogy-cx .page-nav button { display: none; }
     body.trilogy-cx .page-nav__links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem 1rem;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.35rem 0.85rem;
+      padding-right: 4.5rem; /* clear floating CTA dock */
     }
     body.trilogy-cx .page-nav__links a {
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,0.88);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 600;
+      white-space: nowrap;
+      padding: 0.35rem 0.15rem;
+      line-height: 1.2;
     }
     body.trilogy-cx .page-nav__links a:hover { color: #61d779; }
     @media (max-width: 720px) {
-      body.trilogy-cx .page-nav__inner { padding: 0.7rem 1rem; max-width: none; }
+      body.trilogy-cx .page-nav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0.65rem 1rem;
+        max-width: none;
+      }
       body.trilogy-cx .page-nav button { display: inline-flex; }
       body.trilogy-cx .page-nav__links {
         display: none;
         flex-direction: column;
+        align-items: stretch;
         gap: 0.35rem;
+        width: 100%;
         padding: 0 1rem 0.9rem;
+        padding-right: 1rem;
       }
       body.trilogy-cx .page-nav.is-open .page-nav__links { display: flex; }
+    }
+
+
+    body.trilogy-cx .location-banner {
+      max-width: 100%;
+    }
+    body.trilogy-cx .location-banner__media {
+      max-height: 22rem;
+    }
+    body.trilogy-cx .cape-sights-collage {
+      grid-auto-rows: 5.5rem;
+    }
+
+    /* Stop invisible sections creating huge blank gaps */
+    html.js-reveal body.trilogy-cx .proposal-page {
+      opacity: 1 !important;
+      transform: none !important;
     }
     .co-scroll-hint {
       position: absolute;
@@ -845,16 +871,15 @@
 <body class="proposal-doc co-detailed-only trilogy-cx" id="top">
 <nav class="page-nav" aria-label="Document sections">
   <div class="page-nav__inner">
-    <span class="page-nav__brand">Trilogy CX</span>
     <button type="button" data-nav-toggle aria-expanded="false" aria-controls="page-nav-links">Menu</button>
-  </div>
-  <div class="page-nav__links" id="page-nav-links">
-    <a href="#cover">Cover</a>
-    <a href="#who">Company overview</a>
-    <a href="#meet-the-team">Team</a>
-    <a href="#why-sa">Why SA / Cape Town</a>
-    <a href="#tech">Technology &amp; AI</a>
-    <a href="#contact">Talk to us</a>
+    <div class="page-nav__links" id="page-nav-links">
+      <a href="#cover">Cover</a>
+      <a href="#who">Company overview</a>
+      <a href="#meet-the-team">Team</a>
+      <a href="#why-sa">Why SA / Cape Town</a>
+      <a href="#tech">Technology &amp; AI</a>
+      <a href="#contact">Talk to us</a>
+    </div>
   </div>
 </nav>
 
@@ -1632,7 +1657,7 @@
 
 <h3 id="technology-stack">Technology Stack</h3>
 <figure class="figure figure--carom">
-  <div class="figure__media figure__media--contain"><img src="../trilogydigital/assets/technology-stack.png?v=trilogycx-8" alt="Technology stack — Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine, with Genii analytics and development partners." loading="lazy"></div>
+  <div class="figure__media figure__media--contain"><img src="../trilogydigital/assets/technology-stack.png?v=trilogycx-9" alt="Technology stack — Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine, with Genii analytics and development partners." loading="lazy"></div>
   <figcaption>Figure — Technology Stack: Channel, Agent front end, RPA/Bot, Orchestration, ML/AI engine</figcaption>
 </figure>
 
@@ -1848,7 +1873,7 @@
   </div>
 </aside>
 
-<script src="../trilogydigital/script.js?v=trilogycx-8"></script>
+<script src="../trilogydigital/script.js?v=trilogycx-9"></script>
 <script>
   (function () {
     var heroVideo = document.querySelector(".co-fs__video");
