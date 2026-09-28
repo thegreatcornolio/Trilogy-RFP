@@ -1,12 +1,12 @@
-# Trilogy CX — Company Overview
+# Trilogy CX (Pty) Ltd — Company Overview
 
-Sales overview for **Trilogy CX** (not the Trilogy Digital JV story).
+Starter sales overview for **Trilogy CX (Pty) Ltd** (BPO · GCC · AI).
 
 - **URL:** https://proposal.trilogybpo.com/trilogycx/
 - **Password:** `trilogycx`
 
-Includes:
-- Who we are (Trilogy CX)
-- Offerings: BPO, GCC, AI
-- Team, awards, footprint, management journey, brands
-- Why South Africa / Cape Town, how we operate, cases, contact
+## Starting point
+Intro adapted from the RFP builder **Trilogy BPO** company overview copy, rebranded to Trilogy CX (Pty) Ltd.
+
+## Next
+Build out offerings, team, footprint, journey, Why SA, cases, etc. on top of this base.
