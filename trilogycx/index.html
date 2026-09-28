@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-4">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-4">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-7">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-7">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -222,7 +222,7 @@
     }
     .cx-offer-intro {
       margin: 0 0 1rem;
-      max-width: 48rem;
+      max-width: none;
       color: #4a5563;
       font-size: 0.98rem;
       line-height: 1.5;
@@ -388,13 +388,17 @@
 
     /* Keep overview copy from being clipped by wide children */
     body.trilogy-cx .section-body,
-    body.trilogy-cx .prose {
+    body.trilogy-cx .prose,
+    body.trilogy-cx .prose p,
+    body.trilogy-cx .cx-lead,
+    body.trilogy-cx .cx-offer-intro {
       min-width: 0;
-      max-width: 100%;
+      max-width: none;
+      width: 100%;
       overflow-wrap: break-word;
     }
-    body.trilogy-cx .prose p {
-      max-width: 48rem;
+    body.trilogy-cx .proposal-page {
+      max-width: min(72.5rem, calc(100vw - 2rem));
     }
 
     /* Brand marquee — groups must be horizontal flex or logos stack as duplicate columns */
@@ -1632,7 +1636,7 @@
   </div>
 </aside>
 
-<script src="../trilogydigital/script.js?v=trilogycx-4"></script>
+<script src="../trilogydigital/script.js?v=trilogycx-7"></script>
 <script>
   (function () {
     var heroVideo = document.querySelector(".co-fs__video");
