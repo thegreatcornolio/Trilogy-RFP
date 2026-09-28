@@ -201,8 +201,9 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.55rem;
-      margin: 1.15rem 0 0.25rem;
+      margin: 0.85rem 0 0.75rem;
     }
+    .cx-offer-pills a,
     .cx-offer-pills span {
       display: inline-flex;
       padding: 0.45rem 0.85rem;
@@ -211,12 +212,108 @@
       color: #fff;
       font-size: 0.84rem;
       font-weight: 600;
+      text-decoration: none;
     }
-    .cx-offer-pills span em {
+    .cx-offer-pills a:hover { color: #d5ec67; }
+    .cx-offer-pills em {
       font-style: normal;
       color: #61d779;
       margin-right: 0.35rem;
     }
+    .cx-offer-intro {
+      margin: 0 0 1rem;
+      max-width: 48rem;
+      color: #4a5563;
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .cx-offer-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin: 0 0 1rem;
+    }
+    @media (min-width: 900px) {
+      .cx-offer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .cx-offer-card {
+      background: #fff;
+      border: 1px solid #d5dbe3;
+      border-radius: 0.85rem;
+      padding: 1rem 1.05rem 1.1rem;
+      border-left: 4px solid var(--offer-accent, #61d779);
+      box-shadow: 0 8px 18px rgba(19,32,46,0.04);
+    }
+    .cx-offer-card--bpo { --offer-accent: #61d779; }
+    .cx-offer-card--gcc { --offer-accent: #d5ec67; }
+    .cx-offer-card--ai { --offer-accent: #5bc0eb; }
+    .cx-offer-card__eyebrow {
+      margin: 0 0 0.35rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--offer-accent, #61d779);
+    }
+    .cx-offer-card--gcc .cx-offer-card__eyebrow { color: #8aa016; }
+    .cx-offer-card h4 {
+      margin: 0 0 0.45rem;
+      font-size: 1.02rem;
+      line-height: 1.3;
+      color: #13202e;
+      font-family: Poppins, Inter, sans-serif;
+    }
+    .cx-offer-card p {
+      margin: 0 0 0.65rem;
+      color: #4a5563;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+    .cx-offer-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+    }
+    .cx-offer-card li {
+      position: relative;
+      padding-left: 0.95rem;
+      color: #4a5563;
+      font-size: 0.84rem;
+      line-height: 1.4;
+    }
+    .cx-offer-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 999px;
+      background: var(--offer-accent, #61d779);
+    }
+    .cx-offer-more {
+      margin: 0;
+      padding: 0.85rem 1rem;
+      border-radius: 0.75rem;
+      background: #f3f5f8;
+      border: 1px solid #e2e6ec;
+    }
+    .cx-offer-more h4 {
+      margin: 0 0 0.45rem;
+      font-size: 0.92rem;
+      color: #13202e;
+    }
+    .cx-offer-more ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.3rem;
+      color: #4a5563;
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+    .cx-offer-more li::marker { color: #61d779; }
 
 
     /* Show section nav on desktop (co-shell hides it) */
@@ -812,12 +909,52 @@
 
         <h3 id="co-offerings">Our offerings — BPO, GCC &amp; AI</h3>
         <div class="cx-offer-pills" aria-label="Trilogy CX offerings">
-          <span><em>01</em> BPO</span>
-          <span><em>02</em> GCC</span>
-          <span><em>03</em> AI</span>
+          <a href="#offer-bpo"><em>01</em> BPO</a>
+          <a href="#offer-gcc"><em>02</em> GCC</a>
+          <a href="#offer-ai"><em>03</em> AI</a>
         </div>
-        <div class="prose" style="margin-top:0.85rem">
-          <p><strong>BPO</strong> — outsource voice, digital and AI-assisted CX to Trilogy CX in South Africa. <strong>GCC</strong> — Design, Build, Innovate &amp; Transfer your own capability centre. <strong>AI</strong> — human-in-the-loop platforms that cut cost-to-serve without cutting experience.</p>
+        <p class="cx-offer-intro" id="offer-journey"><strong>Your journey — your choice.</strong> Fully managed outsourcing, your own capability centre in South Africa, or our AI platform in your environment. Voice → Digital → Autonomous CX — you choose where to start.</p>
+        <div class="cx-offer-grid">
+          <article class="cx-offer-card cx-offer-card--bpo" id="offer-bpo">
+            <div class="cx-offer-card__eyebrow">Our core offering</div>
+            <h4>Outsourced Contact Centre — Trilogy BPO</h4>
+            <p>From Voice to Digital to Autonomous CX. Turnkey marketing, service, sales, collections and retentions — platforms ready, humans where they matter.</p>
+            <ul>
+              <li>Omnichannel voice, WhatsApp, chat, email &amp; social on one desktop</li>
+              <li>Integrated bedrock: predictive AI/ML, chat, RPA, analytics</li>
+              <li>Accelerate digital CX without building the stack yourself</li>
+            </ul>
+          </article>
+          <article class="cx-offer-card cx-offer-card--gcc" id="offer-gcc">
+            <div class="cx-offer-card__eyebrow">Specialised offshoring</div>
+            <h4>Capability Centres — Trilogy GCC</h4>
+            <p>Stand up a high-performance Global Capability Centre in South Africa with DBIT — Design, Build, Innovate &amp; Transfer — fast, compliant, low-risk delivery you ultimately own.</p>
+            <ul>
+              <li>25+ years leadership · 30+ ops · 10,000+ seats scaled</li>
+              <li>Proven pace: first 100 seats in six weeks, path to 1,000+</li>
+              <li>Deep SA labour, compliance, vendor and cost expertise</li>
+            </ul>
+          </article>
+          <article class="cx-offer-card cx-offer-card--ai" id="offer-ai">
+            <div class="cx-offer-card__eyebrow">Our differentiator</div>
+            <h4>AI Contact Centre Tools — Trilogy Ai</h4>
+            <p>Proven digital and autonomous CX for sales, service, marketing, collections and retention — live with clients today, higher conversion and measurable efficiency.</p>
+            <ul>
+              <li>Agent-in-the-loop for escalation, judgement and compliance</li>
+              <li>Deploy into your or a third-party environment — no forced migration</li>
+              <li>Production-proven, not a slideware roadmap</li>
+            </ul>
+          </article>
+        </div>
+        <div class="cx-offer-more" id="offer-core-lines">
+          <h4>Core service lines</h4>
+          <ul>
+            <li><strong>Inbound CX</strong> — omnichannel service on a unified agent desktop</li>
+            <li><strong>Complaints</strong> — 5-layer Complaint Intelligence Architecture</li>
+            <li><strong>Back office</strong> — human or RPA workflows (40–60% labour reduction where eligible)</li>
+            <li><strong>Sales &amp; retentions</strong> — AI-assisted conversion and save programmes</li>
+            <li><strong>Tech support L1–L3</strong> — triage to engineering escalation with tiered SLAs</li>
+          </ul>
         </div>
 
         <h3 id="co-at-a-glance">At a glance</h3>
