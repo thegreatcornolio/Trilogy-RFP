@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-5">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-5">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-4">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-4">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -288,6 +288,94 @@
       backdrop-filter: blur(6px);
     }
     .co-scroll-hint:hover { color: #d5ec67; border-color: rgba(213,236,103,0.45); }
+
+    /* Keep overview copy from being clipped by wide children */
+    body.trilogy-cx .section-body,
+    body.trilogy-cx .prose {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+    body.trilogy-cx .prose p {
+      max-width: 48rem;
+    }
+
+    /* Brand marquee — groups must be horizontal flex or logos stack as duplicate columns */
+    .brand-marquee {
+      margin: 0.35rem 0 0.85rem;
+      max-width: 100%;
+    }
+    .brand-marquee__viewport {
+      overflow: hidden;
+      min-height: 4.35rem;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
+    .brand-marquee__track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      flex-wrap: nowrap;
+      animation: co-brand-marquee 70s linear infinite;
+    }
+    .brand-marquee__group {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      flex-wrap: nowrap;
+      gap: 1.75rem;
+      padding-right: 1.75rem;
+    }
+    .brand-marquee__item {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.4rem;
+      padding: 0 0.35rem;
+    }
+    .brand-marquee__item img {
+      display: block;
+      max-height: 2.6rem;
+      max-width: 7.5rem;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: grayscale(1) contrast(1.05);
+      opacity: 0.88;
+    }
+    .brand-marquee__item--large img {
+      max-height: 3.1rem;
+      max-width: 9rem;
+    }
+    .brand-marquee:hover .brand-marquee__track {
+      animation-play-state: paused;
+    }
+    @keyframes co-brand-marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .brand-marquee__track {
+        animation: none;
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        row-gap: 0.85rem;
+      }
+      .brand-marquee__group {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 0;
+        gap: 1rem 1.5rem;
+      }
+      .brand-marquee__group[aria-hidden="true"] { display: none; }
+      .brand-marquee__viewport {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+    }
 
 .team-roster__grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     @media (min-width: 720px) {
@@ -1407,7 +1495,7 @@
   </div>
 </aside>
 
-<script src="../trilogydigital/script.js?v=trilogycx-5"></script>
+<script src="../trilogydigital/script.js?v=trilogycx-4"></script>
 <script>
   (function () {
     var heroVideo = document.querySelector(".co-fs__video");
