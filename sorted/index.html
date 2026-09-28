@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sorted-4">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=sorted-4">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=sorted-5">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=sorted-5">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -667,72 +667,99 @@
       line-height: 1.35;
     }
 
-    /* Process flow diagram */
+    /* Process flow diagram — fluid, fits the content pane */
     .sort-flow {
       margin: 1rem 0 0.4rem;
-      padding: 1.15rem;
+      padding: clamp(0.85rem, 1.8vw, 1.15rem);
       border-radius: 1rem;
       background: #0f1a26;
       color: #fff;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      container-type: inline-size;
+      container-name: sort-flow;
     }
     .sort-flow__title {
-      margin: 0 0 1rem;
+      margin: 0 0 0.85rem;
       font-family: Poppins, Inter, sans-serif;
-      font-size: 1.15rem;
+      font-size: clamp(0.85rem, 1.6vw, 1.15rem);
       color: #61d779;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
     .sort-pipeline {
-      display: flex;
-      align-items: stretch;
-      gap: 0.65rem;
-      min-width: 56rem;
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1fr)
+        auto
+        minmax(0, 1.1fr)
+        auto
+        minmax(0, 1.85fr);
+      align-items: start;
+      gap: clamp(0.2rem, 0.7vw, 0.65rem);
+      width: 100%;
+      min-width: 0;
     }
     .sort-pipeline__col {
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
-      flex: 0 0 10.5rem;
+      gap: clamp(0.35rem, 0.7vw, 0.55rem);
+      min-width: 0;
     }
     .sort-pipeline__col--wide {
-      flex: 1 1 16rem;
-      min-width: 16rem;
+      min-width: 0;
     }
     .sort-pipeline__split {
       display: grid;
-      gap: 0.55rem;
-      grid-template-columns: 1fr 1fr;
+      gap: clamp(0.35rem, 0.7vw, 0.55rem);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
     .sf-node {
       border-radius: 0.75rem;
-      padding: 0.85rem 0.9rem;
+      padding: clamp(0.45rem, 1.1vw, 0.85rem) clamp(0.4rem, 1vw, 0.9rem);
       text-align: center;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: clamp(0.68rem, 1.35vw, 0.9rem);
       line-height: 1.3;
       border: 1px solid rgba(255,255,255,0.12);
       background: #1a2d42;
+      box-sizing: border-box;
+      word-break: break-word;
+      hyphens: auto;
     }
-    .sf-node--channel { background: #243b55; padding: 0.55rem 0.7rem; font-size: 0.85rem; }
-    .sf-node--pipe { background: linear-gradient(135deg, #1f6b34, #2f9e4a); border-color: rgba(97,215,121,0.4); }
+    .sf-node--channel {
+      background: #243b55;
+      padding: clamp(0.4rem, 0.9vw, 0.55rem) clamp(0.35rem, 0.8vw, 0.7rem);
+      font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    }
+    .sf-node--pipe {
+      background: linear-gradient(135deg, #1f6b34, #2f9e4a);
+      border-color: rgba(97,215,121,0.4);
+    }
     .sf-node--core {
       background: linear-gradient(160deg, #61d779 0%, #2f9e4a 100%);
       color: #13202e;
-      min-height: 5.5rem;
+      min-height: clamp(3.5rem, 8vw, 5.5rem);
       display: grid;
       place-items: center;
-      font-size: 1rem;
+      font-size: clamp(0.72rem, 1.5vw, 1rem);
       box-shadow: 0 0 0 4px rgba(97,215,121,0.18);
     }
-    .sf-node--out { background: #243b55; border-color: rgba(213,236,103,0.35); color: #d5ec67; }
+    .sf-node--out {
+      background: #243b55;
+      border-color: rgba(213,236,103,0.35);
+      color: #d5ec67;
+      font-size: clamp(0.65rem, 1.25vw, 0.88rem);
+    }
     .sf-node--llm {
       background: #13202e;
       border: 2px dashed rgba(97,215,121,0.55);
       color: #61d779;
-      font-size: 1.1rem;
+      font-size: clamp(0.85rem, 1.8vw, 1.1rem);
       letter-spacing: 0.08em;
     }
     .sf-node--oval {
@@ -740,21 +767,21 @@
       background: #1a2d42;
       border-color: rgba(91,192,235,0.45);
       color: #5bc0eb;
-      min-height: 3.6rem;
+      min-height: clamp(2.6rem, 6vw, 3.6rem);
       display: grid;
       place-items: center;
     }
     .sf-node--list {
       text-align: left;
       font-weight: 600;
-      font-size: 0.84rem;
-      line-height: 1.45;
+      font-size: clamp(0.62rem, 1.15vw, 0.84rem);
+      line-height: 1.4;
       background: #1a2d42;
     }
     .sf-node--list strong {
       display: block;
       color: #d5ec67;
-      font-size: 0.7rem;
+      font-size: clamp(0.58rem, 1vw, 0.7rem);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 0.35rem;
@@ -762,38 +789,52 @@
     .sf-arrow {
       align-self: center;
       color: #61d779;
-      font-size: 1.45rem;
+      font-size: clamp(1rem, 2vw, 1.45rem);
       font-weight: 700;
       opacity: 0.9;
-      flex: 0 0 auto;
-      padding: 0 0.15rem;
+      padding: 0;
+      line-height: 1;
     }
     .sf-arrow--down {
       text-align: center;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 1.6vw, 1.1rem);
       padding: 0;
     }
     .sf-label {
-      font-size: 0.7rem;
+      font-size: clamp(0.58rem, 1.05vw, 0.7rem);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.55);
       text-align: left;
     }
+    .sort-flow > .sf-label,
+    .sort-flow__summary {
+      margin-top: 0.85rem;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+      text-align: left;
+    }
     .channels {
       display: grid;
-      gap: 0.45rem;
+      gap: clamp(0.3rem, 0.6vw, 0.45rem);
+    }
+    @container sort-flow (max-width: 640px) {
+      .sort-pipeline {
+        grid-template-columns: 1fr;
+      }
+      .sf-arrow:not(.sf-arrow--down) {
+        transform: rotate(90deg);
+        justify-self: center;
+      }
+      .sort-pipeline__split { grid-template-columns: 1fr; }
     }
     @media (max-width: 720px) {
       .sort-pipeline {
-        flex-direction: column;
-        min-width: 0;
+        grid-template-columns: 1fr;
       }
-      .sort-pipeline__col,
-      .sort-pipeline__col--wide { flex: 1 1 auto; min-width: 0; }
       .sf-arrow:not(.sf-arrow--down) {
         transform: rotate(90deg);
-        align-self: center;
+        justify-self: center;
       }
       .sort-pipeline__split { grid-template-columns: 1fr; }
     }
@@ -1134,7 +1175,7 @@
               </div>
             </div>
           </div>
-          <p class="sf-label" style="text-align:left;margin-top:0.85rem">Voice / Chat / Email / Web → Recording → Transcription → Analytics (+ LLM) → Dashboards &amp; Next Best Action workflows</p>
+          <p class="sf-label sort-flow__summary">Voice / Chat / Email / Web → Recording → Transcription → Analytics (+ LLM) → Dashboards &amp; Next Best Action workflows</p>
         </div>
       </div>
     </section>
@@ -1187,7 +1228,7 @@
   </div>
 </aside>
 
-<script src="../trilogydigital/script.js?v=sorted-4"></script>
+<script src="../trilogydigital/script.js?v=sorted-5"></script>
 <script>
   (function () {
     var heroVideo = document.querySelector(".sorted-hero__video");
