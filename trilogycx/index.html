@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-11">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-11">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-12">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-12">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -669,6 +669,7 @@
     }
     .ot-timeline__rail--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .ot-timeline__rail--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .ot-timeline__rail--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .ot-node {
       display: grid;
       grid-template-rows: subgrid;
@@ -782,6 +783,7 @@
       .ot-timeline__rail,
       .ot-timeline__rail--4,
       .ot-timeline__rail--3,
+      .ot-timeline__rail--2,
       .ot-node,
       .ot-node__company,
       .ot-node__clients {
@@ -805,7 +807,8 @@
         border-top: 0;
       }
       .ot-timeline__rail--4,
-      .ot-timeline__rail--3 {
+      .ot-timeline__rail--3,
+      .ot-timeline__rail--2 {
         display: flex !important;
         flex-direction: column !important;
         gap: 0.75rem !important;
@@ -1284,7 +1287,7 @@
                 <p class="ot-axis__uk">UK Clients</p>
               </div>
               <div class="ot-timeline__track">
-                <ol class="ot-timeline__rail ot-timeline__rail--3" start="5">
+                <ol class="ot-timeline__rail ot-timeline__rail--2" start="5">
                   <li class="ot-node">
                     <div class="ot-node__company">
                       <div class="ot-node__note">Ascensos acquires Digital Tribe</div>
@@ -1303,31 +1306,16 @@
                   </li>
                   <li class="ot-node">
                     <div class="ot-node__company">
-                      <div class="ot-node__co">Trilogy BPO</div>
+                      <div class="ot-node__note">Now</div>
+                      <div class="ot-node__co is-now">Trilogy CX</div>
                       <div class="ot-node__dates">2025 – Now</div>
                     </div>
                     <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
                     <ul class="ot-node__clients">
                       <li>Ventrica (GCC)</li>
                       <li>Burger King</li>
-                    </ul>
-                  </li>
-                  <li class="ot-node">
-                    <div class="ot-node__company">
-                      <div class="ot-node__note">Now</div>
-                      <div class="ot-node__co is-now">Trilogy CX</div>
-                      <div class="ot-node__dates">April 2026</div>
-                    </div>
-                    <div class="ot-node__spine"><span class="ot-node__dot"></span></div>
-                    <ul class="ot-node__clients">
                       <li>NAD Clinic</li>
-                      <li>Multichoice</li>
-                      <li>MTN</li>
-                      <li>Telkom</li>
-                      <li>Afrihost</li>
-                      <li>Vodacom</li>
-                      <li>KFC</li>
-                      <li>PEP Stores</li>
+                      <li>Medscheme</li>
                     </ul>
                   </li>
                 </ol>
