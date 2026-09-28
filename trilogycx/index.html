@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-10">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-10">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-11">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-11">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -101,14 +101,17 @@
       min-height: 100vh;
       min-height: 100svh;
       min-height: 100dvh;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
       padding: clamp(1.15rem, 3.5vw, 2.5rem) clamp(1.15rem, 4vw, 3rem);
       box-sizing: border-box;
     }
     .co-fs__logo {
-      position: static !important;
+      position: absolute !important;
+      top: clamp(1.15rem, 3.5vw, 2.5rem);
+      left: clamp(1.15rem, 4vw, 3rem);
       display: block;
       width: min(12rem, 48vw) !important;
       height: auto;
@@ -126,50 +129,31 @@
       align-items: flex-start;
       justify-content: center;
       text-align: left;
-      gap: 0.45rem;
-      padding: 0.5rem 0 0;
-      max-width: min(46rem, 100%);
+      gap: 0.65rem;
+      padding: 0;
+      max-width: min(42rem, 100%);
       margin: 0;
       width: 100%;
     }
-    .co-fs__mid .cover__brand-name {
-      display: block;
-      font-family: Poppins, Inter, sans-serif;
-      font-size: clamp(2.35rem, 6.5vw, 4.25rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-      color: #fff;
-      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
-    }
-    .co-fs__mid .cover__brand-line {
-      display: block;
-      font-size: clamp(0.78rem, 1.5vw, 1.05rem);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: rgba(255, 255, 255, 0.72);
-      text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
-      margin: 0.15rem 0 0.85rem;
-    }
+    .co-fs__mid .cover__brand-name,
+    .co-fs__mid .cover__brand-line { display: none !important; }
     .co-fs__mid h1 {
       margin: 0;
       font-family: Poppins, Inter, sans-serif;
       font-weight: 700;
-      font-size: clamp(1.35rem, 3.2vw, 2.15rem);
-      line-height: 1.15;
-      letter-spacing: -0.015em;
+      font-size: clamp(2.1rem, 5.5vw, 3.75rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
       color: #fff;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
     }
-    .co-fs__mid h1 .co-hero__accent,
-    .co-fs__mid .cover__brand-name .co-hero__accent { color: #61d779; }
+    .co-fs__mid h1 .co-hero__accent { color: #61d779; }
     .co-fs__mid .cover__intro {
-      margin: 1rem 0 0;
-      max-width: none !important;
+      margin: 0.35rem 0 0;
+      max-width: min(34rem, 100%) !important;
       width: 100%;
       color: rgba(255, 255, 255, 0.92);
-      font-size: clamp(0.95rem, 1.45vw, 1.08rem);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
       line-height: 1.55;
       text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
     }
@@ -891,8 +875,6 @@
         <div class="co-fs__inner">
           <img class="co-fs__logo cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
           <div class="co-fs__mid">
-            <span class="cover__brand-name">Trilogy <span class="co-hero__accent">CX</span></span>
-            <span class="cover__brand-line">Trilogy CX (Pty) Ltd</span>
             <h1>Make Customer Engagement <span class="co-hero__accent">Simple.</span></h1>
             <p class="cover__intro">BPO · GCC · AI — human-led customer experience from South Africa, for UK, US and global brands.</p>
           </div>
