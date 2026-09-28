@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-13">
-  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-13">
+  <link rel="stylesheet" href="../trilogydigital/styles.css?v=trilogycx-14">
+  <link rel="stylesheet" href="../companyoverview/co-shell.css?v=trilogycx-14">
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
@@ -298,61 +298,119 @@
     .cx-offer-more li::marker { color: #61d779; }
 
 
-    /* Clean sticky section nav — no brand, no cutoff */
+    /* Overlay hamburger nav — sits on the hero, not in an empty strip */
     body.trilogy-cx .page-nav {
       display: block;
-      position: sticky;
+      position: absolute;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 50;
-      background: #13202e;
+      background: transparent;
+      border-bottom: 0;
+      pointer-events: none;
+    }
+    body.trilogy-cx .page-nav.is-open {
+      background: rgba(11, 18, 26, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.12);
+      pointer-events: auto;
     }
     body.trilogy-cx .page-nav__brand { display: none !important; }
-    body.trilogy-cx .page-nav button { display: none; }
     body.trilogy-cx .page-nav__inner {
-      display: block;
-      max-width: min(72.5rem, calc(100vw - 2rem));
-      margin: 0 auto;
-      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      max-width: none;
+      margin: 0;
+      padding: clamp(0.85rem, 2.5vw, 1.25rem) clamp(0.9rem, 3vw, 1.5rem);
       box-sizing: border-box;
+      pointer-events: none;
+    }
+    body.trilogy-cx .page-nav button[data-nav-toggle] {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      appearance: none;
+      width: 2.65rem;
+      height: 2.65rem;
+      padding: 0;
+      margin: 0;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 0.7rem;
+      background: rgba(11, 18, 26, 0.42);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff;
+      cursor: pointer;
+      pointer-events: auto;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+    }
+    body.trilogy-cx .page-nav button[data-nav-toggle]:hover,
+    body.trilogy-cx .page-nav.is-open button[data-nav-toggle] {
+      border-color: rgba(97, 215, 121, 0.55);
+      color: #61d779;
+      background: rgba(11, 18, 26, 0.72);
+    }
+    body.trilogy-cx .page-nav button[data-nav-toggle] .nav-burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.28rem;
+      width: 1.05rem;
+    }
+    body.trilogy-cx .page-nav button[data-nav-toggle] .nav-burger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      border-radius: 999px;
+      background: currentColor;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    body.trilogy-cx .page-nav.is-open button[data-nav-toggle] .nav-burger span:nth-child(1) {
+      transform: translateY(0.34rem) rotate(45deg);
+    }
+    body.trilogy-cx .page-nav.is-open button[data-nav-toggle] .nav-burger span:nth-child(2) {
+      opacity: 0;
+    }
+    body.trilogy-cx .page-nav.is-open button[data-nav-toggle] .nav-burger span:nth-child(3) {
+      transform: translateY(-0.34rem) rotate(-45deg);
     }
     body.trilogy-cx .page-nav__links {
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.2rem;
+      width: 100%;
+      padding: 0.15rem 0 0.85rem;
+      pointer-events: auto;
+    }
+    body.trilogy-cx .page-nav.is-open .page-nav__links {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 0.35rem 0.85rem;
-      padding-right: 4.5rem; /* clear floating CTA dock */
+    }
+    body.trilogy-cx .page-nav.is-open .page-nav__inner {
+      flex-direction: column;
+      align-items: stretch;
+      pointer-events: auto;
+    }
+    body.trilogy-cx .page-nav.is-open .page-nav__inner > button[data-nav-toggle] {
+      align-self: flex-end;
     }
     body.trilogy-cx .page-nav__links a {
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.92);
       text-decoration: none;
-      font-size: 0.86rem;
+      font-size: 0.98rem;
       font-weight: 600;
       white-space: nowrap;
-      padding: 0.35rem 0.15rem;
+      padding: 0.7rem 0.35rem;
       line-height: 1.2;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+    body.trilogy-cx .page-nav__links a:last-child { border-bottom: 0; }
     body.trilogy-cx .page-nav__links a:hover { color: #61d779; }
-    @media (max-width: 720px) {
-      body.trilogy-cx .page-nav__inner {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 0.65rem 1rem;
-        max-width: none;
-      }
-      body.trilogy-cx .page-nav button { display: inline-flex; }
-      body.trilogy-cx .page-nav__links {
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.35rem;
-        width: 100%;
-        padding: 0 1rem 0.9rem;
-        padding-right: 1rem;
-      }
-      body.trilogy-cx .page-nav.is-open .page-nav__links { display: flex; }
+    body.trilogy-cx .proposal-shell {
+      position: relative;
     }
 
     /* Stop invisible sections creating huge blank gaps */
@@ -845,7 +903,9 @@
 <body class="proposal-doc co-detailed-only trilogy-cx" id="top">
 <nav class="page-nav" aria-label="Document sections">
   <div class="page-nav__inner">
-    <button type="button" data-nav-toggle aria-expanded="false" aria-controls="page-nav-links">Menu</button>
+    <button type="button" data-nav-toggle aria-expanded="false" aria-controls="page-nav-links" aria-label="Open menu">
+      <span class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
     <div class="page-nav__links" id="page-nav-links">
       <a href="#cover">Cover</a>
       <a href="#who">Company overview</a>
@@ -1752,11 +1812,13 @@
       toggle.addEventListener("click", function () {
         var open = nav.classList.toggle("is-open");
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       });
       nav.querySelectorAll("a").forEach(function (link) {
         link.addEventListener("click", function () {
           nav.classList.remove("is-open");
           toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open menu");
         });
       });
     }
