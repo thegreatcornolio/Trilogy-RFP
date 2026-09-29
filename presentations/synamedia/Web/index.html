@@ -23,14 +23,13 @@
     }
     .cover__client-logo {
       display: block;
-      max-height: 2.85rem;
+      max-height: 3.35rem;
       width: auto;
-      max-width: min(32rem, 92vw);
+      max-width: min(28rem, 88vw);
       object-fit: contain;
-      background: #fff;
-      border-radius: 0.45rem;
-      padding: 0.55rem 1.05rem;
-      margin: 0.45rem auto 0.15rem;
+      background: transparent;
+      padding: 0.35rem 0;
+      margin: 0.55rem auto 0.2rem;
     }
     html { scroll-behavior: smooth; }
     [id] { scroll-margin-top: 4.6rem; }
@@ -155,13 +154,12 @@
       padding: 0.55rem 1rem 0.35rem;
     }
     .page-nav__brand {
-      height: 22px;
+      height: 18px;
       width: auto;
-      max-width: 12.5rem;
+      max-width: 10.5rem;
       object-fit: contain;
-      background: #fff;
-      border-radius: 0.3rem;
-      padding: 0.35rem 0.55rem;
+      background: transparent;
+      padding: 0;
     }
     .page-nav button { display: none; }
     .page-nav__links {
@@ -212,13 +210,12 @@
         padding: 0.7rem 1rem;
       }
       .page-nav__brand {
-        height: 22px;
+        height: 18px;
         width: auto;
-        max-width: 12.5rem;
+        max-width: 10.5rem;
         object-fit: contain;
-        background: #fff;
-        border-radius: 0.3rem;
-        padding: 0.35rem 0.55rem;
+        background: transparent;
+        padding: 0;
       }
       .page-nav button {
         display: inline-block;
@@ -987,7 +984,6 @@
     <a href="#section-16">Transition</a>
     <a href="#section-18">Case Studies</a>
     <a href="#section-08">Technology &amp; AI</a>
-    <a href="#top">Back to top</a>
   </div>
 </nav>
 <main class="main">
@@ -1611,7 +1607,7 @@
 
 <section class="proposal-page" id="section-04">
       <div class="section-head">
-        <span class="section-num">08</span>
+        <span class="section-num">02</span>
         <h2 id="our-value-proposition-differentiators">Our Value Proposition &amp; Differentiators</h2>
       </div>
       <div class="section-body">
@@ -1712,7 +1708,7 @@
 
 <section class="proposal-page" id="why-sa">
       <div class="section-head">
-        <span class="section-num">02</span>
+        <span class="section-num">03</span>
         <h2 id="why-south-africa-why-cape-town">Why South Africa / Why Cape Town</h2>
       </div>
       <div class="section-body">
@@ -1853,11 +1849,12 @@
             </div>
             <figcaption>Sights in and around Cape Town — lifestyle that attracts and retains talent.</figcaption>
           </figure>
-      
+      </div>
+    </section>
 
 <section class="proposal-page" id="section-03">
         <div class="section-head">
-          <span class="section-num">03</span>
+          <span class="section-num">04</span>
           <h2 id="operational-leadership">Operational Leadership &amp; Delivery</h2>
         </div>
         <div class="section-body">
@@ -2192,7 +2189,7 @@
 
 <section class="proposal-page" id="section-12">
         <div class="section-head">
-          <span class="section-num">04</span>
+          <span class="section-num">05</span>
           <h2 id="quality-analytics">Quality &amp; Analytics</h2>
         </div>
         <div class="section-body">
@@ -2374,7 +2371,7 @@
 
 <section class="proposal-page" id="section-16">
         <div class="section-head">
-          <span class="section-num">05</span>
+          <span class="section-num">06</span>
           <h2 id="transition-implementation-methodology">Transition &amp; Implementation Methodology</h2>
         </div>
         <div class="section-body">
@@ -2384,7 +2381,7 @@
 
 <section class="proposal-page" id="section-18">
         <div class="section-head">
-          <span class="section-num">06</span>
+          <span class="section-num">07</span>
           <h2 id="case-studies-references">Case Studies &amp; References</h2>
         </div>
         <div class="section-body">
@@ -2416,7 +2413,7 @@
 
 <section class="proposal-page" id="section-08">
       <div class="section-head">
-        <span class="section-num">07</span>
+        <span class="section-num">08</span>
         <h2 id="technology-ai-automation-capability">Technology, AI &amp; Automation Capability</h2>
       </div>
       <div class="section-body">
@@ -2609,6 +2606,18 @@
         });
       });
     }
+
+    function jumpToHash() {
+      var id = (location.hash || "").replace(/^#/, "");
+      if (!id) return;
+      var el = document.getElementById(id);
+      if (!el) return;
+      var page = el.closest(".proposal-page") || el;
+      page.classList.add("is-visible");
+      el.scrollIntoView({ block: "start" });
+    }
+    jumpToHash();
+    window.addEventListener("hashchange", jumpToHash);
   })();
 </script>
 </body>
