@@ -29,8 +29,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.28rem;
-      max-width: min(20rem, 72vw);
+      max-width: min(20rem, 42vw);
     }
     .cover__lockup .cover__logo {
       position: static;
@@ -39,27 +38,34 @@
       width: min(14.5rem, 58vw);
       margin: 0;
     }
-    .cover__lockup .cover__brand-line {
+    .cover__brand-line {
+      position: absolute;
+      top: 1.55rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
       margin: 0;
-      padding-left: 0.12rem;
-      font-size: 0.68rem;
+      width: max-content;
+      max-width: calc(100% - 2.4rem);
+      text-align: center;
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      text-align: left;
       color: rgba(255, 255, 255, 0.62);
     }
     @media (min-width: 640px) {
       .cover__lockup {
         top: 1.5rem;
         left: 2rem;
-        max-width: min(22rem, 40vw);
+        max-width: min(22rem, 32vw);
       }
       .cover__lockup .cover__logo {
         width: min(18rem, 32vw);
       }
-      .cover__lockup .cover__brand-line {
-        font-size: 0.74rem;
+      .cover__brand-line {
+        top: 1.95rem;
+        font-size: 0.84rem;
       }
     }
     @media (min-width: 1100px) {
@@ -269,12 +275,19 @@
       .cover__lockup {
         top: 1rem;
         left: 1.15rem;
+        max-width: min(11.5rem, 58vw);
       }
       .cover__lockup .cover__logo {
-        width: min(11.5rem, 62vw);
+        width: min(11.5rem, 58vw);
+      }
+      .cover__brand-line {
+        top: 4.15rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        width: calc(100% - 2.3rem);
       }
       .cover__brand {
-        padding-top: 4.25rem;
+        padding-top: 5.6rem;
       }
       .cover__body {
         margin-top: 2.4rem !important;
@@ -1113,8 +1126,8 @@
       <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="cover__lockup">
         <img class="cover__logo" src="../../../trilogydigital/assets/trilogy-logo.png" alt="Trilogy">
-        <span class="cover__brand-line">A Trilogy Group Company</span>
       </div>
+      <p class="cover__brand-line">A Trilogy CX Group Company</p>
       <div class="cover__brand">
         <div class="cover__client-plate">
           <img class="cover__client-logo" src="synamedia-logo.png?v=official2" alt="Synamedia">
