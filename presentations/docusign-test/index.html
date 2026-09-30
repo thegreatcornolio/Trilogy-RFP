@@ -65,13 +65,13 @@
   <section class="sheet sheet--inner" id="acceptance">
     <p class="kicker">Test sign-off</p>
     <h2>Dummy acceptance</h2>
-    <p>Signing this page only confirms the DocuSign wiring works. It has no commercial effect. First signer is the template <strong>COO</strong> role (Craig). Second signer is the template <strong>CEO</strong> role (Kyle).</p>
+      <p>Signing this page only confirms the DocuSign wiring works. It has no commercial effect. First signer is <strong>Authorised Signatory 1</strong> (Craig). Second signer is <strong>Authorised Signatory 2</strong> (Kyle).</p>
     <div class="note">
-      <strong>Before you click Send.</strong> On the DocuSign template, clear name and email on both roles so Power Automate can supply Craig and Kyle. Do not click Test in Power Automate — that also uses a live envelope.
+      <strong>The PDF comes from this page’s pdfUrl, not from the DocuSign template.</strong> If the envelope still opens as Medscheme, the flow is still using <em>Create envelope using template with recipients and tabs</em>. That action always attaches the file saved on the template. Do not click Test in Power Automate — that also uses a live envelope.
     </div>
     <div class="sign-grid">
       <div class="sign-block">
-        <p class="sign-block__party">First signer · COO role</p>
+        <p class="sign-block__party">First signer · Signatory 1</p>
         <div class="sign-row">
           <label>Name</label>
           <div class="value">Craig Shalekoff</div>
@@ -90,7 +90,7 @@
         </div>
       </div>
       <div class="sign-block">
-        <p class="sign-block__party">Second signer · CEO role</p>
+        <p class="sign-block__party">Second signer · Signatory 2</p>
         <div class="sign-row">
           <label>Name</label>
           <div class="value">Kyle Phillips</div>
