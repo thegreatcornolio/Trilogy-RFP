@@ -21,18 +21,103 @@
       --brand-green: #61d779 !important;
       --brand-lime: #d5ec67 !important;
     }
+    .cover__lockup {
+      position: absolute;
+      top: 1.15rem;
+      left: 1.2rem;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: min(20rem, 42vw);
+    }
+    .cover__lockup .cover__logo {
+      position: static;
+      top: auto;
+      left: auto;
+      width: min(14.5rem, 58vw);
+      margin: 0;
+    }
+    .cover__brand-line {
+      position: absolute;
+      top: 1.55rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      margin: 0;
+      width: max-content;
+      max-width: calc(100% - 2.4rem);
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.62);
+    }
+    @media (min-width: 640px) {
+      .cover__lockup {
+        top: 1.5rem;
+        left: 2rem;
+        max-width: min(22rem, 32vw);
+      }
+      .cover__lockup .cover__logo {
+        width: min(18rem, 32vw);
+      }
+      .cover__brand-line {
+        top: 1.95rem;
+        font-size: 0.84rem;
+      }
+    }
+    @media (min-width: 1100px) {
+      .cover__lockup .cover__logo {
+        width: min(20rem, 28vw);
+      }
+    }
+    .cover__brand {
+      padding-top: 5.25rem;
+    }
+    .cover__client-plate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 92%;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 0.55rem;
+      padding: 0.95rem 1.6rem;
+    }
     .cover__client-logo {
       display: block;
-      max-height: 3.35rem;
+      height: 4.35rem;
       width: auto;
-      max-width: min(28rem, 88vw);
+      max-width: min(28rem, 84vw);
       object-fit: contain;
       background: transparent;
-      padding: 0.35rem 0;
-      margin: 0.55rem auto 0.2rem;
+      padding: 0;
+      margin: 0;
+    }
+    .minter-partnership {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem 1.75rem;
+      flex-wrap: wrap;
+      margin: 0.35rem 0 0.25rem;
+    }
+    .minter-partnership img {
+      display: block;
+      height: 4.25rem;
+      width: auto;
+      max-width: min(18rem, 90vw);
+      object-fit: contain;
+      background: #fff;
+    }
+    .minter-partnership .prose {
+      flex: 1 1 16rem;
+      margin: 0;
     }
     html { scroll-behavior: smooth; }
-    [id] { scroll-margin-top: 4.6rem; }
+    [id] { scroll-margin-top: 6.4rem; }
     .meta-label, .cover__tagline { color: #2f9e4a !important; }
     .badge {
       border-color: color-mix(in srgb, #61d779 55%, transparent) !important;
@@ -154,12 +239,14 @@
       padding: 0.55rem 1rem 0.35rem;
     }
     .page-nav__brand {
-      height: 18px;
+      height: 1.7rem;
       width: auto;
-      max-width: 10.5rem;
+      max-width: 14rem;
       object-fit: contain;
-      background: transparent;
-      padding: 0;
+      box-sizing: content-box;
+      background: #fff;
+      border-radius: 0.28rem;
+      padding: 0.32rem 0.58rem;
     }
     .page-nav button { display: none; }
     .page-nav__links {
@@ -185,11 +272,34 @@
       .cover {
         padding: 2rem 1.15rem 2.25rem !important;
       }
+      .cover__lockup {
+        top: 1rem;
+        left: 1.15rem;
+        max-width: min(11.5rem, 58vw);
+      }
+      .cover__lockup .cover__logo {
+        width: min(11.5rem, 58vw);
+      }
+      .cover__brand-line {
+        top: 4.15rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        width: calc(100% - 2.3rem);
+      }
+      .cover__brand {
+        padding-top: 5.6rem;
+      }
       .cover__body {
         margin-top: 2.4rem !important;
       }
       .cover h1 {
         font-size: 1.85rem !important;
+      }
+      .cover__client-plate {
+        padding: 0.7rem 1.15rem;
+      }
+      .cover__client-logo {
+        height: 3.25rem;
       }
       .proposal-page {
         padding: 1.75rem 1.15rem !important;
@@ -210,12 +320,14 @@
         padding: 0.7rem 1rem;
       }
       .page-nav__brand {
-        height: 18px;
+        height: 1.55rem;
         width: auto;
-        max-width: 10.5rem;
+        max-width: 12.5rem;
         object-fit: contain;
-        background: transparent;
-        padding: 0;
+        box-sizing: content-box;
+        background: #fff;
+        border-radius: 0.28rem;
+        padding: 0.28rem 0.5rem;
       }
       .page-nav button {
         display: inline-block;
@@ -780,6 +892,27 @@
       color: #fff;
       font-weight: 600;
     }
+    .dbit-case {
+      margin: 0 0 1.85rem;
+    }
+    .dbit-case h3 {
+      margin: 0 0 0.7rem;
+    }
+    .dbit-case .list-check {
+      margin-top: 0.55rem;
+    }
+    .dbit-case-figure {
+      margin: 0.35rem 0 1rem;
+    }
+    .dbit-case-figure .figure__media {
+      aspect-ratio: auto;
+    }
+    .dbit-case-figure .figure__media img {
+      height: auto;
+      width: 100%;
+      object-fit: contain;
+      display: block;
+    }
   </style>
   <style id="cta-dock">
     body {
@@ -970,7 +1103,7 @@
 <body id="top">
 <nav class="page-nav" aria-label="Page sections">
   <div class="page-nav__inner">
-    <img class="page-nav__brand" src="synamedia-logo.png" alt="Synamedia">
+    <img class="page-nav__brand" src="synamedia-logo.png?v=official2" alt="Synamedia">
     <button type="button" data-nav-toggle aria-expanded="false" aria-controls="synamedia-nav-links">Menu</button>
   </div>
   <div class="page-nav__links" id="synamedia-nav-links">
@@ -984,17 +1117,21 @@
     <a href="#section-16">Transition</a>
     <a href="#section-18">Case Studies</a>
     <a href="#section-08">Technology &amp; AI</a>
+    <a href="#ar-ap">AR &amp; AP Usage</a>
   </div>
 </nav>
 <main class="main">
   <div class="proposal-shell">
 <section class="cover" id="cover">
       <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="cover__brand">
-        <span class="cover__brand-name">Trilogy</span>
-        <span class="cover__brand-line">A Trilogy Group Company</span>
+      <div class="cover__lockup">
         <img class="cover__logo" src="../../../trilogydigital/assets/trilogy-logo.png" alt="Trilogy">
-        <img class="cover__client-logo" src="synamedia-logo.png" alt="Synamedia">
+      </div>
+      <p class="cover__brand-line">A Trilogy CX Group Company</p>
+      <div class="cover__brand">
+        <div class="cover__client-plate">
+          <img class="cover__client-logo" src="synamedia-logo.png?v=official2" alt="Synamedia">
+        </div>
       </div>
       <div class="cover__body">
         <div class="badge">Company Overview</div>
@@ -1011,7 +1148,7 @@
         <div><div class="meta-label">Title</div><div class="meta-value">Head of CX solutions</div></div>
         <div><div class="meta-label">Contact</div><div class="meta-value">keanu@trilogybpo.com</div></div>
       </div>
-      <p class="cover__disclaimer">This document is commercial-in-confidence and prepared exclusively for the recipient named above. It may not be reproduced or disclosed to third parties without the written consent of Trilogy (Pty) Ltd.</p>
+      <p class="cover__disclaimer">This document is commercial-in-confidence and prepared exclusively for the recipient named above. It may not be reproduced or disclosed to third parties without the written consent of Trilogy CX (Pty) Ltd.</p>
     </section>
 <section class="proposal-page" id="contents">
       <div class="section-head">
@@ -1024,20 +1161,14 @@
             <table class="covers-table">
               <tbody>
                 <tr><td>01</td><td><a href="#section-02">Company Overview</a></td></tr>
-                <tr><td></td><td><a href="#co-overview">Company overview</a> · <a href="#meet-the-team">Meet the Team</a> · <a href="#awards-certifications-memberships">Awards, Certifications &amp; Memberships</a> · <a href="#sa-footprint">South African Footprint</a> · <a href="#uk-us-experience">UK &amp; US Client Experience</a> · <a href="#management-journey">Management Journey</a> · <a href="#similar-operations">Similar-Sized Operations</a> · <a href="#leadership-brands">Leadership Brands</a></td></tr>
                 <tr><td>02</td><td><a href="#section-04">Our Value Proposition &amp; Differentiators</a></td></tr>
-                <tr><td></td><td><a href="#value-overview">Value proposition</a> · <a href="#secret-sauce">Secret Sauce</a> · <a href="#our-achievements">Achievements</a> · <a href="#local-competitors">How We Differ From Local Competitors</a></td></tr>
                 <tr><td>03</td><td><a href="#why-sa">Why South Africa / Why Cape Town</a></td></tr>
-                <tr><td></td><td><a href="#why-south-africa-vp">Why South Africa</a> · <a href="#why-cape-town-vp">Why Cape Town</a> · <a href="#why-location-wins">Why the Location Wins</a> · <a href="#cape-town-sights">Sights in and around Cape Town</a></td></tr>
                 <tr><td>04</td><td><a href="#section-03">Operational Leadership &amp; Delivery</a></td></tr>
-                <tr><td></td><td><a href="#ops-leadership-model">Leadership model</a> · <a href="#our-people-workforce">People &amp; Workforce</a> · <a href="#the-trilogy-employee-lifecycle">Employee Lifecycle</a> · <a href="#recruitment-lifecycle-application-to-onboarding">Recruitment Lifecycle</a> · <a href="#agent-profile">Agent Profile</a> · <a href="#training-management-structure">Training</a> · <a href="#uk-cultural-immersion">UK Cultural Immersion</a> · <a href="#tenure-attrition">Tenure &amp; Attrition</a></td></tr>
                 <tr><td>05</td><td><a href="#section-12">Quality &amp; Analytics</a></td></tr>
-                <tr><td></td><td><a href="#workflow-automation-capabilities">Workflow Automation</a> · <a href="#continuous-improvement">Continuous Improvement</a> · <a href="#continuous-improvement-initiatives">CI Initiatives</a> · <a href="#customer-experience-programmes">CX Programmes</a> · <a href="#operational-insight-reporting">Operational Insight &amp; Reporting</a></td></tr>
                 <tr><td>06</td><td><a href="#section-16">Transition &amp; Implementation Methodology</a></td></tr>
-                <tr><td></td><td><a href="#scope-of-services">Scope of Services</a> · <a href="#transition-implementation">Transition &amp; Implementation</a> · <a href="#client-pre-requisites-support-needed">Client Pre-Requisites</a> · <a href="#governance-meeting-cadence">Governance</a> · <a href="#knowledge-transfer-methodology">Knowledge Transfer</a> · <a href="#top-transition-risks-mitigations">Transition Risks</a></td></tr>
                 <tr><td>07</td><td><a href="#section-18">Case Studies &amp; References</a></td></tr>
                 <tr><td>08</td><td><a href="#section-08">Technology, AI &amp; Automation Capability</a></td></tr>
-                <tr><td></td><td><a href="#tech-introduction">Introduction</a> · <a href="#technology-stack">Technology Stack</a> · <a href="#ai-enabled-platforms">AI-Enabled Platforms</a> · <a href="#orchestration-layer">Orchestration Layer</a> · <a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
+                <tr><td>09</td><td><a href="#ar-ap">Indicative AR &amp; AP Usage</a></td></tr>
               </tbody>
             </table>
           </div>
@@ -1063,9 +1194,9 @@
                 <tbody>
                   <tr><td>1</td><td><a href="#co-overview">Company overview</a></td></tr>
                   <tr><td>2</td><td><a href="#meet-the-team">Meet the Team</a></td></tr>
-                  <tr><td>3</td><td><a href="#awards-certifications-memberships">Our Awards, Certifications &amp; Memberships</a></td></tr>
-                  <tr><td>4</td><td><a href="#sa-footprint">South African Footprint</a></td></tr>
-                  <tr><td>5</td><td><a href="#uk-us-experience">Relevant UK &amp; US Client Experience</a></td></tr>
+                  <tr><td>3</td><td><a href="#strategic-partnership">Strategic Partnership</a></td></tr>
+                  <tr><td>4</td><td><a href="#awards-certifications-memberships">Our Awards, Certifications &amp; Memberships</a></td></tr>
+                  <tr><td>5</td><td><a href="#sa-footprint">South African Footprint</a></td></tr>
                   <tr><td>6</td><td><a href="#management-journey">Management Journey &amp; UK Client Experience</a></td></tr>
                   <tr><td>7</td><td><a href="#similar-operations">Examples of Similar-Sized Operations</a></td></tr>
                   <tr><td>8</td><td><a href="#leadership-brands">Brands Our Leadership Has Delivered For</a></td></tr>
@@ -1075,9 +1206,11 @@
           </div>
 
           <div class="prose" id="co-overview">
-            <p>Trilogy (Pty) Ltd is a purpose-built customer experience (CX) joint venture between Trilogy BPO and CXG, operating as a single integrated entity and now a Trilogy Group company. The partnership marries CXG's 27-year operational tenure and scale within the South African market to Trilogy's deep expertise in managing UK campaigns and delivering advanced digital and AI capabilities.</p>
+            <p><strong>Making customer engagement offshoring easy.</strong></p>
+            <p>Trilogy CX (Pty) Ltd is an offshore Business Process Outsourcing company in South Africa, helping UK and USA companies augment their customer experience while cutting the cost of customer service and sales.</p>
+            <p>Trilogy is led by seasoned BPO operators with 25+ years of combined leadership. Between them they have built and managed 30+ contact centres globally, launched 1,000-seat operations, and stood up fully operational sites in under six weeks. They know what it takes to get customer experience right, first time.</p>
             <p>The combined leadership team brings over 25 years of industry expertise, having previously established and successfully exited two major BPOs. Over their careers they have managed more than 36 contact centre operations, scaled over 10,000 seats globally, and delivered CX programmes for brands including John Lewis &amp; Partners, British Gas, Vodafone UK, Aldi UK, and Virgin.</p>
-            <p>Today, Trilogy deploys over 1,000 CX specialists across five operational sites in South Africa, anchored by its flagship campus at Mutual Park in Cape Town. Despite this scale, Trilogy remains an owner-led, high-touch business — focused on being responsive.</p>
+            <p>Today Trilogy CX delivers through three connected offerings — outsourced BPO, GCC design-build-transfer, and AI-enabled digital CX — from South Africa for UK, US and global brands.</p>
           </div>
 
           <div class="stats stats--4 stats--banner">
@@ -1090,7 +1223,7 @@
           <figure class="jv-diagram" aria-label="Trilogy joint venture structure">
             <div class="jv-diagram__canvas">
               <div class="jv-diagram__parent">
-                <strong>Trilogy (Pty) Ltd</strong>
+                <strong>Trilogy CX (Pty) Ltd</strong>
                 <span>50/50 joint venture · a Trilogy Group company · vision to create 2,500 FTEs in South Africa within three years</span>
               </div>
               <div class="jv-diagram__connector" aria-hidden="true">
@@ -1252,29 +1385,15 @@
               </div>
             </div>
 
-            <!-- ENTITY_DIGITAL_ONLY_START -->
-            <div class="team-roster__group entity-digital-only" id="digital-jv-partners" data-entity-only="Trilogy">
-              <div class="team-roster__label">Joint Venture Partners</div>
-              <div class="team-roster__grid team-roster__grid--5">
-                <article class="team-card">
-                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/yaron-assabi.png" alt="Portrait of Yaron Assabi" loading="lazy"></div>
-                  <div class="team-card__name-row">
-                    <h4>Yaron Assabi</h4>
-                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Yaron Assabi (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
-                  </div>
-                  <div class="team-card__role">Founder, Digital Solutions Group</div>
-                </article>
-                <article class="team-card">
-                  <div class="team-card__photo"><img src="../../../trilogydigital/assets/team/brandon-mezaros.png" alt="Portrait of Brandon Mezaros" loading="lazy"></div>
-                  <div class="team-card__name-row">
-                    <h4>Brandon Mezaros</h4>
-                    <a class="team-card__linkedin" href="#" aria-label="LinkedIn profile for Brandon Mezaros (link to follow)"><span class="linkedin-icon" aria-hidden="true"></span></a>
-                  </div>
-                  <div class="team-card__role">CEO, Customer Experience Group</div>
-                </article>
+            <div class="team-roster__group" id="strategic-partnership">
+              <div class="team-roster__label">Strategic Partnership</div>
+              <div class="minter-partnership">
+                <img src="mj-minter-logo.png" alt="M.J. Minter Inc. — Accounting, Management &amp; Tax Consultants">
+                <div class="prose">
+                  <p>Trilogy has a strategic partnership with <strong>MJ Minter &amp; Associates</strong>, a fully articulated and established accounting, management and tax firm (since 1995).</p>
+                </div>
               </div>
             </div>
-            <!-- ENTITY_DIGITAL_ONLY_END -->
           </div>
 
           <h3 id="awards-certifications-memberships">Our Awards, Certifications &amp; Memberships</h3>
@@ -1343,6 +1462,7 @@
 
           <h3 id="sa-footprint">South African Footprint</h3>
           <div class="prose" id="sa-footprint-copy">
+            <p>The GCC DBOT solution for Synamedia will be delivered from MJ Minter &amp; Associates premises in an upmarket Cape Town location.</p>
             <p>Trilogy's footprint has more than 1,000 FTEs across Cape Town, Johannesburg, with the majority in Cape Town, across two sites. Every site is Trilogy owned or leased and operated directly, never via franchise or affiliate. This offers an advantage where your current operation is in Cape Town. Your operation will fit seamlessly into our current operations, offering stability and risk mitigation associated with a new site.</p>
           </div>
           <figure class="sa-map-figure">
@@ -1442,13 +1562,6 @@
               <tr><td>National WFH continuity layer</td><td>Nationwide (distributed)</td><td>Active</td><td>40–60% cloud-first from home for flex &amp; BCP</td></tr>
             </tbody>
           </table></div>
-
-          <h3 id="uk-us-experience">Relevant UK &amp; US Client Experience</h3>
-          <div class="prose">
-            <p>Our leadership team has transferred, deployed and managed multiple operations in Cape Town, South Africa from inception. We also provided CX programmes for globally recognised UK brands including John Lewis &amp; Partners, British Gas, Vodafone UK and Aldi UK. Our operational and HR (People) experience is aligned with your UK and US requirements.</p>
-            <p>All our lessons learnt during these transitions, including job profiling, recruitment strategies and transferring of knowledge, provide us with a unique opportunity to leverage this experience and position ourselves as your ideal partner of choice.</p>
-            <p>We understand the importance of retaining competence and tenured staff and key individuals, including those in positions of operational leadership. We know our ways of working to be effective in delivering a tangible employee value proposition and believe our ways of working, including our core values, are closely aligned to those of your business. The investment made to date will not be lost, as we have significant experience in transitioning work between operators and core expertise in managing the change associated with the change of employer as a going concern.</p>
-          </div>
 
           <h3 id="management-journey">Management Journey &amp; UK Client Experience</h3>
           <figure class="ot-timeline" aria-label="One Team, 20 Years — Management Journey and UK Client Experience">
@@ -2385,6 +2498,50 @@
           <h2 id="case-studies-references">Case Studies &amp; References</h2>
         </div>
         <div class="section-body">
+        <h3 id="gcc-dbot-case-studies">GCC DBOT Case Studies</h3>
+        <div class="prose">
+          <p>Two GCC DBOT programmes at scale — Aegis (now Startek) and Ascensos in Cape Town. The same design-build-operate-transfer model Synamedia would use in South Africa.</p>
+        </div>
+
+        <article class="dbit-case" id="case-aegis">
+          <h3 id="aegis-south-africa">Aegis South Africa</h3>
+          <figure class="figure dbit-case-figure">
+            <div class="figure__media">
+              <img src="../../../GCC/assets/dbit-case-aegis.png" alt="Trilogy Aegis GCC DBOT case study: global BPO landing in South Africa, 2,500 seats in five years, still operating as Startek" loading="lazy">
+            </div>
+            <figcaption>Aegis GCC DBOT — design, build and operate in two South African locations, then a lasting in-country operation.</figcaption>
+          </figure>
+          <div class="prose">
+            <p>A global BPO needed a team to land in South Africa. Trilogy designed, built and operated Aegis South Africa in two geographic locations, ran the contact centre for three years, and grew the SA business by 2,500 seats.</p>
+          </div>
+          <ul class="list-check">
+            <li>Grew to 2,500 seats within 5 years, with EBITDA of over 15%.</li>
+            <li>Differentiation: SMART people and SMART technology.</li>
+            <li>Brands included British Gas, Virgin Mobile, AIG, the National Lottery, Department of Home Affairs and Telkom Mobile.</li>
+            <li>The operation continues in Africa, rebranded as Startek, still retaining key staff Trilogy brought in to manage the business.</li>
+          </ul>
+        </article>
+
+        <article class="dbit-case" id="case-ascensos">
+          <h3 id="ascensos">Ascensos</h3>
+          <figure class="figure dbit-case-figure">
+            <div class="figure__media">
+              <img src="../../../GCC/assets/dbit-case-ascensos.png" alt="Trilogy Ascensos GCC DBOT case study: Cape Town capability centre, first 100 FTEs live in six weeks, 1,500 seats across four locations" loading="lazy">
+            </div>
+            <figcaption>Ascensos GCC DBOT — Cape Town capability centre, first 100 FTEs live in six weeks, then a four-site scale-up.</figcaption>
+          </figure>
+          <div class="prose">
+            <p>Trilogy’s DBOT team assisted Digital Tribe and Ascensos to establish a capability centre in Cape Town, with the first 100 FTEs going live within six weeks. The team designed and built a centre of excellence, oversaw and ran the operation for two to four years, and handed over a world-class operation to the incumbent.</p>
+          </div>
+          <ul class="list-check">
+            <li>Built 1,500 seats over 3 years across 4 locations.</li>
+            <li>Delivered over $6 million in refunds from structuring and administering government incentives.</li>
+            <li>Built a leadership team that remains in place and runs Ascensos South Africa.</li>
+            <li>Won multiple contact-centre performance awards, every client contract tendered for, and nationwide recognition as a top place to work.</li>
+            <li>Stood up incentive schemes that reduced the cost of operating in SA, and an innovation platform to reduce voice dependency.</li>
+          </ul>
+        </article>
+
 <div class="case-cards">
   <article class="case-card">
     <div class="case-card__top"><div class="eyebrow">UK Retail</div><h4>Retail customers we serve</h4></div>
@@ -2407,7 +2564,7 @@
       <div class="outcome"><strong>Outcome</strong>Consistent service through trading peaks, with named UK retail references available under NDA.</div>
     </div>
   </article>
-</div><div class="callout">Client references are available subject to mutual NDA execution, drawn from UK Utilities, UK Telecoms and UK Retail/E-commerce relationships. We will not approach any reference without prior consultation and agreement with that client.</div>
+</div><div class="callout">Client references are available subject to mutual NDA execution, drawn from GCC DBOT programmes (Aegis / Startek and Ascensos) and from UK Utilities, UK Telecoms and UK Retail/E-commerce relationships. We will not approach any reference without prior consultation and agreement with that client.</div>
         </div>
       </section>
 
@@ -2531,6 +2688,125 @@
     <cite>— Salesforce / NobelBiz (2025/2026). Source: Salesforce: What is an AI Contact Center?</cite>
   </div>
 </div>
+      </div>
+    </section>
+
+<section class="proposal-page" id="ar-ap">
+      <div class="section-head">
+        <span class="section-num">09</span>
+        <h2 id="indicative-ar-ap-usage">Indicative AR &amp; AP Usage</h2>
+      </div>
+      <div class="section-body">
+        <div class="covers-box" id="ar-ap-covers">
+          <div class="covers-box__head">This section covers</div>
+          <div class="table-wrap covers-table-wrap">
+            <table class="covers-table">
+              <tbody>
+                <tr><td>1</td><td><a href="#ar-ap-assumptions">Assumptions</a></td></tr>
+                <tr><td>2</td><td><a href="#accounts-payable">Accounts Payable</a></td></tr>
+                <tr><td>3</td><td><a href="#accounts-receivable">Accounts Receivable</a></td></tr>
+                <tr><td>4</td><td><a href="#ar-ap-reporting">Reporting</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="prose" id="ar-ap-assumptions">
+          <p>AR/AP productivity benchmarks for South Africa. Figures are indicative daily output per person for a mid-level clerk or specialist on a standard ERP (Sage, SAP, Xero, NetSuite) with some manual handling — typical for South African finance teams. Assumes an 8-hour day with about 6 to 6.5 productive hours.</p>
+        </div>
+
+        <h3 id="accounts-payable">Accounts Payable (per person, per day)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Manual / low automation</th>
+                <th>With OCR / workflow automation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Invoice capture and processing (PO-backed, 2 or 3-way match)</td>
+                <td>40–60</td>
+                <td>100–150+</td>
+              </tr>
+              <tr>
+                <td>Non-PO invoices (coding and approval chasing)</td>
+                <td>25–40</td>
+                <td>60–80</td>
+              </tr>
+              <tr>
+                <td>Supplier statement reconciliations</td>
+                <td>8–15</td>
+                <td>15–25</td>
+              </tr>
+              <tr>
+                <td>Supplier queries resolved</td>
+                <td>20–30</td>
+                <td>30–40</td>
+              </tr>
+              <tr>
+                <td>Payment run prep</td>
+                <td>1 run (half a day for mid-size)</td>
+                <td>1–2 runs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="prose">
+          <p>Annualised, that works out to roughly 8,000–12,000 invoices per FTE for median performers. Top-quartile automated teams reach 20,000+.</p>
+        </div>
+
+        <h3 id="accounts-receivable">Accounts Receivable (per person, per day)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Manual / low automation</th>
+                <th>With automation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Customer invoices raised (templated)</td>
+                <td>60–100</td>
+                <td>150–300</td>
+              </tr>
+              <tr>
+                <td>Cash allocation / remittance lines applied</td>
+                <td>100–200</td>
+                <td>300–500+</td>
+              </tr>
+              <tr>
+                <td>Collections calls / emails</td>
+                <td>40–60 touches</td>
+                <td>60–80 touches</td>
+              </tr>
+              <tr>
+                <td>Active debtor accounts managed per collector</td>
+                <td>150–300 (portfolio, not daily)</td>
+                <td>300–500</td>
+              </tr>
+              <tr>
+                <td>Customer statement reconciliations</td>
+                <td>8–12</td>
+                <td>12–20</td>
+              </tr>
+              <tr>
+                <td>Disputes / credit notes processed</td>
+                <td>15–25</td>
+                <td>20–30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="ar-ap-reporting">Reporting</h3>
+        <div class="prose">
+          <p>Standard reports like aged debtors/creditors, recon packs, and DSO/DPO summaries run about 3–6 per day if report generation is someone’s main task. In practice, most AR/AP staff spend about 10–15% of their time on reporting, with peaks at month-end.</p>
+        </div>
       </div>
     </section>
 </div>
