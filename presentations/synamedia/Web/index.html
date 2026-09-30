@@ -21,16 +21,26 @@
       --brand-green: #61d779 !important;
       --brand-lime: #d5ec67 !important;
     }
+    .cover__client-plate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 92%;
+      margin: 0.55rem auto 0.25rem;
+      background: #fff;
+      border-radius: 0.55rem;
+      padding: 0.95rem 1.6rem;
+    }
     .cover__client-logo {
       display: block;
-      max-height: 3.5rem;
+      height: 4.35rem;
       width: auto;
-      max-width: min(28rem, 88vw);
+      max-width: min(28rem, 84vw);
       object-fit: contain;
-      background: #fff;
-      border-radius: 0.45rem;
-      padding: 0.7rem 1.2rem;
-      margin: 0.55rem auto 0.2rem;
+      background: transparent;
+      padding: 0;
+      margin: 0;
     }
     .minter-partnership {
       display: flex;
@@ -174,13 +184,14 @@
       padding: 0.55rem 1rem 0.35rem;
     }
     .page-nav__brand {
-      height: 22px;
+      height: 1.7rem;
       width: auto;
-      max-width: 12.5rem;
+      max-width: 14rem;
       object-fit: contain;
+      box-sizing: content-box;
       background: #fff;
       border-radius: 0.28rem;
-      padding: 0.28rem 0.5rem;
+      padding: 0.32rem 0.58rem;
     }
     .page-nav button { display: none; }
     .page-nav__links {
@@ -231,10 +242,11 @@
         padding: 0.7rem 1rem;
       }
       .page-nav__brand {
-        height: 22px;
+        height: 1.55rem;
         width: auto;
         max-width: 12.5rem;
         object-fit: contain;
+        box-sizing: content-box;
         background: #fff;
         border-radius: 0.28rem;
         padding: 0.28rem 0.5rem;
@@ -1013,7 +1025,7 @@
 <body id="top">
 <nav class="page-nav" aria-label="Page sections">
   <div class="page-nav__inner">
-    <img class="page-nav__brand" src="synamedia-logo.png?v=official" alt="Synamedia">
+    <img class="page-nav__brand" src="synamedia-logo.png?v=official2" alt="Synamedia">
     <button type="button" data-nav-toggle aria-expanded="false" aria-controls="synamedia-nav-links">Menu</button>
   </div>
   <div class="page-nav__links" id="synamedia-nav-links">
@@ -1038,7 +1050,9 @@
         <span class="cover__brand-name">Trilogy</span>
         <span class="cover__brand-line">A Trilogy Group Company</span>
         <img class="cover__logo" src="../../../trilogydigital/assets/trilogy-logo.png" alt="Trilogy">
-        <img class="cover__client-logo" src="synamedia-logo.png?v=official" alt="Synamedia">
+        <div class="cover__client-plate">
+          <img class="cover__client-logo" src="synamedia-logo.png?v=official2" alt="Synamedia">
+        </div>
       </div>
       <div class="cover__body">
         <div class="badge">Company Overview</div>
