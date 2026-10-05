@@ -1,0 +1,45 @@
+{
+  "version": 3,
+  "status": "draft",
+  "slug": "",
+  "meta": {
+    "clientName": "",
+    "reference": "",
+    "date": "",
+    "validUntil": "",
+    "preparedBy": "",
+    "title": "",
+    "contact": ""
+  },
+  "theme": {
+    "primary": "#61d779",
+    "accent": "#d5ec67",
+    "secondary": "#2f9e4a",
+    "navy": "#13202e"
+  },
+  "logoDataUrl": "",
+  "sectionOrder": [],
+  "placeholders": {},
+  "acceptance": {
+    "status": "not_sent",
+    "signerName": "",
+    "signerEmail": "",
+    "designation": "",
+    "envelopeId": "",
+    "sharePointPath": ""
+  },
+  "updatedAt": null,
+  "committedAt": null,
+  "commercialSchedule": {
+    "includeInProposal": true,
+    "currency": "GBP",
+    "title": "Proposed Commercial Schedule",
+    "disclaimer": "Indicative rates for discussion. Final rates confirmed in the Statement of Work.",
+    "rows": []
+  },
+  "pathsExample": {
+    "folder": "proposals/{client}/{doc}/",
+    "commercial": "proposals/{client}/{doc}/commercial/",
+    "costingJson": "proposals/{client}/{doc}/commercial/costing.json"
+  }
+}

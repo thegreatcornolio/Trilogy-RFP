@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="120" viewBox="0 0 280 120">
+  <rect width="280" height="120" rx="8" fill="#fff"/>
+  <circle cx="140" cy="56" r="42" fill="#D4AF37"/>
+  <circle cx="140" cy="56" r="34" fill="#fff"/>
+  <text x="140" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="700">
+    <tspan fill="#2ECC71">g</tspan><tspan fill="#3498DB">-</tspan><tspan fill="#E91E63">b</tspan><tspan fill="#F39C12">p</tspan><tspan fill="#9B59B6">o</tspan>
+  </text>
+  <text x="140" y="68" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#555" letter-spacing="1">ACCREDITED</text>
+  <g fill="#D4AF37">
+    <polygon points="116,88 118,94 124,94 119,98 121,104 116,100 111,104 113,98 108,94 114,94"/>
+    <polygon points="128,88 130,94 136,94 131,98 133,104 128,100 123,104 125,98 120,94 126,94"/>
+    <polygon points="140,88 142,94 148,94 143,98 145,104 140,100 135,104 137,98 132,94 138,94"/>
+    <polygon points="152,88 154,94 160,94 155,98 157,104 152,100 147,104 149,98 144,94 150,94"/>
+    <polygon points="164,88 166,94 172,94 167,98 169,104 164,100 159,104 161,98 156,94 162,94"/>
+  </g>
+</svg>

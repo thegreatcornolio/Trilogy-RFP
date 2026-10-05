@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="150" viewBox="0 0 560 150" role="img" aria-label="trilogy">
+  <g transform="translate(36,34)">
+    <g opacity="0.95" transform="translate(1.8,2.2)">
+      <path d="M 0,0 C 18.92,-6 47.300000000000004,5 86,-1 L 84,8 C 47.300000000000004,14 18.92,3 0,9 Z" fill="#fff"/>
+      <path d="M 0,28 C 24.64,22 61.60000000000001,33 112,27 L 110,36 C 61.60000000000001,42 24.64,31 0,37 Z" fill="#fff"/>
+      <path d="M 0,56 C 22.0,50 55.00000000000001,61 100,55 L 98,64 C 55.00000000000001,70 22.0,59 0,65 Z" fill="#fff"/>
+    </g>
+    <path d="M 0,0 C 18.92,-6 47.300000000000004,5 86,-1 L 84,8 C 47.300000000000004,14 18.92,3 0,9 Z" fill="#61d779"/>
+    <path d="M 0,28 C 24.64,22 61.60000000000001,33 112,27 L 110,36 C 61.60000000000001,42 24.64,31 0,37 Z" fill="#61d779"/>
+    <path d="M 0,56 C 22.0,50 55.00000000000001,61 100,55 L 98,64 C 55.00000000000001,70 22.0,59 0,65 Z" fill="#61d779"/>
+  </g>
+  <text x="200" y="95" font-family="Inter, Arial, Helvetica, sans-serif" font-size="62" font-weight="400" fill="#ffffff">trilogy</text>
+</svg>

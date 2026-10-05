@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RFP Builder — Trilogy Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=published-clear-1">
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
+  <script src="app.js?v=insights-polish-1" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <strong>RFP Builder</strong>
+      <span>Draft → Commit → Accept</span>
+    </div>
+    <div class="topbar__actions">
+      <label class="load-existing">
+        Open existing
+        <select id="existingSelect">
+          <option value="">Select customer document…</option>
+        </select>
+      </label>
+      <button type="button" class="btn btn--ghost" id="btnNewDocument" title="Start another document for this customer">New document</button>
+      <button type="button" class="btn btn--ghost" id="btnPreviewDraft">Preview draft</button>
+      <button type="button" class="btn btn--ghost" id="btnExportDraft">Export draft JSON</button>
+      <button type="button" class="btn btn--ghost" id="btnSaveDraft">Save draft</button>
+      <button type="button" class="btn btn--primary" id="btnFinalCommit">Final commit</button>
+    </div>
+  </header>
+
+  <main class="builder">
+    <aside class="panel panel--left">
+      <section class="block">
+        <div class="block__head">
+          <h2>Published proposals</h2>
+          <div class="block__head-actions">
+            <button type="button" class="btn btn--ghost btn--small" id="btnRefreshPublished">Refresh</button>
+            <button type="button" class="btn btn--ghost btn--small" id="btnClearPublished" title="Clear this browser’s published list">Clear list</button>
+          </div>
+        </div>
+        <p class="hint">Live proposals from <code>proposals/catalog.json</code>, plus any still remembered in this browser. Deleting GitHub folders does not clear the browser list — use <strong>Remove</strong> or <strong>Clear list</strong>.</p>
+        <div class="published-list" id="publishedList">
+          <p class="hint">Loading published list…</p>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>1. Cover details</h2>
+        <div class="entity-pick" role="radiogroup" aria-label="Issuing entity">
+          <span class="entity-pick__label">This proposal is from</span>
+          <label class="entity-option"><input type="radio" name="entityName" value="Trilogy Digital" checked> Trilogy Digital</label>
+          <label class="entity-option"><input type="radio" name="entityName" value="Trilogy BPO"> Trilogy BPO</label>
+          <label class="entity-option"><input type="radio" name="entityName" value="Trilogy GCC"> Trilogy GCC</label>
+          <label class="entity-option"><input type="radio" name="entityName" value="Short Company Overview"> Short Company Overview</label>
+        </div>
+        <p class="entity-overview-hint" id="entityOverviewHint">Company Overview uses the Trilogy Digital narrative.</p>
+        <div class="entity-overview-preview" id="entityOverviewPreview" aria-live="polite">
+          <div class="entity-overview-preview__label">Company Overview that will appear in Preview / Final</div>
+          <div class="entity-overview-preview__body" id="entityOverviewPreviewBody">Loading…</div>
+        </div>
+        <div class="form-grid">
+          <label>Prepared for<input id="clientName" type="text" placeholder="Client Name"></label>
+          <label>Document type
+            <input id="documentType" type="text" list="documentTypeSuggestions" value="RFP / RFI Response" placeholder="e.g. Company Overview">
+            <datalist id="documentTypeSuggestions">
+              <option value="RFP / RFI Response"></option>
+              <option value="Company Overview"></option>
+              <option value="Short Company Overview"></option>
+              <option value="Commercial Proposal"></option>
+              <option value="Capability Pack"></option>
+              <option value="Statement of Work"></option>
+            </datalist>
+          </label>
+          <label class="full">Document title<input id="proposalTitle" type="text" placeholder="Customer Experience &amp; BPO Services Proposal"></label>
+          <label>Date<input id="date" type="date"></label>
+          <label>Valid until<input id="validUntil" type="text" value="Valid for 90 days" placeholder="Valid for 90 days"></label>
+          <label>Prepared by<input id="preparedBy" type="text" placeholder="Your Name"></label>
+          <label>Your title<input id="title" type="text" placeholder="Your Title"></label>
+          <label class="full">Contact<input id="contact" type="email" placeholder="name@trilogydigital.com"></label>
+          <label class="full logo-field">Customer logo
+            <span class="logo-field__controls">
+              <input id="logoInput" type="file" accept="image/*">
+              <button type="button" class="btn btn--remove-logo" id="btnRemoveLogo" disabled>Remove logo</button>
+            </span>
+          </label>
+        </div>
+        <div class="logo-preview" id="logoPreview">
+          <span>Logo preview + colour palette</span>
+        </div>
+        <div class="theme-panel">
+          <p class="hint">Logo colours are detected automatically. Trilogy greens, navy and white are always available so you can keep the Trilogy scheme or switch to the client’s. For each role, click the colour you want.</p>
+          <div class="theme-swatches" id="themeSwatches" aria-label="Logo colour palette" hidden></div>
+          <div class="theme-roles" id="themeRoles"></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block__head">
+          <h2>2. Section library</h2>
+          <button type="button" class="btn btn--accent btn--small" id="btnAddAllSections" title="Add every section in library order">Add all</button>
+        </div>
+        <p class="hint">Click <strong>Add</strong> (or drag) to include a section, or use <strong>Add all</strong> then remove what you don’t need from Proposal order. Editable sections open a content box below.</p>
+        <ul class="library" id="library"></ul>
+      </section>
+
+      <section class="block">
+        <h2>4. Acceptance (DocuSign)</h2>
+        <p class="hint">Scaffold only — wire to Power Automate + DocuSign. Signed PDF lands in SharePoint.</p>
+        <div class="form-grid">
+          <label>Signer name<input id="signerName" type="text" placeholder="Client signatory"></label>
+          <label>Designation<input id="designation" type="text" placeholder="Role / title"></label>
+          <label class="full">Signer email<input id="signerEmail" type="email" placeholder="name@client.com"></label>
+        </div>
+        <button type="button" class="btn btn--accent" id="btnSendAcceptance">Send for DocuSign acceptance</button>
+        <p class="status" id="acceptanceStatus">Status: not sent</p>
+      </section>
+    </aside>
+
+    <section class="panel panel--right">
+      <div class="block">
+        <div class="block__head">
+          <h2>3. Proposal order</h2>
+          <span class="pill" id="draftStatus">Draft</span>
+        </div>
+        <p class="hint">Drag to reorder. Remove with ×. Saves under: <code id="slugPreview">proposals/…</code></p>
+        <ul class="order" id="orderList"></ul>
+      </div>
+
+      <div class="block">
+        <h2>Editable placeholders</h2>
+        <p class="hint">Typed content is injected into the full template on Preview / Final commit. For <strong>Why we want to work with you</strong>, upload the client insights PDF/DOCX — reasons and pain points are scraped from labelled headings.</p>
+        <div id="placeholders" class="placeholders"></div>
+      </div>
+
+      <div class="block" id="commercialScheduleBlock" hidden>
+        <div class="block__head">
+          <h2>Commercial schedule</h2>
+          <label class="inline-check" id="commercialIncludeLabel">
+            <input type="checkbox" id="commercialInclude" checked>
+            Include in proposal
+          </label>
+        </div>
+        <p class="hint" id="commercialHint">Deal-specific call-centre pricing. Owner-only edit. Monthly calc changes with Model (FTE vs Hour vs Interaction). Saved as <code>commercial/costing.json</code>.</p>
+        <div class="commercial-locked" id="commercialLocked" hidden>
+          <p><strong>Commercials sit with the commercial owner.</strong></p>
+          <p>Inserting or editing deal pricing requires Admin unlock. Others can still preview a schedule already saved in the draft.</p>
+          <button type="button" class="btn btn--primary" id="btnCommercialUnlock">Unlock Admin to edit</button>
+          <div class="commercial-readonly" id="commercialReadonly" hidden></div>
+        </div>
+        <div class="commercial-editor" id="commercialEditor">
+          <div class="form-grid commercial-editor__meta">
+            <label>Currency
+              <select id="commercialCurrency">
+                <option value="GBP">GBP</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="ZAR">ZAR</option>
+              </select>
+            </label>
+            <label>Hours / FTE / month
+              <input id="commercialHoursPerMonth" type="number" min="1" step="0.5" value="160" title="Used when Model = Hour: Monthly = FTE × hours × hourly rate">
+            </label>
+            <label class="full">Schedule title
+              <input id="commercialTitle" type="text" value="Proposed Commercial Schedule">
+            </label>
+            <label class="full">Client disclaimer
+              <input id="commercialDisclaimer" type="text" value="Indicative rates for discussion. Final rates confirmed in the Statement of Work.">
+            </label>
+          </div>
+          <p class="hint commercial-calc-hint" id="commercialCalcHint">
+            <strong>FTE:</strong> FTE × monthly rate ·
+            <strong>Hour:</strong> FTE × hours/month × hourly rate ·
+            <strong>Interaction / Gain-share:</strong> qty × rate (qty in FTE column)
+          </p>
+          <div class="commercial-editor__actions">
+            <button type="button" class="btn btn--primary" id="btnCommercialSeed">Load starter roles</button>
+            <button type="button" class="btn btn--accent" id="btnCommercialAddRow">+ Add row</button>
+            <button type="button" class="btn btn--ghost" id="btnCommercialExport">Export costing.json</button>
+          </div>
+          <div class="commercial-empty" id="commercialEmpty" hidden>
+            <p><strong>No pricing rows yet.</strong></p>
+            <p>Load the starter call-centre roles, or add a blank row and type directly in the table cells.</p>
+          </div>
+          <div class="table-wrap commercial-editor__table-wrap">
+            <table class="commercial-editor__table" id="commercialTable">
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>FTE / Qty</th>
+                  <th>Unit</th>
+                  <th>Rate</th>
+                  <th>Monthly</th>
+                  <th>Model</th>
+                  <th>Notes</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="commercialRows"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4"><strong>Total monthly</strong></td>
+                  <td id="commercialTotal">—</td>
+                  <td colspan="3"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="block preview-block">
+        <h2>Live cover preview</h2>
+        <div class="cover-preview" id="coverPreview">
+          <div class="cover-preview__bars" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="cover-preview__brand">
+            <img id="coverClientLogo" class="cover-preview__client" alt="" hidden>
+            <span class="cover-preview__entity" id="pvEntity">Trilogy Digital</span>
+            <span class="cover-preview__line">A Trilogy Group Company</span>
+            <img src="../trilogydigital/assets/trilogy-logo.png" alt="Trilogy" class="cover-preview__trilogy">
+          </div>
+          <div class="cover-preview__body">
+            <div class="badge" id="pvDocumentType">RFP / RFI Response</div>
+            <h1 id="pvProposalTitle">Customer Experience &amp; BPO Services Proposal</h1>
+            <p class="tagline">Human Led · Ai-enabled</p>
+          </div>
+          <div class="meta meta--3">
+            <div><span>Prepared for</span><strong id="pvClient">[Client Name]</strong></div>
+            <div><span>Date</span><strong id="pvDate">[Submission Date]</strong></div>
+            <div><span>Valid until</span><strong id="pvValid">Valid for 90 days</strong></div>
+          </div>
+          <div class="meta meta--3">
+            <div><span>Prepared by</span><strong id="pvBy">[Your Name]</strong></div>
+            <div><span>Title</span><strong id="pvTitle">[Your Title]</strong></div>
+            <div><span>Contact</span><strong id="pvContact">[name@trilogydigital.com]</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <button type="button" class="admin-entry" id="btnAdmin" title="Admin — manage local drafts">Admin</button>
+
+  <div class="admin-modal" id="adminModal" hidden>
+    <div class="admin-modal__backdrop" data-admin-close></div>
+    <div class="admin-modal__panel" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+      <header class="admin-modal__head">
+        <div>
+          <h2 id="adminModalTitle">Draft admin</h2>
+          <p>Local drafts live only in this browser’s storage. Clearing them does not delete SQL, SharePoint, or committed proposal files.</p>
+        </div>
+        <button type="button" class="btn btn--ghost admin-modal__close" data-admin-close aria-label="Close">×</button>
+      </header>
+
+      <div class="admin-lock" id="adminLock">
+        <label class="admin-lock__field">
+          Admin PIN
+          <input id="adminPinInput" type="password" autocomplete="current-password" placeholder="Enter PIN">
+        </label>
+        <button type="button" class="btn btn--primary" id="btnAdminUnlock">Unlock</button>
+        <p class="admin-lock__hint" id="adminLockHint" hidden>Incorrect PIN</p>
+      </div>
+
+      <div class="admin-body" id="adminBody" hidden>
+        <div class="admin-toolbar">
+          <strong id="adminDraftCount">0 local drafts</strong>
+          <button type="button" class="btn btn--ghost" id="btnAdminRefresh">Refresh</button>
+          <button type="button" class="btn btn--ghost" id="btnAdminLock">Lock</button>
+        </div>
+        <div class="admin-draft-list" id="adminDraftList"></div>
+        <div class="admin-danger">
+          <h3>Clear all local drafts</h3>
+          <p>Removes every draft index entry and autosave from <em>this browser only</em>. Type <code>CLEAR</code> to enable.</p>
+          <div class="admin-danger__row">
+            <input id="adminClearConfirm" type="text" placeholder="Type CLEAR" autocomplete="off" spellcheck="false">
+            <button type="button" class="btn btn--danger" id="btnAdminClearAll" disabled>Clear all local drafts</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

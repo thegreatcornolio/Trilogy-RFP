@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "sourceTemplate": "trilogydigital",
+  "sections": [
+    {
+      "id": "section-01",
+      "num": "01",
+      "title": "Executive Summary",
+      "editable": true,
+      "placeholderKey": "executive-summary",
+      "placeholderLabel": "Executive Summary",
+      "summary": "Editable narrative, auto-prepopulated from selected sections (still fully editable)."
+    },
+    {
+      "id": "section-21",
+      "num": "21",
+      "title": "Why we want to work with you",
+      "editable": true,
+      "placeholderKey": "why-work-with-you",
+      "placeholderLabel": "Why we want to work with you",
+      "summary": "Per-client insights document — partnership reasons plus researched pain points."
+    },
+    {
+      "id": "section-02",
+      "num": "02",
+      "title": "Company Overview",
+      "editable": true,
+      "placeholderKey": "specific-client-experience",
+      "placeholderLabel": "Specific Client Experience",
+      "summary": "Company overview switches automatically by entity (Digital / BPO / GCC), plus the Specific Client Experience placeholder."
+    },
+    {
+      "id": "section-03",
+      "num": "03",
+      "title": "Operational Leadership & Delivery",
+      "editable": false,
+      "summary": "Leadership model plus people, workforce, Soul Impact wellbeing, culture and CRAFT."
+    },
+    {
+      "id": "section-04",
+      "num": "04",
+      "title": "Our Value Proposition & Differentiators",
+      "editable": false,
+      "summary": "Tagline, differentiators, achievements and competitive edge."
+    },
+    {
+      "id": "section-09",
+      "num": "09",
+      "title": "Why Cape Town / Why South Africa",
+      "editable": false,
+      "summary": "Location advantages for SA and Cape Town, plus sights collage."
+    },
+    {
+      "id": "section-05",
+      "num": "05",
+      "title": "Service Offering",
+      "editable": false,
+      "summary": "Journey choice, BPO, GCC, Trilogy Ai, SLAs and sectors."
+    },
+    {
+      "id": "section-06",
+      "num": "06",
+      "title": "Global Capability Centres",
+      "editable": false,
+      "summary": "DBIT / own-your-operation model."
+    },
+    {
+      "id": "section-07",
+      "num": "07",
+      "title": "Trilogy Test Kitchen",
+      "editable": false,
+      "summary": "Sandbox innovation framework."
+    },
+    {
+      "id": "section-08",
+      "num": "08",
+      "title": "Technology, AI & Automation Capability",
+      "editable": false,
+      "summary": "Platform stack and AI suite."
+    },
+    {
+      "id": "section-20",
+      "num": "20",
+      "title": "AI Sales Enablement",
+      "editable": false,
+      "summary": "Visibilitie partnership — AI avatars, consented intent leads, Synapse CRM delivery and sales conversion support. Exclusive SA partner."
+    },
+    {
+      "id": "section-10",
+      "num": "10",
+      "title": "Management Information Systems (MIS)",
+      "editable": false,
+      "summary": "Reporting and MI."
+    },
+    {
+      "id": "section-11",
+      "num": "11",
+      "title": "Forecasting & Demand Management",
+      "editable": false,
+      "summary": "Capacity and demand planning."
+    },
+    {
+      "id": "section-12",
+      "num": "12",
+      "title": "Quality & Analytics",
+      "editable": false,
+      "summary": "QA and Genii analytics."
+    },
+    {
+      "id": "section-13",
+      "num": "13",
+      "title": "Compliance, Ethics & Risk",
+      "editable": false,
+      "summary": "Compliance posture."
+    },
+    {
+      "id": "section-14",
+      "num": "14",
+      "title": "Safety & Security",
+      "editable": false,
+      "summary": "Physical and information security."
+    },
+    {
+      "id": "section-15",
+      "num": "15",
+      "title": "Business Continuity & Disaster Recovery",
+      "editable": false,
+      "summary": "BCP / DR."
+    },
+    {
+      "id": "section-16",
+      "num": "16",
+      "title": "Transition & Implementation Methodology",
+      "editable": false,
+      "summary": "Transition plan."
+    },
+    {
+      "id": "section-17",
+      "num": "17",
+      "title": "Commercial Models & Pricing",
+      "editable": true,
+      "placeholderKey": "commercial-notes",
+      "placeholderLabel": "Commercial Notes",
+      "summary": "Pricing examples plus editable commercial schedule for call-centre costing."
+    },
+    {
+      "id": "section-18",
+      "num": "18",
+      "title": "Case Studies & References",
+      "editable": true,
+      "placeholderKey": "case-studies",
+      "placeholderLabel": "Case Studies & References",
+      "summary": "Customer-specific references placeholder."
+    },
+    {
+      "id": "section-19",
+      "num": "19",
+      "title": "Next Steps",
+      "editable": true,
+      "placeholderKey": "next-steps",
+      "placeholderLabel": "Next Steps",
+      "summary": "Closing asks and next steps."
+    }
+  ]
+}

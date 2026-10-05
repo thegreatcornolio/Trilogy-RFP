@@ -1,0 +1,28 @@
+{
+  "slug": "example-client-overview",
+  "title": "Example Client Overview",
+  "sourceFile": "Example_Client_Overview.pptx",
+  "extracted": {
+    "primary": "#0a6ebd",
+    "accent": "#f5a623",
+    "secondary": "#085a96",
+    "dark": "#102030",
+    "light": "#ffffff",
+    "palette": ["#0a6ebd", "#f5a623", "#085a96", "#102030", "#ffffff"]
+  },
+  "trilogy": {
+    "primary": "#61d779",
+    "accent": "#d5ec67",
+    "secondary": "#2f9e4a",
+    "navy": "#13202e",
+    "white": "#ffffff"
+  },
+  "blend": {
+    "navy": "#13222d",
+    "primary": "#4fc89a",
+    "accent": "#e5c945",
+    "secondary": "#24806e",
+    "white": "#ffffff",
+    "sourceBrand": "#0a6ebd"
+  }
+}

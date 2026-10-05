@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify email — Trilogy Operational Overview</title>
+  <link rel="stylesheet" href="ops-access/ops-access.css?v=1">
+</head>
+<body class="ops-verify-page">
+  <div class="ops-verify-card" id="ops-verify-card">
+    <p class="ops-access__kicker">Trilogy Digital</p>
+    <h1>Verifying your email…</h1>
+    <p id="ops-verify-msg">Please wait while we confirm your corporate address.</p>
+  </div>
+  <script src="ops-access/ops-access.js?v=1"></script>
+  <script>
+    (function () {
+      var card = document.getElementById("ops-verify-card");
+      var msg = document.getElementById("ops-verify-msg");
+      var params = new URLSearchParams(location.search);
+      var token = params.get("token") || "";
+      var apiUrl = (window.TrilogyOpsAccess && window.TrilogyOpsAccess.config.apiUrl) || "";
+
+      function fail(text) {
+        card.querySelector("h1").textContent = "Verification failed";
+        msg.textContent = text;
+      }
+
+      function ok(opsUrl) {
+        card.querySelector("h1").textContent = "Email verified";
+        msg.innerHTML = "Thanks — we also emailed you the Operational Overview link. You can open it now.";
+        var a = document.createElement("a");
+        a.className = "ops-verify-cta";
+        a.href = opsUrl || "operations.html";
+        a.textContent = "Open Operational Overview →";
+        card.appendChild(a);
+        if (window.TrilogyOpsAccess) window.TrilogyOpsAccess.unlockSession();
+      }
+
+      if (!token) {
+        fail("This link is missing a verification token. Please request access again from the company overview.");
+        return;
+      }
+      // Demo tokens (localhost only) — unlock without API
+      if (token.indexOf("demo.") === 0) {
+        var host = location.hostname;
+        if (host !== "localhost" && host !== "127.0.0.1") {
+          fail("Demo verification links only work on localhost.");
+          return;
+        }
+        try {
+          JSON.parse(atob(token.slice(5)));
+        } catch (e) {
+          fail("Invalid demo token.");
+          return;
+        }
+        if (window.TrilogyOpsAccess) window.TrilogyOpsAccess.unlockSession();
+        ok("operations.html");
+        return;
+      }
+
+      if (!apiUrl) {
+        fail("Verification service is not connected yet. Please contact sales@trilogybpo.com.");
+        return;
+      }
+
+      fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          action: "verify",
+          token: token,
+          opsUrl: new URL("operations.html", location.href).href
+        })
+      }).then(function (res) {
+        return res.json().then(function (data) {
+          if (!res.ok || !data || data.ok === false) {
+            throw new Error((data && (data.error || data.message)) || "Verification failed");
+          }
+          try {
+            if (data.unlockKey && data.unlockHash) {
+              sessionStorage.setItem(data.unlockKey, data.unlockHash);
+            } else if (window.TrilogyOpsAccess) {
+              window.TrilogyOpsAccess.unlockSession();
+            }
+          } catch (e) {}
+          ok(data.opsUrl || "operations.html");
+        });
+      }).catch(function (err) {
+        fail(err.message || "Unable to verify this link.");
+      });
+    })();
+  </script>
+</body>
+</html>
