@@ -179,12 +179,13 @@ a { color: inherit; }
   display: block;
   max-height: 28mm;
   width: auto;
-  max-width: 42mm;
+  max-width: 52mm;
   object-fit: contain;
-  background: #fff;
-  border-radius: 0.45rem;
-  padding: 0.55rem 0.7rem;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   margin: 0.35rem auto 0.1rem;
+  filter: none;
 }
 
 .cover__body {
