@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Trilogy GCC Overview PPTX — Corporate Overview look + Trilogy yellow."""
+"""Build Trilogy GCC Overview PPTX — Corporate Overview look with blue/green/yellow."""
 
 from __future__ import annotations
 
@@ -11,12 +11,16 @@ from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN
 from pptx.util import Inches, Pt
 
-BLACK = RGBColor(0x0A, 0x0A, 0x0A)
-CARD = RGBColor(0x22, 0x22, 0x20)
+# Brand palette
+BLUE = RGBColor(0x13, 0x20, 0x2E)
+BLUE_DEEP = RGBColor(0x0C, 0x19, 0x26)
+CARD = RGBColor(0x1B, 0x2A, 0x3A)
+CARD2 = RGBColor(0x24, 0x35, 0x48)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
-MUTED = RGBColor(0xB8, 0xB8, 0xB4)
+MUTED = RGBColor(0xB8, 0xC0, 0xC8)
+GREEN = RGBColor(0x61, 0xD7, 0x79)
 YELLOW = RGBColor(0xD5, 0xEC, 0x67)
-DARK = RGBColor(0x0A, 0x0A, 0x0A)
+DARK = RGBColor(0x0C, 0x19, 0x26)
 LIGHT = RGBColor(0xE6, 0xE6, 0xE6)
 
 SLIDE_W = Inches(13.333)
@@ -29,6 +33,7 @@ LOGO = "/workspace/presentations/_shared/logos/trilogy.png"
 HERO = "/tmp/gcc-pptx-assets/corp-img-0.png"
 CASE_AEGIS = "/workspace/GCC/assets/dbit-case-aegis.png"
 CASE_ASC = "/workspace/GCC/assets/dbit-case-ascensos.png"
+TEAM_DIR = "/workspace/GCC/assets/team"
 
 
 def set_run(run, size=14, bold=False, color=WHITE):
@@ -86,14 +91,18 @@ def textbox(slide, left, top, width, height, text="", size=14, bold=False, color
     return sh
 
 
-def chrome(slide, page_num, title):
-    bg = rect(slide, 0, 0, SLIDE_W, SLIDE_H, BLACK)
+def chrome(slide, page_num, title, tick=GREEN):
+    """Corporate Overview chrome on Trilogy blue, green title tick, dual-tone footer."""
+    bg = rect(slide, 0, 0, SLIDE_W, SLIDE_H, BLUE)
     sp_tree = slide.shapes._spTree
     sp = bg._element
     sp_tree.remove(sp)
     sp_tree.insert(2, sp)
 
-    rect(slide, 0, SLIDE_H - FOOTER_H, SLIDE_W, FOOTER_H, YELLOW)
+    # dual accent footer: green + yellow
+    rect(slide, 0, SLIDE_H - FOOTER_H, SLIDE_W * 0.62, FOOTER_H, GREEN)
+    rect(slide, SLIDE_W * 0.62, SLIDE_H - FOOTER_H, SLIDE_W * 0.38, FOOTER_H, YELLOW)
+
     textbox(
         slide,
         SLIDE_W - Inches(0.9),
@@ -105,32 +114,8 @@ def chrome(slide, page_num, title):
         color=WHITE,
         align=PP_ALIGN.RIGHT,
     )
-    rect(slide, MARGIN, Inches(0.38), Inches(0.08), Inches(0.38), YELLOW)
+    rect(slide, MARGIN, Inches(0.38), Inches(0.08), Inches(0.38), tick)
     textbox(slide, MARGIN + Inches(0.2), Inches(0.28), Inches(11.5), Inches(0.55), title, size=26, bold=True, color=WHITE)
-
-
-def footer_note(slide):
-    textbox(
-        slide,
-        MARGIN,
-        SLIDE_H - Inches(0.48),
-        Inches(7),
-        Inches(0.28),
-        "Trilogy GCC  ·  Commercial-in-confidence",
-        size=9,
-        color=MUTED,
-    )
-    textbox(
-        slide,
-        SLIDE_W - Inches(4.2),
-        SLIDE_H - Inches(0.48),
-        Inches(3.2),
-        Inches(0.28),
-        "proposal.trilogybpo.com/GCC",
-        size=9,
-        color=MUTED,
-        align=PP_ALIGN.RIGHT,
-    )
 
 
 def card(slide, left, top, width, height, fill=CARD):
@@ -151,6 +136,10 @@ def bullets(slide, left, top, width, height, lines, size=13, color=WHITE):
     return sh
 
 
+def accent_bar(slide, left, top, height, color=GREEN):
+    return rect(slide, left, top, Inches(0.1), height, color)
+
+
 def build():
     prs = Presentation()
     prs.slide_width = SLIDE_W
@@ -165,9 +154,10 @@ def build():
     # 1 COVER
     n += 1
     s = new()
-    rect(s, 0, 0, SLIDE_W, SLIDE_H, BLACK)
-    rect(s, 0, 0, Inches(0.12), SLIDE_H, YELLOW)
-    rect(s, 0, SLIDE_H - FOOTER_H, SLIDE_W, FOOTER_H, YELLOW)
+    rect(s, 0, 0, SLIDE_W, SLIDE_H, BLUE)
+    rect(s, 0, 0, Inches(0.12), SLIDE_H, GREEN)
+    rect(s, 0, SLIDE_H - FOOTER_H, SLIDE_W * 0.62, FOOTER_H, GREEN)
+    rect(s, SLIDE_W * 0.62, SLIDE_H - FOOTER_H, SLIDE_W * 0.38, FOOTER_H, YELLOW)
     if os.path.exists(LOGO):
         s.shapes.add_picture(LOGO, MARGIN, Inches(0.4), height=Inches(0.55))
     textbox(s, MARGIN, Inches(1.35), Inches(7.2), Inches(0.35), "GCC OVERVIEW", size=12, bold=True, color=YELLOW)
@@ -178,7 +168,7 @@ def build():
     r = p.add_run()
     r.text = "Global Capability Centre"
     set_run(r, size=36, bold=True, color=WHITE)
-    add_para(tf, "Design, Build, Operate, Transfer", size=28, bold=True, color=YELLOW, space_before=8)
+    add_para(tf, "Design, Build, Operate, Transfer", size=28, bold=True, color=GREEN, space_before=8)
     body = textbox(s, MARGIN, Inches(3.55), Inches(7.2), Inches(1.5))
     tf = body.text_frame
     tf.word_wrap = True
@@ -189,9 +179,9 @@ def build():
         "with a transparent costing model and a fixed management fee."
     )
     set_run(r, size=15, color=MUTED)
-    textbox(s, MARGIN, Inches(5.35), Inches(7), Inches(0.3), "Human Led  ·  Ai-enabled", size=13, bold=True, color=WHITE)
+    textbox(s, MARGIN, Inches(5.35), Inches(7), Inches(0.3), "Human Led  ·  Ai-enabled", size=13, bold=True, color=YELLOW)
     textbox(s, MARGIN, Inches(5.75), Inches(7), Inches(0.3), "Trilogy GCC  ·  A Trilogy Group Company", size=12, color=MUTED)
-    textbox(s, MARGIN, Inches(6.15), Inches(7), Inches(0.3), "sales@trilogybpo.com  ·  trilogybpo.com", size=12, color=YELLOW)
+    textbox(s, MARGIN, Inches(6.15), Inches(7), Inches(0.3), "sales@trilogybpo.com  ·  trilogybpo.com", size=12, color=GREEN)
     textbox(
         s,
         SLIDE_W - Inches(0.9),
@@ -209,15 +199,15 @@ def build():
     # 2 AGENDA
     n += 1
     s = new()
-    chrome(s, n, "Agenda")
+    chrome(s, n, "Agenda", tick=GREEN)
     items = [
         ("01", "Company overview — Trilogy GCC"),
-        ("02", "Why South Africa"),
-        ("03", "Three routes offshore"),
-        ("04", "Business risks of a captive"),
+        ("02", "Meet the executive team"),
+        ("03", "Why South Africa"),
+        ("04", "Three routes offshore"),
         ("05", "The solution — DBOT"),
-        ("06", "Implementation phases"),
-        ("07", "Benefits & commercial model"),
+        ("06", "Implementation & benefits"),
+        ("07", "Commercial model"),
         ("08", "Case studies & next steps"),
     ]
     for i, (num, label) in enumerate(items):
@@ -225,14 +215,64 @@ def build():
         x = MARGIN + col * Inches(6.2)
         y = Inches(1.15) + row * Inches(1.2)
         card(s, x, y, Inches(5.85), Inches(1.05), CARD)
-        textbox(s, x + Inches(0.25), y + Inches(0.28), Inches(0.7), Inches(0.45), num, size=22, bold=True, color=YELLOW)
+        accent = GREEN if i % 2 == 0 else YELLOW
+        textbox(s, x + Inches(0.25), y + Inches(0.28), Inches(0.7), Inches(0.45), num, size=22, bold=True, color=accent)
         textbox(s, x + Inches(1.1), y + Inches(0.32), Inches(4.4), Inches(0.45), label, size=15, bold=True, color=WHITE)
-    footer_note(s)
 
-    # 3 COMPANY OVERVIEW
+    # 3 MEET THE TEAM
     n += 1
     s = new()
-    chrome(s, n, "01  —  Company overview")
+    chrome(s, n, "Meet the Executive Team", tick=GREEN)
+    # green underline arrow accent
+    rect(s, MARGIN + Inches(0.2), Inches(0.88), Inches(3.2), Inches(0.035), GREEN)
+    # small triangle tip
+    tip = s.shapes.add_shape(MSO_SHAPE.RIGHT_TRIANGLE, MARGIN + Inches(3.4), Inches(0.84), Inches(0.12), Inches(0.12))
+    tip.fill.solid()
+    tip.fill.fore_color.rgb = GREEN
+    tip.line.fill.background()
+    tip.rotation = 0
+
+    textbox(
+        s,
+        MARGIN,
+        Inches(1.05),
+        Inches(12.2),
+        Inches(0.7),
+        "Our leadership team comprises seasoned BPO executives and operational managers with over 20 years of collective expertise establishing and scaling operations across South Africa — more than 30 contact centres and back-office operations, totalling over 10,000 seats.",
+        size=12,
+        color=MUTED,
+    )
+
+    team = [
+        ("kobus-van-der-westhuizen.png", "Kobus van der Westhuizen", "CEO & Founder", "Visionary leader with decades of BPO experience across multiple continents."),
+        ("tanya-phillips.png", "Tanya Phillips", "Chief Operating Officer", "Builder of multiple BPO businesses from ground up to profitable operations."),
+        ("craig-shalekoff.png", "Craig Shalekoff", "MD & Co-Founder", "Operations expert driving operational excellence and efficiency at scale."),
+        ("rudi-jansen.png", "Rudi Jansen", "Director of People", "20 years of leadership experience in high-performing, people-first organisations."),
+        ("vancyon-van-zyl.png", "Vancyon van Zyl", "Director of Transitions", "Specialist in seamless operation migrations and process optimization."),
+        ("keanu-vieira.png", "Keanu Vieira", "Head of CX Solutions", "Customer experience innovation leader transforming service delivery models."),
+        ("craig-mcleod.png", "Craig Mcleod", "Head of Innovation", "Technology and AI strategy pioneer driving competitive differentiation."),
+        ("brandon-grant.png", "Brandon Grant", "Head of Digital Contact", "Digital transformation leader specializing in omnichannel solutions."),
+    ]
+    for i, (photo, name, role, desc) in enumerate(team):
+        col, row = i % 4, i // 4
+        x = MARGIN + col * Inches(3.15)
+        y = Inches(1.85) + row * Inches(2.55)
+        photo_path = os.path.join(TEAM_DIR, photo)
+        # shadow circle
+        shadow = s.shapes.add_shape(MSO_SHAPE.OVAL, x + Inches(0.95), y + Inches(0.08), Inches(0.95), Inches(0.95))
+        shadow.fill.solid()
+        shadow.fill.fore_color.rgb = BLUE_DEEP
+        shadow.line.fill.background()
+        if os.path.exists(photo_path):
+            s.shapes.add_picture(photo_path, x + Inches(0.9), y, width=Inches(0.95), height=Inches(0.95))
+        textbox(s, x + Inches(0.1), y + Inches(1.05), Inches(2.9), Inches(0.35), name, size=11, bold=True, color=GREEN, align=PP_ALIGN.CENTER)
+        textbox(s, x + Inches(0.1), y + Inches(1.35), Inches(2.9), Inches(0.3), role, size=11, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+        textbox(s, x + Inches(0.1), y + Inches(1.7), Inches(2.9), Inches(0.7), desc, size=10, color=MUTED, align=PP_ALIGN.CENTER)
+
+    # 4 COMPANY OVERVIEW
+    n += 1
+    s = new()
+    chrome(s, n, "01  —  Company overview", tick=YELLOW)
     textbox(
         s,
         MARGIN,
@@ -244,24 +284,23 @@ def build():
         color=MUTED,
     )
     pills = [
-        ("Build your own centre", "Design, Build, Operate, Transfer — a risk-mitigated path to a Center of Excellence in South Africa."),
-        ("20–30% vs BPO", "Global capability centres / captives deliver 20–30% cost savings versus offshore outsourcing."),
-        ("Digital & autonomous", "Unique digital and autonomous platforms to reduce headcount while improving CX."),
-        ("1,000+ FTEs", "Owned and operated footprint across Cape Town and Johannesburg — never franchise."),
+        ("Build your own centre", "Design, Build, Operate, Transfer — a risk-mitigated path to a Center of Excellence in South Africa.", GREEN),
+        ("20–30% vs BPO", "Global capability centres / captives deliver 20–30% cost savings versus offshore outsourcing.", YELLOW),
+        ("Digital & autonomous", "Unique digital and autonomous platforms to reduce headcount while improving CX.", YELLOW),
+        ("1,000+ FTEs", "Owned and operated footprint across Cape Town and Johannesburg — never franchise.", GREEN),
     ]
-    for i, (h, body) in enumerate(pills):
+    for i, (h, body, accent) in enumerate(pills):
         x = MARGIN + (i % 2) * Inches(6.2)
         y = Inches(1.7) + (i // 2) * Inches(2.25)
         card(s, x, y, Inches(5.95), Inches(2.05), CARD)
-        rect(s, x, y, Inches(0.1), Inches(2.05), YELLOW)
-        textbox(s, x + Inches(0.35), y + Inches(0.35), Inches(5.3), Inches(0.4), h, size=18, bold=True, color=YELLOW)
+        accent_bar(s, x, y, Inches(2.05), accent)
+        textbox(s, x + Inches(0.35), y + Inches(0.35), Inches(5.3), Inches(0.4), h, size=18, bold=True, color=accent)
         textbox(s, x + Inches(0.35), y + Inches(0.9), Inches(5.3), Inches(0.9), body, size=13, color=WHITE)
-    footer_note(s)
 
-    # 4 ACHIEVEMENTS
+    # 5 ACHIEVEMENTS
     n += 1
     s = new()
-    chrome(s, n, "Our achievements")
+    chrome(s, n, "Our achievements", tick=GREEN)
     textbox(
         s,
         MARGIN,
@@ -273,25 +312,24 @@ def build():
         color=MUTED,
     )
     stats = [
-        ("45K", "Jobs created", "Significant positive impact on South Africa's economy and communities over 20 years."),
-        ("20+", "Years of experience", "Two decades of proven value delivery across multiple industries and geographies."),
-        ("8", "Years in AI / ML", "Developing AI, ML platforms, analytics solutions, and digital automation tools."),
-        ("36", "Blue-chip centres built", "Contact centres successfully built and launched for blue-chip companies across SA."),
+        ("45K", "Jobs created", "Significant positive impact on South Africa's economy and communities over 20 years.", GREEN),
+        ("20+", "Years of experience", "Two decades of proven value delivery across multiple industries and geographies.", YELLOW),
+        ("8", "Years in AI / ML", "Developing AI, ML platforms, analytics solutions, and digital automation tools.", YELLOW),
+        ("36", "Blue-chip centres built", "Contact centres successfully built and launched for blue-chip companies across SA.", GREEN),
     ]
-    for i, (val, label, desc) in enumerate(stats):
+    for i, (val, label, desc, accent) in enumerate(stats):
         x = MARGIN + (i % 2) * Inches(4.0)
         y = Inches(1.85) + (i // 2) * Inches(2.2)
-        textbox(s, x, y, Inches(3.7), Inches(0.55), val, size=36, bold=True, color=YELLOW)
+        textbox(s, x, y, Inches(3.7), Inches(0.55), val, size=36, bold=True, color=accent)
         textbox(s, x, y + Inches(0.55), Inches(3.7), Inches(0.35), label, size=16, bold=True, color=WHITE)
         textbox(s, x, y + Inches(1.0), Inches(3.7), Inches(0.9), desc, size=12, color=MUTED)
     if os.path.exists(HERO):
         s.shapes.add_picture(HERO, Inches(8.7), Inches(1.1), height=Inches(5.5))
-    footer_note(s)
 
-    # 5 WHY SA
+    # 6 WHY SA
     n += 1
     s = new()
-    chrome(s, n, "Why South Africa?")
+    chrome(s, n, "Why South Africa?", tick=GREEN)
     textbox(
         s,
         MARGIN,
@@ -302,7 +340,7 @@ def build():
         size=13,
         color=MUTED,
     )
-    card(s, MARGIN, Inches(1.65), Inches(6.0), Inches(1.55), YELLOW)
+    card(s, MARGIN, Inches(1.65), Inches(6.0), Inches(1.55), GREEN)
     textbox(s, MARGIN + Inches(0.3), Inches(1.8), Inches(5.4), Inches(0.35), "Cost efficiency meets quality", size=15, bold=True, color=DARK)
     textbox(
         s,
@@ -314,7 +352,7 @@ def build():
         size=12,
         color=DARK,
     )
-    card(s, MARGIN + Inches(6.25), Inches(1.65), Inches(6.0), Inches(1.55), LIGHT)
+    card(s, MARGIN + Inches(6.25), Inches(1.65), Inches(6.0), Inches(1.55), YELLOW)
     textbox(s, MARGIN + Inches(6.55), Inches(1.8), Inches(5.4), Inches(0.35), "Cape Town: the premium hub", size=15, bold=True, color=DARK)
     textbox(
         s,
@@ -327,25 +365,24 @@ def build():
         color=DARK,
     )
     mid = [
-        ("#2 globally", "Most attractive BPO location (McKinsey)"),
-        ("GMT+2", "1–2 hrs from UK · extended US coverage"),
-        ("95%+", "English proficiency with neutral accents"),
-        ("Top-3", "Global BPO destination for three consecutive years"),
-        ("Young talent", "Educated, professional workforce ready to deliver"),
-        ("Full CX stack", "Voice, tech support, digital and advanced CX"),
+        ("#2 globally", "Most attractive BPO location (McKinsey)", GREEN),
+        ("GMT+2", "1–2 hrs from UK · extended US coverage", YELLOW),
+        ("95%+", "English proficiency with neutral accents", GREEN),
+        ("Top-3", "Global BPO destination for three consecutive years", YELLOW),
+        ("Young talent", "Educated, professional workforce ready to deliver", GREEN),
+        ("Full CX stack", "Voice, tech support, digital and advanced CX", YELLOW),
     ]
-    for i, (h, b) in enumerate(mid):
+    for i, (h, b, accent) in enumerate(mid):
         x = MARGIN + (i % 3) * Inches(4.15)
         y = Inches(3.5) + (i // 3) * Inches(1.55)
         card(s, x, y, Inches(3.95), Inches(1.4), CARD)
-        textbox(s, x + Inches(0.25), y + Inches(0.25), Inches(3.45), Inches(0.35), h, size=16, bold=True, color=YELLOW)
+        textbox(s, x + Inches(0.25), y + Inches(0.25), Inches(3.45), Inches(0.35), h, size=16, bold=True, color=accent)
         textbox(s, x + Inches(0.25), y + Inches(0.7), Inches(3.45), Inches(0.5), b, size=12, color=WHITE)
-    footer_note(s)
 
-    # 6 THREE ROUTES
+    # 7 THREE ROUTES
     n += 1
     s = new()
-    chrome(s, n, "Three routes offshore")
+    chrome(s, n, "Three routes offshore", tick=YELLOW)
     textbox(
         s,
         MARGIN,
@@ -357,37 +394,23 @@ def build():
         color=MUTED,
     )
     routes = [
-        ("1", "Outsourcing", "Outsource to a competent and credible partner in South Africa under an outsourcing contract.", False),
-        ("2", "Captive, own resources", "Establish a captive centre in South Africa with your own resources — full ownership, full localisation risk.", False),
-        ("3", "Captive with local partner — DBOT", "Establish a captive with a local partner as a phased Design, Build, Operate and Transfer approach.", True),
+        ("1", "Outsourcing", "Outsource to a competent and credible partner in South Africa under an outsourcing contract.", CARD, WHITE, MUTED, GREEN),
+        ("2", "Captive, own resources", "Establish a captive centre in South Africa with your own resources — full ownership, full localisation risk.", CARD, WHITE, MUTED, YELLOW),
+        ("3", "Captive with local partner — DBOT", "Establish a captive with a local partner as a phased Design, Build, Operate and Transfer approach.", GREEN, DARK, DARK, DARK),
     ]
-    for i, (num, title, body, focus) in enumerate(routes):
+    for i, (num, title, body, fill, tcol, bcol, numcol) in enumerate(routes):
         x = MARGIN + i * Inches(4.15)
-        fill = YELLOW if focus else CARD
-        tcol = DARK if focus else WHITE
-        bcol = DARK if focus else MUTED
         card(s, x, Inches(1.75), Inches(3.95), Inches(4.4), fill)
-        textbox(
-            s,
-            x + Inches(0.3),
-            Inches(2.05),
-            Inches(3.3),
-            Inches(0.45),
-            num,
-            size=28,
-            bold=True,
-            color=(DARK if focus else YELLOW),
-        )
+        textbox(s, x + Inches(0.3), Inches(2.05), Inches(3.3), Inches(0.45), num, size=28, bold=True, color=numcol)
         textbox(s, x + Inches(0.3), Inches(2.65), Inches(3.3), Inches(0.9), title, size=18, bold=True, color=tcol)
         textbox(s, x + Inches(0.3), Inches(3.7), Inches(3.3), Inches(1.8), body, size=13, color=bcol)
-        if focus:
+        if i == 2:
             textbox(s, x + Inches(0.3), Inches(5.55), Inches(3.3), Inches(0.35), "FOCUS OF THIS BRIEF", size=11, bold=True, color=DARK)
-    footer_note(s)
 
-    # 7 FIVE RISKS
+    # 8 FIVE RISKS
     n += 1
     s = new()
-    chrome(s, n, "The business case — five risk areas")
+    chrome(s, n, "The business case — five risk areas", tick=GREEN)
     textbox(
         s,
         MARGIN,
@@ -399,29 +422,27 @@ def build():
         color=MUTED,
     )
     risks = [
-        ("01", "Localisation", "Labour law, equity, location, culture, protocol and contractual pitfalls."),
-        ("02", "Financial", "CAPEX for infrastructure, IT, telephony, connectivity and facilities — and shortened ROI pressure."),
-        ("03", "Business", "Defocusing management; standing up HR, finance, facilities, legal and ops IT offshore."),
-        ("04", "Implementation", "Speed to go-live, scope creep, travel, recruitment and training costs."),
-        ("05", "Ongoing ops", "Performance management, fix-it travel, transferring onshore practices to local management."),
+        ("01", "Localisation", "Labour law, equity, location, culture, protocol and contractual pitfalls.", GREEN),
+        ("02", "Financial", "CAPEX for infrastructure, IT, telephony, connectivity and facilities — and shortened ROI pressure.", YELLOW),
+        ("03", "Business", "Defocusing management; standing up HR, finance, facilities, legal and ops IT offshore.", GREEN),
+        ("04", "Implementation", "Speed to go-live, scope creep, travel, recruitment and training costs.", YELLOW),
+        ("05", "Ongoing ops", "Performance management, fix-it travel, transferring onshore practices to local management.", GREEN),
     ]
-    for i, (num, title, body) in enumerate(risks):
+    for i, (num, title, body, accent) in enumerate(risks):
         x = MARGIN + i * Inches(2.48)
         card(s, x, Inches(1.75), Inches(2.35), Inches(4.4), CARD)
-        rect(s, x, Inches(1.75), Inches(2.35), Inches(0.12), YELLOW)
-        textbox(s, x + Inches(0.18), Inches(2.1), Inches(2.0), Inches(0.4), num, size=20, bold=True, color=YELLOW)
+        rect(s, x, Inches(1.75), Inches(2.35), Inches(0.12), accent)
+        textbox(s, x + Inches(0.18), Inches(2.1), Inches(2.0), Inches(0.4), num, size=20, bold=True, color=accent)
         textbox(s, x + Inches(0.18), Inches(2.6), Inches(2.0), Inches(0.7), title, size=15, bold=True, color=WHITE)
         textbox(s, x + Inches(0.18), Inches(3.4), Inches(2.0), Inches(2.4), body, size=12, color=MUTED)
-    footer_note(s)
 
-    # 8 SOLUTION DBOT
+    # 9 SOLUTION DBOT
     n += 1
     s = new()
-    chrome(s, n, "The solution — DBOT hybrid")
-    # equation row
+    chrome(s, n, "The solution — DBOT hybrid", tick=YELLOW)
     card(s, MARGIN, Inches(1.1), Inches(2.9), Inches(0.65), CARD)
     textbox(s, MARGIN + Inches(0.1), Inches(1.22), Inches(2.7), Inches(0.4), "Outsourcing", size=14, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
-    textbox(s, MARGIN + Inches(2.95), Inches(1.2), Inches(0.4), Inches(0.45), "+", size=22, bold=True, color=YELLOW, align=PP_ALIGN.CENTER)
+    textbox(s, MARGIN + Inches(2.95), Inches(1.2), Inches(0.4), Inches(0.45), "+", size=22, bold=True, color=GREEN, align=PP_ALIGN.CENTER)
     card(s, MARGIN + Inches(3.4), Inches(1.1), Inches(4.3), Inches(0.65), CARD)
     textbox(
         s,
@@ -461,42 +482,41 @@ def build():
         color=MUTED,
     )
     phases = [
-        ("D", "Design", "Due diligence, gap analysis, solution design, implementation, change and project plans."),
-        ("B", "Build", "Total solution implemented at the location of choice, governed by a project team."),
-        ("O", "Operate", "Full operational strategy run for a defined period to stabilise operations."),
-        ("T", "Transfer", "Operations, technology, facilities, people, knowledge and IP transferred to you."),
+        ("D", "Design", "Due diligence, gap analysis, solution design, implementation, change and project plans.", GREEN),
+        ("B", "Build", "Total solution implemented at the location of choice, governed by a project team.", GREEN),
+        ("O", "Operate", "Full operational strategy run for a defined period to stabilise operations.", YELLOW),
+        ("T", "Transfer", "Operations, technology, facilities, people, knowledge and IP transferred to you.", WHITE),
     ]
-    for i, (letter, name, desc) in enumerate(phases):
+    for i, (letter, name, desc, hdr) in enumerate(phases):
         x = MARGIN + i * Inches(3.15)
         card(s, x, Inches(2.85), Inches(3.0), Inches(3.5), CARD)
-        rect(s, x, Inches(2.85), Inches(3.0), Inches(0.85), YELLOW if i < 3 else WHITE)
-        textbox(s, x + Inches(0.2), Inches(2.95), Inches(0.5), Inches(0.6), letter, size=26, bold=True, color=DARK)
-        textbox(s, x + Inches(0.7), Inches(3.1), Inches(2.1), Inches(0.4), name.upper(), size=14, bold=True, color=DARK)
+        rect(s, x, Inches(2.85), Inches(3.0), Inches(0.85), hdr)
+        tcol = DARK if hdr != WHITE else BLUE
+        textbox(s, x + Inches(0.2), Inches(2.95), Inches(0.5), Inches(0.6), letter, size=26, bold=True, color=tcol)
+        textbox(s, x + Inches(0.7), Inches(3.1), Inches(2.1), Inches(0.4), name.upper(), size=14, bold=True, color=tcol)
         textbox(s, x + Inches(0.2), Inches(3.95), Inches(2.6), Inches(2.1), desc, size=13, color=WHITE)
-    footer_note(s)
 
-    # 9 PHASE DETAIL
+    # 10 PHASE DETAIL
     n += 1
     s = new()
-    chrome(s, n, "Implementation — phase by phase")
+    chrome(s, n, "Implementation — phase by phase", tick=GREEN)
     details = [
-        ("Design", ["Comprehensive due diligence", "Local practices gap analysis", "Optimal solution design", "Implementation & change plans", "Project management plan"]),
-        ("Build", ["Site & IT build-out (turnkey)", "Agent lifecycle framework", "Recruitment, training, incubation", "Workforce optimisation & QA", "Go-live readiness gates"]),
-        ("Operate", ["Full operational strategy", "Integrated management system", "KPI / SLA measurement", "Governed through an MSA", "Stabilise quality & service levels"]),
-        ("Transfer", ["People & knowledge transfer", "Technology, facilities & IP", "Flexible timing (e.g. 24/36 mo)", "Optional ongoing support", "Overflow · BC/DR · benchmarking"]),
+        ("Design", ["Comprehensive due diligence", "Local practices gap analysis", "Optimal solution design", "Implementation & change plans", "Project management plan"], GREEN),
+        ("Build", ["Site & IT build-out (turnkey)", "Agent lifecycle framework", "Recruitment, training, incubation", "Workforce optimisation & QA", "Go-live readiness gates"], YELLOW),
+        ("Operate", ["Full operational strategy", "Integrated management system", "KPI / SLA measurement", "Governed through an MSA", "Stabilise quality & service levels"], GREEN),
+        ("Transfer", ["People & knowledge transfer", "Technology, facilities & IP", "Flexible timing (e.g. 24/36 mo)", "Optional ongoing support", "Overflow · BC/DR · benchmarking"], YELLOW),
     ]
-    for i, (title, lines) in enumerate(details):
+    for i, (title, lines, accent) in enumerate(details):
         x = MARGIN + i * Inches(3.15)
         card(s, x, Inches(1.1), Inches(3.0), Inches(5.4), CARD)
-        rect(s, x, Inches(1.1), Inches(3.0), Inches(0.1), YELLOW)
-        textbox(s, x + Inches(0.2), Inches(1.35), Inches(2.6), Inches(0.4), title.upper(), size=16, bold=True, color=YELLOW)
+        rect(s, x, Inches(1.1), Inches(3.0), Inches(0.1), accent)
+        textbox(s, x + Inches(0.2), Inches(1.35), Inches(2.6), Inches(0.4), title.upper(), size=16, bold=True, color=accent)
         bullets(s, x + Inches(0.2), Inches(1.9), Inches(2.6), Inches(4.3), lines, size=12, color=WHITE)
-    footer_note(s)
 
-    # 10 BENEFITS
+    # 11 BENEFITS
     n += 1
     s = new()
-    chrome(s, n, "Business benefits — how DBOT mitigates risk")
+    chrome(s, n, "Business benefits — how DBOT mitigates risk", tick=YELLOW)
     benefits = [
         "Risk-averse localisation model",
         "Limited CAPEX — or an option for no CAPEX",
@@ -510,10 +530,11 @@ def build():
     for i, b in enumerate(benefits):
         x = MARGIN + (i % 2) * Inches(6.2)
         y = Inches(1.1) + (i // 2) * Inches(1.2)
+        accent = GREEN if i % 2 == 0 else YELLOW
         card(s, x, y, Inches(5.95), Inches(1.05), CARD)
         circ = s.shapes.add_shape(MSO_SHAPE.OVAL, x + Inches(0.25), y + Inches(0.3), Inches(0.4), Inches(0.4))
         circ.fill.solid()
-        circ.fill.fore_color.rgb = YELLOW
+        circ.fill.fore_color.rgb = accent
         circ.line.fill.background()
         textbox(
             s,
@@ -528,12 +549,11 @@ def build():
             align=PP_ALIGN.CENTER,
         )
         textbox(s, x + Inches(0.85), y + Inches(0.32), Inches(4.85), Inches(0.5), b, size=14, bold=True, color=WHITE)
-    footer_note(s)
 
-    # 11 COMMERCIAL
+    # 12 COMMERCIAL
     n += 1
     s = new()
-    chrome(s, n, "Commercial model")
+    chrome(s, n, "Commercial model", tick=GREEN)
     textbox(
         s,
         MARGIN,
@@ -545,7 +565,7 @@ def build():
         color=MUTED,
     )
     card(s, MARGIN, Inches(1.55), Inches(6.0), Inches(4.7), CARD)
-    textbox(s, MARGIN + Inches(0.35), Inches(1.75), Inches(5.3), Inches(0.4), "Transparent costing + fixed fee", size=18, bold=True, color=YELLOW)
+    textbox(s, MARGIN + Inches(0.35), Inches(1.75), Inches(5.3), Inches(0.4), "Transparent costing + fixed fee", size=18, bold=True, color=GREEN)
     bullets(
         s,
         MARGIN + Inches(0.35),
@@ -585,12 +605,11 @@ def build():
         size=13,
         color=DARK,
     )
-    footer_note(s)
 
-    # 12 THREE OFFERINGS
+    # 13 THREE OFFERINGS
     n += 1
     s = new()
-    chrome(s, n, "Where GCC sits in Trilogy's offerings")
+    chrome(s, n, "Where GCC sits in Trilogy's offerings", tick=YELLOW)
     textbox(
         s,
         MARGIN,
@@ -602,24 +621,23 @@ def build():
         color=MUTED,
     )
     offers = [
-        ("Offshoring BPO", "Voice to Digital to Autonomous CX", "Outsource to Trilogy in South Africa with modern platforms ready — just add humans.", "40–60% saving vs captive UK / outsourced UK"),
-        ("Global Capability Centres", "Design, Build, Operate & Transfer", "Build your own capability centre with Trilogy's DBOT methodology and local expertise.", "Additional 20–30% vs outsourced SA BPO"),
-        ("AI & Digital Platforms", "Human in the loop", "Award-winning AI-enabled digital and autonomous platforms for service, sales and collections.", "Further savings through digital & AI deflection"),
+        ("Offshoring BPO", "Voice to Digital to Autonomous CX", "Outsource to Trilogy in South Africa with modern platforms ready — just add humans.", "40–60% saving vs captive UK / outsourced UK", GREEN),
+        ("Global Capability Centres", "Design, Build, Operate & Transfer", "Build your own capability centre with Trilogy's DBOT methodology and local expertise.", "Additional 20–30% vs outsourced SA BPO", YELLOW),
+        ("AI & Digital Platforms", "Human in the loop", "Award-winning AI-enabled digital and autonomous platforms for service, sales and collections.", "Further savings through digital & AI deflection", GREEN),
     ]
-    for i, (title, sub, body, foot) in enumerate(offers):
+    for i, (title, sub, body, foot, accent) in enumerate(offers):
         x = MARGIN + i * Inches(4.15)
         card(s, x, Inches(1.7), Inches(3.95), Inches(4.55), CARD)
         textbox(s, x + Inches(0.25), Inches(1.95), Inches(3.45), Inches(0.7), title, size=16, bold=True, color=WHITE)
-        textbox(s, x + Inches(0.25), Inches(2.7), Inches(3.45), Inches(0.4), sub, size=12, bold=True, color=YELLOW)
+        textbox(s, x + Inches(0.25), Inches(2.7), Inches(3.45), Inches(0.4), sub, size=12, bold=True, color=accent)
         textbox(s, x + Inches(0.25), Inches(3.25), Inches(3.45), Inches(1.6), body, size=12, color=MUTED)
-        rect(s, x, Inches(5.35), Inches(3.95), Inches(0.9), YELLOW)
+        rect(s, x, Inches(5.35), Inches(3.95), Inches(0.9), accent)
         textbox(s, x + Inches(0.2), Inches(5.5), Inches(3.55), Inches(0.65), foot, size=11, bold=True, color=DARK)
-    footer_note(s)
 
-    # 13 CASE AEGIS
+    # 14 CASE AEGIS
     n += 1
     s = new()
-    chrome(s, n, "Case study — Aegis South Africa (now Startek)")
+    chrome(s, n, "Case study — Aegis South Africa (now Startek)", tick=GREEN)
     if os.path.exists(CASE_AEGIS):
         s.shapes.add_picture(CASE_AEGIS, MARGIN, Inches(1.15), width=Inches(6.4))
     bullets(
@@ -637,12 +655,11 @@ def build():
         ],
         size=15,
     )
-    footer_note(s)
 
-    # 14 CASE ASCENSOS
+    # 15 CASE ASCENSOS
     n += 1
     s = new()
-    chrome(s, n, "Case study — Ascensos")
+    chrome(s, n, "Case study — Ascensos", tick=YELLOW)
     if os.path.exists(CASE_ASC):
         s.shapes.add_picture(CASE_ASC, MARGIN, Inches(1.15), width=Inches(6.4))
     bullets(
@@ -660,12 +677,11 @@ def build():
         ],
         size=15,
     )
-    footer_note(s)
 
-    # 15 LOCATIONS
+    # 16 LOCATIONS
     n += 1
     s = new()
-    chrome(s, n, "South African footprint")
+    chrome(s, n, "South African footprint", tick=GREEN)
     textbox(
         s,
         MARGIN,
@@ -677,42 +693,39 @@ def build():
         color=MUTED,
     )
     locs = [
-        ("Century City", "Cape Town", "300 seats"),
-        ("Head Office — Pinelands", "Cape Town", "1,500 seats"),
-        ("Newtown", "Johannesburg", "400 seats"),
-        ("Rosebank", "Johannesburg", "250 seats"),
+        ("Century City", "Cape Town", "300 seats", GREEN),
+        ("Head Office — Pinelands", "Cape Town", "1,500 seats", YELLOW),
+        ("Newtown", "Johannesburg", "400 seats", GREEN),
+        ("Rosebank", "Johannesburg", "250 seats", YELLOW),
     ]
-    for i, (name, city, seats) in enumerate(locs):
+    for i, (name, city, seats, accent) in enumerate(locs):
         x = MARGIN + i * Inches(3.15)
         card(s, x, Inches(1.8), Inches(3.0), Inches(3.6), CARD)
-        rect(s, x, Inches(1.8), Inches(3.0), Inches(0.12), YELLOW)
+        rect(s, x, Inches(1.8), Inches(3.0), Inches(0.12), accent)
         textbox(s, x + Inches(0.25), Inches(2.3), Inches(2.5), Inches(1.0), name, size=18, bold=True, color=WHITE)
         textbox(s, x + Inches(0.25), Inches(3.4), Inches(2.5), Inches(0.4), city, size=13, color=MUTED)
-        textbox(s, x + Inches(0.25), Inches(4.2), Inches(2.5), Inches(0.5), seats, size=22, bold=True, color=YELLOW)
-    footer_note(s)
+        textbox(s, x + Inches(0.25), Inches(4.2), Inches(2.5), Inches(0.5), seats, size=22, bold=True, color=accent)
 
-    # 16 CLOSE
+    # 17 CLOSE
     n += 1
     s = new()
-    rect(s, 0, 0, SLIDE_W, SLIDE_H, BLACK)
-    rect(s, 0, 0, Inches(0.12), SLIDE_H, YELLOW)
-    rect(s, 0, SLIDE_H - FOOTER_H, SLIDE_W, FOOTER_H, YELLOW)
+    rect(s, 0, 0, SLIDE_W, SLIDE_H, BLUE)
+    rect(s, 0, 0, Inches(0.12), SLIDE_H, GREEN)
+    rect(s, 0, SLIDE_H - FOOTER_H, SLIDE_W * 0.62, FOOTER_H, GREEN)
+    rect(s, SLIDE_W * 0.62, SLIDE_H - FOOTER_H, SLIDE_W * 0.38, FOOTER_H, YELLOW)
     if os.path.exists(LOGO):
         s.shapes.add_picture(LOGO, MARGIN, Inches(0.45), height=Inches(0.55))
     textbox(s, MARGIN, Inches(2.0), Inches(12), Inches(0.8), "Let's build your GCC", size=36, bold=True, color=WHITE)
-    textbox(
-        s,
-        MARGIN,
-        Inches(2.9),
-        Inches(11),
-        Inches(0.8),
-        "Design, Build, Operate, Transfer — from South Africa for UK, US and global brands.",
-        size=18,
-        color=YELLOW,
-    )
-    textbox(s, MARGIN, Inches(4.1), Inches(11), Inches(0.4), "sales@trilogybpo.com", size=20, bold=True, color=WHITE)
-    textbox(s, MARGIN, Inches(4.65), Inches(11), Inches(0.35), "trilogybpo.com   ·   proposal.trilogybpo.com/GCC", size=14, color=MUTED)
-    textbox(s, MARGIN, Inches(5.4), Inches(11), Inches(0.35), "Trilogy CX (Pty) Ltd  ·  Commercial-in-confidence", size=12, color=MUTED)
+    title2 = textbox(s, MARGIN, Inches(2.9), Inches(11), Inches(0.8))
+    tf = title2.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    r = p.add_run()
+    r.text = "Design, Build, Operate, Transfer"
+    set_run(r, size=18, bold=True, color=GREEN)
+    add_para(tf, "from South Africa for UK, US and global brands.", size=18, bold=False, color=YELLOW, space_before=4)
+    textbox(s, MARGIN, Inches(4.3), Inches(11), Inches(0.4), "sales@trilogybpo.com", size=20, bold=True, color=WHITE)
+    textbox(s, MARGIN, Inches(4.85), Inches(11), Inches(0.35), "trilogybpo.com", size=14, color=MUTED)
     textbox(
         s,
         SLIDE_W - Inches(0.9),
