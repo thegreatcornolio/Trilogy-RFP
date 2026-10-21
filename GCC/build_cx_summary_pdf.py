@@ -139,24 +139,26 @@ def table(c, x, y, col_widths, rows, font_size=6.8, row_h=4.8 * mm):
 
 
 def fill_rest(c, y, blocks):
-    """Use remaining page space with a visible navy panel so bottoms aren't empty white."""
-    footer_top = 11 * mm
+    """Fill leftover page space flush to the footer with a navy panel."""
+    footer_top = 8.2 * mm  # sits on footer accent line
     h = y - footer_top
-    if h < 10 * mm:
+    if h < 8 * mm:
         return
-    # Visible brand panel (not near-white) so leftover space reads as intentional
-    card(c, M, y, W - 2 * M, h, NAVY)
+    # Hard rect (not rounded) so height is exact to the footer
+    c.setFillColor(NAVY)
+    c.rect(M, footer_top, W - 2 * M, h, fill=1, stroke=0)
     c.setFillColor(GREEN)
-    c.rect(M, y - 1.2 * mm, W - 2 * M, 1.2 * mm, fill=1, stroke=0)
+    c.rect(M, y - 1.1 * mm, W - 2 * M, 1.1 * mm, fill=1, stroke=0)
     c.setFillColor(LIME)
-    c.rect(M, y - h, W - 2 * M, 1.2 * mm, fill=1, stroke=0)
+    c.rect(M, footer_top, W - 2 * M, 1.1 * mm, fill=1, stroke=0)
 
-    # Distribute blocks evenly through the panel height
     n = max(len(blocks), 1)
-    usable = h - 8 * mm
+    usable = max(h - 8 * mm, 6 * mm)
     slot = usable / n
     for i, (title, body) in enumerate(blocks):
         yy = y - 5 * mm - i * slot
+        if yy < footer_top + 6 * mm:
+            break
         c.setFillColor(LIME)
         c.setFont("Helvetica-Bold", 7)
         c.drawString(M + 3.5 * mm, yy, title.upper())
