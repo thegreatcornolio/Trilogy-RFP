@@ -1,91 +1,114 @@
 #!/usr/bin/env python3
-"""Trilogy-branded CX Summary Update PDF — 21 Oct 2026 (full, tighter)."""
+"""Trilogy-branded CX Summary Update PDF — 21 Oct 2026."""
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
-from reportlab.lib.colors import Color, white
+from reportlab.lib.colors import Color, white, black
 from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 import os
 
 OUT = "/workspace/GCC/Trilogy-CX-Summary-Update-21-Oct-2026.pdf"
 LOGO = "/workspace/presentations/_shared/logos/trilogy.png"
 
+# Brand
 NAVY = Color(0x13 / 255, 0x20 / 255, 0x2E / 255)
+NAVY_DEEP = Color(0x0C / 255, 0x19 / 255, 0x26 / 255)
 GREEN = Color(0x61 / 255, 0xD7 / 255, 0x79 / 255)
 LIME = Color(0xD5 / 255, 0xEC / 255, 0x67 / 255)
+CARD = Color(0x1B / 255, 0x2A / 255, 0x3A / 255)
 MUTED = Color(0x6B / 255, 0x76 / 255, 0x82 / 255)
 LIGHT = Color(0xF4 / 255, 0xF6 / 255, 0xF8 / 255)
+ROW_ALT = Color(0xEE / 255, 0xF2 / 255, 0xF5 / 255)
+RED_SOFT = Color(0xE8 / 255, 0x5D / 255, 0x5D / 255)
 BORDER = Color(0xD5 / 255, 0xDB / 255, 0xE3 / 255)
 
 W, H = A4
-M = 12 * mm
+M = 14 * mm
 
 
 def draw_header(c, page_title, page_num, total_pages):
+    # top navy bar
     c.setFillColor(NAVY)
-    c.rect(0, H - 16 * mm, W, 16 * mm, fill=1, stroke=0)
+    c.rect(0, H - 22 * mm, W, 22 * mm, fill=1, stroke=0)
     c.setFillColor(GREEN)
-    c.rect(0, H - 16.6 * mm, W * 0.62, 0.6 * mm, fill=1, stroke=0)
+    c.rect(0, H - 22.8 * mm, W * 0.62, 0.8 * mm, fill=1, stroke=0)
     c.setFillColor(LIME)
-    c.rect(W * 0.62, H - 16.6 * mm, W * 0.38, 0.6 * mm, fill=1, stroke=0)
+    c.rect(W * 0.62, H - 22.8 * mm, W * 0.38, 0.8 * mm, fill=1, stroke=0)
 
     if os.path.exists(LOGO):
-        logo_h = 6.5 * mm
-        c.drawImage(LOGO, M, H - 12.2 * mm, width=logo_h * 4.65, height=logo_h, mask="auto", preserveAspectRatio=True)
+        # Wordmark is ~4.65:1 — keep readable on navy header
+        logo_h = 8 * mm
+        logo_w = logo_h * 4.65
+        c.drawImage(
+            LOGO,
+            M,
+            H - 15.5 * mm,
+            width=logo_w,
+            height=logo_h,
+            mask="auto",
+            preserveAspectRatio=True,
+            anchor="c",
+        )
 
     c.setFillColor(white)
-    c.setFont("Helvetica", 7)
-    c.drawRightString(W - M, H - 6.5 * mm, "Trilogy CX  ·  Commercial-in-confidence")
+    c.setFont("Helvetica", 8)
+    c.drawRightString(W - M, H - 9 * mm, "Trilogy CX  ·  Commercial-in-confidence")
     c.setFillColor(LIME)
-    c.setFont("Helvetica-Bold", 7)
-    c.drawRightString(W - M, H - 11 * mm, "21 October 2026")
+    c.setFont("Helvetica-Bold", 8)
+    c.drawRightString(W - M, H - 14 * mm, "21 October 2026")
 
+    # page title strip
     c.setFillColor(LIGHT)
-    c.rect(0, H - 24.5 * mm, W, 7.9 * mm, fill=1, stroke=0)
+    c.rect(0, H - 34 * mm, W, 11 * mm, fill=1, stroke=0)
     c.setFillColor(GREEN)
-    c.rect(M, H - 22.2 * mm, 1.8 * mm, 3.6 * mm, fill=1, stroke=0)
+    c.rect(M, H - 30.5 * mm, 2.2 * mm, 5 * mm, fill=1, stroke=0)
     c.setFillColor(NAVY)
-    c.setFont("Helvetica-Bold", 11)
-    c.drawString(M + 4 * mm, H - 21.5 * mm, page_title)
+    c.setFont("Helvetica-Bold", 13)
+    c.drawString(M + 5 * mm, H - 29.5 * mm, page_title)
+
     c.setFillColor(MUTED)
-    c.setFont("Helvetica", 7)
-    c.drawRightString(W - M, H - 21.5 * mm, f"{page_num} / {total_pages}")
+    c.setFont("Helvetica", 8)
+    c.drawRightString(W - M, H - 29.5 * mm, f"{page_num} / {total_pages}")
 
 
 def draw_footer(c):
     c.setFillColor(NAVY)
-    c.rect(0, 0, W, 7.5 * mm, fill=1, stroke=0)
+    c.rect(0, 0, W, 10 * mm, fill=1, stroke=0)
     c.setFillColor(GREEN)
-    c.rect(0, 7.5 * mm, W * 0.62, 0.55 * mm, fill=1, stroke=0)
+    c.rect(0, 10 * mm, W * 0.62, 0.7 * mm, fill=1, stroke=0)
     c.setFillColor(LIME)
-    c.rect(W * 0.62, 7.5 * mm, W * 0.38, 0.55 * mm, fill=1, stroke=0)
+    c.rect(W * 0.62, 10 * mm, W * 0.38, 0.7 * mm, fill=1, stroke=0)
     c.setFillColor(white)
-    c.setFont("Helvetica", 6.5)
-    c.drawString(M, 2.6 * mm, "trilogybpo.com")
-    c.drawRightString(W - M, 2.6 * mm, "Trilogy CX (Pty) Ltd")
+    c.setFont("Helvetica", 7)
+    c.drawString(M, 4 * mm, "trilogybpo.com")
+    c.drawRightString(W - M, 4 * mm, "Trilogy CX (Pty) Ltd")
 
 
-def section(c, x, y, text, accent=GREEN):
+def section_label(c, x, y, text, accent=GREEN):
     c.setFillColor(accent)
-    c.rect(x, y - 0.6 * mm, 1.6 * mm, 3.4 * mm, fill=1, stroke=0)
+    c.rect(x, y - 1 * mm, 2 * mm, 4.2 * mm, fill=1, stroke=0)
     c.setFillColor(NAVY)
-    c.setFont("Helvetica-Bold", 9.5)
-    c.drawString(x + 3.2 * mm, y, text)
-    return y - 4.2 * mm
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(x + 4 * mm, y, text)
+    return y - 6 * mm
 
 
 def card(c, x, y, w, h, fill=LIGHT):
     c.setFillColor(fill)
-    c.roundRect(x, y - h, w, h, 2 * mm, fill=1, stroke=0)
+    c.roundRect(x, y - h, w, h, 3 * mm, fill=1, stroke=0)
 
 
-def wrap(c, text, x, y, max_w, font="Helvetica", size=8, leading=10, color=NAVY):
+def wrapped_text(c, text, x, y, max_width, font="Helvetica", size=9, leading=12, color=NAVY):
     c.setFont(font, size)
     c.setFillColor(color)
-    words, lines, line = text.split(), [], ""
+    words = text.split()
+    lines, line = [], ""
     for w in words:
         trial = (line + " " + w).strip()
-        if c.stringWidth(trial, font, size) <= max_w:
+        if c.stringWidth(trial, font, size) <= max_width:
             line = trial
         else:
             if line:
@@ -98,116 +121,131 @@ def wrap(c, text, x, y, max_w, font="Helvetica", size=8, leading=10, color=NAVY)
     return y - len(lines) * leading
 
 
-def fit(c, text, max_w, font, size):
-    if c.stringWidth(text, font, size) <= max_w:
-        return text
-    while text and c.stringWidth(text + "…", font, size) > max_w:
-        text = text[:-1]
-    return (text + "…") if text else ""
-
-
-def table(c, x, y, col_widths, rows, font_size=6.8, row_h=4.8 * mm):
+def table(c, x, y, col_widths, rows, header=True, font_size=7.5, row_h=6.2 * mm):
+    """rows: list of list of cell strings. Returns y after table."""
     total_w = sum(col_widths)
+    # header
     c.setFillColor(NAVY)
     c.rect(x, y - row_h, total_w, row_h, fill=1, stroke=0)
     c.setFillColor(white)
     c.setFont("Helvetica-Bold", font_size)
     cx = x
     for i, w in enumerate(col_widths):
-        c.drawString(cx + 1 * mm, y - row_h + 1.4 * mm, fit(c, str(rows[0][i]), w - 1.8 * mm, "Helvetica-Bold", font_size))
+        txt = str(rows[0][i]) if rows else ""
+        c.drawString(cx + 1.5 * mm, y - row_h + 2 * mm, _fit(c, txt, w - 2.5 * mm, "Helvetica-Bold", font_size))
         cx += w
     y -= row_h
+
     for r_i, row in enumerate(rows[1:]):
-        is_total = str(row[0]).upper() in ("TOTAL", "YTD", "TOTAL RUN-RATE")
-        c.setFillColor(Color(0xE8 / 255, 0xF8 / 255, 0xEC / 255) if is_total else (LIGHT if r_i % 2 == 0 else white))
+        bg = LIGHT if r_i % 2 == 0 else white
+        # total row highlight
+        if str(row[0]).upper() in ("TOTAL", "TOTALS", "YTD"):
+            bg = Color(0xE8 / 255, 0xF8 / 255, 0xEC / 255)
+        c.setFillColor(bg)
         c.rect(x, y - row_h, total_w, row_h, fill=1, stroke=0)
         c.setStrokeColor(BORDER)
-        c.setLineWidth(0.25)
+        c.setLineWidth(0.3)
         c.rect(x, y - row_h, total_w, row_h, fill=0, stroke=1)
+
         cx = x
         for i, w in enumerate(col_widths):
             txt = str(row[i]) if i < len(row) else ""
+            is_total = str(row[0]).upper() in ("TOTAL", "TOTALS", "YTD")
             c.setFont("Helvetica-Bold" if is_total else "Helvetica", font_size)
             c.setFillColor(NAVY)
-            if i > 0 and any(ch.isdigit() for ch in txt):
-                c.drawRightString(cx + w - 1 * mm, y - row_h + 1.4 * mm, fit(c, txt, w - 1.8 * mm, c._fontname, font_size))
+            # right-align numeric-ish cols (not first)
+            if i > 0 and _looks_num(txt):
+                c.drawRightString(cx + w - 1.5 * mm, y - row_h + 2 * mm, _fit(c, txt, w - 2.5 * mm, c._fontname, font_size))
             else:
-                c.drawString(cx + 1 * mm, y - row_h + 1.4 * mm, fit(c, txt, w - 1.8 * mm, c._fontname, font_size))
+                c.drawString(cx + 1.5 * mm, y - row_h + 2 * mm, _fit(c, txt, w - 2.5 * mm, c._fontname, font_size))
             cx += w
         y -= row_h
     return y
 
 
-def fill_rest(c, y, blocks):
-    """Fill leftover page space flush to the footer with a navy panel."""
-    footer_top = 8.2 * mm  # sits on footer accent line
-    h = y - footer_top
-    if h < 8 * mm:
-        return
-    # Hard rect (not rounded) so height is exact to the footer
-    c.setFillColor(NAVY)
-    c.rect(M, footer_top, W - 2 * M, h, fill=1, stroke=0)
-    c.setFillColor(GREEN)
-    c.rect(M, y - 1.1 * mm, W - 2 * M, 1.1 * mm, fill=1, stroke=0)
-    c.setFillColor(LIME)
-    c.rect(M, footer_top, W - 2 * M, 1.1 * mm, fill=1, stroke=0)
+def _looks_num(t):
+    t = t.replace(" ", "").replace(",", "").replace(".", "").replace("R", "").replace("(", "").replace(")", "").replace("-", "")
+    return t.isdigit() and len(t) > 0
 
-    n = max(len(blocks), 1)
-    usable = max(h - 8 * mm, 6 * mm)
-    slot = usable / n
-    for i, (title, body) in enumerate(blocks):
-        yy = y - 5 * mm - i * slot
-        if yy < footer_top + 6 * mm:
-            break
-        c.setFillColor(LIME)
-        c.setFont("Helvetica-Bold", 7)
-        c.drawString(M + 3.5 * mm, yy, title.upper())
-        wrap(c, body, M + 3.5 * mm, yy - 5 * mm, W - 2 * M - 7 * mm, size=7.2, leading=9.2, color=white)
+
+def _fit(c, text, max_w, font, size):
+    if c.stringWidth(text, font, size) <= max_w:
+        return text
+    while text and c.stringWidth(text + "…", font, size) > max_w:
+        text = text[:-1]
+    return text + "…" if text else ""
 
 
 def build():
     c = canvas.Canvas(OUT, pagesize=A4)
-    total = 3
+    total_pages = 5
 
-    # ========== PAGE 1 ==========
-    draw_header(c, "Overview, Strategy, Deals & Pipeline", 1, total)
+    # ========== PAGE 1: Overview + Strategy ==========
+    draw_header(c, "Quick Update — Overview & Strategy", 1, total_pages)
     draw_footer(c)
-    y = H - 28 * mm
+    y = H - 42 * mm
 
-    card(c, M, y, W - 2 * M, 10 * mm, NAVY)
-    c.setFillColor(LIME); c.setFont("Helvetica-Bold", 6.5)
-    c.drawString(M + 3 * mm, y - 3.5 * mm, "TRILOGY CX SUMMARY")
-    c.setFillColor(white); c.setFont("Helvetica-Bold", 10.5)
-    c.drawString(M + 3 * mm, y - 7.8 * mm, "Board / Leadership Update")
-    c.setFillColor(GREEN); c.setFont("Helvetica", 6.8)
-    c.drawRightString(W - M - 3 * mm, y - 7.8 * mm, "Primary: GCC  ·  Secondary: BPO & AI  ·  21 Oct 2026")
-    y -= 12.5 * mm
+    # Hero strip
+    card(c, M, y, W - 2 * M, 28 * mm, NAVY)
+    c.setFillColor(LIME)
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(M + 5 * mm, y - 7 * mm, "TRILOGY CX SUMMARY")
+    c.setFillColor(white)
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(M + 5 * mm, y - 15 * mm, "Board / Leadership Update")
+    c.setFillColor(GREEN)
+    c.setFont("Helvetica", 9)
+    c.drawString(M + 5 * mm, y - 22 * mm, "Primary focus: GCC  ·  Secondary: BPO & AI  ·  21 October 2026")
+    y -= 34 * mm
 
-    kpis = [("R3m", "Bank"), ("3", "New clients"), ("323", "Pipeline FTEs"), ("R141m", "Pipeline ACV"), ("R3m", "Build CAPEX")]
-    kw = (W - 2 * M - 8 * mm) / 5
-    for i, (val, label) in enumerate(kpis):
-        x = M + i * (kw + 2 * mm)
-        card(c, x, y, kw, 9.5 * mm, GREEN if i % 2 == 0 else LIME)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 9)
-        c.drawCentredString(x + kw / 2, y - 4.2 * mm, val)
-        c.setFont("Helvetica", 5.6); c.drawCentredString(x + kw / 2, y - 8 * mm, label)
-    y -= 12 * mm
+    y = section_label(c, M, y, "Overview", GREEN)
+    cw = (W - 2 * M - 4 * mm) / 2
+    card(c, M, y, cw, 28 * mm, LIGHT)
+    card(c, M + cw + 4 * mm, y, cw, 28 * mm, LIGHT)
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(M + 4 * mm, y - 6 * mm, "BPO SALES")
+    wrapped_text(
+        c,
+        "Slower than anticipated due to delay in UK sales resources (John Devlin & Alain Meric).",
+        M + 4 * mm,
+        y - 12 * mm,
+        cw - 8 * mm,
+        size=8.5,
+        leading=11,
+        color=NAVY,
+    )
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(M + cw + 8 * mm, y - 6 * mm, "GCC DEMAND")
+    wrapped_text(
+        c,
+        "Demand for GCC Professional Services — clear market shift toward capability centres.",
+        M + cw + 8 * mm,
+        y - 12 * mm,
+        cw - 8 * mm,
+        size=8.5,
+        leading=11,
+        color=NAVY,
+    )
+    y -= 34 * mm
 
-    y = section(c, M, y, "Overview", GREEN)
-    cw = (W - 2 * M - 3 * mm) / 2
-    card(c, M, y, cw, 12 * mm, LIGHT); card(c, M + cw + 3 * mm, y, cw, 12 * mm, LIGHT)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 6.5)
-    c.drawString(M + 2.5 * mm, y - 3.8 * mm, "BPO SALES")
-    wrap(c, "Slower than anticipated due to delay in UK sales resources (John Devlin & Alain Meric).", M + 2.5 * mm, y - 7.5 * mm, cw - 5 * mm, size=6.6, leading=8.2)
-    c.setFont("Helvetica-Bold", 6.5); c.setFillColor(NAVY)
-    c.drawString(M + cw + 5.5 * mm, y - 3.8 * mm, "GCC DEMAND")
-    wrap(c, "Demand for GCC Professional Services — clear market shift toward capability centres.", M + cw + 5.5 * mm, y - 7.5 * mm, cw - 5 * mm, size=6.6, leading=8.2)
-    y -= 14.5 * mm
+    y = section_label(c, M, y, "Strategic positioning", LIME)
+    card(c, M, y, W - 2 * M, 18 * mm, NAVY)
+    c.setFillColor(white)
+    c.setFont("Helvetica", 9)
+    wrapped_text(
+        c,
+        "Pivot slightly to primary focus on GCC (Global Capability Centres) and secondary on BPO and AI — following the demand cycle and differentiation.",
+        M + 5 * mm,
+        y - 7 * mm,
+        W - 2 * M - 10 * mm,
+        size=9,
+        leading=12,
+        color=white,
+    )
+    y -= 24 * mm
 
-    y = section(c, M, y, "Strategic positioning", LIME)
-    card(c, M, y, W - 2 * M, 8 * mm, NAVY)
-    wrap(c, "Pivot slightly to primary focus on GCC and secondary on BPO and AI — following the demand cycle and differentiation.", M + 3 * mm, y - 3.2 * mm, W - 2 * M - 6 * mm, size=6.8, leading=8.5, color=white)
-    y -= 10 * mm
     bullets = [
         "AI confusion is slowing BPO decisions.",
         "GCC is in demand.",
@@ -215,89 +253,164 @@ def build():
         "BPO competitors don’t want to do GCC — not core for them.",
         "Following the demand cycle and differentiation.",
     ]
-    bw = (W - 2 * M - 4 * mm) / 2
+    bw = (W - 2 * M - 8 * mm) / 2
     for i, b in enumerate(bullets):
-        col, row = i % 2, i // 2
-        x = M + col * (bw + 4 * mm); yy = y - row * 4.8 * mm
+        col = i % 2
+        row = i // 2
+        x = M + col * (bw + 8 * mm)
+        yy = y - row * 12 * mm
         c.setFillColor(GREEN if col == 0 else LIME)
-        c.circle(x + 1.1 * mm, yy + 0.9 * mm, 0.9 * mm, fill=1, stroke=0)
-        c.setFillColor(NAVY); c.setFont("Helvetica", 6.5); c.drawString(x + 3.8 * mm, yy, b)
-    y -= 15.5 * mm
+        c.circle(x + 2 * mm, yy + 1.5 * mm, 1.4 * mm, fill=1, stroke=0)
+        c.setFillColor(NAVY)
+        c.setFont("Helvetica", 8.5)
+        c.drawString(x + 6 * mm, yy, b)
+    y -= 40 * mm
 
-    y = section(c, M, y, "New deals — last 3 months", GREEN)
-    deals = [
-        ["Client", "Type", "Start", "Term", "Est. revenue", "Est. GM", "Comments"],
-        ["Ventrica — UK", "GCC", "01/10/26", "18–36 mo", "—", "—", "Growing 35 → 150 seats over 18 months"],
-        ["Medscheme", "GCC", "01/10/26", "12 mo", "R6.5m p.a.", "R3.5m p.a.", "Opportunity to outsource Shared Services"],
-        ["NADClinic", "BPO", "01/08/26", "24 mo", "R100k p.m.", "R50k p.m.", "Small UK campaign; limited growth estimate"],
+    # KPI strip
+    y = section_label(c, M, y, "At a glance", GREEN)
+    kpis = [
+        ("R3m", "Bank balance"),
+        ("3", "New clients won"),
+        ("323", "Pipeline FTEs"),
+        ("R141m", "Pipeline ACV"),
+        ("R3m", "Facilities CAPEX"),
     ]
-    y = table(c, M, y, [28 * mm, 12 * mm, 15 * mm, 15 * mm, 22 * mm, 20 * mm, 60 * mm], deals, font_size=6.2, row_h=4.4 * mm)
-    y -= 3 * mm
+    kw = (W - 2 * M - 4 * 3 * mm) / 5
+    for i, (val, label) in enumerate(kpis):
+        x = M + i * (kw + 3 * mm)
+        fill = GREEN if i % 2 == 0 else LIME
+        card(c, x, y, kw, 22 * mm, fill)
+        c.setFillColor(NAVY)
+        c.setFont("Helvetica-Bold", 14)
+        c.drawCentredString(x + kw / 2, y - 10 * mm, val)
+        c.setFont("Helvetica", 7)
+        c.drawCentredString(x + kw / 2, y - 17 * mm, label)
 
-    y = section(c, M, y, "Pipeline", LIME)
-    pipeline = [
-        ["Deal name", "FTE", "ACV (ZAR)"],
-        ["Evri", "60", "R25,200,000"], ["Popsa", "11", "R4,620,000"],
-        ["Lightning Fibre", "8", "R3,360,000"], ["ITS", "25", "R10,500,000"],
-        ["Synamedia", "14", "R11,433,612"], ["Karen Prodgers Consulting", "30", "R12,600,000"],
-        ["Leyland SDM", "15", "R6,300,000"], ["Seraph Property Management", "8", "R3,360,000"],
-        ["The Very Group", "150", "R63,000,000"], ["Rebel Therapies", "2", "R840,000"],
-        ["TOTAL", "323", "R141,213,612"],
-    ]
-    left = 108 * mm; y0 = y
-    y = table(c, M, y, [68 * mm, 14 * mm, 26 * mm], pipeline, font_size=6.0, row_h=4.0 * mm)
-    sx = M + left + 3 * mm; sw = W - M - sx
-    card(c, sx, y0, sw, 14 * mm, NAVY)
-    c.setFillColor(LIME); c.setFont("Helvetica-Bold", 5.8); c.drawString(sx + 2.5 * mm, y0 - 3.8 * mm, "PIPELINE TOTAL")
-    c.setFillColor(white); c.setFont("Helvetica-Bold", 11); c.drawString(sx + 2.5 * mm, y0 - 8.8 * mm, "R141.2m")
-    c.setFillColor(GREEN); c.setFont("Helvetica", 5.8); c.drawString(sx + 2.5 * mm, y0 - 12.2 * mm, "323 FTEs · 10 deals")
-    card(c, sx, y0 - 16 * mm, sw, 12 * mm, GREEN)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 5.8); c.drawString(sx + 2.5 * mm, y0 - 19.8 * mm, "GCC WINS LIVE")
-    c.setFont("Helvetica-Bold", 7.5); c.drawString(sx + 2.5 * mm, y0 - 24 * mm, "Ventrica + Medscheme")
-    c.setFont("Helvetica", 5.8); c.drawString(sx + 2.5 * mm, y0 - 27.2 * mm, "Both start 01 Oct 2026")
-    card(c, sx, y0 - 30.5 * mm, sw, 12 * mm, LIME)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 5.8); c.drawString(sx + 2.5 * mm, y0 - 34.3 * mm, "LARGEST DEAL")
-    c.setFont("Helvetica-Bold", 7.5); c.drawString(sx + 2.5 * mm, y0 - 38.5 * mm, "The Very Group")
-    c.setFont("Helvetica", 5.8); c.drawString(sx + 2.5 * mm, y0 - 41.7 * mm, "150 FTEs · R63.0m ACV")
-
-    y = min(y, y0 - 45 * mm) - 2 * mm
-    fill_rest(c, y, [
-        ("Context", "BPO offshoring growth estimates are behind plan. Cash remains at R3m. Near-term revenue is underpinned by Ventrica, Medscheme and (from Jan’27) Synamedia. Strategic response: lean into GCC demand, fix UK sales/contracting via partnerships, and stand up Woodstock capacity."),
-    ])
     c.showPage()
 
-    # ========== PAGE 2 ==========
-    draw_header(c, "Cash Flow, Budget & New Revenues", 2, total)
+    # ========== PAGE 2: New deals + Pipeline ==========
+    draw_header(c, "New Deals & Pipeline", 2, total_pages)
     draw_footer(c)
-    y = H - 28 * mm
+    y = H - 42 * mm
 
-    y = section(c, M, y, "Cash flow highlights", GREEN)
-    card(c, M, y, 38 * mm, 11 * mm, GREEN)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 5.8); c.drawString(M + 2.5 * mm, y - 3.8 * mm, "BANK BALANCE")
-    c.setFont("Helvetica-Bold", 11); c.drawString(M + 2.5 * mm, y - 8.8 * mm, "R3.0m")
-    card(c, M + 41 * mm, y, W - M - (M + 41 * mm), 11 * mm, LIGHT)
-    wrap(c, "YTD behind original BPO growth estimates. Actuals hold a flat revenue run-rate while projected ramp assumed faster UK BPO conversion. Overall YTD variance still positive vs plan.", M + 44 * mm, y - 4 * mm, W - M - (M + 44 * mm) - 3 * mm, size=6.5, leading=8)
-    y -= 13.5 * mm
+    y = section_label(c, M, y, "New deals — last 3 months", GREEN)
+    c.setFillColor(MUTED)
+    c.setFont("Helvetica", 8)
+    c.drawString(M, y + 2 * mm, "Trilogy won the following new clients over the past 3 months.")
+    y -= 2 * mm
 
+    deals = [
+        ["Client", "Type", "Start", "Term", "Est. revenue", "Est. GM", "Comments"],
+        ["Ventrica — UK", "GCC", "01/10/26", "18–36 mo", "—", "—", "35 → 150 seats over 18 months"],
+        ["Medscheme", "GCC", "01/10/26", "12 mo", "R6.5m p.a.", "R3.5m p.a.", "Shared Services outsourcing opportunity"],
+        ["NADClinic", "BPO", "01/08/26", "24 mo", "R100k p.m.", "R50k p.m.", "Small UK campaign; limited growth"],
+    ]
+    cols = [32 * mm, 14 * mm, 18 * mm, 18 * mm, 24 * mm, 22 * mm, 54 * mm]
+    y = table(c, M, y, cols, deals, font_size=7.2, row_h=7.5 * mm)
+    y -= 8 * mm
+
+    y = section_label(c, M, y, "Pipeline", LIME)
+    pipeline = [
+        ["Deal name", "FTE", "ACV (ZAR)"],
+        ["Evri", "60", "R25,200,000"],
+        ["Popsa", "11", "R4,620,000"],
+        ["Lightning Fibre", "8", "R3,360,000"],
+        ["ITS", "25", "R10,500,000"],
+        ["Synamedia", "14", "R11,433,612"],
+        ["Karen Prodgers Consulting", "30", "R12,600,000"],
+        ["Leyland SDM", "15", "R6,300,000"],
+        ["Seraph Property Management", "8", "R3,360,000"],
+        ["The Very Group", "150", "R63,000,000"],
+        ["Rebel Therapies", "2", "R840,000"],
+        ["TOTAL", "323", "R141,213,612"],
+    ]
+    # two-column visual: table + highlight cards
+    left_w = 110 * mm
+    y_table_start = y
+    y = table(c, M, y, [70 * mm, 16 * mm, 24 * mm], pipeline, font_size=7.5, row_h=5.8 * mm)
+
+    # side cards
+    sx = M + left_w + 6 * mm
+    sy = y_table_start
+    card(c, sx, sy, W - M - sx, 28 * mm, NAVY)
+    c.setFillColor(LIME)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(sx + 4 * mm, sy - 7 * mm, "PIPELINE TOTAL")
+    c.setFillColor(white)
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(sx + 4 * mm, sy - 16 * mm, "R141.2m")
+    c.setFillColor(GREEN)
+    c.setFont("Helvetica", 8)
+    c.drawString(sx + 4 * mm, sy - 23 * mm, "323 FTEs across 10 opportunities")
+
+    card(c, sx, sy - 34 * mm, W - M - sx, 28 * mm, GREEN)
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(sx + 4 * mm, sy - 41 * mm, "LARGEST DEAL")
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(sx + 4 * mm, sy - 50 * mm, "The Very Group")
+    c.setFont("Helvetica", 8)
+    c.drawString(sx + 4 * mm, sy - 57 * mm, "150 FTEs  ·  R63.0m ACV")
+
+    card(c, sx, sy - 68 * mm, W - M - sx, 28 * mm, LIME)
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(sx + 4 * mm, sy - 75 * mm, "GCC WINS LIVE")
+    c.setFont("Helvetica-Bold", 12)
+    c.drawString(sx + 4 * mm, sy - 84 * mm, "Ventrica + Medscheme")
+    c.setFont("Helvetica", 8)
+    c.drawString(sx + 4 * mm, sy - 91 * mm, "Both starting 01 October 2026")
+
+    c.showPage()
+
+    # ========== PAGE 3: Cash flow + Budget ==========
+    draw_header(c, "Cash Flow & Budget Variance", 3, total_pages)
+    draw_footer(c)
+    y = H - 42 * mm
+
+    y = section_label(c, M, y, "Cash flow highlights", GREEN)
+    card(c, M, y, 55 * mm, 20 * mm, GREEN)
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(M + 4 * mm, y - 6 * mm, "BANK BALANCE")
+    c.setFont("Helvetica-Bold", 18)
+    c.drawString(M + 4 * mm, y - 15 * mm, "R3.0m")
+
+    card(c, M + 60 * mm, y, W - M - (M + 60 * mm), 20 * mm, LIGHT)
+    wrapped_text(
+        c,
+        "YTD performance is behind original BPO growth estimates. Actuals hold a flat revenue run-rate while projected ramp assumed faster UK BPO conversion. Variance remains positive overall YTD despite recent monthly pressure.",
+        M + 64 * mm,
+        y - 7 * mm,
+        W - M - (M + 64 * mm) - 4 * mm,
+        size=8,
+        leading=10,
+        color=NAVY,
+    )
+    y -= 26 * mm
+
+    y = section_label(c, M, y, "Budget variance — Projected (Jan–Sep 2026 + YTD)", LIME)
+    # Compact projected key rows
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "YTD"]
-    label_w = 16 * mm; mw = (W - 2 * M - label_w) / 10; cols = [label_w] + [mw] * 10
-
-    y = section(c, M, y, "Budget variance — Projected (R millions)", LIME)
     proj = [
         ["", *months],
         ["Revenue", "0.43", "1.23", "2.02", "2.04", "2.09", "2.95", "3.77", "3.77", "4.11", "22.40"],
-        ["Costs", "(0.10)", "(2.49)", "(2.50)", "(1.15)", "(1.13)", "(3.00)", "(3.26)", "(1.91)", "(2.00)", "(17.54)"],
         ["GM", "0.33", "(1.26)", "(0.49)", "0.89", "0.97", "(0.05)", "0.51", "1.86", "2.11", "4.86"],
-        ["Overheads", "(2.03)", "(1.42)", "(1.59)", "(1.49)", "(1.49)", "(1.62)", "(2.54)", "(1.90)", "(1.97)", "(16.06)"],
         ["EBITDA", "(1.69)", "(2.68)", "(2.08)", "(0.60)", "(0.53)", "(1.67)", "(2.03)", "(0.04)", "0.14", "(11.20)"],
     ]
-    y = table(c, M, y, cols, proj, font_size=5.9, row_h=4.0 * mm)
-    y -= 3 * mm
-
-    y = section(c, M, y, "Budget variance — Actuals (R millions)", GREEN)
-    c.setFillColor(MUTED); c.setFont("Helvetica", 5.5)
-    c.drawString(M, y + 0.2 * mm, "Variance = Actual EBITDA vs Projected EBITDA")
+    # widths
+    label_w = 18 * mm
+    mw = (W - 2 * M - label_w) / 10
+    cols = [label_w] + [mw] * 10
+    # note units
+    c.setFillColor(MUTED)
+    c.setFont("Helvetica", 7)
+    c.drawString(M, y + 1 * mm, "Figures in R millions")
     y -= 1 * mm
+    y = table(c, M, y, cols, proj, font_size=6.5, row_h=5.5 * mm)
+    y -= 6 * mm
+
+    y = section_label(c, M, y, "Budget variance — Actuals (Jan–Sep 2026 + YTD)", GREEN)
     act = [
         ["", *months],
         ["Revenue", "0.59", "0.59", "0.59", "0.59", "0.59", "0.59", "0.59", "0.59", "0.59", "5.29"],
@@ -306,21 +419,43 @@ def build():
         ["EBITDA", "(0.75)", "(0.75)", "(0.75)", "(0.75)", "(0.75)", "(0.75)", "(0.75)", "(0.75)", "(0.75)", "(6.71)"],
         ["Variance", "0.95", "1.94", "1.34", "(0.14)", "(0.22)", "0.93", "1.29", "(0.70)", "(0.89)", "4.49"],
     ]
-    y = table(c, M, y, cols, act, font_size=5.9, row_h=4.0 * mm)
-    y -= 3 * mm
+    c.setFillColor(MUTED)
+    c.setFont("Helvetica", 7)
+    c.drawString(M, y + 1 * mm, "Figures in R millions  ·  Variance = Actual EBITDA vs Projected EBITDA")
+    y -= 1 * mm
+    y = table(c, M, y, cols, act, font_size=6.5, row_h=5.5 * mm)
+    y -= 8 * mm
 
-    hw = (W - 2 * M - 3 * mm) / 2
-    card(c, M, y, hw, 10 * mm, NAVY)
-    c.setFillColor(LIME); c.setFont("Helvetica-Bold", 5.8); c.drawString(M + 2.5 * mm, y - 3.5 * mm, "YTD VARIANCE")
-    c.setFillColor(white); c.setFont("Helvetica-Bold", 10); c.drawString(M + 2.5 * mm, y - 8 * mm, "+R4.49m")
-    c.setFillColor(GREEN); c.setFont("Helvetica", 5.8); c.drawString(M + 26 * mm, y - 8 * mm, "vs projected EBITDA")
-    card(c, M + hw + 3 * mm, y, hw, 10 * mm, LIGHT)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 5.8); c.drawString(M + hw + 5.5 * mm, y - 3.5 * mm, "YTD ACTUAL EBITDA")
-    c.setFont("Helvetica-Bold", 10); c.drawString(M + hw + 5.5 * mm, y - 8 * mm, "(R6.71m)")
-    c.setFillColor(MUTED); c.setFont("Helvetica", 5.8); c.drawString(M + hw + 32 * mm, y - 8 * mm, "Projected (R11.20m)")
-    y -= 13 * mm
+    # Callout cards
+    card(c, M, y, (W - 2 * M - 6 * mm) / 2, 24 * mm, NAVY)
+    c.setFillColor(LIME)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(M + 4 * mm, y - 7 * mm, "YTD VARIANCE")
+    c.setFillColor(white)
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(M + 4 * mm, y - 16 * mm, "+R4.49m")
+    c.setFillColor(GREEN)
+    c.setFont("Helvetica", 8)
+    c.drawString(M + 4 * mm, y - 21 * mm, "Actual EBITDA better than projected YTD")
 
-    y = section(c, M, y, "New revenues coming online (Oct-26 → Jun-27, R thousands)", LIME)
+    card(c, M + (W - 2 * M - 6 * mm) / 2 + 6 * mm, y, (W - 2 * M - 6 * mm) / 2, 24 * mm, LIGHT)
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(M + (W - 2 * M - 6 * mm) / 2 + 10 * mm, y - 7 * mm, "YTD ACTUAL EBITDA")
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(M + (W - 2 * M - 6 * mm) / 2 + 10 * mm, y - 16 * mm, "(R6.71m)")
+    c.setFont("Helvetica", 8)
+    c.setFillColor(MUTED)
+    c.drawString(M + (W - 2 * M - 6 * mm) / 2 + 10 * mm, y - 21 * mm, "Projected YTD EBITDA was (R11.20m)")
+
+    c.showPage()
+
+    # ========== PAGE 4: New revenues + Risks ==========
+    draw_header(c, "New Revenues & Risk Mitigation", 4, total_pages)
+    draw_footer(c)
+    y = H - 42 * mm
+
+    y = section_label(c, M, y, "New revenues coming online (Oct-26 → Jun-27)", GREEN)
     rev_months = ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun"]
     newrev = [
         ["", *rev_months],
@@ -330,97 +465,179 @@ def build():
         ["Medscheme Intl", "246", "246", "246", "82", "82", "82", "82", "82", "82"],
         ["TOTAL", "891", "891", "891", "827", "827", "827", "827", "827", "827"],
     ]
-    lw = 28 * mm; mw2 = (W - 2 * M - lw) / 9
-    y = table(c, M, y, [lw] + [mw2] * 9, newrev, font_size=5.9, row_h=4.0 * mm)
-    y -= 2.5 * mm
-    fill_rest(c, y, [
-        ("Near-term run-rate", "Oct–Dec 2026: ~R891k / month.  Jan–Jun 2027: ~R827k / month as Medscheme mix shifts and Synamedia comes online from January."),
-        ("Read-through", "Actual EBITDA is steadier than the aggressive projected ramp, which is why YTD variance is +R4.49m even while absolute EBITDA remains negative at (R6.71m). Closing the UK sales and contracting gaps is what unlocks the projected upside."),
-    ])
+    label_w = 32 * mm
+    mw = (W - 2 * M - label_w) / 9
+    cols = [label_w] + [mw] * 9
+    c.setFillColor(MUTED)
+    c.setFont("Helvetica", 7)
+    c.drawString(M, y + 1 * mm, "Figures in R thousands per month")
+    y -= 1 * mm
+    y = table(c, M, y, cols, newrev, font_size=7, row_h=6 * mm)
+    y -= 8 * mm
+
+    # highlight
+    card(c, M, y, W - 2 * M, 16 * mm, LIME)
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(M + 4 * mm, y - 6 * mm, "Near-term run-rate")
+    c.setFont("Helvetica", 8.5)
+    c.drawString(M + 4 * mm, y - 12 * mm, "Oct–Dec 2026: ~R891k / month   ·   Jan–Jun 2027: ~R827k / month as Medscheme mix shifts")
+    y -= 22 * mm
+
+    y = section_label(c, M, y, "Risks & reasons for YTD revenue gap", LIME)
+    c.setFillColor(MUTED)
+    c.setFont("Helvetica", 8)
+    wrapped_text(
+        c,
+        "Three fundamental challenges to meeting original growth estimates for BPO offshoring services:",
+        M,
+        y + 1 * mm,
+        W - 2 * M,
+        size=8,
+        leading=10,
+        color=MUTED,
+    )
+    y -= 4 * mm
+
+    risks = [
+        (
+            "01",
+            "UK sales onboarding delays",
+            "Delays onboarding John Devlin & Alain Meric due to trade-restraint legal situations.",
+            "Mitigation: Kobus meeting other sales resources and the CEO of UK BPO iQX (week of 27 Oct) to establish a wholesale/retail pricing partnership leveraging their sales and contracting capability.",
+        ),
+        (
+            "02",
+            "Start-up perception",
+            "Seen as a start-up with limited balance sheet, scale and client references.",
+            "Mitigation: Finalising a JV (SPV) with DSG South Africa for a joint go-to-market strategy to strengthen procurement credentials (not in all cases).",
+        ),
+        (
+            "03",
+            "UK contracting preference",
+            "Cyber-security diligence is pushing UK buyers to contract with a UK entity, not directly with an SA company.",
+            "Mitigation: Meetings with Ventrica and iQX (week of 27 Oct) to establish a UK contracting partnership — similar early-warning signals over the past 6 months.",
+        ),
+    ]
+    for num, title, problem, mitigation in risks:
+        card(c, M, y, W - 2 * M, 36 * mm, LIGHT)
+        c.setFillColor(GREEN)
+        c.setFont("Helvetica-Bold", 14)
+        c.drawString(M + 4 * mm, y - 9 * mm, num)
+        c.setFillColor(NAVY)
+        c.setFont("Helvetica-Bold", 10)
+        c.drawString(M + 14 * mm, y - 8 * mm, title)
+        wrapped_text(c, problem, M + 14 * mm, y - 14 * mm, W - 2 * M - 18 * mm, size=8, leading=10, color=NAVY)
+        c.setFillColor(GREEN)
+        c.setFont("Helvetica-Bold", 7.5)
+        c.drawString(M + 14 * mm, y - 26 * mm, "MITIGATION")
+        wrapped_text(c, mitigation, M + 14 * mm, y - 31 * mm, W - 2 * M - 18 * mm, size=7.5, leading=9.5, color=MUTED)
+        y -= 40 * mm
+
     c.showPage()
 
-    # ========== PAGE 3 ==========
-    draw_header(c, "Risks, Facilities & Strategic Options", 3, total)
+    # ========== PAGE 5: Facilities + Strategic options ==========
+    draw_header(c, "Facilities & Strategic Options", 5, total_pages)
     draw_footer(c)
-    y = H - 28 * mm
+    y = H - 42 * mm
 
-    y = section(c, M, y, "Risks & reasons for YTD revenue gap", GREEN)
-    c.setFillColor(MUTED); c.setFont("Helvetica", 6)
-    c.drawString(M, y + 0.2 * mm, "Three fundamental challenges to meeting original growth estimates for BPO offshoring services")
-    y -= 1.5 * mm
-    risks = [
-        ("01", "UK sales onboarding delays",
-         "Delays onboarding John Devlin & Alain Meric due to trade-restraint legal situations.",
-         "Kobus meeting other sales resources and the CEO of UK BPO iQX (week of 27 Oct) to establish a wholesale/retail pricing partnership leveraging their sales and contracting capability."),
-        ("02", "Start-up perception",
-         "Seen as a start-up with limited balance sheet, scale and client references.",
-         "Finalising a JV (SPV) with DSG South Africa for a joint go-to-market strategy to strengthen procurement credentials (not in all cases)."),
-        ("03", "UK contracting preference",
-         "Cyber-security diligence is pushing UK buyers to contract with a UK entity, not directly with an SA company.",
-         "Meetings with Ventrica and iQX (week of 27 Oct) to establish a UK contracting partnership — similar early-warning signals over the past 6 months."),
-    ]
-    rw = (W - 2 * M - 6 * mm) / 3
-    for i, (num, title, problem, mit) in enumerate(risks):
-        x = M + i * (rw + 3 * mm)
-        card(c, x, y, rw, 42 * mm, LIGHT)
-        c.setFillColor(GREEN if i != 1 else LIME)
-        c.setFont("Helvetica-Bold", 8); c.drawString(x + 2.2 * mm, y - 4.5 * mm, num)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 6.8)
-        wrap(c, title, x + 10 * mm, y - 4.3 * mm, rw - 12.5 * mm, font="Helvetica-Bold", size=6.8, leading=8)
-        wrap(c, problem, x + 2.2 * mm, y - 13 * mm, rw - 4.5 * mm, size=6.2, leading=7.6)
-        c.setFillColor(GREEN); c.setFont("Helvetica-Bold", 5.5)
-        c.drawString(x + 2.2 * mm, y - 26 * mm, "MITIGATION")
-        wrap(c, mit, x + 2.2 * mm, y - 30 * mm, rw - 4.5 * mm, size=6.0, leading=7.4, color=MUTED)
-    y -= 45 * mm
+    y = section_label(c, M, y, "Facilities", GREEN)
+    card(c, M, y, (W - 2 * M - 4 * mm) / 2, 32 * mm, LIGHT)
+    card(c, M + (W - 2 * M - 4 * mm) / 2 + 4 * mm, y, (W - 2 * M - 4 * mm) / 2, 32 * mm, NAVY)
+    cw = (W - 2 * M - 4 * mm) / 2
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(M + 4 * mm, y - 7 * mm, "CURRENT")
+    wrapped_text(
+        c,
+        "Renting shared office space at Old Mutual Park, Pinelands.",
+        M + 4 * mm,
+        y - 14 * mm,
+        cw - 8 * mm,
+        size=8.5,
+        leading=11,
+        color=NAVY,
+    )
+    c.setFillColor(LIME)
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(M + cw + 8 * mm, y - 7 * mm, "NEXT — BUILD-OUT")
+    c.setFillColor(white)
+    wrapped_text(
+        c,
+        "First contact centre / back office at Boulevard Office Park, Woodstock — to house new contracts and HQ.",
+        M + cw + 8 * mm,
+        y - 14 * mm,
+        cw - 8 * mm,
+        size=8.5,
+        leading=11,
+        color=white,
+    )
+    y -= 38 * mm
 
-    y = section(c, M, y, "Facilities & CAPEX", LIME)
-    cw = (W - 2 * M - 3 * mm) / 2
-    card(c, M, y, cw, 16 * mm, LIGHT)
-    card(c, M + cw + 3 * mm, y, cw, 16 * mm, NAVY)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 6.5)
-    c.drawString(M + 2.5 * mm, y - 4 * mm, "CURRENT")
-    wrap(c, "Renting shared office space at Old Mutual Park, Pinelands.", M + 2.5 * mm, y - 8.5 * mm, cw - 5 * mm, size=6.6, leading=8.2)
-    c.setFillColor(LIME); c.setFont("Helvetica-Bold", 6.5)
-    c.drawString(M + cw + 5.5 * mm, y - 4 * mm, "NEXT — BUILD-OUT")
-    wrap(c, "First CC/back office at Boulevard Office Park, Woodstock — contracts + HQ.", M + cw + 5.5 * mm, y - 8.5 * mm, cw - 5 * mm, size=6.6, leading=8.2, color=white)
-    y -= 18.5 * mm
+    y = section_label(c, M, y, "CAPEX for build-out", LIME)
+    card(c, M, y, W - 2 * M, 26 * mm, GREEN)
+    c.setFillColor(NAVY)
+    c.setFont("Helvetica-Bold", 20)
+    c.drawString(M + 5 * mm, y - 12 * mm, "R3.0m")
+    c.setFont("Helvetica-Bold", 9)
+    c.drawString(M + 35 * mm, y - 8 * mm, "Estimated CAPEX")
+    c.setFont("Helvetica", 8.5)
+    wrapped_text(
+        c,
+        "Build-out starts 1 November 2026, dependent on contract negotiations with Medscheme (sub-lease) and Redefine (long lease).",
+        M + 35 * mm,
+        y - 14 * mm,
+        W - 2 * M - 40 * mm,
+        size=8.5,
+        leading=11,
+        color=NAVY,
+    )
+    y -= 32 * mm
 
-    card(c, M, y, W - 2 * M, 11 * mm, GREEN)
-    c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 12); c.drawString(M + 3 * mm, y - 7.5 * mm, "R3.0m")
-    c.setFont("Helvetica-Bold", 7); c.drawString(M + 24 * mm, y - 4 * mm, "Estimated CAPEX")
-    wrap(c, "Build-out starts 1 November 2026 — dependent on Medscheme (sub-lease) and Redefine (long lease).", M + 24 * mm, y - 8 * mm, W - 2 * M - 28 * mm, size=6.6, leading=8)
-    y -= 14 * mm
-
-    y = section(c, M, y, "Strategic options / discussions", GREEN)
+    y = section_label(c, M, y, "Strategic options / discussions", GREEN)
     options = [
-        ("01", "GCC focus", "Build 2,000 seats over 3 years. 10,000 m². Profit ~R2,000/seat/month. ~75% EBIT. Needs a BUILD partner such as Navigator."),
-        ("02", "Mango 5 acquisition", "R8m for ~R3m/month revenues & ~R1.2m/month GP. Value after 18 months circa R25m."),
-        ("03", "iQX UK partnership", "GCC for them and a UK/SA pricing model (Ascensos-like) — sales reach and UK contracting in one move."),
+        (
+            "01",
+            "GCC focus",
+            "Build 2,000 seats over 3 years · 10,000 m² · Profit ~R2,000 per seat per month · ~75% EBIT. Requires a BUILD partner (e.g. Navigator).",
+            GREEN,
+        ),
+        (
+            "02",
+            "Mango 5 acquisition",
+            "R8m for ~R3m per month revenues & ~R1.2m per month GP. Value after 18 months circa R25m.",
+            LIME,
+        ),
+        (
+            "03",
+            "Strategic partnership with iQX (UK)",
+            "GCC for them plus a UK/SA pricing model — similar to Ascensos. Addresses sales reach and UK contracting barriers together.",
+            GREEN,
+        ),
     ]
-    for num, title, body in options:
-        accent = GREEN if num != "02" else LIME
-        card(c, M, y, W - 2 * M, 12.5 * mm, LIGHT)
+    for num, title, body, accent in options:
+        card(c, M, y, W - 2 * M, 28 * mm, LIGHT)
         c.setFillColor(accent)
-        c.roundRect(M + 2.2 * mm, y - 9.5 * mm, 7 * mm, 7 * mm, 1.2 * mm, fill=1, stroke=0)
-        c.setFillColor(NAVY); c.setFont("Helvetica-Bold", 7)
-        c.drawCentredString(M + 5.7 * mm, y - 7 * mm, num)
-        c.setFont("Helvetica-Bold", 7.5); c.drawString(M + 12.5 * mm, y - 4 * mm, title)
-        wrap(c, body, M + 12.5 * mm, y - 8 * mm, W - 2 * M - 16 * mm, size=6.5, leading=8, color=MUTED)
-        y -= 14 * mm
+        c.roundRect(M + 3 * mm, y - 22 * mm, 12 * mm, 12 * mm, 2 * mm, fill=1, stroke=0)
+        c.setFillColor(NAVY)
+        c.setFont("Helvetica-Bold", 10)
+        c.drawCentredString(M + 9 * mm, y - 17 * mm, num)
+        c.setFont("Helvetica-Bold", 11)
+        c.drawString(M + 20 * mm, y - 9 * mm, title)
+        wrapped_text(c, body, M + 20 * mm, y - 16 * mm, W - 2 * M - 24 * mm, size=8.5, leading=11, color=NAVY)
+        y -= 32 * mm
 
-    card(c, M, y, W - 2 * M, 9 * mm, NAVY)
-    c.setFillColor(LIME); c.setFont("Helvetica-Bold", 6)
-    c.drawString(M + 3 * mm, y - 3.3 * mm, "NEXT ACTIONS")
-    c.setFillColor(white); c.setFont("Helvetica", 6.6)
-    c.drawString(M + 3 * mm, y - 7 * mm, "iQX / Ventrica talks (w/c 27 Oct)  ·  DSG JV finalisation  ·  Woodstock build-out from 1 Nov 2026")
-    y -= 11.5 * mm
-
-    fill_rest(c, y, [
-        ("Executive summary", "Lean into GCC demand — Ventrica and Medscheme are live from 1 Oct. Close UK sales and contracting gaps via iQX/Ventrica partnerships and the DSG JV. Protect cash (R3m) while standing up Woodstock capacity (R3m CAPEX from 1 Nov). Keep optionality on GCC scale-up (Navigator), Mango 5, and the iQX UK model."),
-    ])
+    # closing strip
+    card(c, M, y, W - 2 * M, 20 * mm, NAVY)
+    c.setFillColor(LIME)
+    c.setFont("Helvetica-Bold", 8)
+    c.drawString(M + 5 * mm, y - 7 * mm, "NEXT ACTIONS")
+    c.setFillColor(white)
+    c.setFont("Helvetica", 8.5)
+    c.drawString(M + 5 * mm, y - 14 * mm, "iQX / Ventrica partnership talks (w/c 27 Oct)  ·  DSG JV finalisation  ·  Woodstock build-out from 1 Nov")
 
     c.save()
-    print("Saved", OUT, __import__('os').path.getsize(OUT))
+    print("Saved", OUT, os.path.getsize(OUT))
 
 
 if __name__ == "__main__":
