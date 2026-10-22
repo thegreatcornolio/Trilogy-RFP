@@ -358,7 +358,7 @@
     <a href="#eor">EOR</a>
     <a href="#bpo">BPO</a>
     <a href="#gcc">GCC</a>
-    <a href="#dbit-roadmap">Savings</a>
+    <a href="#dbit-roadmap">DBIT</a>
     <a href="#compare">Compare</a>
     <a href="#decision">Decision</a>
     <a href="#why-sa">Why SA</a>
@@ -419,7 +419,7 @@
                 <tr><td>04</td><td><a href="#eor">Model 1 — EOR</a></td></tr>
                 <tr><td>05</td><td><a href="#bpo">Model 2 — BPO / GBS</a></td></tr>
                 <tr><td>06</td><td><a href="#gcc">Model 3 — GCC via DBIT</a></td></tr>
-                <tr><td>07</td><td><a href="#dbit-roadmap">Compounding savings</a></td></tr>
+                <tr><td>07</td><td><a href="#dbit-roadmap">DBIT evolution</a></td></tr>
                 <tr><td>08</td><td><a href="#compare">Side-by-side comparison</a></td></tr>
                 <tr><td>09</td><td><a href="#decision">A simple decision guide</a></td></tr>
                 <tr><td>10</td><td><a href="#why-sa">Why South Africa — and why the model still matters</a></td></tr>
@@ -716,24 +716,24 @@
           </div>
         </div>
 
-        <h3 id="dbit-roadmap">Incubator / DBIT Roadmap</h3>
+        <h3 id="dbit-roadmap">DBIT evolution</h3>
         <div class="prose">
-          <p>Evolve your model as you grow — from an outsourced operation to your own contact centre, with management control and risk mitigation at every step.</p>
+          <p>Start at 100% UK/USA in-house cost, then compound reductions as the operation matures — BPO labour arbitrage, owning the centre, then innovation.</p>
         </div>
 
-        <div class="gcc-savings" data-animate="gcc-savings" aria-label="Compounding savings chart">
+        <div class="gcc-savings" data-animate="gcc-savings" data-gcc-from="100" data-gcc-to="39" data-gcc-pill-template="{v}% of in-house cost" aria-label="Cost path from in-house captive to GCC">
           <div class="gcc-savings__eyebrow">DBIT evolution</div>
-          <h4 class="gcc-savings__title">Compounding savings on the path to a GCC.</h4>
-          <p class="gcc-savings__lead">Compounding cost reduction — Lower cost, higher maturity</p>
+          <h4 class="gcc-savings__title">Cost path from an in-house captive to a GCC.</h4>
+          <p class="gcc-savings__lead">Start at 100% UK/USA cost — then compound reductions as maturity rises</p>
           <div class="gcc-savings__layout">
             <div class="gcc-savings__summary">
-              <div class="gcc-savings__summary-label">Typical savings</div>
-              <div class="gcc-savings__summary-value" data-gcc-total>0<span>%</span></div>
-              <div class="gcc-savings__pill" data-gcc-pill>+0% cumulative</div>
-              <p class="gcc-savings__summary-note">Midpoint model of labour arbitrage, GCC ownership and AI deflection stacking on the same cost base — from no savings to ~61%.</p>
+              <div class="gcc-savings__summary-label">Typical end cost</div>
+              <div class="gcc-savings__summary-value" data-gcc-total>100<span>%</span></div>
+              <div class="gcc-savings__pill" data-gcc-pill>100% of in-house cost</div>
+              <p class="gcc-savings__summary-note">Midpoint model: labour arbitrage, GCC ownership and AI deflection stacking on the same cost base — from 100% in-house UK/USA down to ~39%.</p>
             </div>
             <div class="gcc-savings__chart-wrap">
-              <svg class="gcc-savings__svg" viewBox="0 0 318 228" width="100%" height="auto" role="img" aria-label="Animated chart of compounding savings across four DBIT stages">
+              <svg class="gcc-savings__svg" viewBox="0 0 318 236" width="100%" height="auto" role="img" aria-label="Animated chart of declining cost across four DBIT stages">
                 <defs>
                   <linearGradient id="choiceGccArea" x1="0" y1="1" x2="0" y2="0">
                     <stop offset="0%" stop-color="#0E7C46" stop-opacity="0"></stop>
@@ -745,58 +745,56 @@
                   </linearGradient>
                 </defs>
                 <g class="gcc-savings__grid" aria-hidden="true">
-                  <g><line x1="20" x2="298" y1="212" y2="212"></line><text x="8" y="215">0</text></g>
-                  <g><line x1="20" x2="298" y1="163" y2="163"></line><text x="8" y="166">25</text></g>
-                  <g><line x1="20" x2="298" y1="114" y2="114"></line><text x="8" y="117">50</text></g>
-                  <g><line x1="20" x2="298" y1="65" y2="65"></line><text x="8" y="68">75</text></g>
-                  <g><line x1="20" x2="298" y1="16" y2="16"></line><text x="8" y="19">100</text></g>
+                  <g><line x1="20" x2="298" y1="220" y2="220"></line><text x="8" y="223">0</text></g>
+                  <g><line x1="20" x2="298" y1="171" y2="171"></line><text x="8" y="174">25</text></g>
+                  <g><line x1="20" x2="298" y1="122" y2="122"></line><text x="8" y="125">50</text></g>
+                  <g><line x1="20" x2="298" y1="73" y2="73"></line><text x="8" y="76">75</text></g>
+                  <g><line x1="20" x2="298" y1="24" y2="24"></line><text x="8" y="27">100</text></g>
                 </g>
-                <path class="gcc-savings__area" d="M 54 212 L 54 212.0 L 124 143.4 L 194 108.12 L 264 92.44 L 264 212 Z" fill="url(#choiceGccArea)"></path>
-                <path class="gcc-savings__line" d="M 54 212.0 L 124 143.4 L 194 108.12 L 264 92.44" fill="none" pathLength="1"></path>
+                <path class="gcc-savings__area" d="M 54 24 L 124 92.6 L 194 127.88 L 264 143.56 L 264 220 L 54 220 Z" fill="url(#choiceGccArea)"></path>
+                <path class="gcc-savings__line" d="M 54 24 L 124 92.6 L 194 127.88 L 264 143.56" fill="none" pathLength="1"></path>
                 <g class="gcc-savings__col" data-step="0">
-                  <rect class="gcc-savings__bar" x="28" y="212" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="212.0" data-h="0.0"></rect>
-                  <circle class="gcc-savings__dot" cx="54" cy="212.0" r="0" data-r="5.5"></circle>
-                  <text class="gcc-savings__pct" x="54" y="200.0" text-anchor="middle">0%</text>
+                  <rect class="gcc-savings__bar" x="28" y="220" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="24" data-h="196"></rect>
+                  <circle class="gcc-savings__dot" cx="54" cy="24" r="0" data-r="5.5"></circle>
+                  <text class="gcc-savings__pct" x="54" y="14" text-anchor="middle">100%</text>
                 </g>
                 <g class="gcc-savings__col" data-step="1">
-                  <rect class="gcc-savings__bar" x="98" y="212" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="143.4" data-h="68.6"></rect>
-                  <circle class="gcc-savings__dot" cx="124" cy="143.4" r="0" data-r="5.5"></circle>
-                  <text class="gcc-savings__pct" x="124" y="131.4" text-anchor="middle">~35%</text>
+                  <rect class="gcc-savings__bar" x="98" y="220" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="92.6" data-h="127.4"></rect>
+                  <circle class="gcc-savings__dot" cx="124" cy="92.6" r="0" data-r="5.5"></circle>
+                  <text class="gcc-savings__pct" x="124" y="80.6" text-anchor="middle">~65%</text>
                 </g>
                 <g class="gcc-savings__col" data-step="2">
-                  <rect class="gcc-savings__bar" x="168" y="212" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="108.12" data-h="103.88"></rect>
-                  <rect class="gcc-savings__bar-inc" x="168" y="212" width="52" height="0" rx="6" data-y="108.12" data-h="35.28"></rect>
-                  <circle class="gcc-savings__dot" cx="194" cy="108.12" r="0" data-r="5.5"></circle>
-                  <text class="gcc-savings__pct" x="194" y="96.12" text-anchor="middle">~53%</text>
+                  <rect class="gcc-savings__bar" x="168" y="220" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="127.88" data-h="92.12"></rect>
+                  <circle class="gcc-savings__dot" cx="194" cy="127.88" r="0" data-r="5.5"></circle>
+                  <text class="gcc-savings__pct" x="194" y="115.88" text-anchor="middle">~47%</text>
                 </g>
                 <g class="gcc-savings__col" data-step="3">
-                  <rect class="gcc-savings__bar" x="238" y="212" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="92.44" data-h="119.56"></rect>
-                  <rect class="gcc-savings__bar-inc" x="238" y="212" width="52" height="0" rx="6" data-y="92.44" data-h="15.68"></rect>
-                  <circle class="gcc-savings__dot" cx="264" cy="92.44" r="0" data-r="5.5"></circle>
-                  <text class="gcc-savings__pct" x="264" y="80.44" text-anchor="middle">~61%</text>
+                  <rect class="gcc-savings__bar" x="238" y="220" width="52" height="0" rx="6" fill="url(#choiceGccBar)" data-y="143.56" data-h="76.44"></rect>
+                  <circle class="gcc-savings__dot" cx="264" cy="143.56" r="0" data-r="5.5"></circle>
+                  <text class="gcc-savings__pct" x="264" y="131.56" text-anchor="middle">~39%</text>
                 </g>
               </svg>
               <div class="gcc-savings__steps">
                 <div class="gcc-savings__step" data-step="0">
-                  <div class="gcc-savings__step-num">Starting Point</div>
-                  <div class="gcc-savings__step-name">In-house / On-shore</div>
-                  <div class="gcc-savings__step-desc">100% of cost — no savings yet</div>
+                  <div class="gcc-savings__step-num">Starting point</div>
+                  <div class="gcc-savings__step-name">In-house captive (UK/USA)</div>
+                  <div class="gcc-savings__step-desc">100% of cost — starting base</div>
                 </div>
                 <div class="gcc-savings__step" data-step="1">
                   <div class="gcc-savings__step-num">Step 1</div>
-                  <div class="gcc-savings__step-name">Trilogy BPO</div>
-                  <div class="gcc-savings__step-desc">~65% of cost · reduce cost</div>
-                  <div class="gcc-savings__step-pill">≈35% savings</div>
+                  <div class="gcc-savings__step-name">BPO Outsourcer</div>
+                  <div class="gcc-savings__step-desc">~65% of cost · labour arbitrage</div>
+                  <div class="gcc-savings__step-pill">≈35% lower</div>
                 </div>
                 <div class="gcc-savings__step" data-step="2">
                   <div class="gcc-savings__step-num">Step 2</div>
-                  <div class="gcc-savings__step-name">Trilogy DBIT</div>
+                  <div class="gcc-savings__step-name">Trilogy DBOT</div>
                   <div class="gcc-savings__step-desc">~47% of cost · own your centre</div>
                   <div class="gcc-savings__step-pill">Further ≈18%</div>
                 </div>
                 <div class="gcc-savings__step" data-step="3">
                   <div class="gcc-savings__step-num">Step 3</div>
-                  <div class="gcc-savings__step-name">Innovation</div>
+                  <div class="gcc-savings__step-name">Plus Innovation</div>
                   <div class="gcc-savings__step-desc">~39% of cost · tech deflection</div>
                   <div class="gcc-savings__step-pill">Further ≈8%</div>
                 </div>
@@ -805,7 +803,7 @@
           </div>
         </div>
         <div class="prose">
-          <p>Each stage on the DBIT roadmap drives cost down further — starting from a 100% in-house UK/US cost base, then reducing through offshore outsourcing, owning your own centre, and AI-driven tech deflection.</p>
+          <p>Each stage drives remaining cost down from a 100% in-house UK/USA base: BPO labour arbitrage to ~65%, Trilogy DBOT ownership to ~47%, then innovation and tech deflection to ~39% of original cost.</p>
         </div>
 
         <h3>Cost model</h3>
