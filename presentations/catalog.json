@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-29T12:00:00.000Z",
+  "updatedAt": "2026-10-22T06:00:00.000Z",
   "items": [
+    {
+      "slug": "choice",
+      "title": "Choosing the Right Solution",
+      "client": "Trilogy BPO",
+      "sourceType": "scrolling webpage",
+      "date": "2026-10-22",
+      "url": "https://proposal.trilogybpo.com/choice/",
+      "blend": {
+        "primary": "#61d779",
+        "accent": "#d5ec67",
+        "secondary": "#2f9e4a",
+        "navy": "#13202e",
+        "sourceBrand": "#61d779"
+      }
+    },
     {
       "slug": "companyoverview",
       "title": "Trilogy Corporate Overview",
