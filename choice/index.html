@@ -26,7 +26,7 @@
   <script>document.documentElement.classList.add("js-reveal");</script>
   <noscript><style>html.js-reveal .proposal-page { opacity: 1 !important; transform: none !important; }</style></noscript>
   <style>
-    .cover__brand { align-items: center !important; text-align: center !important; }
+    .cover__brand { align-items: center !important; text-align: center !important; padding-top: 0.35rem !important; }
     .covers-box__head { display: block !important; width: 100% !important; box-sizing: border-box; }
     .cover__brand-line { display: block; }
     .meta-grid--2 { grid-template-columns: 1fr; }
@@ -118,14 +118,24 @@
       .cover h1 { font-size: 1.85rem !important; }
       .proposal-page { padding: 1.75rem 1.15rem !important; }
     }
+    .cover {
+      padding-top: 5.25rem !important;
+    }
     .cover__logo {
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
       border-radius: 0 !important;
       width: min(11.5rem, 52vw) !important;
       max-height: 2.6rem;
+      margin: 0 auto 0.35rem !important;
       object-fit: contain;
-      object-position: left center;
+      object-position: center center;
     }
     @media (min-width: 640px) {
+      .cover {
+        padding-top: 4.75rem !important;
+      }
       .cover__logo {
         width: min(14.5rem, 28vw) !important;
         max-height: 3.1rem;
@@ -173,9 +183,10 @@
       color: #13202e;
       font: 700 1.02rem/1.25 Poppins, Inter, sans-serif;
     }
-    .proposal-page, h2[id], h3[id] { scroll-margin-top: 4.6rem; }
+    html { scroll-padding-top: 4.25rem; }
+    #cover, .proposal-page, h2[id], h3[id] { scroll-margin-top: 4.25rem; }
     @media (max-width: 720px) {
-      .proposal-page, h2[id], h3[id] { scroll-margin-top: 4.35rem; }
+      #cover, .proposal-page, h2[id], h3[id] { scroll-margin-top: 4.5rem; }
     }
     .dbit-flow { position: relative; margin: 0.35rem 0 1.35rem; }
     .dbit-flow__rail {
@@ -359,9 +370,9 @@
     <section class="cover" id="cover">
       <div class="cover__bars" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="cover__brand">
+        <img class="cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
         <span class="cover__brand-name">Trilogy BPO</span>
         <span class="cover__brand-line">A Trilogy CX Group Company</span>
-        <img class="cover__logo" src="../presentations/_shared/logos/trilogy.png" alt="Trilogy" width="1400" height="301">
       </div>
       <div class="cover__body">
         <div class="badge">White paper</div>
