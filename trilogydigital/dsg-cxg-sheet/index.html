@@ -442,12 +442,12 @@
       width: max-content; max-width: 100%; margin: 0 auto 2.2mm;
     }
     .mvno__intro { flex: none; width: 95mm; max-width: 95mm; }
-    .mvno-stats { flex: none; width: 58mm; }
     .mvno h2 { font-size: 13px; font-weight: 800; margin-bottom: 1.5mm; }
     .mvno h2 em { font-style: normal; color: var(--lime); }
     .mvno__head p { font-size: 9.5px; line-height: 1.35; color: rgba(255,255,255,0.84); }
     .mvno-stats {
       display: grid; grid-template-columns: 1fr 1fr; gap: 2mm;
+      flex: none; width: 58mm;
     }
     .mvno-stat {
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
@@ -655,7 +655,9 @@
       .seats-banner { padding-left: 3mm; padding-right: 3mm; }
       .seats-banner__inner { width: 100%; flex-wrap: wrap; }
       .seats-banner p { max-width: none; }
-      .mvno__head { grid-template-columns: 1fr; }
+      .mvno__head { width: 100%; flex-wrap: wrap; }
+      .mvno__intro { width: auto; max-width: none; }
+      .mvno-stats { width: 100%; }
       .pedigree__head { flex-direction: column; align-items: flex-start; }
     }
   </style>
