@@ -437,11 +437,12 @@
       background: radial-gradient(circle, rgba(97,215,121,0.18), transparent 70%);
     }
     .mvno__head {
-      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2.5mm;
+      display: flex; align-items: stretch; justify-content: center; gap: 2.5mm;
       position: relative; z-index: 1;
-      margin: 0 0 2.2mm;
+      width: max-content; max-width: 100%; margin: 0 auto 2.2mm;
     }
-    .mvno__intro { min-width: 0; }
+    .mvno__intro { flex: none; width: 95mm; max-width: 95mm; }
+    .mvno-stats { flex: none; width: 58mm; }
     .mvno h2 { font-size: 13px; font-weight: 800; margin-bottom: 1.5mm; }
     .mvno h2 em { font-style: normal; color: var(--lime); }
     .mvno__head p { font-size: 9.5px; line-height: 1.35; color: rgba(255,255,255,0.84); }
@@ -524,16 +525,16 @@
     .seats-banner {
       background: linear-gradient(90deg, #edfaf1, #f8fce8);
       border: 1px solid #cfe9d5; border-left: 4px solid var(--green);
-      border-radius: 10px; padding: 2.6mm 10mm;
+      border-radius: 10px; padding: 2.6mm 8mm;
     }
     .seats-banner__inner {
-      display: grid; grid-template-columns: auto 1fr auto; gap: 2.5mm; align-items: center;
-      max-width: 158mm; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; gap: 2.5mm;
+      width: max-content; max-width: 100%; margin: 0 auto;
     }
     .seats-banner__num {
       background: var(--navy); color: var(--lime); font-size: 18px; font-weight: 800;
       letter-spacing: -0.03em; padding: 2.5mm 3mm; border-radius: 8px; line-height: 1;
-      white-space: nowrap;
+      white-space: nowrap; flex: none;
     }
     .seats-banner__num small {
       display: block; font-size: 7.5px; color: rgba(255,255,255,0.7);
@@ -542,10 +543,10 @@
     }
     .seats-banner p {
       font-size: 10.5px; line-height: 1.35; color: var(--ink);
-      margin: 0;
+      margin: 0; flex: none; max-width: 72mm;
     }
     .seats-banner strong { color: var(--navy); }
-    .seats-banner__tags { display: flex; gap: 1.5mm; }
+    .seats-banner__tags { display: flex; gap: 1.5mm; flex: none; }
     .seats-tag {
       background: #fff; border: 1px solid #cfe9d5; border-radius: 6px;
       padding: 2mm 2.5mm; font-size: 8.5px; font-weight: 800; color: #1f6b38;
@@ -652,7 +653,8 @@
       .team-grid { grid-template-columns: repeat(3, 1fr); }
       .term { border-right: 0; border-bottom: 1px solid var(--line); }
       .seats-banner { padding-left: 3mm; padding-right: 3mm; }
-      .seats-banner__inner { grid-template-columns: 1fr; max-width: none; }
+      .seats-banner__inner { width: 100%; flex-wrap: wrap; }
+      .seats-banner p { max-width: none; }
       .mvno__head { grid-template-columns: 1fr; }
       .pedigree__head { flex-direction: column; align-items: flex-start; }
     }
