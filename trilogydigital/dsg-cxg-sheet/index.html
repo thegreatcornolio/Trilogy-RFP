@@ -85,7 +85,7 @@
     }
 
     .footer {
-      margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--line);
+      margin-top: 0; padding-top: 3mm; border-top: 1px solid var(--line);
       display: flex; justify-content: space-between; align-items: center;
       font-size: 7.5px; color: var(--muted); gap: 4mm; flex-shrink: 0;
     }
@@ -189,10 +189,10 @@
       font-size: 7px; color: var(--muted); white-space: nowrap;
     }
     .team-roster {
-      display: flex; flex-direction: column; gap: 2mm;
-      justify-content: flex-start; min-height: 0;
+      display: flex; flex-direction: column; gap: 2.2mm;
+      flex: 1; justify-content: space-evenly; min-height: 0;
     }
-    .team-group { display: grid; gap: 0.9mm; }
+    .team-group { display: grid; gap: 1mm; }
     .team-label {
       font-size: 6.5px; font-weight: 800; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--green);
@@ -205,7 +205,7 @@
     }
     .person { min-width: 0; }
     .person__photo {
-      width: 100%; max-width: 16.5mm; aspect-ratio: 1 / 1; border-radius: 4px;
+      width: 100%; max-width: 19mm; aspect-ratio: 1 / 1; border-radius: 5px;
       overflow: hidden; background: #e8ebef;
     }
     .person__photo img {
@@ -391,7 +391,7 @@
       border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff;
     }
     .glossary__head {
-      background: var(--soft); padding: 1.6mm 3mm;
+      background: var(--soft); padding: 1.5mm 2.8mm;
       border-bottom: 1px solid var(--line);
     }
     .glossary__head h2 {
@@ -399,26 +399,26 @@
     }
     .glossary__grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }
     .term {
-      padding: 1.6mm 2mm; border-right: 1px solid var(--line);
+      padding: 1.6mm 2.2mm; border-right: 1px solid var(--line);
     }
     .term:last-child { border-right: 0; }
     .term strong {
-      display: block; font-size: 10.5px; font-weight: 800; color: var(--navy);
+      display: block; font-size: 10px; font-weight: 800; color: var(--navy);
       margin-bottom: 1.2mm;
     }
     .term p { font-size: 7px; line-height: 1.35; color: var(--muted); }
 
-    .pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2mm; }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2mm; }
     .pillar {
       border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff;
     }
-    .pillar__head { padding: 1.8mm 2.4mm; background: var(--navy); color: #fff; }
+    .pillar__head { padding: 1.6mm 2.2mm; background: var(--navy); color: #fff; }
     .pillar__tag {
       font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--lime); font-weight: 700; margin-bottom: 1px;
     }
-    .pillar__head h3 { font-size: 11px; font-weight: 800; }
-    .pillar__body { padding: 1.5mm 2mm 1.6mm; font-size: 7px; line-height: 1.35; color: var(--muted); }
+    .pillar__head h3 { font-size: 10.5px; font-weight: 800; }
+    .pillar__body { padding: 1.5mm 2.2mm 1.6mm; font-size: 7px; line-height: 1.35; color: var(--muted); }
     .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-top: 2mm; }
     .chip {
       font-size: 7.5px; font-weight: 700; padding: 1mm 1.8mm; border-radius: 999px;
@@ -556,10 +556,11 @@
 
     .case-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; align-items: stretch;
+      flex: 1; min-height: 0;
     }
     .case {
       border-radius: 10px; overflow: hidden; display: flex; flex-direction: column;
-      background: #fff; box-shadow: 0 0 0 1px var(--line);
+      background: #fff; box-shadow: 0 0 0 1px var(--line); min-height: 0;
     }
     .case__banner {
       padding: 3.5mm 3.5mm 3.2mm; color: #fff;
@@ -897,12 +898,12 @@
     </div>
   </article>
 
-  <!-- ===================== PAGE 2 — Why + pedigree ===================== -->
-  <article class="sheet" aria-label="Page 2 — Why Trilogy Digital + pedigree">
+  <!-- ===================== PAGE 2 — Why + Quick Terms + Pillars ===================== -->
+  <article class="sheet" aria-label="Page 2 — Why Trilogy Digital, Quick Terms &amp; Pillars">
     <header class="topbar">
       <div>
         <div class="eyebrow">Trilogy Digital · Technical Fibre, Mobile and Exceptional Customer Support</div>
-        <h1>Why Trilogy Digital + <span>pedigree</span></h1>
+        <h1>Why Trilogy Digital · <span>offer</span> &amp; pedigree</h1>
       </div>
       <div class="meta">
         <img class="logo" src="../assets/trilogy-logo.png" alt="Trilogy" />
@@ -938,6 +939,69 @@
         <div class="metric-card"><strong>12 yrs</strong><span>Building AI / ML platforms</span></div>
         <div class="metric-card"><strong>25+ yrs</strong><span>Combined leadership experience</span></div>
       </div>
+
+      <section class="glossary" aria-label="Quick terminology">
+        <div class="glossary__head"><h2>Quick terms</h2></div>
+        <div class="glossary__grid">
+          <div class="term">
+            <strong>MVNO</strong>
+            <p>Mobile Virtual Network Operator — a brand that sells mobile SIMs/eSIMs using another operator’s radio network. Owns the customer; doesn’t build towers.</p>
+          </div>
+          <div class="term">
+            <strong>What we offer</strong>
+            <p>Trilogy Digital delivers fibre/ISP &amp; FNO CX (activations, billing, tech, outages), MVNO launch &amp; ops, plus digital/AI contact-centre at UK+SA scale.</p>
+          </div>
+          <div class="term">
+            <strong>FNO / ISP</strong>
+            <p><em>FNO</em> = Fibre Network Operator (owns the fibre). <em>ISP</em> = Internet Service Provider (sells the package to the end user — often via FNO wholesale).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pillars" aria-label="What Trilogy Digital delivers">
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 1</div>
+            <h3>Fibre &amp; ISP CX</h3>
+          </div>
+          <div class="pillar__body">
+            Activations, router/ONT setup, billing windows, Tier 1–2 tech, outage surge, ISP-partner desks — proven on national FTTH roll-outs.
+            <div class="chips">
+              <span class="chip green">FNO scale</span>
+              <span class="chip">24/7 care</span>
+              <span class="chip">Partner support</span>
+            </div>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 2</div>
+            <h3>MVNO enablement</h3>
+          </div>
+          <div class="pillar__body">
+            Feasibility → wholesale deal → white-label app/portal → billing &amp; provisioning → turnkey ops &amp; CVM. Brands own the relationship; we own plumbing &amp; CX.
+            <div class="chips">
+              <span class="chip lime">&lt;60-day launch</span>
+              <span class="chip">Embedded MVNO</span>
+              <span class="chip">Since 2013</span>
+            </div>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 3</div>
+            <h3>Digital CX &amp; AI</h3>
+          </div>
+          <div class="pillar__body">
+            Omnichannel care, on-demand surge workforce, WhatsApp/chat commerce, QA &amp; WFM — UK campaign craft with SA delivery economics.
+            <div class="chips">
+              <span class="chip green">1,000+ specialists</span>
+              <span class="chip">Digital &amp; AI</span>
+              <span class="chip">Owner-led</span>
+            </div>
+          </div>
+        </article>
+      </section>
 
       <section class="pedigree" aria-label="Contact-centre pedigree">
         <div class="pedigree__head">
@@ -1091,69 +1155,6 @@
     </header>
 
     <div class="body body--dense">
-      <section class="glossary" aria-label="Quick terminology">
-        <div class="glossary__head"><h2>Quick terms</h2></div>
-        <div class="glossary__grid">
-          <div class="term">
-            <strong>MVNO</strong>
-            <p>Mobile Virtual Network Operator — a brand that sells mobile SIMs/eSIMs using another operator’s radio network. Owns the customer; doesn’t build towers.</p>
-          </div>
-          <div class="term">
-            <strong>What we offer</strong>
-            <p>Trilogy Digital delivers fibre/ISP &amp; FNO CX (activations, billing, tech, outages), MVNO launch &amp; ops, plus digital/AI contact-centre at UK+SA scale.</p>
-          </div>
-          <div class="term">
-            <strong>FNO / ISP</strong>
-            <p><em>FNO</em> = Fibre Network Operator (owns the fibre). <em>ISP</em> = Internet Service Provider (sells the package to the end user — often via FNO wholesale).</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="pillars" aria-label="What Trilogy Digital delivers">
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 1</div>
-            <h3>Fibre &amp; ISP CX</h3>
-          </div>
-          <div class="pillar__body">
-            Activations, router/ONT setup, billing windows, Tier 1–2 tech, outage surge, ISP-partner desks — proven on national FTTH roll-outs.
-            <div class="chips">
-              <span class="chip green">FNO scale</span>
-              <span class="chip">24/7 care</span>
-              <span class="chip">Partner support</span>
-            </div>
-          </div>
-        </article>
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 2</div>
-            <h3>MVNO enablement</h3>
-          </div>
-          <div class="pillar__body">
-            Feasibility → wholesale deal → white-label app/portal → billing &amp; provisioning → turnkey ops &amp; CVM. Brands own the relationship; we own plumbing &amp; CX.
-            <div class="chips">
-              <span class="chip lime">&lt;60-day launch</span>
-              <span class="chip">Embedded MVNO</span>
-              <span class="chip">Since 2013</span>
-            </div>
-          </div>
-        </article>
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 3</div>
-            <h3>Digital CX &amp; AI</h3>
-          </div>
-          <div class="pillar__body">
-            Omnichannel care, on-demand surge workforce, WhatsApp/chat commerce, QA &amp; WFM — UK campaign craft with SA delivery economics.
-            <div class="chips">
-              <span class="chip green">1,000+ specialists</span>
-              <span class="chip">Digital &amp; AI</span>
-              <span class="chip">Owner-led</span>
-            </div>
-          </div>
-        </article>
-      </section>
-
       <section class="mvno" aria-label="Connectivity &amp; MVNO capability">
         <div class="mvno__head">
           <div>
