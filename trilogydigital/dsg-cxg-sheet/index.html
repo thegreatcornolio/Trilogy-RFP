@@ -342,7 +342,7 @@
 
     .pedigree {
       background: var(--navy); color: #fff; border-radius: 12px;
-      padding: 3.2mm 3.2mm 2.8mm; position: relative; overflow: hidden;
+      padding: 3mm 5mm 2.6mm; position: relative; overflow: hidden;
       flex: none; align-self: stretch; height: auto;
     }
     .pedigree::before {
@@ -362,9 +362,9 @@
       font-size: 8px; color: rgba(255,255,255,0.65); white-space: nowrap;
     }
     .pedigree__grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8mm;
       position: relative; z-index: 1;
-      margin: 0 0 2.2mm;
+      margin: 0 0 2mm;
     }
     .ped-tile {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
@@ -428,7 +428,7 @@
 
     .mvno {
       background: var(--navy); color: #fff; border-radius: 12px;
-      padding: 3.2mm 3.5mm 3mm; position: relative; overflow: hidden;
+      padding: 3mm 5mm 2.8mm; position: relative; overflow: hidden;
       flex: none; align-self: stretch; height: auto;
     }
     .mvno::before {
@@ -437,17 +437,16 @@
       background: radial-gradient(circle, rgba(97,215,121,0.18), transparent 70%);
     }
     .mvno__head {
-      display: flex; justify-content: center; align-items: stretch; gap: 3mm;
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 2.5mm;
       position: relative; z-index: 1;
-      width: fit-content; max-width: 100%; margin: 0 auto 2.4mm;
+      margin: 0 0 2.2mm;
     }
-    .mvno__intro { flex: 0 1 102mm; width: 102mm; max-width: 102mm; }
+    .mvno__intro { min-width: 0; }
     .mvno h2 { font-size: 13px; font-weight: 800; margin-bottom: 1.5mm; }
     .mvno h2 em { font-style: normal; color: var(--lime); }
     .mvno__head p { font-size: 9.5px; line-height: 1.35; color: rgba(255,255,255,0.84); }
     .mvno-stats {
       display: grid; grid-template-columns: 1fr 1fr; gap: 2mm;
-      flex: 0 0 56mm; width: 56mm;
     }
     .mvno-stat {
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
@@ -525,16 +524,16 @@
     .seats-banner {
       background: linear-gradient(90deg, #edfaf1, #f8fce8);
       border: 1px solid #cfe9d5; border-left: 4px solid var(--green);
-      border-radius: 10px; padding: 2.8mm 3mm;
+      border-radius: 10px; padding: 2.6mm 10mm;
     }
     .seats-banner__inner {
-      display: flex; justify-content: center; align-items: center; gap: 3mm;
-      width: fit-content; max-width: 100%; margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr auto; gap: 2.5mm; align-items: center;
+      max-width: 158mm; margin: 0 auto;
     }
     .seats-banner__num {
       background: var(--navy); color: var(--lime); font-size: 18px; font-weight: 800;
       letter-spacing: -0.03em; padding: 2.5mm 3mm; border-radius: 8px; line-height: 1;
-      white-space: nowrap; flex: none;
+      white-space: nowrap;
     }
     .seats-banner__num small {
       display: block; font-size: 7.5px; color: rgba(255,255,255,0.7);
@@ -543,10 +542,10 @@
     }
     .seats-banner p {
       font-size: 10.5px; line-height: 1.35; color: var(--ink);
-      flex: none; width: 92mm; max-width: 92mm; margin: 0;
+      margin: 0;
     }
     .seats-banner strong { color: var(--navy); }
-    .seats-banner__tags { display: flex; gap: 1.5mm; flex: none; }
+    .seats-banner__tags { display: flex; gap: 1.5mm; }
     .seats-tag {
       background: #fff; border: 1px solid #cfe9d5; border-radius: 6px;
       padding: 2mm 2.5mm; font-size: 8.5px; font-weight: 800; color: #1f6b38;
@@ -554,7 +553,7 @@
     }
 
     .cases-stack {
-      display: flex; flex-direction: column; gap: 1.8mm;
+      display: flex; flex-direction: column; gap: 1.5mm;
     }
     .fibre-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; }
     .fibre-pill {
@@ -635,6 +634,10 @@
         page-break-after: always; break-after: page;
       }
       .sheet:last-child { page-break-after: auto; break-after: auto; }
+      .pedigree, .mvno, .cases-stack, .seats-banner {
+        flex-grow: 0 !important; flex-shrink: 0 !important; height: auto !important;
+      }
+      .pedigree__found, .stack-note { margin-top: 0 !important; }
       .no-print { display: none !important; }
       @page { size: A4; margin: 0; }
     }
@@ -648,11 +651,9 @@
       }
       .team-grid { grid-template-columns: repeat(3, 1fr); }
       .term { border-right: 0; border-bottom: 1px solid var(--line); }
-      .seats-banner__inner { flex-wrap: wrap; width: 100%; }
-      .seats-banner p { width: auto; max-width: none; }
-      .mvno__head { flex-wrap: wrap; width: 100%; }
-      .mvno__intro { width: auto; max-width: none; flex: 1 1 auto; }
-      .mvno-stats { width: 100%; flex: 1 1 auto; }
+      .seats-banner { padding-left: 3mm; padding-right: 3mm; }
+      .seats-banner__inner { grid-template-columns: 1fr; max-width: none; }
+      .mvno__head { grid-template-columns: 1fr; }
       .pedigree__head { flex-direction: column; align-items: flex-start; }
     }
   </style>
