@@ -273,78 +273,174 @@
     }
 
     /* ========== PAGE 2 ========== */
-    .cases-intro { font-size: 10.5px; color: var(--muted); line-height: 1.35; margin-top: -0.5mm; }
+    .cases-intro { font-size: 9.5px; color: var(--muted); line-height: 1.3; margin-top: -0.5mm; }
+
+    /* Contact-centre pedigree (boutique + integrated CX) */
+    .pedigree {
+      background: var(--navy); color: #fff; border-radius: 10px;
+      padding: 2.6mm 3mm 2.6mm; position: relative; overflow: hidden;
+    }
+    .pedigree::before {
+      content: ""; position: absolute; right: -14mm; top: -16mm;
+      width: 42mm; height: 42mm; border-radius: 50%;
+      background: radial-gradient(circle, rgba(97,215,121,0.16), transparent 70%);
+    }
+    .pedigree__head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 3mm;
+      margin-bottom: 1.8mm; position: relative; z-index: 1;
+    }
+    .pedigree__head h2 {
+      font-size: 11px; font-weight: 800; letter-spacing: -0.01em;
+    }
+    .pedigree__head h2 em { font-style: normal; color: var(--lime); }
+    .pedigree__head span {
+      font-size: 8px; color: rgba(255,255,255,0.72); white-space: nowrap;
+    }
+    .pedigree__pillars {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5mm;
+      position: relative; z-index: 1; margin-bottom: 1.8mm;
+    }
+    .ped-pill {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px; padding: 1.4mm 1.8mm;
+    }
+    .ped-pill strong {
+      display: block; font-size: 8.5px; font-weight: 800; color: var(--lime);
+      margin-bottom: 0.5mm; letter-spacing: -0.01em;
+    }
+    .ped-pill p { font-size: 7.5px; line-height: 1.22; color: rgba(255,255,255,0.78); }
+    .pedigree__offers {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4mm;
+      position: relative; z-index: 1; margin-bottom: 1.6mm;
+    }
+    .ped-offer {
+      border-left: 2.5px solid var(--green); padding-left: 1.6mm;
+    }
+    .ped-offer strong {
+      display: block; font-size: 8px; font-weight: 800; color: var(--green);
+      margin-bottom: 0.3mm; letter-spacing: 0.02em;
+    }
+    .ped-offer span { font-size: 7px; line-height: 1.2; color: rgba(255,255,255,0.72); }
+    .pedigree__found {
+      display: flex; flex-wrap: wrap; gap: 1.2mm; position: relative; z-index: 1;
+    }
+    .ped-chip {
+      font-size: 7px; font-weight: 700; padding: 0.8mm 1.6mm; border-radius: 4px;
+      background: rgba(213,236,103,0.12); border: 1px solid rgba(213,236,103,0.28);
+      color: var(--lime); letter-spacing: 0.02em;
+    }
+
+    .seats-banner {
+      display: grid; grid-template-columns: auto 1fr auto; gap: 2.5mm; align-items: center;
+      background: linear-gradient(90deg, #edfaf1, #f8fce8);
+      border: 1px solid #cfe9d5; border-left: 4px solid var(--green);
+      border-radius: 8px; padding: 1.8mm 2.6mm;
+    }
+    .seats-banner__num {
+      background: var(--navy); color: var(--lime); font-size: 16px; font-weight: 800;
+      letter-spacing: -0.03em; padding: 1.4mm 2.4mm; border-radius: 6px; line-height: 1;
+      white-space: nowrap;
+    }
+    .seats-banner__num small {
+      display: block; font-size: 7px; color: rgba(255,255,255,0.7);
+      letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
+      margin-bottom: 0.4mm;
+    }
+    .seats-banner p {
+      font-size: 9.5px; line-height: 1.28; color: var(--ink);
+    }
+    .seats-banner strong { color: var(--navy); }
+    .seats-banner__tags {
+      display: flex; gap: 1mm; flex-shrink: 0;
+    }
+    .seats-tag {
+      background: #fff; border: 1px solid #cfe9d5; border-radius: 5px;
+      padding: 1.2mm 1.8mm; font-size: 8px; font-weight: 800; color: #1f6b38;
+      white-space: nowrap; text-align: center; line-height: 1.15;
+    }
 
     .fibre-strip {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.4mm;
     }
     .fibre-pill {
-      border: 1px solid var(--line); border-radius: 8px; padding: 2mm 2.2mm;
-      background: linear-gradient(160deg, #f4fbf6, #f8fce8); text-align: center;
+      border: 1px solid var(--line); border-radius: 6px; padding: 1.2mm 1.6mm;
+      background: var(--soft); text-align: center;
     }
     .fibre-pill strong {
-      display: block; font-size: 9.5px; font-weight: 800; color: var(--navy); margin-bottom: 0.6mm;
+      display: block; font-size: 8.5px; font-weight: 800; color: var(--navy); margin-bottom: 0.3mm;
     }
-    .fibre-pill span { font-size: 8px; color: var(--muted); line-height: 1.25; }
+    .fibre-pill span { font-size: 7px; color: var(--muted); line-height: 1.2; }
 
     .case-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; flex: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.2mm;
+      align-items: start; align-content: start;
+      grid-auto-rows: min-content;
     }
     .case {
-      border: 1px solid var(--line); border-radius: 11px; overflow: hidden;
-      display: flex; flex-direction: column; background: #fff;
+      border: 1px solid var(--line); border-radius: 9px; overflow: hidden;
+      display: block; background: #fff;
+      align-self: start; height: max-content;
     }
     .case__banner {
-      padding: 2.8mm 3.2mm; color: #fff;
-      display: flex; justify-content: space-between; gap: 2.5mm; align-items: flex-start;
+      padding: 1.6mm 2.4mm 1.5mm; color: #fff;
+      display: flex; flex-direction: column; gap: 1.2mm;
     }
     .case--vuma .case__banner { background: linear-gradient(120deg, #13202e, #12353d); }
     .case--fiber .case__banner { background: linear-gradient(120deg, #13202e, #2a3a12); }
     .case--webafrica .case__banner { background: linear-gradient(120deg, #13202e, #1f4d38); }
     .case--digital .case__banner { background: linear-gradient(120deg, #13202e, #1b3a2a); }
     .case__label {
-      font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase;
-      font-weight: 800; color: var(--lime); margin-bottom: 1px;
+      font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 800; color: var(--lime); margin-bottom: 0.2mm;
     }
-    .case__banner h3 { font-size: 13px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
-    .case__banner p { font-size: 9px; color: rgba(255,255,255,0.78); margin-top: 0.8mm; line-height: 1.28; }
-    .case__kpis { display: flex; gap: 1.3mm; flex-shrink: 0; }
+    .case__banner h3 { font-size: 11.5px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.12; }
+    .case__banner > p { font-size: 8px; color: rgba(255,255,255,0.78); margin-top: 0.4mm; line-height: 1.2; }
+    .case__kpis {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1mm;
+    }
     .case__kpi {
       background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 7px; padding: 1.4mm 2mm; text-align: center; min-width: 16mm;
+      border-radius: 5px; padding: 1mm 1.4mm; text-align: left;
+      display: flex; align-items: baseline; gap: 1.2mm;
     }
-    .case__kpi strong { display: block; font-size: 11.5px; color: var(--green); font-weight: 800; line-height: 1.1; }
-    .case__kpi span { font-size: 7px; color: rgba(255,255,255,0.75); line-height: 1.15; }
+    .case__kpi strong {
+      font-size: 10.5px; color: var(--green); font-weight: 800; line-height: 1;
+      white-space: nowrap;
+    }
+    .case__kpi span {
+      font-size: 6.5px; color: rgba(255,255,255,0.75); line-height: 1.15;
+    }
 
     .case__body {
-      padding: 2.5mm 3mm 2.8mm; display: grid; grid-template-columns: 1fr 1fr; gap: 2.2mm; flex: 1;
+      padding: 1.4mm 2.4mm 1.5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm;
+      flex: 0 0 auto;
     }
     .case__body h4 {
-      font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
-      font-weight: 800; color: var(--navy); margin-bottom: 1.2mm;
+      font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 800; color: var(--navy); margin-bottom: 0.6mm;
     }
-    .case__body ul { list-style: none; display: grid; gap: 1mm; }
+    .case__body ul { list-style: none; display: grid; gap: 0.5mm; }
     .case__body li {
-      font-size: 9px; line-height: 1.28; color: var(--muted);
-      padding-left: 2.6mm; position: relative;
+      font-size: 8px; line-height: 1.22; color: var(--muted);
+      padding-left: 2.2mm; position: relative;
     }
     .case__body li::before {
-      content: ""; position: absolute; left: 0; top: 4px;
-      width: 3.5px; height: 3.5px; border-radius: 1px; background: #b7c2ce;
+      content: ""; position: absolute; left: 0; top: 3.5px;
+      width: 3px; height: 3px; border-radius: 1px; background: #b7c2ce;
     }
     .case__body .impact li::before { background: var(--green); }
 
     .takeaway {
-      display: grid; grid-template-columns: auto 1fr; gap: 3mm; align-items: center;
+      display: grid; grid-template-columns: auto 1fr; gap: 2.5mm; align-items: center;
       background: linear-gradient(90deg, #edfaf1, #f8fce8);
-      border: 1px solid #d5e8c8; border-radius: 10px; padding: 2.8mm 3.5mm;
+      border: 1px solid #d5e8c8; border-radius: 8px; padding: 1.8mm 2.6mm;
     }
     .takeaway__badge {
-      background: var(--navy); color: #fff; font-size: 8.5px; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase; padding: 1.8mm 2.6mm; border-radius: 7px;
+      background: var(--navy); color: #fff; font-size: 7.5px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 1.4mm 2mm; border-radius: 6px;
       white-space: nowrap;
     }
-    .takeaway p { font-size: 10.5px; line-height: 1.35; color: var(--ink); }
+    .takeaway p { font-size: 9px; line-height: 1.28; color: var(--ink); }
     .takeaway strong { color: var(--navy); }
 
     .sources { font-size: 8px; color: #8a95a3; line-height: 1.35; }
@@ -357,12 +453,17 @@
       .no-print { display: none !important; }
       @page { size: A4; margin: 0; }
     }
+    .sheet--page2 .body { gap: 2mm; padding-top: 3mm; padding-bottom: 3mm; }
+    .sheet--page2 .footer { margin-top: auto; }
+
     @media screen and (max-width: 900px) {
       .sheet { width: min(100% - 16px, 210mm); margin: 8px auto; }
       .intro, .glossary__grid, .pillars, .mvno__head, .cap-grid, .insights, .market-strip,
-      .fibre-strip, .case-grid, .case__body { grid-template-columns: 1fr; }
+      .fibre-strip, .case-grid, .case__body, .pedigree__pillars, .pedigree__offers { grid-template-columns: 1fr; }
       .term { border-right: 0; border-bottom: 1px solid var(--line); }
-      .case__kpis { flex-wrap: wrap; }
+      .case__kpis { grid-template-columns: 1fr; }
+      .seats-banner { grid-template-columns: 1fr; }
+      .pedigree__head { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -596,7 +697,7 @@
   </article>
 
   <!-- ===================== PAGE 2 ===================== -->
-  <article class="sheet" aria-label="Page 2 — Fibre &amp; connectivity case cheat sheets">
+  <article class="sheet sheet--page2" aria-label="Page 2 — Fibre &amp; connectivity case cheat sheets">
     <header class="topbar">
       <div>
         <div class="eyebrow">Experience &amp; case cheat sheets</div>
@@ -614,6 +715,73 @@
       <p class="cases-intro">
         Real delivery for fibre network operators, ISPs and digital connectivity brands — activations, billing peaks, tech support, outages and partner desks at national scale.
       </p>
+
+      <section class="pedigree" aria-label="Trilogy Digital contact centre pedigree">
+        <div class="pedigree__head">
+          <h2>Contact-centre pedigree · <em>boutique excellence</em> meets enterprise scale</h2>
+          <span>Voice · chat · email · back office</span>
+        </div>
+        <div class="pedigree__pillars">
+          <div class="ped-pill">
+            <strong>Tailored approach</strong>
+            <p>Cape Town-based CX depth — personalised attention with enterprise capability under one brand.</p>
+          </div>
+          <div class="ped-pill">
+            <strong>Award-winning innovation</strong>
+            <p>Digital infrastructure &amp; AI built in from day one; in-house teams for bespoke AI solutions.</p>
+          </div>
+          <div class="ped-pill">
+            <strong>Commercial flexibility</strong>
+            <p>Contracting and costing options traditional BPOs struggle to match — scaled for connectivity.</p>
+          </div>
+          <div class="ped-pill">
+            <strong>Industry expertise</strong>
+            <p>Ops, HR, recruitment &amp; training bench delivering top-tier agents for fibre and ISP desks.</p>
+          </div>
+        </div>
+        <div class="pedigree__offers">
+          <div class="ped-offer">
+            <strong>Integrated CX</strong>
+            <span>Lifecycle, journey mapping, loyalty &amp; relationship marketing</span>
+          </div>
+          <div class="ped-offer">
+            <strong>Digital CX</strong>
+            <span>Conversational AI, digital QA, sentiment &amp; BI</span>
+          </div>
+          <div class="ped-offer">
+            <strong>ITSM &amp; S-NOC</strong>
+            <span>24/7 service desk, NOC/SOC monitoring &amp; improvement</span>
+          </div>
+          <div class="ped-offer">
+            <strong>CX consulting</strong>
+            <span>Design &amp; build, ops advisory, WFM advisory</span>
+          </div>
+        </div>
+        <div class="pedigree__found">
+          <span class="ped-chip">BI &amp; analytics</span>
+          <span class="ped-chip">Fully redundant hosted infra</span>
+          <span class="ped-chip">Managed staffing</span>
+          <span class="ped-chip">S-NOC monitoring</span>
+          <span class="ped-chip">AI to deflect · assist · automate — not blindly replace</span>
+          <span class="ped-chip">UK &amp; EMEA time-zone alignment</span>
+        </div>
+      </section>
+
+      <aside class="seats-banner" aria-label="Technical support capacity">
+        <div class="seats-banner__num">
+          <small>Capacity</small>
+          ~400 seats
+        </div>
+        <p>
+          <strong>Trilogy Digital</strong> fields circa <strong>400 seats</strong> delivering
+          <strong>Tier 1 and Tier 2 technical support</strong> across our environment —
+          fibre, router, Wi-Fi and service-desk resolution at FNO/ISP scale.
+        </p>
+        <div class="seats-banner__tags">
+          <div class="seats-tag">Tier 1<br />tech support</div>
+          <div class="seats-tag">Tier 2<br />tech support</div>
+        </div>
+      </aside>
 
       <div class="fibre-strip" aria-label="Fibre &amp; ISP support themes">
         <div class="fibre-pill"><strong>Activations</strong><span>New fibre &amp; router onboarding</span></div>
@@ -633,9 +801,9 @@
               <p>24/7 multichannel support for SA’s largest fibre network operator and 75+ ISP partners.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>1M+</strong><span>subscribers<br />supported</span></div>
-              <div class="case__kpi"><strong>24/7</strong><span>always-on<br />support</span></div>
-              <div class="case__kpi"><strong>75+</strong><span>ISP partners<br />supported</span></div>
+              <div class="case__kpi"><strong>1M+</strong><span>subscribers supported</span></div>
+              <div class="case__kpi"><strong>24/7</strong><span>always-on support</span></div>
+              <div class="case__kpi"><strong>75+</strong><span>ISP partners supported</span></div>
             </div>
           </div>
           <div class="case__body">
@@ -667,9 +835,9 @@
               <p>Accessible uncapped fibre at scale — outage recovery and tech support through hyper-growth.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>83×</strong><span>growth in<br />24 months</span></div>
-              <div class="case__kpi"><strong>330K+</strong><span>fibertimers<br />supported</span></div>
-              <div class="case__kpi"><strong>T1–T2</strong><span>fibre &amp;<br />router tech</span></div>
+              <div class="case__kpi"><strong>83×</strong><span>growth in 24 months</span></div>
+              <div class="case__kpi"><strong>330K+</strong><span>fibertimers supported</span></div>
+              <div class="case__kpi"><strong>T1–T2</strong><span>fibre &amp; router tech</span></div>
             </div>
           </div>
           <div class="case__body">
@@ -701,9 +869,9 @@
               <p>National ISP billing cycles: high anxiety, volume spikes, zero tolerance for error.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>120</strong><span>billing<br />chat agents</span></div>
-              <div class="case__kpi"><strong>7–9</strong><span>day billing<br />window</span></div>
-              <div class="case__kpi"><strong>Zero</strong><span>core-team<br />disruption</span></div>
+              <div class="case__kpi"><strong>120</strong><span>billing chat agents</span></div>
+              <div class="case__kpi"><strong>7–9</strong><span>day billing window</span></div>
+              <div class="case__kpi"><strong>Zero</strong><span>core-team disruption</span></div>
             </div>
           </div>
           <div class="case__body">
@@ -735,9 +903,9 @@
               <p>The operating model behind Vuma, Webafrica, fibertime and other ISP/FNO partners.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>3M+</strong><span>interactions<br />/ month</span></div>
-              <div class="case__kpi"><strong>100+</strong><span>enterprise<br />clients</span></div>
-              <div class="case__kpi"><strong>4</strong><span>SA delivery<br />sites</span></div>
+              <div class="case__kpi"><strong>3M+</strong><span>interactions / month</span></div>
+              <div class="case__kpi"><strong>100+</strong><span>enterprise clients</span></div>
+              <div class="case__kpi"><strong>4</strong><span>SA delivery sites</span></div>
             </div>
           </div>
           <div class="case__body">
@@ -764,8 +932,9 @@
       <aside class="takeaway">
         <div class="takeaway__badge">CEO takeaway</div>
         <p>
-          <strong>Trilogy Digital</strong> already runs fibre and ISP CX at FNO scale (Vuma, Webafrica, fibertime) — activations, billing, tech and outages —
-          and can <strong>launch embedded MVNOs</strong> on the same stack. One brand, one accountable partner for connectivity experience and branded mobile.
+          <strong>Trilogy Digital</strong> already runs fibre and ISP CX at FNO scale (Vuma, Webafrica, fibertime) with
+          <strong>~400 Tier 1–2 tech seats</strong> — activations, billing, tech and outages —
+          and can <strong>launch embedded MVNOs</strong> on the same stack. One brand, one accountable partner.
         </p>
       </aside>
 
