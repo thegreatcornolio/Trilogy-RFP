@@ -80,8 +80,8 @@
       gap: 5mm;
     }
     .body--dense {
-      padding: 5mm 12mm 4mm;
-      gap: 3.5mm;
+      padding: 4.5mm 12mm 3.5mm;
+      gap: 2.8mm;
     }
 
     .footer {
@@ -97,8 +97,8 @@
 
     /* ========== SCREEN 1 — Intro + compact team ========== */
     .intro-prose {
-      display: grid; gap: 2.2mm;
-      font-size: 9.5px; line-height: 1.38; color: var(--ink);
+      display: grid; gap: 1.6mm;
+      font-size: 8.5px; line-height: 1.32; color: var(--ink);
     }
     .intro-prose p { margin: 0; }
     .intro-prose strong { color: var(--navy); font-weight: 700; }
@@ -106,7 +106,7 @@
     .stats-bar {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
       background: var(--navy); border-radius: 8px; overflow: hidden;
-      padding: 3mm 2mm;
+      padding: 2.2mm 2mm;
     }
     .stats-bar__item {
       text-align: center; padding: 0.5mm 2mm;
@@ -114,7 +114,7 @@
     }
     .stats-bar__item:last-child { border-right: 0; }
     .stats-bar__item strong {
-      display: block; font-size: 17px; font-weight: 800; color: var(--lime);
+      display: block; font-size: 15px; font-weight: 800; color: var(--lime);
       letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 1mm;
     }
     .stats-bar__item span {
@@ -124,12 +124,12 @@
 
     .jv {
       background: #f4f6f8; border: 1px solid var(--line); border-radius: 10px;
-      padding: 3.5mm 4mm 3.2mm; margin-top: 0;
+      padding: 2.8mm 3.5mm 2.6mm; margin-top: 0; flex-shrink: 0;
     }
     .jv__parent {
       max-width: 145mm; margin: 0 auto; text-align: center;
       background: var(--navy); color: #fff; border-radius: 8px;
-      padding: 2.5mm 4mm; box-shadow: 0 6px 16px rgba(19,32,46,0.14);
+      padding: 2mm 3.5mm; box-shadow: 0 6px 16px rgba(19,32,46,0.14);
     }
     .jv__parent strong {
       display: block; font-size: 11.5px; font-weight: 800; letter-spacing: -0.01em;
@@ -139,18 +139,18 @@
       color: rgba(255,255,255,0.78);
     }
     .jv__connector {
-      position: relative; height: 6.5mm; max-width: 145mm; margin: 0 auto;
+      position: relative; height: 5mm; max-width: 145mm; margin: 0 auto;
     }
     .jv__vline {
-      position: absolute; left: 50%; top: 0; width: 2px; height: 3.2mm;
+      position: absolute; left: 50%; top: 0; width: 2px; height: 2.4mm;
       transform: translateX(-50%); background: var(--green);
     }
     .jv__hline {
-      position: absolute; left: 25%; right: 25%; top: 3.2mm; height: 2px;
+      position: absolute; left: 25%; right: 25%; top: 2.4mm; height: 2px;
       background: var(--green);
     }
     .jv__drop {
-      position: absolute; top: 3.2mm; width: 2px; height: 3.3mm; background: var(--green);
+      position: absolute; top: 2.4mm; width: 2px; height: 2.6mm; background: var(--green);
     }
     .jv__drop--l { left: 25%; transform: translateX(-50%); }
     .jv__drop--r { left: 75%; transform: translateX(-50%); }
@@ -159,7 +159,7 @@
     }
     .jv__child {
       background: #fff; border: 1.5px solid var(--green); border-radius: 8px;
-      padding: 2.5mm 3mm;
+      padding: 2mm 2.5mm;
     }
     .jv__child strong {
       display: block; font-size: 10.5px; font-weight: 800; color: var(--green);
@@ -171,13 +171,14 @@
 
     /* Compact Meet the Team (embedded on page 1) */
     .team-compact {
-      display: flex; flex-direction: column; gap: 1.4mm;
-      flex: 1;
+      display: flex; flex-direction: column; gap: 1.2mm;
+      flex: 0 0 auto;
       min-height: 0;
+      justify-content: flex-start;
     }
     .team-compact__head {
       display: flex; align-items: baseline; justify-content: space-between; gap: 3mm;
-      padding-bottom: 0.8mm; border-bottom: 1px solid var(--line);
+      padding-bottom: 0.6mm; border-bottom: 1px solid var(--line);
       flex-shrink: 0;
     }
     .team-compact__head h2 {
@@ -188,23 +189,23 @@
       font-size: 7px; color: var(--muted); white-space: nowrap;
     }
     .team-roster {
-      display: flex; flex-direction: column; gap: 1.8mm;
-      flex: 1; justify-content: space-between; min-height: 0;
+      display: flex; flex-direction: column; gap: 1.2mm;
+      justify-content: flex-start; min-height: 0;
     }
-    .team-group { display: grid; gap: 0.8mm; }
+    .team-group { display: grid; gap: 0.6mm; }
     .team-label {
       font-size: 6.5px; font-weight: 800; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--green);
     }
     .team-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 1mm 2mm;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8mm 2mm;
     }
     .team-grid--partners {
       grid-template-columns: repeat(5, 1fr);
     }
     .person { min-width: 0; }
     .person__photo {
-      width: 100%; max-width: 17mm; aspect-ratio: 1 / 1; border-radius: 4px;
+      width: 100%; max-width: 12.5mm; aspect-ratio: 1 / 1; border-radius: 4px;
       overflow: hidden; background: #e8ebef;
     }
     .person__photo img {
@@ -312,7 +313,7 @@
       display: grid; grid-template-columns: 1.35fr 0.9fr; gap: 4mm; align-items: stretch;
     }
     .why-prose {
-      display: grid; gap: 2.8mm; font-size: 9.5px; line-height: 1.4; color: var(--ink);
+      display: grid; gap: 2.2mm; font-size: 9px; line-height: 1.4; color: var(--ink);
     }
     .why-prose strong { color: var(--navy); }
     .why-callout {
@@ -341,9 +342,9 @@
 
     .pedigree {
       background: var(--navy); color: #fff; border-radius: 12px;
-      padding: 5mm 4.5mm 4.5mm; position: relative; overflow: hidden;
-      flex: 1;
-      display: flex; flex-direction: column; min-height: 0;
+      padding: 4mm 4mm 3.5mm; position: relative; overflow: hidden;
+      flex: 0 0 auto;
+      display: flex; flex-direction: column;
     }
     .pedigree::before {
       content: ""; position: absolute; right: -14mm; top: -16mm;
@@ -364,21 +365,20 @@
     .pedigree__grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm;
       position: relative; z-index: 1; margin-bottom: 3.5mm;
-      flex: 1; align-content: stretch;
+      align-content: start;
     }
     .ped-tile {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 7px; padding: 3mm 2.5mm;
-      display: flex; flex-direction: column; justify-content: flex-start;
+      border-radius: 7px; padding: 3.2mm 2.8mm;
     }
     .ped-tile strong {
-      display: block; font-size: 9.5px; font-weight: 800; color: var(--lime);
-      margin-bottom: 1.2mm; letter-spacing: -0.01em;
+      display: block; font-size: 10px; font-weight: 800; color: var(--lime);
+      margin-bottom: 1.4mm; letter-spacing: -0.01em;
     }
-    .ped-tile p { font-size: 8px; line-height: 1.35; color: rgba(255,255,255,0.78); }
+    .ped-tile p { font-size: 8.5px; line-height: 1.4; color: rgba(255,255,255,0.78); }
     .pedigree__found {
       display: flex; flex-wrap: wrap; gap: 1.8mm; position: relative; z-index: 1;
-      margin-top: auto;
+      margin-top: 0;
     }
     .ped-chip {
       font-size: 7px; font-weight: 700; padding: 1.2mm 2mm; border-radius: 999px;
@@ -391,34 +391,34 @@
       border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff;
     }
     .glossary__head {
-      background: var(--soft); padding: 2.5mm 3.5mm;
+      background: var(--soft); padding: 1.6mm 3mm;
       border-bottom: 1px solid var(--line);
     }
     .glossary__head h2 {
-      font-size: 11px; font-weight: 800; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase;
+      font-size: 10px; font-weight: 800; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase;
     }
     .glossary__grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }
     .term {
-      padding: 3mm 3mm; border-right: 1px solid var(--line);
+      padding: 1.6mm 2mm; border-right: 1px solid var(--line);
     }
     .term:last-child { border-right: 0; }
     .term strong {
-      display: block; font-size: 12px; font-weight: 800; color: var(--navy);
+      display: block; font-size: 10.5px; font-weight: 800; color: var(--navy);
       margin-bottom: 1.2mm;
     }
-    .term p { font-size: 9px; line-height: 1.35; color: var(--muted); }
+    .term p { font-size: 7px; line-height: 1.35; color: var(--muted); }
 
-    .pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2mm; }
     .pillar {
       border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff;
     }
-    .pillar__head { padding: 2.5mm 3mm; background: var(--navy); color: #fff; }
+    .pillar__head { padding: 1.8mm 2.4mm; background: var(--navy); color: #fff; }
     .pillar__tag {
       font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase;
       color: var(--lime); font-weight: 700; margin-bottom: 1px;
     }
-    .pillar__head h3 { font-size: 12px; font-weight: 800; }
-    .pillar__body { padding: 2.5mm 3mm 3mm; font-size: 8.5px; line-height: 1.35; color: var(--muted); }
+    .pillar__head h3 { font-size: 11px; font-weight: 800; }
+    .pillar__body { padding: 1.5mm 2mm 1.6mm; font-size: 7px; line-height: 1.35; color: var(--muted); }
     .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-top: 2mm; }
     .chip {
       font-size: 7.5px; font-weight: 700; padding: 1mm 1.8mm; border-radius: 999px;
@@ -464,7 +464,6 @@
     .cap {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.11);
       border-radius: 8px; padding: 3mm 2.5mm;
-      display: flex; flex-direction: column;
     }
     .cap__n {
       width: 14px; height: 14px; border-radius: 3px; background: var(--lime);
@@ -497,13 +496,34 @@
     .stack-note p { font-size: 9px; line-height: 1.35; color: rgba(255,255,255,0.9); }
     .stack-note strong { color: var(--lime); }
 
+
+    .sec-label {
+      font-size: 9px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 2mm;
+    }
+    .sec-label span { color: var(--muted); font-weight: 600; letter-spacing: 0.04em; text-transform: none; }
+    .market-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.2mm;
+    }
+    .market-stat {
+      background: var(--soft); border: 1px solid var(--line); border-radius: 9px;
+      padding: 3mm 2.5mm;
+    }
+    .market-stat strong {
+      display: block; font-size: 15px; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.2mm;
+    }
+    .market-stat strong em { font-style: normal; color: var(--green); }
+    .market-stat span { font-size: 7.5px; color: var(--muted); line-height: 1.25; }
+
+
     .cases-intro { font-size: 10px; color: var(--muted); line-height: 1.4; }
 
     .seats-banner {
       display: grid; grid-template-columns: auto 1fr auto; gap: 3.5mm; align-items: center;
       background: linear-gradient(90deg, #edfaf1, #f8fce8);
       border: 1px solid #cfe9d5; border-left: 4px solid var(--green);
-      border-radius: 10px; padding: 3.5mm 4mm;
+      border-radius: 10px; padding: 4mm 4.5mm;
     }
     .seats-banner__num {
       background: var(--navy); color: var(--lime); font-size: 18px; font-weight: 800;
@@ -535,17 +555,15 @@
     .fibre-pill span { font-size: 7.5px; color: var(--muted); line-height: 1.25; }
 
     .case-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; align-items: stretch;
-      flex: 1; min-height: 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; align-items: stretch;
     }
     .case {
       border-radius: 10px; overflow: hidden; display: flex; flex-direction: column;
       background: #fff; box-shadow: 0 0 0 1px var(--line);
-      min-height: 0;
     }
     .case__banner {
-      padding: 3mm 3.5mm 2.8mm; color: #fff;
-      display: flex; flex-direction: column; gap: 0.6mm;
+      padding: 3.5mm 3.5mm 3.2mm; color: #fff;
+      display: flex; flex-direction: column; gap: 0.8mm;
     }
     .case--vuma .case__banner { background: linear-gradient(120deg, #13202e, #12353d); }
     .case--fiber .case__banner { background: linear-gradient(120deg, #13202e, #2a3a12); }
@@ -571,7 +589,7 @@
     .case-table th + th { border-left: 1px solid var(--line); }
     .case-table td {
       font-size: 8.5px; line-height: 1.35; color: var(--muted);
-      vertical-align: top; padding: 2mm 3mm 2.5mm; width: 50%;
+      vertical-align: top; padding: 2.5mm 3mm 3mm; width: 50%;
     }
     .case-table td + td { border-left: 1px solid var(--line); color: var(--ink); }
     .case-table ul { list-style: none; display: grid; gap: 0.8mm; }
@@ -629,8 +647,8 @@
     <button type="button" onclick="window.print()">Print / Save as PDF</button>
   </div>
 
-  <!-- ===================== PAGE 1 — Intro + Meet the Team ===================== -->
-  <article class="sheet" aria-label="Page 1 — Company introduction &amp; Meet the Team">
+  <!-- ===================== PAGE 1 — Intro + Team + Quick Terms + Pillars ===================== -->
+  <article class="sheet" aria-label="Page 1 — Company introduction, Team, Quick Terms &amp; Pillars">
     <header class="topbar">
       <div>
         <div class="eyebrow">Trilogy Digital</div>
@@ -872,6 +890,69 @@
         </div>
       </section>
 
+      <section class="glossary" aria-label="Quick terminology">
+        <div class="glossary__head"><h2>Quick terms</h2></div>
+        <div class="glossary__grid">
+          <div class="term">
+            <strong>MVNO</strong>
+            <p>Mobile Virtual Network Operator — a brand that sells mobile SIMs/eSIMs using another operator’s radio network. Owns the customer; doesn’t build towers.</p>
+          </div>
+          <div class="term">
+            <strong>What we offer</strong>
+            <p>Trilogy Digital delivers fibre/ISP &amp; FNO CX (activations, billing, tech, outages), MVNO launch &amp; ops, plus digital/AI contact-centre at UK+SA scale.</p>
+          </div>
+          <div class="term">
+            <strong>FNO / ISP</strong>
+            <p><em>FNO</em> = Fibre Network Operator (owns the fibre). <em>ISP</em> = Internet Service Provider (sells the package to the end user — often via FNO wholesale).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pillars" aria-label="What Trilogy Digital delivers">
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 1</div>
+            <h3>Fibre &amp; ISP CX</h3>
+          </div>
+          <div class="pillar__body">
+            Activations, router/ONT setup, billing windows, Tier 1–2 tech, outage surge, ISP-partner desks — proven on national FTTH roll-outs.
+            <div class="chips">
+              <span class="chip green">FNO scale</span>
+              <span class="chip">24/7 care</span>
+              <span class="chip">Partner support</span>
+            </div>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 2</div>
+            <h3>MVNO enablement</h3>
+          </div>
+          <div class="pillar__body">
+            Feasibility → wholesale deal → white-label app/portal → billing &amp; provisioning → turnkey ops &amp; CVM. Brands own the relationship; we own plumbing &amp; CX.
+            <div class="chips">
+              <span class="chip lime">&lt;60-day launch</span>
+              <span class="chip">Embedded MVNO</span>
+              <span class="chip">Since 2013</span>
+            </div>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 3</div>
+            <h3>Digital CX &amp; AI</h3>
+          </div>
+          <div class="pillar__body">
+            Omnichannel care, on-demand surge workforce, WhatsApp/chat commerce, QA &amp; WFM — UK campaign craft with SA delivery economics.
+            <div class="chips">
+              <span class="chip green">1,000+ specialists</span>
+              <span class="chip">Digital &amp; AI</span>
+              <span class="chip">Owner-led</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
       <footer class="footer">
         <div><strong>Trilogy Digital</strong> · Technical Fibre, Mobile and Exceptional Customer Support</div>
         <div class="page-num">1</div>
@@ -879,91 +960,8 @@
     </div>
   </article>
 
-  <!-- ===================== PAGE 2 — Awards ===================== -->
-  <article class="sheet" aria-label="Page 2 — Awards, Certifications &amp; Memberships">
-    <header class="topbar">
-      <div>
-        <div class="eyebrow">Trilogy Digital · Technical Fibre, Mobile and Exceptional Customer Support</div>
-        <h1>Our Awards, Certifications &amp; <span>Memberships</span></h1>
-      </div>
-      <div class="meta">
-        <img class="logo" src="../assets/trilogy-logo.png" alt="Trilogy" />
-      </div>
-    </header>
-
-    <div class="body">
-      <aside class="key-message" role="note">
-        <span class="key-message__icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-        </span>
-        <p>Over nearly a decade, our award record reflects consistent industry leadership across outsourcing, technology and social impact.</p>
-      </aside>
-
-      <div class="awards-panel">
-        <ol class="awards-timeline">
-          <li>
-            <div class="awards-timeline__year">2016</div>
-            <div class="awards-timeline__body">CCMG Best Outsourced Partnership Winner · BPESA Best Outsourced Winner &amp; Best Use of Social Media</div>
-          </li>
-          <li>
-            <div class="awards-timeline__year">2017</div>
-            <div class="awards-timeline__body">BPESA / CCMG Best Outsourced Contact Centre · Best Use of Social Media &amp; Technology Innovation</div>
-          </li>
-          <li>
-            <div class="awards-timeline__year">2018 – 2019</div>
-            <div class="awards-timeline__body">Best Outsourced Contact Centre Finalist · Best Outsourced Partnership (Engage UK) Finalist · BPESA Best Impact Sourcing &amp; Service Provider Winner</div>
-          </li>
-          <li>
-            <div class="awards-timeline__year">2021</div>
-            <div class="awards-timeline__body">
-              Contact Centre World, Best Partnership
-              <span class="award-pill">Ranked #1 EMEA · #2 Globally</span>
-            </div>
-          </li>
-          <li>
-            <div class="awards-timeline__year">2022 – 2023</div>
-            <div class="awards-timeline__body">
-              BPESA Best Partnership &amp; Shared Services Finalist · Cape BPO Top Technical Innovation Finalist
-              <span class="award-pill">BPESA &amp; Cape BPO National Top Service Provider, Winner</span>
-            </div>
-          </li>
-          <li>
-            <div class="awards-timeline__year">2025</div>
-            <div class="awards-timeline__body">CapeBPO &amp; BPESA Top Support Service Provider Finalist · BPESA Top BPO Operator Finalist &amp; Runner-Up</div>
-          </li>
-        </ol>
-      </div>
-
-      <div class="cred-grid">
-        <div class="cred-card">
-          <div class="cred-card__logos">
-            <div class="cred-logo"><img src="../assets/badges/capebpo.svg" alt="CapeBPO" /></div>
-            <div class="cred-logo"><img src="../assets/badges/bpesa.svg" alt="BPESA Proud Member" /></div>
-            <div class="cred-logo"><img src="../assets/badges/ccmg.svg" alt="CCMG" /></div>
-            <div class="cred-logo"><img src="../assets/badges/gbpo.svg" alt="g-bpo Accredited" /></div>
-          </div>
-          <div class="cred-card__foot">Memberships</div>
-        </div>
-        <div class="cred-card">
-          <div class="cred-card__logos">
-            <div class="cred-logo"><img src="../assets/badges/cyber-essentials-plus.svg" alt="Cyber Essentials Plus" /></div>
-            <div class="cred-logo"><img src="../assets/badges/pci-dss.svg" alt="PCI DSS Compliant" /></div>
-            <div class="cred-logo"><img src="../assets/badges/iso-9001.svg" alt="ISO 9001:2015" /></div>
-            <div class="cred-logo"><img src="../assets/badges/iso-27001.svg" alt="ISO 27001" /></div>
-          </div>
-          <div class="cred-card__foot">Accreditations</div>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <div><strong>Trilogy Digital</strong> · Technical Fibre, Mobile and Exceptional Customer Support</div>
-        <div class="page-num">2</div>
-      </footer>
-    </div>
-  </article>
-
-  <!-- ===================== PAGE 3 — Why + pedigree ===================== -->
-  <article class="sheet" aria-label="Page 3 — Why Trilogy Digital + pedigree">
+  <!-- ===================== PAGE 2 — Why + Quick Terms + Pillars ===================== -->
+  <article class="sheet" aria-label="Page 2 — Why Trilogy Digital + pedigree">
     <header class="topbar">
       <div>
         <div class="eyebrow">Trilogy Digital · Technical Fibre, Mobile and Exceptional Customer Support</div>
@@ -974,7 +972,7 @@
       </div>
     </header>
 
-    <div class="body">
+    <div class="body body--dense">
       <section class="why-grid">
         <div class="why-prose">
           <p>
@@ -1055,6 +1053,89 @@
 
       <footer class="footer">
         <div><strong>Trilogy Digital</strong> · Technical Fibre, Mobile and Exceptional Customer Support</div>
+        <div class="page-num">2</div>
+      </footer>
+    </div>
+  </article>
+
+  <!-- ===================== PAGE 3 — Awards ===================== -->
+  <article class="sheet" aria-label="Page 3 — Awards, Certifications &amp; Memberships">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">Trilogy Digital · Technical Fibre, Mobile and Exceptional Customer Support</div>
+        <h1>Our Awards, Certifications &amp; <span>Memberships</span></h1>
+      </div>
+      <div class="meta">
+        <img class="logo" src="../assets/trilogy-logo.png" alt="Trilogy" />
+      </div>
+    </header>
+
+    <div class="body">
+      <aside class="key-message" role="note">
+        <span class="key-message__icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+        </span>
+        <p>Over nearly a decade, our award record reflects consistent industry leadership across outsourcing, technology and social impact.</p>
+      </aside>
+
+      <div class="awards-panel">
+        <ol class="awards-timeline">
+          <li>
+            <div class="awards-timeline__year">2016</div>
+            <div class="awards-timeline__body">CCMG Best Outsourced Partnership Winner · BPESA Best Outsourced Winner &amp; Best Use of Social Media</div>
+          </li>
+          <li>
+            <div class="awards-timeline__year">2017</div>
+            <div class="awards-timeline__body">BPESA / CCMG Best Outsourced Contact Centre · Best Use of Social Media &amp; Technology Innovation</div>
+          </li>
+          <li>
+            <div class="awards-timeline__year">2018 – 2019</div>
+            <div class="awards-timeline__body">Best Outsourced Contact Centre Finalist · Best Outsourced Partnership (Engage UK) Finalist · BPESA Best Impact Sourcing &amp; Service Provider Winner</div>
+          </li>
+          <li>
+            <div class="awards-timeline__year">2021</div>
+            <div class="awards-timeline__body">
+              Contact Centre World, Best Partnership
+              <span class="award-pill">Ranked #1 EMEA · #2 Globally</span>
+            </div>
+          </li>
+          <li>
+            <div class="awards-timeline__year">2022 – 2023</div>
+            <div class="awards-timeline__body">
+              BPESA Best Partnership &amp; Shared Services Finalist · Cape BPO Top Technical Innovation Finalist
+              <span class="award-pill">BPESA &amp; Cape BPO National Top Service Provider, Winner</span>
+            </div>
+          </li>
+          <li>
+            <div class="awards-timeline__year">2025</div>
+            <div class="awards-timeline__body">CapeBPO &amp; BPESA Top Support Service Provider Finalist · BPESA Top BPO Operator Finalist &amp; Runner-Up</div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="cred-grid">
+        <div class="cred-card">
+          <div class="cred-card__logos">
+            <div class="cred-logo"><img src="../assets/badges/capebpo.svg" alt="CapeBPO" /></div>
+            <div class="cred-logo"><img src="../assets/badges/bpesa.svg" alt="BPESA Proud Member" /></div>
+            <div class="cred-logo"><img src="../assets/badges/ccmg.svg" alt="CCMG" /></div>
+            <div class="cred-logo"><img src="../assets/badges/gbpo.svg" alt="g-bpo Accredited" /></div>
+          </div>
+          <div class="cred-card__foot">Memberships</div>
+        </div>
+        <div class="cred-card">
+          <div class="cred-card__logos">
+            <div class="cred-logo"><img src="../assets/badges/cyber-essentials-plus.svg" alt="Cyber Essentials Plus" /></div>
+            <div class="cred-logo"><img src="../assets/badges/pci-dss.svg" alt="PCI DSS Compliant" /></div>
+            <div class="cred-logo"><img src="../assets/badges/iso-9001.svg" alt="ISO 9001:2015" /></div>
+            <div class="cred-logo"><img src="../assets/badges/iso-27001.svg" alt="ISO 27001" /></div>
+          </div>
+          <div class="cred-card__foot">Accreditations</div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div><strong>Trilogy Digital</strong> · Technical Fibre, Mobile and Exceptional Customer Support</div>
         <div class="page-num">3</div>
       </footer>
     </div>
@@ -1073,69 +1154,6 @@
     </header>
 
     <div class="body">
-      <section class="glossary" aria-label="Quick terminology">
-        <div class="glossary__head"><h2>Quick terms</h2></div>
-        <div class="glossary__grid">
-          <div class="term">
-            <strong>MVNO</strong>
-            <p>Mobile Virtual Network Operator — a brand that sells mobile SIMs/eSIMs using another operator’s radio network. Owns the customer; doesn’t build towers.</p>
-          </div>
-          <div class="term">
-            <strong>What we offer</strong>
-            <p>Trilogy Digital delivers fibre/ISP &amp; FNO CX (activations, billing, tech, outages), MVNO launch &amp; ops, plus digital/AI contact-centre at UK+SA scale.</p>
-          </div>
-          <div class="term">
-            <strong>FNO / ISP</strong>
-            <p><em>FNO</em> = Fibre Network Operator (owns the fibre). <em>ISP</em> = Internet Service Provider (sells the package to the end user — often via FNO wholesale).</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="pillars" aria-label="What Trilogy Digital delivers">
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 1</div>
-            <h3>Fibre &amp; ISP CX</h3>
-          </div>
-          <div class="pillar__body">
-            Activations, router/ONT setup, billing windows, Tier 1–2 tech, outage surge, ISP-partner desks — proven on national FTTH roll-outs.
-            <div class="chips">
-              <span class="chip green">FNO scale</span>
-              <span class="chip">24/7 care</span>
-              <span class="chip">Partner support</span>
-            </div>
-          </div>
-        </article>
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 2</div>
-            <h3>MVNO enablement</h3>
-          </div>
-          <div class="pillar__body">
-            Feasibility → wholesale deal → white-label app/portal → billing &amp; provisioning → turnkey ops &amp; CVM. Brands own the relationship; we own plumbing &amp; CX.
-            <div class="chips">
-              <span class="chip lime">&lt;60-day launch</span>
-              <span class="chip">Embedded MVNO</span>
-              <span class="chip">Since 2013</span>
-            </div>
-          </div>
-        </article>
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 3</div>
-            <h3>Digital CX &amp; AI</h3>
-          </div>
-          <div class="pillar__body">
-            Omnichannel care, on-demand surge workforce, WhatsApp/chat commerce, QA &amp; WFM — UK campaign craft with SA delivery economics.
-            <div class="chips">
-              <span class="chip green">1,000+ specialists</span>
-              <span class="chip">Digital &amp; AI</span>
-              <span class="chip">Owner-led</span>
-            </div>
-          </div>
-        </article>
-      </section>
-
       <section class="mvno" aria-label="Connectivity &amp; MVNO capability">
         <div class="mvno__head">
           <div>
@@ -1200,6 +1218,28 @@
             <strong>Embedded MVNOs win</strong> — SIMs inside a bank, retail or digital relationship outperform standalone “mini-telcos.”
             Same logic as fibre wholesale: the brand owns the relationship &amp; data; the enablement partner owns plumbing, compliance and CX at scale.
           </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-label">Market insights <span>embedded MVNO thesis · Africa sizing</span></div>
+        <div class="market-strip" aria-label="Market size snapshot">
+          <div class="market-stat">
+            <strong><em>$4bn</em></strong>
+            <span>Africa MVNO market · ~6% CAGR to 2031</span>
+          </div>
+          <div class="market-stat">
+            <strong><em>4.3M</em> SIMs</strong>
+            <span>SA MVNOs end-2023 · +51% YoY · ~R4.3bn value</span>
+          </div>
+          <div class="market-stat">
+            <strong><em>&lt;1%</em> vs 42%</strong>
+            <span>Africa MVNO share vs Netherlands — headroom</span>
+          </div>
+          <div class="market-stat">
+            <strong><em>39.6M</em></strong>
+            <span>Continental MVNO subs toward 2030 · SA/NG/KE/UG ≈ 85%</span>
+          </div>
         </div>
       </section>
 
