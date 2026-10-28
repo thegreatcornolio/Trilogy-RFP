@@ -80,8 +80,8 @@
       gap: 5mm;
     }
     .body--dense {
-      padding: 4.5mm 12mm 3.5mm;
-      gap: 2.8mm;
+      padding: 5mm 12mm 4mm;
+      gap: 3.2mm;
     }
 
     .footer {
@@ -97,8 +97,8 @@
 
     /* ========== SCREEN 1 — Intro + compact team ========== */
     .intro-prose {
-      display: grid; gap: 1.6mm;
-      font-size: 8.5px; line-height: 1.32; color: var(--ink);
+      display: grid; gap: 2mm;
+      font-size: 9.2px; line-height: 1.36; color: var(--ink);
     }
     .intro-prose p { margin: 0; }
     .intro-prose strong { color: var(--navy); font-weight: 700; }
@@ -106,7 +106,7 @@
     .stats-bar {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
       background: var(--navy); border-radius: 8px; overflow: hidden;
-      padding: 2.2mm 2mm;
+      padding: 2.8mm 2mm;
     }
     .stats-bar__item {
       text-align: center; padding: 0.5mm 2mm;
@@ -114,7 +114,7 @@
     }
     .stats-bar__item:last-child { border-right: 0; }
     .stats-bar__item strong {
-      display: block; font-size: 15px; font-weight: 800; color: var(--lime);
+      display: block; font-size: 16px; font-weight: 800; color: var(--lime);
       letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 1mm;
     }
     .stats-bar__item span {
@@ -124,12 +124,12 @@
 
     .jv {
       background: #f4f6f8; border: 1px solid var(--line); border-radius: 10px;
-      padding: 2.8mm 3.5mm 2.6mm; margin-top: 0; flex-shrink: 0;
+      padding: 3.2mm 4mm 3mm; margin-top: 0; flex-shrink: 0;
     }
     .jv__parent {
       max-width: 145mm; margin: 0 auto; text-align: center;
       background: var(--navy); color: #fff; border-radius: 8px;
-      padding: 2mm 3.5mm; box-shadow: 0 6px 16px rgba(19,32,46,0.14);
+      padding: 2.4mm 4mm; box-shadow: 0 6px 16px rgba(19,32,46,0.14);
     }
     .jv__parent strong {
       display: block; font-size: 11.5px; font-weight: 800; letter-spacing: -0.01em;
@@ -139,18 +139,18 @@
       color: rgba(255,255,255,0.78);
     }
     .jv__connector {
-      position: relative; height: 5mm; max-width: 145mm; margin: 0 auto;
+      position: relative; height: 6mm; max-width: 145mm; margin: 0 auto;
     }
     .jv__vline {
-      position: absolute; left: 50%; top: 0; width: 2px; height: 2.4mm;
+      position: absolute; left: 50%; top: 0; width: 2px; height: 3mm;
       transform: translateX(-50%); background: var(--green);
     }
     .jv__hline {
-      position: absolute; left: 25%; right: 25%; top: 2.4mm; height: 2px;
+      position: absolute; left: 25%; right: 25%; top: 3mm; height: 2px;
       background: var(--green);
     }
     .jv__drop {
-      position: absolute; top: 2.4mm; width: 2px; height: 2.6mm; background: var(--green);
+      position: absolute; top: 3mm; width: 2px; height: 3mm; background: var(--green);
     }
     .jv__drop--l { left: 25%; transform: translateX(-50%); }
     .jv__drop--r { left: 75%; transform: translateX(-50%); }
@@ -159,7 +159,7 @@
     }
     .jv__child {
       background: #fff; border: 1.5px solid var(--green); border-radius: 8px;
-      padding: 2mm 2.5mm;
+      padding: 2.4mm 3mm;
     }
     .jv__child strong {
       display: block; font-size: 10.5px; font-weight: 800; color: var(--green);
@@ -171,41 +171,41 @@
 
     /* Compact Meet the Team (embedded on page 1) */
     .team-compact {
-      display: flex; flex-direction: column; gap: 1.2mm;
-      flex: 0 0 auto;
+      display: flex; flex-direction: column; gap: 1.4mm;
+      flex: 1;
       min-height: 0;
       justify-content: flex-start;
     }
     .team-compact__head {
       display: flex; align-items: baseline; justify-content: space-between; gap: 3mm;
-      padding-bottom: 0.6mm; border-bottom: 1px solid var(--line);
+      padding-bottom: 0.8mm; border-bottom: 1px solid var(--line);
       flex-shrink: 0;
     }
     .team-compact__head h2 {
-      font-size: 11px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em;
+      font-size: 11.5px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em;
     }
     .team-compact__head h2 span { color: var(--green); }
     .team-compact__head p {
       font-size: 7px; color: var(--muted); white-space: nowrap;
     }
     .team-roster {
-      display: flex; flex-direction: column; gap: 1.2mm;
+      display: flex; flex-direction: column; gap: 2mm;
       justify-content: flex-start; min-height: 0;
     }
-    .team-group { display: grid; gap: 0.6mm; }
+    .team-group { display: grid; gap: 0.9mm; }
     .team-label {
       font-size: 6.5px; font-weight: 800; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--green);
     }
     .team-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8mm 2mm;
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2mm 2mm;
     }
     .team-grid--partners {
       grid-template-columns: repeat(5, 1fr);
     }
     .person { min-width: 0; }
     .person__photo {
-      width: 100%; max-width: 12.5mm; aspect-ratio: 1 / 1; border-radius: 4px;
+      width: 100%; max-width: 16.5mm; aspect-ratio: 1 / 1; border-radius: 4px;
       overflow: hidden; background: #e8ebef;
     }
     .person__photo img {
@@ -342,9 +342,9 @@
 
     .pedigree {
       background: var(--navy); color: #fff; border-radius: 12px;
-      padding: 4mm 4mm 3.5mm; position: relative; overflow: hidden;
-      flex: 0 0 auto;
-      display: flex; flex-direction: column;
+      padding: 4.5mm 4.5mm 4mm; position: relative; overflow: hidden;
+      flex: 1;
+      display: flex; flex-direction: column; min-height: 0;
     }
     .pedigree::before {
       content: ""; position: absolute; right: -14mm; top: -16mm;
@@ -369,7 +369,7 @@
     }
     .ped-tile {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 7px; padding: 3.2mm 2.8mm;
+      border-radius: 7px; padding: 3mm 2.5mm;
     }
     .ped-tile strong {
       display: block; font-size: 10px; font-weight: 800; color: var(--lime);
@@ -378,7 +378,7 @@
     .ped-tile p { font-size: 8.5px; line-height: 1.4; color: rgba(255,255,255,0.78); }
     .pedigree__found {
       display: flex; flex-wrap: wrap; gap: 1.8mm; position: relative; z-index: 1;
-      margin-top: 0;
+      margin-top: auto;
     }
     .ped-chip {
       font-size: 7px; font-weight: 700; padding: 1.2mm 2mm; border-radius: 999px;
@@ -647,8 +647,8 @@
     <button type="button" onclick="window.print()">Print / Save as PDF</button>
   </div>
 
-  <!-- ===================== PAGE 1 — Intro + Team + Quick Terms + Pillars ===================== -->
-  <article class="sheet" aria-label="Page 1 — Company introduction, Team, Quick Terms &amp; Pillars">
+  <!-- ===================== PAGE 1 — Intro + Meet the Team ===================== -->
+  <article class="sheet" aria-label="Page 1 — Company introduction &amp; Meet the Team">
     <header class="topbar">
       <div>
         <div class="eyebrow">Trilogy Digital</div>
@@ -890,69 +890,6 @@
         </div>
       </section>
 
-      <section class="glossary" aria-label="Quick terminology">
-        <div class="glossary__head"><h2>Quick terms</h2></div>
-        <div class="glossary__grid">
-          <div class="term">
-            <strong>MVNO</strong>
-            <p>Mobile Virtual Network Operator — a brand that sells mobile SIMs/eSIMs using another operator’s radio network. Owns the customer; doesn’t build towers.</p>
-          </div>
-          <div class="term">
-            <strong>What we offer</strong>
-            <p>Trilogy Digital delivers fibre/ISP &amp; FNO CX (activations, billing, tech, outages), MVNO launch &amp; ops, plus digital/AI contact-centre at UK+SA scale.</p>
-          </div>
-          <div class="term">
-            <strong>FNO / ISP</strong>
-            <p><em>FNO</em> = Fibre Network Operator (owns the fibre). <em>ISP</em> = Internet Service Provider (sells the package to the end user — often via FNO wholesale).</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="pillars" aria-label="What Trilogy Digital delivers">
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 1</div>
-            <h3>Fibre &amp; ISP CX</h3>
-          </div>
-          <div class="pillar__body">
-            Activations, router/ONT setup, billing windows, Tier 1–2 tech, outage surge, ISP-partner desks — proven on national FTTH roll-outs.
-            <div class="chips">
-              <span class="chip green">FNO scale</span>
-              <span class="chip">24/7 care</span>
-              <span class="chip">Partner support</span>
-            </div>
-          </div>
-        </article>
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 2</div>
-            <h3>MVNO enablement</h3>
-          </div>
-          <div class="pillar__body">
-            Feasibility → wholesale deal → white-label app/portal → billing &amp; provisioning → turnkey ops &amp; CVM. Brands own the relationship; we own plumbing &amp; CX.
-            <div class="chips">
-              <span class="chip lime">&lt;60-day launch</span>
-              <span class="chip">Embedded MVNO</span>
-              <span class="chip">Since 2013</span>
-            </div>
-          </div>
-        </article>
-        <article class="pillar">
-          <div class="pillar__head">
-            <div class="pillar__tag">Pillar 3</div>
-            <h3>Digital CX &amp; AI</h3>
-          </div>
-          <div class="pillar__body">
-            Omnichannel care, on-demand surge workforce, WhatsApp/chat commerce, QA &amp; WFM — UK campaign craft with SA delivery economics.
-            <div class="chips">
-              <span class="chip green">1,000+ specialists</span>
-              <span class="chip">Digital &amp; AI</span>
-              <span class="chip">Owner-led</span>
-            </div>
-          </div>
-        </article>
-      </section>
-
       <footer class="footer">
         <div><strong>Trilogy Digital</strong> · Technical Fibre, Mobile and Exceptional Customer Support</div>
         <div class="page-num">1</div>
@@ -960,7 +897,7 @@
     </div>
   </article>
 
-  <!-- ===================== PAGE 2 — Why + Quick Terms + Pillars ===================== -->
+  <!-- ===================== PAGE 2 — Why + pedigree ===================== -->
   <article class="sheet" aria-label="Page 2 — Why Trilogy Digital + pedigree">
     <header class="topbar">
       <div>
@@ -1153,7 +1090,70 @@
       </div>
     </header>
 
-    <div class="body">
+    <div class="body body--dense">
+      <section class="glossary" aria-label="Quick terminology">
+        <div class="glossary__head"><h2>Quick terms</h2></div>
+        <div class="glossary__grid">
+          <div class="term">
+            <strong>MVNO</strong>
+            <p>Mobile Virtual Network Operator — a brand that sells mobile SIMs/eSIMs using another operator’s radio network. Owns the customer; doesn’t build towers.</p>
+          </div>
+          <div class="term">
+            <strong>What we offer</strong>
+            <p>Trilogy Digital delivers fibre/ISP &amp; FNO CX (activations, billing, tech, outages), MVNO launch &amp; ops, plus digital/AI contact-centre at UK+SA scale.</p>
+          </div>
+          <div class="term">
+            <strong>FNO / ISP</strong>
+            <p><em>FNO</em> = Fibre Network Operator (owns the fibre). <em>ISP</em> = Internet Service Provider (sells the package to the end user — often via FNO wholesale).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pillars" aria-label="What Trilogy Digital delivers">
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 1</div>
+            <h3>Fibre &amp; ISP CX</h3>
+          </div>
+          <div class="pillar__body">
+            Activations, router/ONT setup, billing windows, Tier 1–2 tech, outage surge, ISP-partner desks — proven on national FTTH roll-outs.
+            <div class="chips">
+              <span class="chip green">FNO scale</span>
+              <span class="chip">24/7 care</span>
+              <span class="chip">Partner support</span>
+            </div>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 2</div>
+            <h3>MVNO enablement</h3>
+          </div>
+          <div class="pillar__body">
+            Feasibility → wholesale deal → white-label app/portal → billing &amp; provisioning → turnkey ops &amp; CVM. Brands own the relationship; we own plumbing &amp; CX.
+            <div class="chips">
+              <span class="chip lime">&lt;60-day launch</span>
+              <span class="chip">Embedded MVNO</span>
+              <span class="chip">Since 2013</span>
+            </div>
+          </div>
+        </article>
+        <article class="pillar">
+          <div class="pillar__head">
+            <div class="pillar__tag">Pillar 3</div>
+            <h3>Digital CX &amp; AI</h3>
+          </div>
+          <div class="pillar__body">
+            Omnichannel care, on-demand surge workforce, WhatsApp/chat commerce, QA &amp; WFM — UK campaign craft with SA delivery economics.
+            <div class="chips">
+              <span class="chip green">1,000+ specialists</span>
+              <span class="chip">Digital &amp; AI</span>
+              <span class="chip">Owner-led</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
       <section class="mvno" aria-label="Connectivity &amp; MVNO capability">
         <div class="mvno__head">
           <div>
