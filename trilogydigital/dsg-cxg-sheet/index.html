@@ -342,9 +342,8 @@
 
     .pedigree {
       background: var(--navy); color: #fff; border-radius: 12px;
-      padding: 4.5mm 4.5mm 4mm; position: relative; overflow: hidden;
-      flex: 1;
-      display: flex; flex-direction: column; min-height: 0;
+      padding: 3mm 5mm 2.6mm; position: relative; overflow: hidden;
+      flex: none; align-self: stretch; height: auto;
     }
     .pedigree::before {
       content: ""; position: absolute; right: -14mm; top: -16mm;
@@ -353,7 +352,7 @@
     }
     .pedigree__head {
       display: flex; justify-content: space-between; align-items: baseline; gap: 3mm;
-      margin-bottom: 3.5mm; position: relative; z-index: 1;
+      position: relative; z-index: 1; margin-bottom: 2.2mm;
     }
     .pedigree__head h2 {
       font-size: 12px; font-weight: 800; letter-spacing: -0.01em;
@@ -363,22 +362,22 @@
       font-size: 8px; color: rgba(255,255,255,0.65); white-space: nowrap;
     }
     .pedigree__grid {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm;
-      position: relative; z-index: 1; margin-bottom: 3.5mm;
-      align-content: start;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8mm;
+      position: relative; z-index: 1;
+      margin: 0 0 2mm;
     }
     .ped-tile {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 7px; padding: 3mm 2.5mm;
+      border-radius: 7px; padding: 2.6mm 2.2mm;
     }
     .ped-tile strong {
       display: block; font-size: 10px; font-weight: 800; color: var(--lime);
-      margin-bottom: 1.4mm; letter-spacing: -0.01em;
+      margin-bottom: 1.2mm; letter-spacing: -0.01em;
     }
-    .ped-tile p { font-size: 8.5px; line-height: 1.4; color: rgba(255,255,255,0.78); }
+    .ped-tile p { font-size: 8.5px; line-height: 1.35; color: rgba(255,255,255,0.78); }
     .pedigree__found {
-      display: flex; flex-wrap: wrap; gap: 1.8mm; position: relative; z-index: 1;
-      margin-top: auto;
+      display: flex; flex-wrap: wrap; gap: 1.5mm; position: relative; z-index: 1;
+      margin: 0;
     }
     .ped-chip {
       font-size: 7px; font-weight: 700; padding: 1.2mm 2mm; border-radius: 999px;
@@ -429,9 +428,8 @@
 
     .mvno {
       background: var(--navy); color: #fff; border-radius: 12px;
-      padding: 4.5mm 4.5mm 4mm; position: relative; overflow: hidden;
-      flex: 1;
-      display: flex; flex-direction: column; min-height: 0;
+      padding: 3mm 5mm 2.8mm; position: relative; overflow: hidden;
+      flex: none; align-self: stretch; height: auto;
     }
     .mvno::before {
       content: ""; position: absolute; right: -18mm; top: -18mm;
@@ -439,13 +437,18 @@
       background: radial-gradient(circle, rgba(97,215,121,0.18), transparent 70%);
     }
     .mvno__head {
-      display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 3mm;
-      margin-bottom: 3mm; position: relative; z-index: 1;
+      display: flex; align-items: stretch; justify-content: center; gap: 2.5mm;
+      position: relative; z-index: 1;
+      width: max-content; max-width: 100%; margin: 0 auto 2.2mm;
     }
+    .mvno__intro { flex: none; width: 95mm; max-width: 95mm; }
     .mvno h2 { font-size: 13px; font-weight: 800; margin-bottom: 1.5mm; }
     .mvno h2 em { font-style: normal; color: var(--lime); }
     .mvno__head p { font-size: 9.5px; line-height: 1.35; color: rgba(255,255,255,0.84); }
-    .mvno-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
+    .mvno-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2mm;
+      flex: none; width: 58mm;
+    }
     .mvno-stat {
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
       border-radius: 8px; padding: 2.5mm 2.5mm;
@@ -457,9 +460,9 @@
     .mvno-stat span { font-size: 8px; color: rgba(255,255,255,0.78); line-height: 1.25; }
 
     .cap-grid {
-      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2.2mm;
-      position: relative; z-index: 1; margin-bottom: 2.5mm;
-      align-content: start;
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2mm;
+      position: relative; z-index: 1;
+      margin: 0;
     }
     .cap {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.11);
@@ -485,8 +488,8 @@
       position: relative; z-index: 1;
       display: grid; grid-template-columns: auto 1fr; gap: 2.5mm; align-items: center;
       background: rgba(213,236,103,0.1); border: 1px solid rgba(213,236,103,0.28);
-      border-radius: 8px; padding: 2.5mm 3mm;
-      margin-top: auto;
+      border-radius: 8px; padding: 2.2mm 2.8mm;
+      margin: 0 0 2.4mm;
     }
     .stack-note__badge {
       background: var(--lime); color: var(--navy); font-size: 8px; font-weight: 800;
@@ -520,30 +523,39 @@
     .cases-intro { font-size: 10px; color: var(--muted); line-height: 1.4; }
 
     .seats-banner {
-      display: grid; grid-template-columns: auto 1fr auto; gap: 3.5mm; align-items: center;
       background: linear-gradient(90deg, #edfaf1, #f8fce8);
       border: 1px solid #cfe9d5; border-left: 4px solid var(--green);
-      border-radius: 10px; padding: 4mm 4.5mm;
+      border-radius: 10px; padding: 2.6mm 8mm;
+    }
+    .seats-banner__inner {
+      display: flex; align-items: center; justify-content: center; gap: 2.5mm;
+      width: max-content; max-width: 100%; margin: 0 auto;
     }
     .seats-banner__num {
       background: var(--navy); color: var(--lime); font-size: 18px; font-weight: 800;
       letter-spacing: -0.03em; padding: 2.5mm 3mm; border-radius: 8px; line-height: 1;
-      white-space: nowrap;
+      white-space: nowrap; flex: none;
     }
     .seats-banner__num small {
       display: block; font-size: 7.5px; color: rgba(255,255,255,0.7);
       letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
       margin-bottom: 1mm;
     }
-    .seats-banner p { font-size: 10.5px; line-height: 1.35; color: var(--ink); }
+    .seats-banner p {
+      font-size: 10.5px; line-height: 1.35; color: var(--ink);
+      margin: 0; flex: none; max-width: 72mm;
+    }
     .seats-banner strong { color: var(--navy); }
-    .seats-banner__tags { display: flex; gap: 1.5mm; flex-shrink: 0; }
+    .seats-banner__tags { display: flex; gap: 1.5mm; flex: none; }
     .seats-tag {
       background: #fff; border: 1px solid #cfe9d5; border-radius: 6px;
       padding: 2mm 2.5mm; font-size: 8.5px; font-weight: 800; color: #1f6b38;
       white-space: nowrap; text-align: center; line-height: 1.2;
     }
 
+    .cases-stack {
+      display: flex; flex-direction: column; gap: 1.5mm;
+    }
     .fibre-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; }
     .fibre-pill {
       border: 1px solid var(--line); border-radius: 7px; padding: 2.5mm 2mm;
@@ -623,6 +635,10 @@
         page-break-after: always; break-after: page;
       }
       .sheet:last-child { page-break-after: auto; break-after: auto; }
+      .pedigree, .mvno, .cases-stack, .seats-banner {
+        flex-grow: 0 !important; flex-shrink: 0 !important; height: auto !important;
+      }
+      .pedigree__found, .stack-note { margin-top: 0 !important; }
       .no-print { display: none !important; }
       @page { size: A4; margin: 0; }
     }
@@ -636,7 +652,12 @@
       }
       .team-grid { grid-template-columns: repeat(3, 1fr); }
       .term { border-right: 0; border-bottom: 1px solid var(--line); }
-      .seats-banner { grid-template-columns: 1fr; }
+      .seats-banner { padding-left: 3mm; padding-right: 3mm; }
+      .seats-banner__inner { width: 100%; flex-wrap: wrap; }
+      .seats-banner p { max-width: none; }
+      .mvno__head { width: 100%; flex-wrap: wrap; }
+      .mvno__intro { width: auto; max-width: none; }
+      .mvno-stats { width: 100%; }
       .pedigree__head { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -1156,7 +1177,7 @@
     <div class="body body--dense">
       <section class="mvno" aria-label="Connectivity &amp; MVNO capability">
         <div class="mvno__head">
-          <div>
+          <div class="mvno__intro">
             <h2>Connectivity + <em>MVNO</em> — what Trilogy Digital delivers</h2>
             <p>
               End-to-end fibre/ISP support and MVNO infrastructure (billing, provisioning, managed ops) so a brand can own the subscriber relationship
@@ -1167,6 +1188,14 @@
             <div class="mvno-stat"><strong>1M+</strong><span>Fibre subs supported (Vuma FNO)</span></div>
             <div class="mvno-stat"><strong>&lt; 60 days</strong><span>White-label mobile app, portal &amp; dashboard</span></div>
           </div>
+        </div>
+
+        <div class="stack-note">
+          <div class="stack-note__badge">Thesis</div>
+          <p>
+            <strong>Embedded MVNOs win</strong> — SIMs inside a bank, retail or digital relationship outperform standalone “mini-telcos.”
+            Same logic as fibre wholesale: the brand owns the relationship &amp; data; the enablement partner owns plumbing, compliance and CX at scale.
+          </p>
         </div>
 
         <div class="cap-grid">
@@ -1210,14 +1239,6 @@
               <li>Retention &amp; win-back</li>
             </ul>
           </article>
-        </div>
-
-        <div class="stack-note">
-          <div class="stack-note__badge">Thesis</div>
-          <p>
-            <strong>Embedded MVNOs win</strong> — SIMs inside a bank, retail or digital relationship outperform standalone “mini-telcos.”
-            Same logic as fibre wholesale: the brand owns the relationship &amp; data; the enablement partner owns plumbing, compliance and CX at scale.
-          </p>
         </div>
       </section>
 
@@ -1267,28 +1288,32 @@
         Real delivery for fibre network operators, ISPs and digital connectivity brands — activations, billing peaks, tech support, outages and partner desks at national scale.
       </p>
 
-      <aside class="seats-banner" aria-label="Technical support capacity">
-        <div class="seats-banner__num">
-          <small>Capacity</small>
-          ~400 seats
-        </div>
-        <p>
-          <strong>Trilogy Digital</strong> fields circa <strong>400 seats</strong> delivering
-          <strong>Tier 1 and Tier 2 technical support</strong> across our environment —
-          fibre, router, Wi-Fi and service-desk resolution at FNO/ISP scale.
-        </p>
-        <div class="seats-banner__tags">
-          <div class="seats-tag">Tier 1<br />tech support</div>
-          <div class="seats-tag">Tier 2<br />tech support</div>
-        </div>
-      </aside>
+      <div class="cases-stack">
+        <aside class="seats-banner" aria-label="Technical support capacity">
+          <div class="seats-banner__inner">
+            <div class="seats-banner__num">
+              <small>Capacity</small>
+              ~400 seats
+            </div>
+            <p>
+              <strong>Trilogy Digital</strong> fields circa <strong>400 seats</strong> delivering
+              <strong>Tier 1 and Tier 2 technical support</strong> across our environment —
+              fibre, router, Wi-Fi and service-desk resolution at FNO/ISP scale.
+            </p>
+            <div class="seats-banner__tags">
+              <div class="seats-tag">Tier 1<br />tech support</div>
+              <div class="seats-tag">Tier 2<br />tech support</div>
+            </div>
+          </div>
+        </aside>
 
-      <div class="fibre-strip" aria-label="Fibre &amp; ISP support themes">
-        <div class="fibre-pill"><strong>Activations</strong><span>New fibre &amp; router onboarding</span></div>
-        <div class="fibre-pill"><strong>Billing peaks</strong><span>On-demand surge workforce</span></div>
-        <div class="fibre-pill"><strong>Tech support</strong><span>Tier 1–2 fibre / Wi-Fi</span></div>
-        <div class="fibre-pill"><strong>Outages</strong><span>Rapid-scale status &amp; recovery</span></div>
-        <div class="fibre-pill"><strong>ISP partners</strong><span>FNO wholesale care desks</span></div>
+        <div class="fibre-strip" aria-label="Fibre &amp; ISP support themes">
+          <div class="fibre-pill"><strong>Activations</strong><span>New fibre &amp; router onboarding</span></div>
+          <div class="fibre-pill"><strong>Billing peaks</strong><span>On-demand surge workforce</span></div>
+          <div class="fibre-pill"><strong>Tech support</strong><span>Tier 1–2 fibre / Wi-Fi</span></div>
+          <div class="fibre-pill"><strong>Outages</strong><span>Rapid-scale status &amp; recovery</span></div>
+          <div class="fibre-pill"><strong>ISP partners</strong><span>FNO wholesale care desks</span></div>
+        </div>
       </div>
 
       <div class="case-grid">
