@@ -278,7 +278,7 @@
     /* Contact-centre pedigree (boutique + integrated CX) */
     .pedigree {
       background: var(--navy); color: #fff; border-radius: 10px;
-      padding: 2.2mm 2.8mm 2.4mm; position: relative; overflow: hidden;
+      padding: 2.6mm 3mm 2.6mm; position: relative; overflow: hidden;
     }
     .pedigree::before {
       content: ""; position: absolute; right: -14mm; top: -16mm;
@@ -372,17 +372,18 @@
     .fibre-pill span { font-size: 7px; color: var(--muted); line-height: 1.2; }
 
     .case-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 2mm;
-      align-content: start;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.2mm;
+      align-items: start; align-content: start;
+      grid-auto-rows: min-content;
     }
     .case {
       border: 1px solid var(--line); border-radius: 9px; overflow: hidden;
-      display: flex; flex-direction: column; background: #fff;
-      height: fit-content;
+      display: block; background: #fff;
+      align-self: start; height: max-content;
     }
     .case__banner {
-      padding: 1.8mm 2.4mm; color: #fff;
-      display: flex; justify-content: space-between; gap: 2mm; align-items: flex-start;
+      padding: 1.6mm 2.4mm 1.5mm; color: #fff;
+      display: flex; flex-direction: column; gap: 1.2mm;
     }
     .case--vuma .case__banner { background: linear-gradient(120deg, #13202e, #12353d); }
     .case--fiber .case__banner { background: linear-gradient(120deg, #13202e, #2a3a12); }
@@ -390,26 +391,35 @@
     .case--digital .case__banner { background: linear-gradient(120deg, #13202e, #1b3a2a); }
     .case__label {
       font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase;
-      font-weight: 800; color: var(--lime); margin-bottom: 0.5px;
+      font-weight: 800; color: var(--lime); margin-bottom: 0.2mm;
     }
-    .case__banner h3 { font-size: 11.5px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; }
-    .case__banner p { font-size: 8px; color: rgba(255,255,255,0.78); margin-top: 0.5mm; line-height: 1.22; }
-    .case__kpis { display: flex; gap: 1mm; flex-shrink: 0; }
+    .case__banner h3 { font-size: 11.5px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.12; }
+    .case__banner > p { font-size: 8px; color: rgba(255,255,255,0.78); margin-top: 0.4mm; line-height: 1.2; }
+    .case__kpis {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1mm;
+    }
     .case__kpi {
       background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 5px; padding: 1mm 1.4mm; text-align: center; min-width: 13.5mm;
+      border-radius: 5px; padding: 1mm 1.4mm; text-align: left;
+      display: flex; align-items: baseline; gap: 1.2mm;
     }
-    .case__kpi strong { display: block; font-size: 10px; color: var(--green); font-weight: 800; line-height: 1.05; }
-    .case__kpi span { font-size: 6.5px; color: rgba(255,255,255,0.75); line-height: 1.12; }
+    .case__kpi strong {
+      font-size: 10.5px; color: var(--green); font-weight: 800; line-height: 1;
+      white-space: nowrap;
+    }
+    .case__kpi span {
+      font-size: 6.5px; color: rgba(255,255,255,0.75); line-height: 1.15;
+    }
 
     .case__body {
-      padding: 1.6mm 2.4mm 1.8mm; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm;
+      padding: 1.4mm 2.4mm 1.5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm;
+      flex: 0 0 auto;
     }
     .case__body h4 {
       font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase;
-      font-weight: 800; color: var(--navy); margin-bottom: 0.7mm;
+      font-weight: 800; color: var(--navy); margin-bottom: 0.6mm;
     }
-    .case__body ul { list-style: none; display: grid; gap: 0.55mm; }
+    .case__body ul { list-style: none; display: grid; gap: 0.5mm; }
     .case__body li {
       font-size: 8px; line-height: 1.22; color: var(--muted);
       padding-left: 2.2mm; position: relative;
@@ -443,14 +453,15 @@
       .no-print { display: none !important; }
       @page { size: A4; margin: 0; }
     }
-    .sheet--page2 .body { gap: 1.8mm; padding-top: 3mm; padding-bottom: 3mm; }
+    .sheet--page2 .body { gap: 2mm; padding-top: 3mm; padding-bottom: 3mm; }
+    .sheet--page2 .footer { margin-top: auto; }
 
     @media screen and (max-width: 900px) {
       .sheet { width: min(100% - 16px, 210mm); margin: 8px auto; }
       .intro, .glossary__grid, .pillars, .mvno__head, .cap-grid, .insights, .market-strip,
       .fibre-strip, .case-grid, .case__body, .pedigree__pillars, .pedigree__offers { grid-template-columns: 1fr; }
       .term { border-right: 0; border-bottom: 1px solid var(--line); }
-      .case__kpis { flex-wrap: wrap; }
+      .case__kpis { grid-template-columns: 1fr; }
       .seats-banner { grid-template-columns: 1fr; }
       .pedigree__head { flex-direction: column; align-items: flex-start; }
     }
@@ -790,9 +801,9 @@
               <p>24/7 multichannel support for SA’s largest fibre network operator and 75+ ISP partners.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>1M+</strong><span>subscribers<br />supported</span></div>
-              <div class="case__kpi"><strong>24/7</strong><span>always-on<br />support</span></div>
-              <div class="case__kpi"><strong>75+</strong><span>ISP partners<br />supported</span></div>
+              <div class="case__kpi"><strong>1M+</strong><span>subscribers supported</span></div>
+              <div class="case__kpi"><strong>24/7</strong><span>always-on support</span></div>
+              <div class="case__kpi"><strong>75+</strong><span>ISP partners supported</span></div>
             </div>
           </div>
           <div class="case__body">
@@ -824,9 +835,9 @@
               <p>Accessible uncapped fibre at scale — outage recovery and tech support through hyper-growth.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>83×</strong><span>growth in<br />24 months</span></div>
-              <div class="case__kpi"><strong>330K+</strong><span>fibertimers<br />supported</span></div>
-              <div class="case__kpi"><strong>T1–T2</strong><span>fibre &amp;<br />router tech</span></div>
+              <div class="case__kpi"><strong>83×</strong><span>growth in 24 months</span></div>
+              <div class="case__kpi"><strong>330K+</strong><span>fibertimers supported</span></div>
+              <div class="case__kpi"><strong>T1–T2</strong><span>fibre &amp; router tech</span></div>
             </div>
           </div>
           <div class="case__body">
@@ -858,9 +869,9 @@
               <p>National ISP billing cycles: high anxiety, volume spikes, zero tolerance for error.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>120</strong><span>billing<br />chat agents</span></div>
-              <div class="case__kpi"><strong>7–9</strong><span>day billing<br />window</span></div>
-              <div class="case__kpi"><strong>Zero</strong><span>core-team<br />disruption</span></div>
+              <div class="case__kpi"><strong>120</strong><span>billing chat agents</span></div>
+              <div class="case__kpi"><strong>7–9</strong><span>day billing window</span></div>
+              <div class="case__kpi"><strong>Zero</strong><span>core-team disruption</span></div>
             </div>
           </div>
           <div class="case__body">
@@ -892,9 +903,9 @@
               <p>The operating model behind Vuma, Webafrica, fibertime and other ISP/FNO partners.</p>
             </div>
             <div class="case__kpis">
-              <div class="case__kpi"><strong>3M+</strong><span>interactions<br />/ month</span></div>
-              <div class="case__kpi"><strong>100+</strong><span>enterprise<br />clients</span></div>
-              <div class="case__kpi"><strong>4</strong><span>SA delivery<br />sites</span></div>
+              <div class="case__kpi"><strong>3M+</strong><span>interactions / month</span></div>
+              <div class="case__kpi"><strong>100+</strong><span>enterprise clients</span></div>
+              <div class="case__kpi"><strong>4</strong><span>SA delivery sites</span></div>
             </div>
           </div>
           <div class="case__body">
