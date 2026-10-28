@@ -16,580 +16,346 @@
       --soft: #f4f7fa;
       --card: #ffffff;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body {
       background: #cfd6de;
       color: var(--ink);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
+    .toolbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(19,32,46,0.96); color: #fff;
+      padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .toolbar span { font-size: 13px; opacity: 0.9; }
+    .toolbar button {
+      background: var(--green); color: var(--navy); border: 0; font-weight: 800;
+      padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px;
+    }
 
     .sheet {
-      width: 210mm;
-      min-height: 297mm;
-      margin: 12mm auto;
+      width: 210mm; min-height: 297mm; margin: 12mm auto;
       background: var(--card);
-      box-shadow: 0 12px 40px rgba(19, 32, 46, 0.18);
-      display: flex;
-      flex-direction: column;
-      page-break-after: always;
-      overflow: hidden;
-      position: relative;
+      box-shadow: 0 12px 40px rgba(19,32,46,0.18);
+      display: flex; flex-direction: column;
+      page-break-after: always; overflow: hidden; position: relative;
     }
     .sheet:last-child { page-break-after: auto; }
 
-    /* —— Header —— */
     .topbar {
-      background: var(--navy);
-      color: #fff;
+      background: var(--navy); color: #fff;
       padding: 8mm 11mm 7mm;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 6mm;
-      align-items: end;
+      display: grid; grid-template-columns: 1fr auto; gap: 6mm; align-items: end;
       position: relative;
     }
     .topbar::after {
-      content: "";
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 4px;
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
       background: linear-gradient(90deg, var(--green), var(--lime));
     }
     .eyebrow {
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--lime);
-      font-weight: 700;
-      margin-bottom: 6px;
+      font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--lime); font-weight: 700; margin-bottom: 4px;
     }
     .topbar h1 {
-      font-size: 22px;
-      line-height: 1.15;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      max-width: 145mm;
+      font-size: 21px; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; max-width: 150mm;
     }
     .topbar h1 span { color: var(--green); }
-    .meta {
-      text-align: right;
-      font-size: 10px;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.4;
-    }
+    .meta { text-align: right; font-size: 10px; color: rgba(255,255,255,0.78); line-height: 1.4; }
     .meta strong { color: #fff; display: block; font-size: 11px; margin-bottom: 2px; }
-    .logo {
-      height: 24px;
-      margin-bottom: 6px;
-      filter: brightness(0) invert(1);
-    }
+    .logo { height: 22px; margin-bottom: 5px; filter: brightness(0) invert(1); }
 
     .body {
-      padding: 5mm 11mm 6mm;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 3.5mm;
+      padding: 5mm 11mm 5.5mm;
+      flex: 1; display: flex; flex-direction: column; gap: 3.5mm;
     }
-    .sheet--p1 .body { gap: 3.2mm; }
 
-    /* —— Intro strip —— */
     .intro {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 5mm;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 4mm; align-items: stretch;
     }
-    .intro__lead {
-      font-size: 12px;
-      line-height: 1.4;
-      color: var(--ink);
-    }
+    .intro__lead { font-size: 11.5px; line-height: 1.4; color: var(--ink); }
     .intro__lead strong { color: var(--navy); }
     .callout {
       background: linear-gradient(135deg, #edfaf1, #f7fbe8);
-      border: 1px solid #cfe9d5;
-      border-left: 4px solid var(--green);
-      border-radius: 10px;
-      padding: 3.5mm 4mm;
-      font-size: 11px;
-      line-height: 1.35;
+      border: 1px solid #cfe9d5; border-left: 4px solid var(--green);
+      border-radius: 9px; padding: 3mm 3.5mm; font-size: 10.5px; line-height: 1.35;
     }
     .callout__label {
-      font-size: 9.5px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 800;
-      color: #2f7a45;
-      margin-bottom: 3px;
+      font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 800; color: #2f7a45; margin-bottom: 2px;
     }
 
-    /* —— Partner cards —— */
     .partners {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 4mm;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm;
     }
     .partner {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--card);
-      display: flex;
-      flex-direction: column;
+      border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff;
     }
-    .partner__head {
-      padding: 2.5mm 3.5mm 2.2mm;
-      background: var(--navy);
-      color: #fff;
-    }
+    .partner__head { padding: 2.2mm 3mm; background: var(--navy); color: #fff; }
     .partner__head.dsg { background: #17324a; }
     .partner__head.cxg { background: #1b3a2a; }
     .partner__tag {
-      font-size: 8.5px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--lime);
-      font-weight: 700;
-      margin-bottom: 1px;
+      font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--lime); font-weight: 700; margin-bottom: 1px;
     }
-    .partner__head h3 {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-    .partner__body {
-      padding: 2.8mm 3.5mm 3mm;
-      font-size: 10.5px;
-      line-height: 1.35;
-      color: var(--muted);
-      flex: 1;
-    }
-    .partner__body p { margin-bottom: 2mm; }
-    .partner__body p:last-child { margin-bottom: 0; }
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5mm;
-      margin-top: 2mm;
-    }
+    .partner__head h3 { font-size: 12.5px; font-weight: 800; }
+    .partner__body { padding: 2.5mm 3mm 3mm; font-size: 10px; line-height: 1.35; color: var(--muted); }
+    .chips { display: flex; flex-wrap: wrap; gap: 1.4mm; margin-top: 2mm; }
     .chip {
-      font-size: 9px;
-      font-weight: 700;
-      padding: 1.2mm 2.2mm;
-      border-radius: 999px;
-      background: var(--soft);
-      color: var(--navy);
-      border: 1px solid var(--line);
+      font-size: 8.5px; font-weight: 700; padding: 1mm 2mm; border-radius: 999px;
+      background: var(--soft); color: var(--navy); border: 1px solid var(--line);
     }
     .chip.green { background: #e8f9ed; border-color: #bfe8cb; color: #1f6b38; }
     .chip.lime { background: #f5fad8; border-color: #e3ef9a; color: #5a6b12; }
 
-    /* —— MVNO block —— */
+    /* —— MVNO block (fixed) —— */
     .mvno {
-      display: flex;
-      flex-direction: column;
-      gap: 3mm;
-      background: var(--navy);
-      color: #fff;
-      border-radius: 12px;
-      padding: 4mm 5mm 3.5mm;
-      position: relative;
-      overflow: hidden;
-    }
-    .mvno__main {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 4mm;
-      position: relative;
-      z-index: 1;
-    }
-    .why-strip {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2.5mm;
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid rgba(255,255,255,0.14);
-      padding-top: 3mm;
-    }
-    .why-strip__item {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 2.2mm 2.8mm;
-    }
-    .why-strip__item strong {
-      display: block;
-      font-size: 10.5px;
-      color: var(--lime);
-      font-weight: 800;
-      margin-bottom: 1mm;
-      letter-spacing: 0.02em;
-    }
-    .why-strip__item span {
-      display: block;
-      font-size: 9.5px;
-      line-height: 1.3;
-      color: rgba(255,255,255,0.8);
+      background: var(--navy); color: #fff; border-radius: 12px;
+      padding: 4mm 4.5mm 4mm; position: relative; overflow: hidden;
     }
     .mvno::before {
-      content: "";
-      position: absolute;
-      right: -20mm; top: -20mm;
-      width: 70mm; height: 70mm;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(97,215,121,0.22), transparent 70%);
+      content: ""; position: absolute; right: -18mm; top: -18mm;
+      width: 55mm; height: 55mm; border-radius: 50%;
+      background: radial-gradient(circle, rgba(97,215,121,0.18), transparent 70%);
     }
-    .mvno h2 {
-      font-size: 14px;
-      font-weight: 800;
-      margin-bottom: 2mm;
-      letter-spacing: -0.01em;
+    .mvno__head {
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4mm;
+      margin-bottom: 3.5mm; position: relative; z-index: 1;
     }
-    .mvno h2 em {
-      font-style: normal;
-      color: var(--lime);
-    }
-    .mvno p {
-      font-size: 11px;
-      line-height: 1.35;
-      color: rgba(255,255,255,0.84);
-      margin-bottom: 2.5mm;
-    }
-    .mvno-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2mm;
-    }
+    .mvno h2 { font-size: 14px; font-weight: 800; margin-bottom: 1.8mm; }
+    .mvno h2 em { font-style: normal; color: var(--lime); }
+    .mvno__head p { font-size: 10.5px; line-height: 1.35; color: rgba(255,255,255,0.84); }
+    .mvno-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
     .mvno-stat {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 8px;
-      padding: 2.2mm 3mm;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px; padding: 2.2mm 2.8mm;
     }
     .mvno-stat strong {
-      display: block;
-      font-size: 15px;
-      color: var(--green);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+      display: block; font-size: 15px; color: var(--green); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.8mm;
+    }
+    .mvno-stat span { font-size: 9px; color: rgba(255,255,255,0.78); line-height: 1.25; }
+
+    .cap-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2.2mm;
+      position: relative; z-index: 1; margin-bottom: 3mm;
+    }
+    .cap {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 8px; padding: 2.4mm 2.6mm; min-height: 28mm;
+    }
+    .cap__n {
+      width: 16px; height: 16px; border-radius: 4px; background: var(--lime);
+      color: var(--navy); font-size: 9px; font-weight: 800;
+      display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1.6mm;
+    }
+    .cap h4 { font-size: 11px; font-weight: 800; color: #fff; margin-bottom: 1.4mm; }
+    .cap ul { list-style: none; display: grid; gap: 1mm; }
+    .cap li {
+      font-size: 9px; line-height: 1.3; color: rgba(255,255,255,0.78);
+      padding-left: 2.4mm; position: relative;
+    }
+    .cap li::before {
+      content: ""; position: absolute; left: 0; top: 4px;
+      width: 4px; height: 4px; border-radius: 1px; background: var(--green);
+    }
+
+    .stack-note {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: auto 1fr; gap: 3mm; align-items: center;
+      background: rgba(213,236,103,0.1); border: 1px solid rgba(213,236,103,0.28);
+      border-radius: 8px; padding: 2.4mm 3mm;
+    }
+    .stack-note__badge {
+      background: var(--lime); color: var(--navy); font-size: 9px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 1.8mm 2.5mm; border-radius: 6px;
+      white-space: nowrap;
+    }
+    .stack-note p { font-size: 10px; line-height: 1.35; color: rgba(255,255,255,0.9); }
+    .stack-note strong { color: var(--lime); }
+
+    /* proof strip */
+    .sec-label {
+      font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--navy); font-weight: 800;
+      display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm;
+    }
+    .sec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+    .sec-label span { font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--muted); font-size: 10px; }
+
+    .proof {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm;
+    }
+    .proof__card {
+      border: 1px solid var(--line); border-radius: 9px; padding: 2.6mm 2.8mm; background: var(--soft);
+    }
+    .proof__card .src {
+      font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 800; color: #2f7a45; margin-bottom: 1mm;
+    }
+    .proof__card h4 { font-size: 11.5px; font-weight: 800; color: var(--navy); margin-bottom: 1mm; }
+    .proof__card .metric {
+      font-size: 16px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1.1;
       margin-bottom: 1mm;
     }
-    .mvno-stat span {
-      font-size: 9.5px;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.25;
-    }
-    .mvno-list {
-      list-style: none;
-      display: grid;
-      gap: 1.8mm;
-    }
-    .mvno-list li {
-      display: grid;
-      grid-template-columns: 12px 1fr;
-      gap: 2mm;
-      font-size: 10.5px;
-      line-height: 1.3;
-      color: rgba(255,255,255,0.9);
-      align-items: start;
-    }
-    .mvno-list li::before {
-      content: "";
-      width: 8px; height: 8px;
-      margin-top: 3px;
-      border-radius: 2px;
-      background: var(--lime);
-    }
+    .proof__card .metric em { font-style: normal; color: #2a8f45; }
+    .proof__card p { font-size: 9.5px; line-height: 1.3; color: var(--muted); }
 
-    /* —— Why it matters —— */
-    .why h2, .cases-head h2 {
-      font-size: 11.5px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--navy);
-      font-weight: 800;
-      margin-bottom: 2.2mm;
-      display: flex;
-      align-items: center;
-      gap: 3mm;
+    /* Market insights */
+    .insights {
+      display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 2.5mm;
     }
-    .why h2::after, .cases-head h2::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--line);
+    .insight {
+      border: 1px solid var(--line); border-radius: 9px; padding: 2.6mm 3mm; background: #fff;
+      display: flex; flex-direction: column; gap: 1.4mm;
     }
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 3mm;
+    .insight--hero {
+      background: linear-gradient(160deg, #f4fbf6, #f8fce8);
+      border-color: #cfe9d5;
     }
-    .why-card {
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 2.8mm 3.2mm;
+    .insight .src {
+      font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 800; color: #2f7a45;
     }
-    .why-card h4 {
-      font-size: 11.5px;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 1.2mm;
+    .insight h4 {
+      font-size: 12px; font-weight: 800; color: var(--navy); line-height: 1.25; letter-spacing: -0.01em;
     }
-    .why-card p {
-      font-size: 10px;
-      line-height: 1.35;
-      color: var(--muted);
+    .insight p { font-size: 9.5px; line-height: 1.35; color: var(--muted); }
+    .insight ul { list-style: none; display: grid; gap: 1.2mm; margin-top: 0.5mm; }
+    .insight li {
+      font-size: 9.5px; line-height: 1.3; color: var(--muted);
+      padding-left: 2.8mm; position: relative;
     }
+    .insight li::before {
+      content: ""; position: absolute; left: 0; top: 4px;
+      width: 4px; height: 4px; border-radius: 1px; background: var(--green);
+    }
+    .insight .nums {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5mm; margin-top: 0.5mm;
+    }
+    .insight .num {
+      background: rgba(19,32,46,0.04); border-radius: 6px; padding: 1.6mm 2mm;
+    }
+    .insight .num strong {
+      display: block; font-size: 13px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .insight .num span { font-size: 8px; color: var(--muted); line-height: 1.25; }
+
+    .market-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm;
+    }
+    .market-stat {
+      border: 1px solid var(--line); border-radius: 8px; padding: 2mm 2.4mm;
+      background: var(--soft); text-align: left;
+    }
+    .market-stat strong {
+      display: block; font-size: 14px; font-weight: 800; color: var(--navy);
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.6mm;
+    }
+    .market-stat strong em { font-style: normal; color: #2a8f45; }
+    .market-stat span { font-size: 8.5px; color: var(--muted); line-height: 1.25; }
 
     .footer {
-      margin-top: auto;
-      padding-top: 3mm;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 9px;
-      color: var(--muted);
+      margin-top: auto; padding-top: 2.5mm; border-top: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 8.5px; color: var(--muted); gap: 4mm;
     }
     .footer strong { color: var(--navy); }
     .page-num {
-      background: var(--navy);
-      color: #fff;
-      font-weight: 700;
-      font-size: 10px;
-      padding: 1.5mm 3mm;
-      border-radius: 999px;
+      background: var(--navy); color: #fff; font-weight: 700; font-size: 9px;
+      padding: 1.2mm 2.5mm; border-radius: 999px; white-space: nowrap;
     }
 
-    /* ========== PAGE 2 — CASE CHEAT SHEETS ========== */
-    .cases-head p {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-top: -1mm;
-      margin-bottom: 1mm;
-      line-height: 1.4;
-    }
+    /* ========== PAGE 2 ========== */
+    .cases-intro { font-size: 11px; color: var(--muted); line-height: 1.35; margin-top: -1mm; }
 
+    .case-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3.2mm; flex: 1;
+    }
     .case {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      background: #fff;
+      border: 1px solid var(--line); border-radius: 11px; overflow: hidden;
+      display: flex; flex-direction: column; background: #fff;
     }
     .case__banner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4mm;
-      align-items: center;
-      padding: 4mm 5mm;
-      color: #fff;
+      padding: 3mm 3.5mm; color: #fff;
+      display: flex; justify-content: space-between; gap: 3mm; align-items: flex-start;
     }
-    .case--webafrica .case__banner { background: linear-gradient(120deg, #13202e 0%, #1f4d38 100%); }
-    .case--homechoice .case__banner { background: linear-gradient(120deg, #13202e 0%, #3d4a12 100%); }
+    .case--nandos .case__banner { background: linear-gradient(120deg, #13202e, #3d2412); }
+    .case--vuma .case__banner { background: linear-gradient(120deg, #13202e, #12353d); }
+    .case--pep .case__banner { background: linear-gradient(120deg, #13202e, #1b3a2a); }
+    .case--fiber .case__banner { background: linear-gradient(120deg, #13202e, #2a3a12); }
+    .case--webafrica .case__banner { background: linear-gradient(120deg, #13202e, #1f4d38); }
+    .case--homechoice .case__banner { background: linear-gradient(120deg, #13202e, #3d4a12); }
     .case__label {
-      font-size: 9.5px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 800;
-      color: var(--lime);
-      margin-bottom: 2px;
+      font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 800; color: var(--lime); margin-bottom: 1px;
     }
-    .case__banner h3 {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+    .case__banner h3 { font-size: 13.5px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; }
+    .case__banner p { font-size: 9.5px; color: rgba(255,255,255,0.78); margin-top: 1mm; line-height: 1.3; }
+    .case__kpis { display: flex; gap: 1.5mm; flex-shrink: 0; }
+    .case__kpi {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 7px; padding: 1.6mm 2.2mm; text-align: center; min-width: 18mm;
     }
-    .case__banner p {
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.82);
-      margin-top: 1mm;
-    }
-    .kpis {
-      display: flex;
-      gap: 2.5mm;
-    }
-    .kpi {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 10px;
-      padding: 2.5mm 3.5mm;
-      text-align: center;
-      min-width: 28mm;
-    }
-    .kpi strong {
-      display: block;
-      font-size: 15px;
-      color: var(--green);
-      font-weight: 800;
-      line-height: 1.1;
-    }
-    .case--homechoice .kpi strong { color: var(--lime); }
-    .kpi span {
-      font-size: 9.5px;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.25;
-    }
+    .case__kpi strong { display: block; font-size: 12px; color: var(--green); font-weight: 800; line-height: 1.1; }
+    .case__kpi span { font-size: 7.5px; color: rgba(255,255,255,0.75); line-height: 1.2; }
 
-    .case__grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr 0.95fr;
-      gap: 0;
-      min-height: 52mm;
+    .case__body {
+      padding: 2.8mm 3.2mm 3mm; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; flex: 1;
     }
-    .case__col {
-      padding: 4mm 4.5mm;
-      border-right: 1px solid var(--line);
+    .case__body h4 {
+      font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 800; color: var(--navy); margin-bottom: 1.4mm;
     }
-    .case__col:last-child { border-right: none; background: #f7faf7; }
-    .case__col h4 {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 2.5mm;
-      display: flex;
-      align-items: center;
-      gap: 2mm;
+    .case__body ul { list-style: none; display: grid; gap: 1.2mm; }
+    .case__body li {
+      font-size: 9.5px; line-height: 1.3; color: var(--muted);
+      padding-left: 2.8mm; position: relative;
     }
-    .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      display: inline-block;
+    .case__body li::before {
+      content: ""; position: absolute; left: 0; top: 4px;
+      width: 4px; height: 4px; border-radius: 1px; background: #b7c2ce;
     }
-    .dot.lime { background: var(--lime); }
-    .dot.navy { background: var(--navy); }
-    .case__col ul {
-      list-style: none;
-      display: grid;
-      gap: 1.8mm;
-    }
-    .case__col li {
-      font-size: 11px;
-      line-height: 1.35;
-      color: var(--muted);
-      padding-left: 3.2mm;
-      position: relative;
-    }
-    .case__col li::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 5px;
-      width: 5px; height: 5px;
-      border-radius: 1.5px;
-      background: #b7c2ce;
-    }
-    .case__col.impact li::before { background: var(--green); }
-    .case--homechoice .case__col.impact li::before { background: #b7c42a; }
-
-    .stack {
-      display: flex;
-      flex-direction: column;
-      gap: 5mm;
-      flex: 1;
-    }
+    .case__body .impact li::before { background: var(--green); }
 
     .takeaway {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 4mm;
-      align-items: center;
+      display: grid; grid-template-columns: auto 1fr; gap: 3.5mm; align-items: center;
       background: linear-gradient(90deg, #edfaf1, #f8fce8);
-      border: 1px solid #d5e8c8;
-      border-radius: 12px;
-      padding: 4mm 5mm;
+      border: 1px solid #d5e8c8; border-radius: 10px; padding: 3mm 4mm;
     }
     .takeaway__badge {
-      background: var(--navy);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 2.5mm 3.5mm;
-      border-radius: 8px;
+      background: var(--navy); color: #fff; font-size: 9px; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 2mm 3mm; border-radius: 7px;
       white-space: nowrap;
     }
-    .takeaway p {
-      font-size: 12px;
-      line-height: 1.4;
-      color: var(--ink);
-    }
+    .takeaway p { font-size: 11px; line-height: 1.35; color: var(--ink); }
     .takeaway strong { color: var(--navy); }
 
-    .sources {
-      font-size: 9.5px;
-      color: #8a95a3;
-      line-height: 1.4;
-    }
+    .sources { font-size: 8.5px; color: #8a95a3; line-height: 1.35; }
 
     @media print {
-      html, body { background: #fff; }
+      html, body { background: #fff; margin: 0; padding: 0; }
       .sheet {
-        margin: 0;
-        box-shadow: none;
-        width: 210mm;
-        min-height: 297mm;
-        height: 297mm;
-        overflow: hidden;
+        margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; height: 297mm; overflow: hidden;
       }
       .no-print { display: none !important; }
       @page { size: A4; margin: 0; }
-      /* Keep both sheets on separate pages without browser chrome spacing */
-      body { margin: 0; padding: 0; }
     }
-
     @media screen and (max-width: 900px) {
       .sheet { width: min(100% - 16px, 210mm); margin: 8px auto; }
-      .intro, .partners, .mvno, .why-grid, .case__grid { grid-template-columns: 1fr; }
-      .kpis { flex-wrap: wrap; justify-content: flex-start; }
-      .case__col { border-right: none; border-bottom: 1px solid var(--line); }
-      .case__col:last-child { border-bottom: none; }
-    }
-
-    .toolbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(19,32,46,0.95);
-      color: #fff;
-      padding: 10px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      backdrop-filter: blur(8px);
-    }
-    .toolbar span { font-size: 13px; opacity: 0.9; }
-    .toolbar button {
-      background: var(--green);
-      color: var(--navy);
-      border: 0;
-      font-weight: 800;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 13px;
+      .intro, .partners, .mvno__head, .cap-grid, .proof, .insights, .market-strip, .case-grid, .case__body { grid-template-columns: 1fr; }
+      .case__kpis { flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
   <div class="toolbar no-print">
-    <span>Trilogy Digital × DSG &amp; CXG — CEO Quick Sheet (2 pages)</span>
+    <span>Trilogy Digital × DSG &amp; CXG — CEO Quick Sheet (2 pages) · v3 · + market insights</span>
     <button type="button" onclick="window.print()">Print / Save as PDF</button>
   </div>
 
   <!-- ===================== PAGE 1 ===================== -->
-  <article class="sheet sheet--p1" aria-label="Page 1 — Partnership &amp; MVNO">
+  <article class="sheet" aria-label="Page 1 — Partnership &amp; MVNO">
     <header class="topbar">
       <div>
         <div class="eyebrow">Trilogy Digital · CEO Quick Sheet</div>
@@ -599,21 +365,21 @@
         <img class="logo" src="../assets/trilogy-logo.png" alt="Trilogy" />
         <strong>Commercial in confidence</strong>
         For internal CEO briefing<br />
-        Sources: dsg.co.za · cxg.co.za · mvne.co.za
+        Incl. dsg.co.za/market-insights
       </div>
     </header>
 
     <div class="body">
       <section class="intro">
         <p class="intro__lead">
-          <strong>Trilogy Digital</strong> is our purpose-built CX JV — Trilogy’s UK campaign depth and digital/AI capability paired with
-          <strong>CXG’s</strong> 27-year South African contact-centre scale. Through the wider
-          <strong>Digital Solutions Group (DSG)</strong> ecosystem we also unlock
-          <strong>MVNO / MVNE</strong> infrastructure: launch and operate branded mobile without building a network.
+          <strong>Trilogy Digital</strong> is our purpose-built CX joint venture — Trilogy’s UK campaign depth and digital/AI capability paired with
+          <strong>CXG’s</strong> 27-year South African contact-centre scale (100+ clients, 1,000+ specialists, 3M+ interactions/month).
+          CXG sits inside <strong>Digital Solutions Group (DSG)</strong>, which also owns the MVNE / Digital Mobile stack —
+          so we can help a brand <strong>launch as an MVNO</strong> and run the CX that keeps subscribers.
         </p>
         <aside class="callout">
           <div class="callout__label">One-line for the CEO</div>
-          We don’t just run CX for telcos — through DSG/CXG we can help a brand <strong>become</strong> a mobile operator, then run the CX that makes it stick.
+          Through DSG/CXG we don’t only outsource CX for telcos — we can help a brand <strong>become</strong> the mobile operator, then operate activations, billing, care and CVM on the same stack.
         </aside>
       </section>
 
@@ -624,7 +390,7 @@
             <h3>Trilogy Digital</h3>
           </div>
           <div class="partner__body">
-            <p>50/50 JV (Trilogy BPO × CXG). Owner-led CX with digital &amp; AI — 1,000+ specialists across SA; flagship Mutual Park, Cape Town.</p>
+            50/50 JV (Trilogy BPO × CXG). Owner-led CX with digital &amp; AI — 1,000+ specialists across SA; flagship Mutual Park, Cape Town.
             <div class="chips">
               <span class="chip green">UK + SA CX</span>
               <span class="chip">Digital &amp; AI</span>
@@ -632,73 +398,159 @@
             </div>
           </div>
         </article>
-
         <article class="partner">
           <div class="partner__head dsg">
-            <div class="partner__tag">Group partner</div>
+            <div class="partner__tag">Group · est. 1998</div>
             <h3>DSG</h3>
           </div>
           <div class="partner__body">
-            <p>Digital Solutions Group (est. 1998) — seven specialist businesses; one partner across CX, marketing, telecoms, data/AI, security &amp; commerce.</p>
+            Seven specialist businesses, one accountable partner: CX, marketing, telecoms/MVNO, data/AI (Xanite), security, commerce. 60+ enterprise brands · 600+ agents · 3M+ interactions/mo.
             <div class="chips">
               <span class="chip">28+ years</span>
-              <span class="chip">60+ brands</span>
               <span class="chip lime">MVNO launch</span>
+              <span class="chip">MARS · Xanite</span>
             </div>
           </div>
         </article>
-
         <article class="partner">
           <div class="partner__head cxg">
-            <div class="partner__tag">JV partner</div>
+            <div class="partner__tag">JV partner · 27 yrs</div>
             <h3>CXG</h3>
           </div>
           <div class="partner__body">
-            <p>On-demand digital CX — 27 years, 100+ clients, 1,000+ specialists, 3M+ interactions/month. Deep Mobile / MVNO CX playbooks.</p>
+            On-demand digital CX across QSR, retail, ISP/fibre, MVNO, banking, entertainment &amp; UCaaS (QContact). Named proof points: Nando’s, Vuma, PEPKOR, fibertime, Webafrica, Stellantis.
             <div class="chips">
-              <span class="chip green">On-demand CX</span>
-              <span class="chip">MVNO support</span>
-              <span class="chip">QContact UCaaS</span>
+              <span class="chip green">100+ clients</span>
+              <span class="chip">MVNO CX</span>
+              <span class="chip">4 SA sites</span>
             </div>
           </div>
         </article>
       </section>
 
       <section class="mvno" aria-label="MVNO capability">
-        <div class="mvno__main">
+        <div class="mvno__head">
           <div>
-            <h2>Mobile <em>MVNO / VMNO</em> capability</h2>
+            <h2>Mobile <em>MVNO / VMNO</em> capability — what DSG actually delivers</h2>
             <p>
-              DSG’s telecoms arm (MVNE / Digital Mobile) delivers white-glove MVNO enablement —
-              wholesale, billing platforms and day-one ops. CXG powers the CX layer: activations, billing support, tech troubleshooting and CVM.
+              From DSG Connectivity &amp; Telecoms / MVNE (est. 2013, a DSG division): end-to-end MVNO infrastructure, billing, provisioning and managed ops —
+              so a brand can own the mobile relationship without building a network. CXG then runs the CX layer at scale.
             </p>
-            <div class="mvno-stats">
-              <div class="mvno-stat">
-                <strong>&lt; 60 days</strong>
-                <span>Launch branded white-label mobile</span>
-              </div>
-              <div class="mvno-stat">
-                <strong>Since 2013</strong>
-                <span>MVNE enabling mobile across Africa</span>
-              </div>
-            </div>
           </div>
-          <ul class="mvno-list">
-            <li><strong style="color:#fff">Consult &amp; design</strong> — modelling, CVP, wholesale, journey design</li>
-            <li><strong style="color:#fff">Build &amp; launch</strong> — MVNO platform, billing/CRM (MARS), branded app &amp; GTM</li>
-            <li><strong style="color:#fff">Operate &amp; grow</strong> — turnkey ops, revenue assurance, logistics, care &amp; CVM</li>
-            <li><strong style="color:#fff">CX at scale</strong> — CXG / Trilogy Digital: activations, billing, tech &amp; retention</li>
-          </ul>
+          <div class="mvno-stats">
+            <div class="mvno-stat"><strong>&lt; 60 days</strong><span>Digital Mobile white-label: branded app, portal &amp; dashboard</span></div>
+            <div class="mvno-stat"><strong>Since 2013</strong><span>MVNE enabling branded mobile across Africa</span></div>
+          </div>
         </div>
-        <div class="why-strip" aria-label="Why this matters commercially">
-          <div class="why-strip__item"><strong>New revenue</strong><span>Launch branded mobile for retail, media, banking &amp; ISP clients</span></div>
-          <div class="why-strip__item"><strong>One stack</strong><span>DSG/MVNE + CXG/Trilogy Digital — fewer vendors, clearer outcomes</span></div>
-          <div class="why-strip__item"><strong>Proven CX</strong><span>Same DNA as Webafrica &amp; Homechoice (overleaf)</span></div>
+
+        <div class="cap-grid">
+          <article class="cap">
+            <div class="cap__n">1</div>
+            <h4>Consult &amp; design</h4>
+            <ul>
+              <li>Feasibility &amp; business modelling</li>
+              <li>Wholesale / MNO negotiation</li>
+              <li>CVP &amp; journey design</li>
+              <li>Systems architecture</li>
+            </ul>
+          </article>
+          <article class="cap">
+            <div class="cap__n">2</div>
+            <h4>Build &amp; launch</h4>
+            <ul>
+              <li>Network / BSS-OSS integration</li>
+              <li>Billing &amp; CRM platform</li>
+              <li>White-label app &amp; portal</li>
+              <li>SIM / eSIM provisioning (Xanite)</li>
+            </ul>
+          </article>
+          <article class="cap">
+            <div class="cap__n">3</div>
+            <h4>Operate &amp; grow</h4>
+            <ul>
+              <li>Turnkey MVNO operations</li>
+              <li>MARS revenue assurance</li>
+              <li>Logistics &amp; procurement</li>
+              <li>CVM / churn interventions</li>
+            </ul>
+          </article>
+          <article class="cap">
+            <div class="cap__n">4</div>
+            <h4>CX at scale</h4>
+            <ul>
+              <li>Activations &amp; KYC</li>
+              <li>Billing &amp; tech support</li>
+              <li>Omnichannel care (QContact)</li>
+              <li>Retention &amp; win-back</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="stack-note">
+          <div class="stack-note__badge">DSG insight</div>
+          <p>
+            <strong>Embedded MVNOs win</strong> — SIMs that sit inside a bank, retail or digital relationship outperform standalone “mini-telcos.”
+            Brands own the relationship &amp; data; MVNE owns plumbing &amp; compliance. CX must resolve airtime + account in one interaction.
+          </p>
         </div>
       </section>
 
+      <section>
+        <div class="sec-label">Market insights <span>synthesised from dsg.co.za/market-insights (MVNO cluster)</span></div>
+        <div class="market-strip" aria-label="Market size snapshot">
+          <div class="market-stat">
+            <strong><em>$4bn</em></strong>
+            <span>Africa MVNO market · ~6% CAGR to 2031 (Yaron Assabi / MVNE)</span>
+          </div>
+          <div class="market-stat">
+            <strong><em>4.3M</em> SIMs</strong>
+            <span>SA MVNOs end-2023 · +51% YoY · ~R4.3bn market value</span>
+          </div>
+          <div class="market-stat">
+            <strong><em>&lt;1%</em> vs 42%</strong>
+            <span>Africa MVNO share vs Netherlands — headroom, not saturation</span>
+          </div>
+          <div class="market-stat">
+            <strong><em>39.6M</em></strong>
+            <span>Continental MVNO subs toward 2030 · SA/NG/KE/UG ≈ 85%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="insights" aria-label="CEO insights from DSG research">
+        <article class="insight insight--hero">
+          <div class="src">Sept 2026 · Embedded MVNOs</div>
+          <h4>The model that actually works in SA</h4>
+          <p>Standalone MVNO play underperforms. Winners wire the SIM into an existing account — banking, retail loyalty or digital — so connectivity deepens LTV, not just ARPU.</p>
+          <ul>
+            <li>Benchmark vs Capitec / FNB Connect — not vs Vodacom on price</li>
+            <li>Usage data must land in the brand CDP, not a telco silo</li>
+            <li>Rebranding airtime ≠ strategy; parent-product job does</li>
+          </ul>
+        </article>
+        <article class="insight">
+          <div class="src">May 2026 · Banks &amp; retail</div>
+          <h4>Who’s already moving</h4>
+          <div class="nums">
+            <div class="num"><strong>1M+</strong><span>Capitec Connect SIMs in &lt;1 year</span></div>
+            <div class="num"><strong>K’nect</strong><span>Shoprite stacking SIMs at till</span></div>
+          </div>
+          <p>FNB Connect (decade+), Mr Price / Melon Mobile still sub-scale vs banks. Retailers now ask how fast the SIM writes into the CDP — not how cheap to launch.</p>
+        </article>
+        <article class="insight">
+          <div class="src">Success factors · SARB Oct 2026</div>
+          <h4>What boards should demand</h4>
+          <ul>
+            <li>Hard-to-copy CVP (e.g. DStv Internet content+data)</li>
+            <li>CX + MVNE partner — brand owns relationship; partner owns regulated ops</li>
+            <li>One desktop for SIM + rewards + account queries</li>
+            <li>Watch: SARB opening payments to retailers/telecoms ~Mar 2027</li>
+          </ul>
+        </article>
+      </section>
+
       <footer class="footer">
-        <div><strong>Trilogy Digital</strong> · Partnership &amp; MVNO briefing · Sources: public sites + Corporate Overview case slides</div>
+        <div><strong>Trilogy Digital</strong> · Insights: dsg.co.za/market-insights · Capability: MVNE / Connectivity &amp; Telecoms · Cases overleaf from CXG + Trilogy deck</div>
         <div class="page-num">1 / 2</div>
       </footer>
     </div>
@@ -708,64 +560,120 @@
   <article class="sheet" aria-label="Page 2 — Case study cheat sheets">
     <header class="topbar">
       <div>
-        <div class="eyebrow">Case study cheat sheets</div>
-        <h1>Proof points you can share in <span>60 seconds</span></h1>
+        <div class="eyebrow">Experience &amp; case cheat sheets</div>
+        <h1>Proof from <span>CXG</span> + Trilogy Corporate Overview</h1>
       </div>
       <div class="meta">
         <img class="logo" src="../assets/trilogy-logo.png" alt="Trilogy" />
-        <strong>From Corporate Overview · May 2026</strong>
-        Webafrica · Homechoice<br />
-        Quick-sheet format for CEO / board use
+        <strong>Quick-sheet for CEO / board</strong>
+        CXG partnerships · Trilogy cases<br />
+        Problem → solution → impact
       </div>
     </header>
 
     <div class="body">
-      <div class="cases-head">
-        <h2>Operational proof · last two slides</h2>
-        <p>Condensed from the Trilogy Corporate Overview SHORT (May 2026) case slides — problem → solution → impact, ready to brief.</p>
-      </div>
+      <p class="cases-intro">
+        Top row = published CXG partnership cases (cxg.co.za). Bottom row = Trilogy Corporate Overview SHORT May 2026 (last two slides) — Webafrica &amp; Homechoice.
+      </p>
 
-      <div class="stack">
+      <div class="case-grid">
+        <!-- NANDOS -->
+        <section class="case case--nandos">
+          <div class="case__banner">
+            <div>
+              <div class="case__label">CXG · QSR · since 2018</div>
+              <h3>Nando’s — LTV &amp; wallet share</h3>
+              <p>Centralised ordering contact centre for 300+ restaurants via learn-and-earn model.</p>
+            </div>
+            <div class="case__kpis">
+              <div class="case__kpi"><strong>R2bn+</strong><span>revenue<br />delivered</span></div>
+              <div class="case__kpi"><strong>75%</strong><span>order<br />conversion</span></div>
+              <div class="case__kpi"><strong>98%</strong><span>answer<br />ratio</span></div>
+            </div>
+          </div>
+          <div class="case__body">
+            <div>
+              <h4>What CXG did</h4>
+              <ul>
+                <li>Continent-first learn-and-earn CC model</li>
+                <li>Integrated e-commerce, app &amp; contact-centre orders</li>
+                <li>One central point of contact for restaurants</li>
+              </ul>
+            </div>
+            <div class="impact">
+              <h4>Outcomes</h4>
+              <ul>
+                <li>90%+ calls answered within 20 seconds</li>
+                <li>92% average QA score</li>
+                <li>Managers free to focus in-restaurant</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- VUMA -->
+        <section class="case case--vuma">
+          <div class="case__banner">
+            <div>
+              <div class="case__label">CXG · ISP / FNO · since 2017</div>
+              <h3>Vuma — supporting 1M customers</h3>
+              <p>24/7 multichannel support for SA’s largest fibre network operator.</p>
+            </div>
+            <div class="case__kpis">
+              <div class="case__kpi"><strong>1M+</strong><span>subscribers<br />supported</span></div>
+              <div class="case__kpi"><strong>24/7</strong><span>always-on<br />support</span></div>
+              <div class="case__kpi"><strong>75+</strong><span>ISP partners<br />supported</span></div>
+            </div>
+          </div>
+          <div class="case__body">
+            <div>
+              <h4>What CXG did</h4>
+              <ul>
+                <li>Scaled care through Vuma’s growth to 1M subs</li>
+                <li>Residential + ISP-partner support paths</li>
+                <li>Multichannel technical &amp; service desk</li>
+              </ul>
+            </div>
+            <div class="impact">
+              <h4>Outcomes</h4>
+              <ul>
+                <li>Support kept pace with national FTTH roll-out</li>
+                <li>~2M homes connected context nationally</li>
+                <li>Trusted long-tenure FNO partnership</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <!-- WEBAFRICA -->
         <section class="case case--webafrica">
           <div class="case__banner">
             <div>
-              <div class="case__label">Case study · ISP / Billing CX</div>
-              <h3>Webafrica — On-demand billing support at scale</h3>
-              <p>National ISP billing cycles drive anxiety, volume spikes, and zero tolerance for error.</p>
+              <div class="case__label">Trilogy deck · ISP billing · also on CXG site</div>
+              <h3>Webafrica — on-demand billing at scale</h3>
+              <p>National ISP billing cycles: high anxiety, volume spikes, zero tolerance for error.</p>
             </div>
-            <div class="kpis">
-              <div class="kpi"><strong>120</strong><span>billing-trained<br />chat agents</span></div>
-              <div class="kpi"><strong>Zero</strong><span>core-team<br />disruption</span></div>
-              <div class="kpi"><strong>Peak</strong><span>CSAT protected<br />in billing stress</span></div>
+            <div class="case__kpis">
+              <div class="case__kpi"><strong>120</strong><span>billing<br />chat agents</span></div>
+              <div class="case__kpi"><strong>7–9</strong><span>day billing<br />window</span></div>
+              <div class="case__kpi"><strong>Zero</strong><span>core-team<br />disruption</span></div>
             </div>
           </div>
-          <div class="case__grid">
-            <div class="case__col">
-              <h4><span class="dot navy"></span> Problem</h4>
+          <div class="case__body">
+            <div>
+              <h4>Solution</h4>
               <ul>
-                <li>Needed rapid scale of billing-skilled chat agents</li>
-                <li>Multiple processes: VR, debit orders, suspensions, premium extractions</li>
-                <li>Extended / staggered hours with day-by-day flex</li>
-                <li>Failure = churn, reputation risk, billing escalations</li>
+                <li>Fully managed on-demand billing chat workforce</li>
+                <li>VR, debit orders, suspensions, premium extractions</li>
+                <li>Real-time WFM + centralised QA / escalations</li>
               </ul>
             </div>
-            <div class="case__col">
-              <h4><span class="dot"></span> Solution</h4>
+            <div class="impact">
+              <h4>Impact</h4>
               <ul>
-                <li>Fully managed, on-demand chat workforce built for billing ops</li>
-                <li>Real-time WFM + intraday optimisation</li>
-                <li>Centralised QA, escalation handling, live performance monitoring</li>
-                <li>Aligned to Webafrica billing cycles &amp; systems (Fibre, LTE)</li>
-              </ul>
-            </div>
-            <div class="case__col impact">
-              <h4><span class="dot"></span> Impact</h4>
-              <ul>
-                <li>Protected CSAT during peak billing stress</li>
-                <li>Fewer billing escalations &amp; repeat contacts</li>
-                <li>Faster response to payment failures / suspensions</li>
-                <li>Accurate, compliant billing communication at scale</li>
+                <li>CSAT protected in peak billing stress</li>
+                <li>Fewer escalations &amp; repeat contacts</li>
+                <li>Accurate, compliant billing at scale</li>
               </ul>
             </div>
           </div>
@@ -775,56 +683,51 @@
         <section class="case case--homechoice">
           <div class="case__banner">
             <div>
-              <div class="case__label">Case study · Retail / Chat commerce</div>
+              <div class="case__label">Trilogy deck · retail chat commerce</div>
               <h3>Homechoice — Facebook to WhatsApp sales</h3>
               <p>Couldn’t convert Facebook ad interest into real-time sales outside working hours.</p>
             </div>
-            <div class="kpis">
-              <div class="kpi"><strong>+R1m+</strong><span>revenue / month<br />uplift</span></div>
-              <div class="kpi"><strong>91%</strong><span>WhatsApp<br />adoption</span></div>
-              <div class="kpi"><strong>+50%</strong><span>customer<br />compliments</span></div>
+            <div class="case__kpis">
+              <div class="case__kpi"><strong>+R1m+</strong><span>revenue /<br />month</span></div>
+              <div class="case__kpi"><strong>91%</strong><span>WhatsApp<br />adoption</span></div>
+              <div class="case__kpi"><strong>+50%</strong><span>customer<br />compliments</span></div>
             </div>
           </div>
-          <div class="case__grid">
-            <div class="case__col">
-              <h4><span class="dot navy"></span> Challenge</h4>
+          <div class="case__body">
+            <div>
+              <h4>Solution</h4>
               <ul>
-                <li>No real-time selling from Facebook adverts</li>
-                <li>Conversions locked to normal working hours</li>
-                <li>Previously dependent on human intervention to close</li>
+                <li>Facebook prospect → WhatsApp instantly</li>
+                <li>Continuous buyer contact beyond CC hours</li>
+                <li>Seamless always-on buying path</li>
               </ul>
             </div>
-            <div class="case__col">
-              <h4><span class="dot lime"></span> Solution</h4>
+            <div class="impact">
+              <h4>Benefits</h4>
               <ul>
-                <li>Trilogy connection system: Facebook prospect → WhatsApp instantly</li>
-                <li>Seamless buying path with continuous buyer contact</li>
-                <li>Always-on engagement beyond the contact-centre clock</li>
-              </ul>
-            </div>
-            <div class="case__col impact">
-              <h4><span class="dot lime"></span> Benefits</h4>
-              <ul>
-                <li>Revenue increased by over R1,000,000 per month</li>
+                <li>Revenue up &gt; R1,000,000 per month</li>
                 <li>Improved customer satisfaction</li>
-                <li>91% WhatsApp adoption; +50% customer compliments</li>
+                <li>91% WhatsApp adoption; +50% compliments</li>
               </ul>
             </div>
           </div>
         </section>
-
-        <aside class="takeaway">
-          <div class="takeaway__badge">CEO takeaway</div>
-          <p>
-            <strong>Same operating model, two angles:</strong> Webafrica proves we can absorb high-stakes billing peaks for connectivity brands;
-            Homechoice proves we can turn digital demand into measurable revenue.
-            Pair that CX muscle with DSG’s MVNO stack and Trilogy Digital becomes a partner that can <strong>launch the network brand and run the customer experience</strong>.
-          </p>
-        </aside>
       </div>
 
+      <aside class="takeaway">
+        <div class="takeaway__badge">CEO takeaway</div>
+        <p>
+          DSG’s own research says <strong>embedded MVNOs</strong> (bank/retail/digital) are the SA model that works — and Africa is still &lt;1% penetrated vs mature markets.
+          <strong>CXG proves we can run the CX</strong> (Nando’s, Vuma, Webafrica). <strong>DSG/MVNE builds the stack</strong>.
+          Trilogy Digital is the partner that can pitch <em>launch branded mobile + operate the experience</em>.
+        </p>
+      </aside>
+
       <footer class="footer">
-        <div class="sources">Case metrics from Trilogy Corporate Overview SHORT May 2026 (slides 21–22). Partner facts from dsg.co.za, cxg.co.za and mvne.co.za (public sites).</div>
+        <div class="sources">
+          Market insights: dsg.co.za/market-insights (embedded MVNOs; African banks/retail MVNOs; successful MVNO in Africa; SARB payments).
+          Cases: cxg.co.za/partnerships · Trilogy Corporate Overview SHORT May 2026 slides 21–22.
+        </div>
         <div class="page-num">2 / 2</div>
       </footer>
     </div>
