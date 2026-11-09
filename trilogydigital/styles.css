@@ -3598,14 +3598,13 @@ tr:nth-child(even) td {
 }
 
 .cost-evo__approx {
-  display: inline-block;
   font-weight: 900;
   font-size: 1.45em;
-  line-height: 0.85;
+  line-height: 1;
   letter-spacing: 0;
-  transform: translateY(0.06em);
   font-variant-numeric: normal;
   font-family: "Poppins", var(--font-heading), system-ui, sans-serif;
+  vertical-align: -0.08em;
 }
 
 .cost-evo__rows {
@@ -3729,6 +3728,16 @@ tr:nth-child(even) td {
   .cost-evo__bar {
     transform: none !important;
     opacity: 1 !important;
+  }
+  .cost-evo__approx {
+    /* Keep ± inline in Chrome print — avoid transform/absolute side-effects */
+    display: inline;
+    font-size: 1.35em;
+    vertical-align: baseline;
+    position: static;
+  }
+  .cost-evo__value .cost-evo__approx {
+    font-size: 1.45em;
   }
 }
 
