@@ -136,6 +136,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Cost Evolution horizontal bars
+  const costEvoBlocks = document.querySelectorAll('[data-animate="cost-evo"]');
+  const revealCostEvo = (block) => {
+    if (block.dataset.animated === "1") return;
+    block.dataset.animated = "1";
+    block.classList.add("is-inview");
+  };
+  if (costEvoBlocks.length && "IntersectionObserver" in window) {
+    const costIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          revealCostEvo(entry.target);
+          costIo.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.3, rootMargin: "0px 0px -6% 0px" }
+    );
+    costEvoBlocks.forEach((block) => costIo.observe(block));
+    window.addEventListener("beforeprint", () => {
+      costEvoBlocks.forEach((block) => revealCostEvo(block));
+    });
+  } else {
+    costEvoBlocks.forEach((block) => revealCostEvo(block));
+  }
 
   // Potential AI Savings dials: fill rings + count up on scroll
   const aiSavingsBlocks = document.querySelectorAll('[data-animate="ai-savings"]');
