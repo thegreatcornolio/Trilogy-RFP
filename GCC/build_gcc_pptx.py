@@ -238,7 +238,7 @@ def build():
         Inches(1.05),
         Inches(12.2),
         Inches(0.7),
-        "Our leadership team comprises seasoned BPO executives and operational managers with over 20 years of collective expertise establishing and scaling operations across South Africa — more than 30 contact centres and back-office operations, totalling over 10,000 seats.",
+        "Our leadership team comprises seasoned BPO executives and operational managers with 25+ years of experience each establishing and scaling operations — more than 30 contact centres built worldwide and back-office operations, totalling over 10,000 seats.",
         size=12,
         color=MUTED,
     )
@@ -247,7 +247,7 @@ def build():
         ("kobus-van-der-westhuizen.png", "Kobus van der Westhuizen", "CEO & Founder", "Visionary leader with decades of BPO experience across multiple continents."),
         ("tanya-phillips.png", "Tanya Phillips", "Chief Operating Officer", "Builder of multiple BPO businesses from ground up to profitable operations."),
         ("craig-shalekoff.png", "Craig Shalekoff", "MD & Co-Founder", "Operations expert driving operational excellence and efficiency at scale."),
-        ("rudi-jansen.png", "Rudi Jansen", "Director of People", "20 years of leadership experience in high-performing, people-first organisations."),
+        ("rudi-jansen.png", "Rudi Jansen", "Director of People", "25+ years of leadership experience in high-performing, people-first organisations."),
         ("vancyon-van-zyl.png", "Vancyon van Zyl", "Director of Transitions", "Specialist in seamless operation migrations and process optimization."),
         ("keanu-vieira.png", "Keanu Vieira", "Head of CX Solutions", "Customer experience innovation leader transforming service delivery models."),
         ("craig-mcleod.png", "Craig Mcleod", "Head of Innovation", "Technology and AI strategy pioneer driving competitive differentiation."),
@@ -313,9 +313,9 @@ def build():
     )
     stats = [
         ("45K", "Jobs created", "Significant positive impact on South Africa's economy and communities over 20 years.", GREEN),
-        ("20+", "Years of experience", "Two decades of proven value delivery across multiple industries and geographies.", YELLOW),
-        ("8", "Years in AI / ML", "Developing AI, ML platforms, analytics solutions, and digital automation tools.", YELLOW),
-        ("36", "Blue-chip centres built", "Contact centres successfully built and launched for blue-chip companies across SA.", GREEN),
+        ("25+ each", "Years of leadership experience", "Senior leaders with 25+ years of experience each delivering BPO and GCC programmes.", YELLOW),
+        ("12", "Years in AI / ML", "Developing AI, ML platforms, analytics solutions, and digital automation tools.", YELLOW),
+        ("30+", "Contact centres built worldwide", "Contact centres successfully built and launched for blue-chip companies globally.", GREEN),
     ]
     for i, (val, label, desc, accent) in enumerate(stats):
         x = MARGIN + (i % 2) * Inches(4.0)
