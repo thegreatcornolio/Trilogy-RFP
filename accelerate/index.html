@@ -473,6 +473,74 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
+    .contact-card {
+      margin-top: 1.1rem;
+      padding: 1rem 1.05rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      max-width: 28rem;
+    }
+    .contact-card__name {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.015em;
+      color: var(--navy);
+    }
+    .contact-card__role {
+      margin: 0.2rem 0 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .contact-card__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+    .contact-card__list li {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 0.5rem;
+      align-items: baseline;
+      font-size: 0.9rem;
+    }
+    .contact-card__list span {
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .contact-card__list a {
+      color: var(--navy);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(19, 32, 46, 0.18);
+    }
+    .contact-card__list a:hover {
+      border-bottom-color: var(--green);
+    }
+    .cover__foot a {
+      color: rgba(255, 255, 255, 0.78);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+    }
+    .cover__foot a:hover {
+      color: #fff;
+      border-bottom-color: var(--lime);
+    }
+    .cover__foot strong {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
+    }
+
     .site-footer {
       width: min(100%, var(--sheet-w));
       margin: 0 auto;
@@ -482,6 +550,13 @@
       font-size: 0.78rem;
     }
     .site-footer strong { color: var(--navy); }
+    .site-footer a {
+      color: var(--navy);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(19, 32, 46, 0.18);
+    }
+    .site-footer a:hover { border-bottom-color: var(--green); }
 
     .fine {
       margin-top: 0.75rem;
@@ -618,6 +693,11 @@
         <div class="cover__foot">
           <div>Century City, Cape Town · Domestic &amp; international clients</div>
           <div>Controlling interest · Optional continued shareholder participation</div>
+          <div>
+            Contact: <strong>Kobus van der Westhuizen</strong>
+            · <a href="tel:+27829040234">+2782 904 0234</a>
+            · <a href="mailto:kobusvdw@trilogybpo.com">kobusvdw@trilogybpo.com</a>
+          </div>
         </div>
       </section>
 
@@ -628,6 +708,7 @@
         <a href="#commercial"><span class="toc__num">03</span>Commercial scale</a>
         <a href="#growth"><span class="toc__num">04</span>Growth &amp; pipeline</a>
         <a href="#case"><span class="toc__num">05</span>Case for an acquirer</a>
+        <a href="#contact"><span class="toc__num">06</span>Contact</a>
       </nav>
 
       <!-- 01 Opportunity -->
@@ -904,11 +985,37 @@
           Recipients must conduct their own investigation and analysis.
         </p>
       </section>
+
+      <!-- 06 Contact -->
+      <section class="section section--wash reveal" id="contact">
+        <p class="section__kicker">06 · Contact</p>
+        <h2>Enquiries</h2>
+        <p class="section__intro">For further information on Project Accelerate, please contact:</p>
+        <div class="contact-card">
+          <p class="contact-card__name">Kobus van der Westhuizen</p>
+          <p class="contact-card__role">Trilogy BPO</p>
+          <ul class="contact-card__list">
+            <li>
+              <span>Phone</span>
+              <a href="tel:+27829040234">+2782 904 0234</a>
+            </li>
+            <li>
+              <span>Email</span>
+              <a href="mailto:kobusvdw@trilogybpo.com">kobusvdw@trilogybpo.com</a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </article>
   </main>
 
   <footer class="site-footer">
     <p><strong>Project Accelerate</strong> · Investment Memorandum · Confidential</p>
+    <p>
+      Contact: <strong>Kobus van der Westhuizen</strong>
+      · <a href="tel:+27829040234">+2782 904 0234</a>
+      · <a href="mailto:kobusvdw@trilogybpo.com">kobusvdw@trilogybpo.com</a>
+    </p>
     <p>USD figures converted from ZAR at ≈R18.5 / $. Prospective revenue subject to final agreement.</p>
   </footer>
 
