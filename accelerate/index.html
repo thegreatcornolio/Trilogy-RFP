@@ -8,7 +8,7 @@
   <meta name="description" content="Project Accelerate investment memorandum: specialist outsourcing business available for acquisition.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --navy: #13202e;
@@ -21,11 +21,10 @@
       --wash: #f3f6f8;
       --desk: #cfd6de;
       --paper: #ffffff;
-      --radius: 0.5rem;
-      --sheet-w: 210mm; /* A4 width */
-      --max: 100%;
-      --font: "Inter", ui-sans-serif, system-ui, sans-serif;
-      --display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+      --radius: 0.35rem;
+      --sheet-w: 210mm;
+      --font: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+      --display: "IBM Plex Serif", ui-serif, Georgia, serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -33,8 +32,8 @@
     body {
       margin: 0;
       font-family: var(--font);
-      font-size: 0.98rem;
-      line-height: 1.62;
+      font-size: 0.92rem;
+      line-height: 1.55;
       color: var(--ink);
       background: var(--desk);
       -webkit-font-smoothing: antialiased;
@@ -53,26 +52,28 @@
     .site-bar__inner {
       width: min(100%, var(--sheet-w));
       margin: 0 auto;
-      padding: 0.7rem 1.15rem;
+      padding: 0.65rem 1.15rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
-    .site-bar__logo {
-      height: 1.35rem;
-      width: auto;
+    .site-bar__title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
     }
     .site-bar__meta {
       font-size: 0.68rem;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.55);
       font-weight: 600;
     }
     .site-bar__meta span { color: var(--lime); }
 
-    /* A4 document canvas — centered sheet on desk */
     .wrap {
       width: min(100%, var(--sheet-w));
       max-width: var(--sheet-w);
@@ -91,32 +92,18 @@
     /* —— Cover —— */
     .cover {
       position: relative;
-      min-height: 260mm;
-      padding: 2rem 1.75rem 2.25rem;
+      min-height: 240mm;
+      padding: 1.75rem 1.65rem 1.85rem;
       background:
-        linear-gradient(145deg, rgba(11, 18, 26, 0.55), rgba(19, 32, 46, 0.92) 48%, rgba(19, 32, 46, 0.98)),
-        radial-gradient(ellipse at 80% 20%, rgba(97, 215, 121, 0.22), transparent 45%),
-        radial-gradient(ellipse at 20% 90%, rgba(213, 236, 103, 0.16), transparent 40%),
+        linear-gradient(160deg, rgba(11, 18, 26, 0.4) 0%, rgba(19, 32, 46, 0.96) 55%, rgba(19, 32, 46, 1) 100%),
+        radial-gradient(ellipse at 85% 12%, rgba(97, 215, 121, 0.18), transparent 42%),
         var(--navy-deep);
       color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-    }
-    .cover::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(
-          -18deg,
-          transparent,
-          transparent 28px,
-          rgba(255, 255, 255, 0.015) 28px,
-          rgba(255, 255, 255, 0.015) 29px
-        );
-      pointer-events: none;
+      isolation: isolate;
     }
     .cover__top,
     .cover__body,
@@ -124,320 +111,161 @@
       position: relative;
       z-index: 1;
     }
-    .cover__brand {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
+    .cover__confidential {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 600;
     }
-    .cover__logo {
-      height: 2rem;
-      width: auto;
-      filter: brightness(0) invert(1);
-    }
-    .cover__eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+    .cover__project {
+      margin-top: 0.55rem;
       font-size: 0.72rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.62);
-      font-weight: 600;
-    }
-    .cover__eyebrow::before {
-      content: "";
-      width: 1.5rem;
-      height: 2px;
-      background: var(--green);
-    }
-    .cover__body {
-      margin-top: 3.25rem;
-      max-width: none;
-    }
-    .cover h1 {
-      margin: 0.65rem 0 0;
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(2.15rem, 5.2vw, 3.35rem);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
-    }
-    .cover h1 em {
-      font-style: normal;
       color: var(--lime);
+      font-weight: 700;
+    }
+    .cover__body { margin-top: 2.75rem; }
+    .cover h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(1.85rem, 4.2vw, 2.55rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      max-width: 22rem;
     }
     .cover__lead {
-      margin: 1.2rem 0 0;
-      font-size: 1.02rem;
-      line-height: 1.58;
+      margin: 1.05rem 0 0;
+      font-size: 0.98rem;
+      line-height: 1.55;
       color: rgba(255, 255, 255, 0.78);
-      max-width: 36rem;
-    }
-    .cover__cta {
-      margin-top: 1.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.78rem 1.15rem;
-      border-radius: 999px;
-      text-decoration: none;
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 0.92rem;
-      border: 1px solid transparent;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn--primary {
-      background: var(--green);
-      color: var(--navy);
-    }
-    .btn--ghost {
-      background: transparent;
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.28);
+      max-width: 34rem;
     }
     .cover__stats {
-      margin-top: 2.75rem;
+      margin-top: 2.25rem;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.75rem;
-      max-width: none;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.55rem;
     }
     .stat {
-      padding: 1rem 1.05rem;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.85rem 0.8rem;
+      border-top: 2px solid var(--green);
       background: rgba(255, 255, 255, 0.04);
-      border-radius: var(--radius);
     }
     .stat__value {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       color: var(--lime);
       letter-spacing: -0.02em;
     }
     .stat__label {
-      margin-top: 0.25rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
+      margin-top: 0.28rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.55);
+      line-height: 1.35;
     }
     .cover__foot {
-      margin-top: 2.5rem;
-      padding-top: 1.1rem;
+      margin-top: 2.25rem;
+      padding-top: 0.95rem;
       border-top: 1px solid rgba(255, 255, 255, 0.12);
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       gap: 0.75rem 1.25rem;
       flex-wrap: wrap;
-      font-size: 0.74rem;
-      line-height: 1.4;
-      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.72rem;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.52);
     }
-    .cover__foot > div {
-      flex: 1 1 12rem;
-      min-width: 0;
+    .cover__foot > div { flex: 1 1 12rem; min-width: 0; }
+    .fx-note {
+      margin-top: 0.85rem;
+      font-size: 0.7rem;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.45);
+      max-width: 36rem;
     }
 
     /* —— TOC —— */
     .toc {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-      padding: 1.35rem 1.75rem;
-      background: linear-gradient(180deg, #f7fafb, #fff);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.1rem;
+      padding: 0.95rem 1.65rem;
+      background: #f7fafb;
       border-bottom: 1px solid var(--line);
-    }
-    @media (min-width: 560px) {
-      .toc { grid-template-columns: repeat(2, 1fr); }
+      font-size: 0.78rem;
     }
     .toc a {
       text-decoration: none;
-      padding: 0.7rem 0.85rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      color: var(--navy);
+      font-weight: 600;
+      white-space: nowrap;
     }
-    .toc a:hover {
-      border-color: rgba(97, 215, 121, 0.55);
-      box-shadow: 0 8px 20px rgba(19, 32, 46, 0.06);
-    }
+    .toc a:hover { color: #1f7a3a; }
     .toc__num {
-      display: block;
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
       color: var(--muted);
       font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-    .toc__label {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 0.92rem;
-      color: var(--navy);
+      margin-right: 0.3rem;
+      letter-spacing: 0.06em;
     }
 
     /* —— Sections —— */
     .section {
-      padding: 2.35rem 1.75rem;
+      padding: 1.55rem 1.65rem;
       border-bottom: 1px solid var(--line);
     }
     .section:last-of-type { border-bottom: 0; }
     .section--wash { background: linear-gradient(180deg, #f7fafb, #fff); }
     .section--navy {
-      background:
-        radial-gradient(700px 280px at 100% 0%, rgba(97, 215, 121, 0.16), transparent 50%),
-        var(--navy);
+      background: var(--navy);
       color: #fff;
       border-bottom: 0;
     }
     .section__kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      margin: 0 0 0.75rem;
-      font-size: 0.72rem;
+      display: block;
+      margin: 0 0 0.45rem;
+      font-size: 0.68rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       font-weight: 700;
       color: var(--muted);
     }
     .section--navy .section__kicker { color: rgba(255, 255, 255, 0.55); }
-    .section__kicker::before {
-      content: "";
-      width: 1.35rem;
-      height: 2px;
-      background: var(--green);
-    }
     .section h2 {
       margin: 0;
       font-family: var(--display);
-      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-      max-width: 28rem;
-    }
-    .section__intro {
-      margin: 1rem 0 0;
-      max-width: none;
-      color: var(--muted);
-    }
-    .section--navy .section__intro { color: rgba(255, 255, 255, 0.72); }
-    .prose {
-      margin-top: 1.6rem;
-      max-width: var(--max);
-    }
-    .prose p { margin: 0 0 1rem; }
-    .prose p:last-child { margin-bottom: 0; }
-    .rail {
-      position: relative;
-      padding-left: 1.25rem;
-    }
-    .rail::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.35rem;
-      bottom: 0.35rem;
-      width: 2px;
-      background: linear-gradient(180deg, var(--green), var(--lime));
-      border-radius: 2px;
-    }
-
-    .highlight {
-      margin-top: 1.5rem;
-      padding: 1.15rem 1.25rem;
-      border-left: 3px solid var(--green);
-      background: rgba(97, 215, 121, 0.08);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      max-width: var(--max);
-    }
-    .section--navy .highlight {
-      background: rgba(255, 255, 255, 0.06);
-      border-left-color: var(--lime);
-    }
-
-    /* —— Capability grid —— */
-    .cap-grid {
-      margin-top: 1.75rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-    }
-    @media (min-width: 560px) {
-      .cap-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 720px) {
-      .cap-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    .cap {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.85rem;
-      padding: 1rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: #fff;
-      min-height: 5.2rem;
-      transition: border-color 0.2s ease, transform 0.2s ease;
-    }
-    .cap:hover {
-      border-color: rgba(97, 215, 121, 0.55);
-      transform: translateY(-2px);
-    }
-    .cap__icon {
-      flex: 0 0 auto;
-      width: 2.35rem;
-      height: 2.35rem;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, var(--lime), var(--green));
-      color: var(--navy);
-    }
-    .cap__icon svg {
-      width: 1.15rem;
-      height: 1.15rem;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .cap__label {
-      font-family: var(--display);
-      font-weight: 600;
-      font-size: 0.88rem;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      max-width: 38rem;
       text-transform: uppercase;
     }
+    .section__intro {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .section--navy .section__intro { color: rgba(255, 255, 255, 0.72); }
+    .prose { margin-top: 1rem; }
+    .prose p { margin: 0 0 0.75rem; }
+    .prose p:last-child { margin-bottom: 0; }
 
-    /* —— Metrics —— */
     .metric-row {
-      margin-top: 1.75rem;
+      margin-top: 1.15rem;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.85rem;
+      gap: 0.55rem;
     }
-    @media (min-width: 720px) {
+    @media (min-width: 640px) {
       .metric-row { grid-template-columns: repeat(3, 1fr); }
     }
     .metric {
-      padding: 1.15rem 1.2rem;
+      padding: 0.85rem 0.95rem;
       border-radius: var(--radius);
       background: #fff;
       border: 1px solid var(--line);
@@ -445,13 +273,13 @@
     .metric__value {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 1.45rem;
+      font-size: 1.2rem;
       letter-spacing: -0.02em;
       color: var(--navy);
     }
     .metric__label {
-      margin-top: 0.2rem;
-      font-size: 0.8rem;
+      margin-top: 0.15rem;
+      font-size: 0.7rem;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -464,9 +292,57 @@
     .section--navy .metric__value { color: var(--lime); }
     .section--navy .metric__label { color: rgba(255, 255, 255, 0.55); }
 
-    /* —— Client / prospect tables —— */
+    .two-col {
+      margin-top: 1.1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem 1.35rem;
+    }
+    @media (min-width: 700px) {
+      .two-col { grid-template-columns: 1fr 1fr; }
+    }
+    .fact h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .section--navy .fact h3 { color: var(--lime); }
+    .fact p, .fact ul {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    .fact ul {
+      padding-left: 1.05rem;
+    }
+    .fact li { margin: 0.2rem 0; }
+    .section--navy .fact p,
+    .section--navy .fact li { color: rgba(255, 255, 255, 0.8); }
+
+    .cap-list {
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.35rem 1rem;
+    }
+    @media (min-width: 560px) {
+      .cap-list { grid-template-columns: 1fr 1fr; }
+    }
+    .cap-list li {
+      padding: 0.45rem 0.55rem 0.45rem 0.75rem;
+      border-left: 2px solid var(--green);
+      background: rgba(19, 32, 46, 0.03);
+      font-size: 0.84rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
     .table-wrap {
-      margin-top: 1.75rem;
+      margin-top: 1.1rem;
       overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -475,18 +351,19 @@
     table.data {
       width: 100%;
       border-collapse: collapse;
-      min-width: 36rem;
+      min-width: 28rem;
     }
     table.data th,
     table.data td {
-      padding: 0.95rem 1.1rem;
+      padding: 0.7rem 0.9rem;
       text-align: left;
       border-bottom: 1px solid var(--line);
       vertical-align: middle;
+      font-size: 0.88rem;
     }
     table.data th {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
       background: #f7fafb;
@@ -498,35 +375,35 @@
     .client-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
-      font-family: var(--display);
+      gap: 0.55rem;
       font-weight: 600;
     }
     .client-tag__num {
-      width: 1.7rem;
-      height: 1.7rem;
+      width: 1.45rem;
+      height: 1.45rem;
       border-radius: 999px;
       display: grid;
       place-items: center;
       background: var(--navy);
       color: var(--lime);
-      font-size: 0.82rem;
+      font-size: 0.74rem;
+      flex: 0 0 auto;
     }
     .total-bar {
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
       justify-content: space-between;
-      gap: 0.75rem;
-      padding: 1rem 1.15rem;
+      gap: 0.55rem;
+      padding: 0.8rem 0.95rem;
       border-radius: var(--radius);
       background: var(--navy);
       color: #fff;
     }
     .total-bar__label {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.62);
       font-weight: 700;
@@ -534,107 +411,104 @@
     .total-bar__value {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 1.35rem;
+      font-size: 1.15rem;
       color: var(--lime);
       letter-spacing: -0.02em;
     }
 
     .geo-list {
-      margin: 1.5rem 0 0;
+      margin: 0.9rem 0 0;
       padding: 0;
       list-style: none;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      max-width: var(--max);
+      gap: 0.4rem;
     }
     .geo-list li {
-      padding: 0.45rem 0.8rem;
+      padding: 0.3rem 0.65rem;
       border-radius: 999px;
       background: rgba(19, 32, 46, 0.05);
       border: 1px solid var(--line);
-      font-size: 0.86rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--navy);
     }
 
-    .close-grid {
-      margin-top: 1.75rem;
+    .reasons {
+      margin: 1.1rem 0 0;
+      padding: 0;
+      list-style: none;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 0.65rem;
     }
-    @media (min-width: 800px) {
-      .close-grid { grid-template-columns: 1.2fr 1fr; }
+    .reasons li {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 0.65rem;
+      align-items: start;
     }
-    .close-card {
-      padding: 1.35rem 1.4rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(255, 255, 255, 0.05);
-    }
-    .close-card h3 {
-      margin: 0 0 0.55rem;
+    .reasons__num {
       font-family: var(--display);
-      font-size: 1.05rem;
+      font-weight: 700;
       color: var(--lime);
+      font-size: 1rem;
     }
-    .close-card p {
+    .reasons strong {
+      display: block;
+      margin-bottom: 0.15rem;
+      font-size: 0.92rem;
+    }
+    .reasons p {
       margin: 0;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 0.98rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.88rem;
+    }
+
+    .disclaimer {
+      margin-top: 1.15rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.72rem;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .site-footer {
       width: min(100%, var(--sheet-w));
       margin: 0 auto;
-      padding: 0.25rem 1.25rem 2.25rem;
+      padding: 0.25rem 1.25rem 2rem;
       text-align: center;
       color: var(--muted);
-      font-size: 0.84rem;
+      font-size: 0.78rem;
     }
     .site-footer strong { color: var(--navy); }
 
-    /* Motion */
+    .fine {
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
     @media (prefers-reduced-motion: no-preference) {
       .reveal {
         opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 0.55s ease, transform 0.55s ease;
+        transform: translateY(12px);
+        transition: opacity 0.45s ease, transform 0.45s ease;
       }
       .reveal.is-visible {
         opacity: 1;
         transform: none;
       }
-      .cover h1 {
-        animation: rise 0.7s ease both;
-      }
-      .cover__lead {
-        animation: rise 0.7s ease 0.12s both;
-      }
-      .cover__cta {
-        animation: rise 0.7s ease 0.22s both;
-      }
-      .cover__stats {
-        animation: rise 0.7s ease 0.32s both;
-      }
-      @keyframes rise {
-        from { opacity: 0; transform: translateY(16px); }
-        to { opacity: 1; transform: none; }
-      }
     }
 
-    /* Print / A4 */
     @page {
       size: A4;
       margin: 12mm;
     }
     @media print {
       html, body { background: #fff; }
-      .site-bar,
-      .cover__cta,
-      .toc,
-      .site-footer { display: none !important; }
+      .site-bar, .toc, .site-footer { display: none !important; }
       .wrap {
         width: 100%;
         max-width: none;
@@ -655,28 +529,18 @@
         print-color-adjust: exact;
       }
       .section {
-        padding: 9mm 0;
+        padding: 7mm 0;
         break-inside: avoid-page;
       }
-      .section--navy {
-        page-break-before: always;
-        break-before: page;
-      }
-      .metric-row,
-      .cap-grid,
-      .close-grid,
-      .table-wrap,
-      .highlight,
-      .total-bar {
-        break-inside: avoid;
-      }
-      .section--navy, .total-bar, .metric, .cap, .stat, .close-card {
+      .section--navy,
+      .total-bar,
+      .metric,
+      .stat {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
     }
 
-    /* Mobile / narrow: full-bleed within viewport, still stacked */
     @media screen and (max-width: 860px) {
       .wrap {
         width: 100%;
@@ -696,19 +560,19 @@
       }
     }
     @media (max-width: 720px) {
-      .cover { min-height: auto; padding: 1.75rem 1.25rem 2rem; }
-      .cover__body { margin-top: 2.25rem; }
-      .cover__stats { grid-template-columns: 1fr; }
-      .section { padding: 2rem 1.25rem; }
-      .toc { padding: 1.15rem 1.25rem; }
-      .cover__foot { flex-direction: column; gap: 0.35rem; }
+      .cover { min-height: auto; padding: 1.5rem 1.2rem 1.65rem; }
+      .cover__body { margin-top: 1.75rem; }
+      .cover__stats { grid-template-columns: 1fr 1fr; }
+      .section { padding: 1.35rem 1.2rem; }
+      .toc { padding: 0.85rem 1.2rem; }
+      .cover__foot { flex-direction: column; gap: 0.3rem; }
     }
   </style>
 </head>
 <body>
   <header class="site-bar">
     <div class="site-bar__inner">
-      <img class="site-bar__logo" src="assets/trilogy-logo-light.svg" alt="Trilogy">
+      <div class="site-bar__title">Project Accelerate</div>
       <div class="site-bar__meta">Confidential <span>·</span> Investment Memorandum</div>
     </div>
   </header>
@@ -718,76 +582,68 @@
       <!-- COVER -->
       <section class="cover" id="cover">
         <div class="cover__top">
-          <div class="cover__brand">
-            <img class="cover__logo" src="assets/trilogy-logo.png" alt="Trilogy">
-            <div class="cover__eyebrow">Investment Memorandum</div>
-          </div>
+          <div class="cover__confidential">Strictly confidential</div>
+          <div class="cover__project">Project Accelerate · Acquisition opportunity</div>
         </div>
         <div class="cover__body">
-          <div class="cover__eyebrow">Confidential · Acquisition Opportunity</div>
-          <h1>PROJECT<br><em>ACCELERATE.</em></h1>
+          <h1>Specialist outsourcing platform for controlling-interest acquisition</h1>
           <p class="cover__lead">
-            An established specialist outsourcing business — more than 24 years of industry experience,
-            enduring client relationships, and delivery capability available for acquisition.
+            Established Cape Town delivery business with 24+ years’ operating history, multi-year client tenures,
+            and average annual revenue of <strong>$1.86m</strong>. Controlling interest available; existing shareholder
+            participation optional.
           </p>
-          <div class="cover__cta">
-            <a class="btn btn--primary" href="#summary">Read executive summary</a>
-            <a class="btn btn--ghost" href="#opportunity">Investment opportunity</a>
-          </div>
           <div class="cover__stats" aria-label="Key figures">
             <div class="stat">
-              <div class="stat__value">R34.5m</div>
+              <div class="stat__value">$1.86m</div>
               <div class="stat__label">Avg. annual revenue</div>
             </div>
             <div class="stat">
               <div class="stat__value">24+ yrs</div>
-              <div class="stat__label">Industry experience</div>
+              <div class="stat__label">Operating history</div>
             </div>
             <div class="stat">
-              <div class="stat__value">500+</div>
-              <div class="stat__label">Brands supported</div>
+              <div class="stat__value">11</div>
+              <div class="stat__label">Current accounts</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value">$781k</div>
+              <div class="stat__label">Prospective FY run-rate*</div>
             </div>
           </div>
+          <p class="fx-note">
+            Figures converted from ZAR at ≈R18.5 / USD (illustrative mid-market rate). Source books are ZAR-denominated.
+            *Pipeline subject to final agreement; excluded from existing revenue.
+          </p>
         </div>
         <div class="cover__foot">
           <div>Century City, Cape Town · Domestic &amp; international clients</div>
-          <div>Controlling interest · Existing shareholder participation available</div>
+          <div>Controlling interest · Optional continued shareholder participation</div>
         </div>
       </section>
 
       <!-- TOC -->
       <nav class="toc" aria-label="Document sections">
-        <a href="#summary"><span class="toc__num">01</span><span class="toc__label">Executive Summary</span></a>
-        <a href="#opportunity"><span class="toc__num">02</span><span class="toc__label">Investment Opportunity</span></a>
-        <a href="#business"><span class="toc__num">03</span><span class="toc__label">The Business</span></a>
-        <a href="#expertise"><span class="toc__num">04</span><span class="toc__label">Expertise &amp; Value</span></a>
-        <a href="#delivery"><span class="toc__num">05</span><span class="toc__label">Delivery &amp; Continuity</span></a>
-        <a href="#capabilities"><span class="toc__num">06</span><span class="toc__label">Service Capabilities</span></a>
-        <a href="#technology"><span class="toc__num">07</span><span class="toc__label">Technology</span></a>
-        <a href="#commercial"><span class="toc__num">08</span><span class="toc__label">Commercial Scale</span></a>
-        <a href="#growth"><span class="toc__num">09</span><span class="toc__label">Growth Thesis</span></a>
-        <a href="#pipeline"><span class="toc__num">10</span><span class="toc__label">Prospective Pipeline</span></a>
+        <a href="#opportunity"><span class="toc__num">01</span>Opportunity</a>
+        <a href="#business"><span class="toc__num">02</span>Business</a>
+        <a href="#commercial"><span class="toc__num">03</span>Commercial scale</a>
+        <a href="#growth"><span class="toc__num">04</span>Growth &amp; pipeline</a>
+        <a href="#case"><span class="toc__num">05</span>Case for an acquirer</a>
       </nav>
 
-      <!-- 01 Executive Summary -->
-      <section class="section reveal" id="summary">
-        <p class="section__kicker">01 · Executive Summary</p>
-        <h2>A trusted specialist partner, positioned for acquisition.</h2>
-        <div class="prose rail">
+      <!-- 01 Opportunity -->
+      <section class="section section--navy reveal" id="opportunity">
+        <p class="section__kicker">01 · The opportunity</p>
+        <h2>Acquire a controlling interest in an established delivery platform</h2>
+        <div class="prose">
           <p>
-            This business has built its reputation on specialist expertise, enduring relationships and a commitment to excellence.
-            Through consistent delivery, rigorous standards and a deep understanding of the businesses we represent, we have earned
-            our standing as a trusted partner in the industry.
-          </p>
-          <p>
-            From Century City, Cape Town, the company serves domestic and international clients through dedicated, shared and hybrid
-            arrangements. Relationships extending beyond two decades reflect the lasting relevance of its contribution and form part
-            of an established business available for acquisition.
+            Transaction: controlling interest in the company, with scope for continued participation by existing shareholders.
+            The asset is a specialist outsourcing operation — client relationships, account leadership, and delivery capability —
+            not a greenfield build.
           </p>
         </div>
         <div class="metric-row">
           <div class="metric">
-            <div class="metric__value">R34.476m</div>
+            <div class="metric__value">$1,863,568</div>
             <div class="metric__label">Total avg. annual revenue</div>
           </div>
           <div class="metric">
@@ -795,224 +651,77 @@
             <div class="metric__label">Current portfolio</div>
           </div>
           <div class="metric">
-            <div class="metric__value">R14.448m</div>
-            <div class="metric__label">Prospective annual run-rate*</div>
+            <div class="metric__value">$780,973</div>
+            <div class="metric__label">Prospective annual run-rate</div>
           </div>
         </div>
-        <p class="section__intro" style="margin-top:1rem;font-size:0.9rem;">
-          * Prospective engagements identified by management for the next financial year; subject to final agreement and excluded from existing revenue.
-        </p>
+        <div class="two-col">
+          <div class="fact">
+            <h3>What transfers</h3>
+            <p>Recognised client relationships, experienced leadership, specialist delivery teams, and operating practices built for demanding mandates.</p>
+          </div>
+          <div class="fact">
+            <h3>Operating base</h3>
+            <p>Century City, Cape Town. Dedicated, shared and hybrid delivery for domestic and international clients. Support for 500+ brands across engagements to date.</p>
+          </div>
+        </div>
       </section>
 
-      <!-- 02 Investment Opportunity -->
-      <section class="section section--navy reveal" id="opportunity">
-        <p class="section__kicker">02 · Investment Opportunity</p>
-        <h2>Acquire a controlling interest in an established delivery platform.</h2>
+      <!-- 02 Business -->
+      <section class="section reveal" id="business">
+        <p class="section__kicker">02 · The business</p>
+        <h2>Specialist CX and process outsourcing across engagement, ops and insight</h2>
         <div class="prose">
           <p>
-            The opportunity is to acquire a controlling interest in the company, with scope for continued participation by existing shareholders.
-          </p>
-          <p>
-            The acquisition brings recognised client relationships, experienced leadership and specialist delivery capability into one
-            established business. A buyer gains the benefit of years invested in understanding client operations, developing teams and
-            building the management practices required to fulfil demanding mandates.
+            The company designs outsourced services around each client’s commercial and operational requirements.
+            Mandate breadth spans customer engagement, sales development, retention, technical support, complex case
+            management, administration and business intelligence — as focused assignments or multi-function programmes.
           </p>
         </div>
-        <div class="close-grid">
-          <div class="close-card">
-            <h3>Transaction shape</h3>
-            <p>Controlling interest available, with optional continued participation by existing shareholders.</p>
-          </div>
-          <div class="close-card">
-            <h3>What transfers</h3>
-            <p>Client relationships, experienced leadership, and specialist delivery capability in one established business.</p>
-          </div>
-        </div>
-      </section>
 
-      <!-- 03 The Business -->
-      <section class="section reveal" id="business">
-        <p class="section__kicker">03 · The Business</p>
-        <h2>Specialist expertise across a wide range of business functions.</h2>
-        <div class="prose rail">
-          <p>
-            Our company brings specialist expertise to a wide range of business functions, serving clients across industries and markets.
-            Built on more than 24 years of industry experience, the business combines established client relationships, experienced leadership
-            and the capability to develop outsourced services around each client’s commercial and operational requirements.
-          </p>
-          <p>
-            Our experience in supporting over 500 brands has developed a substantial understanding of how businesses operate, what their
-            customers expect and what effective delivery demands. We apply that knowledge to each engagement, bringing people, processes
-            and management together to take responsibility for the work entrusted to us.
-          </p>
-          <p>
-            Our capabilities span across customer engagement, sales development, retention, technical support, complex case management,
-            administration and business intelligence. This breadth allows us to support focused assignments and broader mandates involving
-            several connected functions.
-          </p>
-          <p>
-            From Century City, Cape Town, we serve domestic and international clients through dedicated, shared and hybrid arrangements.
-            Relationships extending beyond two decades reflect the lasting relevance of our contribution and form part of an established
-            business available for acquisition.
-          </p>
-        </div>
-      </section>
+        <ul class="cap-list" aria-label="Service capabilities">
+          <li>Business intelligence &amp; performance insights</li>
+          <li>Crisis, incident &amp; recall coordination</li>
+          <li>Integrated contact centre management</li>
+          <li>Customer experience &amp; consumer relations</li>
+          <li>Technical support &amp; helpdesk</li>
+          <li>Specialist process &amp; administrative services</li>
+          <li>Social media &amp; digital engagement</li>
+          <li>Contact centre advisory &amp; optimisation</li>
+          <li>Sales, acquisition &amp; retention</li>
+        </ul>
 
-      <!-- 04 Expertise -->
-      <section class="section section--wash reveal" id="expertise">
-        <p class="section__kicker">04 · Specialist Expertise &amp; Commercial Value</p>
-        <h2>Services shaped around each client’s commercial objectives.</h2>
-        <div class="prose rail">
-          <p>
-            Our approach begins with understanding what the client needs to achieve. We develop the service around its objectives, systems
-            and operating environment, with defined responsibilities and clear expectations for performance.
-          </p>
-          <p>
-            Clients gain access to the expertise and management capacity required to run important functions, reducing the demands of
-            maintaining those capabilities internally. Our role connects the work being performed with the client’s wider priorities,
-            supported by direct engagement and accountability for execution.
-          </p>
-          <p>
-            Over time, detailed knowledge of the client’s products, processes and commercial requirements becomes embedded in our teams.
-            This supports informed judgement and effective coordination with the client’s own people. Clients draw on a partner that
-            understands their operating environment and can respond as requirements change.
-          </p>
-        </div>
-        <div class="highlight">
-          Embedded operational knowledge, direct engagement and accountability for execution — not a transactional staffing layer.
-        </div>
-      </section>
-
-      <!-- 05 Delivery -->
-      <section class="section reveal" id="delivery">
-        <p class="section__kicker">05 · Service Delivery &amp; Continuity</p>
-        <h2>Account-specific delivery with resilience built in.</h2>
-        <div class="prose rail">
-          <p>
-            Each delivery arrangement is shaped around the nature of the work, its complexity, expected volumes and operating hours.
-            Account-specific recruitment and training establish the required competencies, supported by workforce planning, quality
-            assurance and regular performance reviews.
-          </p>
-          <p>
-            Account leadership connects client priorities with daily execution. Executive management and specialist support functions
-            provide oversight of the wider people, financial and contractual commitments.
-          </p>
-          <p>
-            Our operation is supported by business connectivity, backup power and physical security. A separate 15-seat backup facility,
-            remote-working procedures and alternative workplace arrangements provide practical options for responding to disruption
-            according to the services affected.
-          </p>
-        </div>
-        <div class="metric-row">
-          <div class="metric">
-            <div class="metric__value">15 seats</div>
-            <div class="metric__label">Backup facility</div>
+        <div class="two-col" style="margin-top:1.25rem;">
+          <div class="fact">
+            <h3>Delivery model</h3>
+            <ul>
+              <li>Account-specific recruitment, training and QA</li>
+              <li>Workforce planning with regular performance reviews</li>
+              <li>Account leadership linking client priorities to daily execution</li>
+              <li>Executive oversight of people, financial and contractual commitments</li>
+            </ul>
           </div>
-          <div class="metric">
-            <div class="metric__value">Hybrid ready</div>
-            <div class="metric__label">Remote &amp; alt workplace</div>
-          </div>
-          <div class="metric">
-            <div class="metric__value">Full stack</div>
-            <div class="metric__label">Power · connectivity · security</div>
+          <div class="fact">
+            <h3>Continuity &amp; technology</h3>
+            <ul>
+              <li>Business connectivity, backup power and physical security</li>
+              <li>15-seat backup facility; remote and alternative workplace procedures</li>
+              <li>Client-owned and third-party platforms for workflow and reporting</li>
+              <li>Dedicated IT support, network segregation and controlled access</li>
+            </ul>
           </div>
         </div>
-      </section>
-
-      <!-- 06 Capabilities -->
-      <section class="section section--wash reveal" id="capabilities">
-        <p class="section__kicker">06 · Specialist Service Capabilities</p>
-        <h2>Nine capability areas spanning engagement, operations and insight.</h2>
-        <p class="section__intro">
-          Breadth to support focused assignments or broader mandates involving several connected functions.
+        <p class="fine">
+          Commercial value sits in embedded client knowledge and accountability for execution — not transactional staffing alone.
         </p>
-        <div class="cap-grid">
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3v4M8 8a4 4 0 1 0 8 0M6 21c1.5-3 4-4.5 6-4.5S16.5 18 18 21"/><path d="M4 12h2M18 12h2M7 5l1.5 1.5M17 5l-1.5 1.5"/></svg>
-            </div>
-            <div class="cap__label">Business Intelligence &amp; Performance Insights</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 4.3 2.8 17.5A2 2 0 0 0 4.5 20.5h15a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0Z"/></svg>
-            </div>
-            <div class="cap__label">Crisis, Incident &amp; Recall Coordination</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.3.6.9 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
-            </div>
-            <div class="cap__label">Integrated Contact Centre Management</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"/><path d="M4 20a8 8 0 0 1 16 0"/><path d="M19 8v4l2 1"/></svg>
-            </div>
-            <div class="cap__label">Customer Experience &amp; Consumer Relations</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/><path d="M7 9h4M7 13h8"/></svg>
-            </div>
-            <div class="cap__label">Technical Support &amp; Helpdesk Solutions</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 18V8M12 18V4M16 18v-6"/><path d="M4 20h16"/></svg>
-            </div>
-            <div class="cap__label">Specialist Process &amp; Administrative Services</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/><path d="M9.5 11.5h.01M12 11.5h.01M14.5 11.5h.01"/></svg>
-            </div>
-            <div class="cap__label">Social Media &amp; Digital Engagement</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h4"/></svg>
-            </div>
-            <div class="cap__label">Contact Centre Advisory &amp; Optimisation</div>
-          </div>
-          <div class="cap">
-            <div class="cap__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg>
-            </div>
-            <div class="cap__label">Sales, Acquisition &amp; Customer Retention</div>
-          </div>
-        </div>
       </section>
 
-      <!-- 07 Technology -->
-      <section class="section reveal" id="technology">
-        <p class="section__kicker">07 · Technology &amp; Information Management</p>
-        <h2>Client platforms, disciplined reporting, controlled access.</h2>
-        <div class="prose rail">
-          <p>
-            We work within client-owned and third-party platforms to organise workflows, manage information and provide reporting relevant
-            to each engagement. Our focus is on using these systems effectively within the client’s business.
-          </p>
-          <p>
-            We also interpret the information generated through delivery. Activity levels, outcomes and recurring patterns help identify
-            sales opportunities, service concerns and operational constraints.
-          </p>
-          <p>
-            Clients gain visibility over performance, supported by the knowledge to understand the findings and determine where action is
-            needed. Dedicated IT support, network segregation and controlled access underpin systems oversight and responsible information
-            management.
-          </p>
-        </div>
-      </section>
-
-      <!-- 08 Commercial Scale -->
+      <!-- 03 Commercial -->
       <section class="section section--wash reveal" id="commercial">
-        <p class="section__kicker">08 · Commercial Scale</p>
-        <h2>Top client relationships and portfolio revenue.</h2>
+        <p class="section__kicker">03 · Commercial scale</p>
+        <h2>Eleven-account portfolio · $1.86m average annual revenue</h2>
         <p class="section__intro">
-          Our portfolio combines recognised brands with relationships developed through years of operational involvement.
-          The 11 accounts in the portfolio represent the company’s total average annual revenue of <strong>R34.476 million</strong>.
-          Client identities are anonymised in this memorandum.
+          Top relationships below (identities anonymised). Portfolio total average annual revenue: <strong>$1,863,568</strong>.
         </p>
 
         <div class="table-wrap">
@@ -1021,7 +730,7 @@
               <tr>
                 <th>Top relationships</th>
                 <th>Tenure</th>
-                <th class="num">Average annual revenue</th>
+                <th class="num">Avg. annual revenue (USD)</th>
               </tr>
             </thead>
             <tbody>
@@ -1033,7 +742,7 @@
                   </span>
                 </td>
                 <td>5 years</td>
-                <td class="num">R&nbsp;14&nbsp;400&nbsp;000.00</td>
+                <td class="num">$778,378</td>
               </tr>
               <tr>
                 <td>
@@ -1043,7 +752,7 @@
                   </span>
                 </td>
                 <td>3 years</td>
-                <td class="num">R&nbsp;9&nbsp;000&nbsp;000.00</td>
+                <td class="num">$486,486</td>
               </tr>
               <tr>
                 <td>
@@ -1053,7 +762,7 @@
                   </span>
                 </td>
                 <td>5 years</td>
-                <td class="num">R&nbsp;5&nbsp;640&nbsp;000.00</td>
+                <td class="num">$304,865</td>
               </tr>
               <tr>
                 <td>
@@ -1063,7 +772,7 @@
                   </span>
                 </td>
                 <td>22 years</td>
-                <td class="num">R&nbsp;2&nbsp;040&nbsp;000.00</td>
+                <td class="num">$110,270</td>
               </tr>
             </tbody>
           </table>
@@ -1071,35 +780,23 @@
 
         <div class="total-bar">
           <div class="total-bar__label">Total annual company revenue</div>
-          <div class="total-bar__value">R&nbsp;34&nbsp;476&nbsp;000.00</div>
+          <div class="total-bar__value">$1,863,568</div>
         </div>
 
-        <div class="prose" style="margin-top:1.5rem;">
-          <p>
-            The portfolio demonstrates both relationship longevity and commercial scale. Their contractual terms and continuity are
-            therefore important considerations in assessing the revenue profile.
-          </p>
-          <p>
-            Commercial arrangements include fixed monthly fees, dedicated-resource commitments, productive-hour billing and agreed
-            variable charges. Each structure reflects the scope, resources and management required for the engagement.
-          </p>
-        </div>
+        <p class="fine">
+          Tenure and contractual continuity are material to the revenue profile. Commercial structures include fixed monthly fees,
+          dedicated-resource commitments, productive-hour billing and agreed variable charges.
+        </p>
       </section>
 
-      <!-- 09 Growth -->
+      <!-- 04 Growth & pipeline -->
       <section class="section reveal" id="growth">
-        <p class="section__kicker">09 · Growth &amp; Commercial Opportunities</p>
-        <h2>Expand within existing accounts and across international markets.</h2>
-        <div class="prose rail">
+        <p class="section__kicker">04 · Growth &amp; pipeline</p>
+        <h2>Expand within accounts; international footprint already in place</h2>
+        <div class="prose">
           <p>
-            Growth can build on existing relationships and new client acquisition. Within established accounts, our understanding of the
-            client’s operations provides a basis for proposing complementary services, supporting additional channels and taking on further
-            responsibilities.
-          </p>
-          <p>
-            Our experience serving the United Kingdom, Sub-Saharan Africa, Australasia, the United States and Canada also supports
-            international business development alongside opportunities in South Africa. An acquirer with complementary services or a wider
-            client network could extend the reach of these capabilities.
+            Near-term growth levers: complementary services and additional channels within existing accounts; new-client acquisition
+            in South Africa and markets already served. An acquirer with adjacent capability or a broader network can extend reach.
           </p>
         </div>
         <ul class="geo-list" aria-label="Markets served">
@@ -1110,15 +807,10 @@
           <li>United States</li>
           <li>Canada</li>
         </ul>
-      </section>
 
-      <!-- 10 Pipeline -->
-      <section class="section section--wash reveal" id="pipeline">
-        <p class="section__kicker">10 · Prospective Pipeline</p>
-        <h2>Anticipated commencements and indicative monthly revenue.</h2>
-        <p class="section__intro">
-          Management has identified the following prospective engagements, with commencement anticipated within the next financial year.
-          They remain subject to final agreement and implementation and are excluded from existing company revenue.
+        <p class="section__intro" style="margin-top:1.25rem;">
+          Prospective engagements identified by management for commencement in the next financial year.
+          Subject to final agreement; excluded from existing revenue.
         </p>
 
         <div class="table-wrap">
@@ -1126,8 +818,8 @@
             <thead>
               <tr>
                 <th>Prospective account</th>
-                <th>Anticipated commencement</th>
-                <th class="num">Monthly indicative revenue</th>
+                <th>Anticipated start</th>
+                <th class="num">Monthly indicative (USD)</th>
               </tr>
             </thead>
             <tbody>
@@ -1135,67 +827,89 @@
                 <td>
                   <span class="client-tag">
                     <span class="client-tag__num">1</span>
-                    Account Expansion
+                    Account expansion
                   </span>
                 </td>
                 <td>September 2027</td>
-                <td class="num">R&nbsp;830&nbsp;000.00</td>
+                <td class="num">$44,865</td>
               </tr>
               <tr>
                 <td>
                   <span class="client-tag">
                     <span class="client-tag__num">2</span>
-                    Sports Betting
+                    Sports betting
                   </span>
                 </td>
                 <td>May 2027</td>
-                <td class="num">R&nbsp;344&nbsp;000.00</td>
+                <td class="num">$18,595</td>
               </tr>
               <tr>
                 <td>
                   <span class="client-tag">
                     <span class="client-tag__num">3</span>
-                    Sustainable Energy
+                    Sustainable energy
                   </span>
                 </td>
                 <td>May 2027</td>
-                <td class="num">R&nbsp;30&nbsp;000.00</td>
+                <td class="num">$1,622</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="total-bar">
-          <div class="total-bar__label">Prospective monthly revenue</div>
-          <div class="total-bar__value">R&nbsp;1&nbsp;204&nbsp;000.00</div>
-        </div>
-
-        <div class="highlight">
-          Together, these opportunities represent <strong>R14.448 million</strong> over a full 12-month operating period.
+          <div class="total-bar__label">Prospective monthly · full-year run-rate</div>
+          <div class="total-bar__value">$65,081 / mo · $780,973 / yr</div>
         </div>
       </section>
 
-      <!-- Closing reprise -->
-      <section class="section section--navy reveal" id="close">
-        <p class="section__kicker">Investment Opportunity</p>
-        <h2>A controlling interest in a proven specialist business.</h2>
-        <div class="prose">
-          <p>
-            The opportunity is to acquire a controlling interest in the company, with scope for continued participation by existing shareholders.
-          </p>
-          <p>
-            The acquisition brings recognised client relationships, experienced leadership and specialist delivery capability into one
-            established business. A buyer gains the benefit of years invested in understanding client operations, developing teams and
-            building the management practices required to fulfil demanding mandates.
-          </p>
-        </div>
+      <!-- 05 Case -->
+      <section class="section section--navy reveal" id="case">
+        <p class="section__kicker">05 · The case for an acquirer</p>
+        <h2>Why this opportunity warrants diligence</h2>
+        <ol class="reasons">
+          <li>
+            <span class="reasons__num">01</span>
+            <div>
+              <strong>Proven delivery platform</strong>
+              <p>24+ years’ operating history, multi-year tenures (up to 22 years), and $1.86m average annual revenue across 11 accounts.</p>
+            </div>
+          </li>
+          <li>
+            <span class="reasons__num">02</span>
+            <div>
+              <strong>Specialist capability already built</strong>
+              <p>Nine service lines spanning CX, technical support, process ops and insight — transferable with account leadership and embedded client knowledge.</p>
+            </div>
+          </li>
+          <li>
+            <span class="reasons__num">03</span>
+            <div>
+              <strong>Identifiable near-term upside</strong>
+              <p>~$781k prospective annual run-rate from named pipeline, plus room to deepen existing accounts and leverage international coverage.</p>
+            </div>
+          </li>
+          <li>
+            <span class="reasons__num">04</span>
+            <div>
+              <strong>Flexible transaction shape</strong>
+              <p>Controlling interest available; optional continued participation by existing shareholders to support continuity through transition.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="disclaimer">
+          This memorandum is confidential and for information only. It is not an offer or invitation to treat.
+          Financial figures are management information converted from ZAR at an illustrative rate of ≈R18.5 / USD;
+          they are subject to confirmation in due diligence. Forward-looking pipeline is not contractually guaranteed.
+          Recipients must conduct their own investigation and analysis.
+        </p>
       </section>
     </article>
   </main>
 
   <footer class="site-footer">
     <p><strong>Project Accelerate</strong> · Investment Memorandum · Confidential</p>
-    <p>Figures as presented in source materials. Prospective revenue subject to final agreement.</p>
+    <p>USD figures converted from ZAR at ≈R18.5 / $. Prospective revenue subject to final agreement.</p>
   </footer>
 
   <script>
