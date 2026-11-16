@@ -21,17 +21,9 @@
   </style>
   <style id="rfp-client-theme">
     :root {
-      /* Connect Fibre brand — scraped from connectfibre.co.uk CSS vars */
-      --cf-yellow: #ffd200;
-      --cf-black: #1b2021;
-      --cf-ink: #000000;
-      --cf-purple: #4b006e;
-      --cf-navy: #142032;
-      --cf-platinum: #e0e0e0;
-      --cf-silver: #adadad;
-      --cf-white: #ffffff;
-      --brand-green: #ffd200 !important;
-      --brand-lime: #ffd200 !important;
+      /* Trilogy accents on dark (Connect Fibre logo kept; CF yellow/purple not used for UI text) */
+      --brand-green: #61d779 !important;
+      --brand-lime: #d5ec67 !important;
     }
     .cover__client-logo {
       display: block;
@@ -44,13 +36,13 @@
       padding: 0.5rem 0.85rem;
       margin: 0.45rem auto 0.15rem;
     }
-    .meta-label, .cover__tagline { color: #4b006e !important; }
+    .meta-label, .cover__tagline { color: #2f9e4a !important; }
     .badge {
-      border-color: color-mix(in srgb, #ffd200 55%, transparent) !important;
-      color: #ffd200 !important;
-      box-shadow: inset 3px 0 0 #4b006e;
+      border-color: color-mix(in srgb, #61d779 55%, transparent) !important;
+      color: #d5ec67 !important;
+      box-shadow: inset 3px 0 0 #2f9e4a;
     }
-    .section-num, .covers-table td:first-child { color: #ffd200 !important; }
+    .section-num, .covers-table td:first-child { color: #61d779 !important; }
 
     /* Brands marquee — two equal groups so -50% loops cleanly; no lazy-load. */
     .brand-marquee {
@@ -171,7 +163,7 @@
         position: sticky;
         top: 0;
         z-index: 40;
-        background: #1b2021;
+        background: #13202e;
         border-bottom: 1px solid rgba(255,255,255,0.12);
       }
       .page-nav__inner {
@@ -192,9 +184,9 @@
       }
       .page-nav button {
         appearance: none;
-        border: 1px solid rgba(255, 210, 0,0.45);
+        border: 1px solid rgba(213,236,103,0.45);
         background: transparent;
-        color: #ffd200;
+        color: #d5ec67;
         font: 700 0.68rem/1 Inter, sans-serif;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -264,7 +256,7 @@
       .seat-example tbody tr,
       .seat-example tfoot tr {
         display: grid;
-        border: 1px solid rgba(27, 32, 33, 0.14);
+        border: 1px solid rgba(19, 32, 46, 0.14);
         border-radius: 0.65rem;
         overflow: hidden;
         background: #fff;
@@ -279,7 +271,7 @@
         box-sizing: border-box;
         padding: 0.6rem 0.8rem;
         border: 0;
-        border-top: 1px solid rgba(27, 32, 33, 0.08);
+        border-top: 1px solid rgba(19, 32, 46, 0.08);
         white-space: normal !important;
         text-align: left !important;
         background: #fff !important;
@@ -292,7 +284,7 @@
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        color: rgba(27, 32, 33, 0.52);
+        color: rgba(19, 32, 46, 0.52);
         line-height: 1.3;
         padding-top: 0.12rem;
       }
@@ -300,7 +292,7 @@
       .seat-example tbody td:first-child {
         grid-template-columns: 1fr;
         border-top: 0;
-        background: #1b2021 !important;
+        background: #13202e !important;
         color: #fff !important;
         font-weight: 700;
         font-size: 0.95rem;
@@ -315,8 +307,8 @@
       .seat-example tfoot td:last-child {
         grid-template-columns: 1fr auto;
         border-top: 0;
-        background: #1b2021 !important;
-        color: #ffd200 !important;
+        background: #13202e !important;
+        color: #d5ec67 !important;
         font-weight: 700;
       }
       .seat-example tfoot td:last-child::before {
@@ -344,7 +336,7 @@
     /* One Team, 20 Years — two rails, companies above / UK clients below */
     .ot-timeline {
       margin: 0.85rem 0 1.35rem;
-      background: #1b2021;
+      background: #13202e;
       color: #fff;
       border-radius: 0.85rem;
       padding: 1.35rem 1.15rem 1.55rem;
@@ -366,7 +358,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: #ffd200;
+      color: #61d779;
     }
     .ot-timeline__sub {
       margin: 0;
@@ -390,7 +382,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #ffd200;
+      color: #d5ec67;
       margin-bottom: 0.12rem;
     }
     .ot-timeline__band {
@@ -417,7 +409,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #ffd200;
+      color: #61d779;
       line-height: 1.2;
     }
     .ot-axis__co { grid-row: 1; align-self: end; padding-bottom: 0.45rem; }
@@ -470,7 +462,7 @@
       left: calc(-50% - 0.43rem);
       right: calc(-50% - 0.43rem);
       height: 4px;
-      background: #ffd200;
+      background: #61d779;
       z-index: 0;
     }
     .ot-timeline__rail li:first-child .ot-node__spine::before { left: 50%; }
@@ -492,7 +484,7 @@
       display: inline-block;
       margin: 0 auto 0.4rem;
       padding: 0.22rem 0.45rem;
-      border: 1px solid rgba(255, 210, 0, 0.55);
+      border: 1px solid rgba(97, 215, 121, 0.55);
       border-radius: 0.35rem;
       font-size: 0.72rem;
       line-height: 1.3;
@@ -506,7 +498,7 @@
       line-height: 1.2;
       color: #fff;
     }
-    .ot-node__co.is-now { color: #ffd200; }
+    .ot-node__co.is-now { color: #d5ec67; }
     .ot-node__dates {
       margin-top: 0.18rem;
       font-size: 0.86rem;
@@ -518,8 +510,8 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: #1b2021;
-      box-shadow: 0 0 0 5px #ffd200;
+      background: #13202e;
+      box-shadow: 0 0 0 5px #61d779;
     }
     .seat-pricing h3,
     .seat-example h3,
@@ -539,11 +531,11 @@
     }
     .seat-example__lede {
       margin: 0 0 0.7rem;
-      color: rgba(27, 32, 33, 0.72);
+      color: rgba(19, 32, 46, 0.72);
     }
     .seat-example .table-wrap table tfoot td {
       font-weight: 700;
-      border-top: 2px solid rgba(27, 32, 33, 0.18);
+      border-top: 2px solid rgba(19, 32, 46, 0.18);
     }
     .seat-notes ol {
       margin: 0.35rem 0 0;
@@ -605,7 +597,7 @@
     .detail-cta {
       margin: 0.25rem 0 0;
       padding: 1.4rem 1.45rem 1.5rem;
-      background: #1b2021;
+      background: #13202e;
       color: #fff;
       border-radius: 0.85rem;
       border: 1px solid rgba(255, 210, 0, 0.45);
@@ -615,7 +607,7 @@
       font-family: Poppins, Inter, sans-serif;
       font-size: 1.15rem;
       font-weight: 700;
-      color: #ffd200;
+      color: #d5ec67;
     }
     .detail-cta p {
       margin: 0 0 1.1rem;
@@ -629,21 +621,21 @@
       gap: 0.35rem;
       padding: 0.72rem 1.2rem;
       border-radius: 999px;
-      background: #ffd200;
-      color: #1b2021 !important;
+      background: #61d779;
+      color: #13202e !important;
       font-family: Poppins, Inter, sans-serif;
       font-weight: 700;
       font-size: 0.95rem;
       text-decoration: none !important;
-      box-shadow: 0 8px 18px rgba(27, 32, 33, 0.18);
+      box-shadow: 0 8px 18px rgba(19, 32, 46, 0.18);
     }
     .detail-cta__btn:hover,
     .detail-cta__btn:focus-visible {
-      background: #ffd200;
+      background: #d5ec67;
     }
     table.doc-control th {
       width: 11rem;
-      background: #1b2021;
+      background: #13202e;
       color: #fff;
       font-weight: 600;
     }
@@ -673,7 +665,7 @@
       width: min(52rem, 100%);
       padding: 0.4rem;
       border-radius: 999px;
-      background: rgba(27, 32, 33, 0.94);
+      background: rgba(19, 32, 46, 0.94);
       border: 1px solid rgba(255, 210, 0, 0.32);
       box-shadow:
         0 16px 40px rgba(8, 14, 22, 0.38),
@@ -748,8 +740,8 @@
 
     .cta-dock__btn:hover,
     .cta-dock__btn:focus-visible {
-      background: #ffd200;
-      color: #1b2021;
+      background: #61d779;
+      color: #13202e;
       transform: translateY(-1px);
       outline: none;
     }
@@ -1335,7 +1327,7 @@
     <svg class="train-cycle__svg" viewBox="0 0 920 400" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <filter id="trainSoft" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1b2021" flood-opacity="0.22"/>
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#13202e" flood-opacity="0.22"/>
         </filter>
         <filter id="trainOrbGlow" x="-80%" y="-80%" width="260%" height="260%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
@@ -1345,52 +1337,52 @@
           </feMerge>
         </filter>
       </defs>
-      <path id="trainLoopPath" class="train-cycle__track" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#ffd200" stroke-width="10" stroke-linejoin="round"/>
-      <path class="train-cycle__flow" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#ffd200" stroke-width="4" stroke-linecap="round" stroke-dasharray="18 26"/>
+      <path id="trainLoopPath" class="train-cycle__track" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#61d779" stroke-width="10" stroke-linejoin="round"/>
+      <path class="train-cycle__flow" d="M176 81 H744 Q760 81 760 97 V303 Q760 319 744 319 H176 Q160 319 160 303 V97 Q160 81 176 81" fill="none" stroke="#d5ec67" stroke-width="4" stroke-linecap="round" stroke-dasharray="18 26"/>
       <g class="train-cycle__orb" filter="url(#trainOrbGlow)">
-        <circle r="13" fill="#ffd200" opacity="0.95"/>
+        <circle r="13" fill="#d5ec67" opacity="0.95"/>
         <circle r="6" fill="#fff" opacity="0.92"/>
         <animateMotion dur="8s" repeatCount="indefinite" calcMode="linear">
           <mpath href="#trainLoopPath" xlink:href="#trainLoopPath"/>
         </animateMotion>
       </g>
       <g filter="url(#trainSoft)">
-        <rect x="30" y="36" width="260" height="90" rx="16" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
-        <circle cx="64" cy="81" r="18" fill="#ffd200"/>
-        <text x="64" y="87" text-anchor="middle" fill="#1b2021" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">1</text>
+        <rect x="30" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="64" cy="81" r="18" fill="#d5ec67"/>
+        <text x="64" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">1</text>
         <text x="168" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Strategic</text>
-        <text x="168" y="96" text-anchor="middle" fill="#ffd200" font-size="13" font-weight="600" font-family="Inter, sans-serif">Planning</text>
+        <text x="168" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Planning</text>
       </g>
       <g filter="url(#trainSoft)">
-        <rect x="330" y="36" width="260" height="90" rx="16" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
-        <circle cx="364" cy="81" r="18" fill="#ffd200"/>
-        <text x="364" y="87" text-anchor="middle" fill="#1b2021" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">2</text>
+        <rect x="330" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="364" cy="81" r="18" fill="#d5ec67"/>
+        <text x="364" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">2</text>
         <text x="468" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Coaching &amp; Gap</text>
-        <text x="468" y="96" text-anchor="middle" fill="#ffd200" font-size="13" font-weight="600" font-family="Inter, sans-serif">Analysis</text>
+        <text x="468" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Analysis</text>
       </g>
       <g filter="url(#trainSoft)">
-        <rect x="630" y="36" width="260" height="90" rx="16" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
-        <circle cx="664" cy="81" r="18" fill="#ffd200"/>
-        <text x="664" y="87" text-anchor="middle" fill="#1b2021" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">3</text>
+        <rect x="630" y="36" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="664" cy="81" r="18" fill="#d5ec67"/>
+        <text x="664" y="87" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">3</text>
         <text x="768" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Curriculum</text>
-        <text x="768" y="96" text-anchor="middle" fill="#ffd200" font-size="13" font-weight="600" font-family="Inter, sans-serif">Development</text>
+        <text x="768" y="96" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Development</text>
       </g>
       <g filter="url(#trainSoft)">
-        <rect x="630" y="274" width="260" height="90" rx="16" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
-        <circle cx="664" cy="319" r="18" fill="#ffd200"/>
-        <text x="664" y="325" text-anchor="middle" fill="#1b2021" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">4</text>
+        <rect x="630" y="274" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="664" cy="319" r="18" fill="#d5ec67"/>
+        <text x="664" y="325" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">4</text>
         <text x="768" y="314" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Poppins, Inter, sans-serif">Workshop / OJT</text>
-        <text x="768" y="334" text-anchor="middle" fill="#ffd200" font-size="13" font-weight="600" font-family="Inter, sans-serif">Coaching</text>
+        <text x="768" y="334" text-anchor="middle" fill="#d5ec67" font-size="13" font-weight="600" font-family="Inter, sans-serif">Coaching</text>
       </g>
       <g filter="url(#trainSoft)">
-        <rect x="30" y="274" width="260" height="90" rx="16" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
-        <circle cx="64" cy="319" r="18" fill="#ffd200"/>
-        <text x="64" y="325" text-anchor="middle" fill="#1b2021" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">5</text>
+        <rect x="30" y="274" width="260" height="90" rx="16" fill="#13202e" stroke="#61d779" stroke-width="2"/>
+        <circle cx="64" cy="319" r="18" fill="#d5ec67"/>
+        <text x="64" y="325" text-anchor="middle" fill="#13202e" font-size="16" font-weight="700" font-family="Poppins, Inter, sans-serif">5</text>
         <text x="168" y="324" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="Poppins, Inter, sans-serif">Verification</text>
       </g>
       <g filter="url(#trainSoft)">
-        <rect x="318" y="158" width="284" height="84" rx="16" fill="#1b2021" stroke="#ffd200" stroke-width="3"/>
-        <text x="460" y="192" text-anchor="middle" fill="#ffd200" font-size="16" font-weight="700" letter-spacing="0.12em" font-family="Poppins, Inter, sans-serif">TRAINING CYCLE</text>
+        <rect x="318" y="158" width="284" height="84" rx="16" fill="#13202e" stroke="#d5ec67" stroke-width="3"/>
+        <text x="460" y="192" text-anchor="middle" fill="#d5ec67" font-size="16" font-weight="700" letter-spacing="0.12em" font-family="Poppins, Inter, sans-serif">TRAINING CYCLE</text>
         <text x="460" y="216" text-anchor="middle" fill="#fff" font-size="12" font-weight="500" font-family="Inter, sans-serif">SAQA / NQF aligned · continuous improvement</text>
       </g>
     </svg>
@@ -1514,7 +1506,7 @@
     <svg class="ci-loop__svg" viewBox="0 0 720 360" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <filter id="ciSoft" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1b2021" flood-opacity="0.22"/>
+          <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#13202e" flood-opacity="0.22"/>
         </filter>
         <filter id="ciOrbGlow" x="-80%" y="-80%" width="260%" height="260%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
@@ -1530,10 +1522,10 @@
                C470 290 600 290 600 180
                C600 70 470 70 360 180
                C250 290 120 290 120 180 Z"
-            fill="none" stroke="#ffd200" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+            fill="none" stroke="#61d779" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
       <!-- Flowing orb rides the green loop (under hub + labels) -->
       <g class="ci-loop__orb" filter="url(#ciOrbGlow)">
-        <circle r="16" fill="#ffd200" opacity="0.95"/>
+        <circle r="16" fill="#d5ec67" opacity="0.95"/>
         <circle r="7" fill="#fff" opacity="0.9"/>
         <animateMotion dur="7s" repeatCount="indefinite" calcMode="linear">
           <mpath href="#ciInfinityPath" xlink:href="#ciInfinityPath"/>
@@ -1541,20 +1533,20 @@
       </g>
       <!-- Navy hub sits on the crossing -->
       <g filter="url(#ciSoft)">
-        <circle cx="360" cy="180" r="72" fill="#1b2021"/>
-        <circle cx="360" cy="180" r="80" fill="none" stroke="#ffd200" stroke-width="8" opacity="0.55"/>
+        <circle cx="360" cy="180" r="72" fill="#13202e"/>
+        <circle cx="360" cy="180" r="80" fill="none" stroke="#d5ec67" stroke-width="8" opacity="0.55"/>
         <text x="360" y="170" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="0.06em">ANALYTICS &amp;</text>
         <text x="360" y="192" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" letter-spacing="0.06em">INSIGHTS</text>
       </g>
       <!-- Corner labels anchored to each lobe -->
       <g font-size="13" font-weight="800" letter-spacing="0.08em">
-        <rect x="148" y="78" width="86" height="30" rx="15" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
+        <rect x="148" y="78" width="86" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
         <text x="191" y="98" text-anchor="middle" fill="#fff">DESIGN</text>
-        <rect x="486" y="78" width="96" height="30" rx="15" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
+        <rect x="486" y="78" width="96" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
         <text x="534" y="98" text-anchor="middle" fill="#fff">OPERATE</text>
-        <rect x="486" y="252" width="90" height="30" rx="15" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
+        <rect x="486" y="252" width="90" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
         <text x="531" y="272" text-anchor="middle" fill="#fff">DEPLOY</text>
-        <rect x="142" y="252" width="98" height="30" rx="15" fill="#1b2021" stroke="#ffd200" stroke-width="2"/>
+        <rect x="142" y="252" width="98" height="30" rx="15" fill="#13202e" stroke="#61d779" stroke-width="2"/>
         <text x="191" y="272" text-anchor="middle" fill="#fff">IMPROVE</text>
       </g>
     </svg>
