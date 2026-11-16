@@ -21,8 +21,17 @@
   </style>
   <style id="rfp-client-theme">
     :root {
-      --brand-green: #61d779 !important;
-      --brand-lime: #d5ec67 !important;
+      /* Connect Fibre brand — scraped from connectfibre.co.uk CSS vars */
+      --cf-yellow: #ffd200;
+      --cf-black: #1b2021;
+      --cf-ink: #000000;
+      --cf-purple: #4b006e;
+      --cf-navy: #142032;
+      --cf-platinum: #e0e0e0;
+      --cf-silver: #adadad;
+      --cf-white: #ffffff;
+      --brand-green: #ffd200 !important;
+      --brand-lime: #ffd200 !important;
     }
     .cover__client-logo {
       display: block;
@@ -35,13 +44,13 @@
       padding: 0.5rem 0.85rem;
       margin: 0.45rem auto 0.15rem;
     }
-    .meta-label, .cover__tagline { color: #2f9e4a !important; }
+    .meta-label, .cover__tagline { color: #4b006e !important; }
     .badge {
-      border-color: color-mix(in srgb, #61d779 55%, transparent) !important;
-      color: #d5ec67 !important;
-      box-shadow: inset 3px 0 0 #2f9e4a;
+      border-color: color-mix(in srgb, #ffd200 55%, transparent) !important;
+      color: #ffd200 !important;
+      box-shadow: inset 3px 0 0 #4b006e;
     }
-    .section-num, .covers-table td:first-child { color: #61d779 !important; }
+    .section-num, .covers-table td:first-child { color: #ffd200 !important; }
 
     /* Brands marquee — two equal groups so -50% loops cleanly; no lazy-load. */
     .brand-marquee {
@@ -162,7 +171,7 @@
         position: sticky;
         top: 0;
         z-index: 40;
-        background: #13202e;
+        background: #1b2021;
         border-bottom: 1px solid rgba(255,255,255,0.12);
       }
       .page-nav__inner {
@@ -177,15 +186,15 @@
         width: auto;
         max-width: 9.5rem;
         object-fit: contain;
-        background: #fff;
-        border-radius: 0.3rem;
-        padding: 0.2rem 0.4rem;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
       }
       .page-nav button {
         appearance: none;
-        border: 1px solid rgba(213,236,103,0.45);
+        border: 1px solid rgba(255, 210, 0,0.45);
         background: transparent;
-        color: #d5ec67;
+        color: #ffd200;
         font: 700 0.68rem/1 Inter, sans-serif;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -255,7 +264,7 @@
       .seat-example tbody tr,
       .seat-example tfoot tr {
         display: grid;
-        border: 1px solid rgba(19, 32, 46, 0.14);
+        border: 1px solid rgba(27, 32, 33, 0.14);
         border-radius: 0.65rem;
         overflow: hidden;
         background: #fff;
@@ -270,7 +279,7 @@
         box-sizing: border-box;
         padding: 0.6rem 0.8rem;
         border: 0;
-        border-top: 1px solid rgba(19, 32, 46, 0.08);
+        border-top: 1px solid rgba(27, 32, 33, 0.08);
         white-space: normal !important;
         text-align: left !important;
         background: #fff !important;
@@ -283,7 +292,7 @@
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
-        color: rgba(19, 32, 46, 0.52);
+        color: rgba(27, 32, 33, 0.52);
         line-height: 1.3;
         padding-top: 0.12rem;
       }
@@ -291,7 +300,7 @@
       .seat-example tbody td:first-child {
         grid-template-columns: 1fr;
         border-top: 0;
-        background: #13202e !important;
+        background: #1b2021 !important;
         color: #fff !important;
         font-weight: 700;
         font-size: 0.95rem;
@@ -306,8 +315,8 @@
       .seat-example tfoot td:last-child {
         grid-template-columns: 1fr auto;
         border-top: 0;
-        background: #13202e !important;
-        color: #d5ec67 !important;
+        background: #1b2021 !important;
+        color: #ffd200 !important;
         font-weight: 700;
       }
       .seat-example tfoot td:last-child::before {
@@ -335,7 +344,7 @@
     /* One Team, 20 Years — two rails, companies above / UK clients below */
     .ot-timeline {
       margin: 0.85rem 0 1.35rem;
-      background: #13202e;
+      background: #1b2021;
       color: #fff;
       border-radius: 0.85rem;
       padding: 1.35rem 1.15rem 1.55rem;
@@ -357,7 +366,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: #61d779;
+      color: #ffd200;
     }
     .ot-timeline__sub {
       margin: 0;
@@ -381,7 +390,7 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #d5ec67;
+      color: #ffd200;
       margin-bottom: 0.12rem;
     }
     .ot-timeline__band {
@@ -408,7 +417,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #61d779;
+      color: #ffd200;
       line-height: 1.2;
     }
     .ot-axis__co { grid-row: 1; align-self: end; padding-bottom: 0.45rem; }
@@ -461,7 +470,7 @@
       left: calc(-50% - 0.43rem);
       right: calc(-50% - 0.43rem);
       height: 4px;
-      background: #61d779;
+      background: #ffd200;
       z-index: 0;
     }
     .ot-timeline__rail li:first-child .ot-node__spine::before { left: 50%; }
@@ -483,7 +492,7 @@
       display: inline-block;
       margin: 0 auto 0.4rem;
       padding: 0.22rem 0.45rem;
-      border: 1px solid rgba(97, 215, 121, 0.55);
+      border: 1px solid rgba(255, 210, 0, 0.55);
       border-radius: 0.35rem;
       font-size: 0.72rem;
       line-height: 1.3;
@@ -497,7 +506,7 @@
       line-height: 1.2;
       color: #fff;
     }
-    .ot-node__co.is-now { color: #d5ec67; }
+    .ot-node__co.is-now { color: #ffd200; }
     .ot-node__dates {
       margin-top: 0.18rem;
       font-size: 0.86rem;
@@ -509,8 +518,8 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      background: #13202e;
-      box-shadow: 0 0 0 5px #61d779;
+      background: #1b2021;
+      box-shadow: 0 0 0 5px #ffd200;
     }
     .seat-pricing h3,
     .seat-example h3,
@@ -530,11 +539,11 @@
     }
     .seat-example__lede {
       margin: 0 0 0.7rem;
-      color: rgba(19, 32, 46, 0.72);
+      color: rgba(27, 32, 33, 0.72);
     }
     .seat-example .table-wrap table tfoot td {
       font-weight: 700;
-      border-top: 2px solid rgba(19, 32, 46, 0.18);
+      border-top: 2px solid rgba(27, 32, 33, 0.18);
     }
     .seat-notes ol {
       margin: 0.35rem 0 0;
@@ -596,17 +605,17 @@
     .detail-cta {
       margin: 0.25rem 0 0;
       padding: 1.4rem 1.45rem 1.5rem;
-      background: #13202e;
+      background: #1b2021;
       color: #fff;
       border-radius: 0.85rem;
-      border: 1px solid rgba(97, 215, 121, 0.45);
+      border: 1px solid rgba(255, 210, 0, 0.45);
     }
     .detail-cta h3 {
       margin: 0 0 0.55rem;
       font-family: Poppins, Inter, sans-serif;
       font-size: 1.15rem;
       font-weight: 700;
-      color: #d5ec67;
+      color: #ffd200;
     }
     .detail-cta p {
       margin: 0 0 1.1rem;
@@ -620,21 +629,21 @@
       gap: 0.35rem;
       padding: 0.72rem 1.2rem;
       border-radius: 999px;
-      background: #61d779;
-      color: #13202e !important;
+      background: #ffd200;
+      color: #1b2021 !important;
       font-family: Poppins, Inter, sans-serif;
       font-weight: 700;
       font-size: 0.95rem;
       text-decoration: none !important;
-      box-shadow: 0 8px 18px rgba(19, 32, 46, 0.18);
+      box-shadow: 0 8px 18px rgba(27, 32, 33, 0.18);
     }
     .detail-cta__btn:hover,
     .detail-cta__btn:focus-visible {
-      background: #d5ec67;
+      background: #ffd200;
     }
     table.doc-control th {
       width: 11rem;
-      background: #13202e;
+      background: #1b2021;
       color: #fff;
       font-weight: 600;
     }
@@ -664,11 +673,11 @@
       width: min(52rem, 100%);
       padding: 0.4rem;
       border-radius: 999px;
-      background: rgba(19, 32, 46, 0.94);
-      border: 1px solid rgba(213, 236, 103, 0.32);
+      background: rgba(27, 32, 33, 0.94);
+      border: 1px solid rgba(255, 210, 0, 0.32);
       box-shadow:
         0 16px 40px rgba(8, 14, 22, 0.38),
-        0 0 0 1px rgba(97, 215, 121, 0.08) inset;
+        0 0 0 1px rgba(255, 210, 0, 0.08) inset;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       animation: cta-dock-in 0.7s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -708,7 +717,7 @@
       inset: 0;
       z-index: -1;
       border-radius: inherit;
-      background: rgba(97, 215, 121, 0.22);
+      background: rgba(255, 210, 0, 0.22);
       opacity: 0;
       pointer-events: none;
       animation: cta-btn-glow 8s ease-in-out infinite;
@@ -739,8 +748,8 @@
 
     .cta-dock__btn:hover,
     .cta-dock__btn:focus-visible {
-      background: #61d779;
-      color: #13202e;
+      background: #ffd200;
+      color: #1b2021;
       transform: translateY(-1px);
       outline: none;
     }
@@ -752,7 +761,7 @@
     }
 
     .cta-dock__btn:focus-visible {
-      box-shadow: 0 0 0 3px rgba(213, 236, 103, 0.65);
+      box-shadow: 0 0 0 3px rgba(255, 210, 0, 0.65);
     }
 
     @keyframes cta-dock-in {
@@ -820,7 +829,7 @@
 <body id="top">
 <nav class="page-nav" aria-label="Page sections">
   <div class="page-nav__inner">
-    <img class="page-nav__brand" src="connectfibre-logo.png" alt="Connect Fibre">
+    <img class="page-nav__brand" src="connectfibre-logo-yellow.png" alt="Connect Fibre">
     <button type="button" data-nav-toggle aria-expanded="false" aria-controls="cf-nav-links">Menu</button>
   </div>
   <div class="page-nav__links" id="cf-nav-links">
@@ -1178,14 +1187,14 @@
     <defs>
       <linearGradient id="saLandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stop-color="#1b2d40"/>
-        <stop offset="100%" stop-color="#13202e"/>
+        <stop offset="100%" stop-color="#1b2021"/>
       </linearGradient>
       <filter id="saPinShadow" x="-40%" y="-40%" width="180%" height="180%">
-        <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#13202e" flood-opacity="0.28"/>
+        <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#1b2021" flood-opacity="0.28"/>
       </filter>
     </defs>
     <rect class="sa-map__sea" width="669" height="567" rx="16"></rect>
-    <g class="sa-map__land" fill="url(#saLandGrad)" stroke="#61d779" stroke-width="1.2" stroke-opacity="0.35">
+    <g class="sa-map__land" fill="url(#saLandGrad)" stroke="#ffd200" stroke-width="1.2" stroke-opacity="0.35">
       <path d=" M 523.87 2.72 C 528.89 2.37 533.79 0.62 538.86 1.00 C 545.62 2.08 551.03 6.78 557.56 8.58 C 563.78 10.82 570.39 9.00 576.74 8.50 C 583.47 7.68 590.26 8.55 596.82 10.06 C 598.73 10.54 600.96 11.10 601.85 13.09 C 604.54 17.93 605.75 23.40 607.48 28.62 C 609.45 35.30 612.49 41.86 612.33 48.98 C 612.55 53.06 611.61 57.54 613.82 61.24 C 615.78 64.52 617.45 67.97 618.47 71.67 C 619.43 75.38 621.80 78.44 624.08 81.43 C 618.35 84.88 611.48 83.92 605.16 85.06 C 601.41 85.89 596.86 83.62 593.67 86.30 C 591.81 90.13 592.42 94.62 592.11 98.75 C 593.94 98.57 595.77 98.40 597.61 98.22 C 597.13 99.39 596.66 100.56 596.19 101.73 C 597.53 103.42 598.90 105.10 600.20 106.83 C 596.73 107.37 593.13 108.29 589.66 107.31 C 586.36 106.41 583.21 105.03 580.03 103.79 C 578.24 108.62 577.14 113.67 575.54 118.56 C 574.83 121.06 572.37 123.68 569.56 122.76 C 565.51 121.47 561.30 120.76 557.04 120.95 C 556.42 124.54 555.79 128.14 555.11 131.73 C 553.19 131.55 551.28 131.40 549.37 131.25 C 549.19 134.82 549.04 138.39 548.87 141.96 C 538.96 145.16 528.44 145.82 518.13 144.57 C 515.92 142.48 512.98 140.79 511.75 137.92 C 512.23 136.00 513.61 134.48 514.64 132.83 C 511.65 130.85 507.58 129.51 506.61 125.66 C 506.08 122.43 502.13 123.15 499.86 123.82 C 495.39 125.70 491.99 129.34 487.95 131.93 C 485.66 133.27 484.28 135.55 483.56 138.05 C 486.90 137.43 490.18 136.54 493.42 135.51 C 493.49 136.05 493.63 137.13 493.70 137.67 C 490.54 138.96 487.44 140.64 484.02 141.08 C 480.06 139.68 477.14 136.45 473.69 134.17 C 476.40 133.78 478.74 132.41 480.53 130.36 C 477.00 128.43 473.30 126.35 469.15 126.39 C 464.77 126.36 460.39 126.15 456.01 126.37 C 452.07 126.38 450.10 131.34 446.05 130.89 C 439.79 130.75 435.81 125.16 430.84 122.16 C 430.13 119.74 429.48 117.30 428.78 114.88 C 425.01 117.03 421.43 120.03 417.01 120.61 C 412.41 120.31 407.43 119.09 404.21 115.54 C 406.67 109.48 409.76 103.17 415.60 99.72 C 418.19 97.71 422.32 96.71 423.03 93.07 C 424.73 86.24 425.42 79.16 427.56 72.45 C 429.74 68.52 433.40 65.65 436.51 62.47 C 439.54 59.35 443.79 58.14 447.70 56.53 C 450.69 55.46 451.95 52.32 453.69 49.93 C 455.49 49.37 457.46 49.09 459.03 47.97 C 464.83 43.29 468.57 36.73 472.73 30.66 C 475.39 27.12 478.12 23.21 482.29 21.33 C 486.86 19.81 491.86 20.16 496.39 18.44 C 499.90 17.10 503.57 15.88 506.57 13.57 C 508.52 10.98 508.72 7.40 510.92 4.97 C 514.86 2.86 519.54 3.28 523.87 2.72 Z"/>
       <path d=" M 606.03 86.99 C 612.53 85.94 619.30 86.32 625.53 83.88 C 626.29 88.02 627.24 92.14 628.97 96.00 C 631.58 101.99 630.47 108.65 630.77 114.98 C 631.08 126.38 631.07 137.78 630.30 149.15 C 630.93 156.73 627.93 163.97 628.40 171.54 C 620.16 170.66 615.13 162.94 607.52 160.52 C 604.24 159.53 601.76 162.65 599.60 164.59 C 594.02 169.66 592.68 177.43 588.44 183.42 C 586.01 187.25 582.54 190.67 581.62 195.27 C 580.86 200.09 581.33 205.00 581.63 209.85 C 583.47 210.77 585.63 211.31 587.11 212.82 C 588.69 215.70 588.85 219.29 591.18 221.77 C 593.87 224.71 597.01 227.18 599.94 229.86 C 598.76 230.91 597.58 231.96 596.37 232.96 C 592.86 232.29 589.36 231.56 585.83 230.99 C 578.98 229.82 571.93 231.15 565.14 229.43 C 562.61 230.81 560.15 232.42 557.35 233.23 C 553.06 234.32 548.49 232.73 544.26 234.21 C 540.72 235.49 537.45 237.37 534.14 239.12 C 532.19 236.02 530.44 232.77 528.01 230.01 C 524.95 226.75 520.48 225.56 516.67 223.45 C 514.01 222.15 512.55 219.44 510.38 217.56 C 505.16 217.43 499.79 217.83 494.98 215.34 C 493.76 216.08 492.56 216.83 491.35 217.57 C 487.98 215.82 484.48 214.35 480.94 213.01 C 483.78 208.54 486.26 203.78 489.73 199.75 C 492.63 196.30 498.11 197.47 501.09 194.09 C 502.41 192.47 505.12 190.16 502.93 188.16 C 500.14 185.91 495.82 186.51 493.17 183.87 C 490.79 182.01 488.82 178.04 491.58 175.63 C 494.44 171.68 499.79 174.38 503.55 172.65 C 507.69 168.43 508.05 162.06 511.13 157.16 C 511.97 154.99 514.30 152.55 512.89 150.16 C 510.96 150.80 509.25 151.91 507.42 152.77 C 505.12 151.76 502.65 151.14 500.13 151.16 C 500.69 152.82 501.29 154.47 501.89 156.13 C 499.88 156.11 497.87 156.10 495.87 156.09 C 495.34 152.51 494.42 148.86 495.05 145.24 C 496.46 142.39 499.38 140.65 500.85 137.84 C 500.74 135.69 499.72 132.12 496.95 132.72 C 493.07 133.00 489.53 134.78 485.91 136.05 C 489.77 133.57 493.35 130.72 496.67 127.56 C 498.52 125.70 501.23 125.40 503.67 124.85 C 504.95 128.44 507.64 131.17 510.89 133.06 C 510.68 135.51 510.37 137.94 510.18 140.39 C 512.91 142.86 515.29 146.71 519.41 146.71 C 529.80 147.29 540.51 147.11 550.36 143.33 C 550.52 139.96 550.67 136.58 550.86 133.21 C 552.62 133.44 554.37 133.67 556.14 133.89 C 557.27 130.27 557.96 126.53 558.38 122.76 C 562.46 122.51 566.57 123.25 569.73 126.01 C 572.28 124.58 575.14 123.23 576.66 120.58 C 579.32 116.14 579.65 110.86 580.77 105.92 C 583.86 107.26 586.89 108.90 590.24 109.53 C 593.91 109.92 597.54 108.93 601.13 108.32 C 600.54 106.00 599.76 103.74 599.04 101.46 C 599.67 100.20 600.32 98.94 601.01 97.69 C 598.51 97.13 595.98 96.68 593.47 96.22 C 594.26 93.16 594.45 89.51 596.90 87.24 C 599.87 86.65 603.01 87.59 606.03 86.99 Z"/>
       <path d=" M 382.50 118.02 C 389.36 116.01 396.32 114.37 403.35 113.13 C 403.47 113.56 403.70 114.43 403.81 114.86 C 404.16 116.33 404.48 117.82 404.82 119.30 C 408.86 120.38 412.80 122.03 416.98 122.44 C 420.73 121.92 423.97 119.68 427.39 118.18 C 430.98 125.28 437.14 133.37 446.05 132.72 C 450.86 133.44 453.16 127.43 457.90 127.85 C 464.78 127.90 472.54 126.75 478.26 131.51 C 476.07 131.61 473.88 131.61 471.70 131.71 C 472.17 136.66 477.22 138.49 479.98 142.00 C 475.78 143.38 471.34 143.57 467.05 144.40 C 466.47 145.49 466.82 146.77 466.88 147.94 C 467.63 152.96 466.33 157.95 465.72 162.91 C 463.49 164.14 461.23 165.32 459.02 166.57 C 456.96 165.45 454.94 164.28 452.91 163.12 C 450.11 164.77 446.13 165.96 445.61 169.70 C 443.84 178.43 447.57 186.91 450.95 194.75 C 452.04 201.22 449.20 207.82 445.08 212.74 C 443.83 212.04 442.58 211.35 441.33 210.67 C 439.50 211.72 437.73 212.93 435.72 213.58 C 431.44 214.46 427.21 211.27 422.99 212.89 C 416.11 215.20 409.49 219.00 404.78 224.61 C 404.76 227.17 405.56 229.68 405.40 232.25 C 402.95 234.37 399.38 234.71 397.02 236.99 C 393.90 240.03 391.42 243.64 388.80 247.10 C 386.05 245.11 382.95 242.40 379.31 243.06 C 375.26 244.30 371.48 246.30 367.48 247.67 C 360.42 250.13 354.60 255.27 350.45 261.41 C 349.19 262.82 348.26 265.17 346.06 265.11 C 343.31 265.54 342.16 262.11 341.65 259.98 C 343.29 255.82 346.60 252.62 348.99 248.89 C 345.74 248.36 342.36 247.99 339.48 246.25 C 338.14 245.76 336.66 244.19 335.22 245.18 C 332.76 246.60 333.13 249.90 332.53 252.30 C 332.06 257.08 329.99 261.49 327.33 265.43 C 325.77 262.69 323.34 259.94 323.79 256.56 C 324.04 253.61 324.30 250.66 324.37 247.70 C 320.20 248.09 316.04 248.64 311.92 249.39 C 310.93 247.18 309.84 244.99 309.26 242.64 C 308.71 239.50 309.47 236.34 309.85 233.23 C 307.63 231.59 305.31 230.10 303.07 228.49 C 304.61 225.03 306.85 221.80 307.63 218.05 C 307.59 214.79 305.11 211.88 301.96 211.12 C 296.88 209.58 291.71 208.23 286.88 205.97 C 287.88 203.94 288.85 201.88 289.87 199.86 C 286.06 197.45 281.93 195.61 277.63 194.32 C 276.42 188.90 275.93 183.21 278.06 177.95 C 279.66 176.39 281.03 174.62 282.52 172.95 C 280.02 172.21 277.51 171.42 274.91 171.22 C 270.11 170.60 267.10 175.18 263.81 177.85 C 259.59 181.33 259.34 187.15 258.00 192.06 C 257.24 191.98 255.72 191.83 254.97 191.75 C 254.62 186.89 254.10 182.03 252.84 177.31 C 256.47 168.05 257.35 157.85 261.86 148.93 C 264.45 143.52 270.87 141.79 276.39 141.56 C 285.83 141.48 292.63 149.09 299.60 154.40 C 303.12 157.72 308.26 156.77 312.60 157.81 C 315.85 159.06 318.41 161.87 321.99 162.35 C 327.04 163.15 331.93 164.78 337.02 165.33 C 340.19 165.76 343.00 163.99 345.83 162.86 C 348.73 161.40 352.00 162.59 355.04 162.70 C 360.83 163.56 366.81 160.95 370.58 156.58 C 373.78 152.10 374.47 146.45 376.44 141.42 C 378.99 133.79 383.59 126.38 382.50 118.02 Z"/>

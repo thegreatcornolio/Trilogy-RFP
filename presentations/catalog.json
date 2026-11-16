@@ -235,11 +235,13 @@
       "date": "2026-11-16",
       "url": "https://proposal.trilogybpo.com/presentations/connectfibre/Web/",
       "blend": {
-        "primary": "#61d779",
-        "accent": "#d5ec67",
-        "secondary": "#2f9e4a",
-        "navy": "#13202e",
-        "sourceBrand": "#FFD200"
+        "primary": "#ffd200",
+        "accent": "#ffd200",
+        "secondary": "#4b006e",
+        "navy": "#1b2021",
+        "sourceBrand": "#ffd200",
+        "purple": "#4b006e",
+        "cfNavy": "#142032"
       }
     },
     {
