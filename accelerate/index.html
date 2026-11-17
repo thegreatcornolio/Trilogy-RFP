@@ -686,11 +686,16 @@
         flex: 1 1 auto !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important;
+        justify-content: flex-start !important;
         min-height: 0 !important;
       }
       .cover__hero { flex: 0 0 auto !important; }
-      .cover__metrics { flex: 0 0 auto !important; }
+      .cover__metrics { flex: 0 0 auto !important; margin-top: 10mm !important; }
+      .cover__spacer {
+        display: block !important;
+        flex: 1 1 auto !important;
+        min-height: 8mm !important;
+      }
       .cover h1 {
         font-size: 30pt !important;
         line-height: 1.08 !important;
@@ -961,6 +966,7 @@
               *Sales pipeline — subject to final agreement; excluded from existing revenue.
             </p>
           </div>
+          <div class="cover__spacer" aria-hidden="true"></div>
           <div class="cover__highlight">
             100% ownership or controlling interest available. Optional continued participation by existing
             shareholders to support continuity through transition. Source books and commercial terms in ZAR.
