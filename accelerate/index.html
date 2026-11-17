@@ -216,6 +216,16 @@
       color: rgba(255, 255, 255, 0.78);
       max-width: 36rem;
     }
+    .cover__highlight {
+      margin-top: 1.25rem;
+      padding: 0.85rem 0.95rem;
+      border-left: 3px solid var(--green);
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.92);
+      max-width: 36rem;
+    }
 
     /* —— TOC —— */
     .toc {
@@ -615,16 +625,16 @@
 
     @page {
       size: A4;
-      margin: 12mm 12mm 14mm;
+      margin: 0;
     }
     @media print {
       html, body {
         background: #fff !important;
         color: var(--ink);
-        font-size: 9.5pt;
-        line-height: 1.45;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        font-size: 9.75pt;
+        line-height: 1.4;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
       .site-bar,
       .toc,
@@ -635,89 +645,176 @@
         transform: none !important;
         transition: none !important;
       }
-      .wrap {
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        padding: 0;
-      }
+      .wrap,
       .doc {
+        width: 210mm;
+        max-width: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
         box-shadow: none !important;
         border: 0 !important;
-        width: 100%;
-        overflow: visible;
+        background: #fff;
       }
-      .cover {
-        min-height: 0 !important;
-        height: auto !important;
-        padding: 8mm 7mm 9mm;
-        margin: 0;
-        border-radius: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start !important;
-        gap: 0;
-        page-break-after: always;
-        break-after: page;
-        break-inside: avoid;
-      }
-      .cover__body { margin-top: 8mm; }
-      .cover h1 {
-        font-size: 22pt;
-        max-width: 100%;
-      }
-      .cover__lead { font-size: 10pt; max-width: 100%; }
-      .cover__stats {
-        margin-top: 7mm;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 3mm;
-      }
-      .stat { padding: 3.5mm 3mm; }
-      .stat__value { font-size: 12pt; }
-      .stat__label { font-size: 7pt; color: rgba(255, 255, 255, 0.92); }
-      .cover__foot {
-        margin-top: 8mm !important;
-        padding-top: 4mm;
-        font-size: 8pt;
-        color: rgba(255, 255, 255, 0.85);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5mm;
-      }
-      .cover__foot > div { flex: 0 0 auto; }
-      .fx-note { font-size: 7.5pt; color: rgba(255, 255, 255, 0.8); }
 
+      /* ===== PAGE 1: full-bleed cover ===== */
+      .cover {
+        position: relative !important;
+        box-sizing: border-box !important;
+        width: 210mm !important;
+        height: 290mm !important;
+        min-height: 290mm !important;
+        max-height: 290mm !important;
+        margin: 0 !important;
+        padding: 14mm 14mm 0 !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+      .cover__top,
+      .cover__foot {
+        position: relative !important;
+        flex: 0 0 auto !important;
+      }
+      .cover__body {
+        position: relative !important;
+        margin-top: 6mm !important;
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        min-height: 0 !important;
+      }
+      .cover__hero { flex: 0 0 auto !important; }
+      .cover__metrics { flex: 0 0 auto !important; }
+      .cover h1 {
+        font-size: 30pt !important;
+        line-height: 1.08 !important;
+        max-width: 100% !important;
+      }
+      .cover__lead {
+        margin-top: 5mm !important;
+        font-size: 12pt !important;
+        max-width: 100% !important;
+      }
+      .cover__stats {
+        margin-top: 0 !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 5mm !important;
+      }
+      .stat { padding: 10mm 5mm !important; }
+      .stat__value { font-size: 22pt !important; }
+      .stat__label {
+        margin-top: 3mm !important;
+        font-size: 8pt !important;
+        color: rgba(255,255,255,0.92) !important;
+      }
+      .fx-note {
+        margin-top: 5mm !important;
+        font-size: 8.5pt !important;
+        color: rgba(255,255,255,0.82) !important;
+      }
+      .cover__highlight {
+        display: block !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding: 6mm 5.5mm !important;
+        border-left: 3px solid var(--green) !important;
+        background: rgba(255,255,255,0.06) !important;
+        font-size: 11pt !important;
+        line-height: 1.45 !important;
+        color: rgba(255,255,255,0.92) !important;
+        max-width: none !important;
+        flex: 0 0 auto !important;
+      }
+      .cover__foot {
+        margin-top: 5mm !important;
+        margin-bottom: 8mm !important;
+        padding-top: 4mm !important;
+        border-top: 1px solid rgba(255,255,255,0.2) !important;
+        font-size: 9pt !important;
+        color: rgba(255,255,255,0.92) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        gap: 1.8mm !important;
+        background: transparent !important;
+      }
+      .cover__foot > div {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      /* ===== Flowing content pages (no fixed heights, no avoid-break traps) ===== */
       .section {
-        padding: 6mm 2mm;
-        border-bottom: 1px solid #d8dee4;
+        box-sizing: border-box;
+        width: 210mm;
+        padding: 9mm 12mm;
+        border-bottom: 0;
         break-inside: auto;
         page-break-inside: auto;
       }
-      .section:last-of-type { border-bottom: 0; }
-      .section h2 {
-        font-size: 13pt;
-        max-width: 100%;
-      }
-      .section__kicker { font-size: 7.5pt; margin-bottom: 2mm; }
+      .section h2 { font-size: 13.5pt; max-width: 100%; }
+      .section__kicker { font-size: 8pt; margin-bottom: 2mm; }
       .section__intro,
       .prose p,
       .fact p,
-      .fact li { font-size: 9.5pt; }
+      .fact li,
+      .fine { font-size: 9.5pt; }
 
-      /* Keep related blocks together without forcing whole sections onto new pages */
-      .metric-row,
-      .metric,
-      .two-col,
-      .fact,
-      .table-wrap,
-      .total-bar,
-      .callout-highlight,
-      .contact-card,
-      .reasons li,
-      .cap-list,
-      .geo-list {
-        break-inside: avoid;
-        page-break-inside: avoid;
+      #opportunity {
+        page-break-after: avoid;
+        padding: 11mm 12mm 8mm;
+      }
+      #business {
+        page-break-before: avoid;
+        page-break-after: always;
+        padding: 8mm 12mm 12mm;
+      }
+      #business .cap-list { margin-top: 5mm; gap: 3mm 5mm; }
+      #business .two-col { margin-top: 6mm; }
+      #business .fine { margin-top: 6mm; }
+
+      #commercial {
+        page-break-after: avoid;
+        padding: 9mm 12mm 2mm;
+      }
+      #growth {
+        page-break-before: avoid;
+        page-break-after: always;
+        padding: 1mm 12mm 9mm;
+      }
+      #commercial + #growth,
+      #growth { border-top: 0; }
+      #commercial .table-wrap,
+      #growth .table-wrap { margin-top: 4mm; }
+      #commercial table.data th,
+      #commercial table.data td,
+      #growth table.data th,
+      #growth table.data td { padding: 3mm 3.5mm; font-size: 9.5pt; }
+
+      #case {
+        page-break-after: avoid;
+        padding: 12mm 12mm 8mm;
+      }
+      #case .reasons { gap: 5mm; margin-top: 6mm; }
+      #case .reasons strong { font-size: 12pt; }
+      #case .reasons p { font-size: 10pt; }
+      #contact {
+        page-break-before: avoid;
+        padding: 8mm 12mm 14mm;
+      }
+      #contact .contact-card {
+        margin-top: 6mm;
+        padding: 8mm;
+        max-width: 100%;
       }
 
       .metric-row {
@@ -725,36 +822,41 @@
         gap: 3mm;
         grid-template-columns: repeat(3, 1fr) !important;
       }
-      .metric-row.metric-row--five {
-        grid-template-columns: repeat(3, 1fr) !important;
-      }
-      .metric { padding: 3.5mm 3.5mm; }
-      .metric__value { font-size: 11pt; }
+      .metric-row.metric-row--five { grid-template-columns: repeat(3, 1fr) !important; }
+      .metric { padding: 3.5mm 4mm; }
+      .metric__value { font-size: 12pt; }
       .metric__label { font-size: 7pt; opacity: 1; }
 
       .cap-list {
+        margin-top: 4mm;
         grid-template-columns: 1fr 1fr !important;
-        gap: 2mm 4mm;
+        gap: 2.5mm 5mm;
       }
-      .cap-list li { font-size: 8.5pt; padding: 2mm 2.5mm; }
+      .cap-list li { font-size: 9pt; padding: 2.5mm 3mm; }
 
-      .two-col { gap: 4mm; grid-template-columns: 1fr 1fr !important; }
-      .table-wrap { margin-top: 4mm; }
+      .two-col {
+        margin-top: 4mm;
+        gap: 4mm;
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .table-wrap { margin-top: 3mm; }
       table.data { min-width: 0; width: 100%; }
       table.data th,
-      table.data td { padding: 2.5mm 3mm; font-size: 8.5pt; }
-      .total-bar { margin-top: 3mm; padding: 3.5mm 4mm; }
-      .total-bar__value { font-size: 11pt; }
+      table.data td { padding: 2.4mm 3mm; font-size: 9pt; }
+      .total-bar { margin-top: 2.5mm; padding: 3.5mm 4mm; }
+      .total-bar__value { font-size: 12pt; }
       .callout-highlight {
-        margin-top: 4mm;
+        margin-top: 3.5mm;
         padding: 3.5mm 4mm;
-        font-size: 9pt;
+        font-size: 9.5pt;
       }
-      .geo-list { gap: 2mm; }
-      .reasons { gap: 3mm; }
-      .reasons li { padding: 3mm 0; }
+      .geo-list { gap: 2mm; margin-top: 3mm; }
+      .reasons { gap: 3.5mm; margin-top: 4mm; }
+      .reasons strong { font-size: 11pt; }
+      .reasons p { font-size: 9.5pt; }
       .disclaimer { font-size: 7.5pt; margin-top: 4mm; }
-      .contact-card { margin-top: 4mm; padding: 5mm; }
+      .contact-card { margin-top: 4mm; padding: 5mm; max-width: 100%; }
+      .fine { margin-top: 4mm; }
 
       .section--navy,
       .section--wash,
@@ -764,7 +866,8 @@
       .cover,
       .callout-highlight,
       .client-tag__num,
-      .cap-list li {
+      .cap-list li,
+      .cover__highlight {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
@@ -820,44 +923,51 @@
           <div class="cover__project">Project Accelerate · Acquisition opportunity</div>
         </div>
         <div class="cover__body">
-          <h1>Specialist BPO in SA for 100% acquisition</h1>
-          <p class="cover__lead">
-            Established Cape Town delivery business with 24+ years’ operating history, multi-year client tenures,
-            and average annual revenue of <strong>R34.5m</strong>.
-          </p>
-          <div class="cover__stats" aria-label="Key figures">
-            <div class="stat">
-              <div class="stat__value">R34.5m</div>
-              <div class="stat__label">Avg. annual revenue</div>
-            </div>
-            <div class="stat">
-              <div class="stat__value">24+ yrs</div>
-              <div class="stat__label">Operating history</div>
-            </div>
-            <div class="stat">
-              <div class="stat__value">11</div>
-              <div class="stat__label">Current accounts</div>
-            </div>
-            <div class="stat">
-              <div class="stat__value">R8.4m</div>
-              <div class="stat__label">2026 total annual PBT</div>
-            </div>
-            <div class="stat">
-              <div class="stat__value">24.4%</div>
-              <div class="stat__label">2026 PBT to revenue</div>
-            </div>
-            <div class="stat">
-              <div class="stat__value">R14.4m</div>
-              <div class="stat__label">2027 prospective new business*</div>
-            </div>
+          <div class="cover__hero">
+            <h1>Specialist BPO in SA for 100% acquisition</h1>
+            <p class="cover__lead">
+              Established Cape Town delivery business with 24+ years’ operating history, multi-year client tenures,
+              and average annual revenue of <strong>R34.5m</strong>.
+            </p>
           </div>
-          <p class="fx-note">
-            *Sales pipeline — subject to final agreement; excluded from existing revenue.
-          </p>
+          <div class="cover__metrics">
+            <div class="cover__stats" aria-label="Key figures">
+              <div class="stat">
+                <div class="stat__value">R34.5m</div>
+                <div class="stat__label">Avg. annual revenue</div>
+              </div>
+              <div class="stat">
+                <div class="stat__value">24+ yrs</div>
+                <div class="stat__label">Operating history</div>
+              </div>
+              <div class="stat">
+                <div class="stat__value">11</div>
+                <div class="stat__label">Current accounts</div>
+              </div>
+              <div class="stat">
+                <div class="stat__value">R8.4m</div>
+                <div class="stat__label">2026 total annual PBT</div>
+              </div>
+              <div class="stat">
+                <div class="stat__value">24.4%</div>
+                <div class="stat__label">2026 PBT to revenue</div>
+              </div>
+              <div class="stat">
+                <div class="stat__value">R14.4m</div>
+                <div class="stat__label">2027 prospective new business*</div>
+              </div>
+            </div>
+            <p class="fx-note">
+              *Sales pipeline — subject to final agreement; excluded from existing revenue.
+            </p>
+          </div>
+          <div class="cover__highlight">
+            100% ownership or controlling interest available. Optional continued participation by existing
+            shareholders to support continuity through transition. Source books and commercial terms in ZAR.
+          </div>
         </div>
         <div class="cover__foot">
           <div>Century City, Cape Town · Domestic &amp; international clients</div>
-          <div>100% ownership or controlling interest · Optional continued shareholder participation</div>
           <div>
             Contact: <strong>Kobus van der Westhuizen</strong>
             · <a href="tel:+27829040234">+2782 904 0234</a>

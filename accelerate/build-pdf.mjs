@@ -81,18 +81,19 @@ try {
   });
   await page.pdf({
     path: OUT,
-    format: "A4",
+    width: "210mm",
+    height: "297mm",
     printBackground: true,
-    preferCSSPageSize: false,
+    preferCSSPageSize: true,
     displayHeaderFooter: true,
     headerTemplate: "<div></div>",
     footerTemplate: `
-      <div style="width:100%;font-size:8px;padding:0 14mm;color:#5a6570;display:flex;justify-content:space-between;font-family:Arial,sans-serif;">
+      <div style="width:100%;font-size:8px;padding:0 14mm;color:#8b949e;display:flex;justify-content:space-between;font-family:Arial,sans-serif;box-sizing:border-box;">
         <span>Project Accelerate · Confidential</span>
         <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
       </div>
     `,
-    margin: { top: "11mm", bottom: "16mm", left: "11mm", right: "11mm" },
+    margin: { top: "0mm", bottom: "7mm", left: "0mm", right: "0mm" },
   });
   await browser.close();
   const size = fs.statSync(OUT).size;
