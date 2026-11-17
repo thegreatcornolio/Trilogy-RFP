@@ -25,6 +25,68 @@
       --brand-green: #61d779 !important;
       --brand-lime: #d5ec67 !important;
     }
+    .sector-case {
+      display: grid;
+      grid-template-columns: minmax(13.5rem, 22.5rem) minmax(0, 1fr);
+      grid-template-areas: "media body";
+      gap: 1.05rem 1.4rem;
+      align-items: center;
+      margin: 0 0 1.15rem;
+      padding: 0.95rem;
+      border: 1px solid var(--border, #d5dbe3);
+      border-radius: 0.85rem;
+      background: #fff;
+    }
+    .sector-case:last-child { margin-bottom: 0; }
+    .sector-case--flip {
+      grid-template-columns: minmax(0, 1fr) minmax(13.5rem, 22.5rem);
+      grid-template-areas: "body media";
+    }
+    .sector-case__media {
+      grid-area: media;
+      margin: 0;
+      align-self: center;
+      overflow: hidden;
+      border-radius: 0.65rem;
+      border: 1px solid var(--border, #d5dbe3);
+      background: #f4f6f8;
+    }
+    .sector-case__media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center;
+    }
+    .sector-case__body { grid-area: body; min-width: 0; }
+    .sector-case__body h3 { margin: 0 0 0.55rem; }
+    .sector-case .list-check { margin-top: 0.55rem; }
+    .cf-ai-kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0 1.25rem;
+    }
+    .cf-ai-kpis .stat {
+      background: #13202e;
+      color: #fff;
+      border-radius: 0.75rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(97, 215, 121, 0.25);
+    }
+    .cf-ai-kpis .stat__value { color: #61d779; font-size: 1.35rem; font-weight: 700; }
+    .cf-ai-kpis .stat__label { color: rgba(255,255,255,0.72); font-size: 0.78rem; margin-top: 0.25rem; line-height: 1.35; }
+    @media (max-width: 860px) {
+      .sector-case,
+      .sector-case--flip {
+        grid-template-columns: 1fr;
+        grid-template-areas: "media" "body";
+        padding: 0.75rem;
+      }
+      .sector-case__media img { aspect-ratio: 16 / 9; max-height: 11.5rem; }
+      .cf-ai-kpis { grid-template-columns: 1fr 1fr; }
+    }
     .cover__client-logo {
       display: block;
       max-height: 4.4rem;
@@ -827,6 +889,8 @@
   <div class="page-nav__links" id="cf-nav-links">
     <a href="#cover">Cover</a>
     <a href="#introduction">Cover letter</a>
+    <a href="#sector-experience">Fibre &amp; telco cases</a>
+    <a href="#trilogy-ai">Trilogy Ai</a>
     <a href="#section-02">Company Overview</a>
     <a href="#commercial">Commercial</a>
     <a href="#company-detail">Operational Information</a>
@@ -878,9 +942,129 @@
       </div>
     </section>
 
-<section class="proposal-page" id="section-02">
+<section class="proposal-page" id="sector-experience">
       <div class="section-head">
         <span class="section-num">01</span>
+        <h2>Fibre &amp; telco case studies</h2>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>Connect Fibre is building competitive full-fibre networks. The proof points below show we already run FNO, ISP and connectivity contact-centre work at national scale — high-volume broadband support, technical troubleshooting, billing peaks, and multichannel voice / WhatsApp / email.</p>
+        </div>
+
+        <article class="sector-case" id="case-vuma">
+          <figure class="sector-case__media">
+            <img src="assets/case-vuma.jpg" alt="Trilogy team celebrating Vuma passing one million subscribers" loading="lazy">
+          </figure>
+          <div class="sector-case__body">
+            <h3>Vuma FNO — Supporting 1 million customers</h3>
+            <div class="prose">
+              <p>As Vuma’s subscriber base expanded through 2025 and early 2026, demand for responsive 24/7 support intensified — from residential users and from ISPs that resell Vuma’s network. Crossing one million subscribers raised the stakes for reliability.</p>
+              <p><strong>The challenge.</strong> High-volume inbound across voice, email and WhatsApp. Complex technical troubleshooting for broadband installation, activations, connectivity and outages. Real-time escalation for business and enterprise partners. Consistent SLA fulfilment in peak traffic and network-expansion phases.</p>
+              <p><strong>The solution.</strong> A 24/7, scalable, multichannel service desk centred on customer experience:</p>
+            </div>
+            <ul class="list-check">
+              <li>Voice — assisted calls with trained broadband support specialists.</li>
+              <li>WhatsApp — real-time problem-solving.</li>
+              <li>Email triage — structured escalation and tracking for complex tickets.</li>
+              <li>Shared knowledge bases and workflows so every channel feels like one operation.</li>
+              <li><strong>Outcomes:</strong> support kept pace with national FTTH growth · 75+ ISP partners · long-tenure FNO partnership since 2017.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="sector-case sector-case--flip" id="case-webafrica">
+          <figure class="sector-case__media">
+            <img src="assets/case-webafrica.jpg" alt="Webafrica fibre and LTE billing support" loading="lazy">
+          </figure>
+          <div class="sector-case__body">
+            <h3>Webafrica — On-demand billing support at scale</h3>
+            <div class="prose">
+              <p>Billing runs for a national ISP bring heightened customer anxiety, contact spikes, and zero tolerance for error. Webafrica needed a partner that could scale billing-skilled chat agents on demand, cover VR, debit orders, suspensions and premium extractions, run extended staggered hours, and flex capacity day by day.</p>
+              <p><strong>What we deployed.</strong> A fully managed, on-demand chat workforce purpose-built for billing: 120 billing-trained chat agents, real-time workforce planning, centralised QA and live performance monitoring, aligned to Webafrica’s billing cycles and systems — covering Unlimited Fibre (up to 1 Gbps) and plug-and-play LTE.</p>
+              <p><strong>Operational impact.</strong> CSAT held through peak billing stress. Fewer billing escalations and repeats. Faster response on payment failures and suspensions. Accurate, compliant billing communication at scale — with zero disruption to Webafrica’s core teams.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+<section class="proposal-page" id="trilogy-ai">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2>Trilogy Ai — Autonomous CX</h2>
+      </div>
+      <div class="section-body">
+        <div class="prose">
+          <p>From <a href="https://web.trilogybpo.com/trilogy-ai/" target="_blank" rel="noopener">web.trilogybpo.com/trilogy-ai</a>: AI doesn’t replace contact centres — it upgrades them. Next-generation agentic AI and digital solutions built inside real BPO constraints, with human-in-the-loop governance.</p>
+          <p><strong>Human empathy — AI accuracy.</strong> Trilogy Ai is our Autonomous Customer Engagement (ACE) capability: fully automated platforms for sales, service, marketing, collections and retention — with or without an agent in the loop.</p>
+        </div>
+
+        <div class="cf-ai-kpis" aria-label="AI outcome benchmarks">
+          <div class="stat"><div class="stat__value">up to 27%</div><div class="stat__label">AHT reduction reported with AI-enabled handling</div></div>
+          <div class="stat"><div class="stat__value">70–80%</div><div class="stat__label">Repetitive queries automatable so experts focus on complex work</div></div>
+          <div class="stat"><div class="stat__value">20–30%</div><div class="stat__label">Cost-to-serve reduction when AI is operationalised correctly</div></div>
+          <div class="stat"><div class="stat__value">100%</div><div class="stat__label">QA coverage via auto QA &amp; live sentiment flagging</div></div>
+        </div>
+
+        <h3>The AI proposition</h3>
+        <div class="pillars pillars--3">
+          <div class="pillar"><h4>Agentic AI</h4><p>AI agents that plan and execute multi-step workflows — beyond Q&amp;A to actual problem resolution.</p></div>
+          <div class="pillar"><h4>24/7 intelligent service</h4><p>High-quality digital support without the overhead of around-the-clock human staffing for every Tier-1 contact.</p></div>
+          <div class="pillar"><h4>Predictive engagement</h4><p>Anticipate needs and intent before customers express them — reactive support becomes proactive service.</p></div>
+        </div>
+
+        <h3>Where Trilogy applies AI</h3>
+        <div class="pillars pillars--3">
+          <div class="pillar"><h4>Customer-facing automation</h4><p>Conversational AI for containment, triage and self-service; smart routing and intent detection before human handoff.</p></div>
+          <div class="pillar"><h4>Agent augmentation</h4><p>Real-time agent assist, knowledge retrieval, summarisation, and automated after-call work / case notes.</p></div>
+          <div class="pillar"><h4>Back-office &amp; operations</h4><p>Ticket classification, QA automation, sentiment analysis, forecasting and performance insight.</p></div>
+        </div>
+        <div class="callout">“The biggest near-term value of AI in contact centres comes from augmenting agents, not replacing them.” — McKinsey</div>
+
+        <h3>Human-in-the-loop</h3>
+        <div class="lifecycle">
+          <div class="life-step"><div class="life-step__num">01</div><h4>Sentiment &amp; empathy</h4><p>AI monitors 100% of conversations and flags high-tension cases for immediate human intervention.</p></div>
+          <div class="life-step"><div class="life-step__num">02</div><h4>Real-time agent assist</h4><p>Live scripts, knowledge articles and compliance disclosures fed to agents during the contact.</p></div>
+          <div class="life-step"><div class="life-step__num">03</div><h4>Continuous learning</h4><p>Every complex human resolution feeds back into the model — safer and smarter over time.</p></div>
+          <div class="life-step"><div class="life-step__num">04</div><h4>Safety net</h4><p>Mandatory human override — AI never finalises sensitive decisions without validation.</p></div>
+        </div>
+
+        <h3>AI-enabled platforms</h3>
+        <div class="ai-platforms" aria-label="Trilogy AI platform suite">
+          <article class="ai-platform ai-platform--voice">
+            <h4>guruvoice.ai</h4>
+            <p>Fully automated AI voice for inbound service and proactive outbound (service, sales, collections).</p>
+          </article>
+          <article class="ai-platform ai-platform--assist">
+            <h4>Agent assist</h4>
+            <p>Live AI response suggestions, knowledge-base access and process guidance on-screen during every contact.</p>
+          </article>
+          <article class="ai-platform ai-platform--acwa">
+            <h4>acwa.ai</h4>
+            <p>After-Call Work Assistant — automates callbacks, CRM updates, document dispatch and logistics notifications.</p>
+          </article>
+          <article class="ai-platform ai-platform--anychat">
+            <h4>anychat.ai</h4>
+            <p>Real-time LLM translation so any agent can serve any customer, regardless of language.</p>
+          </article>
+          <article class="ai-platform ai-platform--collect">
+            <h4>collect.ai</h4>
+            <p>Digital &amp; autonomous collections — segmentation, predictive analytics and automated recovery communication.</p>
+          </article>
+        </div>
+
+        <div class="pillars pillars--2" style="margin-top:1.25rem">
+          <div class="pillar"><h4>Why AI initiatives fail</h4><p>No operational ownership · disconnected from live CX · no escalation / human override · over-promised ROI · privacy gaps · legacy integration.</p></div>
+          <div class="pillar"><h4>Why Trilogy succeeds</h4><p>AI inside BPO operations · real agents and customers · continuous optimisation · outcome-aligned commercials · GDPR/POPIA-aligned SLMs · SA integration partners.</p></div>
+        </div>
+        <div class="callout">AI-enabled CX can reduce cost-to-serve by 20–30% when embedded correctly. Source: McKinsey · Detail: <a href="https://web.trilogybpo.com/trilogy-ai/" target="_blank" rel="noopener">web.trilogybpo.com/trilogy-ai</a></div>
+      </div>
+    </section>
+
+<section class="proposal-page" id="section-02">
+      <div class="section-head">
+        <span class="section-num">03</span>
         <h2>Company Overview</h2>
       </div>
       <div class="section-body">
@@ -1428,7 +1612,7 @@
 
 <section class="proposal-page" id="commercial">
       <div class="section-head">
-        <span class="section-num">02</span>
+        <span class="section-num">04</span>
         <h2>Commercial</h2>
       </div>
       <div class="section-body">
