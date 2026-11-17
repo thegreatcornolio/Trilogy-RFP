@@ -140,14 +140,17 @@
       margin: 1.05rem 0 0;
       font-size: 0.98rem;
       line-height: 1.55;
-      color: rgba(255, 255, 255, 0.78);
+      color: rgba(255, 255, 255, 0.92);
       max-width: 34rem;
     }
     .cover__stats {
       margin-top: 2.25rem;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.55rem;
+    }
+    @media (min-width: 720px) {
+      .cover__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     .stat {
       padding: 0.85rem 0.8rem;
@@ -157,7 +160,7 @@
     .stat__value {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--lime);
       letter-spacing: -0.02em;
     }
@@ -166,8 +169,9 @@
       font-size: 0.66rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255, 255, 255, 0.92);
       line-height: 1.35;
+      font-weight: 600;
     }
     .cover__foot {
       margin-top: 2.25rem;
@@ -186,7 +190,7 @@
       margin-top: 0.85rem;
       font-size: 0.7rem;
       line-height: 1.4;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(255, 255, 255, 0.78);
       max-width: 36rem;
     }
 
@@ -264,6 +268,9 @@
     @media (min-width: 640px) {
       .metric-row { grid-template-columns: repeat(3, 1fr); }
     }
+    @media (min-width: 900px) {
+      .metric-row.metric-row--five { grid-template-columns: repeat(5, 1fr); }
+    }
     .metric {
       padding: 0.85rem 0.95rem;
       border-radius: var(--radius);
@@ -273,24 +280,38 @@
     .metric__value {
       font-family: var(--display);
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       letter-spacing: -0.02em;
       color: var(--navy);
     }
     .metric__label {
       margin-top: 0.15rem;
-      font-size: 0.7rem;
-      color: var(--muted);
+      font-size: 0.68rem;
+      color: var(--ink);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       font-weight: 600;
+      opacity: 0.85;
     }
     .section--navy .metric {
       background: rgba(255, 255, 255, 0.05);
       border-color: rgba(255, 255, 255, 0.12);
     }
     .section--navy .metric__value { color: var(--lime); }
-    .section--navy .metric__label { color: rgba(255, 255, 255, 0.55); }
+    .section--navy .metric__label { color: rgba(255, 255, 255, 0.92); opacity: 1; }
+
+    .callout-highlight {
+      margin-top: 1rem;
+      padding: 0.95rem 1.05rem;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--green);
+      background: linear-gradient(90deg, rgba(97, 215, 121, 0.16), rgba(213, 236, 103, 0.1));
+      color: var(--ink);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      font-weight: 600;
+      box-shadow: 0 0 0 1px rgba(97, 215, 121, 0.25);
+    }
 
     .two-col {
       margin-top: 1.1rem;
@@ -630,6 +651,7 @@
       .cover { min-height: auto; padding: 1.5rem 1.2rem 1.65rem; }
       .cover__body { margin-top: 1.75rem; }
       .cover__stats { grid-template-columns: 1fr 1fr; }
+      .metric-row.metric-row--five { grid-template-columns: 1fr; }
       .section { padding: 1.35rem 1.2rem; }
       .toc { padding: 0.85rem 1.2rem; }
       .cover__foot { flex-direction: column; gap: 0.3rem; }
@@ -653,15 +675,14 @@
           <div class="cover__project">Project Accelerate · Acquisition opportunity</div>
         </div>
         <div class="cover__body">
-          <h1>Specialist outsourcing platform for controlling-interest acquisition</h1>
+          <h1>Specialist BPO in SA for 100% acquisition</h1>
           <p class="cover__lead">
             Established Cape Town delivery business with 24+ years’ operating history, multi-year client tenures,
-            and average annual revenue of <strong>$1.86m</strong>. Controlling interest available; existing shareholder
-            participation optional.
+            and average annual revenue of <strong>R34.5m</strong>.
           </p>
           <div class="cover__stats" aria-label="Key figures">
             <div class="stat">
-              <div class="stat__value">$1.86m</div>
+              <div class="stat__value">R34.5m</div>
               <div class="stat__label">Avg. annual revenue</div>
             </div>
             <div class="stat">
@@ -673,22 +694,29 @@
               <div class="stat__label">Current accounts</div>
             </div>
             <div class="stat">
-              <div class="stat__value">$781k</div>
-              <div class="stat__label">Prospective FY run-rate*</div>
+              <div class="stat__value">R8.4m</div>
+              <div class="stat__label">2026 total annual PBT</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value">24.4%</div>
+              <div class="stat__label">2026 PBT to revenue</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value">R14.4m</div>
+              <div class="stat__label">2027 prospective new business*</div>
             </div>
           </div>
           <p class="fx-note">
-            Figures converted from ZAR at ≈R18.5 / USD (illustrative mid-market rate). Source books are ZAR-denominated.
-            *Pipeline subject to final agreement; excluded from existing revenue.
+            *Sales pipeline — subject to final agreement; excluded from existing revenue.
           </p>
         </div>
         <div class="cover__foot">
           <div>Century City, Cape Town · Domestic &amp; international clients</div>
-          <div>Controlling interest · Optional continued shareholder participation</div>
+          <div>100% ownership or controlling interest · Optional continued shareholder participation</div>
           <div>
             Contact: <strong>Kobus van der Westhuizen</strong>
             · <a href="tel:+27829040234">+2782 904 0234</a>
-            · <a href="mailto:kobusvdw@trilogybpo.com">kobusvdw@trilogybpo.com</a>
+            · <a href="mailto:kobus@dealcompany.co.za">kobus@dealcompany.co.za</a>
           </div>
         </div>
       </section>
@@ -706,26 +734,34 @@
       <!-- 01 Opportunity -->
       <section class="section section--navy reveal" id="opportunity">
         <p class="section__kicker">01 · The opportunity</p>
-        <h2>Acquire a controlling interest in an established delivery platform</h2>
+        <h2>Acquire a specialist BPO platform in South Africa</h2>
         <div class="prose">
           <p>
-            Transaction: controlling interest in the company, with scope for continued participation by existing shareholders.
+            Transaction: 100% ownership or controlling interest in the company, with scope for continued participation by existing shareholders.
             The asset is a specialist outsourcing operation — client relationships, account leadership, and delivery capability —
             not a greenfield build.
           </p>
         </div>
-        <div class="metric-row">
+        <div class="metric-row metric-row--five">
           <div class="metric">
-            <div class="metric__value">$1,863,568</div>
-            <div class="metric__label">Total avg. annual revenue</div>
+            <div class="metric__value">R31&nbsp;080&nbsp;000</div>
+            <div class="metric__label">Total annual top 4 clients</div>
           </div>
           <div class="metric">
             <div class="metric__value">11 accounts</div>
             <div class="metric__label">Current portfolio</div>
           </div>
           <div class="metric">
-            <div class="metric__value">$780,973</div>
-            <div class="metric__label">Prospective annual run-rate</div>
+            <div class="metric__value">R8&nbsp;400&nbsp;000</div>
+            <div class="metric__label">2026 total annual PBT</div>
+          </div>
+          <div class="metric">
+            <div class="metric__value">24.4%</div>
+            <div class="metric__label">2026 PBT to revenue</div>
+          </div>
+          <div class="metric">
+            <div class="metric__value">R14&nbsp;448&nbsp;000</div>
+            <div class="metric__label">2027 prospective new business</div>
           </div>
         </div>
         <div class="two-col">
@@ -792,9 +828,9 @@
       <!-- 03 Commercial -->
       <section class="section section--wash reveal" id="commercial">
         <p class="section__kicker">03 · Commercial scale</p>
-        <h2>Eleven-account portfolio · $1.86m average annual revenue</h2>
+        <h2>Eleven-account portfolio · R34.5m average annual revenue</h2>
         <p class="section__intro">
-          Top relationships below (identities anonymised). Portfolio total average annual revenue: <strong>$1,863,568</strong>.
+          Top relationships below (identities anonymised).
         </p>
 
         <div class="table-wrap">
@@ -803,7 +839,7 @@
               <tr>
                 <th>Top relationships</th>
                 <th>Tenure</th>
-                <th class="num">Avg. annual revenue (USD)</th>
+                <th class="num">Avg. annual revenue (ZAR)</th>
               </tr>
             </thead>
             <tbody>
@@ -815,7 +851,7 @@
                   </span>
                 </td>
                 <td>5 years</td>
-                <td class="num">$778,378</td>
+                <td class="num">R&nbsp;14&nbsp;400&nbsp;000</td>
               </tr>
               <tr>
                 <td>
@@ -825,7 +861,7 @@
                   </span>
                 </td>
                 <td>3 years</td>
-                <td class="num">$486,486</td>
+                <td class="num">R&nbsp;9&nbsp;000&nbsp;000</td>
               </tr>
               <tr>
                 <td>
@@ -835,7 +871,7 @@
                   </span>
                 </td>
                 <td>5 years</td>
-                <td class="num">$304,865</td>
+                <td class="num">R&nbsp;5&nbsp;640&nbsp;000</td>
               </tr>
               <tr>
                 <td>
@@ -845,21 +881,21 @@
                   </span>
                 </td>
                 <td>22 years</td>
-                <td class="num">$110,270</td>
+                <td class="num">R&nbsp;2&nbsp;040&nbsp;000</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="total-bar">
-          <div class="total-bar__label">Total annual company revenue</div>
-          <div class="total-bar__value">$1,863,568</div>
+          <div class="total-bar__label">Total annual top 4 clients</div>
+          <div class="total-bar__value">R&nbsp;31&nbsp;080&nbsp;000</div>
         </div>
 
-        <p class="fine">
+        <div class="callout-highlight">
           Tenure and contractual continuity are material to the revenue profile. Commercial structures include fixed monthly fees,
           dedicated-resource commitments, productive-hour billing and agreed variable charges.
-        </p>
+        </div>
       </section>
 
       <!-- 04 Growth & pipeline -->
@@ -882,8 +918,7 @@
         </ul>
 
         <p class="section__intro" style="margin-top:1.25rem;">
-          Prospective engagements identified by management for commencement in the next financial year.
-          Subject to final agreement; excluded from existing revenue.
+          <strong>Sales Pipeline</strong> — subject to final agreement; excluded from existing revenue.
         </p>
 
         <div class="table-wrap">
@@ -892,7 +927,7 @@
               <tr>
                 <th>Prospective account</th>
                 <th>Anticipated start</th>
-                <th class="num">Monthly indicative (USD)</th>
+                <th class="num">Monthly indicative (ZAR)</th>
               </tr>
             </thead>
             <tbody>
@@ -904,7 +939,7 @@
                   </span>
                 </td>
                 <td>September 2027</td>
-                <td class="num">$44,865</td>
+                <td class="num">R&nbsp;830&nbsp;000</td>
               </tr>
               <tr>
                 <td>
@@ -914,7 +949,7 @@
                   </span>
                 </td>
                 <td>May 2027</td>
-                <td class="num">$18,595</td>
+                <td class="num">R&nbsp;344&nbsp;000</td>
               </tr>
               <tr>
                 <td>
@@ -924,15 +959,15 @@
                   </span>
                 </td>
                 <td>May 2027</td>
-                <td class="num">$1,622</td>
+                <td class="num">R&nbsp;30&nbsp;000</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="total-bar">
-          <div class="total-bar__label">Prospective monthly · full-year run-rate</div>
-          <div class="total-bar__value">$65,081 / mo · $780,973 / yr</div>
+          <div class="total-bar__label">2027 prospective new business</div>
+          <div class="total-bar__value">R&nbsp;1&nbsp;204&nbsp;000 / mo · R&nbsp;14&nbsp;448&nbsp;000 / yr</div>
         </div>
       </section>
 
@@ -945,7 +980,7 @@
             <span class="reasons__num">01</span>
             <div>
               <strong>Proven delivery platform</strong>
-              <p>24+ years’ operating history, multi-year tenures (up to 22 years), and $1.86m average annual revenue across 11 accounts.</p>
+              <p>24+ years’ operating history, multi-year tenures (up to 22 years), and R34.5m average annual revenue across 11 accounts.</p>
             </div>
           </li>
           <li>
@@ -959,21 +994,21 @@
             <span class="reasons__num">03</span>
             <div>
               <strong>Identifiable near-term upside</strong>
-              <p>~$781k prospective annual run-rate from named pipeline, plus room to deepen existing accounts and leverage international coverage.</p>
+              <p>R14.4m 2027 prospective new business from named sales pipeline, plus room to deepen existing accounts and leverage international coverage.</p>
             </div>
           </li>
           <li>
             <span class="reasons__num">04</span>
             <div>
               <strong>Flexible transaction shape</strong>
-              <p>Controlling interest available; optional continued participation by existing shareholders to support continuity through transition.</p>
+              <p>100% ownership or controlling interest available; optional continued participation by existing shareholders to support continuity through transition.</p>
             </div>
           </li>
         </ol>
         <p class="disclaimer">
           This memorandum is confidential and for information only. It is not an offer or invitation to treat.
-          Financial figures are management information converted from ZAR at an illustrative rate of ≈R18.5 / USD;
-          they are subject to confirmation in due diligence. Forward-looking pipeline is not contractually guaranteed.
+          Financial figures are management information in ZAR and are subject to confirmation in due diligence.
+          Forward-looking sales pipeline is not contractually guaranteed.
           Recipients must conduct their own investigation and analysis.
         </p>
       </section>
@@ -992,7 +1027,7 @@
             </li>
             <li>
               <span>Email</span>
-              <a href="mailto:kobusvdw@trilogybpo.com">kobusvdw@trilogybpo.com</a>
+              <a href="mailto:kobus@dealcompany.co.za">kobus@dealcompany.co.za</a>
             </li>
           </ul>
         </div>
@@ -1005,9 +1040,9 @@
     <p>
       Contact: <strong>Kobus van der Westhuizen</strong>
       · <a href="tel:+27829040234">+2782 904 0234</a>
-      · <a href="mailto:kobusvdw@trilogybpo.com">kobusvdw@trilogybpo.com</a>
+      · <a href="mailto:kobus@dealcompany.co.za">kobus@dealcompany.co.za</a>
     </p>
-    <p>USD figures converted from ZAR at ≈R18.5 / $. Prospective revenue subject to final agreement.</p>
+    <p>All figures in ZAR. Sales pipeline subject to final agreement.</p>
   </footer>
 
   <script>
