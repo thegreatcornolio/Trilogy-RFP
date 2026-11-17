@@ -73,6 +73,29 @@
       font-weight: 600;
     }
     .site-bar__meta span { color: var(--lime); }
+    .site-bar__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .pdf-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: var(--lime);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .pdf-download:hover { filter: brightness(1.05); }
 
     .wrap {
       width: min(100%, var(--sheet-w));
@@ -592,11 +615,26 @@
 
     @page {
       size: A4;
-      margin: 12mm;
+      margin: 12mm 12mm 14mm;
     }
     @media print {
-      html, body { background: #fff; }
-      .site-bar, .toc, .site-footer { display: none !important; }
+      html, body {
+        background: #fff !important;
+        color: var(--ink);
+        font-size: 9.5pt;
+        line-height: 1.45;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .site-bar,
+      .toc,
+      .site-footer,
+      .pdf-download { display: none !important; }
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
       .wrap {
         width: 100%;
         max-width: none;
@@ -604,28 +642,131 @@
         padding: 0;
       }
       .doc {
-        box-shadow: none;
-        border: 0;
+        box-shadow: none !important;
+        border: 0 !important;
         width: 100%;
+        overflow: visible;
       }
       .cover {
-        min-height: auto;
-        padding: 0 0 10mm;
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 8mm 7mm 9mm;
+        margin: 0;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start !important;
+        gap: 0;
         page-break-after: always;
         break-after: page;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        break-inside: avoid;
       }
+      .cover__body { margin-top: 8mm; }
+      .cover h1 {
+        font-size: 22pt;
+        max-width: 100%;
+      }
+      .cover__lead { font-size: 10pt; max-width: 100%; }
+      .cover__stats {
+        margin-top: 7mm;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 3mm;
+      }
+      .stat { padding: 3.5mm 3mm; }
+      .stat__value { font-size: 12pt; }
+      .stat__label { font-size: 7pt; color: rgba(255, 255, 255, 0.92); }
+      .cover__foot {
+        margin-top: 8mm !important;
+        padding-top: 4mm;
+        font-size: 8pt;
+        color: rgba(255, 255, 255, 0.85);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5mm;
+      }
+      .cover__foot > div { flex: 0 0 auto; }
+      .fx-note { font-size: 7.5pt; color: rgba(255, 255, 255, 0.8); }
+
       .section {
-        padding: 7mm 0;
-        break-inside: avoid-page;
+        padding: 6mm 2mm;
+        border-bottom: 1px solid #d8dee4;
+        break-inside: auto;
+        page-break-inside: auto;
       }
+      .section:last-of-type { border-bottom: 0; }
+      .section h2 {
+        font-size: 13pt;
+        max-width: 100%;
+      }
+      .section__kicker { font-size: 7.5pt; margin-bottom: 2mm; }
+      .section__intro,
+      .prose p,
+      .fact p,
+      .fact li { font-size: 9.5pt; }
+
+      /* Keep related blocks together without forcing whole sections onto new pages */
+      .metric-row,
+      .metric,
+      .two-col,
+      .fact,
+      .table-wrap,
+      .total-bar,
+      .callout-highlight,
+      .contact-card,
+      .reasons li,
+      .cap-list,
+      .geo-list {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .metric-row {
+        margin-top: 5mm;
+        gap: 3mm;
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+      .metric-row.metric-row--five {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+      .metric { padding: 3.5mm 3.5mm; }
+      .metric__value { font-size: 11pt; }
+      .metric__label { font-size: 7pt; opacity: 1; }
+
+      .cap-list {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2mm 4mm;
+      }
+      .cap-list li { font-size: 8.5pt; padding: 2mm 2.5mm; }
+
+      .two-col { gap: 4mm; grid-template-columns: 1fr 1fr !important; }
+      .table-wrap { margin-top: 4mm; }
+      table.data { min-width: 0; width: 100%; }
+      table.data th,
+      table.data td { padding: 2.5mm 3mm; font-size: 8.5pt; }
+      .total-bar { margin-top: 3mm; padding: 3.5mm 4mm; }
+      .total-bar__value { font-size: 11pt; }
+      .callout-highlight {
+        margin-top: 4mm;
+        padding: 3.5mm 4mm;
+        font-size: 9pt;
+      }
+      .geo-list { gap: 2mm; }
+      .reasons { gap: 3mm; }
+      .reasons li { padding: 3mm 0; }
+      .disclaimer { font-size: 7.5pt; margin-top: 4mm; }
+      .contact-card { margin-top: 4mm; padding: 5mm; }
+
       .section--navy,
+      .section--wash,
       .total-bar,
       .metric,
-      .stat {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+      .stat,
+      .cover,
+      .callout-highlight,
+      .client-tag__num,
+      .cap-list li {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
     }
 
@@ -647,7 +788,8 @@
         max-width: 100%;
       }
     }
-    @media (max-width: 720px) {
+    /* screen-only: do not collapse grids when Chrome prints/PDFs at a narrow layout width */
+    @media screen and (max-width: 720px) {
       .cover { min-height: auto; padding: 1.5rem 1.2rem 1.65rem; }
       .cover__body { margin-top: 1.75rem; }
       .cover__stats { grid-template-columns: 1fr 1fr; }
@@ -662,7 +804,10 @@
   <header class="site-bar">
     <div class="site-bar__inner">
       <div class="site-bar__title">Project Accelerate</div>
-      <div class="site-bar__meta">Confidential <span>·</span> Investment Memorandum</div>
+      <div class="site-bar__actions">
+        <div class="site-bar__meta">Confidential <span>·</span> Investment Memorandum</div>
+        <a class="pdf-download" href="Project-Accelerate-Investment-Memorandum.pdf" download>Download PDF</a>
+      </div>
     </div>
   </header>
 
