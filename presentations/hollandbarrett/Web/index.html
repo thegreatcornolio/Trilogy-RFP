@@ -1145,6 +1145,33 @@
     }
     .sector-case h3 { margin-bottom: 0.55rem; }
 
+    .retail-logo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin: 0.35rem 0 0.25rem;
+    }
+    @media (max-width: 820px) { .retail-logo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 520px) { .retail-logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .retail-logo-grid__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 4.25rem;
+      padding: 0.65rem 0.75rem;
+      background: #fff;
+      border: 1px solid rgba(19,32,46,0.1);
+      border-radius: 0.45rem;
+    }
+    .retail-logo-grid__item img {
+      max-width: 100%;
+      max-height: 2.4rem;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+
     .case-study {
       margin: 0 0 1.75rem;
       padding: 1.15rem 1.2rem 1.25rem;
@@ -1270,17 +1297,11 @@
         <div class="prose">
           <p>Holland &amp; Barrett is the UK’s leading health and wellness retailer — a brand customers trust for advice as much as fulfilment. Omnichannel journeys (store, web, app), product expertise and seasonal demand spikes are exactly the pattern Trilogy’s leadership has delivered for UK retail programmes out of Cape Town.</p>
           <p>The same founders and EXCO who designed, built and scaled <strong>Digital Tribe / Ascensos South Africa</strong> — first <strong>100 FTEs live in six weeks</strong>, then <strong>1,500 seats across four locations</strong> over three years, with a leadership team that still runs Ascensos South Africa — now lead Trilogy Digital. That is not adjacent experience. That is the build-out.</p>
-          <p>We propose a dedicated Cape Town pod at <strong>50 FTE</strong> steady-state, with a rehearsed peak flex to <strong>90 FTE</strong> for campaigns, BFCM and festive demand. Peak capacity is recruited, nested and rostered through the same WFM discipline used on high-volume retail accounts.</p>
-        </div>
-        <div class="fte-strip" aria-label="FTE model">
-          <div class="fte-card"><div class="fte-card__value">50 FTE</div><div class="fte-card__label">Steady-state base</div></div>
-          <div class="fte-card"><div class="fte-card__value">90 FTE</div><div class="fte-card__label">Peak capacity</div></div>
-          <div class="fte-card"><div class="fte-card__value">+40</div><div class="fte-card__label">Peak surge FTE</div></div>
         </div>
         <div class="exec-callouts" aria-label="Why Trilogy">
           <div class="exec-callout">
             <div class="exec-callout__title">Ascensos South Africa build-out</div>
-            <p>Design, build, operate and hand over a world-class Cape Town capability centre — awards, incentive structuring, and a leadership team still in place.</p>
+            <p>Design, built and ran a world-class Cape Town capability centre — awards, incentive structuring, and a leadership team still in place.</p>
           </div>
           <div class="exec-callout">
             <div class="exec-callout__title">Retail clients at UK scale</div>
@@ -1316,20 +1337,20 @@
             <p>This should not be a leap of faith. Our leadership has previously run UK retail programmes including:</p>
           </div>
         </div>
-        <ul class="list-check retail-names">
-            <li>John Lewis &amp; Partners</li>
-            <li>Aldi</li>
-            <li>Iceland</li>
-            <li>JD Sports</li>
-            <li>Virgin</li>
-            <li>Peloton</li>
-            <li>DFS</li>
-            <li>Wickes</li>
-            <li>HomeChoice</li>
-            <li>Space NK</li>
-            <li>KFC</li>
-            <li>Ann Summers</li>
-        </ul>
+        <div class="retail-logo-grid" aria-label="UK retail brands our leadership has previously run">
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/john-lewis.png" alt="John Lewis &amp; Partners" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/aldi.png" alt="Aldi" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/iceland.png" alt="Iceland" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/jd.png" alt="JD Sports" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/virgin.png" alt="Virgin" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/peloton.png" alt="Peloton" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/dfs.png" alt="DFS" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="assets/client-logos/wickes.svg" alt="Wickes" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/hc.png" alt="HomeChoice" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="assets/client-logos/space-nk.svg" alt="Space NK" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="../../../trilogydigital/assets/clients/marquee/kfc.png" alt="KFC" loading="lazy"></div>
+          <div class="retail-logo-grid__item"><img src="assets/client-logos/ann-summers.svg" alt="Ann Summers" loading="lazy"></div>
+        </div>
       </div>
     </section>
 
