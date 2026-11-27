@@ -84,7 +84,7 @@ def draw_footer(c):
     c.setFillColor(white)
     c.setFont("Helvetica", 7)
     c.drawString(M, 4 * mm, "trilogybpo.com")
-    c.drawRightString(W - M, 4 * mm, "Trilogy CX (Pty) Ltd")
+    c.drawRightString(W - M, 4 * mm, "Trilogy Digital")
 
 
 def section_label(c, x, y, text, accent=GREEN):

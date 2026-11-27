@@ -1,6 +1,6 @@
-# Trilogy CX (Pty) Ltd — Company Overview
+# Trilogy Digital — Company Overview
 
-Sales overview for **Trilogy CX (Pty) Ltd** (BPO · GCC · AI).
+Sales overview for **Trilogy Digital** (BPO · GCC · AI).
 
 - **URL:** https://proposal.trilogybpo.com/trilogycx/
 - **Password:** `trilogycx`

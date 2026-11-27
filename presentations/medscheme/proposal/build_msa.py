@@ -202,14 +202,14 @@ def footer_header(doc):
     header.is_linked_to_previous = False
     hp = header.paragraphs[0]
     hp.text = ""
-    r = hp.add_run("Trilogy CX (Pty) Ltd  ·  Master Services Agreement  ·  Medscheme")
+    r = hp.add_run("Trilogy Digital  ·  Master Services Agreement  ·  Medscheme")
     set_run_font(r, size=8, bold=True, color=GREEN)
     hp.alignment = WD_ALIGN_PARAGRAPH.LEFT
     footer = section.footer
     footer.is_linked_to_previous = False
     fp = footer.paragraphs[0]
     fp.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    r1 = fp.add_run("Commercial-in-confidence.  Not to be disclosed without the written consent of Trilogy CX (Pty) Ltd.    ")
+    r1 = fp.add_run("Commercial-in-confidence.  Not to be disclosed without the written consent of Trilogy Digital.    ")
     set_run_font(r1, size=8, color=MUTED)
     # page number
     r2 = fp.add_run("Page ")
@@ -259,7 +259,7 @@ def build():
         align="center",
         space_after=4,
     )
-    add_para(doc, "between Trilogy CX (Pty) Ltd and Medscheme", size=11, align="center", space_after=14, color=MUTED)
+    add_para(doc, "between Trilogy Digital and Medscheme", size=11, align="center", space_after=14, color=MUTED)
 
     add_mixed(
         doc,
@@ -278,7 +278,7 @@ def build():
         doc,
         ["Item", "Details"],
         [
-            ["Full legal name", "Trilogy CX (Pty) Ltd trading as Trilogy BPO"],
+            ["Full legal name", "Trilogy Digital trading as Trilogy BPO"],
             ["Registration number", "2024/457320/07"],
             ["Physical address", "3rd Floor, Old Mutual Building, Pinelands, Cape Town, 7450"],
             ["Contact person", "Kobus van der Westhuizen"],
@@ -356,7 +356,7 @@ def build():
 
     sign_block(
         doc,
-        "For the Supplier — Trilogy CX (Pty) Ltd",
+        "For the Supplier — Trilogy Digital",
         [
             ("Name", "Kobus van der Westhuizen"),
             ("Designation", "CEO and Founder"),
@@ -1048,7 +1048,7 @@ def build():
 
     add_para(
         doc,
-        "End of Master Services Agreement — Trilogy CX (Pty) Ltd and Medscheme.",
+        "End of Master Services Agreement — Trilogy Digital and Medscheme.",
         size=9,
         color=MUTED,
         space_before=24,
