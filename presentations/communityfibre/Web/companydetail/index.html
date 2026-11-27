@@ -835,6 +835,7 @@
     <a href="#example-additional-kpis">Example KPIs</a>
     <a href="#section-18">Case Studies</a>
     <a href="#section-08">Technology &amp; AI</a>
+    <a href="#it-requirements">IT Requirements</a>
     <a href="#top">Back to top</a>
   </div>
 </nav>
@@ -1741,16 +1742,31 @@
               <table class="covers-table">
                 <tbody>
                   <tr><td>1</td><td><a href="#tech-introduction">Introduction</a></td></tr>
-                  <tr><td>2</td><td><a href="#technology-stack">Technology Stack</a></td></tr>
-                  <tr><td>3</td><td><a href="#ai-enabled-platforms">AI-Enabled Platforms</a></td></tr>
-                  <tr><td>4</td><td><a href="#orchestration-layer">Orchestration Layer</a></td></tr>
-                  <tr><td>5</td><td><a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
+                  <tr><td>2</td><td><a href="#it-requirements">IT Requirements (CFL AWS CCaaS)</a></td></tr>
+                  <tr><td>3</td><td><a href="#technology-stack">Technology Stack</a></td></tr>
+                  <tr><td>4</td><td><a href="#ai-enabled-platforms">AI-Enabled Platforms</a></td></tr>
+                  <tr><td>5</td><td><a href="#orchestration-layer">Orchestration Layer</a></td></tr>
+                  <tr><td>6</td><td><a href="#potential-ai-savings">Potential AI Savings</a></td></tr>
                   </tbody>
               </table>
             </div>
           </div>
 <h3 id="tech-introduction">Introduction</h3>
 <div class="prose"><p>Trilogy's mission statement is to provide Human-Led, AI-enhanced solutions. This means that while we have spent over 8 years developing AI and digital automation solutions, our primary focus remains the people in our operation and how we assist them to deliver better service to their customers. Our AI solutions are geared specifically to enhancing the agent's ability to support their customers, and our systems provide support for Voice, Email, WhatsApp and almost all social media and RCS platforms.</p></div>
+
+<h3 id="it-requirements">IT Requirements</h3>
+<div class="callout" id="cfl-aws-stack">
+  <strong>Technology for Project Mercury — CFL’s AWS CCaaS</strong>
+  <p>Trilogy will operate as a technology-agnostic delivery partner on Community Fibre’s existing stack. Agents authenticate via CFL VDI and work in:</p>
+  <ul class="list-check">
+    <li><strong>AWS Contact Centre (CCaaS)</strong> — voice routing/IVR, chat, email, social and QA.</li>
+    <li><strong>HOBS / Contexify</strong> — CRM and case handling.</li>
+    <li><strong>Toolkit</strong> and related CFL tools (delivery/collection portal, Island browser, etc.).</li>
+  </ul>
+  <p>We will <strong>not</strong> deploy QContact or any alternate contact-centre platform for this engagement. Trilogy provides people, WFM process, devices, connectivity and facilities around CFL’s AWS environment.</p>
+</div>
+<div class="table-wrap"><table><thead><tr><th>IT requirement</th><th>Able to comply</th><th>Comment</th></tr></thead><tbody><tr><td>CFL shall provide call routing and IVR for partner login</td><td><strong>Yes</strong></td><td>Agents will log in to <strong>CFL’s AWS Contact Centre (CCaaS)</strong> for voice routing/IVR and agent desktop. Trilogy provides endpoints, network and headsets — we do not deploy QContact or an alternate contact platform.</td></tr><tr><td>CFL would facilitate external logins; access via VDI</td><td><strong>Yes</strong></td><td>Access via CFL VDI from Trilogy-managed, Intune-enrolled devices under our ISO/IEC 27001 controls.</td></tr><tr><td>CFL would provide chat, email, social and any other contact platform plus QA</td><td><strong>Yes</strong></td><td>Agents work entirely in <strong>CFL’s stack</strong>: AWS Contact Centre (chat/email/social + QA), HOBS/Contexify CRM, and Toolkit. Trilogy QA analysts score on CFL’s scorecard, meeting the monthly review volumes in Appendix 1. No Trilogy CCaaS is introduced.</td></tr><tr><td>Confirm and share WFM policy, and whether available as a service</td><td><strong>Yes</strong></td><td>Trilogy provides WFM as part of the service at no additional charge (people and process — forecasting, scheduling, intraday management, adherence and shrinkage control). We do <strong>not</strong> deploy QContact or any alternate CCaaS for this programme: agents work in <strong>CFL’s AWS Contact Centre</strong>. WFM uses CFL volume and agent-state feeds from Toolkit / AWS extracts.</td></tr><tr><td>Access to HOBS for service agents; HOBS, Toolkit and AV systems for tech agents, plus other specified services</td><td><strong>Yes</strong></td><td>Includes Linksys web, the in-house delivery/collection portal, Island browser and price comparison sites, as listed in the Q&amp;A.</td></tr><tr><td>Provide security assessment, physical environment examples, mobile phone policy</td><td><strong>Yes</strong></td><td>ISO/IEC 27001 certified ISMS — <a href="../assets/docs/trilogy-cx-iso27001.pdf?v=20261126" target="_blank" rel="noopener">certificate</a>. Floor photographs in the <a href="../#facilities">Facilities gallery</a>. Mobile device policy: no personal phones on the production floor; lockers provided.</td></tr><tr><td>Company may be entered into CFL’s OneTrust platform for information security assessment</td><td><strong>Yes</strong></td><td>Accepted.</td></tr><tr><td>If supplier provides WFM, CFL needs to understand how data is passed, involving a pen test</td><td><strong>Yes</strong></td><td>WFM is operated by Trilogy against CFL’s AWS Contact Centre and Toolkit feeds (interval volumes and agent-state extracts). Schedules and adherence reports are returned to CFL; no customer personal data is required in the WFM layer. Trilogy will support CFL’s pen test of the feed. Data-flow diagram available on request / during OneTrust.</td></tr><tr><td>Clarity on charges and how they are paid, if included</td><td><strong>Yes</strong></td><td>No separate technology, WFM, licence or connectivity charges. All are included in the hourly rate.</td></tr><tr><td>Example operating model: link to change and incident management, swap notifications, joining incident calls</td><td><strong>Yes</strong></td><td>Named Trilogy incident manager per shift; joins CFL major-incident bridges within 15 minutes; change notices cascaded to agents via pre-shift briefing; swap notifications handled through the WFM team. Ticketing / contact handling: <strong>CFL’s AWS Contact Centre</strong> (chat/QA) with <strong>HOBS/Contexify</strong>; WFM is Trilogy-operated against those AWS / Toolkit feeds.</td></tr><tr><td>Share examples of BCP arrangements</td><td><strong>Yes</strong></td><td>Confirmed BCP: power back-up (generator/UPS), dual-ISP connectivity, alternate site or work-from-home failover, with defined recovery time objectives.</td></tr><tr><td>Share connectivity speeds into premises</td><td><strong>Yes</strong></td><td>Confirmed — primary and secondary connectivity with dual-ISP failover into the Cape Town premises (speeds and providers available under NDA / during technical due diligence).</td></tr></tbody></table></div>
+
 
 <h3 id="technology-stack">Technology Stack</h3>
 <figure class="figure figure--carom">
