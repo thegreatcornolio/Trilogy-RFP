@@ -936,6 +936,30 @@
     .rate-card__note { margin-top: 0.2rem; font-size: 0.8rem; color: #5a6570; }
     .fine, .fine-list { font-size: 0.85rem; color: #5a6570; }
     .fine-list { line-height: 1.45; }
+
+    /* Notes to commercials — list / callout polish */
+    #commercial-key-commitments {
+      border-left: none;
+      font-style: normal;
+    }
+    #commercial-notes .list-check ul,
+    #commercial-notes .list-check ol {
+      list-style: none;
+      margin: 0.45rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    #commercial .list-check ul,
+    #commercial .list-check ol {
+      list-style: none;
+      margin: 0.45rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
     #rfp-summary .table-wrap,
     #commercial .table-wrap {
       overflow-x: auto;
@@ -2016,7 +2040,7 @@
 <h3 id="commercial-c5">Training</h3>
 <ul class="list-check">
   <li>Billed at the standard hourly rate, 8 hours a day, 5 days a week, for CFL’s stated course lengths:
-    <ul>
+    <ul class="list-check">
       <li>CS and T1: 4 weeks</li>
       <li>Complaints and Customer Care: 5 weeks</li>
       <li>Back Office, Onboarding and Porting: 2 weeks, plus 1 week of cross-skilling</li>
@@ -2030,13 +2054,13 @@
 <ul class="list-check">
   <li>Trilogy accepts the Appendix 1 mechanism. At our Year 1 base of £10.57, the rate runs from <strong>£8.46</strong> (0.80×) to <strong>£13.85</strong> (1.31×).</li>
   <li>Points to agree during contracting:
-    <ol>
+    <ul class="list-check">
       <li>Build the calculator’s 200% cap per KPI into the formula.</li>
       <li>Agree what happens to overall scores outside the 0.80–1.32 lookup range.</li>
       <li>Agree treatment of a KPI with no data in a month.</li>
       <li>Align the calculator’s section weights (40/40/20) with Appendix 1 (27/60/13).</li>
       <li>Targets that drive the rate are agreed jointly before the month they apply to.</li>
-    </ol>
+    </ul>
   </li>
 </ul>
 
@@ -2061,7 +2085,7 @@
 </ul>
 
 <h3 id="commercial-c10">Assumptions</h3>
-<ol class="fine-list">
+<ul class="list-check">
   <li>Billing is per productive (billable) hour delivered, on a 5-day shift pattern. Breaks, leave, sickness and non-productive states are not billed.</li>
   <li>Agreed internal shrinkage (briefings, training, coaching) is billable, per the Q&amp;A. Leave, sickness and public holidays are not billed.</li>
   <li>Contract values are based on CFL’s current 125-head team split at c.151 productive hours per head per month.</li>
@@ -2069,7 +2093,7 @@
   <li>No PCI environment is required (per the Q&amp;A).</li>
   <li>Prices are in GBP, excluding VAT. Currency risk is borne by Trilogy.</li>
   <li>Pricing is valid for 120 days from the RFP closing date.</li>
-</ol>
+</ul>
   </div>
 </section>
 
