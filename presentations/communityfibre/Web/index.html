@@ -960,6 +960,17 @@
       flex-direction: column;
       gap: 0.45rem;
     }
+    #ph-hour-types th:first-child,
+    #ph-hour-types td:first-child {
+      white-space: nowrap;
+      min-width: 11.5rem;
+      width: 11.5rem;
+    }
+    #ph-hour-types th:last-child,
+    #ph-hour-types td:last-child {
+      white-space: nowrap;
+      width: 6.5rem;
+    }
     #rfp-summary .table-wrap,
     #commercial .table-wrap {
       overflow-x: auto;
@@ -1959,7 +1970,7 @@
     <li><strong>Productive hours (PH)</strong> — paid/available hours minus non-productive logged states (lunch, Away, Not Ready, idle, unapproved admin/rework). Only PH is billed. Agreed CFL activity that stays on the clock — briefings, coaching and training signed off in advance — remains inside PH.</li>
   </ul>
 </div>
-<div class="table-wrap"><table><thead><tr><th>Step</th><th>Definition</th><th>What happens to the hours</th><th>Billed to CFL?</th></tr></thead><tbody>
+<div class="table-wrap"><table id="ph-hour-types"><thead><tr><th>Step</th><th>Definition</th><th>What happens to the hours</th><th>Billed to CFL?</th></tr></thead><tbody>
 <tr><td>1. Contracted</td><td>Roster / contract length</td><td>Baseline schedule (illustratively ~195 hrs/month if every working day were fully rostered at 9 hrs)</td><td>No</td></tr>
 <tr><td>2. Paid / available</td><td>Contracted − leave, sickness, public holidays, unpaid breaks</td><td>Removes non-worked time</td><td>No</td></tr>
 <tr><td>3. Productive (PH)</td><td>Paid/available − lunch, Away, Not Ready, idle, unapproved admin</td><td>Leaves only time available to handle contacts + agreed briefings/coaching/training</td><td><strong>Yes</strong></td></tr>
